@@ -1,0 +1,41 @@
+/* Stile della home page del sito del corso */
+
+/* i due loghi, uno per lato */
+.home-loghi {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.home-loghi p {
+  display: contents;
+}
+
+.home-loghi img {
+  height: 90px;
+  width: auto;
+}
+
+/* titolo e sottotitolo centrati */
+.home-titolo {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.home-titolo h1 {
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.home-titolo p {
+  color: #555;
+  font-size: 1.1rem;
+}
+
+/* su schermi stretti i loghi diventano piu' piccoli */
+@media (max-width: 576px) {
+  .home-loghi img {
+    height: 55px;
+  }
+}

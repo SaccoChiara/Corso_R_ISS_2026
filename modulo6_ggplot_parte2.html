@@ -1,0 +1,2369 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>quarto-input3f4c5455c7aeb52c – Corso base di R</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./immagini/logo_iss.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-407113646558fb1abf01df177a630d46.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="webex.css">
+</head>
+
+<body class="floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Corso base di R</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./preparazione.html"> 
+<span class="menu-text">Prepararsi al corso</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./dati.html"> 
+<span class="menu-text">I dati del corso</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-moduli" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Moduli</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-moduli">    
+        <li class="dropdown-header">Giorno 1</li>
+        <li>
+    <a class="dropdown-item" href="./modulo1_intro.html">
+ <span class="dropdown-text">Modulo 1 – Importazione ed esplorazione dei dati</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./modulo2_data_cleaning.html">
+ <span class="dropdown-text">Modulo 2 – Pulizia e preparazione dei dati</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Giorno 2</li>
+        <li>
+    <a class="dropdown-item" href="./modulo3_data_cleaning_avanzato.html">
+ <span class="dropdown-text">Modulo 3 – Pulizia dei dati: approfondimento</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./modulo4_tabelle_e_aggregazione.html">
+ <span class="dropdown-text">Modulo 4 – Tabelle e aggregazione dei dati</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Giorno 3</li>
+        <li>
+    <a class="dropdown-item" href="./modulo5_ggplot_parte1.html">
+ <span class="dropdown-text">Modulo 5 – Grafici con ggplot2 (parte 1)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./modulo6_ggplot_parte2.html">
+ <span class="dropdown-text">Modulo 6 – Grafici con ggplot2 (parte 2)</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Giorno 4</li>
+        <li>
+    <a class="dropdown-item" href="./modulo7_trasformazione_e_integrazione.html">
+ <span class="dropdown-text">Modulo 7 – Trasformazione e integrazione dei dati</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./modulo8_altri_grafici.html">
+ <span class="dropdown-text">Modulo 8 – Altri grafici</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Giorno 5</li>
+        <li>
+    <a class="dropdown-item" href="./modulo9_quarto.html">
+ <span class="dropdown-text">Modulo 9 – Report automatici con Quarto</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="1">
+    <h2 id="toc-title">In questa pagina</h2>
+   
+  <ul>
+  <li><a href="#corso-introduttivo-al-software-statistico-r" id="toc-corso-introduttivo-al-software-statistico-r" class="nav-link active" data-scroll-target="#corso-introduttivo-al-software-statistico-r"><strong>Corso introduttivo al software statistico R</strong></a></li>
+  <li><a href="#modulo-06-data-visualization-con-ggplot2-parte-2" id="toc-modulo-06-data-visualization-con-ggplot2-parte-2" class="nav-link" data-scroll-target="#modulo-06-data-visualization-con-ggplot2-parte-2">Modulo 06 Data Visualization con ggplot2 (Parte 2)</a>
+  <ul>
+  <li><a href="#obiettivi-del-modulo" id="toc-obiettivi-del-modulo" class="nav-link" data-scroll-target="#obiettivi-del-modulo">Obiettivi del modulo</a></li>
+  <li><a href="#formato-dellesercizio" id="toc-formato-dellesercizio" class="nav-link" data-scroll-target="#formato-dellesercizio">Formato dell’esercizio</a></li>
+  <li><a href="#preparazione" id="toc-preparazione" class="nav-link" data-scroll-target="#preparazione">Preparazione</a></li>
+  <li><a href="#iniziamo" id="toc-iniziamo" class="nav-link" data-scroll-target="#iniziamo">Iniziamo!</a>
+  <ul class="collapse">
+  <li><a href="#larea-di-prova" id="toc-larea-di-prova" class="nav-link" data-scroll-target="#larea-di-prova">L’area di prova</a></li>
+  </ul></li>
+  <li><a href="#la-logica-delle-scale" id="toc-la-logica-delle-scale" class="nav-link" data-scroll-target="#la-logica-delle-scale">La logica delle scale</a>
+  <ul class="collapse">
+  <li><a href="#un-colore-per-ogni-livello" id="toc-un-colore-per-ogni-livello" class="nav-link" data-scroll-target="#un-colore-per-ogni-livello">Un colore per ogni livello</a></li>
+  <li><a href="#due-estetiche-con-la-stessa-scala" id="toc-due-estetiche-con-la-stessa-scala" class="nav-link" data-scroll-target="#due-estetiche-con-la-stessa-scala">Due estetiche con la stessa scala</a></li>
+  <li><a href="#gli-argomenti-per-la-legenda" id="toc-gli-argomenti-per-la-legenda" class="nav-link" data-scroll-target="#gli-argomenti-per-la-legenda">Gli argomenti per la legenda</a></li>
+  </ul></li>
+  <li><a href="#palette-predefinite" id="toc-palette-predefinite" class="nav-link" data-scroll-target="#palette-predefinite">Palette predefinite</a></li>
+  <li><a href="#scale-di-colore-continue" id="toc-scale-di-colore-continue" class="nav-link" data-scroll-target="#scale-di-colore-continue">Scale di colore continue</a>
+  <ul class="collapse">
+  <li><a href="#i-vaccinati-per-giorno" id="toc-i-vaccinati-per-giorno" class="nav-link" data-scroll-target="#i-vaccinati-per-giorno">I vaccinati per giorno</a></li>
+  <li><a href="#palette-continue" id="toc-palette-continue" class="nav-link" data-scroll-target="#palette-continue">Palette continue</a></li>
+  <li><a href="#gradiente-scelto-a-mano" id="toc-gradiente-scelto-a-mano" class="nav-link" data-scroll-target="#gradiente-scelto-a-mano">Gradiente scelto a mano</a></li>
+  </ul></li>
+  <li><a href="#assi-con-le-date" id="toc-assi-con-le-date" class="nav-link" data-scroll-target="#assi-con-le-date">Assi con le date</a></li>
+  <li><a href="#assi" id="toc-assi" class="nav-link" data-scroll-target="#assi">Assi</a>
+  <ul class="collapse">
+  <li><a href="#breaks" id="toc-breaks" class="nav-link" data-scroll-target="#breaks">Breaks</a></li>
+  <li><a href="#barre-orizzontali" id="toc-barre-orizzontali" class="nav-link" data-scroll-target="#barre-orizzontali">Barre orizzontali</a></li>
+  </ul></li>
+  <li><a href="#proporzioni-e-percentuali" id="toc-proporzioni-e-percentuali" class="nav-link" data-scroll-target="#proporzioni-e-percentuali">Proporzioni e percentuali</a></li>
+  <li><a href="#i-temi-del-grafico" id="toc-i-temi-del-grafico" class="nav-link" data-scroll-target="#i-temi-del-grafico">I temi del grafico</a></li>
+  <li><a href="#lo-script-completo" id="toc-lo-script-completo" class="nav-link" data-scroll-target="#lo-script-completo">Lo script completo</a></li>
+  <li><a href="#riepilogo" id="toc-riepilogo" class="nav-link" data-scroll-target="#riepilogo">Riepilogo</a></li>
+  <li><a href="#risorse-aggiuntive" id="toc-risorse-aggiuntive" class="nav-link" data-scroll-target="#risorse-aggiuntive">Risorse aggiuntive</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><p><img src="immagini/logo_dmi.png" class="img-fluid" style="width:3in"></p></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="corso-introduttivo-al-software-statistico-r" class="level1">
+<h1><strong>Corso introduttivo al software statistico R</strong></h1>
+</section>
+<section id="modulo-06-data-visualization-con-ggplot2-parte-2" class="level1">
+<h1>Modulo 06 Data Visualization con ggplot2 (Parte 2)</h1>
+<section id="obiettivi-del-modulo" class="level2">
+<h2 class="anchored" data-anchor-id="obiettivi-del-modulo">Obiettivi del modulo</h2>
+<ul>
+<li>Modificare i colori di un grafico con le funzioni <code>scale_*()</code>, scegliendoli a mano o da palette predefinite</li>
+<li>Personalizzare gli assi: interruzioni, date e percentuali</li>
+<li>Costruire didascalie che si aggiornano con i dati</li>
+<li>Cambiare l’aspetto di un grafico con i temi completi e con <code>theme()</code></li>
+</ul>
+</section>
+<section id="formato-dellesercizio" class="level2">
+<h2 class="anchored" data-anchor-id="formato-dellesercizio">Formato dell’esercizio</h2>
+<!-- Il paragrafo sotto è fisso: -->
+<p>Questo esercizio è progettato per essere una guida e per aiutarti a completarlo in autonomia. Ti consigliamo fortemente di provare a eseguire il codice prima di guardare le soluzioni. Per aiutarti, abbiamo incluso in alcuni punti dei suggerimenti che possono indirizzarti nella direzione giusta. Li troverai così:</p>
+<!-- ISTRUZIONI: Questo blocco "Suggerimento" va inserito ogni volta che vuoi dare un aiuto parziale allo studente senza svelare subito la soluzione (es. il nome di una funzione da usare, o un argomento a cui prestare attenzione). Copia l'intero blocco <details>...</details> e modifica solo il testo dopo </br>. -->
+<details>
+<summary style="text-decoration: underline; color: darkgreen;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
+</summary>
+<p><br></p>
+<p>Questo è un suggerimento.</p>
+<p><br></p>
+</details>
+<p>Le soluzioni, invece, avranno questo aspetto:</p>
+<!-- ISTRUZIONI: Questo blocco "Soluzione" va inserito alla fine di ogni esercizio (o sotto-punto) e deve contenere codice R eseguibile e commentato. Copia l'intero blocco <details>...</details> e sostituisci il codice di esempio. Se la 
+     soluzione richiede più passaggi, aggiungi commenti # nel codice per spiegare ogni passaggio. Ricorda: niente etichette (label) nei chunk, come indicato nelle istruzioni generali. -->
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"Questo è un esempio di soluzione"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Questo è un esempio di soluzione"</code></pre>
+</div>
+</div>
+<p><br></p>
+</details>
+<p>Durante l’esercizio troverai anche domande a risposta multipla, che servono a verificare se stai seguendo correttamente lo svolgimento. Le domande saranno simili a questa:</p>
+<!-- ISTRUZIONI: Questo blocco "Domanda" usa il pacchetto`{webexercises}` per creare quiz a risposta multipla auto-correttivi. Copia l'intero blocco ::: {.callout-note}...::: 
+     e:
+       - scrivi le opzioni di risposta nel vettore "opts"
+       - indica la risposta corretta con answer = "..."
+       - scrivi il testo della domanda dentro cat("Domanda: ...")
+     Inserisci una domanda ogni volta che vuoi far verificare allo studente di aver capito un concetto chiave prima di proseguire. -->
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Domanda di esempio: quanto fa 2 + 2?
+<div id="radio_ANVGGIWYBD" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_ANVGGIWYBD" value=""> <span>2</span></label><label><input type="radio" autocomplete="off" name="radio_ANVGGIWYBD" value=""> <span>5</span></label><label><input type="radio" autocomplete="off" name="radio_ANVGGIWYBD" value="answer"> <span>4</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Lungo il modulo troverai anche due tipi di riquadri colorati. I riquadri <strong>gialli</strong> segnalano errori frequenti o punti in cui R si comporta in modo inatteso: leggili sempre, perché possono farti risparmiare tempo.</p>
+<!-- ISTRUZIONI: Il box giallo "Attenzione a …" va usato per avvisi importanti: errori comuni, comportamenti di R che possono sorprendere, passaggi da non saltare. Il titolo inizia sempre con "Attenzione a" (es. "Attenzione ai nomi con spazi"). Copia l'intero blocco ::: {.callout-warning ...} ... ::: e modifica solo titolo e testo. -->
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avviso</span>Attenzione a …
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Questo è un esempio di riquadro di attenzione.</p>
+</div>
+</div>
+<p>I riquadri <strong>verdi</strong> contengono invece approfondimenti facoltativi, per chi vuole andare un po’ oltre: puoi saltarli senza perdere il filo dell’esercizio e tornarci in un secondo momento.</p>
+<!-- ISTRUZIONI: Il box verde "Approfondimento: …" va usato per contenuti facoltativi: funzioni alternative, scorciatoie, casi più avanzati. Lo studente deve poter completare l'esercizio anche senza leggerlo. Il titolo inizia sempre con "Approfondimento:" (es. "Approfondimento: gestire le date in R"). Copia l'intero blocco ::: {.callout-tip ...} ... ::: e modifica solo titolo e testo. -->
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Consiglio</span>Approfondimento: …
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Questo è un esempio di riquadro di approfondimento.</p>
+</div>
+</div>
+<p>Ti consigliamo di provare comunque a rispondere e a eseguire il codice da solo prima di consultare suggerimenti e soluzioni: è così che si impara davvero a usare R.</p>
+</section>
+<section id="preparazione" class="level2">
+<h2 class="anchored" data-anchor-id="preparazione">Preparazione</h2>
+<p>Nell’esercitazione del pomeriggio continuerai a lavorare sullo stesso script di questa mattina:</p>
+<ul>
+<li>se il progetto R è ancora aperto, vai in fondo allo script <code>plot.R</code>;</li>
+<li>se invece l’hai chiuso, riapri il progetto e apri di nuovo lo script <code>plot.R</code> dalla cartella <code>script</code>; poi esegui tutto il codice che sta sopra l’area di prova: metti il cursore sulla riga del titolo “Area di prova” e premi <strong>Ctrl + Alt + B</strong> (<strong>Cmd + Option + B</strong> su Mac).</li>
+</ul>
+<p>In entrambi i casi, <strong>sopra</strong> la sezione “Area di prova”, crea una nuova sezione chiamata “Modulo 06 - Data Visualization con ggplot2 (Parte 2)” con la combinazione di tasti <strong>Ctrl + Shift + R</strong> (<strong>Cmd + Shift + R</strong> su Mac): qui scriverai il codice dell’esercitazione del pomeriggio. Ricordati di salvare spesso il lavoro (<strong>Ctrl + S</strong>, oppure <strong>Cmd + S</strong> su Mac).</p>
+</section>
+<section id="iniziamo" class="level2">
+<h2 class="anchored" data-anchor-id="iniziamo">Iniziamo!</h2>
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:darkgreen;overflow:visible;position:relative;"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"></path></svg> <strong>Da qui comincia l’esercitazione.</strong></p>
+<section id="larea-di-prova" class="level3">
+<h3 class="anchored" data-anchor-id="larea-di-prova">L’area di prova</h3>
+<p>Anche in questo modulo userai l’“Area di prova” che hai creato questa mattina, in fondo allo script <code>plot.R</code>. Quasi tutti i grafici di oggi sono prove, che non serve conservare: falle lì. Nello script, sopra l’area di prova, scriverai solo gli oggetti che servono anche dopo: lo segnaleremo di volta in volta.</p>
+</section>
+</section>
+<section id="la-logica-delle-scale" class="level2">
+<h2 class="anchored" data-anchor-id="la-logica-delle-scale">La logica delle scale</h2>
+<p>Nell’area di prova, fai un grafico a barre del numero di vaccinati per regione (<code>region</code>), con il riempimento per <code>hiv</code>. Osserva i colori scelti da <code>{ggplot2}</code>.</p>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> dati_clean, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">fill =</span> hiv)) <span class="sc">+</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="modulo6_ggplot_parte2_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br></p>
+</details>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Consiglio</span>Approfondimento: le funzioni che modificano l’estetica
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Le funzioni che modificano il modo in cui un’estetica viene rappresentata hanno tutte la forma <code>scale_&lt;estetica&gt;_&lt;metodo&gt;()</code>, per esempio <code>scale_fill_manual()</code> o <code>scale_x_date()</code>.</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Quale funzione useresti per scegliere a mano il colore dei punti di un grafico con color = hiv?
+<div id="radio_HWNLFFSWAM" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_HWNLFFSWAM" value=""> <span>scale_fill_manual()</span></label><label><input type="radio" autocomplete="off" name="radio_HWNLFFSWAM" value="answer"> <span>scale_color_manual()</span></label><label><input type="radio" autocomplete="off" name="radio_HWNLFFSWAM" value=""> <span>scale_manual_color()</span></label><label><input type="radio" autocomplete="off" name="radio_HWNLFFSWAM" value=""> <span>scale_color_continuous()</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section id="un-colore-per-ogni-livello" class="level3">
+<h3 class="anchored" data-anchor-id="un-colore-per-ogni-livello">Un colore per ogni livello</h3>
+<p>Crea una nuova sezione (<strong>Ctrl+Shift+R</strong>) che si chiamerà “Colori scelti a mano”.</p>
+<p>Nell’area di prova, crea un nuovo grafico partendo dal precedente e aggiungi <code>scale_fill_manual()</code>, assegnando il colore <code>"steelblue"</code> alle persone senza HIV e <code>"darkorange"</code> alle persone con HIV.</p>
+<details>
+<summary style="text-decoration: underline; color: darkgreen;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
+</summary>
+<p><br></p>
+<p>Usa l’argomento <code>values =</code> con un vettore <code>c()</code> in cui ogni colore è associato al nome del livello, ad esempio <code>"Senza HIV" = "steelblue"</code>.</p>
+<p><br></p>
+</details>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> dati_clean, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">fill =</span> hiv)) <span class="sc">+</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Senza HIV"</span> <span class="ot">=</span> <span class="st">"steelblue"</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Con HIV"</span>   <span class="ot">=</span> <span class="st">"darkorange"</span>))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="modulo6_ggplot_parte2_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br></p>
+</details>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Consiglio</span>Approfondimento: la scelta dei colori
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I colori si possono indicare con il nome (es. <code>"steelblue"</code>) o con il codice esadecimale (es. <code>"#2a9d8f"</code>). Per scegliere una palette e copiarne i codici puoi usare, ad esempio, <a href="https://coolors.co/palettes/trending" class="uri">https://coolors.co/palettes/trending</a>.</p>
+</div>
+</div>
+<p>Ora, sempre nell’area di prova, nel vettore dei colori, scrivi <code>"Con hiv"</code> al posto di <code>"Con HIV"</code> ed esegui di nuovo il codice.</p>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> dati_clean, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">fill =</span> hiv)) <span class="sc">+</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Senza HIV"</span> <span class="ot">=</span> <span class="st">"steelblue"</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Con hiv"</span>   <span class="ot">=</span> <span class="st">"darkorange"</span>))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="modulo6_ggplot_parte2_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br></p>
+</details>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Cosa succede se il nome nel vettore non corrisponde esattamente al livello?
+<div id="radio_WRUWJMNTNB" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_WRUWJMNTNB" value=""> <span>Un errore, e il grafico non viene prodotto</span></label><label><input type="radio" autocomplete="off" name="radio_WRUWJMNTNB" value=""> <span>Un warning, e le barre Con HIV vengono escluse</span></label><label><input type="radio" autocomplete="off" name="radio_WRUWJMNTNB" value="answer"> <span>Nessun messaggio, ma le barre Con HIV diventano grigie</span></label><label><input type="radio" autocomplete="off" name="radio_WRUWJMNTNB" value=""> <span>Nessun messaggio, e i colori restano quelli corretti</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="due-estetiche-con-la-stessa-scala" class="level3">
+<h3 class="anchored" data-anchor-id="due-estetiche-con-la-stessa-scala">Due estetiche con la stessa scala</h3>
+<p>Nell’area di prova, fai un grafico a barre per regione con <code>fill = hiv</code> e <code>color = hiv</code>, con <code>alpha = 0.5</code> nelle barre. Aggiungi un punto in cima a ogni barra con <code>geom_point(stat = "count", position = "stack", size = 3)</code>. Poi aggiungi <code>scale_fill_manual()</code> con due colori scelti da te, in codice esadecimale.</p>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> dati_clean, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">fill =</span> hiv, <span class="at">color =</span> hiv)) <span class="sc">+</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">stat =</span> <span class="st">"count"</span>, <span class="at">position =</span> <span class="st">"stack"</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Senza HIV"</span> <span class="ot">=</span> <span class="st">"#2a9d8f"</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Con HIV"</span>   <span class="ot">=</span> <span class="st">"#e76f51"</span>))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="modulo6_ggplot_parte2_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br></p>
+</details>
+<p>Bordi e punti hanno ancora i colori di default. Aggiungi a <code>scale_fill_manual()</code> l’argomento <code>aesthetics = c("fill", "color")</code>.</p>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> dati_clean, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">fill =</span> hiv, <span class="at">color =</span> hiv)) <span class="sc">+</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">stat =</span> <span class="st">"count"</span>, <span class="at">position =</span> <span class="st">"stack"</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Senza HIV"</span> <span class="ot">=</span> <span class="st">"#2a9d8f"</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Con HIV"</span>   <span class="ot">=</span> <span class="st">"#e76f51"</span>),</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">aesthetics =</span> <span class="fu">c</span>(<span class="st">"fill"</span>, <span class="st">"color"</span>))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="modulo6_ggplot_parte2_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br></p>
+</details>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Cosa fa l’argomento aesthetics = c(‘fill’, ‘color’)?
+<div id="radio_YJMLTTHITX" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_YJMLTTHITX" value=""> <span>Applica i colori solo alle barre, non ai punti</span></label><label><input type="radio" autocomplete="off" name="radio_YJMLTTHITX" value=""> <span>Crea una legenda separata per fill e una per color</span></label><label><input type="radio" autocomplete="off" name="radio_YJMLTTHITX" value="answer"> <span>Applica gli stessi colori sia a fill sia a color</span></label><label><input type="radio" autocomplete="off" name="radio_YJMLTTHITX" value=""> <span>Rende i punti dello stesso colore dello sfondo</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="gli-argomenti-per-la-legenda" class="level3">
+<h3 class="anchored" data-anchor-id="gli-argomenti-per-la-legenda">Gli argomenti per la legenda</h3>
+<p>Partendo dal grafico precedente, sopra all’area di prova, nella sezione “Colori scelti a mano”, aggiungi a <code>scale_fill_manual()</code> questi argomenti, uno alla volta, osservando cosa cambia:</p>
+<ul>
+<li><code>name = "Stato HIV"</code></li>
+<li><code>breaks = c("Con HIV", "Senza HIV")</code></li>
+<li><code>labels = c("Con HIV" = "Persone con HIV", "Senza HIV" = "Controlli")</code></li>
+</ul>
+<p>Infine, nell’area di prova, utilizza <code>breaks = "Con HIV"</code>.</p>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># IN AREA DI PROVA - un solo livello in breaks</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> dati_clean, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">fill =</span> hiv, <span class="at">color =</span> hiv)) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">stat =</span> <span class="st">"count"</span>, <span class="at">position =</span> <span class="st">"stack"</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Senza HIV"</span> <span class="ot">=</span> <span class="st">"#2a9d8f"</span>,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Con HIV"</span>   <span class="ot">=</span> <span class="st">"#e76f51"</span>),</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="st">"Con HIV"</span>,</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">aesthetics =</span> <span class="fu">c</span>(<span class="st">"fill"</span>, <span class="st">"color"</span>))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="modulo6_ggplot_parte2_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Colori scelti a mano ----------------------------------------------------------</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> dati_clean, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">fill =</span> hiv, <span class="at">color =</span> hiv)) <span class="sc">+</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">stat =</span> <span class="st">"count"</span>, <span class="at">position =</span> <span class="st">"stack"</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">"Stato HIV"</span>,                             <span class="co"># titolo della legenda</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(                                     <span class="co"># colori</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Senza HIV"</span> <span class="ot">=</span> <span class="st">"#2a9d8f"</span>,</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Con HIV"</span>   <span class="ot">=</span> <span class="st">"#e76f51"</span>),</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="fu">c</span>(<span class="st">"Con HIV"</span>, <span class="st">"Senza HIV"</span>),             <span class="co"># livelli e ordine in legenda</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(                                     <span class="co"># testo in legenda</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Con HIV"</span>   <span class="ot">=</span> <span class="st">"Persone con HIV"</span>,</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Senza HIV"</span> <span class="ot">=</span> <span class="st">"Controlli"</span>),</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">aesthetics =</span> <span class="fu">c</span>(<span class="st">"fill"</span>, <span class="st">"color"</span>))                <span class="co"># estetiche coinvolte</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="modulo6_ggplot_parte2_files/figure-html/unnamed-chunk-12-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br></p>
+</details>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Con breaks = ‘Con HIV’, cosa succede?
+<div id="radio_BRUDZQORER" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_BRUDZQORER" value=""> <span>Le barre Senza HIV spariscono dal grafico</span></label><label><input type="radio" autocomplete="off" name="radio_BRUDZQORER" value="answer"> <span>Il grafico non cambia, ma la legenda mostra solo Con HIV</span></label><label><input type="radio" autocomplete="off" name="radio_BRUDZQORER" value=""> <span>Le barre Senza HIV diventano grigie come gli NA</span></label><label><input type="radio" autocomplete="off" name="radio_BRUDZQORER" value=""> <span>Compare un errore, perché manca il livello Senza HIV</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avviso</span>Attenzione ai valori mancanti
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Il colore dei valori mancanti non va nel vettore <code>values =</code>, ma nell’argomento <code>na.value =</code> di <code>scale_&lt;estetica&gt;_&lt;metodo&gt;()</code>. Ad esempio, nell’istogramma dell’età per sesso del Modulo 5 le 2 persone con sesso mancante comparivano in grigio, con la voce <code>NA</code> in legenda. Anche se la variabile non presenta dati mancanti, indicarlo è una buona abitudine: un aggiornamento dei dati potrebbe introdurne.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="palette-predefinite" class="level2">
+<h2 class="anchored" data-anchor-id="palette-predefinite">Palette predefinite</h2>
+<p>Crea una nuova sezione (<strong>Ctrl+Shift+R</strong>) che si chiamerà “Palette predefinite”.</p>
+<p>Nell’area di prova, fai un grafico a barre per regione con il riempimento per Charlson index (<code>chrls_index</code>). Anziché utilizzare <code>scale_fill_manual()</code> per definire i colori di riempimento, usa <code>scale_fill_brewer()</code>, provando prima <code>palette = "Blues"</code> e poi <code>palette = "Pastel2"</code>.</p>
+<details>
+<summary style="text-decoration: underline; color: darkgreen;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
+</summary>
+<p><br></p>
+<p>Per vedere tutte le palette disponibili esegui <code>RColorBrewer::display.brewer.all()</code> nella console.</p>
+<p><br></p>
+</details>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># brewer sequenziale</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> dati_clean, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">fill =</span> chrls_index)) <span class="sc">+</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Blues"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="modulo6_ggplot_parte2_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># brewer qualitativa</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> dati_clean, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">fill =</span> chrls_index)) <span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Pastel2"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="modulo6_ggplot_parte2_files/figure-html/unnamed-chunk-14-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br></p>
+</details>
+<p>Infine, nella sezione “Palette predefinite”, prova <code>scale_fill_viridis_d()</code>.</p>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Palette predefinite ----------------------------------------------------------</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> dati_clean, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">fill =</span> chrls_index)) <span class="sc">+</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="modulo6_ggplot_parte2_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br></p>
+</details>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Per chrls_index, quale tipo di palette è più adatto?
+<div id="radio_MPNHOQEYPU" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_MPNHOQEYPU" value="answer"> <span>Sequenziale, perché le categorie hanno un ordine</span></label><label><input type="radio" autocomplete="off" name="radio_MPNHOQEYPU" value=""> <span>Qualitativa, perché le categorie sono solo quattro</span></label><label><input type="radio" autocomplete="off" name="radio_MPNHOQEYPU" value=""> <span>Qualitativa, perché la variabile è di tipo character</span></label><label><input type="radio" autocomplete="off" name="radio_MPNHOQEYPU" value=""> <span>Sequenziale, perché ci sono valori mancanti</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="scale-di-colore-continue" class="level2">
+<h2 class="anchored" data-anchor-id="scale-di-colore-continue">Scale di colore continue</h2>
+<p>Le scale viste finora servono per variabili <strong>discrete</strong>, con pochi livelli: a ogni livello un colore. Quando il colore rappresenta una variabile <strong>continua</strong>, come un’età media, serve invece una scala continua, che sfuma da un colore per il valore minimo a uno per il valore massimo.</p>
+<section id="i-vaccinati-per-giorno" class="level3">
+<h3 class="anchored" data-anchor-id="i-vaccinati-per-giorno">I vaccinati per giorno</h3>
+<p>Per lavorare con una variabile continua costruiamo un nuovo grafico: come si è svolta la campagna vaccinale giorno per giorno, quante persone sono state vaccinate e quanti anni avevano in media.</p>
+<p>Questo data frame servirà anche per il grafico finale, quindi va <strong>nello script</strong>: sopra l’area di prova, crea una nuova sezione (<strong>Ctrl + Shift + R</strong>) chiamata “Vaccinati per giorno” e lì crea il data frame <code>vaccinati_giorno</code>, con una riga per ogni data di vaccinazione e due variabili: il numero di vaccinati (<code>n_vaccinati</code>) e la loro età media (<code>eta_media</code>).</p>
+<details>
+<summary style="text-decoration: underline; color: darkgreen;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
+</summary>
+<p><br></p>
+<p>Usa <code>group_by()</code> e <code>summarise()</code>, come nel Modulo 4: <code>n()</code> conta le righe di ogni gruppo e <code>mean()</code> calcola la media. Ricorda <code>na.rm = TRUE</code>: qualche persona non ha l’età.</p>
+<p><br></p>
+</details>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Vaccinati per giorno -----------------------------------------------------</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>vaccinati_giorno <span class="ot">&lt;-</span> dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(date_vacc) <span class="sc">%&gt;%</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n_vaccinati =</span> <span class="fu">n</span>(),</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">eta_media =</span> <span class="fu">mean</span>(age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">.groups =</span> <span class="st">"drop"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+</details>
+<p>Nell’area di prova, fai un grafico di <code>vaccinati_giorno</code> con <code>geom_point()</code>, con la data di vaccinazione sull’asse x, il numero di vaccinati sull’asse y e il colore dei punti che dipende dall’età media.</p>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> vaccinati_giorno, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date_vacc, <span class="at">y =</span> n_vaccinati, <span class="at">color =</span> eta_media)) <span class="sc">+</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="modulo6_ggplot_parte2_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br></p>
+</details>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Che cosa rappresenta ogni punto di questo grafico?
+<div id="radio_HUBYNVKOCS" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_HUBYNVKOCS" value=""> <span>Una persona vaccinata</span></label><label><input type="radio" autocomplete="off" name="radio_HUBYNVKOCS" value="answer"> <span>Un giorno della campagna vaccinale</span></label><label><input type="radio" autocomplete="off" name="radio_HUBYNVKOCS" value=""> <span>Una regione</span></label><label><input type="radio" autocomplete="off" name="radio_HUBYNVKOCS" value=""> <span>Una settimana della campagna vaccinale</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Nel Modulo 5, con hiv_status, una legenda continua era un problema. Perché qui invece va bene?
+<div id="radio_AXMXYSSGSQ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_AXMXYSSGSQ" value=""> <span>Perché le scale continue funzionano solo con le date</span></label><label><input type="radio" autocomplete="off" name="radio_AXMXYSSGSQ" value="answer"> <span>Perché eta_media è una variabile continua, che può assumere molti valori diversi</span></label><label><input type="radio" autocomplete="off" name="radio_AXMXYSSGSQ" value=""> <span>Perché eta_media non ha valori mancanti</span></label><label><input type="radio" autocomplete="off" name="radio_AXMXYSSGSQ" value=""> <span>Perché geom_point() usa sempre una scala continua</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="palette-continue" class="level3">
+<h3 class="anchored" data-anchor-id="palette-continue">Palette continue</h3>
+<p>Anche per le variabili continue esistono palette predefinite. La più usata è viridis, che hai già visto per le variabili discrete con <code>scale_fill_viridis_d()</code>: la versione continua termina con <code>_c</code>.</p>
+<p>Nell’area di prova, aggiungi al grafico <code>scale_color_viridis_c()</code> e, al suo posto, prova anche <code>scale_color_viridis_d()</code>.</p>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># viridis continua</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> vaccinati_giorno, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date_vacc, <span class="at">y =</span> n_vaccinati, <span class="at">color =</span> eta_media)) <span class="sc">+</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis_c</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="modulo6_ggplot_parte2_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># viridis discreta: errore</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(data = vaccinati_giorno, mapping = aes(x = date_vacc, y = n_vaccinati, color = eta_media)) +</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_point() +</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   scale_color_viridis_d()</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+</details>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Perché scale_color_viridis_d() produce un errore?
+<div id="radio_MDBCXUDRLH" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_MDBCXUDRLH" value=""> <span>Perché viridis non può essere usata per il colore dei punti</span></label><label><input type="radio" autocomplete="off" name="radio_MDBCXUDRLH" value=""> <span>Perché eta_media contiene valori mancanti</span></label><label><input type="radio" autocomplete="off" name="radio_MDBCXUDRLH" value=""> <span>Perché scale_color_viridis_d() richiede l'argomento option</span></label><label><input type="radio" autocomplete="off" name="radio_MDBCXUDRLH" value="answer"> <span>Perché eta_media è continua e la scala è discreta</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="gradiente-scelto-a-mano" class="level3">
+<h3 class="anchored" data-anchor-id="gradiente-scelto-a-mano">Gradiente scelto a mano</h3>
+<p>Sempre nell’area di prova, sostituisci ora la palette viridis con un gradiente scelto a mano: <code>"lightyellow"</code> per il valore minimo e <code>"darkred"</code> per il valore massimo.</p>
+<details>
+<summary style="text-decoration: underline; color: darkgreen;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
+</summary>
+<p><br></p>
+<p>Usa <code>scale_color_gradient()</code> con gli argomenti <code>low =</code> e <code>high =</code>.</p>
+<p><br></p>
+</details>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> vaccinati_giorno, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date_vacc, <span class="at">y =</span> n_vaccinati, <span class="at">color =</span> eta_media)) <span class="sc">+</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_gradient</span>(</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">low =</span> <span class="st">"lightyellow"</span>,</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">high =</span> <span class="st">"darkred"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="modulo6_ggplot_parte2_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br></p>
+</details>
+<!-- DIPENDE DAI DATI: età media per mese 46 (feb), 58 (mar), 62 (apr), 58 (mag), 51 (giu), 46 (lug) -->
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Che cosa mostra il colore dei punti?
+<div id="radio_UYYZTUYIIU" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_UYYZTUYIIU" value=""> <span>L'età media è la stessa per tutta la campagna</span></label><label><input type="radio" autocomplete="off" name="radio_UYYZTUYIIU" value=""> <span>L'età media diminuisce in modo regolare dall'inizio alla fine della campagna</span></label><label><input type="radio" autocomplete="off" name="radio_UYYZTUYIIU" value="answer"> <span>L'età media è più alta in primavera e più bassa all'inizio e alla fine della campagna</span></label><label><input type="radio" autocomplete="off" name="radio_UYYZTUYIIU" value=""> <span>L'età media è più alta nei giorni con più vaccinati</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="assi-con-le-date" class="level2">
+<h2 class="anchored" data-anchor-id="assi-con-le-date">Assi con le date</h2>
+<p>Nel Modulo 5 hai già messo le date in italiano con <code>scale_x_date()</code>, <code>date_breaks =</code> e <code>scales::label_date()</code>. Ora lo fai sul grafico dei vaccinati per giorno, con una novità: l’anno su una seconda riga.</p>
+<p>Nella sezione “Vaccinati per giorno” dello script, riprendi il grafico con il gradiente scelto a mano e, con <code>scale_x_date()</code>, metti un’etichetta ogni mese, nel formato mese abbreviato e anno, con l’anno sotto il mese (es. “feb” sopra e “2021” sotto). Aggiungi infine le etichette con <code>labs()</code>.</p>
+<details>
+<summary style="text-decoration: underline; color: darkgreen;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
+</summary>
+<p><br></p>
+<p>Nel formato di <code>scales::label_date()</code>, <code>\n</code> manda a capo: ad esempio <code>"%b\n%Y"</code>.</p>
+<p><br></p>
+</details>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> vaccinati_giorno, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date_vacc, <span class="at">y =</span> n_vaccinati, <span class="at">color =</span> eta_media)) <span class="sc">+</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_gradient</span>(</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">low =</span> <span class="st">"lightyellow"</span>,</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">high =</span> <span class="st">"darkred"</span>) <span class="sc">+</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_date</span>(</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">date_breaks =</span> <span class="st">"1 month"</span>,</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_date</span>(<span class="st">"%b</span><span class="sc">\n</span><span class="st">%Y"</span>, <span class="at">locale =</span> <span class="st">"it"</span>)) <span class="sc">+</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Vaccinati per giorno nel corso della campagna vaccinale"</span>,</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Data di vaccinazione"</span>,</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Numero di vaccinati"</span>,</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Età media (anni)"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="modulo6_ggplot_parte2_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br></p>
+</details>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Cosa accade se non si specifica ‘locale = it’?
+<div id="radio_VEDVYXCLPI" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_VEDVYXCLPI" value=""> <span>R mostra l'errore 'lingua assi non specificata'</span></label><label><input type="radio" autocomplete="off" name="radio_VEDVYXCLPI" value=""> <span>Viene mostrato solo l'anno</span></label><label><input type="radio" autocomplete="off" name="radio_VEDVYXCLPI" value="answer"> <span>Le date mostrate sono nella lingua di sistema</span></label><label><input type="radio" autocomplete="off" name="radio_VEDVYXCLPI" value=""> <span>Le date sono in inglese, indipendentemente dal locale</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="assi" class="level2">
+<h2 class="anchored" data-anchor-id="assi">Assi</h2>
+<section id="breaks" class="level3">
+<h3 class="anchored" data-anchor-id="breaks">Breaks</h3>
+<p>Esegui nell’area di prova <code>seq(from = 0, to = 30000, by = 5000)</code> per vedere il risultato. Poi fai un grafico a barre del numero di vaccinati per regione e usa <code>scale_y_continuous()</code> con l’argomento <code>breaks =</code> per avere un’interruzione ogni 5.000 vaccinati.</p>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> dati_clean, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> region)) <span class="sc">+</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">30000</span>, <span class="at">by =</span> <span class="dv">5000</span>))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="modulo6_ggplot_parte2_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br></p>
+</details>
+</section>
+<section id="barre-orizzontali" class="level3">
+<h3 class="anchored" data-anchor-id="barre-orizzontali">Barre orizzontali</h3>
+<p>Nell’area di prova, rifai il grafico a barre per regione con le barre orizzontali, mappando <code>region</code> sull’asse y invece che sull’asse x. Aggiungi le etichette degli assi con <code>labs()</code>.</p>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> dati_clean, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">y =</span> region)) <span class="sc">+</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Numero di vaccinati"</span>,</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Regione"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="modulo6_ggplot_parte2_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br></p>
+</details>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Nel grafico a barre orizzontali, con quale funzione modifichi le interruzioni dei conteggi?
+<div id="radio_FHMKQQIOEU" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_FHMKQQIOEU" value=""> <span>scale_x_continuous(), perché le barre si leggono in orizzontale</span></label><label><input type="radio" autocomplete="off" name="radio_FHMKQQIOEU" value="answer"> <span>scale_x_continuous(), perché i conteggi ora sono sull'asse x</span></label><label><input type="radio" autocomplete="off" name="radio_FHMKQQIOEU" value=""> <span>scale_y_continuous(), perché i conteggi restano sempre sull'asse y</span></label><label><input type="radio" autocomplete="off" name="radio_FHMKQQIOEU" value=""> <span>scale_y_discrete(), perché le regioni ora sono sull'asse y</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Consiglio</span>Approfondimento: <code>coord_flip()</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Le barre orizzontali si possono ottenere anche in un altro modo: si fa il grafico a barre verticali, con la regione su <code>x</code>, e si aggiunge il livello <code>coord_flip()</code>, che scambia gli assi.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> dati_clean, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> region)) <span class="sc">+</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Regione"</span>,</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Numero di vaccinati"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Il grafico è identico, ma attenzione alle etichette: in <code>labs()</code>, <code>x</code> e <code>y</code> si riferiscono alle estetiche scritte in <code>aes()</code>, non alla posizione finale degli assi. Per questo qui la regione resta <code>x</code> anche se compare sull’asse verticale.</p>
+<p><code>coord_flip()</code> si trova spesso in codice e tutorial meno recenti. Oggi la documentazione di <code>{ggplot2}</code> consiglia di mappare direttamente la variabile su <code>y</code>, come abbiamo fatto noi: il codice è più semplice e le etichette corrispondono a quello che si vede.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="proporzioni-e-percentuali" class="level2">
+<h2 class="anchored" data-anchor-id="proporzioni-e-percentuali">Proporzioni e percentuali</h2>
+<p>Nell’area di prova, crea un grafico a barre per regione con il riempimento per <code>age_group</code>, usando <code>position = "fill"</code> dentro <code>geom_bar()</code>. Poi mostra l’asse y in percentuale con <code>scale_y_continuous()</code> e l’argomento <code>labels = scales::label_percent()</code>.</p>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># proporzioni</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> dati_clean, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">fill =</span> age_group)) <span class="sc">+</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="modulo6_ggplot_parte2_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># percentuali</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> dati_clean, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">fill =</span> age_group)) <span class="sc">+</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_percent</span>())</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="modulo6_ggplot_parte2_files/figure-html/unnamed-chunk-31-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br></p>
+</details>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+label_percent() modifica i valori dei dati?
+<div id="radio_IMHVYQDQRJ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_IMHVYQDQRJ" value="answer"> <span>No, cambiano solo le etichette dell'asse</span></label><label><input type="radio" autocomplete="off" name="radio_IMHVYQDQRJ" value=""> <span>Sì, i valori vengono moltiplicati per 100</span></label><label><input type="radio" autocomplete="off" name="radio_IMHVYQDQRJ" value=""> <span>Sì, le proporzioni diventano testo con il simbolo %</span></label><label><input type="radio" autocomplete="off" name="radio_IMHVYQDQRJ" value=""> <span>No, ma i valori vengono arrotondati all'intero</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Sopra l’area di prova, crea una nuova sezione (<strong>Ctrl+Shift+R</strong>) che si chiamerà “Percentuali”.</p>
+<p>Al grafico delle barre impilate al 100% aggiungi una didascalia (<code>caption</code>) su tre righe che riporti:</p>
+<ul>
+<li>il numero di vaccinati</li>
+<li>il numero di persone con HIV</li>
+<li>la data in cui è stato prodotto il grafico</li>
+</ul>
+<p>I numeri e la data devono essere calcolati dal codice, non scritti a mano.</p>
+<details>
+<summary style="text-decoration: underline; color: darkgreen;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
+</summary>
+<p><br></p>
+<p><code>paste0()</code> unisce testo e risultati del codice in un’unica stringa, e <code>"\n"</code> manda a capo. Prova prima in console <code>paste0("n = ", nrow(dati_clean), " vaccinati")</code>. Per contare le persone con HIV usa <code>sum(dati_clean$hiv == "Con HIV")</code>: la somma di una condizione conta i <code>TRUE</code>. Per la data usa <code>Sys.Date()</code>.</p>
+<p><br></p>
+</details>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Percentuali ----------------------------------------------------------</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> dati_clean, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">fill =</span> age_group)) <span class="sc">+</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_percent</span>()) <span class="sc">+</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">paste0</span>(<span class="st">"n = "</span>, <span class="fu">nrow</span>(dati_clean), <span class="st">" vaccinati"</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>             <span class="fu">sum</span>(dati_clean<span class="sc">$</span>hiv <span class="sc">==</span> <span class="st">"Con HIV"</span>), <span class="st">" persone con HIV"</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Grafico prodotto il "</span>, <span class="fu">Sys.Date</span>()))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="modulo6_ggplot_parte2_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br></p>
+</details>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Perché conviene calcolare i numeri della didascalia invece di scriverli a mano?
+<div id="radio_YTQXAXFLHG" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_YTQXAXFLHG" value=""> <span>Perché il grafico viene prodotto più velocemente</span></label><label><input type="radio" autocomplete="off" name="radio_YTQXAXFLHG" value=""> <span>Perché caption non accetta testo scritto a mano</span></label><label><input type="radio" autocomplete="off" name="radio_YTQXAXFLHG" value=""> <span>Perché paste0() rende le etichette più leggibili</span></label><label><input type="radio" autocomplete="off" name="radio_YTQXAXFLHG" value="answer"> <span>Perché la didascalia si aggiorna se cambiano i dati</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="i-temi-del-grafico" class="level2">
+<h2 class="anchored" data-anchor-id="i-temi-del-grafico">I temi del grafico</h2>
+<p>L’aspetto generale del grafico (lo sfondo, la griglia, gli assi, i caratteri) si cambia con un <strong>tema</strong>. I temi completi sono funzioni che iniziano con <code>theme_</code> e si aggiungono come un livello qualsiasi, con <code>+</code>. Non cambiano i dati né le estetiche, ma solo l’aspetto di ciò che sta intorno. I più usati sono:</p>
+<ul>
+<li><code>theme_grey()</code>: il tema di default, con sfondo grigio e griglia bianca. È quello che hai visto finora;</li>
+<li><code>theme_bw()</code>: sfondo bianco, griglia grigio chiaro e un bordo intorno al grafico. È una buona scelta per stampe e documenti;</li>
+<li><code>theme_classic()</code>: sfondo bianco, senza griglia, con le sole linee degli assi x e y. Ricorda i grafici delle riviste scientifiche;</li>
+<li><code>theme_minimal()</code>: sfondo bianco, griglia leggera e nessun bordo né linea degli assi. È essenziale e adatto alle presentazioni;</li>
+<li><code>theme_void()</code>: toglie tutto, cioè assi, griglia, etichette e sfondo, e lascia solo i dati. Serve per grafici in cui gli assi non hanno significato, come le mappe.</li>
+</ul>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Consiglio</span>Approfondimento: <code>base_size</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Tutti i temi hanno l’argomento <code>base_size</code>, che regola la dimensione dei caratteri, per esempio <code>theme_bw(base_size = 14)</code>.</p>
+</div>
+</div>
+<p>Nell’area di prova, crea un grafico a barre impilate al 100% per regione con il riempimento per <code>age_group</code>, usando <code>position = "fill"</code> dentro <code>geom_bar()</code>, come fatto precedentemente. Poi aggiungi, uno alla volta, i temi <code>theme_bw()</code>, <code>theme_classic()</code>, <code>theme_minimal()</code> e <code>theme_void()</code>. Infine prova <code>theme_minimal(base_size = 16)</code>.</p>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># theme_bw()</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> dati_clean, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">fill =</span> age_group)) <span class="sc">+</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_percent</span>()) <span class="sc">+</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="modulo6_ggplot_parte2_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># theme_classic()</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> dati_clean, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">fill =</span> age_group)) <span class="sc">+</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_percent</span>()) <span class="sc">+</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="modulo6_ggplot_parte2_files/figure-html/unnamed-chunk-35-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># theme_minimal()</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> dati_clean, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">fill =</span> age_group)) <span class="sc">+</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_percent</span>()) <span class="sc">+</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="modulo6_ggplot_parte2_files/figure-html/unnamed-chunk-35-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># theme_void()</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> dati_clean, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">fill =</span> age_group)) <span class="sc">+</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_percent</span>()) <span class="sc">+</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="modulo6_ggplot_parte2_files/figure-html/unnamed-chunk-35-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># theme_minimal(base_size = 16)</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> dati_clean, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">fill =</span> age_group)) <span class="sc">+</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_percent</span>()) <span class="sc">+</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">16</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="modulo6_ggplot_parte2_files/figure-html/unnamed-chunk-35-5.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br></p>
+</details>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Cosa modifica un tema completo come theme_minimal()?
+<div id="radio_WLDYKEEQSN" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_WLDYKEEQSN" value=""> <span>I colori delle barre e delle legende</span></label><label><input type="radio" autocomplete="off" name="radio_WLDYKEEQSN" value="answer"> <span>Gli elementi che non dipendono dai dati</span></label><label><input type="radio" autocomplete="off" name="radio_WLDYKEEQSN" value=""> <span>L'ordine delle categorie sugli assi</span></label><label><input type="radio" autocomplete="off" name="radio_WLDYKEEQSN" value=""> <span>Le proporzioni rappresentate dalle barre</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Consiglio</span>Approfondimento: aggiungere livelli a un grafico salvato
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Un grafico salvato in un oggetto si può riprendere e arricchire con <code>+</code>, senza riscrivere tutto il codice. Ad esempio, possiamo salvare il grafico:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>grafico_regioni <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> dati_clean, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">fill =</span> age_group)) <span class="sc">+</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_percent</span>())</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>e poi provare temi diversi, aggiungendoli all’oggetto:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>grafico_regioni <span class="sc">+</span> <span class="fu">theme_bw</span>()</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>grafico_regioni <span class="sc">+</span> <span class="fu">theme_classic</span>()</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>grafico_regioni <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>In questo modo il grafico di base si scrive una sola volta e si confrontano facilmente le versioni.</p>
+<p><code>grafico_regioni + theme_bw()</code> mostra il grafico con il nuovo tema, ma non modifica l’oggetto: <code>grafico_regioni</code> resta con il tema di default. Per conservare la modifica bisogna salvarla di nuovo con <code>&lt;-</code>, per esempio <code>grafico_regioni &lt;- grafico_regioni + theme_bw()</code>.</p>
+</div>
+</div>
+<p>I temi predefiniti possono anche essere modificati a mano, ad esempio possiamo partire da <code>theme_minimal()</code> e aggiungere e personalizzare dettagli estetici al nostro grafico utilizzando <code>theme()</code>.</p>
+<p>Sopra l’area di prova, crea una nuova sezione (<strong>Ctrl+Shift+R</strong>) che si chiamerà “Modificare il tema”.</p>
+<p>Partendo dal grafico precedente (barre impilate al 100% per regione con il riempimento per <code>age_group</code>, usando <code>position = "fill"</code> dentro <code>geom_bar()</code>), aggiungi il tema <code>theme_minimal()</code> e poi <code>theme()</code> con queste modifiche:</p>
+<ul>
+<li>legenda in basso (<code>legend.position = "bottom"</code>)</li>
+<li>nomi degli assi in grassetto (<code>axis.title = element_text(face = "bold")</code>)</li>
+<li>niente griglia secondaria (<code>panel.grid.minor = element_blank()</code>)</li>
+</ul>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modificare il tema ----------------------------------------------------------</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> dati_clean, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">fill =</span> age_group)) <span class="sc">+</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_percent</span>()) <span class="sc">+</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"bottom"</span>,                     <span class="co"># legenda in basso</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>),       <span class="co"># nomi assi in grassetto</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>())             <span class="co"># niente griglia secondaria</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="modulo6_ggplot_parte2_files/figure-html/unnamed-chunk-39-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br></p>
+</details>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avviso</span>Attenzione all’ordine tra <code>theme()</code> e i temi completi
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Un tema completo come <code>theme_minimal()</code> non aggiunge solo qualche modifica: <strong>ridefinisce tutto l’aspetto del grafico</strong>. Se lo scrivi dopo <code>theme()</code>, cancella le personalizzazioni fatte prima. R non dà né errori né warning: il grafico viene disegnato, semplicemente senza le tue modifiche. Per questo conviene controllare sempre il risultato.</p>
+<p>La regola è: <strong>prima il tema completo, poi <code>theme()</code></strong> per le modifiche.</p>
+</div>
+</div>
+</section>
+<section id="lo-script-completo" class="level2">
+<h2 class="anchored" data-anchor-id="lo-script-completo">Lo script completo</h2>
+<p>Ecco come dovrebbe essere il tuo script per questa esercitazione, con le soluzioni di tutti gli esercizi divise per sezione. Confrontalo con il tuo: i commenti e alcuni dettagli possono essere diversi, ma i comandi devono fare le stesse cose. Lo script completo dei Moduli 5, 6 e 8 lo trovi anche nella cartella <code>script/backup</code>, nel file <code>backup_plot.R</code>.</p>
+<details>
+<summary style="text-decoration: underline; color: blue;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:blue;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere lo script completo</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modulo 06 - Data Visualization con ggplot2 (Parte 2) =====================</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Colori scelti a mano -----------------------------------------------------</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> dati_clean, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">fill =</span> hiv, <span class="at">color =</span> hiv)) <span class="sc">+</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">stat =</span> <span class="st">"count"</span>, <span class="at">position =</span> <span class="st">"stack"</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">"Stato HIV"</span>,                             <span class="co"># titolo della legenda</span></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(                                     <span class="co"># colori</span></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Senza HIV"</span> <span class="ot">=</span> <span class="st">"#2a9d8f"</span>,</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Con HIV"</span>   <span class="ot">=</span> <span class="st">"#e76f51"</span>),</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="fu">c</span>(<span class="st">"Con HIV"</span>, <span class="st">"Senza HIV"</span>),             <span class="co"># livelli e ordine in legenda</span></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(                                     <span class="co"># testo in legenda</span></span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Con HIV"</span>   <span class="ot">=</span> <span class="st">"Persone con HIV"</span>,</span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Senza HIV"</span> <span class="ot">=</span> <span class="st">"Controlli"</span>),</span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">aesthetics =</span> <span class="fu">c</span>(<span class="st">"fill"</span>, <span class="st">"color"</span>))                <span class="co"># estetiche coinvolte</span></span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Palette predefinite ------------------------------------------------------</span></span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> dati_clean, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">fill =</span> chrls_index)) <span class="sc">+</span></span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>()</span>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Vaccinati per giorno -----------------------------------------------------</span></span>
+<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a>vaccinati_giorno <span class="ot">&lt;-</span> dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(date_vacc) <span class="sc">%&gt;%</span></span>
+<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n_vaccinati =</span> <span class="fu">n</span>(),</span>
+<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a>            <span class="at">eta_media =</span> <span class="fu">mean</span>(age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb33-28"><a href="#cb33-28" aria-hidden="true" tabindex="-1"></a>            <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
+<span id="cb33-29"><a href="#cb33-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-30"><a href="#cb33-30" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> vaccinati_giorno, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date_vacc, <span class="at">y =</span> n_vaccinati, <span class="at">color =</span> eta_media)) <span class="sc">+</span></span>
+<span id="cb33-31"><a href="#cb33-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb33-32"><a href="#cb33-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_gradient</span>(</span>
+<span id="cb33-33"><a href="#cb33-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">low =</span> <span class="st">"lightyellow"</span>,</span>
+<span id="cb33-34"><a href="#cb33-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">high =</span> <span class="st">"darkred"</span>) <span class="sc">+</span></span>
+<span id="cb33-35"><a href="#cb33-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_date</span>(</span>
+<span id="cb33-36"><a href="#cb33-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">date_breaks =</span> <span class="st">"1 month"</span>,</span>
+<span id="cb33-37"><a href="#cb33-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_date</span>(<span class="st">"%b</span><span class="sc">\n</span><span class="st">%Y"</span>, <span class="at">locale =</span> <span class="st">"it"</span>)) <span class="sc">+</span></span>
+<span id="cb33-38"><a href="#cb33-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb33-39"><a href="#cb33-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Vaccinati per giorno nel corso della campagna vaccinale"</span>,</span>
+<span id="cb33-40"><a href="#cb33-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Data di vaccinazione"</span>,</span>
+<span id="cb33-41"><a href="#cb33-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Numero di vaccinati"</span>,</span>
+<span id="cb33-42"><a href="#cb33-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Età media (anni)"</span>)</span>
+<span id="cb33-43"><a href="#cb33-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-44"><a href="#cb33-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Percentuali --------------------------------------------------------------</span></span>
+<span id="cb33-45"><a href="#cb33-45" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> dati_clean, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">fill =</span> age_group)) <span class="sc">+</span></span>
+<span id="cb33-46"><a href="#cb33-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
+<span id="cb33-47"><a href="#cb33-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_percent</span>()) <span class="sc">+</span></span>
+<span id="cb33-48"><a href="#cb33-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb33-49"><a href="#cb33-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span></span>
+<span id="cb33-50"><a href="#cb33-50" aria-hidden="true" tabindex="-1"></a>      <span class="fu">paste0</span>(<span class="st">"n = "</span>, <span class="fu">nrow</span>(dati_clean), <span class="st">" vaccinati"</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb33-51"><a href="#cb33-51" aria-hidden="true" tabindex="-1"></a>             <span class="fu">sum</span>(dati_clean<span class="sc">$</span>hiv <span class="sc">==</span> <span class="st">"Con HIV"</span>), <span class="st">" persone con HIV"</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb33-52"><a href="#cb33-52" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Grafico prodotto il "</span>, <span class="fu">Sys.Date</span>()))</span>
+<span id="cb33-53"><a href="#cb33-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-54"><a href="#cb33-54" aria-hidden="true" tabindex="-1"></a><span class="co"># Modificare il tema -------------------------------------------------------</span></span>
+<span id="cb33-55"><a href="#cb33-55" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> dati_clean, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">fill =</span> age_group)) <span class="sc">+</span></span>
+<span id="cb33-56"><a href="#cb33-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
+<span id="cb33-57"><a href="#cb33-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_percent</span>()) <span class="sc">+</span></span>
+<span id="cb33-58"><a href="#cb33-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb33-59"><a href="#cb33-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb33-60"><a href="#cb33-60" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"bottom"</span>,                     <span class="co"># legenda in basso</span></span>
+<span id="cb33-61"><a href="#cb33-61" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>),       <span class="co"># nomi assi in grassetto</span></span>
+<span id="cb33-62"><a href="#cb33-62" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>())             <span class="co"># niente griglia secondaria</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+</details>
+</section>
+<section id="riepilogo" class="level2">
+<h2 class="anchored" data-anchor-id="riepilogo">Riepilogo</h2>
+<ul>
+<li>Le funzioni <code>scale_&lt;estetica&gt;_&lt;metodo&gt;()</code> modificano il modo in cui un’estetica viene rappresentata: colori, assi, date</li>
+<li><code>scale_fill_manual()</code> e <code>scale_color_manual()</code> assegnano i colori a mano: i nomi nel vettore devono corrispondere esattamente ai livelli; il colore degli NA si sceglie con <code>na.value =</code>; <code>name =</code>, <code>breaks =</code> e <code>labels =</code> modificano la legenda, <code>aesthetics = c("fill", "color")</code> applica la stessa scala a entrambe le estetiche</li>
+<li><code>scale_*_brewer()</code> e <code>scale_*_viridis_d()</code> sono palette predefinite per variabili discrete; <code>scale_*_viridis_c()</code> e <code>scale_*_gradient()</code> per variabili continue</li>
+<li><code>scale_y_continuous()</code> con <code>breaks =</code> per gli assi continui; <code>scale_x_date()</code> per le date, con <code>\n</code> nel formato per andare a capo; <code>position = "fill"</code> e <code>scales::label_percent()</code> per le percentuali</li>
+<li><code>paste0()</code> dentro <code>labs()</code> per didascalie che si aggiornano con i dati</li>
+<li>I temi completi (<code>theme_minimal()</code>, <code>theme_bw()</code>, …) cambiano gli elementi che non dipendono dai dati; <code>theme()</code> va aggiunto <strong>dopo</strong> il tema completo</li>
+</ul>
+</section>
+<section id="risorse-aggiuntive" class="level2">
+<h2 class="anchored" data-anchor-id="risorse-aggiuntive">Risorse aggiuntive</h2>
+<ul>
+<li>Documentazione di <code>{ggplot2}</code>: <a href="https://ggplot2.tidyverse.org/reference/" class="uri">https://ggplot2.tidyverse.org/reference/</a></li>
+<li>Elementi di <code>theme()</code>: <a href="https://ggplot2.tidyverse.org/reference/theme.html" class="uri">https://ggplot2.tidyverse.org/reference/theme.html</a></li>
+<li>Documentazione di <code>{scales}</code>: <a href="https://scales.r-lib.org/reference/" class="uri">https://scales.r-lib.org/reference/</a></li>
+<li>Cheat sheet di <code>{ggplot2}</code>: <a href="https://rstudio.github.io/cheatsheets/html/data-visualization.html" class="uri">https://rstudio.github.io/cheatsheets/html/data-visualization.html</a></li>
+</ul>
+<!-- **Autori** -->
+<!-- Autori originali: Nome Cognome (Istituzione), Nome Cognome -->
+<!-- (Istituzione)\ -->
+<!-- Fonte dei dati: [DA COMPLETARE: origine del dataset dati_clean] coorte di -->
+<!-- persone vaccinate con e senza HIV; esercizi ispirati al modulo -->
+<!-- *Scales and themes in ggplot2* di Applied Epi (<https://appliedepi.org>)\ -->
+<!-- Adattato da: Nome Cognome (Istituzione), Nome Cognome (Istituzione) -->
+<!-- ### Termini di utilizzo -->
+<!-- **Disclaimer**: [DA COMPLETARE: indicare se e come i dati sono stati -->
+<!-- modificati rispetto ai dati originali per finalità didattiche.] -->
+<!-- Sei libero di: -->
+<!-- -   **Condividere**: copiare e distribuire il materiale -->
+<!-- -   **Remixare**: adattare e costruire nuovo materiale a partire da -->
+<!--     questo -->
+<!-- Alle seguenti condizioni: -->
+<!-- -   **Attribuzione**: devi attribuire il materiale nel modo specificato -->
+<!--     dall'autore o dal licenziante (ma non in un modo che suggerisca che -->
+<!--     essi avallino te o il tuo utilizzo dell'opera). Il modo migliore per -->
+<!--     farlo è mantenere invariato l'elenco dei contributori: fonti, autori -->
+<!--     e revisori. -->
+<!-- -   **Condividi allo stesso modo**: se modifichi, trasformi o costruisci -->
+<!--     nuovo materiale a partire da questo, puoi distribuire il risultato -->
+<!--     solo con una licenza uguale o simile a questa. Le modifiche -->
+<!--     apportate devono essere documentate. A questa condizione, puoi -->
+<!--     aggiungere il tuo nome all'elenco dei contributori. -->
+<!-- -   **Notifica**: se utilizzi il materiale nel modo specificato -->
+<!--     dall'autore o dal licenziante, scrivi a -->
+<!--     [nome\@iss.it](mailto:nome@iss.it) -->
+<!-- -   Non puoi vendere questo materiale da solo, ma puoi utilizzarlo come -->
+<!--     parte di un'attività didattica. -->
+<!-- Resta inteso che: -->
+<!-- -   **Rinuncia**: una qualsiasi delle condizioni sopra può essere -->
+<!--     derogata previa autorizzazione del titolare dei diritti d'autore. -->
+<!-- -   **Pubblico dominio**: se l'opera, o un suo elemento, è di pubblico -->
+<!--     dominio ai sensi della legge applicabile, tale condizione non è in -->
+<!--     alcun modo modificata dalla licenza. -->
+<!-- -   **Altri diritti**: la licenza non pregiudica in alcun modo i -->
+<!--     seguenti diritti: -->
+<!--     -   il diritto di utilizzo corretto ("fair dealing"/"fair use"), o -->
+<!--         altre eccezioni e limitazioni al diritto d'autore applicabili; -->
+<!--     -   i diritti morali dell'autore; -->
+<!--     -   i diritti che altre persone possono avere sull'opera stessa o -->
+<!--         sul modo in cui viene utilizzata, come i diritti di immagine o -->
+<!--         di riservatezza. -->
+<!-- -   **Avviso**: per qualsiasi riutilizzo o distribuzione, devi rendere -->
+<!--     chiari agli altri i termini della licenza di questo materiale, -->
+<!--     mantenendo insieme l'opera e la licenza corrente. -->
+<!-- Questa licenza si basa su -->
+<!-- <http://creativecommons.org/licenses/by-sa/3.0/> -->
+<!-- ### Versione e revisioni -->
+<!-- Data della prima versione:  -->
+<!-- | Data | Modifiche apportate | Autore | -->
+<!-- |------|---------------------|--------| -->
+<!-- |      |                     |        | -->
+
+
+</section>
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
+<script>
+
+
+
+/* update total correct if #webex-total_correct exists */
+
+update_total_correct = function() {
+
+  console.log("webex: update total_correct");
+
+
+
+  var t = document.getElementsByClassName("webex-total_correct");
+
+  for (var i = 0; i < t.length; i++) {
+
+    p = t[i].parentElement;
+
+    var correct = p.getElementsByClassName("webex-correct").length;
+
+    var solvemes = p.getElementsByClassName("webex-solveme").length;
+
+    var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
+
+    var selects = p.getElementsByClassName("webex-select").length;
+
+
+
+    t[i].innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+
+  }
+
+}
+
+
+
+/* webex-solution button toggling function */
+
+b_func = function() {
+
+  console.log("webex: toggle hide");
+
+
+
+  var cl = this.parentElement.classList;
+
+  if (cl.contains('open')) {
+
+    cl.remove("open");
+
+  } else {
+
+    cl.add("open");
+
+  }
+
+}
+
+
+
+/* check answers */
+
+check_func = function() {
+
+  console.log("webex: check answers");
+
+
+
+  var cl = this.parentElement.classList;
+
+  if (cl.contains('unchecked')) {
+
+    cl.remove("unchecked");
+
+    this.innerHTML = "Hide Answers";
+
+  } else {
+
+    cl.add("unchecked");
+
+    this.innerHTML = "Show Answers";
+
+  }
+
+}
+
+
+
+/* function for checking solveme answers */
+
+solveme_func = function(e) {
+
+  console.log("webex: check solveme");
+
+
+
+  var real_answers = JSON.parse(this.dataset.answer);
+
+  var my_answer = this.value;
+
+  var cl = this.classList;
+
+  if (cl.contains("ignorecase")) {
+
+    my_answer = my_answer.toLowerCase();
+
+  }
+
+  if (cl.contains("nospaces")) {
+
+    my_answer = my_answer.replace(/ /g, "")
+
+  }
+
+
+
+  if (my_answer == "") {
+
+    cl.remove("webex-correct");
+
+    cl.remove("webex-incorrect");
+
+  } else if (real_answers.includes(my_answer)) {
+
+    cl.add("webex-correct");
+
+    cl.remove("webex-incorrect");
+
+  } else {
+
+    cl.add("webex-incorrect");
+
+    cl.remove("webex-correct");
+
+  }
+
+
+
+  // match numeric answers within a specified tolerance
+
+  if(this.dataset.tol > 0){
+
+    var tol = JSON.parse(this.dataset.tol);
+
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+
+      cl.add("webex-correct");
+
+    } else {
+
+      cl.remove("webex-correct");
+
+    }
+
+  }
+
+
+
+  // added regex bit
+
+  if (cl.contains("regex")){
+
+    answer_regex = RegExp(real_answers.join("|"))
+
+    if (answer_regex.test(my_answer)) {
+
+      cl.add("webex-correct");
+
+    }
+
+  }
+
+
+
+  update_total_correct();
+
+}
+
+
+
+/* function for checking select answers */
+
+select_func = function(e) {
+
+  console.log("webex: check select");
+
+
+
+  var cl = this.classList
+
+
+
+  /* add style */
+
+  cl.remove("webex-incorrect");
+
+  cl.remove("webex-correct");
+
+  if (this.value == "answer") {
+
+    cl.add("webex-correct");
+
+  } else if (this.value != "blank") {
+
+    cl.add("webex-incorrect");
+
+  }
+
+
+
+  update_total_correct();
+
+}
+
+
+
+/* function for checking radiogroups answers */
+
+radiogroups_func = function(e) {
+
+  console.log("webex: check radiogroups");
+
+
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+
+  var cl = checked_button.parentElement.classList;
+
+  var labels = checked_button.parentElement.parentElement.children;
+
+
+
+  /* get rid of styles */
+
+  for (i = 0; i < labels.length; i++) {
+
+    labels[i].classList.remove("webex-incorrect");
+
+    labels[i].classList.remove("webex-correct");
+
+  }
+
+
+
+  /* add style */
+
+  if (checked_button.value == "answer") {
+
+    cl.add("webex-correct");
+
+  } else {
+
+    cl.add("webex-incorrect");
+
+  }
+
+
+
+  update_total_correct();
+
+}
+
+
+
+window.onload = function() {
+
+  console.log("webex onload");
+
+  /* set up solution buttons */
+
+  var buttons = document.getElementsByTagName("button");
+
+
+
+  for (var i = 0; i < buttons.length; i++) {
+
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+
+      buttons[i].onclick = b_func;
+
+    }
+
+  }
+
+
+
+  var check_sections = document.getElementsByClassName("webex-check");
+
+  console.log("check:", check_sections.length);
+
+  for (var i = 0; i < check_sections.length; i++) {
+
+    check_sections[i].classList.add("unchecked");
+
+
+
+    let btn = document.createElement("button");
+
+    btn.innerHTML = "Show Answers";
+
+    btn.classList.add("webex-check-button");
+
+    btn.onclick = check_func;
+
+    check_sections[i].appendChild(btn);
+
+
+
+    let spn = document.createElement("span");
+
+    spn.classList.add("webex-total_correct");
+
+    check_sections[i].appendChild(spn);
+
+  }
+
+
+
+  /* set up webex-solveme inputs */
+
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+
+
+  for (var i = 0; i < solveme.length; i++) {
+
+    /* make sure input boxes don't auto-anything */
+
+    solveme[i].setAttribute("autocomplete","off");
+
+    solveme[i].setAttribute("autocorrect", "off");
+
+    solveme[i].setAttribute("autocapitalize", "off");
+
+    solveme[i].setAttribute("spellcheck", "false");
+
+    solveme[i].value = "";
+
+
+
+    /* adjust answer for ignorecase or nospaces */
+
+    var cl = solveme[i].classList;
+
+    var real_answer = solveme[i].dataset.answer;
+
+    if (cl.contains("ignorecase")) {
+
+      real_answer = real_answer.toLowerCase();
+
+    }
+
+    if (cl.contains("nospaces")) {
+
+      real_answer = real_answer.replace(/ /g, "");
+
+    }
+
+    solveme[i].dataset.answer = real_answer;
+
+
+
+    /* attach checking function */
+
+    solveme[i].onkeyup = solveme_func;
+
+    solveme[i].onchange = solveme_func;
+
+
+
+    solveme[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+
+  }
+
+
+
+  /* set up radiogroups */
+
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+
+  for (var i = 0; i < radiogroups.length; i++) {
+
+    radiogroups[i].onchange = radiogroups_func;
+
+  }
+
+
+
+  /* set up selects */
+
+  var selects = document.getElementsByClassName("webex-select");
+
+  for (var i = 0; i < selects.length; i++) {
+
+    selects[i].onchange = select_func;
+
+    selects[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+
+  }
+
+
+
+  update_total_correct();
+
+}
+
+
+
+</script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/SaccoChiara\.github\.io\/Corso_R_ISS_2026\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Istituto Superiore di Sanità – Corso base di R, 30 novembre – 4 dicembre 2026</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="./licenza.html">
+<p>Copyright e licenza</p>
+</a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

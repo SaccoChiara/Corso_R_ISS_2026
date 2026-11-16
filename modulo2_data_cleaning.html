@@ -1,0 +1,2522 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>quarto-inputee971dc9e2eadad3 – Corso base di R</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./immagini/logo_iss.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-407113646558fb1abf01df177a630d46.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="webex.css">
+</head>
+
+<body class="floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Corso base di R</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./preparazione.html"> 
+<span class="menu-text">Prepararsi al corso</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./dati.html"> 
+<span class="menu-text">I dati del corso</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-moduli" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Moduli</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-moduli">    
+        <li class="dropdown-header">Giorno 1</li>
+        <li>
+    <a class="dropdown-item" href="./modulo1_intro.html">
+ <span class="dropdown-text">Modulo 1 – Importazione ed esplorazione dei dati</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./modulo2_data_cleaning.html">
+ <span class="dropdown-text">Modulo 2 – Pulizia e preparazione dei dati</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Giorno 2</li>
+        <li>
+    <a class="dropdown-item" href="./modulo3_data_cleaning_avanzato.html">
+ <span class="dropdown-text">Modulo 3 – Pulizia dei dati: approfondimento</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./modulo4_tabelle_e_aggregazione.html">
+ <span class="dropdown-text">Modulo 4 – Tabelle e aggregazione dei dati</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Giorno 3</li>
+        <li>
+    <a class="dropdown-item" href="./modulo5_ggplot_parte1.html">
+ <span class="dropdown-text">Modulo 5 – Grafici con ggplot2 (parte 1)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./modulo6_ggplot_parte2.html">
+ <span class="dropdown-text">Modulo 6 – Grafici con ggplot2 (parte 2)</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Giorno 4</li>
+        <li>
+    <a class="dropdown-item" href="./modulo7_trasformazione_e_integrazione.html">
+ <span class="dropdown-text">Modulo 7 – Trasformazione e integrazione dei dati</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./modulo8_altri_grafici.html">
+ <span class="dropdown-text">Modulo 8 – Altri grafici</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Giorno 5</li>
+        <li>
+    <a class="dropdown-item" href="./modulo9_quarto.html">
+ <span class="dropdown-text">Modulo 9 – Report automatici con Quarto</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="1">
+    <h2 id="toc-title">In questa pagina</h2>
+   
+  <ul>
+  <li><a href="#corso-introduttivo-al-software-statistico-r" id="toc-corso-introduttivo-al-software-statistico-r" class="nav-link active" data-scroll-target="#corso-introduttivo-al-software-statistico-r"><strong>Corso introduttivo al software statistico R</strong></a></li>
+  <li><a href="#modulo-02-pulizia-e-preparazione-dei-dati" id="toc-modulo-02-pulizia-e-preparazione-dei-dati" class="nav-link" data-scroll-target="#modulo-02-pulizia-e-preparazione-dei-dati">Modulo 02 Pulizia e preparazione dei dati</a>
+  <ul>
+  <li><a href="#obiettivi-del-modulo" id="toc-obiettivi-del-modulo" class="nav-link" data-scroll-target="#obiettivi-del-modulo">Obiettivi del modulo</a></li>
+  <li><a href="#formato-dellesercizio" id="toc-formato-dellesercizio" class="nav-link" data-scroll-target="#formato-dellesercizio">Formato dell’esercizio</a></li>
+  <li><a href="#preparazione" id="toc-preparazione" class="nav-link" data-scroll-target="#preparazione">Preparazione</a></li>
+  <li><a href="#iniziamo" id="toc-iniziamo" class="nav-link" data-scroll-target="#iniziamo">Iniziamo!</a></li>
+  <li><a href="#la-catena-di-pulizia" id="toc-la-catena-di-pulizia" class="nav-link" data-scroll-target="#la-catena-di-pulizia">La catena di pulizia</a></li>
+  <li><a href="#standardizzare-i-nomi-delle-variabili" id="toc-standardizzare-i-nomi-delle-variabili" class="nav-link" data-scroll-target="#standardizzare-i-nomi-delle-variabili">Standardizzare i nomi delle variabili</a>
+  <ul class="collapse">
+  <li><a href="#pulizia-automatica-dei-nomi" id="toc-pulizia-automatica-dei-nomi" class="nav-link" data-scroll-target="#pulizia-automatica-dei-nomi">Pulizia automatica dei nomi</a></li>
+  <li><a href="#pulizia-manuale-dei-nomi" id="toc-pulizia-manuale-dei-nomi" class="nav-link" data-scroll-target="#pulizia-manuale-dei-nomi">Pulizia manuale dei nomi</a></li>
+  <li><a href="#aggiungi-alla-catena-di-pulizia" id="toc-aggiungi-alla-catena-di-pulizia" class="nav-link" data-scroll-target="#aggiungi-alla-catena-di-pulizia">Aggiungi alla catena di pulizia</a></li>
+  </ul></li>
+  <li><a href="#crea-unarea-di-prova" id="toc-crea-unarea-di-prova" class="nav-link" data-scroll-target="#crea-unarea-di-prova">Crea un’area di prova</a></li>
+  <li><a href="#selezionare-ed-eliminare-le-variabili" id="toc-selezionare-ed-eliminare-le-variabili" class="nav-link" data-scroll-target="#selezionare-ed-eliminare-le-variabili">Selezionare ed eliminare le variabili</a>
+  <ul class="collapse">
+  <li><a href="#selezionare-le-variabili-da-tenere" id="toc-selezionare-le-variabili-da-tenere" class="nav-link" data-scroll-target="#selezionare-le-variabili-da-tenere">Selezionare le variabili da tenere</a></li>
+  <li><a href="#eliminare-le-variabili" id="toc-eliminare-le-variabili" class="nav-link" data-scroll-target="#eliminare-le-variabili">Eliminare le variabili</a></li>
+  <li><a href="#aggiungi-alla-catena-di-pulizia-1" id="toc-aggiungi-alla-catena-di-pulizia-1" class="nav-link" data-scroll-target="#aggiungi-alla-catena-di-pulizia-1">Aggiungi alla catena di pulizia</a></li>
+  </ul></li>
+  <li><a href="#rimuovere-le-righe-duplicate" id="toc-rimuovere-le-righe-duplicate" class="nav-link" data-scroll-target="#rimuovere-le-righe-duplicate">Rimuovere le righe duplicate</a>
+  <ul class="collapse">
+  <li><a href="#aggiungi-alla-catena-di-pulizia-2" id="toc-aggiungi-alla-catena-di-pulizia-2" class="nav-link" data-scroll-target="#aggiungi-alla-catena-di-pulizia-2">Aggiungi alla catena di pulizia</a></li>
+  </ul></li>
+  <li><a href="#gestire-i-valori-mancanti" id="toc-gestire-i-valori-mancanti" class="nav-link" data-scroll-target="#gestire-i-valori-mancanti">Gestire i valori mancanti</a>
+  <ul class="collapse">
+  <li><a href="#come-r-rappresenta-i-valori-mancanti" id="toc-come-r-rappresenta-i-valori-mancanti" class="nav-link" data-scroll-target="#come-r-rappresenta-i-valori-mancanti">Come R rappresenta i valori mancanti</a></li>
+  <li><a href="#i-valori-mancanti-nei-nostri-dati" id="toc-i-valori-mancanti-nei-nostri-dati" class="nav-link" data-scroll-target="#i-valori-mancanti-nei-nostri-dati">I valori mancanti nei nostri dati</a></li>
+  <li><a href="#trasformare-i-codici-in-na-na_if" id="toc-trasformare-i-codici-in-na-na_if" class="nav-link" data-scroll-target="#trasformare-i-codici-in-na-na_if">Trasformare i codici in <code>NA</code>: <code>na_if()</code></a></li>
+  <li><a href="#trasformare-le-celle-vuote-in-na" id="toc-trasformare-le-celle-vuote-in-na" class="nav-link" data-scroll-target="#trasformare-le-celle-vuote-in-na">Trasformare le celle vuote in <code>NA</code></a></li>
+  <li><a href="#aggiungi-alla-catena-di-pulizia-3" id="toc-aggiungi-alla-catena-di-pulizia-3" class="nav-link" data-scroll-target="#aggiungi-alla-catena-di-pulizia-3">Aggiungi alla catena di pulizia</a></li>
+  <li><a href="#contare-i-valori-mancanti" id="toc-contare-i-valori-mancanti" class="nav-link" data-scroll-target="#contare-i-valori-mancanti">Contare i valori mancanti</a></li>
+  </ul></li>
+  <li><a href="#convertire-le-variabili-nella-classe-corretta" id="toc-convertire-le-variabili-nella-classe-corretta" class="nav-link" data-scroll-target="#convertire-le-variabili-nella-classe-corretta">Convertire le variabili nella classe corretta</a>
+  <ul class="collapse">
+  <li><a href="#le-classi-delle-variabili" id="toc-le-classi-delle-variabili" class="nav-link" data-scroll-target="#le-classi-delle-variabili">Le classi delle variabili</a></li>
+  <li><a href="#cambiare-classe" id="toc-cambiare-classe" class="nav-link" data-scroll-target="#cambiare-classe">Cambiare classe</a></li>
+  <li><a href="#aggiungi-alla-catena-di-pulizia-4" id="toc-aggiungi-alla-catena-di-pulizia-4" class="nav-link" data-scroll-target="#aggiungi-alla-catena-di-pulizia-4">Aggiungi alla catena di pulizia</a></li>
+  </ul></li>
+  <li><a href="#convertire-le-stringhe-in-date" id="toc-convertire-le-stringhe-in-date" class="nav-link" data-scroll-target="#convertire-le-stringhe-in-date">Convertire le stringhe in date</a>
+  <ul class="collapse">
+  <li><a href="#come-sono-scritte-le-date" id="toc-come-sono-scritte-le-date" class="nav-link" data-scroll-target="#come-sono-scritte-le-date">Come sono scritte le date?</a></li>
+  <li><a href="#le-funzioni-di-lubridate" id="toc-le-funzioni-di-lubridate" class="nav-link" data-scroll-target="#le-funzioni-di-lubridate">Le funzioni di <code>{lubridate}</code></a></li>
+  <li><a href="#esploriamo-la-data-dellevento" id="toc-esploriamo-la-data-dellevento" class="nav-link" data-scroll-target="#esploriamo-la-data-dellevento">Esploriamo la data dell’evento</a></li>
+  <li><a href="#esploriamo-la-data-di-fine-follow-up" id="toc-esploriamo-la-data-di-fine-follow-up" class="nav-link" data-scroll-target="#esploriamo-la-data-di-fine-follow-up">Esploriamo la data di fine follow-up</a></li>
+  <li><a href="#esploriamo-la-data-di-vaccinazione" id="toc-esploriamo-la-data-di-vaccinazione" class="nav-link" data-scroll-target="#esploriamo-la-data-di-vaccinazione">Esploriamo la data di vaccinazione</a></li>
+  <li><a href="#aggiungi-alla-catena-di-pulizia-5" id="toc-aggiungi-alla-catena-di-pulizia-5" class="nav-link" data-scroll-target="#aggiungi-alla-catena-di-pulizia-5">Aggiungi alla catena di pulizia</a></li>
+  </ul></li>
+  <li><a href="#verifica-finale" id="toc-verifica-finale" class="nav-link" data-scroll-target="#verifica-finale">Verifica finale</a></li>
+  <li><a href="#lo-script-completo" id="toc-lo-script-completo" class="nav-link" data-scroll-target="#lo-script-completo">Lo script completo</a></li>
+  <li><a href="#riepilogo" id="toc-riepilogo" class="nav-link" data-scroll-target="#riepilogo">Riepilogo</a></li>
+  <li><a href="#risorse-aggiuntive" id="toc-risorse-aggiuntive" class="nav-link" data-scroll-target="#risorse-aggiuntive">Risorse aggiuntive</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><p><img src="immagini/logo_dmi.png" class="img-fluid" style="width:3in"></p></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="corso-introduttivo-al-software-statistico-r" class="level1">
+<h1><strong>Corso introduttivo al software statistico R</strong></h1>
+</section>
+<section id="modulo-02-pulizia-e-preparazione-dei-dati" class="level1">
+<h1>Modulo 02 Pulizia e preparazione dei dati</h1>
+<section id="obiettivi-del-modulo" class="level2">
+<h2 class="anchored" data-anchor-id="obiettivi-del-modulo">Obiettivi del modulo</h2>
+<ul>
+<li>Individuare i problemi di qualità dei dati</li>
+<li>Costruire una catena di pulizia con l’operatore pipe <code>%&gt;%</code> per standardizzare i nomi delle variabili, selezionare le variabili utili e rimuovere le righe duplicate</li>
+<li>Gestire i valori mancanti e convertire le variabili nella classe corretta</li>
+<li>Convertire le stringhe di testo in date</li>
+</ul>
+</section>
+<section id="formato-dellesercizio" class="level2">
+<h2 class="anchored" data-anchor-id="formato-dellesercizio">Formato dell’esercizio</h2>
+<!-- Il paragrafo sotto è fisso: -->
+<p>Questo esercizio è progettato per essere una guida e per aiutarti a completarlo in autonomia. Ti consigliamo fortemente di provare a eseguire il codice prima di guardare le soluzioni. Per aiutarti, abbiamo incluso in alcuni punti dei suggerimenti che possono indirizzarti nella direzione giusta. Li troverai così:</p>
+<!-- ISTRUZIONI: Questo blocco "Suggerimento" va inserito ogni volta 
+     che vuoi dare un aiuto parziale allo studente senza svelare 
+     subito la soluzione (es. il nome di una funzione da usare, o un 
+     argomento a cui prestare attenzione). Copia l'intero blocco 
+     <details>...</details> e modifica solo il testo dopo </br>. -->
+<details>
+<summary style="text-decoration: underline; color: darkgreen;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
+</summary>
+<p><br></p>
+<p>Questo è un suggerimento.</p>
+<p><br></p>
+</details>
+<p>Le soluzioni, invece, avranno questo aspetto:</p>
+<!-- ISTRUZIONI: Questo blocco "Soluzione" va inserito alla fine di 
+     ogni esercizio (o sotto-punto) e deve contenere codice R 
+     eseguibile e commentato. Copia l'intero blocco 
+     <details>...</details> e sostituisci il codice di esempio. Se la 
+     soluzione richiede più passaggi, aggiungi commenti # nel codice 
+     per spiegare ogni passaggio. Ricorda: niente etichette (label) 
+     nei chunk, come indicato nelle istruzioni generali. -->
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"Questo è un esempio di soluzione"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Questo è un esempio di soluzione"</code></pre>
+</div>
+</div>
+<p><br></p>
+</details>
+<p>Durante l’esercizio troverai anche domande a risposta multipla, che servono a verificare se stai seguendo correttamente lo svolgimento. Le domande saranno simili a questa:</p>
+<!-- ISTRUZIONI: Questo blocco "Domanda" usa il pacchetto 
+     `{webexercises}` per creare quiz a risposta multipla 
+     auto-correttivi. Copia l'intero blocco ::: {.callout-note}...::: 
+     e:
+       - scrivi le opzioni di risposta nel vettore "opts"
+       - indica la risposta corretta con answer = "..."
+       - scrivi il testo della domanda dentro cat("Domanda: ...")
+     Inserisci una domanda ogni volta che vuoi far verificare allo 
+     studente di aver capito un concetto chiave prima di proseguire. -->
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Domanda di esempio: quanto fa 2 + 2?
+<div id="radio_SPNRKRPJWG" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_SPNRKRPJWG" value=""> <span>2</span></label><label><input type="radio" autocomplete="off" name="radio_SPNRKRPJWG" value=""> <span>5</span></label><label><input type="radio" autocomplete="off" name="radio_SPNRKRPJWG" value="answer"> <span>4</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Lungo il modulo troverai anche due tipi di riquadri colorati. I riquadri <strong>gialli</strong> segnalano errori frequenti o punti in cui R si comporta in modo inatteso: leggili sempre, perché possono farti risparmiare tempo.</p>
+<!-- ISTRUZIONI: Il box giallo "Attenzione a …" va usato per avvisi
+     importanti: errori comuni, comportamenti di R che possono
+     sorprendere, passaggi da non saltare. Il titolo inizia sempre con
+     "Attenzione a" (es. "Attenzione ai nomi con spazi"). Copia
+     l'intero blocco ::: {.callout-warning ...} ... ::: e modifica
+     solo titolo e testo. -->
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avviso</span>Attenzione a …
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Questo è un esempio di riquadro di attenzione.</p>
+</div>
+</div>
+<p>I riquadri <strong>verdi</strong> contengono invece approfondimenti facoltativi, per chi vuole andare un po’ oltre: puoi saltarli senza perdere il filo dell’esercizio e tornarci in un secondo momento.</p>
+<!-- ISTRUZIONI: Il box verde "Approfondimento: …" va usato per
+     contenuti facoltativi: funzioni alternative, scorciatoie, casi
+     più avanzati. Lo studente deve poter completare l'esercizio anche
+     senza leggerlo. Il titolo inizia sempre con "Approfondimento:"
+     (es. "Approfondimento: gestire le date in R"). Copia l'intero
+     blocco ::: {.callout-tip ...} ... ::: e modifica solo titolo e
+     testo. -->
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Consiglio</span>Approfondimento: …
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Questo è un esempio di riquadro di approfondimento.</p>
+</div>
+</div>
+<p>Ti consigliamo di provare comunque a rispondere e a eseguire il codice da solo prima di consultare suggerimenti e soluzioni: è così che si impara davvero a usare R.</p>
+</section>
+<section id="preparazione" class="level2">
+<h2 class="anchored" data-anchor-id="preparazione">Preparazione</h2>
+<p>Nell’esercitazione del pomeriggio continuerai a lavorare sullo stesso script di questa mattina, <code>pulizia_dati.R</code>:</p>
+<ul>
+<li>se il progetto R è ancora aperto, vai in fondo allo script;</li>
+<li>se invece l’hai chiuso, riapri il progetto: RStudio riapre anche lo script su cui stavi lavorando questa mattina, anche se non lo avevi salvato.</li>
+</ul>
+<p>In entrambi i casi, crea in fondo allo script una nuova sezione chiamata “Modulo 2 - Pulizia e preparazione dei dati” con la combinazione di tasti <strong>Ctrl + Shift + R</strong> (<strong>Cmd + Shift + R</strong> su Mac): qui scriverai il codice dell’esercitazione del pomeriggio. Ricordati di salvare spesso il lavoro (<strong>Ctrl + S</strong>, oppure <strong>Cmd + S</strong> su Mac).</p>
+</section>
+<section id="iniziamo" class="level2">
+<h2 class="anchored" data-anchor-id="iniziamo">Iniziamo!</h2>
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:darkgreen;overflow:visible;position:relative;"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"></path></svg> <strong>Da qui comincia l’esercitazione.</strong></p>
+</section>
+<section id="la-catena-di-pulizia" class="level2">
+<h2 class="anchored" data-anchor-id="la-catena-di-pulizia">La catena di pulizia</h2>
+<p>Tutti i passaggi di pulizia verranno raccolti in <strong>un’unica catena</strong> di comandi, collegati dall’operatore “pipe” <code>%&gt;%</code>. Puoi leggere <code>%&gt;%</code> come “e poi”: prendi i dati, <em>e poi</em> sistema i nomi, <em>e poi</em> togli i duplicati, e così via. Il simbolo dell’operatore pipe si scrive con la scorciatoia <strong>Ctrl+Shift+M</strong> (<strong>Cmd+Shift+M</strong> su Mac). In R esiste anche un operatore pipe “nativo”, <code>|&gt;</code>, che funziona in modo molto simile: in questo corso useremo <code>%&gt;%</code>.</p>
+<p>Una catena di pulizia ha tre componenti:</p>
+<ol type="1">
+<li>a sinistra dell’operatore di assegnazione <code>&lt;-</code>, il nome del <strong>nuovo oggetto</strong> che verrà creato e che conterrà i dati puliti (<code>dati</code>);</li>
+<li>a destra di <code>&lt;-</code>, il nome del dataset <strong>di partenza</strong>, quello su cui stai lavorando e a cui vuoi applicare le modifiche (<code>dati_raw</code>), seguito da <code>%&gt;%</code>;</li>
+<li>nelle righe successive, le funzioni di pulizia, collegate da <code>%&gt;%</code>.</li>
+</ol>
+<p>Nell’esempio sotto <code>prima_funzione()</code>, <code>seconda_funzione()</code> e <code>terza_funzione()</code> <strong>non sono funzioni vere</strong>: sono solo segnaposto per mostrare la struttura. Al loro posto metterai, una alla volta, le funzioni che vedrai nelle prossime sezioni.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dati <span class="ot">&lt;-</span> dati_raw <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prima_funzione</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">seconda_funzione</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">terza_funzione</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>L’intera catena è un <strong>unico comando</strong>: ogni volta che aggiungi una funzione, riesegui tutta la catena (seleziona dall’inizio alla fine e premi Ctrl+Invio). Poiché il comando usa <code>&lt;-</code>, il risultato non viene stampato nella console ma salvato in <code>dati</code>: per vederlo clicca su <code>dati</code> nel pannello <strong>Environment</strong> oppure usa <code>View(dati)</code>. Ti consigliamo di guardare il dataset dopo ogni passaggio.</p>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avviso</span>Attenzione alle catene lunghe
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Rieseguire ogni volta tutta la catena va bene quando, come nel nostro caso, i dati sono “leggeri” e i comandi richiedono pochi secondi. Con dataset molto grandi o operazioni lente, rilanciare tutto a ogni modifica può diventare poco efficiente: in quei casi conviene salvare dei risultati intermedi e lavorare a blocchi.</p>
+</div>
+</div>
+</section>
+<section id="standardizzare-i-nomi-delle-variabili" class="level2">
+<h2 class="anchored" data-anchor-id="standardizzare-i-nomi-delle-variabili">Standardizzare i nomi delle variabili</h2>
+<p>Crea una nuova sezione nello script, “Pulizia dei dati” (<strong>Ctrl+Shift+R</strong>): qui costruirai la catena di pulizia.</p>
+<p>Come prima cosa, guardiamo come sono scritti i nomi delle variabili:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(dati_raw)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Che cosa osservi in console?
+<div id="radio_NRGPKXVDNA" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_NRGPKXVDNA" value=""> <span>Il nome del dataset</span></label><label><input type="radio" autocomplete="off" name="radio_NRGPKXVDNA" value="answer"> <span>I nomi delle variabili del dataset</span></label><label><input type="radio" autocomplete="off" name="radio_NRGPKXVDNA" value=""> <span>Il nome del progetto R</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>I nomi contengono spazi (<code>Age group</code>), maiuscole irregolari (<code>REGION</code>, <code>AGE</code>) e trattini (<code>End_Follow-Up</code>): sono scomodi da scrivere e facili da sbagliare.</p>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avviso</span>Attenzione ai nomi con spazi
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Se il nome di una variabile contiene uno spazio, R non lo riconosce come un nome unico. <code>dati_raw$Age group</code> dà errore: il nome va racchiuso tra <strong>apici inversi</strong> (backtick, <code>`</code>), cioè <code>dati_raw$`Age group`</code>. Gli spazi possono anche essere difficili da vedere: la variabile <code>Event  date</code> ha <strong>due</strong> spazi tra le parole.</p>
+</div>
+</div>
+<section id="pulizia-automatica-dei-nomi" class="level3">
+<h3 class="anchored" data-anchor-id="pulizia-automatica-dei-nomi">Pulizia automatica dei nomi</h3>
+<p>La funzione <code>clean_names()</code> del pacchetto <code>{janitor}</code> sistema i nomi in automatico: rende tutti i nomi minuscoli, trasforma spazi e trattini in trattini bassi (<code>_</code>) e rimuove i caratteri speciali. È molto facile da usare e ti permette di risolvere attraverso una singola riga di codice diversi problemi.</p>
+<p>Inizia la catena di pulizia: parti da <code>dati_raw</code>, applica <code>clean_names()</code> e salva il risultato in <code>dati</code>. Poi guarda i nuovi nomi con <code>names(dati)</code>.</p>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pulizia dei dati --------------------------------------------------------</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>dati <span class="ot">&lt;-</span> dati_raw <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># pulizia automatica dei nomi delle variabili</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+</details>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Confronta names(dati_raw) e names(dati): cosa è cambiato?
+<div id="radio_PMEDYJWLME" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_PMEDYJWLME" value=""> <span>Le variabili sono state rinominate in italiano</span></label><label><input type="radio" autocomplete="off" name="radio_PMEDYJWLME" value="answer"> <span>I nomi sono tutti minuscoli e spazi e trattini sono diventati trattini bassi (_)</span></label><label><input type="radio" autocomplete="off" name="radio_PMEDYJWLME" value=""> <span>Le variabili con nomi non validi sono state eliminate</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="pulizia-manuale-dei-nomi" class="level3">
+<h3 class="anchored" data-anchor-id="pulizia-manuale-dei-nomi">Pulizia manuale dei nomi</h3>
+<p>Adesso proviamo invece a cambiare a mano il nome delle variabili, per renderli più brevi o più chiari. Lo strumento principale è la funzione <code>rename()</code> del pacchetto <code>{dplyr}</code> (incluso nel <code>{tidyverse}</code>). A partire dalla tabella sottostante rinomina le variabili:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Vecchio nome</th>
+<th>Nuovo nome</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>subject_id</code></td>
+<td><code>id_subject</code></td>
+</tr>
+<tr class="even">
+<td><code>charlson_index</code></td>
+<td><code>chrls_index</code></td>
+</tr>
+<tr class="odd">
+<td><code>charlson_score</code></td>
+<td><code>chrls_score</code></td>
+</tr>
+<tr class="even">
+<td><code>vaccination_date</code></td>
+<td><code>date_vacc</code></td>
+</tr>
+<tr class="odd">
+<td><code>end_follow_up</code></td>
+<td><code>date_end_fu</code></td>
+</tr>
+<tr class="even">
+<td><code>event_date</code></td>
+<td><code>date_event</code></td>
+</tr>
+</tbody>
+</table>
+<p>La sintassi di base di <code>rename()</code> dentro la catena è questa:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dati <span class="ot">&lt;-</span> dati_raw <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">NUOVOnome =</span> VECCHIOnome</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="aggiungi-alla-catena-di-pulizia" class="level3">
+<h3 class="anchored" data-anchor-id="aggiungi-alla-catena-di-pulizia">Aggiungi alla catena di pulizia</h3>
+<p>Aggiungi <code>rename()</code> alla catena, dopo <code>clean_names()</code>, con i sei nuovi nomi della tabella. Poi controlla il risultato con <code>names(dati)</code>.</p>
+<details>
+<summary style="text-decoration: underline; color: darkgreen;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
+</summary>
+<p><br></p>
+<ul>
+<li>Ogni modifica segue lo schema <strong>NUOVO = VECCHIO</strong>.</li>
+<li>Se cambi più nomi, separa le coppie con una virgola.</li>
+<li>Non mettere la virgola dopo l’ultima coppia.</li>
+</ul>
+<p><br></p>
+</details>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<p>Aggiungi in fondo alla catena (ricorda il <code>%&gt;%</code> alla fine della riga precedente):</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># pulizia manuale dei nomi delle variabili</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># NUOVO        # VECCHIO</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">id_subject  =</span> subject_id,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">chrls_index =</span> charlson_index,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">chrls_score =</span> charlson_score,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">date_vacc   =</span> vaccination_date,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">date_end_fu =</span> end_follow_up,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">date_event  =</span> event_date</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+</details>
+</section>
+</section>
+<section id="crea-unarea-di-prova" class="level2">
+<h2 class="anchored" data-anchor-id="crea-unarea-di-prova">Crea un’area di prova</h2>
+<p>Aggiungi in fondo allo script una nuova sezione, “<strong>Area di prova</strong>” (<strong>Ctrl+Shift+R</strong>). Più avanti, quando creerai altre sezioni per questa esercitazione, inseriscile sopra l’area di prova, così che resti sempre l’ultima sezione dello script.</p>
+<p>Ti capiterà spesso di voler provare un comando che non fa (ancora) parte della catena di pulizia: puoi farlo qui. Questa sezione contiene comandi indipendenti dalla catena: pensala come un “campo giochi” in cui provare le cose prima di modificare la catena. Ricordati però che questa sezione funziona come tutte le altre, quindi se assegni un valore a un oggetto già esistente con <code>&lt;-</code>, questo verrà sovrascritto. Per sperimentare senza rischi, puoi sempre creare un oggetto con un nuovo nome se necessario.</p>
+</section>
+<section id="selezionare-ed-eliminare-le-variabili" class="level2">
+<h2 class="anchored" data-anchor-id="selezionare-ed-eliminare-le-variabili">Selezionare ed eliminare le variabili</h2>
+<p>La funzione <code>select()</code> del pacchetto <code>{dplyr}</code> serve a scegliere le variabili di un dataset. È molto versatile e si usa spesso per:</p>
+<ul>
+<li>tenere alcune variabili</li>
+<li>eliminare alcune variabili</li>
+<li>cambiare l’ordine delle variabili</li>
+</ul>
+<section id="selezionare-le-variabili-da-tenere" class="level3">
+<h3 class="anchored" data-anchor-id="selezionare-le-variabili-da-tenere">Selezionare le variabili da tenere</h3>
+<p>Lo scopo principale di <code>select()</code> è scegliere le variabili da <strong>tenere</strong>: tutte quelle non indicate tra le parentesi vengono eliminate.</p>
+<p>Scrivi il comando sotto nella tua <strong>area di prova</strong> ed eseguilo. Prende il dataset <code>dati</code> (pulito solo in parte), seleziona tre variabili e stampa il risultato senza salvarlo. Aggiungiamo <code>head()</code> per stampare solo le prime 6 righe, invece di tutte le righe del dataset.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dati <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id_subject, sex, age) <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Se invece volessimo stampare le ultime 6 righe del dataset, potremmo aggiungere <code>tail()</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dati <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id_subject, sex, age) <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tail</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Cosa noti nell’ordine delle variabili? <code>select()</code> le <strong>riordina</strong> secondo l’ordine in cui le scrivi. Per spostare alcune variabili all’inizio senza eliminare le altre, puoi terminare con <code>everything()</code> (nota le parentesi vuote), che include tutte le variabili rimanenti:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>dati <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sex, age, <span class="fu">everything</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Scrivere a mano il nome di ogni variabile può essere faticoso. Con i due punti (<code>:</code>) puoi tenere le due variabili indicate e <strong>tutte quelle che</strong> <strong>stanno in mezzo</strong>. Prova nell’area di prova:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tiene date_vacc, date_event e le variabili in mezzo</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>dati <span class="sc">%&gt;%</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(date_vacc<span class="sc">:</span>date_event) <span class="sc">%&gt;%</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Il <code>{tidyverse}</code> offre anche altre funzioni di “aiuto” alla selezione, per esempio <code>starts_with()</code> (variabili il cui nome <strong>inizia</strong> con un certo testo) e <code>contains()</code> (variabili il cui nome <strong>contiene</strong> un certo testo). Puoi leggerne di più nel capitolo sulla pulizia dei dati dell’Epi R Handbook (vedi le Risorse aggiuntive). Prova nell’area di prova:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tutte le variabili il cui nome inizia con "date_"</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>dati <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">"date_"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># tutte le variabili il cui nome contiene "chrls"</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>dati <span class="sc">%&gt;%</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">"chrls"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Vedi come è utile mettere “date” all’inizio dei nomi delle variabili di date?</p>
+</section>
+<section id="eliminare-le-variabili" class="level3">
+<h3 class="anchored" data-anchor-id="eliminare-le-variabili">Eliminare le variabili</h3>
+<p>Con il segno meno (<code>-</code>) si fa il contrario: si indicano le variabili da <strong>eliminare</strong> e tutte le altre vengono mantenute. Prova nell’area di prova a eliminare una sola variabile:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>dati <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>group) <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Per eliminare più variabili insieme, racchiudi i loro nomi in un vettore con <code>c()</code> (la funzione per “concatenare” che hai visto nel Modulo 1): il segno meno si applica a tutte. I due comandi sotto sono equivalenti:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>dati <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(group, chrls_score, age)) <span class="sc">%&gt;%</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>dati <span class="sc">%&gt;%</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>group, <span class="sc">-</span>chrls_score, <span class="sc">-</span>age) <span class="sc">%&gt;%</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Infine, <code>select()</code> permette anche di <strong>rinominare</strong> le variabili mentre le seleziona, con la stessa sintassi di <code>rename()</code> (NUOVO = VECCHIO). Ma attenzione: tiene solo le variabili che scrivi!</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>dati <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">id =</span> id_subject, sex) <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="aggiungi-alla-catena-di-pulizia-1" class="level3">
+<h3 class="anchored" data-anchor-id="aggiungi-alla-catena-di-pulizia-1">Aggiungi alla catena di pulizia</h3>
+<p>Le variabili <code>row_number_original</code> e <code>internal_note</code> sono variabili “di servizio” di chi ha prodotto i dati (un numero di riga e delle note interne): non servono per le nostre analisi. Aggiungi alla catena un <code>select()</code> che le elimini.</p>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<p>Aggiungi in fondo alla catena (ricorda il <code>%&gt;%</code> alla fine della riga precedente):</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># eliminazione delle variabili non necessarie</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>row_number_original, <span class="sc">-</span>internal_note)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+</details>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Riesegui la catena e controlla il pannello Environment (oppure usa ncol(dati) nell’area di prova): quante variabili ha ora dati?
+<div id="radio_OQMUUKSIHZ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_OQMUUKSIHZ" value=""> <span>14</span></label><label><input type="radio" autocomplete="off" name="radio_OQMUUKSIHZ" value="answer"> <span>12</span></label><label><input type="radio" autocomplete="off" name="radio_OQMUUKSIHZ" value=""> <span>2</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="rimuovere-le-righe-duplicate" class="level2">
+<h2 class="anchored" data-anchor-id="rimuovere-le-righe-duplicate">Rimuovere le righe duplicate</h2>
+<p>Un problema frequente nei dati sono le <strong>righe duplicate</strong>: lo stesso record compare due o più volte, per esempio perché è stato inserito due volte o perché due file sono stati uniti male. Se non le togli, quel soggetto viene contato più volte e tutte le analisi successive (frequenze, tassi, medie) risultano sbagliate.</p>
+<p>Nel nostro dataset ogni riga è un soggetto, identificato da <code>id_subject</code>: ogni valore di <code>id_subject</code> dovrebbe quindi comparire una sola volta. Come capire se è così? Esegui <code>skim()</code> nell’area di prova e guarda con attenzione la riga di <code>id_subject</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">skim</span>(dati)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Confronta il numero di righe (<em>Number of rows</em>, in alto nel riepilogo) con il numero di valori diversi di <code>id_subject</code> (colonna <code>n_unique</code>): che cosa noti?</p>
+<p>Puoi fare lo stesso confronto anche con due comandi: <code>nrow()</code> conta le righe, <code>n_distinct()</code> conta i valori diversi.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(dati)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">n_distinct</span>(dati<span class="sc">$</span>id_subject)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Ci sono più righe che soggetti: alcune righe sono ripetute. La funzione <code>distinct()</code>, con le parentesi vuote, rimuove le righe <strong>identiche al 100%</strong>: tra le righe che hanno lo stesso valore in tutte le variabili, tiene solo la prima.</p>
+<section id="aggiungi-alla-catena-di-pulizia-2" class="level3">
+<h3 class="anchored" data-anchor-id="aggiungi-alla-catena-di-pulizia-2">Aggiungi alla catena di pulizia</h3>
+<p>Aggiungi <code>distinct()</code> alla catena ed eseguila.</p>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<p>Aggiungi in fondo alla catena (ricorda il <code>%&gt;%</code> alla fine della riga precedente):</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># rimozione delle righe duplicate</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+</details>
+<p>Sono state rimosse delle righe?</p>
+<details>
+<summary style="text-decoration: underline; color: darkgreen;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
+</summary>
+<p><br></p>
+<p>Confronta il numero di righe di <code>dati</code> e di <code>dati_raw</code> nel pannello Environment, oppure esegui nell’area di prova:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(dati_raw) <span class="sc">-</span> <span class="fu">nrow</span>(dati)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+</details>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Quante righe duplicate ha rimosso distinct()?
+<div id="radio_XRYTYEZPCJ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_XRYTYEZPCJ" value=""> <span>Nessuna: ogni soggetto compariva una sola volta</span></label><label><input type="radio" autocomplete="off" name="radio_XRYTYEZPCJ" value="answer"> <span>5</span></label><label><input type="radio" autocomplete="off" name="radio_XRYTYEZPCJ" value=""> <span>12</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Consiglio</span>Approfondimento: duplicati in base a una sola variabile
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>distinct(id_subject)</code> considera “duplicate” le righe con lo stesso valore di <code>id_subject</code>, anche se le altre variabili sono diverse. Ma attenzione: per impostazione predefinita <strong>elimina tutte le altre variabili</strong>. Per mantenerle si aggiunge <code>.keep_all = TRUE</code>. Confronta i risultati nell’area di prova:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>dati <span class="sc">%&gt;%</span> <span class="fu">distinct</span>(id_subject) <span class="sc">%&gt;%</span> <span class="fu">names</span>()</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>dati <span class="sc">%&gt;%</span> <span class="fu">distinct</span>(id_subject, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">names</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Puoi approfondire nel capitolo sulla deduplicazione dell’Epi R Handbook (vedi le Risorse aggiuntive).</p>
+</div>
+</div>
+</section>
+</section>
+<section id="gestire-i-valori-mancanti" class="level2">
+<h2 class="anchored" data-anchor-id="gestire-i-valori-mancanti">Gestire i valori mancanti</h2>
+<section id="come-r-rappresenta-i-valori-mancanti" class="level3">
+<h3 class="anchored" data-anchor-id="come-r-rappresenta-i-valori-mancanti">Come R rappresenta i valori mancanti</h3>
+<p>In R un valore mancante è rappresentato da un valore speciale, <code>NA</code>, scritto <strong>senza virgolette</strong>. Solo <code>NA</code> viene riconosciuto da R come dato mancante, e solo così le funzioni lo gestiscono correttamente (per esempio escludendolo dai calcoli). Nei dati, però, i mancanti possono essere scritti in molti altri modi:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Valore nel dataset</th>
+<th>Come appare nel Viewer</th>
+<th><code>is.na()</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>NA</code></td>
+<td><em>NA</em> (in corsivo)</td>
+<td><code>TRUE</code></td>
+</tr>
+<tr class="even">
+<td><code>""</code> (testo vuoto)</td>
+<td>(vuoto)</td>
+<td><code>FALSE</code></td>
+</tr>
+<tr class="odd">
+<td><code>"NA"</code> (testo)</td>
+<td>NA</td>
+<td><code>FALSE</code></td>
+</tr>
+<tr class="even">
+<td><code>"Unknown"</code>, <code>"N/D"</code></td>
+<td>Unknown, N/D</td>
+<td><code>FALSE</code></td>
+</tr>
+<tr class="odd">
+<td><code>"9"</code>, <code>"99999"</code> (codici)</td>
+<td>9, 99999</td>
+<td><code>FALSE</code></td>
+</tr>
+</tbody>
+</table>
+<p>La funzione <code>is.na()</code> risponde alla domanda “questo valore è <code>NA</code>?”. Prova nell’area di prova:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(<span class="fu">c</span>(<span class="cn">NA</span>, <span class="st">""</span>, <span class="st">"NA"</span>, <span class="st">"Unknown"</span>, <span class="st">"99999"</span>))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Cosa restituisce is.na(““), cioè is.na() applicata a un testo vuoto?
+<div id="radio_NDTZGJPIXB" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_NDTZGJPIXB" value=""> <span>TRUE: il testo vuoto è un valore mancante</span></label><label><input type="radio" autocomplete="off" name="radio_NDTZGJPIXB" value="answer"> <span>FALSE: per R il testo vuoto è un valore come un altro</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="i-valori-mancanti-nei-nostri-dati" class="level3">
+<h3 class="anchored" data-anchor-id="i-valori-mancanti-nei-nostri-dati">I valori mancanti nei nostri dati</h3>
+<p>Prima di correggerli, dobbiamo scoprire come sono scritti i valori mancanti nel nostro dataset. La funzione <code>tabyl()</code> del pacchetto <code>{janitor}</code> conta le righe per ciascun valore di una variabile: così saltano all’occhio i valori “strani”. Eseguila nell’area di prova su alcune variabili:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>dati <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(sex)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>dati <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(age_group)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>dati <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(hiv_status)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>dati <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(age) <span class="sc">%&gt;%</span> <span class="fu">tail</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Guardando gli ultimi valori di tabyl(age), come sono codificati i valori mancanti dell’età?
+<div id="radio_QVGQPHFFBD" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_QVGQPHFFBD" value=""> <span>Come NA</span></label><label><input type="radio" autocomplete="off" name="radio_QVGQPHFFBD" value=""> <span>Con il codice 999999</span></label><label><input type="radio" autocomplete="off" name="radio_QVGQPHFFBD" value="answer"> <span>Con i testi “Unknown” e “N/D”</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>In tutto troverai:</p>
+<ul>
+<li><code>"Unknown"</code> in <code>sex</code> e <code>age_group</code></li>
+<li><code>"Unknown"</code> e <code>"N/D"</code> in <code>age</code></li>
+<li><code>"999999"</code> in <code>age_group</code> e i codici <code>"9"</code> e <code>"99999"</code> in <code>hiv_status</code>: numeri “impossibili” usati spesso nei flussi di dati per indicare un valore non noto</li>
+<li>celle vuote <code>""</code> in diverse variabili (<code>region</code>, <code>age_group</code>, <code>hiv_status</code>, <code>date_event</code>): nel riepilogo di <code>skim()</code> le hai viste nella colonna <code>empty</code></li>
+</ul>
+</section>
+<section id="trasformare-i-codici-in-na-na_if" class="level3">
+<h3 class="anchored" data-anchor-id="trasformare-i-codici-in-na-na_if">Trasformare i codici in <code>NA</code>: <code>na_if()</code></h3>
+<p>Per modificare una variabile si usa la funzione <code>mutate()</code>, con la sintassi <code>mutate(variabile = funzione(variabile))</code>. <code>mutate()</code> serve sia a creare nuove variabili sia a modificare quelle esistenti.</p>
+<p>La funzione <code>na_if(variabile, "valore")</code> sostituisce il valore indicato con <code>NA</code>. Il comando per trasformare <code>"Unknown"</code> in <code>NA</code> nella variabile <code>sex</code> è quindi:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">sex =</span> <span class="fu">na_if</span>(sex, <span class="st">"Unknown"</span>))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Si legge: “modifica <code>sex</code> in modo che diventi <code>sex</code> con ogni <code>"Unknown"</code> sostituito da <code>NA</code>”. Questo comando va aggiunto alla catena: da solo non funziona.</p>
+</section>
+<section id="trasformare-le-celle-vuote-in-na" class="level3">
+<h3 class="anchored" data-anchor-id="trasformare-le-celle-vuote-in-na">Trasformare le celle vuote in <code>NA</code></h3>
+<p>Anche le celle vuote si trasformano in <code>NA</code> con <code>na_if()</code>: basta indicare come valore il testo vuoto <code>""</code>. Per esempio, per la regione:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">region =</span> <span class="fu">na_if</span>(region, <span class="st">""</span>))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Consiglio</span>Approfondimento: una scorciatoia con <code>across()</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Quando le celle vuote sono in molte variabili, invece di scrivere un <code>na_if()</code> per ciascuna si può usare un unico comando con <code>across()</code>, che applica <code>na_if()</code> a <strong>tutte</strong> le variabili di testo:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="fu">across</span>(<span class="at">.cols =</span> <span class="fu">where</span>(is.character), <span class="at">.fns =</span> <span class="sc">~</span> <span class="fu">na_if</span>(.x, <span class="st">""</span>)))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Si legge: “in tutte le variabili di classe character, trasforma ogni <code>""</code> in <code>NA</code>”. È un comando di livello intermedio: per ora basta sapere che esiste. Se vuoi approfondire, trovi <code>across()</code> nel capitolo sulla pulizia dei dati dell’Epi R Handbook (vedi le Risorse aggiuntive).</p>
+</div>
+</div>
+</section>
+<section id="aggiungi-alla-catena-di-pulizia-3" class="level3">
+<h3 class="anchored" data-anchor-id="aggiungi-alla-catena-di-pulizia-3">Aggiungi alla catena di pulizia</h3>
+<p>Aggiungi alla catena un <code>mutate()</code> con un <code>na_if()</code> per ciascun codice di valore mancante e per ciascuna variabile con celle vuote (<code>region</code>, <code>age_group</code>, <code>hiv_status</code>, <code>date_event</code>). Non serve ripetere <code>mutate()</code> ogni volta: dentro lo stesso <code>mutate()</code> puoi scrivere più modifiche, separate da una virgola, una per riga.</p>
+<details>
+<summary style="text-decoration: underline; color: darkgreen;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
+</summary>
+<p><br></p>
+<ul>
+<li><code>na_if()</code> sostituisce un solo valore alla volta: per trasformare in <code>NA</code> sia <code>"Unknown"</code> sia <code>"N/D"</code> in <code>age</code> servono due righe, una dopo l’altra, entrambe dentro lo stesso <code>mutate()</code>.</li>
+<li>Come in <code>rename()</code>, separa le modifiche con una virgola e non mettere la virgola dopo l’ultima.</li>
+</ul>
+<p><br></p>
+</details>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<p>Aggiungi in fondo alla catena (ricorda il <code>%&gt;%</code> alla fine della riga precedente):</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># codici di valore mancante -&gt; NA</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex        =</span> <span class="fu">na_if</span>(sex, <span class="st">"Unknown"</span>),</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">age        =</span> <span class="fu">na_if</span>(age, <span class="st">"Unknown"</span>),</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">age        =</span> <span class="fu">na_if</span>(age, <span class="st">"N/D"</span>),</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_group  =</span> <span class="fu">na_if</span>(age_group, <span class="st">"Unknown"</span>),</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_group  =</span> <span class="fu">na_if</span>(age_group, <span class="st">"999999"</span>),</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">hiv_status =</span> <span class="fu">na_if</span>(hiv_status, <span class="st">"9"</span>),</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">hiv_status =</span> <span class="fu">na_if</span>(hiv_status, <span class="st">"99999"</span>),</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># celle vuote "" -&gt; NA</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">region     =</span> <span class="fu">na_if</span>(region, <span class="st">""</span>),</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_group  =</span> <span class="fu">na_if</span>(age_group, <span class="st">""</span>),</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">hiv_status =</span> <span class="fu">na_if</span>(hiv_status, <span class="st">""</span>),</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">date_event =</span> <span class="fu">na_if</span>(date_event, <span class="st">""</span>)</span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+</details>
+</section>
+<section id="contare-i-valori-mancanti" class="level3">
+<h3 class="anchored" data-anchor-id="contare-i-valori-mancanti">Contare i valori mancanti</h3>
+<p>Riesegui <code>tabyl()</code> su <code>sex</code> e <code>hiv_status</code> nell’area di prova: ora i mancanti compaiono come <code>NA</code>, e nella colonna <code>valid_percent</code> <code>tabyl()</code> calcola le percentuali escludendoli.</p>
+<p>Come si contano i valori mancanti? Applicata a una variabile, <code>is.na()</code> restituisce un valore <strong>logico</strong> per ogni elemento: <code>TRUE</code> se il valore è mancante, <code>FALSE</code> se è presente.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(<span class="fu">c</span>(<span class="st">"M"</span>, <span class="cn">NA</span>, <span class="st">"F"</span>, <span class="cn">NA</span>))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE  TRUE FALSE  TRUE</code></pre>
+</div>
+</div>
+<p>Quando si fanno calcoli con valori logici, R considera ogni <code>TRUE</code> come 1 e ogni <code>FALSE</code> come 0. Per questo <code>sum()</code> applicata a un vettore logico <strong>conta i <code>TRUE</code></strong>, cioè, qui, i valori mancanti:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(<span class="fu">c</span>(<span class="st">"M"</span>, <span class="cn">NA</span>, <span class="st">"F"</span>, <span class="cn">NA</span>)))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Cosa restituisce sum(c(TRUE, FALSE, TRUE, TRUE))?
+<div id="radio_DVGKCWZWGT" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_DVGKCWZWGT" value=""> <span>TRUE</span></label><label><input type="radio" autocomplete="off" name="radio_DVGKCWZWGT" value=""> <span>4</span></label><label><input type="radio" autocomplete="off" name="radio_DVGKCWZWGT" value="answer"> <span>3</span></label><label><input type="radio" autocomplete="off" name="radio_DVGKCWZWGT" value=""> <span>Un errore: non si possono sommare valori logici</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Con <code>!is.na()</code> (il punto esclamativo è la negazione) i <code>TRUE</code> e i <code>FALSE</code> si scambiano, e <code>sum()</code> conta invece i valori <strong>presenti</strong>.</p>
+<p>Per contare gli <code>NA</code> di tutte le variabili in un colpo solo c’è <code>colSums()</code>. Applicata a tutto il data frame, <code>is.na(dati)</code> restituisce una tabella di <code>TRUE</code> e <code>FALSE</code> con le stesse righe e le stesse variabili di <code>dati</code>. <code>colSums()</code> (“somme delle colonne”) fa la somma di ogni variabile di questa tabella, cioè conta i <code>TRUE</code>, variabile per variabile: il risultato è il numero di valori mancanti di ciascuna.</p>
+<p>Prova nell’area di prova:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(dati<span class="sc">$</span>sex))     <span class="co"># valori mancanti</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(dati<span class="sc">$</span>sex))    <span class="co"># valori presenti</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(dati))     <span class="co"># valori mancanti in ogni variabile</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Consiglio</span>Approfondimento: la funzione opposta <code>replace_na()</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>replace_na()</code> fa il contrario di <code>na_if()</code>: sostituisce <code>NA</code> con un valore a scelta, per esempio <code>mutate(sex = replace_na(sex, "Non noto"))</code>. È utile nelle tabelle finali, quando si vuole mostrare esplicitamente la categoria dei mancanti.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="convertire-le-variabili-nella-classe-corretta" class="level2">
+<h2 class="anchored" data-anchor-id="convertire-le-variabili-nella-classe-corretta">Convertire le variabili nella classe corretta</h2>
+<section id="le-classi-delle-variabili" class="level3">
+<h3 class="anchored" data-anchor-id="le-classi-delle-variabili">Le classi delle variabili</h3>
+<p>Ogni variabile ha una <strong>classe</strong>, che dice a R come interpretarne i valori. Le più comuni sono:</p>
+<ul>
+<li>“numeric” (numeri, anche con decimali)</li>
+<li>“integer” (solo numeri interi)</li>
+<li>“character” (testo)</li>
+<li>“logical” (<code>TRUE</code>/<code>FALSE</code>)</li>
+<li>“Date” (date)</li>
+</ul>
+<p>La classe di una variabile si controlla con <code>class()</code>. Prova nell’area di prova:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(dati<span class="sc">$</span>age)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(dati<span class="sc">$</span>group)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><code>class(dati$age)</code> è un comando <strong>indipendente</strong> dalla catena: per questo serve l’operatore <code>$</code> per dire a R in quale data frame si trova la variabile. Dentro la catena <code>$</code> non serve, perché il data frame passa da una funzione all’altra con l’operatore pipe.</p>
+<p>Anche se ora <code>age</code> contiene solo numeri e <code>NA</code>, la variabile è ancora di classe <code>character</code>: all’importazione è bastato che contenesse <code>"Unknown"</code> e <code>"N/D"</code> perché R la leggesse come testo. E finché è testo, non si possono fare calcoli (media, età minima e massima, classi di età). <code>group</code>, invece, è di classe “integer”, perché contiene solo numeri interi: una variabile “integer” non può contenere decimali, e se un calcolo dovesse produrne conviene la classe “numeric”.</p>
+<p>Anche <code>hiv_status</code> dovrebbe essere numerica (<code>0</code> o <code>1</code>), ma per ora la lasciamo di classe <code>character</code>: contiene ancora il valore <code>"Yes"</code>, che va prima ricodificato. Lo faremo nel Modulo 3.</p>
+</section>
+<section id="cambiare-classe" class="level3">
+<h3 class="anchored" data-anchor-id="cambiare-classe">Cambiare classe</h3>
+<p>Per cambiare classe ci sono le funzioni <code>as.numeric()</code>, <code>as.character()</code>, <code>as.integer()</code>, ecc.: basta mettere il nome della variabile tra le parentesi.</p>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avviso</span>Attenzione ai warning e agli errori
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Perché abbiamo trasformato <code>"Unknown"</code> e <code>"N/D"</code> in <code>NA</code> <strong>prima</strong> di convertire l’età in numero? Ecco cosa succede convertendo direttamente un testo che non è un numero:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="fu">c</span>(<span class="st">"45"</span>, <span class="st">"N/D"</span>))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: NA introdotti per coercizione</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 45 NA</code></pre>
+</div>
+</div>
+<p>R esegue il comando ma mostra un <strong>warning</strong> (avvertimento): ha introdotto un <code>NA</code> perché <code>"N/D"</code> non è un numero. Un <em>warning</em> vuol dire che il comando è stato eseguito ma c’è qualcosa da controllare; un <em>error</em> vuol dire che il comando non è stato eseguito. Un warning va sempre letto e capito: in questo caso il risultato sarebbe giusto, ma trasformando prima i valori con <code>na_if()</code> la scelta è <strong>esplicita</strong> e documentata nel codice.</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Cosa restituisce as.numeric(“N/D”)?
+<div id="radio_YWTQDFKXRM" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_YWTQDFKXRM" value=""> <span>Un errore, e il comando non viene eseguito</span></label><label><input type="radio" autocomplete="off" name="radio_YWTQDFKXRM" value="answer"> <span>Un NA, con un warning</span></label><label><input type="radio" autocomplete="off" name="radio_YWTQDFKXRM" value=""> <span>Il numero 0</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="aggiungi-alla-catena-di-pulizia-4" class="level3">
+<h3 class="anchored" data-anchor-id="aggiungi-alla-catena-di-pulizia-4">Aggiungi alla catena di pulizia</h3>
+<p>Aggiungi alla catena un <code>mutate()</code> che converta <code>age</code> in numero. Controlla poi il risultato con <code>class(dati$age)</code> nell’area di prova.</p>
+<details>
+<summary style="text-decoration: underline; color: darkgreen;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
+</summary>
+<p><br></p>
+<p>Dentro <code>mutate()</code>, ridefinisci <code>age</code> come uguale a se stessa racchiusa nella funzione <code>as.numeric()</code>.</p>
+<p><br></p>
+</details>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<p>Aggiungi in fondo alla catena (ricorda il <code>%&gt;%</code> alla fine della riga precedente):</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># conversione dell'età in numero</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age =</span> <span class="fu">as.numeric</span>(age))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+</details>
+</section>
+</section>
+<section id="convertire-le-stringhe-in-date" class="level2">
+<h2 class="anchored" data-anchor-id="convertire-le-stringhe-in-date">Convertire le stringhe in date</h2>
+<section id="come-sono-scritte-le-date" class="level3">
+<h3 class="anchored" data-anchor-id="come-sono-scritte-le-date">Come sono scritte le date?</h3>
+<p>Guarda la classe e i primi valori della data di vaccinazione nell’ area di prova:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(dati<span class="sc">$</span>date_vacc)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dati<span class="sc">$</span>date_vacc)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Le date sono state importate come testo (<code>character</code>): del resto, come potrebbe R sapere quali cifre indicano il giorno e quali il mese? Per usarle (per esempio per calcolare la durata del follow-up) devono diventare di classe “Date”.</p>
+<p><strong>In che formato R vuole le date?</strong> R mostra le date di classe “Date” sempre nello stesso formato: <strong>anno-mese-giorno</strong>, con l’anno a 4 cifre e i trattini (AAAA-MM-GG, per esempio <code>2021-06-20</code> per il 20 giugno 2021). È il formato standard internazionale (ISO 8601). Il dato grezzo, invece, può essere scritto in molti modi diversi: per convertirlo bisogna dire a R in che <strong>ordine</strong> sono scritti giorno, mese e anno.</p>
+</section>
+<section id="le-funzioni-di-lubridate" class="level3">
+<h3 class="anchored" data-anchor-id="le-funzioni-di-lubridate">Le funzioni di <code>{lubridate}</code></h3>
+<p>Il pacchetto <code>{lubridate}</code> ha tre funzioni principali per convertire il testo in date: <code>ymd()</code>, <code>mdy()</code> e <code>dmy()</code>. Il nome indica l’<strong>ordine</strong> in cui sono scritti anno (<em>y</em>, year), mese (<em>m</em>, month) e giorno (<em>d</em>, day) <strong>nel dato grezzo</strong>. Accettano diversi separatori e anche i mesi scritti in lettere:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="st">"2021-06-20"</span>)       <span class="co"># anno-mese-giorno</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2021-06-20"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dmy</span>(<span class="st">"20/06/2021"</span>)       <span class="co"># giorno/mese/anno</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2021-06-20"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dmy</span>(<span class="st">"20 giugno 2021"</span>)   <span class="co"># giorno mese anno, con il mese in lettere</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2021-06-20"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mdy</span>(<span class="st">"06/20/2021"</span>)       <span class="co"># mese/giorno/anno (formato americano)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2021-06-20"</code></pre>
+</div>
+</div>
+<p>In tutti i casi il risultato è lo stesso: una data di classe “Date”, mostrata come AAAA-MM-GG. La cosa più importante è usare la funzione che corrisponde al formato <strong>attuale</strong> (grezzo) della data.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Quale funzione useresti per convertire “20/06/2021” (20 giugno 2021)?
+<div id="radio_LETAMCGBYK" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_LETAMCGBYK" value=""> <span>ymd()</span></label><label><input type="radio" autocomplete="off" name="radio_LETAMCGBYK" value=""> <span>mdy()</span></label><label><input type="radio" autocomplete="off" name="radio_LETAMCGBYK" value="answer"> <span>dmy()</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="esploriamo-la-data-dellevento" class="level3">
+<h3 class="anchored" data-anchor-id="esploriamo-la-data-dellevento">Esploriamo la data dell’evento</h3>
+<p>Inizia esplorando come è scritta la variabile data dell’evento (<code>date_event</code>) nell’area di prova:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>dati <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(date_event) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Le date di <code>date_event</code> sono scritte tutte come giorno/mese/anno (per esempio <code>"17/09/2021"</code>). Prova a convertirle con <code>ymd()</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>prova <span class="ot">&lt;-</span> <span class="fu">ymd</span>(dati<span class="sc">$</span>date_event)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+ymd(dati$date_event) restituisce il warning “All formats failed to parse”. Perché?
+<div id="radio_NJNZNMAKBH" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_NJNZNMAKBH" value=""> <span>Perché date_event contiene molti NA</span></label><label><input type="radio" autocomplete="off" name="radio_NJNZNMAKBH" value="answer"> <span>Perché le date sono scritte come giorno/mese/anno e non come anno-mese-giorno</span></label><label><input type="radio" autocomplete="off" name="radio_NJNZNMAKBH" value=""> <span>Perché date_event non è di classe character</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>La funzione giusta è quella che corrisponde all’ordine del dato grezzo, cioè <code>dmy()</code>. Prova nell’area di prova:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>prova <span class="ot">&lt;-</span> <span class="fu">dmy</span>(dati<span class="sc">$</span>date_event)</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(prova, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><code>range()</code> restituisce il valore più piccolo e quello più grande, qui la data più vecchia e quella più recente: è il modo più rapido per controllare che le date siano plausibili. L’argomento <code>na.rm = TRUE</code> (“NA remove”, togli gli <code>NA</code>) dice a R di ignorare i valori mancanti. Senza, basta un solo <code>NA</code> perché il risultato sia <code>NA</code>: R non può sapere quale sia il valore minimo se uno dei valori è sconosciuto.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="cn">NA</span>, <span class="dv">7</span>))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA NA</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="cn">NA</span>, <span class="dv">7</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3 7</code></pre>
+</div>
+</div>
+<p>Lo stesso argomento si usa con le altre funzioni che riassumono molti valori in uno, come <code>sum()</code>, <code>mean()</code>, <code>min()</code> e <code>max()</code>. Lo ritroverai nella verifica finale, dove controlli le età e le date con <code>range()</code>.</p>
+<p>Le date ora cadono tutte nel 2021, ma compare il warning “1 failed to parse”: un valore <strong>non</strong> è stato convertito. Per capire quale, guarda gli ultimi valori della tabella di <code>date_event</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>dati <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(date_event) <span class="sc">%&gt;%</span> <span class="fu">tail</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Perché dmy(dati$date_event) restituisce il warning “1 failed to parse”?
+<div id="radio_DEYGSDSNEW" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_DEYGSDSNEW" value=""> <span>Perché una data è scritta in un formato diverso dalle altre</span></label><label><input type="radio" autocomplete="off" name="radio_DEYGSDSNEW" value=""> <span>Perché le celle vuote non si possono convertire in date</span></label><label><input type="radio" autocomplete="off" name="radio_DEYGSDSNEW" value="answer"> <span>Perché date_event contiene il testo “Unknown”, che non è una data</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Tra le date c’è un valore <code>"Unknown"</code>, che non avevamo trasformato in <code>NA</code> nella sezione sui valori mancanti. È lo stesso comportamento che hai visto con <code>as.numeric("N/D")</code>: quando un valore non si può convertire nella classe richiesta, R lo trasforma in <code>NA</code> e avvisa con un <strong>warning</strong>. Qui va bene così: <code>"Unknown"</code> vuol dire che la data non è nota, quindi deve diventare <code>NA</code>.</p>
+</section>
+<section id="esploriamo-la-data-di-fine-follow-up" class="level3">
+<h3 class="anchored" data-anchor-id="esploriamo-la-data-di-fine-follow-up">Esploriamo la data di fine follow-up</h3>
+<p>Guarda ora invece come sono scritte le date di fine follow-up (<code>date_end_fu</code>):</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dati<span class="sc">$</span>date_end_fu)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Anche qui l’ordine è giorno/mese/anno, ma con l’anno a <strong>due cifre</strong> (per esempio <code>"17/09/21"</code>). Cosa succede se per sbaglio usi <code>ymd()</code>?</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>prova <span class="ot">&lt;-</span> <span class="fu">ymd</span>(dati<span class="sc">$</span>date_end_fu)</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(prova, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Questa volta <strong>non compare nessun warning</strong>: R ha convertito tutte le date. Eppure <code>range()</code> mostra date dal 2001 al 2031, in una coorte seguita nel 2021! Per esempio, <code>ymd()</code> ha letto <code>"31/08/21"</code> (31 agosto 2021) come anno 2031, mese 08, giorno 21: il comando è stato eseguito <strong>senza errori</strong> ma in modo <strong>sbagliato</strong>. Per questo, dopo ogni conversione, bisogna controllare il risultato con <code>range()</code>.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Qual è la funzione corretta per convertire date_end_fu?
+<div id="radio_AYRKVVGPFZ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_AYRKVVGPFZ" value=""> <span>ymd()</span></label><label><input type="radio" autocomplete="off" name="radio_AYRKVVGPFZ" value=""> <span>mdy()</span></label><label><input type="radio" autocomplete="off" name="radio_AYRKVVGPFZ" value="answer"> <span>dmy()</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Verifica nell’area di prova cosa succede con <code>dmy()</code> e se le date cadono tutte nel 2021, come dovrebbe essere:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>prova <span class="ot">&lt;-</span> <span class="fu">dmy</span>(dati<span class="sc">$</span>date_end_fu)</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(prova, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="esploriamo-la-data-di-vaccinazione" class="level3">
+<h3 class="anchored" data-anchor-id="esploriamo-la-data-di-vaccinazione">Esploriamo la data di vaccinazione</h3>
+<p>Le prime date di <code>date_vacc</code> sono scritte come anno-mese-giorno: basta <code>ymd()</code>? Prova nell’area di prova a convertire tutta la variabile:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>prova <span class="ot">&lt;-</span> <span class="fu">ymd</span>(dati<span class="sc">$</span>date_vacc)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Compare il warning “3 failed to parse”: tre valori <strong>non</strong> sono stati convertiti. Per vedere quali, affianca nell’area di prova la data originale e il risultato di <code>ymd()</code>, usando le funzioni che già conosci:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>dati <span class="sc">%&gt;%</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prova =</span> <span class="fu">ymd</span>(date_vacc)) <span class="sc">%&gt;%</span></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(date_vacc, prova) <span class="sc">%&gt;%</span></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">View</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Nel Viewer clicca sull’intestazione della colonna <code>prova</code> per ordinarla: i valori non convertiti (<code>NA</code>) finiscono in fondo, e accanto vedi come erano scritti in <code>date_vacc</code>. Il comando non usa <code>&lt;-</code>, quindi non modifica <code>dati</code>.</p>
+<p>Nella stessa variabile ci sono <strong>formati diversi</strong>: oltre alle date scritte come anno-mese-giorno, ci sono date scritte come giorno/mese/anno (<code>"14/05/2021"</code>) e con il mese in lettere (<code>"18 apr 2021"</code>). Nessuna delle tre funzioni <code>ymd()</code>, <code>dmy()</code> e <code>mdy()</code> le converte tutte.</p>
+<p>Quando in una variabile ci sono più formati si usa <code>parse_date_time()</code>, indicando nell’argomento <code>orders</code> tutti i formati presenti. Qui gli ordini sono due: anno-mese-giorno (<code>"Ymd"</code>) e giorno-mese-anno (<code>"dmY"</code>). La <code>Y</code> maiuscola indica l’anno a 4 cifre. Poiché <code>parse_date_time()</code> restituisce data <strong>e ora</strong> (classe “POSIXct”), va racchiusa in <code>as.Date()</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>prova <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="fu">parse_date_time</span>(dati<span class="sc">$</span>date_vacc, <span class="at">orders =</span> <span class="fu">c</span>(<span class="st">"Ymd"</span>, <span class="st">"dmY"</span>)))</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(prova, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Il riquadro riassume come gestire le date.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Consiglio</span>Approfondimento: gestire le date in R
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>1. Prima guarda come sono scritte</strong> (<code>head()</code>, <code>tabyl()</code>): R importa le date dei file CSV come testo (<code>character</code>).</p>
+<p><strong>2. Un solo formato nella variabile → una funzione di <code>{lubridate}</code></strong>, scelta in base all’<strong>ordine</strong> di giorno (d), mese (m) e anno (y) <strong>nel dato grezzo</strong>. Per esempio, per il 20 giugno 2021:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Dato grezzo</th>
+<th>Funzione</th>
+<th>Risultato</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>"2021-06-20"</code>, <code>"2021/06/20"</code>, <code>"20210620"</code></td>
+<td><code>ymd()</code></td>
+<td>2021-06-20</td>
+</tr>
+<tr class="even">
+<td><code>"20/06/2021"</code>, <code>"20062021"</code>, <code>"20 giu 2021"</code>, <code>"20/06/21"</code></td>
+<td><code>dmy()</code></td>
+<td>2021-06-20</td>
+</tr>
+<tr class="odd">
+<td><code>"06/20/2021"</code> (formato americano)</td>
+<td><code>mdy()</code></td>
+<td>2021-06-20</td>
+</tr>
+</tbody>
+</table>
+<p>I separatori (<code>-</code>, <code>/</code>, spazio o nessuno) e i mesi scritti in lettere vengono riconosciuti in automatico.</p>
+<p>Se giorno e mese sono entrambi minori o uguali a 12 (per esempio <code>"06/02/2021"</code>), dal valore da solo non si capisce quale dei due viene prima: guarda gli altri valori della variabile (se compare <code>"27/08/2021"</code>, il primo numero è il giorno) oppure la documentazione dei dati, e nel dubbio chiedi a chi li ha prodotti.</p>
+<p><strong>3. Più formati nella stessa variabile → <code>parse_date_time()</code></strong>, con l’elenco dei formati presenti nell’argomento <code>orders</code>. Poiché restituisce data <strong>e ora</strong> (classe “POSIXct”), va racchiusa in <code>as.Date()</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="fu">parse_date_time</span>(date_vacc, <span class="at">orders =</span> <span class="fu">c</span>(<span class="st">"Ymd"</span>, <span class="st">"dmY"</span>)))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>4. Attenzione all’anno a due cifre</strong>: <code>ymd("08/06/21")</code> <strong>non dà errore</strong>, ma restituisce <code>2008-06-21</code>! Se in una variabile con più formati ci sono anche anni a due cifre, in <code>orders</code> si aggiunge <code>"dmy"</code> (con la <code>y</code> minuscola) <strong>dopo</strong> i formati con l’anno a 4 cifre, per esempio <code>orders = c("Ymd", "dmY", "dmy")</code>.</p>
+<p><strong>5. Controlla sempre il risultato</strong>: <code>range()</code> delle date. Una data del 2008 o del 2031 in una coorte del 2021 è un campanello d’allarme.</p>
+<p><strong>6. L’alternativa di <code>{base}</code>: <code>as.Date()</code> con i codici di formato.</strong> Il formato si descrive con codici che iniziano con <code>%</code>. Gli stessi codici servono anche a <code>format()</code> per <strong>scrivere</strong> una data nel formato che vuoi, per esempio in un report.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Codice</th>
+<th>Significato</th>
+<th>Esempio (20 giugno 2021)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>%d</code></td>
+<td>giorno (01–31)</td>
+<td><code>20</code></td>
+</tr>
+<tr class="even">
+<td><code>%m</code></td>
+<td>mese in numero (01–12)</td>
+<td><code>06</code></td>
+</tr>
+<tr class="odd">
+<td><code>%b</code></td>
+<td>mese abbreviato in lettere</td>
+<td><code>giu</code></td>
+</tr>
+<tr class="even">
+<td><code>%B</code></td>
+<td>mese per esteso in lettere</td>
+<td><code>giugno</code></td>
+</tr>
+<tr class="odd">
+<td><code>%y</code></td>
+<td>anno a 2 cifre</td>
+<td><code>21</code></td>
+</tr>
+<tr class="even">
+<td><code>%Y</code></td>
+<td>anno a 4 cifre</td>
+<td><code>2021</code></td>
+</tr>
+</tbody>
+</table>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"20/06/2021"</span>, <span class="at">format =</span> <span class="st">"%d/%m/%Y"</span>)   <span class="co"># 2021-06-20</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"06/20/2021"</span>, <span class="at">format =</span> <span class="st">"%m/%d/%Y"</span>)   <span class="co"># 2021-06-20</span></span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span>(<span class="fu">as.Date</span>(<span class="st">"2021-06-20"</span>), <span class="st">"%d %B %Y"</span>)    <span class="co"># "20 giugno 2021"</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>%b</code> e <code>%B</code> usano i nomi dei mesi nella <strong>lingua del computer</strong>: per le date con i mesi in un’altra lingua vedi il riquadro qui sotto.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Consiglio</span>Approfondimento: mesi in lettere e lingua del computer
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Quando il mese è scritto in lettere (<code>"20 giu 2021"</code>), R deve sapere in che lingua sono i nomi dei mesi. Per capire in che lingua lavora il tuo computer, scrivi nella console:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.getlocale</span>(<span class="st">"LC_TIME"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Se il risultato inizia con <code>Italian</code>, R usa l’italiano; se inizia con <code>English</code>, usa l’inglese.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Lingua del computer</th>
+<th>Date in italiano (<code>"20 giu 2021"</code>)</th>
+<th>Date in inglese (<code>"20 jun 2021"</code>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>italiano</td>
+<td><code>dmy()</code> funziona</td>
+<td><code>dmy()</code> funziona</td>
+</tr>
+<tr class="even">
+<td>inglese</td>
+<td><code>dmy()</code> restituisce <code>NA</code></td>
+<td><code>dmy()</code> funziona</td>
+</tr>
+</tbody>
+</table>
+<p>Le funzioni di <code>{lubridate}</code>, oltre alla lingua del computer, riconoscono sempre anche i mesi in inglese. Se invece il computer è in inglese e le date sono in italiano, bisogna indicare la lingua con l’argomento <code>locale</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dmy</span>(<span class="st">"20 giu 2021"</span>, <span class="at">locale =</span> <span class="st">"Italian_Italy.utf8"</span>)   <span class="co"># su Windows</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dmy</span>(<span class="st">"20 giu 2021"</span>, <span class="at">locale =</span> <span class="st">"it_IT.UTF-8"</span>)          <span class="co"># su Mac</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>L’argomento <code>locale</code> esiste anche in <code>parse_date_time()</code>.</p>
+<p>In alternativa puoi <strong>cambiare la lingua</strong> che R usa per le date, con <code>Sys.setlocale()</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># italiano</span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setlocale</span>(<span class="st">"LC_TIME"</span>, <span class="st">"it_IT.UTF-8"</span>)         </span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a><span class="co"># inglese</span></span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setlocale</span>(<span class="st">"LC_TIME"</span>, <span class="st">"English"</span>)              <span class="co"># su Windows</span></span>
+<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setlocale</span>(<span class="st">"LC_TIME"</span>, <span class="st">"en_US.UTF-8"</span>)          <span class="co"># su Mac</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>La modifica vale solo per la sessione in corso: quando riavvii R, torna la lingua del computer. Se ti serve sempre, scrivi il comando all’inizio dello script, dopo il caricamento dei pacchetti.</p>
+<p>Con <code>as.Date()</code> e i codici <code>%b</code> e <code>%B</code> funziona <strong>solo</strong> la lingua del computer: su un PC in italiano <code>as.Date("20 jun 2021", format = "%d %b %Y")</code> restituisce <code>NA</code>, perché si aspetta <code>"giu"</code>. Un motivo in più per usare <code>{lubridate}</code>.</p>
+</div>
+</div>
+</section>
+<section id="aggiungi-alla-catena-di-pulizia-5" class="level3">
+<h3 class="anchored" data-anchor-id="aggiungi-alla-catena-di-pulizia-5">Aggiungi alla catena di pulizia</h3>
+<p>Aggiungi alla catena un <code>mutate()</code> che converta:</p>
+<ul>
+<li><code>date_event</code> con <code>dmy()</code>;</li>
+<li><code>date_end_fu</code> con <code>dmy()</code>;</li>
+<li><code>date_vacc</code> con <code>parse_date_time()</code> e <code>as.Date()</code>, usando <code>orders = c("Ymd", "dmY")</code>.</li>
+</ul>
+<p>Poi controlla nell’area di prova che le date cadano tutte nel 2021:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(dati<span class="sc">$</span>date_vacc, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(dati<span class="sc">$</span>date_end_fu, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(dati<span class="sc">$</span>date_event, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<p>Aggiungi in fondo alla catena (ricorda il <code>%&gt;%</code> alla fine della riga precedente):</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># conversione delle date in classe Date</span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">date_event  =</span> <span class="fu">dmy</span>(date_event),</span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">date_end_fu =</span> <span class="fu">dmy</span>(date_end_fu),</span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">date_vacc   =</span> <span class="fu">as.Date</span>(<span class="fu">parse_date_time</span>(date_vacc, <span class="at">orders =</span> <span class="fu">c</span>(<span class="st">"Ymd"</span>, <span class="st">"dmY"</span>)))</span>
+<span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+</details>
+<p>Quando esegui la catena compare il warning “1 failed to parse”: è il valore <code>"Unknown"</code> di <code>date_event</code> che hai trovato prima, e che diventa <code>NA</code>, come vogliamo.</p>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avviso</span>Attenzione agli <code>NA</code> che non sono dati mancanti
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Con <code>sum(is.na(dati$date_event))</code> vedrai che <code>date_event</code> ha moltissimi <code>NA</code>. <code>date_event</code> è la data di diagnosi di COVID-19, <strong>se avvenuta</strong>: qui <code>NA</code> non è un dato perso, ma significa che il soggetto non ha avuto la diagnosi durante il follow-up. Per questo non va sostituito con <code>replace_na()</code>. Useremo questa informazione nel Modulo 3 per creare la variabile evento.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="verifica-finale" class="level2">
+<h2 class="anchored" data-anchor-id="verifica-finale">Verifica finale</h2>
+<p>Crea la sezione “Verifica” (<strong>Ctrl+Shift+R</strong>), subito dopo la catena di pulizia. La catena è completa: controlla il dataset pulito eseguendo questi comandi e guardando i risultati.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verifica ----------------------------------------------------------------</span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="co"># righe rimosse e classi delle variabili</span></span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(dati_raw) <span class="sc">-</span> <span class="fu">nrow</span>(dati)</span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(dati)</span>
+<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-7"><a href="#cb68-7" aria-hidden="true" tabindex="-1"></a><span class="co"># modalità delle variabili categoriche</span></span>
+<span id="cb68-8"><a href="#cb68-8" aria-hidden="true" tabindex="-1"></a>dati <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(region)</span>
+<span id="cb68-9"><a href="#cb68-9" aria-hidden="true" tabindex="-1"></a>dati <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(sex)</span>
+<span id="cb68-10"><a href="#cb68-10" aria-hidden="true" tabindex="-1"></a>dati <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(age_group)</span>
+<span id="cb68-11"><a href="#cb68-11" aria-hidden="true" tabindex="-1"></a>dati <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(hiv_status)</span>
+<span id="cb68-12"><a href="#cb68-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-13"><a href="#cb68-13" aria-hidden="true" tabindex="-1"></a><span class="co"># intervalli di età e date</span></span>
+<span id="cb68-14"><a href="#cb68-14" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(dati<span class="sc">$</span>age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb68-15"><a href="#cb68-15" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(dati<span class="sc">$</span>date_vacc, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb68-16"><a href="#cb68-16" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(dati<span class="sc">$</span>date_end_fu, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb68-17"><a href="#cb68-17" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(dati<span class="sc">$</span>date_event, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb68-18"><a href="#cb68-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-19"><a href="#cb68-19" aria-hidden="true" tabindex="-1"></a><span class="co"># valori mancanti in ogni variabile</span></span>
+<span id="cb68-20"><a href="#cb68-20" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(dati))</span>
+<span id="cb68-21"><a href="#cb68-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-22"><a href="#cb68-22" aria-hidden="true" tabindex="-1"></a><span class="co"># coerenza tra punteggio e classe di Charlson</span></span>
+<span id="cb68-23"><a href="#cb68-23" aria-hidden="true" tabindex="-1"></a>dati <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(chrls_index, chrls_score)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>L’ultimo comando è un controllo di qualità: ogni punteggio di Charlson deve cadere in una sola classe (per esempio 2 nella classe <code>"1-2"</code>).</p>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avviso</span>Attenzione alle modalità ancora da ricodificare
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Nelle tabelle di <code>region</code>, <code>sex</code>, <code>age_group</code> e <code>hiv_status</code> noterai che alcune modalità sono ancora scritte in modi diversi: per esempio <code>"a"</code> e <code>"Region A"</code> invece di <code>"A"</code>, oppure <code>"f"</code>, <code>"Female"</code> e <code>"FEMALE"</code> invece di <code>"F"</code>, oppure <code>"Yes"</code> invece di <code>1</code>. Per R sono valori diversi e nelle tabelle finirebbero in righe diverse. Le ricodificheremo nel Modulo 3 con la funzione <code>case_when()</code>.</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+colSums(is.na(dati)) mostra moltissimi NA in date_event. Cosa significano?
+<div id="radio_UZHEXDMXUK" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_UZHEXDMXUK" value=""> <span>Che il dato è andato perso e va recuperato</span></label><label><input type="radio" autocomplete="off" name="radio_UZHEXDMXUK" value="answer"> <span>Che il soggetto non ha avuto la diagnosi di COVID-19 durante il follow-up</span></label><label><input type="radio" autocomplete="off" name="radio_UZHEXDMXUK" value=""> <span>Che il soggetto non è stato vaccinato</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="lo-script-completo" class="level2">
+<h2 class="anchored" data-anchor-id="lo-script-completo">Lo script completo</h2>
+<p>Ecco come dovrebbe essere la parte del tuo script relativa a questa esercitazione. Confrontala con la tua: i commenti e i comandi di esplorazione possono essere diversi, ma la catena di pulizia deve fare le stesse cose, nello stesso ordine. È anche il codice da copiare e incollare all’inizio delle prossime esercitazioni, per partire tutti dallo stesso punto.</p>
+<details>
+<summary style="text-decoration: underline; color: blue;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:blue;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere lo script completo</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modulo 2 - Pulizia e preparazione dei dati ==============================</span></span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Pulizia dei dati --------------------------------------------------------</span></span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a>dati <span class="ot">&lt;-</span> dati_raw <span class="sc">%&gt;%</span></span>
+<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># pulizia automatica dei nomi delle variabili</span></span>
+<span id="cb69-6"><a href="#cb69-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb69-7"><a href="#cb69-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># pulizia manuale dei nomi delle variabili (NUOVO = VECCHIO)</span></span>
+<span id="cb69-8"><a href="#cb69-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
+<span id="cb69-9"><a href="#cb69-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">id_subject  =</span> subject_id,</span>
+<span id="cb69-10"><a href="#cb69-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">chrls_index =</span> charlson_index,</span>
+<span id="cb69-11"><a href="#cb69-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">chrls_score =</span> charlson_score,</span>
+<span id="cb69-12"><a href="#cb69-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">date_vacc   =</span> vaccination_date,</span>
+<span id="cb69-13"><a href="#cb69-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">date_end_fu =</span> end_follow_up,</span>
+<span id="cb69-14"><a href="#cb69-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">date_event  =</span> event_date) <span class="sc">%&gt;%</span></span>
+<span id="cb69-15"><a href="#cb69-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># eliminazione delle variabili non necessarie</span></span>
+<span id="cb69-16"><a href="#cb69-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>row_number_original, <span class="sc">-</span>internal_note) <span class="sc">%&gt;%</span></span>
+<span id="cb69-17"><a href="#cb69-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># rimozione delle righe duplicate</span></span>
+<span id="cb69-18"><a href="#cb69-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb69-19"><a href="#cb69-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb69-20"><a href="#cb69-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># codici di valore mancante -&gt; NA</span></span>
+<span id="cb69-21"><a href="#cb69-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex        =</span> <span class="fu">na_if</span>(sex, <span class="st">"Unknown"</span>),</span>
+<span id="cb69-22"><a href="#cb69-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">age        =</span> <span class="fu">na_if</span>(age, <span class="st">"Unknown"</span>),</span>
+<span id="cb69-23"><a href="#cb69-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">age        =</span> <span class="fu">na_if</span>(age, <span class="st">"N/D"</span>),</span>
+<span id="cb69-24"><a href="#cb69-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_group  =</span> <span class="fu">na_if</span>(age_group, <span class="st">"Unknown"</span>),</span>
+<span id="cb69-25"><a href="#cb69-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_group  =</span> <span class="fu">na_if</span>(age_group, <span class="st">"999999"</span>),</span>
+<span id="cb69-26"><a href="#cb69-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">hiv_status =</span> <span class="fu">na_if</span>(hiv_status, <span class="st">"9"</span>),</span>
+<span id="cb69-27"><a href="#cb69-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">hiv_status =</span> <span class="fu">na_if</span>(hiv_status, <span class="st">"99999"</span>),</span>
+<span id="cb69-28"><a href="#cb69-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># celle vuote "" -&gt; NA</span></span>
+<span id="cb69-29"><a href="#cb69-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">region     =</span> <span class="fu">na_if</span>(region, <span class="st">""</span>),</span>
+<span id="cb69-30"><a href="#cb69-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_group  =</span> <span class="fu">na_if</span>(age_group, <span class="st">""</span>),</span>
+<span id="cb69-31"><a href="#cb69-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">hiv_status =</span> <span class="fu">na_if</span>(hiv_status, <span class="st">""</span>),</span>
+<span id="cb69-32"><a href="#cb69-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">date_event =</span> <span class="fu">na_if</span>(date_event, <span class="st">""</span>)</span>
+<span id="cb69-33"><a href="#cb69-33" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb69-34"><a href="#cb69-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># conversione dell'età in numero</span></span>
+<span id="cb69-35"><a href="#cb69-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age =</span> <span class="fu">as.numeric</span>(age)) <span class="sc">%&gt;%</span></span>
+<span id="cb69-36"><a href="#cb69-36" aria-hidden="true" tabindex="-1"></a>  <span class="co"># conversione delle date in classe Date</span></span>
+<span id="cb69-37"><a href="#cb69-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb69-38"><a href="#cb69-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">date_event  =</span> <span class="fu">dmy</span>(date_event),</span>
+<span id="cb69-39"><a href="#cb69-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">date_end_fu =</span> <span class="fu">dmy</span>(date_end_fu),</span>
+<span id="cb69-40"><a href="#cb69-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">date_vacc   =</span> <span class="fu">as.Date</span>(<span class="fu">parse_date_time</span>(date_vacc, <span class="at">orders =</span> <span class="fu">c</span>(<span class="st">"Ymd"</span>, <span class="st">"dmY"</span>)))</span>
+<span id="cb69-41"><a href="#cb69-41" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb69-42"><a href="#cb69-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-43"><a href="#cb69-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-44"><a href="#cb69-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Verifica ----------------------------------------------------------------</span></span>
+<span id="cb69-45"><a href="#cb69-45" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(dati_raw) <span class="sc">-</span> <span class="fu">nrow</span>(dati)</span>
+<span id="cb69-46"><a href="#cb69-46" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(dati)</span>
+<span id="cb69-47"><a href="#cb69-47" aria-hidden="true" tabindex="-1"></a>dati <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(region)</span>
+<span id="cb69-48"><a href="#cb69-48" aria-hidden="true" tabindex="-1"></a>dati <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(sex)</span>
+<span id="cb69-49"><a href="#cb69-49" aria-hidden="true" tabindex="-1"></a>dati <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(age_group)</span>
+<span id="cb69-50"><a href="#cb69-50" aria-hidden="true" tabindex="-1"></a>dati <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(hiv_status)</span>
+<span id="cb69-51"><a href="#cb69-51" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(dati<span class="sc">$</span>age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb69-52"><a href="#cb69-52" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(dati<span class="sc">$</span>date_vacc, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb69-53"><a href="#cb69-53" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(dati<span class="sc">$</span>date_end_fu, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb69-54"><a href="#cb69-54" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(dati<span class="sc">$</span>date_event, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb69-55"><a href="#cb69-55" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(dati))</span>
+<span id="cb69-56"><a href="#cb69-56" aria-hidden="true" tabindex="-1"></a>dati <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(chrls_index, chrls_score)</span>
+<span id="cb69-57"><a href="#cb69-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-58"><a href="#cb69-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-59"><a href="#cb69-59" aria-hidden="true" tabindex="-1"></a><span class="co"># Area di prova -----------------------------------------------------------</span></span>
+<span id="cb69-60"><a href="#cb69-60" aria-hidden="true" tabindex="-1"></a><span class="co"># (il contenuto può variare)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+</details>
+<p>Salva lo script e avvisa il docente che hai finito. Domani mattina, nel Modulo 3, continuerai a lavorare su questo stesso script, <code>pulizia_dati.R</code>. Se non hai completato l’esercizio, nella cartella <code>script/backup</code> trovi la versione corretta dello script, <code>backup_pulizia_dati.R</code>: contiene anche le soluzioni del Modulo 3, quindi per ora copia nel tuo script solo la parte dei Moduli 1 e 2.</p>
+</section>
+<section id="riepilogo" class="level2">
+<h2 class="anchored" data-anchor-id="riepilogo">Riepilogo</h2>
+<p>In questo modulo hai imparato a:</p>
+<ul>
+<li>esplorare i dati con <code>dim()</code>, <code>names()</code>, <code>skim()</code>, <code>tabyl()</code> e <code>class()</code> per individuarne i problemi;</li>
+<li>costruire una catena di pulizia con l’operatore pipe <code>%&gt;%</code>;</li>
+<li>standardizzare i nomi delle variabili con <code>clean_names()</code> e <code>rename()</code> (NUOVO = VECCHIO);</li>
+<li>selezionare ed eliminare variabili con <code>select()</code> e rimuovere le righe duplicate con <code>distinct()</code>;</li>
+<li>trasformare in <code>NA</code> i codici di valore mancante e le celle vuote con <code>na_if()</code> (con la scorciatoia <code>across()</code> per più variabili insieme) e contare i mancanti con <code>is.na()</code>;</li>
+<li>convertire le variabili nella classe corretta con <code>as.numeric()</code>;</li>
+<li>convertire le stringhe in date con <code>{lubridate}</code> (<code>ymd()</code>, <code>dmy()</code>, <code>mdy()</code>, <code>parse_date_time()</code>);</li>
+<li>controllare sempre il risultato (<code>tabyl()</code>, <code>range()</code>, <code>colSums(is.na())</code>).</li>
+</ul>
+</section>
+<section id="risorse-aggiuntive" class="level2">
+<h2 class="anchored" data-anchor-id="risorse-aggiuntive">Risorse aggiuntive</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Argomento</th>
+<th>Risorsa</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Pulizia dei dati (<code>clean_names()</code>, <code>select()</code>, <code>na_if()</code>, <code>across()</code>)</td>
+<td>Epi R Handbook, cap. 8 “Cleaning data and core functions”: <a href="https://epirhandbook.com/en/new_pages/cleaning.html" class="uri">https://epirhandbook.com/en/new_pages/cleaning.html</a></td>
+</tr>
+<tr class="even">
+<td>Date con <code>{lubridate}</code></td>
+<td>Epi R Handbook, cap. 9 “Working with dates”: <a href="https://epirhandbook.com/en/new_pages/dates.html" class="uri">https://epirhandbook.com/en/new_pages/dates.html</a></td>
+</tr>
+<tr class="odd">
+<td>Codici di formato delle date (<code>%d</code>, <code>%m</code>, <code>%Y</code>…) con <code>as.Date()</code> e <code>format()</code></td>
+<td>R-bloggers, “Date Formats in R”: <a href="https://www.r-bloggers.com/2013/08/date-formats-in-r/" class="uri">https://www.r-bloggers.com/2013/08/date-formats-in-r/</a></td>
+</tr>
+<tr class="even">
+<td><code>{lubridate}</code>: documentazione e cheatsheet</td>
+<td><a href="https://lubridate.tidyverse.org/" class="uri">https://lubridate.tidyverse.org/</a>; cheatsheet: <a href="https://github.com/rstudio/cheatsheets/blob/main/lubridate.pdf" class="uri">https://github.com/rstudio/cheatsheets/blob/main/lubridate.pdf</a></td>
+</tr>
+<tr class="odd">
+<td>Righe duplicate</td>
+<td>Epi R Handbook, cap. 15 “De-duplication”: <a href="https://epirhandbook.com/en/new_pages/deduplication.html" class="uri">https://epirhandbook.com/en/new_pages/deduplication.html</a></td>
+</tr>
+</tbody>
+</table>
+<!-- Sezione Autori in sospeso: da definire
+
+**Autori**
+
+Autori originali: Applied Epi (<https://appliedepi.org>), corso
+"Introduction to R for Applied Epidemiology", esercizio "Data cleaning"\
+Fonte dei dati: dati di una coorte vaccinale, modificati
+a scopo didattico\
+Adattato da: Chiara Sacco (Istituto Superiore di Sanità)
+-->
+
+
+</section>
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
+<script>
+
+
+
+/* update total correct if #webex-total_correct exists */
+
+update_total_correct = function() {
+
+  console.log("webex: update total_correct");
+
+
+
+  var t = document.getElementsByClassName("webex-total_correct");
+
+  for (var i = 0; i < t.length; i++) {
+
+    p = t[i].parentElement;
+
+    var correct = p.getElementsByClassName("webex-correct").length;
+
+    var solvemes = p.getElementsByClassName("webex-solveme").length;
+
+    var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
+
+    var selects = p.getElementsByClassName("webex-select").length;
+
+
+
+    t[i].innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+
+  }
+
+}
+
+
+
+/* webex-solution button toggling function */
+
+b_func = function() {
+
+  console.log("webex: toggle hide");
+
+
+
+  var cl = this.parentElement.classList;
+
+  if (cl.contains('open')) {
+
+    cl.remove("open");
+
+  } else {
+
+    cl.add("open");
+
+  }
+
+}
+
+
+
+/* check answers */
+
+check_func = function() {
+
+  console.log("webex: check answers");
+
+
+
+  var cl = this.parentElement.classList;
+
+  if (cl.contains('unchecked')) {
+
+    cl.remove("unchecked");
+
+    this.innerHTML = "Hide Answers";
+
+  } else {
+
+    cl.add("unchecked");
+
+    this.innerHTML = "Show Answers";
+
+  }
+
+}
+
+
+
+/* function for checking solveme answers */
+
+solveme_func = function(e) {
+
+  console.log("webex: check solveme");
+
+
+
+  var real_answers = JSON.parse(this.dataset.answer);
+
+  var my_answer = this.value;
+
+  var cl = this.classList;
+
+  if (cl.contains("ignorecase")) {
+
+    my_answer = my_answer.toLowerCase();
+
+  }
+
+  if (cl.contains("nospaces")) {
+
+    my_answer = my_answer.replace(/ /g, "")
+
+  }
+
+
+
+  if (my_answer == "") {
+
+    cl.remove("webex-correct");
+
+    cl.remove("webex-incorrect");
+
+  } else if (real_answers.includes(my_answer)) {
+
+    cl.add("webex-correct");
+
+    cl.remove("webex-incorrect");
+
+  } else {
+
+    cl.add("webex-incorrect");
+
+    cl.remove("webex-correct");
+
+  }
+
+
+
+  // match numeric answers within a specified tolerance
+
+  if(this.dataset.tol > 0){
+
+    var tol = JSON.parse(this.dataset.tol);
+
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+
+      cl.add("webex-correct");
+
+    } else {
+
+      cl.remove("webex-correct");
+
+    }
+
+  }
+
+
+
+  // added regex bit
+
+  if (cl.contains("regex")){
+
+    answer_regex = RegExp(real_answers.join("|"))
+
+    if (answer_regex.test(my_answer)) {
+
+      cl.add("webex-correct");
+
+    }
+
+  }
+
+
+
+  update_total_correct();
+
+}
+
+
+
+/* function for checking select answers */
+
+select_func = function(e) {
+
+  console.log("webex: check select");
+
+
+
+  var cl = this.classList
+
+
+
+  /* add style */
+
+  cl.remove("webex-incorrect");
+
+  cl.remove("webex-correct");
+
+  if (this.value == "answer") {
+
+    cl.add("webex-correct");
+
+  } else if (this.value != "blank") {
+
+    cl.add("webex-incorrect");
+
+  }
+
+
+
+  update_total_correct();
+
+}
+
+
+
+/* function for checking radiogroups answers */
+
+radiogroups_func = function(e) {
+
+  console.log("webex: check radiogroups");
+
+
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+
+  var cl = checked_button.parentElement.classList;
+
+  var labels = checked_button.parentElement.parentElement.children;
+
+
+
+  /* get rid of styles */
+
+  for (i = 0; i < labels.length; i++) {
+
+    labels[i].classList.remove("webex-incorrect");
+
+    labels[i].classList.remove("webex-correct");
+
+  }
+
+
+
+  /* add style */
+
+  if (checked_button.value == "answer") {
+
+    cl.add("webex-correct");
+
+  } else {
+
+    cl.add("webex-incorrect");
+
+  }
+
+
+
+  update_total_correct();
+
+}
+
+
+
+window.onload = function() {
+
+  console.log("webex onload");
+
+  /* set up solution buttons */
+
+  var buttons = document.getElementsByTagName("button");
+
+
+
+  for (var i = 0; i < buttons.length; i++) {
+
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+
+      buttons[i].onclick = b_func;
+
+    }
+
+  }
+
+
+
+  var check_sections = document.getElementsByClassName("webex-check");
+
+  console.log("check:", check_sections.length);
+
+  for (var i = 0; i < check_sections.length; i++) {
+
+    check_sections[i].classList.add("unchecked");
+
+
+
+    let btn = document.createElement("button");
+
+    btn.innerHTML = "Show Answers";
+
+    btn.classList.add("webex-check-button");
+
+    btn.onclick = check_func;
+
+    check_sections[i].appendChild(btn);
+
+
+
+    let spn = document.createElement("span");
+
+    spn.classList.add("webex-total_correct");
+
+    check_sections[i].appendChild(spn);
+
+  }
+
+
+
+  /* set up webex-solveme inputs */
+
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+
+
+  for (var i = 0; i < solveme.length; i++) {
+
+    /* make sure input boxes don't auto-anything */
+
+    solveme[i].setAttribute("autocomplete","off");
+
+    solveme[i].setAttribute("autocorrect", "off");
+
+    solveme[i].setAttribute("autocapitalize", "off");
+
+    solveme[i].setAttribute("spellcheck", "false");
+
+    solveme[i].value = "";
+
+
+
+    /* adjust answer for ignorecase or nospaces */
+
+    var cl = solveme[i].classList;
+
+    var real_answer = solveme[i].dataset.answer;
+
+    if (cl.contains("ignorecase")) {
+
+      real_answer = real_answer.toLowerCase();
+
+    }
+
+    if (cl.contains("nospaces")) {
+
+      real_answer = real_answer.replace(/ /g, "");
+
+    }
+
+    solveme[i].dataset.answer = real_answer;
+
+
+
+    /* attach checking function */
+
+    solveme[i].onkeyup = solveme_func;
+
+    solveme[i].onchange = solveme_func;
+
+
+
+    solveme[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+
+  }
+
+
+
+  /* set up radiogroups */
+
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+
+  for (var i = 0; i < radiogroups.length; i++) {
+
+    radiogroups[i].onchange = radiogroups_func;
+
+  }
+
+
+
+  /* set up selects */
+
+  var selects = document.getElementsByClassName("webex-select");
+
+  for (var i = 0; i < selects.length; i++) {
+
+    selects[i].onchange = select_func;
+
+    selects[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+
+  }
+
+
+
+  update_total_correct();
+
+}
+
+
+
+</script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/SaccoChiara\.github\.io\/Corso_R_ISS_2026\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Istituto Superiore di Sanità – Corso base di R, 30 novembre – 4 dicembre 2026</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="./licenza.html">
+<p>Copyright e licenza</p>
+</a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

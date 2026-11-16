@@ -1,0 +1,2742 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>quarto-input841e40daec21a2fd – Corso base di R</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./immagini/logo_iss.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-407113646558fb1abf01df177a630d46.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="webex.css">
+</head>
+
+<body class="floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Corso base di R</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./preparazione.html"> 
+<span class="menu-text">Prepararsi al corso</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./dati.html"> 
+<span class="menu-text">I dati del corso</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-moduli" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Moduli</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-moduli">    
+        <li class="dropdown-header">Giorno 1</li>
+        <li>
+    <a class="dropdown-item" href="./modulo1_intro.html">
+ <span class="dropdown-text">Modulo 1 – Importazione ed esplorazione dei dati</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./modulo2_data_cleaning.html">
+ <span class="dropdown-text">Modulo 2 – Pulizia e preparazione dei dati</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Giorno 2</li>
+        <li>
+    <a class="dropdown-item" href="./modulo3_data_cleaning_avanzato.html">
+ <span class="dropdown-text">Modulo 3 – Pulizia dei dati: approfondimento</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./modulo4_tabelle_e_aggregazione.html">
+ <span class="dropdown-text">Modulo 4 – Tabelle e aggregazione dei dati</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Giorno 3</li>
+        <li>
+    <a class="dropdown-item" href="./modulo5_ggplot_parte1.html">
+ <span class="dropdown-text">Modulo 5 – Grafici con ggplot2 (parte 1)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./modulo6_ggplot_parte2.html">
+ <span class="dropdown-text">Modulo 6 – Grafici con ggplot2 (parte 2)</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Giorno 4</li>
+        <li>
+    <a class="dropdown-item" href="./modulo7_trasformazione_e_integrazione.html">
+ <span class="dropdown-text">Modulo 7 – Trasformazione e integrazione dei dati</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./modulo8_altri_grafici.html">
+ <span class="dropdown-text">Modulo 8 – Altri grafici</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Giorno 5</li>
+        <li>
+    <a class="dropdown-item" href="./modulo9_quarto.html">
+ <span class="dropdown-text">Modulo 9 – Report automatici con Quarto</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="1">
+    <h2 id="toc-title">In questa pagina</h2>
+   
+  <ul>
+  <li><a href="#corso-introduttivo-al-software-statistico-r" id="toc-corso-introduttivo-al-software-statistico-r" class="nav-link active" data-scroll-target="#corso-introduttivo-al-software-statistico-r"><strong>Corso introduttivo al software statistico R</strong></a></li>
+  <li><a href="#modulo-07-trasformazione-e-integrazione-dei-dati" id="toc-modulo-07-trasformazione-e-integrazione-dei-dati" class="nav-link" data-scroll-target="#modulo-07-trasformazione-e-integrazione-dei-dati">Modulo 07 Trasformazione e integrazione dei dati</a>
+  <ul>
+  <li><a href="#obiettivi-del-modulo" id="toc-obiettivi-del-modulo" class="nav-link" data-scroll-target="#obiettivi-del-modulo">Obiettivi del modulo</a></li>
+  <li><a href="#formato-dellesercizio" id="toc-formato-dellesercizio" class="nav-link" data-scroll-target="#formato-dellesercizio">Formato dell’esercizio</a></li>
+  <li><a href="#preparazione" id="toc-preparazione" class="nav-link" data-scroll-target="#preparazione">Preparazione</a></li>
+  <li><a href="#iniziamo" id="toc-iniziamo" class="nav-link" data-scroll-target="#iniziamo">Iniziamo!</a></li>
+  <li><a href="#il-punto-di-partenza" id="toc-il-punto-di-partenza" class="nav-link" data-scroll-target="#il-punto-di-partenza">Il punto di partenza</a>
+  <ul class="collapse">
+  <li><a href="#i-dati" id="toc-i-dati" class="nav-link" data-scroll-target="#i-dati">I dati</a></li>
+  <li><a href="#le-due-tabelle-nuove" id="toc-le-due-tabelle-nuove" class="nav-link" data-scroll-target="#le-due-tabelle-nuove">Le due tabelle nuove</a></li>
+  <li><a href="#larea-di-prova" id="toc-larea-di-prova" class="nav-link" data-scroll-target="#larea-di-prova">L’area di prova</a></li>
+  <li><a href="#uno-sguardo-alle-tabelle" id="toc-uno-sguardo-alle-tabelle" class="nav-link" data-scroll-target="#uno-sguardo-alle-tabelle">Uno sguardo alle tabelle</a></li>
+  </ul></li>
+  <li><a href="#accodare-righe-con-bind_rows" id="toc-accodare-righe-con-bind_rows" class="nav-link" data-scroll-target="#accodare-righe-con-bind_rows">Accodare righe con <code>bind_rows()</code></a>
+  <ul class="collapse">
+  <li><a href="#due-invii-separati" id="toc-due-invii-separati" class="nav-link" data-scroll-target="#due-invii-separati">Due invii separati</a></li>
+  <li><a href="#accodare-i-due-invii" id="toc-accodare-i-due-invii" class="nav-link" data-scroll-target="#accodare-i-due-invii">Accodare i due invii</a></li>
+  </ul></li>
+  <li><a href="#la-chiave-e-il-primo-left_join" id="toc-la-chiave-e-il-primo-left_join" class="nav-link" data-scroll-target="#la-chiave-e-il-primo-left_join">La chiave e il primo <code>left_join()</code></a>
+  <ul class="collapse">
+  <li><a href="#controllare-la-chiave" id="toc-controllare-la-chiave" class="nav-link" data-scroll-target="#controllare-la-chiave">Controllare la chiave</a></li>
+  <li><a href="#come-funziona-left_join" id="toc-come-funziona-left_join" class="nav-link" data-scroll-target="#come-funziona-left_join">Come funziona <code>left_join()</code></a></li>
+  <li><a href="#controllare-il-risultato" id="toc-controllare-il-risultato" class="nav-link" data-scroll-target="#controllare-il-risultato">Controllare il risultato</a></li>
+  </ul></li>
+  <li><a href="#i-quattro-join-a-confronto" id="toc-i-quattro-join-a-confronto" class="nav-link" data-scroll-target="#i-quattro-join-a-confronto">I quattro join a confronto</a>
+  <ul class="collapse">
+  <li><a href="#quante-righe" id="toc-quante-righe" class="nav-link" data-scroll-target="#quante-righe">Quante righe?</a></li>
+  <li><a href="#le-righe-che-arrivano-solo-da-regioni" id="toc-le-righe-che-arrivano-solo-da-regioni" class="nav-link" data-scroll-target="#le-righe-che-arrivano-solo-da-regioni">Le righe che arrivano solo da <code>regioni</code></a></li>
+  </ul></li>
+  <li><a href="#chi-manca-semi_join-e-anti_join" id="toc-chi-manca-semi_join-e-anti_join" class="nav-link" data-scroll-target="#chi-manca-semi_join-e-anti_join">Chi manca? <code>semi_join()</code> e <code>anti_join()</code></a></li>
+  <li><a href="#chiavi-duplicate" id="toc-chiavi-duplicate" class="nav-link" data-scroll-target="#chiavi-duplicate">Chiavi duplicate</a>
+  <ul class="collapse">
+  <li><a href="#quante-volte-compare-ogni-persona" id="toc-quante-volte-compare-ogni-persona" class="nav-link" data-scroll-target="#quante-volte-compare-ogni-persona">Quante volte compare ogni persona?</a></li>
+  <li><a href="#il-join-con-la-chiave-duplicata" id="toc-il-join-con-la-chiave-duplicata" class="nav-link" data-scroll-target="#il-join-con-la-chiave-duplicata">Il join con la chiave duplicata</a></li>
+  <li><a href="#farsi-avvisare-da-dplyr" id="toc-farsi-avvisare-da-dplyr" class="nav-link" data-scroll-target="#farsi-avvisare-da-dplyr">Farsi avvisare da <code>{dplyr}</code></a></li>
+  </ul></li>
+  <li><a href="#da-lungo-a-largo-con-pivot_wider" id="toc-da-lungo-a-largo-con-pivot_wider" class="nav-link" data-scroll-target="#da-lungo-a-largo-con-pivot_wider">Da lungo a largo con <code>pivot_wider()</code></a>
+  <ul class="collapse">
+  <li><a href="#come-funziona-pivot_wider" id="toc-come-funziona-pivot_wider" class="nav-link" data-scroll-target="#come-funziona-pivot_wider">Come funziona <code>pivot_wider()</code></a></li>
+  <li><a href="#una-tabella-di-conteggi" id="toc-una-tabella-di-conteggi" class="nav-link" data-scroll-target="#una-tabella-di-conteggi">Una tabella di conteggi</a></li>
+  <li><a href="#riempire-le-celle-vuote" id="toc-riempire-le-celle-vuote" class="nav-link" data-scroll-target="#riempire-le-celle-vuote">Riempire le celle vuote</a></li>
+  <li><a href="#i-richiami-una-riga-per-persona" id="toc-i-richiami-una-riga-per-persona" class="nav-link" data-scroll-target="#i-richiami-una-riga-per-persona">I richiami: una riga per persona</a></li>
+  </ul></li>
+  <li><a href="#da-largo-a-lungo-con-pivot_longer" id="toc-da-largo-a-lungo-con-pivot_longer" class="nav-link" data-scroll-target="#da-largo-a-lungo-con-pivot_longer">Da largo a lungo con <code>pivot_longer()</code></a>
+  <ul class="collapse">
+  <li><a href="#come-funziona-pivot_longer" id="toc-come-funziona-pivot_longer" class="nav-link" data-scroll-target="#come-funziona-pivot_longer">Come funziona <code>pivot_longer()</code></a></li>
+  <li><a href="#il-viaggio-di-ritorno" id="toc-il-viaggio-di-ritorno" class="nav-link" data-scroll-target="#il-viaggio-di-ritorno">Il viaggio di ritorno</a></li>
+  <li><a href="#togliere-le-righe-vuote" id="toc-togliere-le-righe-vuote" class="nav-link" data-scroll-target="#togliere-le-righe-vuote">Togliere le righe vuote</a></li>
+  </ul></li>
+  <li><a href="#copertura-dei-richiami-per-regione-e-stato-hiv" id="toc-copertura-dei-richiami-per-regione-e-stato-hiv" class="nav-link" data-scroll-target="#copertura-dei-richiami-per-regione-e-stato-hiv">Copertura dei richiami per regione e stato HIV</a></li>
+  <li><a href="#lo-script-completo" id="toc-lo-script-completo" class="nav-link" data-scroll-target="#lo-script-completo">Lo script completo</a></li>
+  <li><a href="#riepilogo" id="toc-riepilogo" class="nav-link" data-scroll-target="#riepilogo">Riepilogo</a></li>
+  <li><a href="#risorse-aggiuntive" id="toc-risorse-aggiuntive" class="nav-link" data-scroll-target="#risorse-aggiuntive">Risorse aggiuntive</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><p><img src="immagini/logo_dmi.png" class="img-fluid" style="width:3in"></p></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<!-- ============================================================
+     NOTE PER IL DOCENTE (non compaiono nell'HTML)
+     - Esercitazione della mattina del giorno 4: i partecipanti
+       creano un nuovo script, script/join.R, che inizia con i
+       pacchetti e l'importazione di dati/dati_clean.rds,
+       dati/regioni.rds e dati/richiami.rds.
+     - Tempo previsto: 90 minuti. Il tempo stimato di ogni sezione è
+       indicato in un commento all'inizio della sezione. Le stime
+       sommano a circa 90 minuti. Se in aula il tempo non basta, le
+       parti più sacrificabili sono "Le righe che arrivano solo da
+       regioni" e "Riempire le celle vuote". Da non togliere:
+       "Copertura dei richiami per regione e stato HIV", che produce
+       richiami_regione_hiv.rds per il modulo 9 (ai partecipanti non
+       lo diciamo, per non anticipare).
+     - Nello script restano solo gli oggetti da tenere (regioni,
+       richiami, dati_regioni, richiami_largo, dati_richiami,
+       richiami_regione_hiv); tutti gli altri comandi, compresi gli
+       errori voluti, si scrivono nell'area di prova.
+     - I commenti "DIPENDE DAI DATI" segnalano testi o domande da
+       ricontrollare se cambia il dataset. Le risposte delle domande
+       con risposta calcolata si aggiornano da sole.
+     - Dati: dati_clean (dati/dati_clean.rds, 47.717
+       persone; region e hiv_status senza NA, esclusi nel Modulo 3) e le due tabelle
+       accessorie SIMULATE dati/regioni.rds e dati/richiami.rds
+       (create da strumenti_claude/simula_tabelle_modulo7.R; dal
+       12/11/2026 richiami.rds non ha più le 4 persone escluse nel
+       Modulo 3, quindi anti_join() trova solo i 3 id inventati)
+       Stesso
+       codice e stessi nomi di slide e demo. Il modulo 7 usa solo
+       funzioni spiegate nelle slide del modulo 7 o nei moduli 1-4.
+     ============================================================ -->
+<section id="corso-introduttivo-al-software-statistico-r" class="level1">
+<h1><strong>Corso introduttivo al software statistico R</strong></h1>
+</section>
+<section id="modulo-07-trasformazione-e-integrazione-dei-dati" class="level1">
+<h1>Modulo 07 Trasformazione e integrazione dei dati</h1>
+<section id="obiettivi-del-modulo" class="level2">
+<h2 class="anchored" data-anchor-id="obiettivi-del-modulo">Obiettivi del modulo</h2>
+<ul>
+<li>Accodare due data frame con le stesse variabili con <code>bind_rows()</code></li>
+<li>Unire due tabelle attraverso una chiave con i join di <code>{dplyr}</code>: <code>left_join()</code>, <code>inner_join()</code>, <code>right_join()</code> e <code>full_join()</code></li>
+<li>Controllare la chiave prima e dopo un join e riconoscere le righe senza corrispondenza con <code>semi_join()</code> e <code>anti_join()</code></li>
+<li>Riconoscere le chiavi duplicate e le righe che si moltiplicano</li>
+<li>Cambiare la forma dei dati, da lungo a largo con <code>pivot_wider()</code> e da largo a lungo con <code>pivot_longer()</code></li>
+<li>Combinare join, pivot e sintesi per gruppo in una tabella finale da salvare</li>
+</ul>
+</section>
+<section id="formato-dellesercizio" class="level2">
+<h2 class="anchored" data-anchor-id="formato-dellesercizio">Formato dell’esercizio</h2>
+<!-- Il paragrafo sotto è fisso: -->
+<p>Questo esercizio è progettato per essere una guida e per aiutarti a completarlo in autonomia. Ti consigliamo fortemente di provare a eseguire il codice prima di guardare le soluzioni. Per aiutarti, abbiamo incluso in alcuni punti dei suggerimenti che possono indirizzarti nella direzione giusta. Li troverai così:</p>
+<!-- ISTRUZIONI: Questo blocco "Suggerimento" va inserito ogni volta
+     che vuoi dare un aiuto parziale allo studente senza svelare
+     subito la soluzione (es. il nome di una funzione da usare, o un
+     argomento a cui prestare attenzione). Copia l'intero blocco
+     <details>...</details> e modifica solo il testo dopo </br>. -->
+<details>
+<summary style="text-decoration: underline; color: darkgreen;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
+</summary>
+<p><br></p>
+<p>Questo è un suggerimento.</p>
+<p><br></p>
+</details>
+<p>Le soluzioni, invece, avranno questo aspetto:</p>
+<!-- ISTRUZIONI: Questo blocco "Soluzione" va inserito alla fine di
+     ogni esercizio (o sotto-punto) e deve contenere codice R
+     eseguibile e commentato. Copia l'intero blocco
+     <details>...</details> e sostituisci il codice di esempio. Se la
+     soluzione richiede più passaggi, aggiungi commenti # nel codice
+     per spiegare ogni passaggio. Ricorda: niente etichette (label)
+     nei chunk, come indicato nelle istruzioni generali. -->
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"Questo è un esempio di soluzione"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Questo è un esempio di soluzione"</code></pre>
+</div>
+</div>
+<p><br></p>
+</details>
+<p>Durante l’esercizio troverai anche domande a risposta multipla, che servono a verificare se stai seguendo correttamente lo svolgimento. Le domande saranno simili a questa:</p>
+<!-- ISTRUZIONI: Questo blocco "Domanda" usa il pacchetto
+     `{webexercises}` per creare quiz a risposta multipla
+     auto-correttivi. Copia l'intero blocco ::: {.callout-note}...:::
+     e:
+       - scrivi le opzioni di risposta nel vettore "opts"
+       - indica la risposta corretta con answer = "..."
+       - scrivi il testo della domanda dentro cat("Domanda: ...")
+     Inserisci una domanda ogni volta che vuoi far verificare allo
+     studente di aver capito un concetto chiave prima di proseguire. -->
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Domanda di esempio: quanto fa 2 + 2?
+<div id="radio_ZQSGVBIMES" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_ZQSGVBIMES" value=""> <span>2</span></label><label><input type="radio" autocomplete="off" name="radio_ZQSGVBIMES" value=""> <span>5</span></label><label><input type="radio" autocomplete="off" name="radio_ZQSGVBIMES" value="answer"> <span>4</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Lungo il modulo troverai anche due tipi di riquadri colorati. I riquadri <strong>gialli</strong> segnalano errori frequenti o punti in cui R si comporta in modo inatteso: leggili sempre, perché possono farti risparmiare tempo.</p>
+<!-- ISTRUZIONI: Il box giallo "Attenzione a …" va usato per avvisi
+     importanti: errori comuni, comportamenti di R che possono
+     sorprendere, passaggi da non saltare. Il titolo inizia sempre con
+     "Attenzione a" (es. "Attenzione ai nomi con spazi"). Copia
+     l'intero blocco ::: {.callout-warning ...} ... ::: e modifica
+     solo titolo e testo. -->
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avviso</span>Attenzione a …
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Questo è un esempio di riquadro di attenzione.</p>
+</div>
+</div>
+<p>I riquadri <strong>verdi</strong> contengono invece approfondimenti facoltativi, per chi vuole andare un po’ oltre: puoi saltarli senza perdere il filo dell’esercizio e tornarci in un secondo momento.</p>
+<!-- ISTRUZIONI: Il box verde "Approfondimento: …" va usato per
+     contenuti facoltativi: funzioni alternative, scorciatoie, casi
+     più avanzati. Lo studente deve poter completare l'esercizio anche
+     senza leggerlo. Il titolo inizia sempre con "Approfondimento:"
+     (es. "Approfondimento: gestire le date in R"). Copia l'intero
+     blocco ::: {.callout-tip ...} ... ::: e modifica solo titolo e
+     testo. -->
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Consiglio</span>Approfondimento: …
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Questo è un esempio di riquadro di approfondimento.</p>
+</div>
+</div>
+<p>Ti consigliamo di provare comunque a rispondere e a eseguire il codice da solo prima di consultare suggerimenti e soluzioni: è così che si impara davvero a usare R.</p>
+</section>
+<section id="preparazione" class="level2">
+<h2 class="anchored" data-anchor-id="preparazione">Preparazione</h2>
+<p>Oggi inizierai uno script nuovo, dedicato all’unione dei dati. Apri il progetto del corso, crea un nuovo script (<em>File -&gt; New File -&gt; R Script</em>) e salvalo nella cartella <code>script</code> con il nome <code>join</code>.</p>
+<p>Come nei moduli precedenti, inizia lo script con alcuni commenti: nome e cognome, obiettivo dello script, email e data. Poi crea la sezione “Caricamento pacchetti” con la combinazione di tasti <strong>Ctrl + Shift + R</strong> (<strong>Cmd + Shift + R</strong> su Mac) e copiaci il comando <code>pacman::p_load()</code> dello script <code>tabelle_grouping.R</code>. Eseguilo.</p>
+<p>Ricordati di salvare spesso il lavoro (<strong>Ctrl + S</strong>, oppure <strong>Cmd + S</strong> su Mac).</p>
+</section>
+<section id="iniziamo" class="level2">
+<h2 class="anchored" data-anchor-id="iniziamo">Iniziamo!</h2>
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:darkgreen;overflow:visible;position:relative;"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"></path></svg> <strong>Da qui comincia l’esercitazione.</strong></p>
+</section>
+<section id="il-punto-di-partenza" class="level2">
+<h2 class="anchored" data-anchor-id="il-punto-di-partenza">Il punto di partenza</h2>
+<!-- Tempo stimato: 7 minuti -->
+<section id="i-dati" class="level3">
+<h3 class="anchored" data-anchor-id="i-dati">I dati</h3>
+<p>Lavoriamo ancora con <code>dati_clean</code>: la coorte di persone vaccinate contro COVID-19, con e senza HIV, in cui ogni riga è una persona. Come nei Moduli 4 e 5, nello script crea la sezione “Importazione dati” (<strong>Ctrl+Shift+R</strong>) e importa con <code>import()</code> il file <code>dati_clean.rds</code> della cartella <code>dati</code>, chiamando il dataset <code>dati_clean</code>.</p>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importazione dati -------------------------------------------------------</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"dati/dati_clean.rds"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+</details>
+</section>
+<section id="le-due-tabelle-nuove" class="level3">
+<h3 class="anchored" data-anchor-id="le-due-tabelle-nuove">Le due tabelle nuove</h3>
+<p>Oggi unirai <code>dati_clean</code> a due tabelle nuove, create per questa esercitazione.</p>
+<p>La tabella <code>regioni</code> è l’elenco di tutte le regioni, anche di quelle in cui non abbiamo partecipanti, con una riga per regione:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Variabile</th>
+<th>Descrizione</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>codice_regione</code></td>
+<td>codice della regione (da A a F)</td>
+</tr>
+<tr class="even">
+<td><code>area</code></td>
+<td>area geografica (Nord, Centro, Sud, Isole)</td>
+</tr>
+<tr class="odd">
+<td><code>popolazione</code></td>
+<td>popolazione residente</td>
+</tr>
+</tbody>
+</table>
+<p>La tabella <code>richiami</code> ha una riga per ogni dose di richiamo del vaccino: chi ha ricevuto due richiami compare due volte, chi non ne ha ricevuti non compare.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Variabile</th>
+<th>Descrizione</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>id_subject</code></td>
+<td>identificativo della persona</td>
+</tr>
+<tr class="even">
+<td><code>dose</code></td>
+<td>quale richiamo (<code>richiamo_1</code>, <code>richiamo_2</code>)</td>
+</tr>
+<tr class="odd">
+<td><code>data_dose</code></td>
+<td>data del richiamo</td>
+</tr>
+</tbody>
+</table>
+<p>Le due tabelle servono per tutta l’esercitazione, quindi vanno nello script. Nella sezione “Importazione dati”, sotto l’importazione di <code>dati_clean</code>, importa con <code>import()</code> i file <code>regioni.rds</code> e <code>richiami.rds</code>, che si trovano anch’essi nella cartella <code>dati</code>, chiamandoli <code>regioni</code> e <code>richiami</code>.</p>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>regioni  <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"dati/regioni.rds"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>richiami <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"dati/richiami.rds"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+</details>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avviso</span>Attenzione all’avviso su <code>trust</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Importando i file potrebbe comparire nella console un avviso (<em>warning</em>) che parla di <code>trust</code>. Non è un errore: è un messaggio del pacchetto <code>{rio}</code> sulle sue versioni future, e i data frame vengono importati correttamente. Puoi ignorarlo.</p>
+</div>
+</div>
+</section>
+<section id="larea-di-prova" class="level3">
+<h3 class="anchored" data-anchor-id="larea-di-prova">L’area di prova</h3>
+<p>Come nei moduli precedenti, aggiungi in fondo allo script una nuova sezione, “Area di prova” (<strong>Ctrl+Shift+R</strong>). Le sezioni che creerai più avanti vanno inserite sopra l’area di prova, così che resti sempre l’ultima sezione dello script.</p>
+<p>Come nei moduli precedenti, non tutto quello che scrivi va tenuto:</p>
+<ul>
+<li>i comandi per <strong>esplorare</strong> e per <strong>provare</strong> (controlli sul numero di righe, confronti tra join, errori voluti e le loro correzioni) si scrivono nell’<strong>area di prova</strong>: guardi il risultato nella console e poi li lasci lì;</li>
+<li>i data frame che sono un <strong>risultato da tenere</strong> si salvano in un oggetto con l’operatore di assegnazione <code>&lt;-</code> e si scrivono <strong>nello script</strong>, nelle sezioni del Modulo 7.</li>
+</ul>
+<p>In ogni esercizio ti indicheremo dove scrivere il codice.</p>
+</section>
+<section id="uno-sguardo-alle-tabelle" class="level3">
+<h3 class="anchored" data-anchor-id="uno-sguardo-alle-tabelle">Uno sguardo alle tabelle</h3>
+<p>Nell’area di prova controlla il numero di righe e di variabili delle tre tabelle. Poi stampa <code>regioni</code> e guarda le prime righe di <code>richiami</code>.</p>
+<details>
+<summary style="text-decoration: underline; color: darkgreen;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
+</summary>
+<p><br></p>
+<p>Per le dimensioni usa <code>dim()</code>. <code>regioni</code> è piccola e si può stampare scrivendo solo il suo nome; per <code>richiami</code> usa <code>head()</code>, che mostra le prime sei righe.</p>
+<p><br></p>
+</details>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(dati_clean)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 47717    18</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(regioni)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6 3</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(richiami)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 46729     3</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>regioni</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  codice_regione   area popolazione
+1              A   Nord     4900000
+2              B   Nord     6100000
+3              C Centro    10200000
+4              D    Sud     5600000
+5              E    Sud     3900000
+6              F  Isole     1600000</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(richiami)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  id_subject       dose  data_dose
+1      S0001 richiamo_1 2022-01-18
+2      S0001 richiamo_2 2022-06-20
+3      S0003 richiamo_1 2022-01-01
+4      S0004 richiamo_1 2021-10-13
+5      S0005 richiamo_1 2021-11-18
+6      S0006 richiamo_1 2021-10-23</code></pre>
+</div>
+</div>
+<p><br></p>
+</details>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+<code>dati_clean</code> e <code>richiami</code> hanno un numero di righe diverso. Perché?
+<div id="radio_BCNOBNYPQO" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_BCNOBNYPQO" value="answer"> <span>Perché alcune persone hanno ricevuto due richiami, altre nessuno</span></label><label><input type="radio" autocomplete="off" name="radio_BCNOBNYPQO" value=""> <span>Perché richiami contiene anche le persone senza HIV</span></label><label><input type="radio" autocomplete="off" name="radio_BCNOBNYPQO" value=""> <span>Perché import() ha letto il file due volte</span></label><label><input type="radio" autocomplete="off" name="radio_BCNOBNYPQO" value=""> <span>Perché in richiami ci sono più variabili</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avviso</span>Attenzione ai data frame molto grandi
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>dati_clean</code> e <code>richiami</code> hanno decine di migliaia di righe, e lo stesso vale per i risultati dei join che costruirai oggi. Se scrivi solo il nome del data frame ed esegui, R prova a stampare tutte le righe nella console. Per controllare un risultato usa <code>nrow()</code> o <code>head()</code>, oppure salvalo con l’operatore di assegnazione <code>&lt;-</code> e aprilo con <code>View()</code>.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="accodare-righe-con-bind_rows" class="level2">
+<h2 class="anchored" data-anchor-id="accodare-righe-con-bind_rows">Accodare righe con <code>bind_rows()</code></h2>
+<!-- Tempo stimato: 8 minuti -->
+<section id="due-invii-separati" class="level3">
+<h3 class="anchored" data-anchor-id="due-invii-separati">Due invii separati</h3>
+<p>A volte i dati arrivano a pezzi: per esempio due invii con le stesse variabili, uno dopo l’altro. Per accodarli in un unico data frame si usa <code>bind_rows()</code> del pacchetto <code>{dplyr}</code>: tra le parentesi si indicano i data frame da accodare, separati da una virgola. L’argomento <code>.id</code>, facoltativo, aggiunge una variabile con il numero del data frame da cui arriva ogni riga (1 per il primo, 2 per il secondo):</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_rows</span>(DATI_1, DATI_2, <span class="at">.id =</span> <span class="st">"NOME_VARIABILE"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Immagina che i dati della coorte ti siano arrivati in due invii separati: il primo con le persone il cui codice di gruppo (<code>group</code>) arriva fino a 22000, il secondo con gli altri. Nel secondo invio, per un errore, manca la variabile dell’età. Copia questo codice nell’area di prova ed eseguilo per ricreare i due invii; poi controlla con <code>dim()</code> quante righe e quante variabili ha ciascuno.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>lotto1 <span class="ot">&lt;-</span> dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(group <span class="sc">&lt;=</span> <span class="dv">22000</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>lotto2 <span class="ot">&lt;-</span> dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(group <span class="sc">&gt;</span> <span class="dv">22000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>age)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(lotto1)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 23316    18</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(lotto2)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 24401    17</code></pre>
+</div>
+</div>
+<p><br></p>
+</details>
+</section>
+<section id="accodare-i-due-invii" class="level3">
+<h3 class="anchored" data-anchor-id="accodare-i-due-invii">Accodare i due invii</h3>
+<p>Sempre nell’area di prova, accoda i due invii in un unico data frame, <code>dati_uniti</code>, aggiungendo una variabile <code>lotto</code> che dica da quale invio arriva ogni riga. Poi controlla:</p>
+<ul>
+<li>quante righe arrivano da ciascun invio;</li>
+<li>quante righe ha <code>dati_uniti</code> in totale e quante età mancanti ci sono.</li>
+</ul>
+<details>
+<summary style="text-decoration: underline; color: darkgreen;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
+</summary>
+<p><br></p>
+<p>Per contare le righe per invio usa <code>count()</code>, come nel Modulo 4. Per le età mancanti usa <code>summarise()</code> con <code>sum(is.na(age))</code>.</p>
+<p><br></p>
+</details>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>dati_uniti <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(lotto1, lotto2, <span class="at">.id =</span> <span class="st">"lotto"</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>dati_uniti <span class="sc">%&gt;%</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(lotto)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  lotto     n
+1     1 23316
+2     2 24401</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>dati_uniti <span class="sc">%&gt;%</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">n            =</span> <span class="fu">n</span>(),</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_mancanti =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(age)))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      n age_mancanti
+1 47717        24404</code></pre>
+</div>
+</div>
+<p><br></p>
+</details>
+<!-- La risposta corretta è calcolata dai dati -->
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+In <code>dati_uniti</code> le età mancanti sono 24.404, mentre in <code>dati_clean</code> erano solo 5. Che cosa è successo?
+<div id="radio_UXQJRVMKXW" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_UXQJRVMKXW" value="answer"> <span>bind_rows() ha messo NA nella variabile age per tutte le righe del secondo invio</span></label><label><input type="radio" autocomplete="off" name="radio_UXQJRVMKXW" value=""> <span>bind_rows() ha tolto le righe senza età</span></label><label><input type="radio" autocomplete="off" name="radio_UXQJRVMKXW" value=""> <span>Le persone del secondo invio sono quasi tutte senza età anche in dati_clean</span></label><label><input type="radio" autocomplete="off" name="radio_UXQJRVMKXW" value=""> <span>bind_rows() ha diviso per due il numero di età presenti</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avviso</span>Attenzione: <code>bind_rows()</code> accoda per nome, non per posizione
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>bind_rows()</code> abbina le variabili per nome: se una variabile manca in uno dei data frame, la crea e la riempie con <code>NA</code>, senza fermarsi. È comodo, ma una variabile con un nome scritto in modo diverso (per esempio <code>Age</code> e <code>age</code>) diventerebbe due variabili mezze vuote. Dopo aver accodato controlla sempre le variabili e i valori mancanti.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="la-chiave-e-il-primo-left_join" class="level2">
+<h2 class="anchored" data-anchor-id="la-chiave-e-il-primo-left_join">La chiave e il primo <code>left_join()</code></h2>
+<!-- Tempo stimato: 13 minuti -->
+<section id="controllare-la-chiave" class="level3">
+<h3 class="anchored" data-anchor-id="controllare-la-chiave">Controllare la chiave</h3>
+<p>Vuoi aggiungere a ogni persona di <code>dati_clean</code> l’area geografica e la popolazione della sua regione, prese da <code>regioni</code>. Per unire due tabelle serve una <strong>chiave</strong>: una variabile presente in entrambe, che dice quale riga di una tabella va con quale riga dell’altra. Qui la chiave è la regione: in <code>dati_clean</code> si chiama <code>region</code>, in <code>regioni</code> si chiama <code>codice_regione</code>.</p>
+<p>Prima di un join conviene sempre controllare la chiave. Nell’area di prova controlla:</p>
+<ul>
+<li>quali valori ha <code>region</code> in <code>dati_clean</code> e <code>codice_regione</code> in <code>regioni</code>;</li>
+<li>se in <code>regioni</code> ogni codice compare una volta sola;</li>
+<li>se le due variabili sono dello stesso tipo.</li>
+</ul>
+<details>
+<summary style="text-decoration: underline; color: darkgreen;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
+</summary>
+<p><br></p>
+<p>I valori distinti di una variabile si vedono con <code>distinct()</code>. Per i duplicati conta i codici con <code>count()</code> e tieni con <code>filter()</code> solo quelli con <code>n &gt; 1</code>: se non esce nessuna riga, la chiave è unica. Il tipo di una variabile si vede con <code>class()</code>.</p>
+<p><br></p>
+</details>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># controllare le regioni presenti in entrambi dataset</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(region)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  region
+1      C
+2      A
+3      B
+4      D</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>regioni <span class="sc">%&gt;%</span> </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(codice_regione)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  codice_regione
+1              A
+2              B
+3              C
+4              D
+5              E
+6              F</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># nessuna riga = nessun codice duplicato</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>regioni <span class="sc">%&gt;%</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(codice_regione) <span class="sc">%&gt;%</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] codice_regione n             
+&lt;0 righe&gt; (o 0-length row.names)</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(dati_clean<span class="sc">$</span>region)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "character"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(regioni<span class="sc">$</span>codice_regione)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "character"</code></pre>
+</div>
+</div>
+<p><br></p>
+</details>
+<!-- DIPENDE DAI DATI: presuppone che region non abbia NA (esclusi nel
+     Modulo 3) e che E ed F non compaiano in dati_clean -->
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Che differenze ci sono tra i valori di <code>region</code> e quelli di <code>codice_regione</code>?
+<div id="radio_GKUCFZEVFF" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_GKUCFZEVFF" value=""> <span>Nessuna: le due chiavi hanno esattamente gli stessi valori</span></label><label><input type="radio" autocomplete="off" name="radio_GKUCFZEVFF" value="answer"> <span>In regioni ci sono anche E ed F, che in dati_clean non compaiono</span></label><label><input type="radio" autocomplete="off" name="radio_GKUCFZEVFF" value=""> <span>In dati_clean ci sono regioni che in regioni non esistono</span></label><label><input type="radio" autocomplete="off" name="radio_GKUCFZEVFF" value=""> <span>region è un numero, codice_regione un testo</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="come-funziona-left_join" class="level3">
+<h3 class="anchored" data-anchor-id="come-funziona-left_join">Come funziona <code>left_join()</code></h3>
+<p><code>left_join()</code> del pacchetto <code>{dplyr}</code> parte da una tabella, quella di <strong>sinistra</strong> (qui <code>dati_clean</code>), e le aggiunge le variabili di una seconda tabella, quella di <strong>destra</strong> (qui <code>regioni</code>): ogni riga di sinistra riceve i valori della riga di destra con la stessa chiave. Le righe di sinistra si tengono tutte, anche quelle che non trovano un partner: per loro le variabili nuove restano <code>NA</code>. La chiave si indica con l’argomento <code>by</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>DATI_SINISTRA <span class="sc">%&gt;%</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(DATI_DESTRA, <span class="at">by =</span> <span class="st">"CHIAVE"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Proviamo nell’area di prova: unisci <code>regioni</code> a <code>dati_clean</code> con <code>left_join()</code>, indicando la chiave con <code>by = "region"</code>. Che cosa succede?</p>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(regioni, <span class="at">by =</span> <span class="st">"region"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `left_join()`:
+! Join columns in `y` must be present in the data.
+✖ Problem with `region`.</code></pre>
+</div>
+</div>
+<p><br></p>
+<p>R si ferma con un errore: con <code>by = "region"</code> cerca una variabile <code>region</code> in <strong>entrambe</strong> le tabelle, ma in <code>regioni</code> la chiave si chiama <code>codice_regione</code>.</p>
+<p><br></p>
+</details>
+<p>Quando la chiave ha nomi diversi nelle due tabelle, si scrive con <code>join_by()</code> e il doppio uguale <code>==</code>, prima il nome nella tabella di sinistra e poi quello nella tabella di destra:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>DATI_SINISTRA <span class="sc">%&gt;%</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(DATI_DESTRA, <span class="at">by =</span> <span class="fu">join_by</span>(CHIAVE_SINISTRA <span class="sc">==</span> CHIAVE_DESTRA))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Il risultato di questo join lo teniamo. Nello script, sopra l’area di prova, crea la sezione “Join con le regioni” (<strong>Ctrl+Shift+R</strong>) e salva il join corretto in un nuovo oggetto, <code>dati_regioni</code>: così <code>dati_clean</code> resta com’è.</p>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Join con le regioni -----------------------------------------------------</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>dati_regioni <span class="ot">&lt;-</span> dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(regioni, <span class="at">by =</span> <span class="fu">join_by</span>(region <span class="sc">==</span> codice_regione))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+</details>
+</section>
+<section id="controllare-il-risultato" class="level3">
+<h3 class="anchored" data-anchor-id="controllare-il-risultato">Controllare il risultato</h3>
+<p>Dopo un join si controlla sempre il numero di righe. Nell’area di prova confronta il numero di righe di <code>dati_regioni</code> con quello di <code>dati_clean</code>, poi conta le combinazioni di <code>region</code> e <code>area</code>.</p>
+<details>
+<summary style="text-decoration: underline; color: darkgreen;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
+</summary>
+<p><br></p>
+<p>Per il numero di righe usa <code>nrow()</code>. Per le combinazioni usa <code>count()</code> con due variabili, come nel Modulo 4.</p>
+<p><br></p>
+</details>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(dati_clean)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 47717</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(dati_regioni)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 47717</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>dati_regioni <span class="sc">%&gt;%</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(region, area)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  region   area     n
+1      A   Nord  5880
+2      B   Nord  7102
+3      C Centro 27386
+4      D    Sud  7349</code></pre>
+</div>
+</div>
+<p><br></p>
+</details>
+<!-- DIPENDE DAI DATI: presuppone che dati_clean abbia solo le regioni
+     A, B, C e D, senza NA -->
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Nel conteggio compaiono solo le regioni A, B, C e D, ognuna con la sua area. Perché non ci sono E ed F?
+<div id="radio_SGPDFGYXKU" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_SGPDFGYXKU" value=""> <span>Perché left_join() toglie le righe di regioni che non hanno un'area</span></label><label><input type="radio" autocomplete="off" name="radio_SGPDFGYXKU" value="answer"> <span>Perché left_join() tiene le righe di dati_clean, e nessuna persona di dati_clean è delle regioni E o F</span></label><label><input type="radio" autocomplete="off" name="radio_SGPDFGYXKU" value=""> <span>Perché in regioni le righe di E ed F sono vuote</span></label><label><input type="radio" autocomplete="off" name="radio_SGPDFGYXKU" value=""> <span>Perché il join ha fallito per E ed F</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avviso</span>Attenzione ai nomi della chiave
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Se la chiave ha nomi diversi nelle due tabelle, <code>by = "region"</code> non basta: serve <code>join_by()</code> con il doppio uguale <code>==</code>. Se invece togli del tutto <code>by</code>, <code>{dplyr}</code> usa le variabili con lo stesso nome nelle due tabelle e lo segnala con il messaggio <code>Joining with by = ...</code>: funziona, ma è meglio scrivere sempre la chiave, così sai esattamente su che cosa stai unendo.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Consiglio</span>Approfondimento: accodare e unire con R base
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Le stesse operazioni si possono fare anche con le funzioni di R base, senza <code>{dplyr}</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># accodare righe (come bind_rows()): con un numero di variabili</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="co"># diverso, come in lotto1 e lotto2, rbind() si ferma con un errore</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(lotto1, lotto2)</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="co"># unire due tabelle (come left_join()): all.x = TRUE tiene tutte le</span></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="co"># righe della tabella di sinistra</span></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="fu">merge</span>(dati_clean, regioni,</span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">by.x =</span> <span class="st">"region"</span>, <span class="at">by.y =</span> <span class="st">"codice_regione"</span>, <span class="at">all.x =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><code>merge()</code> però riordina le righe in base alla chiave: per questo nel corso usiamo i join di <code>{dplyr}</code>, che mantengono l’ordine della tabella di sinistra.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="i-quattro-join-a-confronto" class="level2">
+<h2 class="anchored" data-anchor-id="i-quattro-join-a-confronto">I quattro join a confronto</h2>
+<!-- Tempo stimato: 8 minuti -->
+<section id="quante-righe" class="level3">
+<h3 class="anchored" data-anchor-id="quante-righe">Quante righe?</h3>
+<p><code>left_join()</code> non è l’unico join. Le funzioni hanno tutte la stessa sintassi e cambiano solo nelle righe che tengono:</p>
+<ul>
+<li><code>left_join()</code> tiene tutte le righe della tabella di sinistra;</li>
+<li><code>inner_join()</code> tiene solo le righe che trovano un partner nell’altra tabella;</li>
+<li><code>right_join()</code> tiene tutte le righe della tabella di destra;</li>
+<li><code>full_join()</code> tiene tutte le righe di entrambe le tabelle.</li>
+</ul>
+<p>Nell’area di prova ripeti l’unione di <code>dati_clean</code> e <code>regioni</code> con <code>inner_join()</code>, <code>right_join()</code> e <code>full_join()</code>, e per ciascuno conta le righe del risultato. Prima di eseguire, prova a prevedere il numero: ricorda le regioni E ed F, che sono in <code>regioni</code> ma non in <code>dati_clean</code>.</p>
+<details>
+<summary style="text-decoration: underline; color: darkgreen;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
+</summary>
+<p><br></p>
+<p>Copia il <code>left_join()</code> e cambia solo il nome della funzione. Aggiungi <code>%&gt;% nrow()</code> alla fine, così non stampi migliaia di righe.</p>
+<p><br></p>
+</details>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(regioni, <span class="at">by =</span> <span class="fu">join_by</span>(region <span class="sc">==</span> codice_regione)) <span class="sc">%&gt;%</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 47717</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">right_join</span>(regioni, <span class="at">by =</span> <span class="fu">join_by</span>(region <span class="sc">==</span> codice_regione)) <span class="sc">%&gt;%</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 47719</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">full_join</span>(regioni, <span class="at">by =</span> <span class="fu">join_by</span>(region <span class="sc">==</span> codice_regione)) <span class="sc">%&gt;%</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 47719</code></pre>
+</div>
+</div>
+<p><br></p>
+</details>
+<!-- DIPENDE DAI DATI: presuppone che region non abbia NA in dati_clean
+     (esclusi nel Modulo 3), quindi left_join() e inner_join() danno lo
+     stesso numero di righe -->
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+<code>inner_join()</code> dà lo stesso numero di righe di <code>left_join()</code>. Perché?
+<div id="radio_YKGMRJJDLT" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_YKGMRJJDLT" value=""> <span>Perché left_join() e inner_join() sono la stessa funzione con due nomi</span></label><label><input type="radio" autocomplete="off" name="radio_YKGMRJJDLT" value="answer"> <span>Perché ogni persona di dati_clean trova la sua regione in regioni: nessuna riga di sinistra resta senza partner</span></label><label><input type="radio" autocomplete="off" name="radio_YKGMRJJDLT" value=""> <span>Perché inner_join() tiene anche le regioni E ed F</span></label><label><input type="radio" autocomplete="off" name="radio_YKGMRJJDLT" value=""> <span>Perché regioni ha una sola riga per ogni regione</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>I due join darebbero risultati diversi se in <code>dati_clean</code> ci fosse una persona con regione mancante, o con una regione che in <code>regioni</code> non c’è: <code>left_join()</code> la terrebbe, con <code>area</code> e <code>popolazione</code> <code>NA</code>, mentre <code>inner_join()</code> la toglierebbe. È il caso della persona con regione mancante che hai escluso con <code>filter()</code> nel Modulo 3.</p>
+</section>
+<section id="le-righe-che-arrivano-solo-da-regioni" class="level3">
+<h3 class="anchored" data-anchor-id="le-righe-che-arrivano-solo-da-regioni">Le righe che arrivano solo da <code>regioni</code></h3>
+<p>Con <code>right_join()</code> tieni tutte le righe di <code>regioni</code>, anche quelle delle regioni in cui non abbiamo partecipanti. Nell’area di prova, dal risultato del <code>right_join()</code> tieni solo le regioni E ed F e guarda le variabili <code>id_subject</code>, <code>region</code>, <code>sex</code> e <code>area</code>.</p>
+<details>
+<summary style="text-decoration: underline; color: darkgreen;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
+</summary>
+<p><br></p>
+<p>Dopo il join usa <code>filter()</code> con <code>%in%</code>, come nel Modulo 3, e poi <code>select()</code>. Nel risultato la chiave si chiama <code>region</code>, cioè con il nome che ha nella tabella di sinistra.</p>
+<p><br></p>
+</details>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">right_join</span>(regioni, <span class="at">by =</span> <span class="fu">join_by</span>(region <span class="sc">==</span> codice_regione)) <span class="sc">%&gt;%</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(region <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"E"</span>, <span class="st">"F"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id_subject, region, sex, area)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  id_subject region  sex  area
+1       &lt;NA&gt;      E &lt;NA&gt;   Sud
+2       &lt;NA&gt;      F &lt;NA&gt; Isole</code></pre>
+</div>
+</div>
+<p><br></p>
+</details>
+<p>Le regioni E ed F compaiono comunque, con tutte le variabili di <code>dati_clean</code> vuote (<code>NA</code>).</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+In uno studio di coorte, quale join userai quasi sempre per aggiungere informazioni ai partecipanti?
+<div id="radio_OAWNBAEMZZ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_OAWNBAEMZZ" value="answer"> <span>left_join(), perché tiene tutti i partecipanti e non aggiunge righe senza partecipanti</span></label><label><input type="radio" autocomplete="off" name="radio_OAWNBAEMZZ" value=""> <span>right_join(), perché tiene tutte le regioni</span></label><label><input type="radio" autocomplete="off" name="radio_OAWNBAEMZZ" value=""> <span>full_join(), perché non perde nessuna riga</span></label><label><input type="radio" autocomplete="off" name="radio_OAWNBAEMZZ" value=""> <span>inner_join(), perché tiene solo le righe complete</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="chi-manca-semi_join-e-anti_join" class="level2">
+<h2 class="anchored" data-anchor-id="chi-manca-semi_join-e-anti_join">Chi manca? <code>semi_join()</code> e <code>anti_join()</code></h2>
+<!-- Tempo stimato: 7 minuti -->
+<p><code>semi_join()</code> e <code>anti_join()</code> si scrivono come gli altri join, ma non aggiungono variabili: guardano solo se ogni riga della tabella di sinistra trova un partner nella tabella di destra.</p>
+<ul>
+<li><code>semi_join()</code> tiene le righe che trovano un partner;</li>
+<li><code>anti_join()</code> tiene le righe che <strong>non</strong> lo trovano.</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>DATI_SINISTRA <span class="sc">%&gt;%</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">semi_join</span>(DATI_DESTRA, <span class="at">by =</span> <span class="st">"CHIAVE"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Servono soprattutto per i controlli. Usali nell’area di prova per rispondere a queste domande:</p>
+<ul>
+<li>quante persone di <code>dati_clean</code> hanno ricevuto almeno un richiamo?</li>
+<li>quante non ne hanno ricevuto nessuno?</li>
+<li>ci sono righe di <code>richiami</code> con un <code>id_subject</code> che non esiste in <code>dati_clean</code>?</li>
+</ul>
+<details>
+<summary style="text-decoration: underline; color: darkgreen;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
+</summary>
+<p><br></p>
+<p>La chiave ha lo stesso nome nelle due tabelle: basta <code>by = "id_subject"</code>. Per le prime due domande parti da <code>dati_clean</code>; per la terza parti da <code>richiami</code> e usa <code>anti_join()</code> verso <code>dati_clean</code>.</p>
+<p><br></p>
+</details>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># persone con almeno un richiamo</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">semi_join</span>(richiami, <span class="at">by =</span> <span class="st">"id_subject"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 33359</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># persone senza richiami</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anti_join</span>(richiami, <span class="at">by =</span> <span class="st">"id_subject"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 14358</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># richiami di persone che non esistono in dati_clean</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>richiami <span class="sc">%&gt;%</span></span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anti_join</span>(dati_clean, <span class="at">by =</span> <span class="st">"id_subject"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  id_subject       dose  data_dose
+1     S50017 richiamo_1 2021-10-04
+2     S50342 richiamo_1 2021-11-12
+3     S51208 richiamo_1 2021-10-27</code></pre>
+</div>
+</div>
+<p><br></p>
+</details>
+<!-- La risposta corretta è calcolata dai dati -->
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Hai trovato 3 richiami di persone che non esistono. Che cosa succede a queste righe in un <code>left_join()</code> che parte da <code>dati_clean</code>?
+<div id="radio_TWJQJKJALZ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_TWJQJKJALZ" value="answer"> <span>Spariscono senza nessun avviso, perché non hanno un partner in dati_clean</span></label><label><input type="radio" autocomplete="off" name="radio_TWJQJKJALZ" value=""> <span>Compaiono in fondo al risultato con le variabili di dati_clean vuote</span></label><label><input type="radio" autocomplete="off" name="radio_TWJQJKJALZ" value=""> <span>R si ferma con un errore</span></label><label><input type="radio" autocomplete="off" name="radio_TWJQJKJALZ" value=""> <span>Vengono abbinate alla persona con l'id più simile</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Consiglio</span>Approfondimento: <code>semi_join()</code> non duplica le righe
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Una persona con due richiami compare due volte in <code>richiami</code>, ma <code>semi_join()</code> la conta una volta sola: tiene le righe di <code>dati_clean</code> che hanno almeno un partner, senza ripeterle. Per questo la somma delle persone con e senza richiami torna esattamente al totale di <code>dati_clean</code>. Con un <code>left_join()</code>, come vedrai nella prossima sezione, non è così.</p>
+</div>
+</div>
+</section>
+<section id="chiavi-duplicate" class="level2">
+<h2 class="anchored" data-anchor-id="chiavi-duplicate">Chiavi duplicate</h2>
+<!-- Tempo stimato: 10 minuti -->
+<section id="quante-volte-compare-ogni-persona" class="level3">
+<h3 class="anchored" data-anchor-id="quante-volte-compare-ogni-persona">Quante volte compare ogni persona?</h3>
+<p>In <code>regioni</code> ogni codice compare una volta sola. In <code>richiami</code>, invece, la stessa persona può comparire più di una volta. Nell’area di prova conta quante persone compaiono una volta e quante due volte.</p>
+<details>
+<summary style="text-decoration: underline; color: darkgreen;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
+</summary>
+<p><br></p>
+<p>Usa due <code>count()</code> in fila: il primo conta le righe per <code>id_subject</code>, il secondo conta quanti <code>id_subject</code> hanno ciascun valore di <code>n</code>. Con <code>name = "persone"</code> dai un nome alla nuova colonna.</p>
+<p><br></p>
+</details>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>richiami <span class="sc">%&gt;%</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(id_subject) <span class="sc">%&gt;%</span></span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(n, <span class="at">name =</span> <span class="st">"persone"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  n persone
+1 1   19995
+2 2   13367</code></pre>
+</div>
+</div>
+<p><br></p>
+</details>
+<p>Questo risultato indica che 19.995 persone hanno ricevuto un solo richiamo e 13.367 ne hanno ricevuti due.</p>
+</section>
+<section id="il-join-con-la-chiave-duplicata" class="level3">
+<h3 class="anchored" data-anchor-id="il-join-con-la-chiave-duplicata">Il join con la chiave duplicata</h3>
+<p>Nell’area di prova unisci <code>richiami</code> a <code>dati_clean</code> con <code>left_join()</code> e conta le righe del risultato. Prima di eseguire, prova a prevedere il numero.</p>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(dati_clean)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 47717</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(richiami, <span class="at">by =</span> <span class="st">"id_subject"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 61084</code></pre>
+</div>
+</div>
+<p><br></p>
+</details>
+<!-- La risposta corretta è calcolata dai dati -->
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Il risultato ha 61.084 righe invece di 47.717. Perché?
+<div id="radio_LYQAGBITHA" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_LYQAGBITHA" value="answer"> <span>Le persone con due richiami compaiono due volte, una per ogni richiamo</span></label><label><input type="radio" autocomplete="off" name="radio_LYQAGBITHA" value=""> <span>left_join() ha aggiunto i 3 richiami di persone inesistenti</span></label><label><input type="radio" autocomplete="off" name="radio_LYQAGBITHA" value=""> <span>left_join() ha aggiunto le regioni E ed F</span></label><label><input type="radio" autocomplete="off" name="radio_LYQAGBITHA" value=""> <span>Ci sono persone duplicate in dati_clean</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="farsi-avvisare-da-dplyr" class="level3">
+<h3 class="anchored" data-anchor-id="farsi-avvisare-da-dplyr">Farsi avvisare da <code>{dplyr}</code></h3>
+<p>L’argomento <code>relationship = "one-to-one"</code> chiede a <code>{dplyr}</code> di controllare che ogni riga trovi al massimo un partner, e di fermarsi con un errore se non è così. Nell’area di prova ripeti il join aggiungendo questo argomento e leggi il messaggio che compare.</p>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(richiami, <span class="at">by =</span> <span class="st">"id_subject"</span>, <span class="at">relationship =</span> <span class="st">"one-to-one"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `left_join()`:
+! Each row in `x` must match at most 1 row in `y`.
+ℹ Row 2 of `x` matches multiple rows in `y`.</code></pre>
+</div>
+</div>
+<p><br></p>
+<p>R si ferma con un errore: il messaggio indica una riga di <code>dati_clean</code> (<code>Row … of x</code>) che trova più di un partner in <code>richiami</code>, cioè una persona con due richiami. Qui l’errore è utile: ti avvisa prima che le righe si moltiplichino.</p>
+<p><br></p>
+</details>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avviso</span>Attenzione alle righe che si moltiplicano
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Se la chiave è duplicata nella tabella di destra, <code>left_join()</code> ripete la riga di sinistra per ogni partner, <strong>senza avvisare</strong>: contando poi le righe conteresti più persone di quelle che hai. Se la chiave è duplicata in <strong>entrambe</strong> le tabelle (relazione “molti a molti”, per esempio unendo per <code>group</code> invece che per <code>id_subject</code>), <code>{dplyr}</code> dà un avviso: <code>Detected an unexpected many-to-many relationship</code>. Quasi sempre vuol dire che hai scelto la chiave sbagliata. In ogni caso, dopo un join controlla sempre il numero di righe.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="da-lungo-a-largo-con-pivot_wider" class="level2">
+<h2 class="anchored" data-anchor-id="da-lungo-a-largo-con-pivot_wider">Da lungo a largo con <code>pivot_wider()</code></h2>
+<!-- Tempo stimato: 12 minuti -->
+<section id="come-funziona-pivot_wider" class="level3">
+<h3 class="anchored" data-anchor-id="come-funziona-pivot_wider">Come funziona <code>pivot_wider()</code></h3>
+<p>Gli stessi dati possono avere due forme. Nel formato <strong>lungo</strong> ogni combinazione ha la sua riga; nel formato <strong>largo</strong> una delle variabili si “allarga” in più colonne. <code>pivot_wider()</code> del pacchetto <code>{tidyr}</code> porta i dati da lungo a largo. Servono due argomenti: <code>names_from</code>, la variabile da cui prendere i nomi delle nuove colonne, e <code>values_from</code>, la variabile da cui prendere i valori delle celle:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>DATI <span class="sc">%&gt;%</span></span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from  =</span> VARIABILE_NOMI,</span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> VARIABILE_VALORI)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="una-tabella-di-conteggi" class="level3">
+<h3 class="anchored" data-anchor-id="una-tabella-di-conteggi">Una tabella di conteggi</h3>
+<p>Nell’area di prova conta le persone per sesso e indice di Charlson con <code>count()</code> e salva il risultato in <code>conteggi</code>. È una tabella in formato lungo: una riga per ogni combinazione. Poi portala in formato largo, con una riga per sesso e una colonna per ogni classe di <code>chrls_index</code>.</p>
+<details>
+<summary style="text-decoration: underline; color: darkgreen;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
+</summary>
+<p><br></p>
+<p>I nomi delle nuove colonne vengono da <code>chrls_index</code>, i valori delle celle dalla colonna <code>n</code> di <code>conteggi</code>.</p>
+<p><br></p>
+</details>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>conteggi <span class="ot">&lt;-</span> dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(sex, chrls_index)</span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>conteggi</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    sex chrls_index     n
+1     F           0  9339
+2     F         1-2  3479
+3     F         3-4   255
+4     F          5+    15
+5     M           0 24083
+6     M         1-2  9201
+7     M         3-4  1230
+8     M          5+   113
+9  &lt;NA&gt;           0     1
+10 &lt;NA&gt;         1-2     1</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>conteggi <span class="sc">%&gt;%</span></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from  =</span> chrls_index,</span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> n)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 5
+  sex     `0` `1-2` `3-4`  `5+`
+  &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;
+1 F      9339  3479   255    15
+2 M     24083  9201  1230   113
+3 &lt;NA&gt;      1     1    NA    NA</code></pre>
+</div>
+</div>
+<p><br></p>
+</details>
+<!-- DIPENDE DAI DATI: presuppone che le 2 persone con sex NA non
+     abbiano Charlson 3-4 né 5+ -->
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Nella riga con <code>sex</code> NA alcune celle sono NA. Che cosa significano?
+<div id="radio_OEZIONRPQT" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_OEZIONRPQT" value=""> <span>Sono dati persi durante il pivot</span></label><label><input type="radio" autocomplete="off" name="radio_OEZIONRPQT" value="answer"> <span>Sono combinazioni che non esistono: nessuna persona con sesso mancante ha quell'indice di Charlson</span></label><label><input type="radio" autocomplete="off" name="radio_OEZIONRPQT" value=""> <span>Sono persone con indice di Charlson mancante</span></label><label><input type="radio" autocomplete="off" name="radio_OEZIONRPQT" value=""> <span>pivot_wider() mette sempre NA nell'ultima riga</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="riempire-le-celle-vuote" class="level3">
+<h3 class="anchored" data-anchor-id="riempire-le-celle-vuote">Riempire le celle vuote</h3>
+<p><code>pivot_wider()</code> ha anche l’argomento <code>values_fill</code>, che indica con che cosa riempire le celle senza valore. Nell’area di prova ripeti il pivot in modo che le combinazioni che non esistono abbiano 0 invece di <code>NA</code>.</p>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>conteggi <span class="sc">%&gt;%</span></span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from  =</span> chrls_index,</span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> n,</span>
+<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_fill =</span> <span class="dv">0</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 5
+  sex     `0` `1-2` `3-4`  `5+`
+  &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;
+1 F      9339  3479   255    15
+2 M     24083  9201  1230   113
+3 &lt;NA&gt;      1     1     0     0</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lo stesso contenuto, con tabyl() del Modulo 4</span></span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(sex, chrls_index)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  sex     0  1-2  3-4  5+
+    F  9339 3479  255  15
+    M 24083 9201 1230 113
+ &lt;NA&gt;     1    1    0   0</code></pre>
+</div>
+</div>
+<p><br></p>
+</details>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avviso</span>Attenzione ai nomi delle nuove colonne
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Le nuove colonne prendono il nome dai valori di <code>names_from</code>: qui <code>0</code>, <code>1-2</code>, <code>3-4</code> e <code>5+</code>. Non sono nomi validi in R, perché iniziano con un numero o contengono simboli: per usarli in seguito devi scriverli tra backtick, per esempio <code>`1-2`</code>. L’argomento <code>names_prefix</code> aggiunge un prefisso a tutti i nuovi nomi (per esempio <code>"charlson_"</code>) e risolve il problema: lo userai nell’ultima sezione.</p>
+</div>
+</div>
+</section>
+<section id="i-richiami-una-riga-per-persona" class="level3">
+<h3 class="anchored" data-anchor-id="i-richiami-una-riga-per-persona">I richiami: una riga per persona</h3>
+<p>Nella sezione precedente hai visto che unire <code>richiami</code> così com’è moltiplica le righe. La soluzione è portare prima <code>richiami</code> in formato largo, con una riga per persona e una variabile per ogni richiamo.</p>
+<p>Questi risultati li teniamo. Nello script, sopra l’area di prova, crea la sezione “Richiami: una riga per persona” (<strong>Ctrl+Shift+R</strong>) e:</p>
+<ol type="1">
+<li>porta <code>richiami</code> in formato largo e salva il risultato in <code>richiami_largo</code>;</li>
+<li>unisci <code>richiami_largo</code> a <code>dati_clean</code> con <code>left_join()</code>, chiedendo a <code>{dplyr}</code> di controllare che la relazione sia uno a uno, e salva il risultato in <code>dati_richiami</code>.</li>
+</ol>
+<details>
+<summary style="text-decoration: underline; color: darkgreen;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
+</summary>
+<p><br></p>
+<p>In <code>richiami</code> i nomi delle nuove variabili sono in <code>dose</code> e i valori in <code>data_dose</code>. Nel join aggiungi <code>relationship = "one-to-one"</code>: se ora non compare nessun errore, ogni persona ha al massimo una riga in <code>richiami_largo</code>.</p>
+<p><br></p>
+</details>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Richiami: una riga per persona ------------------------------------------</span></span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>richiami_largo <span class="ot">&lt;-</span> richiami <span class="sc">%&gt;%</span></span>
+<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from  =</span> dose,</span>
+<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> data_dose)</span>
+<span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-6"><a href="#cb79-6" aria-hidden="true" tabindex="-1"></a>dati_richiami <span class="ot">&lt;-</span> dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb79-7"><a href="#cb79-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(richiami_largo, <span class="at">by =</span> <span class="st">"id_subject"</span>, <span class="at">relationship =</span> <span class="st">"one-to-one"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+</details>
+<p>Ora controlla il risultato nell’area di prova: conta le righe di <code>richiami_largo</code> e di <code>dati_richiami</code> e guarda le prime righe di <code>dati_richiami</code>, tenendo solo <code>id_subject</code>, <code>hiv_status</code>, <code>richiamo_1</code> e <code>richiamo_2</code>.</p>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(richiami_largo)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 33362</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(dati_richiami)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 47717</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>dati_richiami <span class="sc">%&gt;%</span></span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id_subject, hiv_status, richiamo_1, richiamo_2) <span class="sc">%&gt;%</span></span>
+<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  id_subject hiv_status richiamo_1 richiamo_2
+1     S26808          1       &lt;NA&gt;       &lt;NA&gt;
+2      S5046          0 2021-12-30 2022-05-12
+3      S6795          0 2021-12-19 2022-06-11
+4     S42836          0 2021-11-09       &lt;NA&gt;
+5      S8646          0 2022-02-11       &lt;NA&gt;
+6     S13773          0 2021-11-06 2022-03-09</code></pre>
+</div>
+</div>
+<p><br></p>
+</details>
+<!-- La risposta corretta è calcolata dai dati -->
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Quante righe ha <code>dati_richiami</code>?
+<div id="radio_BRYAVIDFKX" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_BRYAVIDFKX" value=""> <span>Meno righe di dati_clean, perché chi non ha richiami viene tolto</span></label><label><input type="radio" autocomplete="off" name="radio_BRYAVIDFKX" value=""> <span>Più righe di dati_clean, perché chi ha due richiami compare due volte</span></label><label><input type="radio" autocomplete="off" name="radio_BRYAVIDFKX" value="answer"> <span>Lo stesso numero di righe di dati_clean: una per persona</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+In <code>dati_richiami</code> molte persone hanno NA in <code>richiamo_2</code>. Che cosa significa?
+<div id="radio_BZUXZLPMUK" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_BZUXZLPMUK" value=""> <span>Che la data del secondo richiamo è stata persa</span></label><label><input type="radio" autocomplete="off" name="radio_BZUXZLPMUK" value="answer"> <span>Che la persona ha ricevuto un solo richiamo, o nessuno</span></label><label><input type="radio" autocomplete="off" name="radio_BZUXZLPMUK" value=""> <span>Che il secondo richiamo è stato registrato in un'altra tabella</span></label><label><input type="radio" autocomplete="off" name="radio_BZUXZLPMUK" value=""> <span>Che pivot_wider() non ha funzionato</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="da-largo-a-lungo-con-pivot_longer" class="level2">
+<h2 class="anchored" data-anchor-id="da-largo-a-lungo-con-pivot_longer">Da largo a lungo con <code>pivot_longer()</code></h2>
+<!-- Tempo stimato: 10 minuti -->
+<section id="come-funziona-pivot_longer" class="level3">
+<h3 class="anchored" data-anchor-id="come-funziona-pivot_longer">Come funziona <code>pivot_longer()</code></h3>
+<p><code>pivot_longer()</code> del pacchetto <code>{tidyr}</code> fa il contrario di <code>pivot_wider()</code>: impila più variabili in due sole variabili, una con il nome della variabile di partenza e una con il suo valore. Servono tre argomenti: <code>cols</code>, le variabili da impilare; <code>names_to</code>, il nome della variabile che conterrà i loro nomi; <code>values_to</code>, il nome della variabile che conterrà i valori:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>DATI <span class="sc">%&gt;%</span></span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols      =</span> VARIABILI_DA_IMPILARE,</span>
+<span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to  =</span> <span class="st">"NOME_PER_I_NOMI"</span>,</span>
+<span id="cb86-4"><a href="#cb86-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"NOME_PER_I_VALORI"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="il-viaggio-di-ritorno" class="level3">
+<h3 class="anchored" data-anchor-id="il-viaggio-di-ritorno">Il viaggio di ritorno</h3>
+<p>Per vederlo, fai il viaggio di ritorno: riporta <code>richiami_largo</code> al formato lungo. Nell’area di prova impila le variabili <code>richiamo_1</code> e <code>richiamo_2</code> in due variabili, <code>dose</code> (il nome del richiamo) e <code>data_dose</code> (la data), e salva il risultato in <code>richiami_lungo</code>. Poi confronta il suo numero di righe con quello di <code>richiami</code> e conta le righe per <code>dose</code>.</p>
+<details>
+<summary style="text-decoration: underline; color: darkgreen;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
+</summary>
+<p><br></p>
+<p>Le due variabili iniziano entrambe con <code>richiamo</code>: puoi selezionarle nell’argomento <code>cols</code> con <code>starts_with("richiamo")</code>, come nel Modulo 2.</p>
+<p><br></p>
+</details>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>richiami_lungo <span class="ot">&lt;-</span> richiami_largo <span class="sc">%&gt;%</span></span>
+<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols      =</span> <span class="fu">starts_with</span>(<span class="st">"richiamo"</span>),</span>
+<span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to  =</span> <span class="st">"dose"</span>,</span>
+<span id="cb87-4"><a href="#cb87-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"data_dose"</span>)</span>
+<span id="cb87-5"><a href="#cb87-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-6"><a href="#cb87-6" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(richiami_lungo)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 66724</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(richiami)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 46729</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(richiami_lungo)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+  id_subject dose       data_dose 
+  &lt;chr&gt;      &lt;chr&gt;      &lt;date&gt;    
+1 S0001      richiamo_1 2022-01-18
+2 S0001      richiamo_2 2022-06-20
+3 S0003      richiamo_1 2022-01-01
+4 S0003      richiamo_2 NA        
+5 S0004      richiamo_1 2021-10-13
+6 S0004      richiamo_2 NA        </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>richiami_lungo <span class="sc">%&gt;%</span></span>
+<span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(dose)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  dose           n
+  &lt;chr&gt;      &lt;int&gt;
+1 richiamo_1 33362
+2 richiamo_2 33362</code></pre>
+</div>
+</div>
+<p><br></p>
+</details>
+<!-- La risposta corretta è calcolata dai dati -->
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+<code>richiami_lungo</code> ha 66.724 righe, <code>richiami</code> solo 46.729. Perché?
+<div id="radio_RVJUUDLKWY" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_RVJUUDLKWY" value=""> <span>Perché pivot_longer() ha duplicato alcune persone per errore</span></label><label><input type="radio" autocomplete="off" name="radio_RVJUUDLKWY" value="answer"> <span>Perché chi ha ricevuto un solo richiamo ha ora anche una riga richiamo_2 con la data mancante</span></label><label><input type="radio" autocomplete="off" name="radio_RVJUUDLKWY" value=""> <span>Perché richiami_largo contiene anche le persone senza richiami</span></label><label><input type="radio" autocomplete="off" name="radio_RVJUUDLKWY" value=""> <span>Perché pivot_longer() aggiunge sempre una riga per ogni NA del data frame</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="togliere-le-righe-vuote" class="level3">
+<h3 class="anchored" data-anchor-id="togliere-le-righe-vuote">Togliere le righe vuote</h3>
+<p>L’argomento <code>values_drop_na = TRUE</code> di <code>pivot_longer()</code> toglie le righe in cui il valore è mancante. Nell’area di prova ripeti il pivot aggiungendo questo argomento e salva il risultato in <code>richiami_ritorno</code>. Poi controlla di nuovo il numero di righe e conta le righe per <code>dose</code>, sia in <code>richiami_ritorno</code> sia in <code>richiami</code>.</p>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>richiami_ritorno <span class="ot">&lt;-</span> richiami_largo <span class="sc">%&gt;%</span></span>
+<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols           =</span> <span class="fu">starts_with</span>(<span class="st">"richiamo"</span>),</span>
+<span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to       =</span> <span class="st">"dose"</span>,</span>
+<span id="cb95-4"><a href="#cb95-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to      =</span> <span class="st">"data_dose"</span>,</span>
+<span id="cb95-5"><a href="#cb95-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_drop_na =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb95-6"><a href="#cb95-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb95-7"><a href="#cb95-7" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(richiami_ritorno)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 46729</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(richiami)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 46729</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>richiami_ritorno <span class="sc">%&gt;%</span></span>
+<span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(dose)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  dose           n
+  &lt;chr&gt;      &lt;int&gt;
+1 richiamo_1 33362
+2 richiamo_2 13367</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a>richiami <span class="sc">%&gt;%</span></span>
+<span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(dose)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        dose     n
+1 richiamo_1 33362
+2 richiamo_2 13367</code></pre>
+</div>
+</div>
+<p><br></p>
+<p>Siamo tornati esattamente al punto di partenza: stesse righe e stessi conteggi di <code>richiami</code>.</p>
+<p><br></p>
+</details>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avviso</span>Attenzione a che cosa significa <code>NA</code> prima di toglierlo
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Qui <code>values_drop_na = TRUE</code> è la scelta giusta: l’<code>NA</code> di <code>richiamo_2</code> vuol dire “secondo richiamo non ricevuto”, e una dose non ricevuta non deve diventare una riga. Non è sempre così. In <code>dati_clean</code> l’<code>NA</code> di <code>date_event</code> vuol dire “nessuna diagnosi di COVID-19”: se portassi le date in formato lungo togliendo gli <code>NA</code>, perderesti l’informazione su chi non si è ammalato. Prima di togliere i valori mancanti chiediti sempre che cosa significano, come hai fatto con <code>na.rm</code>.</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Vuoi contare quante dosi di ciascun richiamo sono state somministrate. Quale formato è più comodo?
+<div id="radio_PLFRJEEBEN" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_PLFRJEEBEN" value=""> <span>Il formato largo, con una riga per persona</span></label><label><input type="radio" autocomplete="off" name="radio_PLFRJEEBEN" value="answer"> <span>Il formato lungo, con una riga per dose: basta contare le righe per dose</span></label><label><input type="radio" autocomplete="off" name="radio_PLFRJEEBEN" value=""> <span>È indifferente</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Il formato largo, invece, è quello giusto quando vuoi unire i richiami a <code>dati_clean</code>: una riga per persona, così il join non moltiplica le righe.</p>
+</section>
+</section>
+<section id="copertura-dei-richiami-per-regione-e-stato-hiv" class="level2">
+<h2 class="anchored" data-anchor-id="copertura-dei-richiami-per-regione-e-stato-hiv">Copertura dei richiami per regione e stato HIV</h2>
+<!-- Tempo stimato: 12 minuti -->
+<!-- Tabella pensata per l'esercitazione del modulo 9 (report con
+     Quarto): il collega la riprende dal file richiami_regione_hiv.rds. -->
+<p>Ora metti insieme quello che hai imparato. Costruisci un’ultima tabella, <code>richiami_regione_hiv</code>, con una riga per regione e, per ciascuna:</p>
+<ul>
+<li>la percentuale di persone con almeno un richiamo tra le persone senza HIV (<code>hiv_0</code>) e con HIV (<code>hiv_1</code>), arrotondata a una cifra decimale;</li>
+<li>l’area geografica e la popolazione della regione.</li>
+</ul>
+<p>Questa tabella la teniamo. Nello script, sopra l’area di prova, crea la sezione “Copertura dei richiami per regione e stato HIV” (<strong>Ctrl+Shift+R</strong>). Parti da <code>dati_richiami</code> e costruisci la catena un passaggio alla volta, eseguendo il codice dopo ogni aggiunta:</p>
+<ol type="1">
+<li>calcola la percentuale per regione e stato HIV con <code>group_by()</code> e <code>summarise()</code>;</li>
+<li>porta la tabella in formato largo con <code>pivot_wider()</code>, con una colonna per stato HIV;</li>
+<li>aggiungi area e popolazione con un <code>left_join()</code> con <code>regioni</code>.</li>
+</ol>
+<p>Infine salva la tabella nella cartella <code>output</code>, sia in formato RDS (<code>richiami_regione_hiv.rds</code>) sia in Excel (<code>richiami_regione_hiv.xlsx</code>).</p>
+<details>
+<summary style="text-decoration: underline; color: darkgreen;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
+</summary>
+<p><br></p>
+<ul>
+<li>Chi ha almeno un richiamo ha <code>richiamo_1</code> presente, quindi la percentuale è <code>mean(!is.na(richiamo_1)) * 100</code>. Chiudi il raggruppamento con <code>.groups = "drop"</code>.</li>
+<li>In <code>pivot_wider()</code> usa <code>names_from = hiv_status</code> e <code>names_prefix = "hiv_"</code>, così le colonne si chiamano <code>hiv_0</code> e <code>hiv_1</code>.</li>
+<li>Per salvare usa <code>export()</code>, come nei Moduli 3 e 4: il formato dipende dall’estensione del file.</li>
+</ul>
+<p><br></p>
+</details>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Copertura dei richiami per regione e stato HIV --------------------------</span></span>
+<span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a>richiami_regione_hiv <span class="ot">&lt;-</span> dati_richiami <span class="sc">%&gt;%</span></span>
+<span id="cb103-3"><a href="#cb103-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(region, hiv_status) <span class="sc">%&gt;%</span></span>
+<span id="cb103-4"><a href="#cb103-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">perc_richiamo =</span> <span class="fu">round</span>(<span class="fu">mean</span>(<span class="sc">!</span><span class="fu">is.na</span>(richiamo_1)) <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">1</span>),</span>
+<span id="cb103-5"><a href="#cb103-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb103-6"><a href="#cb103-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from   =</span> hiv_status,</span>
+<span id="cb103-7"><a href="#cb103-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_prefix =</span> <span class="st">"hiv_"</span>,</span>
+<span id="cb103-8"><a href="#cb103-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from  =</span> perc_richiamo) <span class="sc">%&gt;%</span></span>
+<span id="cb103-9"><a href="#cb103-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(regioni, <span class="at">by =</span> <span class="fu">join_by</span>(region <span class="sc">==</span> codice_regione))</span>
+<span id="cb103-10"><a href="#cb103-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-11"><a href="#cb103-11" aria-hidden="true" tabindex="-1"></a>richiami_regione_hiv</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 5
+  region hiv_0 hiv_1 area   popolazione
+  &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt;
+1 A       72.6  81.1 Nord       4900000
+2 B       69    77.3 Nord       6100000
+3 C       68.2  76   Centro    10200000
+4 D       57.7  65.4 Sud        5600000</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb105"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(richiami_regione_hiv, <span class="st">"output/richiami_regione_hiv.rds"</span>)</span>
+<span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(richiami_regione_hiv, <span class="st">"output/richiami_regione_hiv.xlsx"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+</details>
+<!-- La risposta corretta è calcolata dai dati -->
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+In quale regione la percentuale di persone senza HIV con almeno un richiamo è più bassa?
+<div id="radio_HHOBEPWIMK" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_HHOBEPWIMK" value=""> <span>A</span></label><label><input type="radio" autocomplete="off" name="radio_HHOBEPWIMK" value=""> <span>B</span></label><label><input type="radio" autocomplete="off" name="radio_HHOBEPWIMK" value=""> <span>C</span></label><label><input type="radio" autocomplete="off" name="radio_HHOBEPWIMK" value="answer"> <span>D</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- DIPENDE DAI DATI: presuppone che la percentuale sia più alta con
+     HIV in tutte le regioni, con una differenza simile (circa 8 punti) -->
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Confronta <code>hiv_0</code> e <code>hiv_1</code> nelle quattro regioni. Che cosa noti?
+<div id="radio_UBKKBNGVLR" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_UBKKBNGVLR" value=""> <span>Solo in alcune regioni la percentuale è più alta con HIV</span></label><label><input type="radio" autocomplete="off" name="radio_UBKKBNGVLR" value="answer"> <span>In tutte le regioni la percentuale è più alta con HIV, con una differenza simile</span></label><label><input type="radio" autocomplete="off" name="radio_UBKKBNGVLR" value=""> <span>In tutte le regioni la percentuale è più alta senza HIV</span></label><label><input type="radio" autocomplete="off" name="radio_UBKKBNGVLR" value=""> <span>La differenza cambia molto da una regione all'altra</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Ricorda che i richiami di questa esercitazione sono simulati: i numeri servono solo a fare pratica.</p>
+</section>
+<section id="lo-script-completo" class="level2">
+<h2 class="anchored" data-anchor-id="lo-script-completo">Lo script completo</h2>
+<p>Ecco come dovrebbe essere la parte del tuo script relativa a questa esercitazione. Contiene solo i risultati da tenere: i comandi che hai scritto nell’area di prova possono essere diversi e non servono per le prossime esercitazioni. Lo script completo lo trovi anche nella cartella <code>script/backup</code>, nel file <code>backup_join.R</code>.</p>
+<details>
+<summary style="text-decoration: underline; color: blue;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:blue;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere lo script completo</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Corso introduttivo a R</span></span>
+<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a><span class="do">### Obiettivo: trasformazione e integrazione dei dati (Modulo 7)</span></span>
+<span id="cb106-3"><a href="#cb106-3" aria-hidden="true" tabindex="-1"></a><span class="do">### Autore: Marco Rossi</span></span>
+<span id="cb106-4"><a href="#cb106-4" aria-hidden="true" tabindex="-1"></a><span class="do">### Data di creazione: 3 dicembre 2026</span></span>
+<span id="cb106-5"><a href="#cb106-5" aria-hidden="true" tabindex="-1"></a><span class="do">### Contatto: marco.rossi@iss.it</span></span>
+<span id="cb106-6"><a href="#cb106-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb106-7"><a href="#cb106-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb106-8"><a href="#cb106-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Caricamento pacchetti ---------------------------------------------------</span></span>
+<span id="cb106-9"><a href="#cb106-9" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(</span>
+<span id="cb106-10"><a href="#cb106-10" aria-hidden="true" tabindex="-1"></a>  rio,       <span class="co"># importazione ed esportazione dei dati</span></span>
+<span id="cb106-11"><a href="#cb106-11" aria-hidden="true" tabindex="-1"></a>  skimr,     <span class="co"># panoramica dei dati</span></span>
+<span id="cb106-12"><a href="#cb106-12" aria-hidden="true" tabindex="-1"></a>  janitor,   <span class="co"># pulizia dei dati e tabelle</span></span>
+<span id="cb106-13"><a href="#cb106-13" aria-hidden="true" tabindex="-1"></a>  lubridate, <span class="co"># lavorare con le date</span></span>
+<span id="cb106-14"><a href="#cb106-14" aria-hidden="true" tabindex="-1"></a>  epikit,    <span class="co"># classi di età</span></span>
+<span id="cb106-15"><a href="#cb106-15" aria-hidden="true" tabindex="-1"></a>  gtsummary, <span class="co"># tabelle descrittive</span></span>
+<span id="cb106-16"><a href="#cb106-16" aria-hidden="true" tabindex="-1"></a>  flextable, <span class="co"># tabelle da presentare</span></span>
+<span id="cb106-17"><a href="#cb106-17" aria-hidden="true" tabindex="-1"></a>  tidyverse  <span class="co"># gestione e visualizzazione dei dati</span></span>
+<span id="cb106-18"><a href="#cb106-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb106-19"><a href="#cb106-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb106-20"><a href="#cb106-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb106-21"><a href="#cb106-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Importazione dati -------------------------------------------------------</span></span>
+<span id="cb106-22"><a href="#cb106-22" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"dati/dati_clean.rds"</span>)</span>
+<span id="cb106-23"><a href="#cb106-23" aria-hidden="true" tabindex="-1"></a>regioni    <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"dati/regioni.rds"</span>)</span>
+<span id="cb106-24"><a href="#cb106-24" aria-hidden="true" tabindex="-1"></a>richiami   <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"dati/richiami.rds"</span>)</span>
+<span id="cb106-25"><a href="#cb106-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb106-26"><a href="#cb106-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb106-27"><a href="#cb106-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Join con le regioni -----------------------------------------------------</span></span>
+<span id="cb106-28"><a href="#cb106-28" aria-hidden="true" tabindex="-1"></a>dati_regioni <span class="ot">&lt;-</span> dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb106-29"><a href="#cb106-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(regioni, <span class="at">by =</span> <span class="fu">join_by</span>(region <span class="sc">==</span> codice_regione))</span>
+<span id="cb106-30"><a href="#cb106-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb106-31"><a href="#cb106-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb106-32"><a href="#cb106-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Richiami: una riga per persona ------------------------------------------</span></span>
+<span id="cb106-33"><a href="#cb106-33" aria-hidden="true" tabindex="-1"></a>richiami_largo <span class="ot">&lt;-</span> richiami <span class="sc">%&gt;%</span></span>
+<span id="cb106-34"><a href="#cb106-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from  =</span> dose,</span>
+<span id="cb106-35"><a href="#cb106-35" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> data_dose)</span>
+<span id="cb106-36"><a href="#cb106-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb106-37"><a href="#cb106-37" aria-hidden="true" tabindex="-1"></a>dati_richiami <span class="ot">&lt;-</span> dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb106-38"><a href="#cb106-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(richiami_largo, <span class="at">by =</span> <span class="st">"id_subject"</span>, <span class="at">relationship =</span> <span class="st">"one-to-one"</span>)</span>
+<span id="cb106-39"><a href="#cb106-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb106-40"><a href="#cb106-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb106-41"><a href="#cb106-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Copertura dei richiami per regione e stato HIV --------------------------</span></span>
+<span id="cb106-42"><a href="#cb106-42" aria-hidden="true" tabindex="-1"></a>richiami_regione_hiv <span class="ot">&lt;-</span> dati_richiami <span class="sc">%&gt;%</span></span>
+<span id="cb106-43"><a href="#cb106-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(region, hiv_status) <span class="sc">%&gt;%</span></span>
+<span id="cb106-44"><a href="#cb106-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">perc_richiamo =</span> <span class="fu">round</span>(<span class="fu">mean</span>(<span class="sc">!</span><span class="fu">is.na</span>(richiamo_1)) <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">1</span>),</span>
+<span id="cb106-45"><a href="#cb106-45" aria-hidden="true" tabindex="-1"></a>            <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb106-46"><a href="#cb106-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from   =</span> hiv_status,</span>
+<span id="cb106-47"><a href="#cb106-47" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_prefix =</span> <span class="st">"hiv_"</span>,</span>
+<span id="cb106-48"><a href="#cb106-48" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from  =</span> perc_richiamo) <span class="sc">%&gt;%</span></span>
+<span id="cb106-49"><a href="#cb106-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(regioni, <span class="at">by =</span> <span class="fu">join_by</span>(region <span class="sc">==</span> codice_regione))</span>
+<span id="cb106-50"><a href="#cb106-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb106-51"><a href="#cb106-51" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(richiami_regione_hiv, <span class="st">"output/richiami_regione_hiv.rds"</span>)</span>
+<span id="cb106-52"><a href="#cb106-52" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(richiami_regione_hiv, <span class="st">"output/richiami_regione_hiv.xlsx"</span>)</span>
+<span id="cb106-53"><a href="#cb106-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb106-54"><a href="#cb106-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb106-55"><a href="#cb106-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Area di prova -----------------------------------------------------------</span></span>
+<span id="cb106-56"><a href="#cb106-56" aria-hidden="true" tabindex="-1"></a><span class="co"># (il contenuto può variare)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+</details>
+<p>Salva lo script e avvisa il docente che hai finito. Se non hai completato l’esercizio, nella cartella <code>script/backup</code> trovi la versione corretta di <code>backup_join.R</code>.</p>
+</section>
+<section id="riepilogo" class="level2">
+<h2 class="anchored" data-anchor-id="riepilogo">Riepilogo</h2>
+<p>In questo modulo hai imparato a:</p>
+<ul>
+<li>accodare data frame con <code>bind_rows()</code>, che abbina le variabili per nome: le variabili mancanti diventano <code>NA</code> e <code>.id</code> aggiunge una variabile con l’origine di ogni riga;</li>
+<li>unire due tabelle attraverso una <strong>chiave</strong>, scrivendola con <code>by = "chiave"</code> o, se ha nomi diversi nelle due tabelle, con <code>by = join_by(chiave_sinistra == chiave_destra)</code>;</li>
+<li>scegliere il join: <code>left_join()</code> tiene tutte le righe di sinistra, <code>inner_join()</code> solo quelle con un partner, <code>right_join()</code> tutte quelle di destra, <code>full_join()</code> tutte quelle di entrambe;</li>
+<li>controllare con <code>semi_join()</code> e <code>anti_join()</code> quali righe trovano un partner e quali no;</li>
+<li>riconoscere le chiavi duplicate, che fanno moltiplicare le righe senza avvisare, e farsi avvisare da <code>{dplyr}</code> con <code>relationship = "one-to-one"</code>;</li>
+<li>controllare la chiave prima del join e il numero di righe dopo: se cambia, chiediti perché;</li>
+<li>portare i dati da lungo a largo con <code>pivot_wider()</code> (<code>names_from</code>, <code>values_from</code>, <code>values_fill</code>, <code>names_prefix</code>) e da largo a lungo con <code>pivot_longer()</code> (<code>cols</code>, <code>names_to</code>, <code>values_to</code>, <code>values_drop_na</code>);</li>
+<li>portare la tabella di destra a una riga per chiave, anche con un pivot, prima di unirla ai dati.</li>
+</ul>
+</section>
+<section id="risorse-aggiuntive" class="level2">
+<h2 class="anchored" data-anchor-id="risorse-aggiuntive">Risorse aggiuntive</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Argomento</th>
+<th>Risorsa</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Join</td>
+<td>Documentazione di <code>{dplyr}</code>: <a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="uri">https://dplyr.tidyverse.org/reference/mutate-joins.html</a></td>
+</tr>
+<tr class="even">
+<td>Pivot</td>
+<td>Documentazione di <code>{tidyr}</code>: <a href="https://tidyr.tidyverse.org/articles/pivot.html" class="uri">https://tidyr.tidyverse.org/articles/pivot.html</a></td>
+</tr>
+<tr class="odd">
+<td>Join e dati in formato ordinato</td>
+<td><em>R for Data Science</em> (2ª edizione), capitoli “Joins” e “Data tidying”: <a href="https://r4ds.hadley.nz/joins" class="uri">https://r4ds.hadley.nz/joins</a> e <a href="https://r4ds.hadley.nz/data-tidy" class="uri">https://r4ds.hadley.nz/data-tidy</a></td>
+</tr>
+<tr class="even">
+<td>Unire e cambiare forma ai dati</td>
+<td><em>The Epidemiologist R Handbook</em>, capitoli “Joining data” e “Pivoting data”: <a href="https://epirhandbook.com/" class="uri">https://epirhandbook.com/</a></td>
+</tr>
+</tbody>
+</table>
+<!-- Sezione Autori in sospeso: da definire
+
+**Autori**
+
+Autori originali: Andrea Cannone (Istituto Superiore di Sanità)\
+Fonte dei dati: dataset didattico del corso, con la struttura di una
+coorte di persone vaccinate contro COVID-19 con e senza HIV, e due
+tabelle accessorie create per questa esercitazione; esercizi ispirati
+ai moduli *Joining data* e *Pivoting data* di Applied Epi
+(<https://appliedepi.org>)\
+Adattato da: –
+-->
+
+
+</section>
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
+<script>
+
+
+
+/* update total correct if #webex-total_correct exists */
+
+update_total_correct = function() {
+
+  console.log("webex: update total_correct");
+
+
+
+  var t = document.getElementsByClassName("webex-total_correct");
+
+  for (var i = 0; i < t.length; i++) {
+
+    p = t[i].parentElement;
+
+    var correct = p.getElementsByClassName("webex-correct").length;
+
+    var solvemes = p.getElementsByClassName("webex-solveme").length;
+
+    var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
+
+    var selects = p.getElementsByClassName("webex-select").length;
+
+
+
+    t[i].innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+
+  }
+
+}
+
+
+
+/* webex-solution button toggling function */
+
+b_func = function() {
+
+  console.log("webex: toggle hide");
+
+
+
+  var cl = this.parentElement.classList;
+
+  if (cl.contains('open')) {
+
+    cl.remove("open");
+
+  } else {
+
+    cl.add("open");
+
+  }
+
+}
+
+
+
+/* check answers */
+
+check_func = function() {
+
+  console.log("webex: check answers");
+
+
+
+  var cl = this.parentElement.classList;
+
+  if (cl.contains('unchecked')) {
+
+    cl.remove("unchecked");
+
+    this.innerHTML = "Hide Answers";
+
+  } else {
+
+    cl.add("unchecked");
+
+    this.innerHTML = "Show Answers";
+
+  }
+
+}
+
+
+
+/* function for checking solveme answers */
+
+solveme_func = function(e) {
+
+  console.log("webex: check solveme");
+
+
+
+  var real_answers = JSON.parse(this.dataset.answer);
+
+  var my_answer = this.value;
+
+  var cl = this.classList;
+
+  if (cl.contains("ignorecase")) {
+
+    my_answer = my_answer.toLowerCase();
+
+  }
+
+  if (cl.contains("nospaces")) {
+
+    my_answer = my_answer.replace(/ /g, "")
+
+  }
+
+
+
+  if (my_answer == "") {
+
+    cl.remove("webex-correct");
+
+    cl.remove("webex-incorrect");
+
+  } else if (real_answers.includes(my_answer)) {
+
+    cl.add("webex-correct");
+
+    cl.remove("webex-incorrect");
+
+  } else {
+
+    cl.add("webex-incorrect");
+
+    cl.remove("webex-correct");
+
+  }
+
+
+
+  // match numeric answers within a specified tolerance
+
+  if(this.dataset.tol > 0){
+
+    var tol = JSON.parse(this.dataset.tol);
+
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+
+      cl.add("webex-correct");
+
+    } else {
+
+      cl.remove("webex-correct");
+
+    }
+
+  }
+
+
+
+  // added regex bit
+
+  if (cl.contains("regex")){
+
+    answer_regex = RegExp(real_answers.join("|"))
+
+    if (answer_regex.test(my_answer)) {
+
+      cl.add("webex-correct");
+
+    }
+
+  }
+
+
+
+  update_total_correct();
+
+}
+
+
+
+/* function for checking select answers */
+
+select_func = function(e) {
+
+  console.log("webex: check select");
+
+
+
+  var cl = this.classList
+
+
+
+  /* add style */
+
+  cl.remove("webex-incorrect");
+
+  cl.remove("webex-correct");
+
+  if (this.value == "answer") {
+
+    cl.add("webex-correct");
+
+  } else if (this.value != "blank") {
+
+    cl.add("webex-incorrect");
+
+  }
+
+
+
+  update_total_correct();
+
+}
+
+
+
+/* function for checking radiogroups answers */
+
+radiogroups_func = function(e) {
+
+  console.log("webex: check radiogroups");
+
+
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+
+  var cl = checked_button.parentElement.classList;
+
+  var labels = checked_button.parentElement.parentElement.children;
+
+
+
+  /* get rid of styles */
+
+  for (i = 0; i < labels.length; i++) {
+
+    labels[i].classList.remove("webex-incorrect");
+
+    labels[i].classList.remove("webex-correct");
+
+  }
+
+
+
+  /* add style */
+
+  if (checked_button.value == "answer") {
+
+    cl.add("webex-correct");
+
+  } else {
+
+    cl.add("webex-incorrect");
+
+  }
+
+
+
+  update_total_correct();
+
+}
+
+
+
+window.onload = function() {
+
+  console.log("webex onload");
+
+  /* set up solution buttons */
+
+  var buttons = document.getElementsByTagName("button");
+
+
+
+  for (var i = 0; i < buttons.length; i++) {
+
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+
+      buttons[i].onclick = b_func;
+
+    }
+
+  }
+
+
+
+  var check_sections = document.getElementsByClassName("webex-check");
+
+  console.log("check:", check_sections.length);
+
+  for (var i = 0; i < check_sections.length; i++) {
+
+    check_sections[i].classList.add("unchecked");
+
+
+
+    let btn = document.createElement("button");
+
+    btn.innerHTML = "Show Answers";
+
+    btn.classList.add("webex-check-button");
+
+    btn.onclick = check_func;
+
+    check_sections[i].appendChild(btn);
+
+
+
+    let spn = document.createElement("span");
+
+    spn.classList.add("webex-total_correct");
+
+    check_sections[i].appendChild(spn);
+
+  }
+
+
+
+  /* set up webex-solveme inputs */
+
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+
+
+  for (var i = 0; i < solveme.length; i++) {
+
+    /* make sure input boxes don't auto-anything */
+
+    solveme[i].setAttribute("autocomplete","off");
+
+    solveme[i].setAttribute("autocorrect", "off");
+
+    solveme[i].setAttribute("autocapitalize", "off");
+
+    solveme[i].setAttribute("spellcheck", "false");
+
+    solveme[i].value = "";
+
+
+
+    /* adjust answer for ignorecase or nospaces */
+
+    var cl = solveme[i].classList;
+
+    var real_answer = solveme[i].dataset.answer;
+
+    if (cl.contains("ignorecase")) {
+
+      real_answer = real_answer.toLowerCase();
+
+    }
+
+    if (cl.contains("nospaces")) {
+
+      real_answer = real_answer.replace(/ /g, "");
+
+    }
+
+    solveme[i].dataset.answer = real_answer;
+
+
+
+    /* attach checking function */
+
+    solveme[i].onkeyup = solveme_func;
+
+    solveme[i].onchange = solveme_func;
+
+
+
+    solveme[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+
+  }
+
+
+
+  /* set up radiogroups */
+
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+
+  for (var i = 0; i < radiogroups.length; i++) {
+
+    radiogroups[i].onchange = radiogroups_func;
+
+  }
+
+
+
+  /* set up selects */
+
+  var selects = document.getElementsByClassName("webex-select");
+
+  for (var i = 0; i < selects.length; i++) {
+
+    selects[i].onchange = select_func;
+
+    selects[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+
+  }
+
+
+
+  update_total_correct();
+
+}
+
+
+
+</script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/SaccoChiara\.github\.io\/Corso_R_ISS_2026\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Istituto Superiore di Sanità – Corso base di R, 30 novembre – 4 dicembre 2026</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="./licenza.html">
+<p>Copyright e licenza</p>
+</a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

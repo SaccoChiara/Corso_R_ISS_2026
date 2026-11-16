@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>I dati del corso – Corso base di R</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./immagini/logo_iss.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-407113646558fb1abf01df177a630d46.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+
+
+</head>
+
+<body class="floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Corso base di R</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./preparazione.html"> 
+<span class="menu-text">Prepararsi al corso</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./dati.html" aria-current="page"> 
+<span class="menu-text">I dati del corso</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-moduli" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Moduli</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-moduli">    
+        <li class="dropdown-header">Giorno 1</li>
+        <li>
+    <a class="dropdown-item" href="./modulo1_intro.html">
+ <span class="dropdown-text">Modulo 1 – Importazione ed esplorazione dei dati</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./modulo2_data_cleaning.html">
+ <span class="dropdown-text">Modulo 2 – Pulizia e preparazione dei dati</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Giorno 2</li>
+        <li>
+    <a class="dropdown-item" href="./modulo3_data_cleaning_avanzato.html">
+ <span class="dropdown-text">Modulo 3 – Pulizia dei dati: approfondimento</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./modulo4_tabelle_e_aggregazione.html">
+ <span class="dropdown-text">Modulo 4 – Tabelle e aggregazione dei dati</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Giorno 3</li>
+        <li>
+    <a class="dropdown-item" href="./modulo5_ggplot_parte1.html">
+ <span class="dropdown-text">Modulo 5 – Grafici con ggplot2 (parte 1)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./modulo6_ggplot_parte2.html">
+ <span class="dropdown-text">Modulo 6 – Grafici con ggplot2 (parte 2)</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Giorno 4</li>
+        <li>
+    <a class="dropdown-item" href="./modulo7_trasformazione_e_integrazione.html">
+ <span class="dropdown-text">Modulo 7 – Trasformazione e integrazione dei dati</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./modulo8_altri_grafici.html">
+ <span class="dropdown-text">Modulo 8 – Altri grafici</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Giorno 5</li>
+        <li>
+    <a class="dropdown-item" href="./modulo9_quarto.html">
+ <span class="dropdown-text">Modulo 9 – Report automatici con Quarto</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">In questa pagina</h2>
+   
+  <ul>
+  <li><a href="#i-file-della-cartella-dati" id="toc-i-file-della-cartella-dati" class="nav-link active" data-scroll-target="#i-file-della-cartella-dati">I file della cartella <code>dati</code></a></li>
+  <li><a href="#i-dati-della-coorte" id="toc-i-dati-della-coorte" class="nav-link" data-scroll-target="#i-dati-della-coorte">I dati della coorte</a>
+  <ul class="collapse">
+  <li><a href="#tracciato-record-di-dataset_esercitazione_raw" id="toc-tracciato-record-di-dataset_esercitazione_raw" class="nav-link" data-scroll-target="#tracciato-record-di-dataset_esercitazione_raw">Tracciato record di <code>dataset_esercitazione_raw</code></a></li>
+  </ul></li>
+  <li><a href="#i-dati-delle-regioni" id="toc-i-dati-delle-regioni" class="nav-link" data-scroll-target="#i-dati-delle-regioni">I dati delle regioni</a></li>
+  <li><a href="#i-dati-dei-richiami" id="toc-i-dati-dei-richiami" class="nav-link" data-scroll-target="#i-dati-dei-richiami">I dati dei richiami</a></li>
+  <li><a href="#i-dati-per-le-mappe" id="toc-i-dati-per-le-mappe" class="nav-link" data-scroll-target="#i-dati-per-le-mappe">I dati per le mappe</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content column-page-right" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">I dati del corso</h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-page-right">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Per tutte le esercitazioni userai gli stessi dati: una <strong>coorte di persone vaccinate contro COVID-19, con e senza HIV</strong>.</p>
+<ul>
+<li><strong>Il disegno</strong>: per ogni persona con HIV sono state scelte, di norma, due persone senza HIV con la stessa regione, lo stesso sesso, la stessa classe d’età (18-59 o 60+) e la vaccinazione nella stessa settimana (<strong>appaiamento</strong>). Ogni persona è seguita dalla vaccinazione fino alla fine del follow-up.</li>
+<li><strong>Cosa raccontano</strong>: se, dopo la vaccinazione, le persone con HIV hanno un rischio di diagnosi di COVID-19 e una risposta anticorpale diversi da quelli delle persone senza HIV.</li>
+</ul>
+<p>Per scopi didattici i dati sono stati modificati: alcune variabili sono simulate (età, regione, punteggio di Charlson, livello di anticorpi e CD4) e sono stati introdotti errori da correggere.</p>
+<section id="i-file-della-cartella-dati" class="level2">
+<h2 class="anchored" data-anchor-id="i-file-della-cartella-dati">I file della cartella <code>dati</code></h2>
+<p>Tutti i file si trovano nella cartella <code>dati</code> dei materiali del corso.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 38%">
+<col style="width: 47%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>File</th>
+<th>Contenuto</th>
+<th>Moduli</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>dataset_esercitazione_raw.csv</code> (anche <code>.xlsx</code> e <code>.rds</code>)</td>
+<td>i dati della coorte, “sporchi”, da pulire: una riga per persona</td>
+<td>1, 2, 3</td>
+</tr>
+<tr class="even">
+<td><code>dati_clean.rds</code></td>
+<td>i dati della coorte già puliti, uguali a quelli che ottieni alla fine del Modulo 3</td>
+<td>4, 5, 6, 7, 8</td>
+</tr>
+<tr class="odd">
+<td><code>regioni.rds</code></td>
+<td>i dati delle regioni: area geografica e popolazione</td>
+<td>7, 8</td>
+</tr>
+<tr class="even">
+<td><code>richiami.rds</code></td>
+<td>i dati delle dosi di richiamo del vaccino: una riga per dose</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td><code>shapefiles/regioni.shp</code> (con <code>.dbf</code>, <code>.prj</code>, <code>.shx</code>)</td>
+<td>i confini delle regioni, per le mappe</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avviso</span>Attenzione a…
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>dataset_esercitazione_raw</code> contiene <strong>errori voluti</strong>: valori scritti in modi diversi, codici al posto dei valori mancanti, date in formati diversi, righe duplicate. Trovarli e correggerli è proprio il lavoro dei Moduli 2 e 3. Nel tracciato qui sotto trovi i valori <strong>previsti</strong>, non quelli che troverai davvero nel file.</p>
+</div>
+</div>
+</section>
+<section id="i-dati-della-coorte" class="level2">
+<h2 class="anchored" data-anchor-id="i-dati-della-coorte">I dati della coorte</h2>
+<section id="tracciato-record-di-dataset_esercitazione_raw" class="level3">
+<h3 class="anchored" data-anchor-id="tracciato-record-di-dataset_esercitazione_raw">Tracciato record di <code>dataset_esercitazione_raw</code></h3>
+<p>Una riga per persona. I nomi delle variabili sono scritti volutamente in modo disordinato (spazi, maiuscole, trattini): nel Modulo 2 li sistemerai con <code>clean_names()</code>. Nella colonna “Nome dopo la pulizia” trovi il nome che la variabile ha in <code>dati_clean</code>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 14%">
+<col style="width: 11%">
+<col style="width: 37%">
+<col style="width: 22%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variabile nel file</th>
+<th>Nome dopo la pulizia</th>
+<th>Tipo</th>
+<th>Descrizione</th>
+<th>Valori previsti</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>subject ID</code></td>
+<td><code>id_subject</code></td>
+<td>testo</td>
+<td>identificativo della persona</td>
+<td>da <code>S0001</code> in poi</td>
+</tr>
+<tr class="even">
+<td><code>Group</code></td>
+<td><code>group</code></td>
+<td>numero intero</td>
+<td>gruppo di appaiamento: la persona con HIV e i suoi controlli hanno lo stesso valore</td>
+<td>numero</td>
+</tr>
+<tr class="odd">
+<td><code>REGION</code></td>
+<td><code>region</code></td>
+<td>testo</td>
+<td>regione di residenza</td>
+<td><code>A</code>, <code>B</code>, <code>C</code>, <code>D</code> (<code>E</code> e <code>F</code> vanno escluse)</td>
+</tr>
+<tr class="even">
+<td><code>Sex</code></td>
+<td><code>sex</code></td>
+<td>testo</td>
+<td>sesso</td>
+<td><code>F</code>, <code>M</code></td>
+</tr>
+<tr class="odd">
+<td><code>AGE</code></td>
+<td><code>age</code></td>
+<td>numero</td>
+<td>età alla vaccinazione, in anni</td>
+<td>18–100</td>
+</tr>
+<tr class="even">
+<td><code>Age group</code></td>
+<td><code>age_group</code></td>
+<td>testo</td>
+<td>classe d’età usata per l’appaiamento</td>
+<td><code>18-59</code>, <code>60+</code></td>
+</tr>
+<tr class="odd">
+<td><code>Charlson score</code></td>
+<td><code>chrls_score</code></td>
+<td>numero intero</td>
+<td>punteggio di comorbidità di Charlson</td>
+<td>0–7</td>
+</tr>
+<tr class="even">
+<td><code>Charlson_Index</code></td>
+<td><code>chrls_index</code></td>
+<td>testo</td>
+<td>classe del punteggio di Charlson</td>
+<td><code>0</code>, <code>1-2</code>, <code>3-4</code>, <code>5+</code></td>
+</tr>
+<tr class="odd">
+<td><code>HIV Status</code></td>
+<td><code>hiv_status</code></td>
+<td>numero</td>
+<td>stato HIV</td>
+<td><code>0</code> = senza HIV, <code>1</code> = con HIV</td>
+</tr>
+<tr class="even">
+<td><code>Vaccination Date</code></td>
+<td><code>date_vacc</code></td>
+<td>data</td>
+<td>data della vaccinazione</td>
+<td>febbraio–luglio 2021</td>
+</tr>
+<tr class="odd">
+<td><code>End_Follow-Up</code></td>
+<td><code>date_end_fu</code></td>
+<td>data</td>
+<td>data di fine follow-up</td>
+<td>2021, dopo la vaccinazione</td>
+</tr>
+<tr class="even">
+<td><code>Event  date</code></td>
+<td><code>date_event</code></td>
+<td>data</td>
+<td>data di diagnosi di COVID-19; <strong>vuota se la persona non ha avuto la diagnosi</strong></td>
+<td>tra vaccinazione e fine follow-up</td>
+</tr>
+<tr class="odd">
+<td><code>Anticorpi</code></td>
+<td><code>anticorpi</code></td>
+<td>numero</td>
+<td>livello di anticorpi anti-SARS-CoV-2 dopo la vaccinazione, in BAU/mL; sotto il limite di rilevazione (4,8 BAU/mL) vale 2,4</td>
+<td>maggiore di 0</td>
+</tr>
+<tr class="even">
+<td><code>CD4</code></td>
+<td><code>cd4</code></td>
+<td>numero intero</td>
+<td>conta dei linfociti CD4, in cellule/mm³; <strong>solo per le persone con HIV</strong>, vuota per le altre</td>
+<td>maggiore di 0</td>
+</tr>
+<tr class="odd">
+<td><code>Row number original</code></td>
+<td>—</td>
+<td>numero intero</td>
+<td>variabile di servizio, numero di riga originale</td>
+<td>si elimina nel Modulo 2</td>
+</tr>
+<tr class="even">
+<td><code>Internal Note</code></td>
+<td>—</td>
+<td>testo</td>
+<td>variabile di servizio, note interne</td>
+<td>si elimina nel Modulo 2</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="i-dati-delle-regioni" class="level2">
+<h2 class="anchored" data-anchor-id="i-dati-delle-regioni">I dati delle regioni</h2>
+<p><code>regioni.rds</code> ha una riga per regione, comprese le regioni E e F, in cui non ci sono persone della coorte.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 15%">
+<col style="width: 60%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variabile</th>
+<th>Tipo</th>
+<th>Descrizione</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>codice_regione</code></td>
+<td>testo</td>
+<td>codice della regione (da <code>A</code> a <code>F</code>), corrisponde a <code>region</code> dei dati della coorte</td>
+</tr>
+<tr class="even">
+<td><code>area</code></td>
+<td>testo</td>
+<td>area geografica: <code>Nord</code>, <code>Centro</code>, <code>Sud</code>, <code>Isole</code></td>
+</tr>
+<tr class="odd">
+<td><code>popolazione</code></td>
+<td>numero</td>
+<td>popolazione residente</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="i-dati-dei-richiami" class="level2">
+<h2 class="anchored" data-anchor-id="i-dati-dei-richiami">I dati dei richiami</h2>
+<p><code>richiami.rds</code> ha una riga per ogni dose di richiamo: chi ha ricevuto due richiami compare due volte, chi non ne ha ricevuti non compare.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 15%">
+<col style="width: 60%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variabile</th>
+<th>Tipo</th>
+<th>Descrizione</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>id_subject</code></td>
+<td>testo</td>
+<td>identificativo della persona, corrisponde a <code>id_subject</code> dei dati della coorte</td>
+</tr>
+<tr class="even">
+<td><code>dose</code></td>
+<td>testo</td>
+<td>quale richiamo: <code>richiamo_1</code>, <code>richiamo_2</code></td>
+</tr>
+<tr class="odd">
+<td><code>data_dose</code></td>
+<td>data</td>
+<td>data del richiamo</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="i-dati-per-le-mappe" class="level2">
+<h2 class="anchored" data-anchor-id="i-dati-per-le-mappe">I dati per le mappe</h2>
+<p><code>shapefiles/regioni</code> contiene i confini delle sei regioni, nel formato <em>shapefile</em>. Lo shapefile è fatto di più file con lo stesso nome ed estensioni diverse (<code>.shp</code>, <code>.dbf</code>, <code>.prj</code>, <code>.shx</code>): devono stare tutti nella stessa cartella, anche se in R ne importi solo uno, quello <code>.shp</code>.</p>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/SaccoChiara\.github\.io\/Corso_R_ISS_2026\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Istituto Superiore di Sanità – Corso base di R, 30 novembre – 4 dicembre 2026</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="./licenza.html">
+<p>Copyright e licenza</p>
+</a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

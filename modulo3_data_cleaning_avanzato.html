@@ -1,0 +1,2644 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>quarto-inputfd2c001390b352c2 – Corso base di R</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./immagini/logo_iss.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-407113646558fb1abf01df177a630d46.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nessun risultato",
+    "search-matching-documents-text": "documenti trovati",
+    "search-copy-link-title": "Copiare il link nella ricerca",
+    "search-hide-matches-text": "Nascondere i risultati aggiuntivi",
+    "search-more-match-text": "ci sono altri risultati in questo documento",
+    "search-more-matches-text": "ulteriori risultati in questo documento",
+    "search-clear-button-title": "Pulire",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancellare",
+    "search-submit-button-title": "Inviare",
+    "search-label": "Ricerca"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="webex.css">
+</head>
+
+<body class="floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Corso base di R</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ricerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Attiva/disattiva la navigazione" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./preparazione.html"> 
+<span class="menu-text">Prepararsi al corso</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./dati.html"> 
+<span class="menu-text">I dati del corso</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-moduli" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Moduli</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-moduli">    
+        <li class="dropdown-header">Giorno 1</li>
+        <li>
+    <a class="dropdown-item" href="./modulo1_intro.html">
+ <span class="dropdown-text">Modulo 1 – Importazione ed esplorazione dei dati</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./modulo2_data_cleaning.html">
+ <span class="dropdown-text">Modulo 2 – Pulizia e preparazione dei dati</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Giorno 2</li>
+        <li>
+    <a class="dropdown-item" href="./modulo3_data_cleaning_avanzato.html">
+ <span class="dropdown-text">Modulo 3 – Pulizia dei dati: approfondimento</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./modulo4_tabelle_e_aggregazione.html">
+ <span class="dropdown-text">Modulo 4 – Tabelle e aggregazione dei dati</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Giorno 3</li>
+        <li>
+    <a class="dropdown-item" href="./modulo5_ggplot_parte1.html">
+ <span class="dropdown-text">Modulo 5 – Grafici con ggplot2 (parte 1)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./modulo6_ggplot_parte2.html">
+ <span class="dropdown-text">Modulo 6 – Grafici con ggplot2 (parte 2)</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Giorno 4</li>
+        <li>
+    <a class="dropdown-item" href="./modulo7_trasformazione_e_integrazione.html">
+ <span class="dropdown-text">Modulo 7 – Trasformazione e integrazione dei dati</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./modulo8_altri_grafici.html">
+ <span class="dropdown-text">Modulo 8 – Altri grafici</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Giorno 5</li>
+        <li>
+    <a class="dropdown-item" href="./modulo9_quarto.html">
+ <span class="dropdown-text">Modulo 9 – Report automatici con Quarto</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="1">
+    <h2 id="toc-title">In questa pagina</h2>
+   
+  <ul>
+  <li><a href="#corso-introduttivo-al-software-statistico-r" id="toc-corso-introduttivo-al-software-statistico-r" class="nav-link active" data-scroll-target="#corso-introduttivo-al-software-statistico-r"><strong>Corso introduttivo al software statistico R</strong></a></li>
+  <li><a href="#modulo-03-pulizia-dei-dati-approfondimento" id="toc-modulo-03-pulizia-dei-dati-approfondimento" class="nav-link" data-scroll-target="#modulo-03-pulizia-dei-dati-approfondimento">Modulo 03 Pulizia dei dati: approfondimento</a>
+  <ul>
+  <li><a href="#obiettivi-del-modulo" id="toc-obiettivi-del-modulo" class="nav-link" data-scroll-target="#obiettivi-del-modulo">Obiettivi del modulo</a></li>
+  <li><a href="#formato-dellesercizio" id="toc-formato-dellesercizio" class="nav-link" data-scroll-target="#formato-dellesercizio">Formato dell’esercizio</a></li>
+  <li><a href="#preparazione" id="toc-preparazione" class="nav-link" data-scroll-target="#preparazione">Preparazione</a></li>
+  <li><a href="#iniziamo" id="toc-iniziamo" class="nav-link" data-scroll-target="#iniziamo">Iniziamo!</a></li>
+  <li><a href="#il-punto-di-partenza" id="toc-il-punto-di-partenza" class="nav-link" data-scroll-target="#il-punto-di-partenza">Il punto di partenza</a>
+  <ul class="collapse">
+  <li><a href="#i-dati" id="toc-i-dati" class="nav-link" data-scroll-target="#i-dati">I dati</a></li>
+  <li><a href="#larea-di-prova" id="toc-larea-di-prova" class="nav-link" data-scroll-target="#larea-di-prova">L’area di prova</a></li>
+  <li><a href="#cosa-resta-da-sistemare" id="toc-cosa-resta-da-sistemare" class="nav-link" data-scroll-target="#cosa-resta-da-sistemare">Cosa resta da sistemare</a></li>
+  </ul></li>
+  <li><a href="#gli-operatori-logici" id="toc-gli-operatori-logici" class="nav-link" data-scroll-target="#gli-operatori-logici">Gli operatori logici</a>
+  <ul class="collapse">
+  <li><a href="#operatori-di-confronto" id="toc-operatori-di-confronto" class="nav-link" data-scroll-target="#operatori-di-confronto">Operatori di confronto</a></li>
+  <li><a href="#operatori-logici" id="toc-operatori-logici" class="nav-link" data-scroll-target="#operatori-logici">Operatori logici</a></li>
+  </ul></li>
+  <li><a href="#creare-una-variabile-con-ifelse" id="toc-creare-una-variabile-con-ifelse" class="nav-link" data-scroll-target="#creare-una-variabile-con-ifelse">Creare una variabile con <code>ifelse()</code></a>
+  <ul class="collapse">
+  <li><a href="#la-variabile-evento" id="toc-la-variabile-evento" class="nav-link" data-scroll-target="#la-variabile-evento">La variabile evento</a></li>
+  <li><a href="#aggiungi-alla-catena-di-pulizia" id="toc-aggiungi-alla-catena-di-pulizia" class="nav-link" data-scroll-target="#aggiungi-alla-catena-di-pulizia">Aggiungi alla catena di pulizia</a></li>
+  </ul></li>
+  <li><a href="#ricodificare-con-case_when" id="toc-ricodificare-con-case_when" class="nav-link" data-scroll-target="#ricodificare-con-case_when">Ricodificare con <code>case_when()</code></a>
+  <ul class="collapse">
+  <li><a href="#come-funziona-case_when" id="toc-come-funziona-case_when" class="nav-link" data-scroll-target="#come-funziona-case_when">Come funziona <code>case_when()</code></a></li>
+  <li><a href="#ricodificare-il-sesso" id="toc-ricodificare-il-sesso" class="nav-link" data-scroll-target="#ricodificare-il-sesso">Ricodificare il sesso</a></li>
+  <li><a href="#ricodificare-la-regione" id="toc-ricodificare-la-regione" class="nav-link" data-scroll-target="#ricodificare-la-regione">Ricodificare la regione</a></li>
+  <li><a href="#ricodificare-lo-stato-hiv" id="toc-ricodificare-lo-stato-hiv" class="nav-link" data-scroll-target="#ricodificare-lo-stato-hiv">Ricodificare lo stato HIV</a></li>
+  <li><a href="#le-etichette-dello-stato-hiv-factor" id="toc-le-etichette-dello-stato-hiv-factor" class="nav-link" data-scroll-target="#le-etichette-dello-stato-hiv-factor">Le etichette dello stato HIV: <code>factor()</code></a></li>
+  <li><a href="#togliere-gli-spazi-str_remove_all" id="toc-togliere-gli-spazi-str_remove_all" class="nav-link" data-scroll-target="#togliere-gli-spazi-str_remove_all">Togliere gli spazi: <code>str_remove_all()</code></a></li>
+  </ul></li>
+  <li><a href="#controllare-la-coerenza-tra-variabili" id="toc-controllare-la-coerenza-tra-variabili" class="nav-link" data-scroll-target="#controllare-la-coerenza-tra-variabili">Controllare la coerenza tra variabili</a>
+  <ul class="collapse">
+  <li><a href="#gli-eventi-fuori-dal-follow-up" id="toc-gli-eventi-fuori-dal-follow-up" class="nav-link" data-scroll-target="#gli-eventi-fuori-dal-follow-up">Gli eventi fuori dal follow-up</a></li>
+  <li><a href="#aggiungi-alla-catena-di-pulizia-1" id="toc-aggiungi-alla-catena-di-pulizia-1" class="nav-link" data-scroll-target="#aggiungi-alla-catena-di-pulizia-1">Aggiungi alla catena di pulizia</a></li>
+  </ul></li>
+  <li><a href="#classi-di-età" id="toc-classi-di-età" class="nav-link" data-scroll-target="#classi-di-età">Classi di età</a>
+  <ul class="collapse">
+  <li><a href="#creare-le-classi-con-age_categories" id="toc-creare-le-classi-con-age_categories" class="nav-link" data-scroll-target="#creare-le-classi-con-age_categories">Creare le classi con <code>age_categories()</code></a></li>
+  <li><a href="#aggiungi-alla-catena-di-pulizia-2" id="toc-aggiungi-alla-catena-di-pulizia-2" class="nav-link" data-scroll-target="#aggiungi-alla-catena-di-pulizia-2">Aggiungi alla catena di pulizia</a></li>
+  <li><a href="#età-e-classe-di-età-sono-coerenti" id="toc-età-e-classe-di-età-sono-coerenti" class="nav-link" data-scroll-target="#età-e-classe-di-età-sono-coerenti">Età e classe di età sono coerenti?</a></li>
+  <li><a href="#dare-la-priorità-a-uninformazione-coalesce" id="toc-dare-la-priorità-a-uninformazione-coalesce" class="nav-link" data-scroll-target="#dare-la-priorità-a-uninformazione-coalesce">Dare la priorità a un’informazione: <code>coalesce()</code></a></li>
+  <li><a href="#aggiungi-alla-catena-di-pulizia-3" id="toc-aggiungi-alla-catena-di-pulizia-3" class="nav-link" data-scroll-target="#aggiungi-alla-catena-di-pulizia-3">Aggiungi alla catena di pulizia</a></li>
+  </ul></li>
+  <li><a href="#differenze-tra-date-la-durata-del-follow-up" id="toc-differenze-tra-date-la-durata-del-follow-up" class="nav-link" data-scroll-target="#differenze-tra-date-la-durata-del-follow-up">Differenze tra date: la durata del follow-up</a>
+  <ul class="collapse">
+  <li><a href="#aggiungi-alla-catena-di-pulizia-4" id="toc-aggiungi-alla-catena-di-pulizia-4" class="nav-link" data-scroll-target="#aggiungi-alla-catena-di-pulizia-4">Aggiungi alla catena di pulizia</a></li>
+  </ul></li>
+  <li><a href="#filtrare-le-righe" id="toc-filtrare-le-righe" class="nav-link" data-scroll-target="#filtrare-le-righe">Filtrare le righe</a>
+  <ul class="collapse">
+  <li><a href="#la-funzione-filter" id="toc-la-funzione-filter" class="nav-link" data-scroll-target="#la-funzione-filter">La funzione <code>filter()</code></a></li>
+  <li><a href="#escludere-le-regioni-fuori-studio" id="toc-escludere-le-regioni-fuori-studio" class="nav-link" data-scroll-target="#escludere-le-regioni-fuori-studio">Escludere le regioni fuori studio</a></li>
+  <li><a href="#due-condizioni-insieme" id="toc-due-condizioni-insieme" class="nav-link" data-scroll-target="#due-condizioni-insieme">Due condizioni insieme: <code>&amp;</code></a></li>
+  <li><a href="#escludere-le-date-incoerenti" id="toc-escludere-le-date-incoerenti" class="nav-link" data-scroll-target="#escludere-le-date-incoerenti">Escludere le date incoerenti</a></li>
+  <li><a href="#aggiungi-alla-catena-di-pulizia-5" id="toc-aggiungi-alla-catena-di-pulizia-5" class="nav-link" data-scroll-target="#aggiungi-alla-catena-di-pulizia-5">Aggiungi alla catena di pulizia</a></li>
+  </ul></li>
+  <li><a href="#riordinare-le-variabili" id="toc-riordinare-le-variabili" class="nav-link" data-scroll-target="#riordinare-le-variabili">Riordinare le variabili</a>
+  <ul class="collapse">
+  <li><a href="#aggiungi-alla-catena-di-pulizia-6" id="toc-aggiungi-alla-catena-di-pulizia-6" class="nav-link" data-scroll-target="#aggiungi-alla-catena-di-pulizia-6">Aggiungi alla catena di pulizia</a></li>
+  </ul></li>
+  <li><a href="#verifica-finale" id="toc-verifica-finale" class="nav-link" data-scroll-target="#verifica-finale">Verifica finale</a></li>
+  <li><a href="#salvare-i-dati-puliti" id="toc-salvare-i-dati-puliti" class="nav-link" data-scroll-target="#salvare-i-dati-puliti">Salvare i dati puliti</a>
+  <ul class="collapse">
+  <li><a href="#aggiungi-allo-script" id="toc-aggiungi-allo-script" class="nav-link" data-scroll-target="#aggiungi-allo-script">Aggiungi allo script</a></li>
+  </ul></li>
+  <li><a href="#approfondimenti" id="toc-approfondimenti" class="nav-link" data-scroll-target="#approfondimenti">Approfondimenti</a>
+  <ul class="collapse">
+  <li><a href="#focus-sugli-ultraottantenni-con-hiv" id="toc-focus-sugli-ultraottantenni-con-hiv" class="nav-link" data-scroll-target="#focus-sugli-ultraottantenni-con-hiv">Focus sugli ultraottantenni con HIV</a></li>
+  <li><a href="#cercare-un-testo-str_detect" id="toc-cercare-un-testo-str_detect" class="nav-link" data-scroll-target="#cercare-un-testo-str_detect">Cercare un testo: <code>str_detect()</code></a></li>
+  </ul></li>
+  <li><a href="#lo-script-completo" id="toc-lo-script-completo" class="nav-link" data-scroll-target="#lo-script-completo">Lo script completo</a></li>
+  <li><a href="#riepilogo" id="toc-riepilogo" class="nav-link" data-scroll-target="#riepilogo">Riepilogo</a></li>
+  <li><a href="#risorse-aggiuntive" id="toc-risorse-aggiuntive" class="nav-link" data-scroll-target="#risorse-aggiuntive">Risorse aggiuntive</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><p><img src="immagini/logo_dmi.png" class="img-fluid" style="width:3in"></p></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="corso-introduttivo-al-software-statistico-r" class="level1">
+<h1><strong>Corso introduttivo al software statistico R</strong></h1>
+</section>
+<section id="modulo-03-pulizia-dei-dati-approfondimento" class="level1">
+<h1>Modulo 03 Pulizia dei dati: approfondimento</h1>
+<section id="obiettivi-del-modulo" class="level2">
+<h2 class="anchored" data-anchor-id="obiettivi-del-modulo">Obiettivi del modulo</h2>
+<ul>
+<li>Usare gli operatori logici per costruire condizioni sulle righe</li>
+<li>Ricodificare le modalità delle variabili categoriche con <code>ifelse()</code> e <code>case_when()</code></li>
+<li>Dare etichette leggibili a una variabile con <code>factor()</code></li>
+<li>Creare nuove variabili: classi di età, durata del follow-up, variabile evento</li>
+<li>Filtrare le righe in base a criteri logici, gestendo i valori mancanti</li>
+<li>Riordinare le variabili e salvare i dati puliti in formato RDS</li>
+</ul>
+</section>
+<section id="formato-dellesercizio" class="level2">
+<h2 class="anchored" data-anchor-id="formato-dellesercizio">Formato dell’esercizio</h2>
+<!-- Il paragrafo sotto è fisso: -->
+<p>Questo esercizio è progettato per essere una guida e per aiutarti a completarlo in autonomia. Ti consigliamo fortemente di provare a eseguire il codice prima di guardare le soluzioni. Per aiutarti, abbiamo incluso in alcuni punti dei suggerimenti che possono indirizzarti nella direzione giusta. Li troverai così:</p>
+<!-- ISTRUZIONI: Questo blocco "Suggerimento" va inserito ogni volta 
+     che vuoi dare un aiuto parziale allo studente senza svelare 
+     subito la soluzione (es. il nome di una funzione da usare, o un 
+     argomento a cui prestare attenzione). Copia l'intero blocco 
+     <details>...</details> e modifica solo il testo dopo </br>. -->
+<details>
+<summary style="text-decoration: underline; color: darkgreen;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
+</summary>
+<p><br></p>
+<p>Questo è un suggerimento.</p>
+<p><br></p>
+</details>
+<p>Le soluzioni, invece, avranno questo aspetto:</p>
+<!-- ISTRUZIONI: Questo blocco "Soluzione" va inserito alla fine di 
+     ogni esercizio (o sotto-punto) e deve contenere codice R 
+     eseguibile e commentato. Copia l'intero blocco 
+     <details>...</details> e sostituisci il codice di esempio. Se la 
+     soluzione richiede più passaggi, aggiungi commenti # nel codice 
+     per spiegare ogni passaggio. Ricorda: niente etichette (label) 
+     nei chunk, come indicato nelle istruzioni generali. -->
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"Questo è un esempio di soluzione"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Questo è un esempio di soluzione"</code></pre>
+</div>
+</div>
+<p><br></p>
+</details>
+<p>Durante l’esercizio troverai anche domande a risposta multipla, che servono a verificare se stai seguendo correttamente lo svolgimento. Le domande saranno simili a questa:</p>
+<!-- ISTRUZIONI: Questo blocco "Domanda" usa il pacchetto 
+     `{webexercises}` per creare quiz a risposta multipla 
+     auto-correttivi. Copia l'intero blocco ::: {.callout-note}...::: 
+     e:
+       - scrivi le opzioni di risposta nel vettore "opts"
+       - indica la risposta corretta con answer = "..."
+       - scrivi il testo della domanda dentro cat("Domanda: ...")
+     Inserisci una domanda ogni volta che vuoi far verificare allo 
+     studente di aver capito un concetto chiave prima di proseguire. -->
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Domanda di esempio: quanto fa 2 + 2?
+<div id="radio_HKLQLROZKP" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_HKLQLROZKP" value=""> <span>2</span></label><label><input type="radio" autocomplete="off" name="radio_HKLQLROZKP" value=""> <span>5</span></label><label><input type="radio" autocomplete="off" name="radio_HKLQLROZKP" value="answer"> <span>4</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Lungo il modulo troverai anche due tipi di riquadri colorati. I riquadri <strong>gialli</strong> segnalano errori frequenti o punti in cui R si comporta in modo inatteso: leggili sempre, perché possono farti risparmiare tempo.</p>
+<!-- ISTRUZIONI: Il box giallo "Attenzione a …" va usato per avvisi
+     importanti: errori comuni, comportamenti di R che possono
+     sorprendere, passaggi da non saltare. Il titolo inizia sempre con
+     "Attenzione a" (es. "Attenzione ai nomi con spazi"). Copia
+     l'intero blocco ::: {.callout-warning ...} ... ::: e modifica
+     solo titolo e testo. -->
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avviso</span>Attenzione a …
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Questo è un esempio di riquadro di attenzione.</p>
+</div>
+</div>
+<p>I riquadri <strong>verdi</strong> contengono invece approfondimenti facoltativi, per chi vuole andare un po’ oltre: puoi saltarli senza perdere il filo dell’esercizio e tornarci in un secondo momento.</p>
+<!-- ISTRUZIONI: Il box verde "Approfondimento: …" va usato per
+     contenuti facoltativi: funzioni alternative, scorciatoie, casi
+     più avanzati. Lo studente deve poter completare l'esercizio anche
+     senza leggerlo. Il titolo inizia sempre con "Approfondimento:"
+     (es. "Approfondimento: gestire le date in R"). Copia l'intero
+     blocco ::: {.callout-tip ...} ... ::: e modifica solo titolo e
+     testo. -->
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Consiglio</span>Approfondimento: …
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Questo è un esempio di riquadro di approfondimento.</p>
+</div>
+</div>
+<p>Ti consigliamo di provare comunque a rispondere e a eseguire il codice da solo prima di consultare suggerimenti e soluzioni: è così che si impara davvero a usare R.</p>
+</section>
+<section id="preparazione" class="level2">
+<h2 class="anchored" data-anchor-id="preparazione">Preparazione</h2>
+<p>Prima di iniziare, apri il progetto R del corso e, dalla cartella <code>script</code>, apri lo script <code>pulizia_dati.R</code>, su cui hai lavorato ieri nei Moduli 1 e 2. Per ricreare gli oggetti di ieri, esegui tutto il codice che sta sopra l’area di prova: metti il cursore sulla riga del titolo “Area di prova” e premi <strong>Ctrl + Alt + B</strong> (<strong>Cmd + Option + B</strong> su Mac). R carica i pacchetti, importa i dati grezzi e ricrea <code>dati</code>, il dataset pulito nel Modulo 2.</p>
+<p>Se lo script dà errori che non riesci a risolvere, nella cartella <code>script/backup</code> trovi la versione corretta di <code>backup_pulizia_dati.R</code>: contiene anche le soluzioni di oggi, quindi copia nel tuo script solo la parte dei Moduli 1 e 2.</p>
+<p>Poi, <strong>sopra</strong> la sezione “Area di prova”, crea una nuova sezione chiamata “Modulo 3 - Pulizia dei dati: approfondimento” con la combinazione di tasti <strong>Ctrl + Shift + R</strong> (<strong>Cmd + Shift + R</strong> su Mac): è qui che scriverai il codice dell’esercitazione di oggi. Con questo modulo lo script <code>pulizia_dati.R</code> sarà completo. Ricordati di salvare spesso il lavoro (<strong>Ctrl + S</strong>, oppure <strong>Cmd + S</strong> su Mac).</p>
+</section>
+<section id="iniziamo" class="level2">
+<h2 class="anchored" data-anchor-id="iniziamo">Iniziamo!</h2>
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:darkgreen;overflow:visible;position:relative;"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"></path></svg> <strong>Da qui comincia l’esercitazione.</strong></p>
+</section>
+<section id="il-punto-di-partenza" class="level2">
+<h2 class="anchored" data-anchor-id="il-punto-di-partenza">Il punto di partenza</h2>
+<section id="i-dati" class="level3">
+<h3 class="anchored" data-anchor-id="i-dati">I dati</h3>
+<p>Ripartiamo da <code>dati</code>, il dataset che hai pulito ieri nel Modulo 2 e che hai appena ricreato eseguendo lo script. Controlla nel pannello <strong>Environment</strong> che ci sia e, nell’area di prova, controlla con <code>class()</code> la classe della variabile <code>date_vacc</code>.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Qual è la classe di date_vacc?
+<div id="radio_YBFVGQVKCA" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_YBFVGQVKCA" value=""> <span>character, perché le date vanno sempre riconvertite</span></label><label><input type="radio" autocomplete="off" name="radio_YBFVGQVKCA" value="answer"> <span>Date, perché nel Modulo 2 l'hai convertita con le funzioni di {lubridate}</span></label><label><input type="radio" autocomplete="off" name="radio_YBFVGQVKCA" value=""> <span>numeric</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="larea-di-prova" class="level3">
+<h3 class="anchored" data-anchor-id="larea-di-prova">L’area di prova</h3>
+<p>Userai di nuovo l’area di prova che hai creato nel Modulo 2, in fondo allo script. Le sezioni che creerai più avanti vanno inserite sopra l’area di prova, così che resti sempre l’ultima sezione dello script.</p>
+<p>In questo modulo la userai spesso: prima di aggiungere un comando alla catena di pulizia, provalo qui e guarda il risultato. Solo quando il risultato è quello che ti aspetti, sposta il comando nella catena.</p>
+</section>
+<section id="cosa-resta-da-sistemare" class="level3">
+<h3 class="anchored" data-anchor-id="cosa-resta-da-sistemare">Cosa resta da sistemare</h3>
+<p>Nel Modulo 2 hai standardizzato i nomi delle variabili, rimosso le righe duplicate, codificato i valori mancanti come <code>NA</code> e convertito età e date nella classe corretta. Restano però alcuni problemi. Esegui questi comandi nell’area di prova e guarda i risultati nella console:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dati <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(region)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>dati <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(sex)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>dati <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(age_group)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>dati <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(hiv_status)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Troverai:</p>
+<ul>
+<li>modalità scritte in modi diversi:
+<ul>
+<li>variabile <code>region</code>: <code>"a"</code> e <code>"Region A"</code> invece di <code>"A"</code>, <code>"Region D"</code> invece di <code>"D"</code>, <code>"f"</code> invece di <code>"F"</code>;</li>
+<li>variabile <code>sex</code>: <code>"m"</code> invece di <code>"M"</code>; <code>"f"</code>, <code>"Female"</code> e <code>"FEMALE"</code> invece di <code>"F"</code>;</li>
+<li>variabile <code>age_group</code>: <code>"60 +"</code> invece di <code>"60+"</code>;</li>
+<li>variabile <code>hiv_status</code>: <code>"Yes"</code> invece di <code>"1"</code>;</li>
+</ul></li>
+<li>le regioni E ed F, che dovranno essere eliminate perché non fanno parte dello studio.</li>
+</ul>
+<p>In questo modulo sistemerai questi problemi, creerai alcune nuove variabili utili per le analisi e salverai il dataset finale.</p>
+<p>Costruirai una nuova catena di pulizia che parte da <code>dati</code> appena importati e crea un nuovo oggetto, <code>dati_clean</code>.</p>
+</section>
+</section>
+<section id="gli-operatori-logici" class="level2">
+<h2 class="anchored" data-anchor-id="gli-operatori-logici">Gli operatori logici</h2>
+<p>Molte delle operazioni di questo modulo si basano su <strong>condizioni logiche</strong>: confronti che, per ogni riga, restituiscono <code>TRUE</code> (vero) o <code>FALSE</code> (falso). Non serve impararli a memoria, ma è utile averli sotto mano.</p>
+<section id="operatori-di-confronto" class="level3">
+<h3 class="anchored" data-anchor-id="operatori-di-confronto">Operatori di confronto</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 24%">
+<col style="width: 24%">
+<col style="width: 24%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Significato</th>
+<th>Operatore</th>
+<th>Esempio</th>
+<th>Risultato</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Uguale a</td>
+<td><code>==</code></td>
+<td><code>"A" == "a"</code></td>
+<td><code>FALSE</code> (R distingue maiuscole e minuscole)</td>
+</tr>
+<tr class="even">
+<td>Diverso da</td>
+<td><code>!=</code></td>
+<td><code>2 != 0</code></td>
+<td><code>TRUE</code></td>
+</tr>
+<tr class="odd">
+<td>Maggiore di</td>
+<td><code>&gt;</code></td>
+<td><code>4 &gt; 2</code></td>
+<td><code>TRUE</code></td>
+</tr>
+<tr class="even">
+<td>Minore di</td>
+<td><code>&lt;</code></td>
+<td><code>4 &lt; 2</code></td>
+<td><code>FALSE</code></td>
+</tr>
+<tr class="odd">
+<td>Maggiore o uguale a</td>
+<td><code>&gt;=</code></td>
+<td><code>6 &gt;= 4</code></td>
+<td><code>TRUE</code></td>
+</tr>
+<tr class="even">
+<td>Minore o uguale a</td>
+<td><code>&lt;=</code></td>
+<td><code>6 &lt;= 4</code></td>
+<td><code>FALSE</code></td>
+</tr>
+<tr class="odd">
+<td>Il valore è mancante</td>
+<td><code>is.na()</code></td>
+<td><code>is.na(7)</code></td>
+<td><code>FALSE</code></td>
+</tr>
+<tr class="even">
+<td>Il valore non è mancante</td>
+<td><code>!is.na()</code></td>
+<td><code>!is.na(7)</code></td>
+<td><code>TRUE</code></td>
+</tr>
+<tr class="odd">
+<td>Il valore è in un elenco</td>
+<td><code>%in%</code></td>
+<td><code>"B" %in% c("A", "B")</code></td>
+<td><code>TRUE</code></td>
+</tr>
+</tbody>
+</table>
+<p>Attenzione alla differenza tra <code>==</code> e <code>=</code>:</p>
+<ul>
+<li><code>==</code> (doppio uguale) <strong>chiede</strong> se il valore a sinistra è uguale a quello a destra, e la risposta è <code>TRUE</code> o <code>FALSE</code>: <code>age == 60</code> chiede “in questa riga l’età è uguale a 60?”;</li>
+<li><code>=</code> (uguale singolo) <strong>assegna</strong> un valore, per esempio a un argomento di una funzione: in <code>range(age, na.rm = TRUE)</code> imposta l’argomento <code>na.rm</code> a <code>TRUE</code>.</li>
+</ul>
+</section>
+<section id="operatori-logici" class="level3">
+<h3 class="anchored" data-anchor-id="operatori-logici">Operatori logici</h3>
+<p>Gli operatori logici collegano più condizioni:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 38%">
+<col style="width: 33%">
+<col style="width: 27%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Significato</th>
+<th>Operatore</th>
+<th>Esempio</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>E (entrambe vere)</td>
+<td><code>&amp;</code></td>
+<td><code>age &gt;= 60 &amp; sex == "F"</code></td>
+</tr>
+<tr class="even">
+<td>O (almeno una vera)</td>
+<td><code>|</code> (barra verticale)</td>
+<td><code>region == "E" | region == "F"</code></td>
+</tr>
+<tr class="odd">
+<td>Raggruppare le condizioni</td>
+<td><code>( )</code></td>
+<td><code>(age &gt;= 60 | hiv_status == 1) &amp; sex == "F"</code></td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Cosa restituisce “F” == “f”?
+<div id="radio_OPLRVRBCGR" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_OPLRVRBCGR" value=""> <span>TRUE</span></label><label><input type="radio" autocomplete="off" name="radio_OPLRVRBCGR" value="answer"> <span>FALSE</span></label><label><input type="radio" autocomplete="off" name="radio_OPLRVRBCGR" value=""> <span>Un errore</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="creare-una-variabile-con-ifelse" class="level2">
+<h2 class="anchored" data-anchor-id="creare-una-variabile-con-ifelse">Creare una variabile con <code>ifelse()</code></h2>
+<section id="la-variabile-evento" class="level3">
+<h3 class="anchored" data-anchor-id="la-variabile-evento">La variabile evento</h3>
+<p>Per le analisi della coorte ci servirà una variabile che indichi se il soggetto ha avuto l’evento (la diagnosi di COVID-19) durante il follow-up: <code>1</code> se sì, <code>0</code> se no. Come hai visto nel Modulo 2, in <code>date_event</code> il valore <code>NA</code> significa proprio che l’evento non c’è stato.</p>
+<p>Quando la regola ha solo due esiti possibili si usa la funzione <code>ifelse()</code>, dentro <code>mutate()</code>. La sintassi è:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(CONDIZIONE, VALORE SE VERA, VALORE SE FALSA)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Per ogni riga, <code>ifelse()</code> controlla la condizione: se è vera restituisce il primo valore, altrimenti il secondo. Per la variabile evento la regola è: “se <code>date_event</code> è mancante, allora <code>0</code>, altrimenti <code>1</code>”.</p>
+</section>
+<section id="aggiungi-alla-catena-di-pulizia" class="level3">
+<h3 class="anchored" data-anchor-id="aggiungi-alla-catena-di-pulizia">Aggiungi alla catena di pulizia</h3>
+<p>Inizia la nuova catena: parti da <code>dati</code>, aggiungi un <code>mutate()</code> che crei la variabile <code>event</code> con <code>ifelse()</code> e salva il risultato in <code>dati_clean</code>. Poi controlla il risultato con <code>tabyl()</code> nell’area di prova.</p>
+<details>
+<summary style="text-decoration: underline; color: darkgreen;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
+</summary>
+<p><br></p>
+<p>La condizione da usare dentro <code>ifelse()</code> è <code>is.na(date_event)</code>.</p>
+<p><br></p>
+</details>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<p>La catena di pulizia inizia così:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="ot">&lt;-</span> dati <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># variabile evento: 1 se c'è una data di evento, 0 altrimenti</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">event =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(date_event), <span class="dv">0</span>, <span class="dv">1</span>))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+</details>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Con dati_clean %&gt;% tabyl(event), quale percentuale di soggetti ha avuto l’evento?
+<div id="radio_EAVCDQWUUH" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_EAVCDQWUUH" value=""> <span>Circa il 79%</span></label><label><input type="radio" autocomplete="off" name="radio_EAVCDQWUUH" value="answer"> <span>Circa il 21%</span></label><label><input type="radio" autocomplete="off" name="radio_EAVCDQWUUH" value=""> <span>Circa il 50%</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Consiglio</span>Approfondimento: altre funzioni simili
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>if_else()</code> del pacchetto <code>{dplyr}</code> funziona come <code>ifelse()</code> ma è più rigorosa sulle classi dei valori: è particolarmente utile con le date. <code>replace()</code> è una scorciatoia per sostituire i valori che soddisfano una condizione. Puoi leggerne di più nell’Epi R Handbook (vedi le Risorse aggiuntive).</p>
+</div>
+</div>
+</section>
+</section>
+<section id="ricodificare-con-case_when" class="level2">
+<h2 class="anchored" data-anchor-id="ricodificare-con-case_when">Ricodificare con <code>case_when()</code></h2>
+<section id="come-funziona-case_when" class="level3">
+<h3 class="anchored" data-anchor-id="come-funziona-case_when">Come funziona <code>case_when()</code></h3>
+<p>Quando le regole sono più di due, invece di scrivere tanti <code>ifelse()</code> uno dentro l’altro si usa <code>case_when()</code> del pacchetto <code>{dplyr}</code>. Ecco come ricodificare la variabile <code>sex</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">sex =</span> <span class="fu">case_when</span>(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  sex <span class="sc">==</span> <span class="st">"m"</span>                          <span class="sc">~</span> <span class="st">"M"</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  sex <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"f"</span>, <span class="st">"Female"</span>, <span class="st">"FEMALE"</span>) <span class="sc">~</span> <span class="st">"F"</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="cn">TRUE</span>                                <span class="sc">~</span> sex))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Vediamo come è fatto il comando:</p>
+<ul>
+<li><code>case_when()</code> si scrive dentro <code>mutate()</code>: a sinistra dell’uguale c’è la variabile da creare o modificare (<code>sex</code>), a destra <code>case_when()</code>;</li>
+<li>dentro <code>case_when()</code> ci sono più <strong>regole</strong>, separate da virgole e scritte una per riga;</li>
+<li>ogni regola ha una <strong>condizione logica</strong> a sinistra della tilde (<code>~</code>) e il <strong>valore da assegnare</strong> a destra;</li>
+<li>su Windows con tastiera italiana la tilde si scrive tenendo premuto <strong>Alt</strong> e digitando <strong>126</strong> sul tastierino numerico; su Mac con <strong>Alt + 5</strong>.</li>
+</ul>
+<p>Come vengono assegnati i valori:</p>
+<ul>
+<li>per ogni riga, <code>case_when()</code> controlla le regole <strong>dall’alto verso il basso</strong> e applica la <strong>prima</strong> la cui condizione è vera; le regole successive non vengono più guardate. Per questo l’ordine delle regole è importante: di solito si va dalle più specifiche alle più generali;</li>
+<li>se nessuna condizione è vera, la riga riceve <code>NA</code>. Per evitarlo si aggiunge come ultima regola <code>TRUE ~ ...</code>, che vale per “tutti gli altri casi”: qui <code>TRUE ~ sex</code> lascia il valore com’era;</li>
+<li>tutti i valori a destra della tilde devono essere della <strong>stessa classe</strong> (tutti testo, oppure tutti numeri, ecc.).</li>
+</ul>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+In case_when(), cosa succede a una riga che non soddisfa nessuna condizione, se manca l’ultima regola TRUE ~ …?
+<div id="radio_RHOMPGTRUG" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_RHOMPGTRUG" value=""> <span>Mantiene il valore originale</span></label><label><input type="radio" autocomplete="off" name="radio_RHOMPGTRUG" value="answer"> <span>Riceve NA</span></label><label><input type="radio" autocomplete="off" name="radio_RHOMPGTRUG" value=""> <span>Il comando dà errore</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="ricodificare-il-sesso" class="level3">
+<h3 class="anchored" data-anchor-id="ricodificare-il-sesso">Ricodificare il sesso</h3>
+<p>Ora tocca a te: sistemerai le variabili una alla volta, provando ogni comando nell’area di prova prima di aggiungerlo alla catena.</p>
+<p>Il comando visto sopra sistema già la variabile <code>sex</code>. Provalo nell’area di prova e guarda il risultato con <code>tabyl()</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="fu">case_when</span>(</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">"m"</span>                          <span class="sc">~</span> <span class="st">"M"</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    sex <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"f"</span>, <span class="st">"Female"</span>, <span class="st">"FEMALE"</span>) <span class="sc">~</span> <span class="st">"F"</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span>                                <span class="sc">~</span> sex)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(sex)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Nella tabella dovrebbero comparire solo <code>"F"</code>, <code>"M"</code> e <code>NA</code>. Il comando non usa <code>&lt;-</code>, quindi non modifica <code>dati_clean</code>: per rendere definitiva la modifica, aggiungi alla catena di pulizia un <code>mutate()</code> con la ricodifica di <code>sex</code>.</p>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<p>Aggiungi in fondo alla catena (ricorda il <code>%&gt;%</code> alla fine della riga precedente):</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ricodifica del sesso</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex =</span> <span class="fu">case_when</span>(</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>      sex <span class="sc">==</span> <span class="st">"m"</span>                          <span class="sc">~</span> <span class="st">"M"</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>      sex <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"f"</span>, <span class="st">"Female"</span>, <span class="st">"FEMALE"</span>) <span class="sc">~</span> <span class="st">"F"</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span>                                <span class="sc">~</span> sex)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+</details>
+</section>
+<section id="ricodificare-la-regione" class="level3">
+<h3 class="anchored" data-anchor-id="ricodificare-la-regione">Ricodificare la regione</h3>
+<p>Usa <code>case_when()</code> per fare in modo che <code>region</code> contenga solo <code>"A"</code>, <code>"B"</code>, <code>"C"</code>, <code>"D"</code>, <code>"E"</code> e <code>"F"</code>. Scrivi il comando nell’area di prova, come hai fatto per <code>sex</code>, e controlla il risultato con <code>tabyl(region)</code>.</p>
+<details>
+<summary style="text-decoration: underline; color: darkgreen;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
+</summary>
+<p><br></p>
+<p>Con <code>%in%</code> puoi raggruppare in una sola regola più valori da ricodificare nello stesso modo, per esempio <code>region %in% c("a", "Region A") ~ "A"</code>.</p>
+<p><br></p>
+</details>
+<p>Quando il risultato è corretto, aggiungi la ricodifica di <code>region</code> nella catena, <strong>dentro lo stesso <code>mutate()</code></strong> di <code>sex</code>, dopo una virgola: un solo <code>mutate()</code> può modificare più variabili.</p>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<p>Il <code>mutate()</code> delle ricodifiche ora dovrebbe essere così:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ricodifica del sesso</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex =</span> <span class="fu">case_when</span>(</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>      sex <span class="sc">==</span> <span class="st">"m"</span>                          <span class="sc">~</span> <span class="st">"M"</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>      sex <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"f"</span>, <span class="st">"Female"</span>, <span class="st">"FEMALE"</span>) <span class="sc">~</span> <span class="st">"F"</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span>                                <span class="sc">~</span> sex),</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ricodifica della regione</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">region =</span> <span class="fu">case_when</span>(</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>      region <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"Region A"</span>) <span class="sc">~</span> <span class="st">"A"</span>,</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>      region <span class="sc">==</span> <span class="st">"Region D"</span>           <span class="sc">~</span> <span class="st">"D"</span>,</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>      region <span class="sc">==</span> <span class="st">"f"</span>                  <span class="sc">~</span> <span class="st">"F"</span>,</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span>                           <span class="sc">~</span> region)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+</details>
+</section>
+<section id="ricodificare-lo-stato-hiv" class="level3">
+<h3 class="anchored" data-anchor-id="ricodificare-lo-stato-hiv">Ricodificare lo stato HIV</h3>
+<p>Usa <code>case_when()</code> per fare in modo che <code>hiv_status</code> contenga solo i <strong>numeri</strong> <code>0</code> e <code>1</code>. Puoi ricodificare e convertire in numero in un solo passaggio: se a destra della tilde scrivi dei numeri (senza virgolette), la nuova variabile sarà numerica. Prova il comando nell’area di prova e controlla il risultato con <code>tabyl(hiv_status)</code>.</p>
+<details>
+<summary style="text-decoration: underline; color: darkgreen;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
+</summary>
+<p><br></p>
+<p>Qui non serve la regola <code>TRUE ~ ...</code>: i valori che non sono <code>"0"</code>, <code>"1"</code> o <code>"Yes"</code> sono solo gli <code>NA</code>, e devono restare <code>NA</code>.</p>
+<p><br></p>
+</details>
+<p>Quando il risultato è corretto, aggiungi la ricodifica di <code>hiv_status</code> nello stesso <code>mutate()</code>, dopo una virgola. Poi riesegui la catena e controlla nell’area di prova la classe della variabile con <code>class(dati_clean$hiv_status)</code>.</p>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<p>Il <code>mutate()</code> delle ricodifiche ora dovrebbe essere così:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ricodifica del sesso</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex =</span> <span class="fu">case_when</span>(</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>      sex <span class="sc">==</span> <span class="st">"m"</span>                          <span class="sc">~</span> <span class="st">"M"</span>,</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>      sex <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"f"</span>, <span class="st">"Female"</span>, <span class="st">"FEMALE"</span>) <span class="sc">~</span> <span class="st">"F"</span>,</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span>                                <span class="sc">~</span> sex),</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ricodifica della regione</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">region =</span> <span class="fu">case_when</span>(</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>      region <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"Region A"</span>) <span class="sc">~</span> <span class="st">"A"</span>,</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>      region <span class="sc">==</span> <span class="st">"Region D"</span>           <span class="sc">~</span> <span class="st">"D"</span>,</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>      region <span class="sc">==</span> <span class="st">"f"</span>                  <span class="sc">~</span> <span class="st">"F"</span>,</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span>                           <span class="sc">~</span> region),</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ricodifica dello stato HIV in numero (0 = assenza, 1 = presenza)</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">hiv_status =</span> <span class="fu">case_when</span>(</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>      hiv_status <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"1"</span>, <span class="st">"Yes"</span>) <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>      hiv_status <span class="sc">==</span> <span class="st">"0"</span>             <span class="sc">~</span> <span class="dv">0</span>)</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+</details>
+</section>
+<section id="le-etichette-dello-stato-hiv-factor" class="level3">
+<h3 class="anchored" data-anchor-id="le-etichette-dello-stato-hiv-factor">Le etichette dello stato HIV: <code>factor()</code></h3>
+<p>Con i numeri <code>0</code> e <code>1</code> è facile fare calcoli e selezioni (per esempio tenere solo le persone con <code>hiv_status == 1</code>), ma in una tabella o in un grafico <code>0</code> e <code>1</code> non dicono nulla a chi legge. Per questo conviene avere anche una variabile con delle <strong>etichette</strong>.</p>
+<p>La funzione <code>factor()</code> trasforma una variabile in un <strong>fattore</strong>: una variabile categorica che ha un elenco fisso di categorie, in un ordine preciso, ciascuna con la sua etichetta. La sintassi è:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">factor</span>(VARIABILE,</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">levels =</span> <span class="fu">c</span>(VALORE_1, VALORE_2),</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"ETICHETTA_1"</span>, <span class="st">"ETICHETTA_2"</span>))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ul>
+<li><code>levels =</code> elenca i valori della variabile, nell’ordine in cui vogliamo le categorie in tabelle e grafici;</li>
+<li><code>labels =</code> elenca le etichette da dare a quei valori, <strong>nello stesso ordine</strong>: il primo valore prende la prima etichetta, il secondo la seconda.</li>
+</ul>
+<p>I valori che non compaiono in <code>levels</code> diventano <code>NA</code>.</p>
+<p>Nell’area di prova crea una nuova variabile <code>hiv</code>, che sia un fattore pari a <code>"Senza HIV"</code> quando <code>hiv_status</code> è <code>0</code> e <code>"Con HIV"</code> quando è <code>1</code>. Controlla il risultato con <code>tabyl(hiv)</code>. Teniamo anche <code>hiv_status</code>: con i numeri le selezioni sono più semplici. Quando il nuovo fattore <code>hiv</code> è creato correttamente, aggiungilo all’interno dello stesso <code>mutate()</code>, dopo una virgola e dopo la ricodifica di <code>hiv_status</code>.</p>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<p>Il <code>mutate()</code> delle ricodifiche ora dovrebbe essere così:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ricodifica del sesso</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex =</span> <span class="fu">case_when</span>(</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>      sex <span class="sc">==</span> <span class="st">"m"</span>                          <span class="sc">~</span> <span class="st">"M"</span>,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>      sex <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"f"</span>, <span class="st">"Female"</span>, <span class="st">"FEMALE"</span>) <span class="sc">~</span> <span class="st">"F"</span>,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span>                                <span class="sc">~</span> sex),</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ricodifica della regione</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">region =</span> <span class="fu">case_when</span>(</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>      region <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"Region A"</span>) <span class="sc">~</span> <span class="st">"A"</span>,</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>      region <span class="sc">==</span> <span class="st">"Region D"</span>           <span class="sc">~</span> <span class="st">"D"</span>,</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>      region <span class="sc">==</span> <span class="st">"f"</span>                  <span class="sc">~</span> <span class="st">"F"</span>,</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span>                           <span class="sc">~</span> region),</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ricodifica dello stato HIV in numero (0 = assenza, 1 = presenza)</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">hiv_status =</span> <span class="fu">case_when</span>(</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>      hiv_status <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"1"</span>, <span class="st">"Yes"</span>) <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>      hiv_status <span class="sc">==</span> <span class="st">"0"</span>             <span class="sc">~</span> <span class="dv">0</span>),</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># stato HIV con le etichette, per tabelle e grafici</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">hiv =</span> <span class="fu">factor</span>(hiv_status,</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>                 <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>                 <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Senza HIV"</span>, <span class="st">"Con HIV"</span>))</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+</details>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Se hiv_status contenesse anche il valore 2, cosa diventerebbe in hiv?
+<div id="radio_WGRXGLAIHA" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_WGRXGLAIHA" value=""> <span>Diventa “Senza HIV”, la prima etichetta</span></label><label><input type="radio" autocomplete="off" name="radio_WGRXGLAIHA" value=""> <span>Resta 2</span></label><label><input type="radio" autocomplete="off" name="radio_WGRXGLAIHA" value="answer"> <span>Diventa NA</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avviso</span>Attenzione all’ordine dentro <code>mutate()</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Dentro <code>mutate()</code> le modifiche vengono fatte una dopo l’altra, nell’ordine in cui sono scritte. <code>hiv</code> va scritta <strong>dopo</strong> la ricodifica di <code>hiv_status</code>: se la mettessi prima, <code>factor()</code> lavorerebbe sui valori originali, che sono ancora testo (<code>"0"</code>, <code>"1"</code> e <code>"Yes"</code>), e <code>"Yes"</code> diventerebbe <code>NA</code>.</p>
+</div>
+</div>
+</section>
+<section id="togliere-gli-spazi-str_remove_all" class="level3">
+<h3 class="anchored" data-anchor-id="togliere-gli-spazi-str_remove_all">Togliere gli spazi: <code>str_remove_all()</code></h3>
+<p>In <code>age_group</code> il problema è diverso: <code>"60 +"</code> è uguale a <code>"60+"</code>, ma ha uno spazio di troppo. Invece di elencare i valori sbagliati con <code>case_when()</code>, puoi usare una funzione del pacchetto <code>{stringr}</code> (incluso nel <code>{tidyverse}</code>), che serve a lavorare sul testo. La funzione <code>str_remove_all()</code> toglie da ogni valore tutte le volte che compare il testo indicato tra virgolette; per togliere gli spazi si indica <code>" "</code>. Provala nell’area di prova:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_group =</span> <span class="fu">str_remove_all</span>(age_group, <span class="st">" "</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(age_group)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Così <code>"60 +"</code> diventa <code>"60+"</code>, mentre i valori già corretti restano uguali. Il vantaggio rispetto a <code>case_when()</code> è che non serve sapere in anticipo come sono scritti i valori sbagliati: la regola funzionerebbe anche con <code>"18 - 59"</code> o <code>"60 + "</code>.</p>
+<p>Aggiungi anche questa modifica nello stesso <code>mutate()</code>, dopo una virgola.</p>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<p>Il <code>mutate()</code> delle ricodifiche ora dovrebbe essere così:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ricodifica del sesso</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex =</span> <span class="fu">case_when</span>(</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>      sex <span class="sc">==</span> <span class="st">"m"</span>                          <span class="sc">~</span> <span class="st">"M"</span>,</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>      sex <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"f"</span>, <span class="st">"Female"</span>, <span class="st">"FEMALE"</span>) <span class="sc">~</span> <span class="st">"F"</span>,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span>                                <span class="sc">~</span> sex),</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ricodifica della regione</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">region =</span> <span class="fu">case_when</span>(</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>      region <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"Region A"</span>) <span class="sc">~</span> <span class="st">"A"</span>,</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>      region <span class="sc">==</span> <span class="st">"Region D"</span>           <span class="sc">~</span> <span class="st">"D"</span>,</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>      region <span class="sc">==</span> <span class="st">"f"</span>                  <span class="sc">~</span> <span class="st">"F"</span>,</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span>                           <span class="sc">~</span> region),</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ricodifica dello stato HIV in numero (0 = assenza, 1 = presenza)</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">hiv_status =</span> <span class="fu">case_when</span>(</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>      hiv_status <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"1"</span>, <span class="st">"Yes"</span>) <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>      hiv_status <span class="sc">==</span> <span class="st">"0"</span>             <span class="sc">~</span> <span class="dv">0</span>),</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># stato HIV con le etichette, per tabelle e grafici</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">hiv =</span> <span class="fu">factor</span>(hiv_status,</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>                 <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>                 <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Senza HIV"</span>, <span class="st">"Con HIV"</span>)),</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># classe di età: tolti gli spazi ("60 +" diventa "60+")</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_group =</span> <span class="fu">str_remove_all</span>(age_group, <span class="st">" "</span>)</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+</details>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Consiglio</span>Approfondimento: un’alternativa per i casi semplici, <code>recode()</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Quando si tratta solo di sostituire un valore con un altro, senza condizioni, esiste anche la funzione <code>recode()</code> del pacchetto <code>{dplyr}</code>. Attenzione: la sintassi è <strong>VECCHIO = NUOVO</strong>, il contrario di <code>rename()</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">sex =</span> <span class="fu">recode</span>(sex,</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"m"</span>      <span class="ot">=</span> <span class="st">"M"</span>,</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"f"</span>      <span class="ot">=</span> <span class="st">"F"</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Female"</span> <span class="ot">=</span> <span class="st">"F"</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"FEMALE"</span> <span class="ot">=</span> <span class="st">"F"</span>))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><code>case_when()</code> resta però lo strumento più generale: funziona anche quando la regola dipende da condizioni logiche o da più variabili, come vedrai nella prossima sezione.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Consiglio</span>Approfondimento: il pacchetto <code>{stringr}</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Hai usato <code>str_remove_all()</code> per togliere gli spazi da <code>age_group</code>. Il pacchetto <code>{stringr}</code> contiene molte altre funzioni per lavorare sul testo: i loro nomi iniziano tutti con <code>str_</code>, così in RStudio basta scrivere <code>str_</code> per vederle elencate. Alcune delle più utili:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 24%">
+<col style="width: 24%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Funzione</th>
+<th>Cosa fa</th>
+<th>Esempio</th>
+<th>Risultato</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>str_remove()</code></td>
+<td>toglie la prima volta che compare un testo</td>
+<td><code>str_remove("Region A", "Region ")</code></td>
+<td><code>"A"</code></td>
+</tr>
+<tr class="even">
+<td><code>str_remove_all()</code></td>
+<td>toglie tutte le volte che compare un testo</td>
+<td><code>str_remove_all("18 - 59", " ")</code></td>
+<td><code>"18-59"</code></td>
+</tr>
+<tr class="odd">
+<td><code>str_replace()</code></td>
+<td>sostituisce un testo con un altro</td>
+<td><code>str_replace("60 +", " ", "")</code></td>
+<td><code>"60+"</code></td>
+</tr>
+<tr class="even">
+<td><code>str_to_upper()</code></td>
+<td>trasforma in maiuscolo</td>
+<td><code>str_to_upper("f")</code></td>
+<td><code>"F"</code></td>
+</tr>
+<tr class="odd">
+<td><code>str_to_lower()</code></td>
+<td>trasforma in minuscolo</td>
+<td><code>str_to_lower("FEMALE")</code></td>
+<td><code>"female"</code></td>
+</tr>
+<tr class="even">
+<td><code>str_squish()</code></td>
+<td>toglie gli spazi all’inizio, alla fine e quelli doppi</td>
+<td><code>str_squish(" Event  date ")</code></td>
+<td><code>"Event date"</code></td>
+</tr>
+<tr class="odd">
+<td><code>str_detect()</code></td>
+<td>dice se un testo è contenuto nel valore (<code>TRUE</code>/<code>FALSE</code>)</td>
+<td><code>str_detect("Region A", "Region")</code></td>
+<td><code>TRUE</code></td>
+</tr>
+</tbody>
+</table>
+<p>Queste funzioni si possono anche combinare. Per esempio, la variabile <code>region</code> si potrebbe sistemare con un solo comando, togliendo <code>"Region "</code> e trasformando tutto in maiuscolo:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">region =</span> <span class="fu">str_to_upper</span>(<span class="fu">str_remove</span>(region, <span class="st">"Region "</span>)))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Si legge dall’interno verso l’esterno: prima <code>str_remove()</code> trasforma <code>"Region A"</code> in <code>"A"</code>, poi <code>str_to_upper()</code> trasforma <code>"a"</code> in <code>"A"</code> e <code>"f"</code> in <code>"F"</code>. Per un uso più avanzato trovi <code>str_detect()</code> negli Approfondimenti in fondo al modulo.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="controllare-la-coerenza-tra-variabili" class="level2">
+<h2 class="anchored" data-anchor-id="controllare-la-coerenza-tra-variabili">Controllare la coerenza tra variabili</h2>
+<section id="gli-eventi-fuori-dal-follow-up" class="level3">
+<h3 class="anchored" data-anchor-id="gli-eventi-fuori-dal-follow-up">Gli eventi fuori dal follow-up</h3>
+<p><code>case_when()</code> è utile anche per costruire una variabile a partire da <strong>più variabili</strong>, con condizioni logiche. Per esempio, la data dell’evento dovrebbe cadere tra la data di vaccinazione e la data di fine follow-up. Possiamo classificare ogni soggetto così:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">event_check =</span> <span class="fu">case_when</span>(</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">is.na</span>(date_event)        <span class="sc">~</span> <span class="st">"nessun evento"</span>,</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  date_event <span class="sc">&lt;</span> date_vacc   <span class="sc">~</span> <span class="st">"evento prima della vaccinazione"</span>,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  date_event <span class="sc">&gt;</span> date_end_fu <span class="sc">~</span> <span class="st">"evento dopo la fine del follow-up"</span>,</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="cn">TRUE</span>                     <span class="sc">~</span> <span class="st">"evento durante il follow-up"</span>))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Nota l’ordine delle regole: la prima riguarda i soggetti senza evento, così le regole successive (che confrontano le date) vengono applicate solo a chi ha una data di evento.</p>
+</section>
+<section id="aggiungi-alla-catena-di-pulizia-1" class="level3">
+<h3 class="anchored" data-anchor-id="aggiungi-alla-catena-di-pulizia-1">Aggiungi alla catena di pulizia</h3>
+<p>Prova prima il comando nell’area di prova: scrivi <code>dati_clean %&gt;%</code> prima del <code>mutate()</code> e aggiungi in fondo <code>%&gt;% tabyl(event_check)</code>, per vedere quanti soggetti ci sono in ciascuna categoria. Poi aggiungi il <code>mutate()</code> alla catena.</p>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<p>Aggiungi in fondo alla catena (ricorda il <code>%&gt;%</code> alla fine della riga precedente):</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># controllo della coerenza della data dell'evento</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">event_check =</span> <span class="fu">case_when</span>(</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">is.na</span>(date_event)        <span class="sc">~</span> <span class="st">"nessun evento"</span>,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    date_event <span class="sc">&lt;</span> date_vacc   <span class="sc">~</span> <span class="st">"evento prima della vaccinazione"</span>,</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    date_event <span class="sc">&gt;</span> date_end_fu <span class="sc">~</span> <span class="st">"evento dopo la fine del follow-up"</span>,</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span>                     <span class="sc">~</span> <span class="st">"evento durante il follow-up"</span>))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+</details>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Quanti soggetti hanno una data di evento fuori dal periodo di follow-up (prima della vaccinazione o dopo la fine)?
+<div id="radio_JWMBSRJOAL" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_JWMBSRJOAL" value=""> <span>Nessuno</span></label><label><input type="radio" autocomplete="off" name="radio_JWMBSRJOAL" value="answer"> <span>2</span></label><label><input type="radio" autocomplete="off" name="radio_JWMBSRJOAL" value=""> <span>17</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="classi-di-età" class="level2">
+<h2 class="anchored" data-anchor-id="classi-di-età">Classi di età</h2>
+<section id="creare-le-classi-con-age_categories" class="level3">
+<h3 class="anchored" data-anchor-id="creare-le-classi-con-age_categories">Creare le classi con <code>age_categories()</code></h3>
+<p>La variabile <code>age_group</code> divide i soggetti solo in due classi. Per le analisi può servire una suddivisione più fine, per esempio per decenni. La funzione <code>age_categories()</code> del pacchetto <code>{epikit}</code> crea le classi a partire da una variabile numerica. I suoi argomenti principali sono:</p>
+<ul>
+<li>la variabile numerica da dividere in classi (<code>age</code>);</li>
+<li><code>lower</code>: il limite inferiore della prima classe;</li>
+<li><code>upper</code>: il limite oltre il quale tutte le età finiscono in un’unica classe (per esempio <code>80</code> crea la classe <code>"80+"</code>);</li>
+<li><code>by</code>: l’ampiezza delle classi (per esempio <code>10</code> anni).</li>
+</ul>
+<p>Prova nell’area di prova a creare classi di 10 anni da 20 a 80 anni e guarda il risultato:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_cat =</span> <span class="fu">age_categories</span>(age, <span class="at">lower =</span> <span class="dv">20</span>, <span class="at">upper =</span> <span class="dv">80</span>, <span class="at">by =</span> <span class="dv">10</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(age_cat)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Nella tabella compaiono molti NA (più di 1.300). Perché?
+<div id="radio_GAABEPOXJS" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_GAABEPOXJS" value=""> <span>Perché l'età di quei soggetti è mancante</span></label><label><input type="radio" autocomplete="off" name="radio_GAABEPOXJS" value="answer"> <span>Perché i soggetti di 18 e 19 anni sono sotto il limite inferiore (20)</span></label><label><input type="radio" autocomplete="off" name="radio_GAABEPOXJS" value=""> <span>Perché i soggetti con più di 80 anni non rientrano in nessuna classe</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Questo esempio mostra perché, dopo aver creato una nuova variabile, è importante controllare che non ci siano <code>NA</code> inattesi. Nell’area di prova:</p>
+<ol type="1">
+<li><p>conta gli <code>NA</code> della variabile di partenza. Una classe di età può mancare solo se manca l’età, quindi ci aspettiamo lo stesso numero di <code>NA</code> in <code>age_cat</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(dati_clean<span class="sc">$</span>age))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div></li>
+<li><p>confronta questo numero con la riga <code>NA</code> della tabella di <code>tabyl(age_cat)</code>: qui gli <code>NA</code> sono molti di più;</p></li>
+<li><p>guarda l’età minima e massima con <code>range()</code> e confrontale con i limiti delle classi:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(dati_clean<span class="sc">$</span>age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>L’età minima è 18 anni, ma la prima classe parte da 20: i soggetti di 18 e 19 anni non rientrano in nessuna classe e ricevono <code>NA</code>. Puoi vederlo anche nel Viewer, affiancando età e classe e ordinando la colonna <code>age_cat</code> (gli <code>NA</code> finiscono in fondo):</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_cat =</span> <span class="fu">age_categories</span>(age, <span class="at">lower =</span> <span class="dv">20</span>, <span class="at">upper =</span> <span class="dv">80</span>, <span class="at">by =</span> <span class="dv">10</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(age, age_cat) <span class="sc">%&gt;%</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">View</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div></li>
+</ol>
+<p>Invece di <code>lower</code>, <code>upper</code> e <code>by</code> puoi indicare direttamente i limiti delle classi con l’argomento <code>breakers</code>, per esempio <code>breakers = c(18, 30, 40, 50, 60, 70, 80)</code>: così la prima classe è <code>"18-29"</code>. Per tutte le opzioni scrivi <code>?age_categories</code> nella console. Prova nell’area di prova e controlla che ora gli <code>NA</code> di <code>age_cat</code> siano tanti quante le età mancanti:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_cat =</span> <span class="fu">age_categories</span>(age, <span class="at">breakers =</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>, <span class="dv">70</span>, <span class="dv">80</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(age_cat)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="aggiungi-alla-catena-di-pulizia-2" class="level3">
+<h3 class="anchored" data-anchor-id="aggiungi-alla-catena-di-pulizia-2">Aggiungi alla catena di pulizia</h3>
+<p>Aggiungi in fondo alla catena un nuovo <code>mutate()</code> che crei la variabile <code>age_cat</code> con classi di 10 anni a partire da 18 anni, usando l’argomento <code>breakers</code>.</p>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<p>Aggiungi in fondo alla catena (ricorda il <code>%&gt;%</code> alla fine della riga precedente):</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># classi di età di 10 anni</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_cat =</span> <span class="fu">age_categories</span>(age, <span class="at">breakers =</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>, <span class="dv">70</span>, <span class="dv">80</span>))</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+</details>
+</section>
+<section id="età-e-classe-di-età-sono-coerenti" class="level3">
+<h3 class="anchored" data-anchor-id="età-e-classe-di-età-sono-coerenti">Età e classe di età sono coerenti?</h3>
+<p>Il dataset contiene sia l’età (<code>age</code>) sia la classe di età (<code>age_group</code>): le due informazioni dovrebbero coincidere. Per verificarlo, ricalcola nell’area di prova la classe a partire dall’età con <code>ifelse()</code>, in una nuova variabile <code>age_group_calc</code>, e confrontala con <code>age_group</code> in una tabella incrociata:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_group_calc =</span> <span class="fu">ifelse</span>(age <span class="sc">&gt;=</span> <span class="dv">60</span>, <span class="st">"60+"</span>, <span class="st">"18-59"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(age_group, age_group_calc)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Nelle righe trovi i valori di <code>age_group</code>, nelle colonne quelli ricalcolati dall’età. Nella tabella vedrai che:</p>
+<ul>
+<li>per quasi tutti i soggetti le due informazioni coincidono;</li>
+<li>c’è <strong>un soggetto</strong> con <code>age_group</code> uguale a <code>"60+"</code> ma un’età inferiore a 60 anni: le due informazioni sono in contraddizione;</li>
+<li>nella colonna <code>NA_</code> ci sono <strong>5 soggetti</strong> senza età (quindi senza classe ricalcolata), che però hanno la classe di età: per loro <strong>non è stata registrata l’età esatta, ma solo la classe</strong> (3 <code>"18-59"</code> e 2 <code>"60+"</code>);</li>
+<li>nella riga <code>NA</code> ci sono 4 soggetti con l’età ma senza la classe di età originale.</li>
+</ul>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Cosa possiamo fare con i 5 soggetti che hanno la classe di età ma non l’età?
+<div id="radio_ADLETOCOBR" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_ADLETOCOBR" value=""> <span>Vanno eliminati, perché manca l'età</span></label><label><input type="radio" autocomplete="off" name="radio_ADLETOCOBR" value="answer"> <span>Possiamo tenere la loro classe di età, perché è l'unica informazione disponibile</span></label><label><input type="radio" autocomplete="off" name="radio_ADLETOCOBR" value=""> <span>Bisogna assegnare loro la classe “18-59”, che è la più frequente</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="dare-la-priorità-a-uninformazione-coalesce" class="level3">
+<h3 class="anchored" data-anchor-id="dare-la-priorità-a-uninformazione-coalesce">Dare la priorità a un’informazione: <code>coalesce()</code></h3>
+<p>Per costruire la classe di età definitiva dobbiamo decidere quale informazione usare. Quale è più affidabile? Ogni gruppo di lavoro deve deciderlo in base a come sono stati raccolti i dati. Qui scegliamo:</p>
+<ul>
+<li>quando l’età c’è, di usare la classe <strong>ricalcolata dall’età</strong> (<code>age_group_calc</code>), perché l’età è più dettagliata: così si corregge anche il soggetto con le due informazioni in contraddizione, e si completano i 4 soggetti senza classe;</li>
+<li>quando l’età manca, di usare la classe <strong>originale</strong> (<code>age_group</code>), che è l’unica informazione disponibile: così non si perdono i 5 soggetti per cui è stata registrata solo la classe.</li>
+</ul>
+<p>La funzione <code>coalesce()</code> fa proprio questo: per ogni riga, prende il <strong>primo valore non mancante</strong> tra quelli indicati, nell’ordine.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">age_group =</span> <span class="fu">coalesce</span>(age_group_calc, age_group))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Si legge: “per ogni riga, <code>age_group</code> diventa <code>age_group_calc</code>; se <code>age_group_calc</code> è <code>NA</code> (cioè l’età manca), usa il valore originale di <code>age_group</code>”.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Cosa restituisce coalesce(NA, “60+”, “18-59”)?
+<div id="radio_WYLIUMMCYD" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_WYLIUMMCYD" value=""> <span>NA</span></label><label><input type="radio" autocomplete="off" name="radio_WYLIUMMCYD" value=""> <span>“18-59”</span></label><label><input type="radio" autocomplete="off" name="radio_WYLIUMMCYD" value="answer"> <span>“60+”</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Prova nell’area di prova e controlla che <code>age_group</code> non abbia più <code>NA</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_group_calc =</span> <span class="fu">ifelse</span>(age <span class="sc">&gt;=</span> <span class="dv">60</span>, <span class="st">"60+"</span>, <span class="st">"18-59"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_group =</span> <span class="fu">coalesce</span>(age_group_calc, age_group)) <span class="sc">%&gt;%</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(age_group)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="aggiungi-alla-catena-di-pulizia-3" class="level3">
+<h3 class="anchored" data-anchor-id="aggiungi-alla-catena-di-pulizia-3">Aggiungi alla catena di pulizia</h3>
+<p>Aggiungi nello stesso <code>mutate()</code> di <code>age_cat</code>, dopo una virgola:</p>
+<ul>
+<li>la variabile <code>age_group_calc</code>;</li>
+<li>la nuova <code>age_group</code> con <code>coalesce()</code>.</li>
+</ul>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<p>Il <code>mutate()</code> delle classi di età ora dovrebbe essere così:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># classi di età di 10 anni</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_cat =</span> <span class="fu">age_categories</span>(age, <span class="at">breakers =</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>, <span class="dv">70</span>, <span class="dv">80</span>)),</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># classe di età ricalcolata dall'età</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_group_calc =</span> <span class="fu">ifelse</span>(age <span class="sc">&gt;=</span> <span class="dv">60</span>, <span class="st">"60+"</span>, <span class="st">"18-59"</span>),</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># priorità alla classe calcolata dall'età, altrimenti quella originale</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_group =</span> <span class="fu">coalesce</span>(age_group_calc, age_group)</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>All’interno di un <code>mutate()</code> le modifiche vengono eseguite in ordine: per questo <code>age_group_calc</code> deve essere creata <strong>prima</strong> di essere usata in <code>coalesce()</code>.</p>
+<p><br></p>
+</details>
+<p>Riesegui la catena e controlla nell’area di prova che <code>age_cat</code> abbia solo i 5 <code>NA</code> delle età mancanti e che <code>age_group</code> non abbia <code>NA</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(age_cat)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(age_group)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="differenze-tra-date-la-durata-del-follow-up" class="level2">
+<h2 class="anchored" data-anchor-id="differenze-tra-date-la-durata-del-follow-up">Differenze tra date: la durata del follow-up</h2>
+<p>Ora che le date sono di classe “Date” (Modulo 2), possiamo fare calcoli con i semplici operatori <code>+</code> e <code>-</code>. La durata del follow-up di ogni soggetto, in giorni, è la differenza tra la data di fine follow-up e la data di vaccinazione.</p>
+<p>Prova nell’area di prova:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fu_days =</span> date_end_fu <span class="sc">-</span> date_vacc) <span class="sc">%&gt;%</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(date_vacc, date_end_fu, fu_days) <span class="sc">%&gt;%</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>I valori compaiono come “120 days”: è una classe speciale chiamata “difftime”. Per ottenere un numero semplice, racchiudi il calcolo in <code>as.numeric()</code>.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Consiglio</span>Approfondimento: contare o non contare il primo giorno?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Con questo calcolo, un soggetto vaccinato e uscito dal follow-up nello stesso giorno ha una durata di 0 giorni. Se nel tuo contesto preferisci contare anche il primo giorno, aggiungi <code>+ 1</code> dopo <code>as.numeric()</code>.</p>
+</div>
+</div>
+<section id="aggiungi-alla-catena-di-pulizia-4" class="level3">
+<h3 class="anchored" data-anchor-id="aggiungi-alla-catena-di-pulizia-4">Aggiungi alla catena di pulizia</h3>
+<p>Aggiungi alla catena un <code>mutate()</code> che crei la variabile numerica <code>fu_days</code>. Poi controlla con <code>range()</code> nell’area di prova la durata minima e massima del follow-up.</p>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<p>Aggiungi in fondo alla catena (ricorda il <code>%&gt;%</code> alla fine della riga precedente):</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># durata del follow-up in giorni</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fu_days =</span> <span class="fu">as.numeric</span>(date_end_fu <span class="sc">-</span> date_vacc))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+</details>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+range(dati_clean$fu_days) mostra un valore minimo negativo (-2). Cosa significa?
+<div id="radio_RWEVFYPGJK" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_RWEVFYPGJK" value=""> <span>Che il soggetto ha avuto l'evento il giorno della vaccinazione</span></label><label><input type="radio" autocomplete="off" name="radio_RWEVFYPGJK" value="answer"> <span>Che la data di fine follow-up è precedente alla data di vaccinazione: è un errore nei dati</span></label><label><input type="radio" autocomplete="off" name="radio_RWEVFYPGJK" value=""> <span>Che il soggetto è uscito dal follow-up prima di essere arruolato, ed è normale</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="filtrare-le-righe" class="level2">
+<h2 class="anchored" data-anchor-id="filtrare-le-righe">Filtrare le righe</h2>
+<section id="la-funzione-filter" class="level3">
+<h3 class="anchored" data-anchor-id="la-funzione-filter">La funzione <code>filter()</code></h3>
+<p>-&gt;Filtrare i dati per rimuovere delle osservazioni o analizzare un sottoinsieme dei dati è una delle operazioni fondamentali. Per tenere solo alcune righe si usa la funzione <code>filter()</code> del pacchetto <code>{dplyr}</code>. Tra le parentesi si scrive una condizione logica: vengono <strong>tenute</strong> le righe per cui la condizione è vera. Per esempio, per tenere solo le donne:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">"F"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Più condizioni si possono combinare con <code>&amp;</code> (e), <code>|</code> (o) e le parentesi.</p>
+</section>
+<section id="escludere-le-regioni-fuori-studio" class="level3">
+<h3 class="anchored" data-anchor-id="escludere-le-regioni-fuori-studio">Escludere le regioni fuori studio</h3>
+<p>Le regioni E ed F non fanno parte dello studio. Vanno escluse anche le persone con regione mancante, perché non sappiamo se appartengono a una regione dello studio. Prova nell’area di prova due modi diversi di togliere le regioni E ed F e confronta il numero di righe:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tenere solo le regioni dello studio</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span> <span class="fu">filter</span>(region <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>)) <span class="sc">%&gt;%</span> <span class="fu">nrow</span>()</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co"># togliere le regioni E ed F</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span> <span class="fu">filter</span>(region <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(hiv_status)) <span class="sc">%&gt;%</span> <span class="fu">nrow</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Il punto esclamativo davanti alla condizione la nega: <code>!region %in% c("E", "F")</code> vuol dire “la regione <strong>non</strong> è E né F”.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+I due comandi danno un numero di righe diverso (di una riga). Perché?
+<div id="radio_VFFXEQENWT" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_VFFXEQENWT" value=""> <span>Perché uno dei due comandi contiene un errore</span></label><label><input type="radio" autocomplete="off" name="radio_VFFXEQENWT" value="answer"> <span>Perché il primo comando toglie anche la riga con la regione mancante (NA)</span></label><label><input type="radio" autocomplete="off" name="radio_VFFXEQENWT" value=""> <span>Perché il secondo comando toglie anche la regione D</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avviso</span>Attenzione a <code>filter()</code> e ai valori mancanti
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>filter()</code> tiene solo le righe per cui la condizione è <strong>vera</strong>: le righe in cui la condizione non si può valutare perché il valore è <code>NA</code> vengono <strong>eliminate</strong>. Per esempio <code>filter(age &gt; 60)</code> toglie anche tutte le righe con età mancante. Per tenerle bisogna dirlo esplicitamente con <code>|</code> (o) e <code>is.na()</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(age <span class="sc">&gt;</span> <span class="dv">60</span> <span class="sc">|</span> <span class="fu">is.na</span>(age))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>L’operatore <code>%in%</code> si comporta in modo diverso: con un valore mancante non restituisce <code>NA</code> ma <code>FALSE</code>, perché <code>NA</code> non è tra i valori elencati. Per questo:</p>
+<ul>
+<li><code>region %in% c("A", "B", "C", "D")</code> è <code>FALSE</code> per la regione mancante, quindi la riga viene <strong>tolta</strong>;</li>
+<li><code>!region %in% c("E", "F")</code> è <code>TRUE</code> per la regione mancante, quindi la riga viene <strong>tenuta</strong>.</li>
+</ul>
+<p>Prima di filtrare, chiediti sempre cosa vuoi fare con i valori mancanti. Qui vogliamo escludere anche la regione mancante, quindi elenchiamo le regioni dello studio: <code>region %in% c("A", "B", "C", "D")</code>.</p>
+</div>
+</div>
+</section>
+<section id="due-condizioni-insieme" class="level3">
+<h3 class="anchored" data-anchor-id="due-condizioni-insieme">Due condizioni insieme: <code>&amp;</code></h3>
+<p>Nei moduli successivi confronteremo le persone con e senza HIV: chi ha lo stato HIV mancante non può entrare in questo confronto, quindi lo escludiamo. Invece di scrivere due <code>filter()</code>, uno per la regione e uno per lo stato HIV, possiamo scrivere un solo <code>filter()</code> con le due condizioni legate da <code>&amp;</code>: una riga viene tenuta solo se <strong>entrambe</strong> le condizioni sono vere.</p>
+<p>La sintassi è:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(CONDIZIONE_1 <span class="sc">&amp;</span> CONDIZIONE_2)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Nell’area di prova scrivi un <code>filter()</code> che tenga solo le persone delle regioni A, B, C e D <strong>e</strong> con stato HIV non mancante, e conta le righe con <code>nrow()</code>.</p>
+<details>
+<summary style="text-decoration: underline; color: darkgreen;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
+</summary>
+<p><br></p>
+<p>Per la seconda condizione ti serve la funzione che controlla se un valore <strong>non</strong> è mancante: la trovi nella tabella degli operatori all’inizio del modulo.</p>
+<p><br></p>
+</details>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(region <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(hiv_status)) <span class="sc">%&gt;%</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+</details>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Una persona della regione B con stato HIV mancante viene tenuta da questo filtro?
+<div id="radio_GZYPHJIRST" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_GZYPHJIRST" value=""> <span>Sì, perché la regione è tra quelle dello studio</span></label><label><input type="radio" autocomplete="off" name="radio_GZYPHJIRST" value="answer"> <span>No, perché la seconda condizione è falsa</span></label><label><input type="radio" autocomplete="off" name="radio_GZYPHJIRST" value=""> <span>Dipende dall'ordine delle due condizioni</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="escludere-le-date-incoerenti" class="level3">
+<h3 class="anchored" data-anchor-id="escludere-le-date-incoerenti">Escludere le date incoerenti</h3>
+<p>Togliamo anche i soggetti con errori nelle date: la durata del follow-up negativa (<code>fu_days &lt; 0</code>) e gli eventi fuori dal periodo di follow-up (<code>event_check</code>).</p>
+</section>
+<section id="aggiungi-alla-catena-di-pulizia-5" class="level3">
+<h3 class="anchored" data-anchor-id="aggiungi-alla-catena-di-pulizia-5">Aggiungi alla catena di pulizia</h3>
+<p>Aggiungi alla catena tre <code>filter()</code>:</p>
+<ul>
+<li>uno che tenga solo le regioni dello studio (A, B, C e D) <strong>e</strong> le righe con stato HIV non mancante, come hai appena provato;</li>
+<li>uno che tenga solo le righe con durata del follow-up maggiore o uguale a 0;</li>
+<li>uno che tenga solo le righe in cui <code>event_check</code> è <code>"nessun evento"</code> oppure <code>"evento durante il follow-up"</code>.</li>
+</ul>
+<details>
+<summary style="text-decoration: underline; color: darkgreen;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
+</summary>
+<p><br></p>
+<p>Per l’ultimo filtro puoi usare <code>%in%</code> con un vettore che contiene le due modalità da tenere.</p>
+<p><br></p>
+</details>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<p>Aggiungi in fondo alla catena (ricorda il <code>%&gt;%</code> alla fine della riga precedente):</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># solo regioni dello studio (esclude E, F e regione mancante) e stato HIV noto</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(region <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(hiv_status)) <span class="sc">%&gt;%</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># esclusione dei follow-up di durata negativa</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(fu_days <span class="sc">&gt;=</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># esclusione degli eventi fuori dal periodo di follow-up</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(event_check <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"nessun evento"</span>, <span class="st">"evento durante il follow-up"</span>))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+</details>
+<p>Quante righe hai tolto in tutto? Confronta <code>nrow(dati)</code> e <code>nrow(dati_clean)</code> nell’area di prova.</p>
+</section>
+</section>
+<section id="riordinare-le-variabili" class="level2">
+<h2 class="anchored" data-anchor-id="riordinare-le-variabili">Riordinare le variabili</h2>
+<p>Guarda l’ordine delle variabili di <code>dati_clean</code> (per esempio con <code>names(dati_clean)</code>): le nuove variabili sono in fondo, lontane da quelle a cui si riferiscono. L’ordine non cambia nulla per R, ma se esportiamo il dataset e lo condividiamo con un collega conviene che le variabili collegate siano vicine, per esempio <code>age</code>, <code>age_group</code> e <code>age_cat</code>.</p>
+<p>Come hai visto nel Modulo 2, <code>select()</code> serve anche a riordinare le variabili: le variabili vengono messe nell’ordine in cui le scrivi. Puoi usare anche gli aiutanti come <code>starts_with()</code> ed <code>everything()</code>.</p>
+<section id="aggiungi-alla-catena-di-pulizia-6" class="level3">
+<h3 class="anchored" data-anchor-id="aggiungi-alla-catena-di-pulizia-6">Aggiungi alla catena di pulizia</h3>
+<p>Aggiungi alla catena un <code>select()</code> che metta le variabili in questo ordine: <code>id_subject</code>, <code>group</code>, <code>region</code>, <code>sex</code>, <code>age</code>, <code>age_group</code>, <code>age_cat</code>, le due variabili di Charlson, <code>hiv_status</code>, <code>hiv</code>, le variabili che iniziano con <code>"date_"</code>, <code>fu_days</code>, <code>event</code> e infine <code>anticorpi</code> e <code>cd4</code>.</p>
+<p>Le variabili di servizio <code>event_check</code> e <code>age_group_calc</code> ci sono servite per i controlli: non elencandole nel <code>select()</code>, vengono eliminate.</p>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<p>Aggiungi in fondo alla catena (ricorda il <code>%&gt;%</code> alla fine della riga precedente):</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># riordino delle variabili (event_check e age_group_calc vengono eliminate)</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id_subject, group, region, sex, age, age_group, age_cat,</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>         chrls_score, chrls_index, hiv_status, hiv, <span class="fu">starts_with</span>(<span class="st">"date_"</span>),</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>         fu_days, event, anticorpi, cd4)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+</details>
+</section>
+</section>
+<section id="verifica-finale" class="level2">
+<h2 class="anchored" data-anchor-id="verifica-finale">Verifica finale</h2>
+<p>Crea la sezione “Verifica” (<strong>Ctrl+Shift+R</strong>), subito dopo la catena di pulizia, e controlla il dataset finale:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verifica ----------------------------------------------------------------</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># righe tolte e struttura del dataset</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(dati) <span class="sc">-</span> <span class="fu">nrow</span>(dati_clean)</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(dati_clean)</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(dati_clean, class)</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="co"># modalità delle variabili categoriche</span></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(region)</span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(sex)</span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(age_group)</span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(age_cat)</span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(hiv_status)</span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(hiv)</span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(event)</span>
+<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a><span class="co"># durata del follow-up</span></span>
+<span id="cb39-18"><a href="#cb39-18" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(dati_clean<span class="sc">$</span>fu_days)</span>
+<span id="cb39-19"><a href="#cb39-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-20"><a href="#cb39-20" aria-hidden="true" tabindex="-1"></a><span class="co"># valori mancanti in ogni variabile</span></span>
+<span id="cb39-21"><a href="#cb39-21" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(dati_clean))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Quante righe sono state tolte in tutto dalla catena di questo modulo, rispetto a dati?
+<div id="radio_GQOOASYMKQ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_GQOOASYMKQ" value=""> <span>5</span></label><label><input type="radio" autocomplete="off" name="radio_GQOOASYMKQ" value=""> <span>16</span></label><label><input type="radio" autocomplete="off" name="radio_GQOOASYMKQ" value="answer"> <span>21</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="salvare-i-dati-puliti" class="level2">
+<h2 class="anchored" data-anchor-id="salvare-i-dati-puliti">Salvare i dati puliti</h2>
+<p>Ora che il dataset è pulito, salviamolo in un file, così potrai riprenderlo senza rifare la pulizia. Si usa la funzione <code>export()</code> del pacchetto <code>{rio}</code>, la “gemella” di <code>import()</code>: il primo argomento è l’oggetto da salvare, il secondo è il percorso del file, tra virgolette. Il formato del file dipende <strong>solo dall’estensione</strong> che scrivi nel nome del file.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(OGGETTO, <span class="st">"CARTELLA/NOME_FILE.estensione"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Usiamo il formato <strong>RDS</strong> (estensione <code>.rds</code>), il formato proprio di R: a differenza di CSV ed Excel conserva le classi delle variabili (date, numeri, fattori), quindi quando reimporterai i dati con <code>import()</code> non dovrai rifare le conversioni.</p>
+<section id="aggiungi-allo-script" class="level3">
+<h3 class="anchored" data-anchor-id="aggiungi-allo-script">Aggiungi allo script</h3>
+<p>Crea la sezione “Salvataggio dei dati puliti” (<strong>Ctrl+Shift+R</strong>) e salva <code>dati_clean</code> nella cartella <code>dati</code> in formato RDS, con il nome <code>dati_clean_NOME</code> seguito dal tuo nome: per esempio <code>dati_clean_MARCO.rds</code>. Poi controlla con il pannello <strong>Files</strong> di RStudio che il file sia nella cartella.</p>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Salvataggio dei dati puliti ---------------------------------------------</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(dati_clean, <span class="st">"dati/dati_clean_NOME.rds"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+</details>
+<p>Nella cartella <code>dati</code> c’è anche il file <code>dati_clean.rds</code>, preparato da noi: è il risultato della stessa pulizia. Nei prossimi moduli tutti importeranno quel file, così lavoreremo tutti sugli stessi dati puliti, anche se nella tua catena qualcosa fosse andato storto. Il tuo file <code>dati_clean_NOME.rds</code> ti serve per confrontare il tuo risultato con il nostro.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Prova a rispondere!</strong></p>
+<div class="webex-check">
+Con export(), che cosa decide il formato del file salvato?
+<div id="radio_IQWMLVCSDA" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_IQWMLVCSDA" value=""> <span>Un argomento di export() che indica il formato</span></label><label><input type="radio" autocomplete="off" name="radio_IQWMLVCSDA" value="answer"> <span>L'estensione scritta nel nome del file</span></label><label><input type="radio" autocomplete="off" name="radio_IQWMLVCSDA" value=""> <span>Il nome dell'oggetto che si esporta</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="approfondimenti" class="level2">
+<h2 class="anchored" data-anchor-id="approfondimenti">Approfondimenti</h2>
+<p>Se hai finito in anticipo, prova questi esercizi partendo dal dataset <code>dati_clean</code>.</p>
+<section id="focus-sugli-ultraottantenni-con-hiv" class="level3">
+<h3 class="anchored" data-anchor-id="focus-sugli-ultraottantenni-con-hiv">Focus sugli ultraottantenni con HIV</h3>
+<p>Crea un nuovo data frame chiamato <code>over80_hiv</code> che:</p>
+<ul>
+<li>contenga solo i soggetti con classe di età <code>"80+"</code> e stato HIV positivo;</li>
+<li>abbia una nuova variabile <code>fu_lungo</code>, uguale a <code>"Sì"</code> se la durata del follow-up è di almeno 120 giorni e <code>"No"</code> altrimenti;</li>
+<li>contenga solo le variabili <code>id_subject</code>, <code>sex</code>, <code>age</code>, <code>fu_days</code>, <code>fu_lungo</code> ed <code>event</code>.</li>
+</ul>
+<p>Poi salvalo nella cartella <code>output</code> come <code>over80_hiv.rds</code>.</p>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>over80_hiv <span class="ot">&lt;-</span> dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(age_cat <span class="sc">==</span> <span class="st">"80+"</span> <span class="sc">&amp;</span> hiv_status <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fu_lungo =</span> <span class="fu">ifelse</span>(fu_days <span class="sc">&gt;=</span> <span class="dv">120</span>, <span class="st">"Sì"</span>, <span class="st">"No"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id_subject, sex, age, fu_days, fu_lungo, event)</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(over80_hiv, <span class="st">"output/over80_hiv.rds"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+</details>
+</section>
+<section id="cercare-un-testo-str_detect" class="level3">
+<h3 class="anchored" data-anchor-id="cercare-un-testo-str_detect">Cercare un testo: <code>str_detect()</code></h3>
+<p>La funzione <code>str_detect()</code> del pacchetto <code>{stringr}</code> restituisce <code>TRUE</code> se un certo testo (<code>pattern</code>) compare in un valore (<code>string</code>), e <code>FALSE</code> altrimenti. Si usa spesso dentro <code>filter()</code>. Attenzione: come <code>==</code>, distingue le maiuscole dalle minuscole.</p>
+<p>Partendo dal dataset grezzo <code>dati_raw</code>, trova le righe in cui la regione contiene la parola <code>"Region"</code>: sono proprio i valori che abbiamo dovuto ricodificare.</p>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>dati_raw <span class="sc">%&gt;%</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(<span class="at">string =</span> REGION, <span class="at">pattern =</span> <span class="st">"Region"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">`</span><span class="at">subject ID</span><span class="st">`</span>, REGION)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+</details>
+</section>
+</section>
+<section id="lo-script-completo" class="level2">
+<h2 class="anchored" data-anchor-id="lo-script-completo">Lo script completo</h2>
+<p>Ecco come dovrebbe essere la parte del tuo script relativa a questa esercitazione. Confrontala con la tua: i commenti e i comandi di prova possono essere diversi, ma la catena di pulizia deve fare le stesse cose, nello stesso ordine. Lo script completo dei Moduli 1, 2 e 3 lo trovi anche nella cartella <code>script/backup</code>, nel file <code>backup_pulizia_dati.R</code>.</p>
+<details>
+<summary style="text-decoration: underline; color: blue;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:blue;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere lo script completo</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modulo 3 - Pulizia dei dati: approfondimento =============================</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Pulizia dei dati --------------------------------------------------------</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="ot">&lt;-</span> dati <span class="sc">%&gt;%</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># variabile evento: 1 se c'è una data di evento, 0 altrimenti</span></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">event =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(date_event), <span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ricodifica del sesso</span></span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex =</span> <span class="fu">case_when</span>(</span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>      sex <span class="sc">==</span> <span class="st">"m"</span>                          <span class="sc">~</span> <span class="st">"M"</span>,</span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>      sex <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"f"</span>, <span class="st">"Female"</span>, <span class="st">"FEMALE"</span>) <span class="sc">~</span> <span class="st">"F"</span>,</span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span>                                <span class="sc">~</span> sex),</span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ricodifica della regione</span></span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">region =</span> <span class="fu">case_when</span>(</span>
+<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a>      region <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"Region A"</span>) <span class="sc">~</span> <span class="st">"A"</span>,</span>
+<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a>      region <span class="sc">==</span> <span class="st">"Region D"</span>           <span class="sc">~</span> <span class="st">"D"</span>,</span>
+<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a>      region <span class="sc">==</span> <span class="st">"f"</span>                  <span class="sc">~</span> <span class="st">"F"</span>,</span>
+<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span>                           <span class="sc">~</span> region),</span>
+<span id="cb44-19"><a href="#cb44-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ricodifica dello stato HIV in numero (0 = assenza, 1 = presenza)</span></span>
+<span id="cb44-20"><a href="#cb44-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">hiv_status =</span> <span class="fu">case_when</span>(</span>
+<span id="cb44-21"><a href="#cb44-21" aria-hidden="true" tabindex="-1"></a>      hiv_status <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"1"</span>, <span class="st">"Yes"</span>) <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb44-22"><a href="#cb44-22" aria-hidden="true" tabindex="-1"></a>      hiv_status <span class="sc">==</span> <span class="st">"0"</span>             <span class="sc">~</span> <span class="dv">0</span>),</span>
+<span id="cb44-23"><a href="#cb44-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># stato HIV con le etichette, per tabelle e grafici</span></span>
+<span id="cb44-24"><a href="#cb44-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">hiv =</span> <span class="fu">factor</span>(hiv_status,</span>
+<span id="cb44-25"><a href="#cb44-25" aria-hidden="true" tabindex="-1"></a>                 <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb44-26"><a href="#cb44-26" aria-hidden="true" tabindex="-1"></a>                 <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Senza HIV"</span>, <span class="st">"Con HIV"</span>)),</span>
+<span id="cb44-27"><a href="#cb44-27" aria-hidden="true" tabindex="-1"></a>    <span class="co"># classe di età: tolti gli spazi ("60 +" diventa "60+")</span></span>
+<span id="cb44-28"><a href="#cb44-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_group =</span> <span class="fu">str_remove_all</span>(age_group, <span class="st">" "</span>)</span>
+<span id="cb44-29"><a href="#cb44-29" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb44-30"><a href="#cb44-30" aria-hidden="true" tabindex="-1"></a>  <span class="co"># controllo della coerenza della data dell'evento</span></span>
+<span id="cb44-31"><a href="#cb44-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">event_check =</span> <span class="fu">case_when</span>(</span>
+<span id="cb44-32"><a href="#cb44-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">is.na</span>(date_event)        <span class="sc">~</span> <span class="st">"nessun evento"</span>,</span>
+<span id="cb44-33"><a href="#cb44-33" aria-hidden="true" tabindex="-1"></a>    date_event <span class="sc">&lt;</span> date_vacc   <span class="sc">~</span> <span class="st">"evento prima della vaccinazione"</span>,</span>
+<span id="cb44-34"><a href="#cb44-34" aria-hidden="true" tabindex="-1"></a>    date_event <span class="sc">&gt;</span> date_end_fu <span class="sc">~</span> <span class="st">"evento dopo la fine del follow-up"</span>,</span>
+<span id="cb44-35"><a href="#cb44-35" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span>                     <span class="sc">~</span> <span class="st">"evento durante il follow-up"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb44-36"><a href="#cb44-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb44-37"><a href="#cb44-37" aria-hidden="true" tabindex="-1"></a>    <span class="co"># classi di età di 10 anni</span></span>
+<span id="cb44-38"><a href="#cb44-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_cat =</span> <span class="fu">age_categories</span>(age, <span class="at">breakers =</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>, <span class="dv">70</span>, <span class="dv">80</span>)),</span>
+<span id="cb44-39"><a href="#cb44-39" aria-hidden="true" tabindex="-1"></a>    <span class="co"># classe di età ricalcolata dall'età</span></span>
+<span id="cb44-40"><a href="#cb44-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_group_calc =</span> <span class="fu">ifelse</span>(age <span class="sc">&gt;=</span> <span class="dv">60</span>, <span class="st">"60+"</span>, <span class="st">"18-59"</span>),</span>
+<span id="cb44-41"><a href="#cb44-41" aria-hidden="true" tabindex="-1"></a>    <span class="co"># priorità alla classe calcolata dall'età, altrimenti quella originale</span></span>
+<span id="cb44-42"><a href="#cb44-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_group =</span> <span class="fu">coalesce</span>(age_group_calc, age_group)</span>
+<span id="cb44-43"><a href="#cb44-43" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb44-44"><a href="#cb44-44" aria-hidden="true" tabindex="-1"></a>  <span class="co"># durata del follow-up in giorni</span></span>
+<span id="cb44-45"><a href="#cb44-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fu_days =</span> <span class="fu">as.numeric</span>(date_end_fu <span class="sc">-</span> date_vacc)) <span class="sc">%&gt;%</span></span>
+<span id="cb44-46"><a href="#cb44-46" aria-hidden="true" tabindex="-1"></a>  <span class="co"># solo regioni dello studio (esclude E, F e regione mancante) e stato HIV noto</span></span>
+<span id="cb44-47"><a href="#cb44-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(region <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(hiv_status)) <span class="sc">%&gt;%</span></span>
+<span id="cb44-48"><a href="#cb44-48" aria-hidden="true" tabindex="-1"></a>  <span class="co"># esclusione dei follow-up di durata negativa</span></span>
+<span id="cb44-49"><a href="#cb44-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(fu_days <span class="sc">&gt;=</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb44-50"><a href="#cb44-50" aria-hidden="true" tabindex="-1"></a>  <span class="co"># esclusione degli eventi fuori dal periodo di follow-up</span></span>
+<span id="cb44-51"><a href="#cb44-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(event_check <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"nessun evento"</span>, <span class="st">"evento durante il follow-up"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb44-52"><a href="#cb44-52" aria-hidden="true" tabindex="-1"></a>  <span class="co"># riordino delle variabili (event_check e age_group_calc vengono eliminate)</span></span>
+<span id="cb44-53"><a href="#cb44-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id_subject, group, region, sex, age, age_group, age_cat,</span>
+<span id="cb44-54"><a href="#cb44-54" aria-hidden="true" tabindex="-1"></a>         chrls_score, chrls_index, hiv_status, hiv, <span class="fu">starts_with</span>(<span class="st">"date_"</span>),</span>
+<span id="cb44-55"><a href="#cb44-55" aria-hidden="true" tabindex="-1"></a>         fu_days, event, anticorpi, cd4)</span>
+<span id="cb44-56"><a href="#cb44-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-57"><a href="#cb44-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-58"><a href="#cb44-58" aria-hidden="true" tabindex="-1"></a><span class="co"># Verifica ----------------------------------------------------------------</span></span>
+<span id="cb44-59"><a href="#cb44-59" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(dati) <span class="sc">-</span> <span class="fu">nrow</span>(dati_clean)</span>
+<span id="cb44-60"><a href="#cb44-60" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(dati_clean)</span>
+<span id="cb44-61"><a href="#cb44-61" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(dati_clean)</span>
+<span id="cb44-62"><a href="#cb44-62" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(region)</span>
+<span id="cb44-63"><a href="#cb44-63" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(sex)</span>
+<span id="cb44-64"><a href="#cb44-64" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(age_group)</span>
+<span id="cb44-65"><a href="#cb44-65" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(age_cat)</span>
+<span id="cb44-66"><a href="#cb44-66" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(hiv_status)</span>
+<span id="cb44-67"><a href="#cb44-67" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(hiv)</span>
+<span id="cb44-68"><a href="#cb44-68" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(event)</span>
+<span id="cb44-69"><a href="#cb44-69" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(dati_clean<span class="sc">$</span>fu_days)</span>
+<span id="cb44-70"><a href="#cb44-70" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(dati_clean))</span>
+<span id="cb44-71"><a href="#cb44-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-72"><a href="#cb44-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-73"><a href="#cb44-73" aria-hidden="true" tabindex="-1"></a><span class="co"># Salvataggio dei dati puliti ---------------------------------------------</span></span>
+<span id="cb44-74"><a href="#cb44-74" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(dati_clean, <span class="st">"dati/dati_clean_NOME.rds"</span>)</span>
+<span id="cb44-75"><a href="#cb44-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-76"><a href="#cb44-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-77"><a href="#cb44-77" aria-hidden="true" tabindex="-1"></a><span class="co"># Area di prova -----------------------------------------------------------</span></span>
+<span id="cb44-78"><a href="#cb44-78" aria-hidden="true" tabindex="-1"></a><span class="co"># (il contenuto può variare)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+</details>
+<p>Salva lo script e avvisa il docente che hai finito. Lo script <code>pulizia_dati.R</code> è completo: nel pomeriggio, nel Modulo 4, inizierai uno script nuovo. Se non hai completato l’esercizio, nella cartella <code>script/backup</code> trovi la versione corretta di <code>backup_pulizia_dati.R</code>.</p>
+</section>
+<section id="riepilogo" class="level2">
+<h2 class="anchored" data-anchor-id="riepilogo">Riepilogo</h2>
+<p>In questo modulo hai imparato a:</p>
+<ul>
+<li>usare gli operatori di confronto (<code>==</code>, <code>!=</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>, <code>%in%</code>, <code>is.na()</code>) e gli operatori logici (<code>&amp;</code>, <code>|</code>, <code>!</code>);</li>
+<li>creare una variabile con due esiti con <code>ifelse()</code>;</li>
+<li>ricodificare le modalità e costruire variabili con più regole con <code>case_when()</code> (con <code>recode()</code> come alternativa per i casi semplici);</li>
+<li>trasformare una variabile in un fattore con <code>factor()</code>, scegliendo l’ordine delle categorie (<code>levels</code>) e le etichette (<code>labels</code>);</li>
+<li>lavorare sul testo con le funzioni del pacchetto <code>{stringr}</code>, per esempio togliere gli spazi con <code>str_remove_all()</code>;</li>
+<li>modificare più variabili con un solo <code>mutate()</code>, separando le modifiche con una virgola;</li>
+<li>creare classi di età con <code>age_categories()</code> e dare la priorità a un’informazione con <code>coalesce()</code>;</li>
+<li>calcolare differenze tra date e convertirle in numero con <code>as.numeric()</code>;</li>
+<li>filtrare le righe con <code>filter()</code>, combinando più condizioni con <code>&amp;</code> e facendo attenzione ai valori mancanti;</li>
+<li>riordinare le variabili con <code>select()</code>;</li>
+<li>salvare i dati in formato RDS con <code>export()</code>.</li>
+</ul>
+</section>
+<section id="risorse-aggiuntive" class="level2">
+<h2 class="anchored" data-anchor-id="risorse-aggiuntive">Risorse aggiuntive</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Argomento</th>
+<th>Risorsa</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Operatori logici e di confronto</td>
+<td>Epi R Handbook, cap. 3 “R Basics”: <a href="https://epirhandbook.com/en/new_pages/basics.html" class="uri">https://epirhandbook.com/en/new_pages/basics.html</a></td>
+</tr>
+<tr class="even">
+<td><code>ifelse()</code>, <code>case_when()</code>, <code>coalesce()</code>, <code>filter()</code>, <code>select()</code></td>
+<td>Epi R Handbook, cap. 8 “Cleaning data and core functions”: <a href="https://epirhandbook.com/en/new_pages/cleaning.html" class="uri">https://epirhandbook.com/en/new_pages/cleaning.html</a></td>
+</tr>
+<tr class="odd">
+<td>Differenze tra date</td>
+<td>Epi R Handbook, cap. 9 “Working with dates”: <a href="https://epirhandbook.com/en/new_pages/dates.html" class="uri">https://epirhandbook.com/en/new_pages/dates.html</a></td>
+</tr>
+<tr class="even">
+<td>Testo e stringhe (<code>{stringr}</code>, <code>str_remove_all()</code>, <code>str_detect()</code>)</td>
+<td>Epi R Handbook, cap. 10 “Characters and strings”: <a href="https://epirhandbook.com/en/new_pages/characters_strings.html" class="uri">https://epirhandbook.com/en/new_pages/characters_strings.html</a></td>
+</tr>
+<tr class="odd">
+<td>Importare ed esportare i dati</td>
+<td>Epi R Handbook, cap. 7 “Import and export”: <a href="https://epirhandbook.com/en/new_pages/importing.html" class="uri">https://epirhandbook.com/en/new_pages/importing.html</a></td>
+</tr>
+</tbody>
+</table>
+<!-- Sezione Autori in sospeso: da definire
+
+**Autori**
+
+Autori originali: Applied Epi (<https://appliedepi.org>), corso
+"Introduction to R for Applied Epidemiology", esercizio "More data
+cleaning"\
+Fonte dei dati: dati di una coorte vaccinale, modificati a scopo
+didattico\
+Adattato da: Chiara Sacco (Istituto Superiore di Sanità)
+-->
+
+
+</section>
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Torna in cima</a></main> <!-- /main -->
+<script>
+
+
+
+/* update total correct if #webex-total_correct exists */
+
+update_total_correct = function() {
+
+  console.log("webex: update total_correct");
+
+
+
+  var t = document.getElementsByClassName("webex-total_correct");
+
+  for (var i = 0; i < t.length; i++) {
+
+    p = t[i].parentElement;
+
+    var correct = p.getElementsByClassName("webex-correct").length;
+
+    var solvemes = p.getElementsByClassName("webex-solveme").length;
+
+    var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
+
+    var selects = p.getElementsByClassName("webex-select").length;
+
+
+
+    t[i].innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+
+  }
+
+}
+
+
+
+/* webex-solution button toggling function */
+
+b_func = function() {
+
+  console.log("webex: toggle hide");
+
+
+
+  var cl = this.parentElement.classList;
+
+  if (cl.contains('open')) {
+
+    cl.remove("open");
+
+  } else {
+
+    cl.add("open");
+
+  }
+
+}
+
+
+
+/* check answers */
+
+check_func = function() {
+
+  console.log("webex: check answers");
+
+
+
+  var cl = this.parentElement.classList;
+
+  if (cl.contains('unchecked')) {
+
+    cl.remove("unchecked");
+
+    this.innerHTML = "Hide Answers";
+
+  } else {
+
+    cl.add("unchecked");
+
+    this.innerHTML = "Show Answers";
+
+  }
+
+}
+
+
+
+/* function for checking solveme answers */
+
+solveme_func = function(e) {
+
+  console.log("webex: check solveme");
+
+
+
+  var real_answers = JSON.parse(this.dataset.answer);
+
+  var my_answer = this.value;
+
+  var cl = this.classList;
+
+  if (cl.contains("ignorecase")) {
+
+    my_answer = my_answer.toLowerCase();
+
+  }
+
+  if (cl.contains("nospaces")) {
+
+    my_answer = my_answer.replace(/ /g, "")
+
+  }
+
+
+
+  if (my_answer == "") {
+
+    cl.remove("webex-correct");
+
+    cl.remove("webex-incorrect");
+
+  } else if (real_answers.includes(my_answer)) {
+
+    cl.add("webex-correct");
+
+    cl.remove("webex-incorrect");
+
+  } else {
+
+    cl.add("webex-incorrect");
+
+    cl.remove("webex-correct");
+
+  }
+
+
+
+  // match numeric answers within a specified tolerance
+
+  if(this.dataset.tol > 0){
+
+    var tol = JSON.parse(this.dataset.tol);
+
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+
+      cl.add("webex-correct");
+
+    } else {
+
+      cl.remove("webex-correct");
+
+    }
+
+  }
+
+
+
+  // added regex bit
+
+  if (cl.contains("regex")){
+
+    answer_regex = RegExp(real_answers.join("|"))
+
+    if (answer_regex.test(my_answer)) {
+
+      cl.add("webex-correct");
+
+    }
+
+  }
+
+
+
+  update_total_correct();
+
+}
+
+
+
+/* function for checking select answers */
+
+select_func = function(e) {
+
+  console.log("webex: check select");
+
+
+
+  var cl = this.classList
+
+
+
+  /* add style */
+
+  cl.remove("webex-incorrect");
+
+  cl.remove("webex-correct");
+
+  if (this.value == "answer") {
+
+    cl.add("webex-correct");
+
+  } else if (this.value != "blank") {
+
+    cl.add("webex-incorrect");
+
+  }
+
+
+
+  update_total_correct();
+
+}
+
+
+
+/* function for checking radiogroups answers */
+
+radiogroups_func = function(e) {
+
+  console.log("webex: check radiogroups");
+
+
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+
+  var cl = checked_button.parentElement.classList;
+
+  var labels = checked_button.parentElement.parentElement.children;
+
+
+
+  /* get rid of styles */
+
+  for (i = 0; i < labels.length; i++) {
+
+    labels[i].classList.remove("webex-incorrect");
+
+    labels[i].classList.remove("webex-correct");
+
+  }
+
+
+
+  /* add style */
+
+  if (checked_button.value == "answer") {
+
+    cl.add("webex-correct");
+
+  } else {
+
+    cl.add("webex-incorrect");
+
+  }
+
+
+
+  update_total_correct();
+
+}
+
+
+
+window.onload = function() {
+
+  console.log("webex onload");
+
+  /* set up solution buttons */
+
+  var buttons = document.getElementsByTagName("button");
+
+
+
+  for (var i = 0; i < buttons.length; i++) {
+
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+
+      buttons[i].onclick = b_func;
+
+    }
+
+  }
+
+
+
+  var check_sections = document.getElementsByClassName("webex-check");
+
+  console.log("check:", check_sections.length);
+
+  for (var i = 0; i < check_sections.length; i++) {
+
+    check_sections[i].classList.add("unchecked");
+
+
+
+    let btn = document.createElement("button");
+
+    btn.innerHTML = "Show Answers";
+
+    btn.classList.add("webex-check-button");
+
+    btn.onclick = check_func;
+
+    check_sections[i].appendChild(btn);
+
+
+
+    let spn = document.createElement("span");
+
+    spn.classList.add("webex-total_correct");
+
+    check_sections[i].appendChild(spn);
+
+  }
+
+
+
+  /* set up webex-solveme inputs */
+
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+
+
+  for (var i = 0; i < solveme.length; i++) {
+
+    /* make sure input boxes don't auto-anything */
+
+    solveme[i].setAttribute("autocomplete","off");
+
+    solveme[i].setAttribute("autocorrect", "off");
+
+    solveme[i].setAttribute("autocapitalize", "off");
+
+    solveme[i].setAttribute("spellcheck", "false");
+
+    solveme[i].value = "";
+
+
+
+    /* adjust answer for ignorecase or nospaces */
+
+    var cl = solveme[i].classList;
+
+    var real_answer = solveme[i].dataset.answer;
+
+    if (cl.contains("ignorecase")) {
+
+      real_answer = real_answer.toLowerCase();
+
+    }
+
+    if (cl.contains("nospaces")) {
+
+      real_answer = real_answer.replace(/ /g, "");
+
+    }
+
+    solveme[i].dataset.answer = real_answer;
+
+
+
+    /* attach checking function */
+
+    solveme[i].onkeyup = solveme_func;
+
+    solveme[i].onchange = solveme_func;
+
+
+
+    solveme[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+
+  }
+
+
+
+  /* set up radiogroups */
+
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+
+  for (var i = 0; i < radiogroups.length; i++) {
+
+    radiogroups[i].onchange = radiogroups_func;
+
+  }
+
+
+
+  /* set up selects */
+
+  var selects = document.getElementsByClassName("webex-select");
+
+  for (var i = 0; i < selects.length; i++) {
+
+    selects[i].onchange = select_func;
+
+    selects[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+
+  }
+
+
+
+  update_total_correct();
+
+}
+
+
+
+</script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiato!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiato!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/SaccoChiara\.github\.io\/Corso_R_ISS_2026\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Istituto Superiore di Sanità – Corso base di R, 30 novembre – 4 dicembre 2026</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="./licenza.html">
+<p>Copyright e licenza</p>
+</a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
