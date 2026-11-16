@@ -21,8 +21,8 @@ Istituto Superiore di Sanità · Dipartimento Malattie Infettive\
 30 novembre – 4 dicembre 2026 · Aula Marotta
 :::
 
-Questo è il sito del corso. Qui trovi tutte le informazioni relativa al corso: come installare R, 
-i dati da usare, le esercitazioni e materiali di approfondimento.
+Questo è il sito del corso. Qui trovi tutte le informazioni relative al corso: come installare R, 
+i dati da usare, le esercitazioni e i materiali di approfondimento.
 
 ## Prima del corso
 
