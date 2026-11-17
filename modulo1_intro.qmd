@@ -24,9 +24,9 @@ title: |
 pacman::p_load(webexercises)
 ```
 
-# **Corso introduttivo al software statistico R**
+# **Corso base di R per la gestione e analisi dei dati**
 
-# Modulo 01 Importazione ed esplorazione di database {.unnumbered}
+# Modulo 01 - Importazione ed esplorazione di database {.unnumbered}
 
 ## Obiettivi del modulo
 
@@ -142,11 +142,11 @@ cat("Domanda di esempio: quanto fa 2 + 2?", longmcq(opts))
 :::
 
 Lungo il modulo troverai anche due tipi di riquadri colorati. I
-riquadri **gialli** segnalano errori frequenti o punti in cui R si
+riquadri **arancioni** segnalano errori frequenti o punti in cui R si
 comporta in modo inatteso: leggili sempre, perché possono farti
 risparmiare tempo.
 
-<!-- ISTRUZIONI: Il box giallo "Attenzione a …" va usato per avvisi
+<!-- ISTRUZIONI: Il box arancione "Attenzione a …" va usato per avvisi
      importanti: errori comuni, comportamenti di R che possono
      sorprendere, passaggi da non saltare. Il titolo inizia sempre con
      "Attenzione a" (es. "Attenzione ai nomi con spazi"). Copia
@@ -193,7 +193,7 @@ soltanto tre, probabilmente non hai ancora aperto uno script).
 
 Riquadro **source**: In alto a sinistra, è uno spazio per modificare,
 eseguire e salvare gli script. Gli script contengono i comandi che vuoi
-eseguire. 
+eseguire. Se non hai ancora aperto uno script, il riquadro non è visibile.
 
 Riquadro **console**: Il riquadro inferiore sinistro è dove troviamo il
 "motore" di RStudio: R. È qui che i comandi vengono effettivamente
@@ -217,28 +217,31 @@ R.
 Se vuoi saperne di più, leggi la sezione dell'EpiRhandbook [R
 Studio](https://epirhandbook.com/en/new_pages/basics.html#rstudio)
 
-## Creare un progetto di R
+## Creare un progetto R in RStudio
 
-Lavorare dentro un progetto di RStudio è importante perché:
+Lavorare dentro un progetto di RStudio è importante e vivamente consigliato perché:
 
 -   rende più semplice l'importazione di database, così come
-    l'esportazione o il salvataggio di output
--   permette di organizzare il lavoro in modo efficiente
--   permette di condividere in modo efficiente il lavoro con altre
-    persone: basta comprimere un progetto e inviarlo via email. Chi lo
+    l'esportazione o il salvataggio di output;  
+-   permette di avere un *working directory* (cartella di lavoro) sempre
+    chiara e definita: quando apri un progetto, RStudio imposta
+    automaticamente la cartella del progetto come cartella di lavoro;
+-   permette di organizzare il lavoro in modo efficiente all'interno di
+    sottocartelle e condividerlo con altre persone: 
+    basta comprimere un progetto e inviarlo via email. Chi lo
     riceve può aprirlo e replicare esattamente il tuo lavoro!
--   può essere collegato a un software di version control come
-    Git/Github
+-   può essere collegato a un software di *version control* come
+    Git/Github.
 
 La cartella del corso, *materiali_corso_R*, contiene tre sottocartelle:
 
 -   *script*: qui salverai i quattro script che scriverai durante la
     settimana: `pulizia_dati.R` (Moduli 1, 2 e 3), `tabelle_grouping.R`
     (Modulo 4), `plot.R` (Moduli 5, 6 e 8) e `join.R` (Modulo 7).
-    All'inizio contiene solo la sottocartella *backup*, con le versioni
-    corrette dei quattro script preparate da noi (`backup_pulizia_dati.R`,
+    All'inizio *script* contiene solo la sottocartella *backup*, con le versioni
+    corrette dei quattro script preparati da noi (`backup_pulizia_dati.R`,
     `backup_tabelle_grouping.R`, `backup_plot.R` e `backup_join.R`): puoi
-    usarle per confrontarle con il tuo lavoro o per ripartire se qualcosa
+    usarli per confrontarli con il tuo lavoro o per ripartire se qualcosa
     non funziona;
 -   *dati*: contiene i dati che userai nelle esercitazioni;
 -   *output*: qui salverai i grafici e le tabelle che produrrai.
