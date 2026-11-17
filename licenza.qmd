@@ -17,8 +17,7 @@ Alberto Mateo Urdiales,
 Daniele Petrone,
 Chiara Sacco
 
-Per la preparazione del corso sono stati utilizzati come riferimento anche i materiali di Applied Epi, 
-in particolare il corso Introduction to R for Applied Epidemiology, e il manuale The Epidemiologist R Handbook. 
+Per la preparazione del corso sono stati utilizzati come riferimento anche i materiali di [Applied Epi](https://appliedepi.org/), in particolare il corso Introduction to R for Applied Epidemiology, e il manuale [The Epidemiologist R Handbook](https://www.epirhandbook.com/en/). 
 Alcune esercitazioni sono state adattate e integrate in funzione dei contenuti e degli obiettivi del corso.
 
 ## Licenza
@@ -78,11 +77,11 @@ Questa licenza si basa su
 
 ## Fonte dei dati e licenza
 
-Il dataset utilizzato nelle esercitazioni è stato predisposto a partire dai dati dello studio di Mateo-Urdiales et al. (2024), Risk of breakthrough infection and hospitalisation after COVID-19 primary vaccination by HIV status in four Italian regions during 2021, pubblicato su BMC Public Health (2024;24:1569).
+Il dataset utilizzato nelle esercitazioni è stato predisposto a partire dai dati dello studio di [Mateo-Urdiales et al. (2024), Risk of breakthrough infection and hospitalisation after COVID-19 primary vaccination by HIV status in four Italian regions during 2021](https://pubmed.ncbi.nlm.nih.gov/38862939/), pubblicato su BMC Public Health (2024;24:1569).
 
 I dati sono stati adattati per finalità esclusivamente didattiche. Alcune variabili sono state simulate (età, regione, punteggio di Charlson, livello di anticorpi e CD4) e sono state introdotte intenzionalmente alcune anomalie, tra cui errori di codifica, valori mancanti, formati di data differenti e osservazioni duplicate, per consentire lo svolgimento delle esercitazioni di gestione e pulizia dei dati.
 
-Sono stati inoltre predisposti materiali e dati aggiuntivi per le esercitazioni, comprese le i dati relative alle regioni, ai richiami vaccinali e i confini geografici utilizzati per le mappe.
+Sono stati inoltre predisposti materiali e dati aggiuntivi per le esercitazioni, comprese i dati relativi alle regioni, ai richiami vaccinali e ai confini geografici utilizzati per le mappe.
 
 I dati utilizzati nel corso non devono essere interpretati come dati originali dello studio né come stime epidemiologiche ufficiali.
 
