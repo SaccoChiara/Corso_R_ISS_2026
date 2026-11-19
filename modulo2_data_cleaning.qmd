@@ -38,14 +38,14 @@ dati_raw <- import("dati/dataset_esercitazione_raw.csv")
 
 ```
 
-# **Corso introduttivo al software statistico R**
+# **Corso base di R per la gestione e analisi dei dati**
 
-# Modulo 02 Pulizia e preparazione dei dati
+# Modulo 02 - Pulizia e preparazione dei dati
 
 ## Obiettivi del modulo
 
 -   Individuare i problemi di qualità dei dati
--   Costruire una catena di pulizia con l'operatore pipe `%>%` per
+-   Costruire una catena di pulizia con l'operatore *pipe* `%>%` per
     standardizzare i nomi delle variabili, selezionare le variabili
     utili e rimuovere le righe duplicate
 -   Gestire i valori mancanti e convertire le variabili nella classe
@@ -160,11 +160,11 @@ cat("Domanda di esempio: quanto fa 2 + 2?", longmcq(opts))
 ::::
 
 Lungo il modulo troverai anche due tipi di riquadri colorati. I riquadri
-**gialli** segnalano errori frequenti o punti in cui R si comporta in
+**arancione** segnalano errori frequenti o punti in cui R si comporta in
 modo inatteso: leggili sempre, perché possono farti risparmiare tempo.
 
 ```{=html}
-<!-- ISTRUZIONI: Il box giallo "Attenzione a …" va usato per avvisi
+<!-- ISTRUZIONI: Il box arancione "Attenzione a …" va usato per avvisi
      importanti: errori comuni, comportamenti di R che possono
      sorprendere, passaggi da non saltare. Il titolo inizia sempre con
      "Attenzione a" (es. "Attenzione ai nomi con spazi"). Copia
@@ -212,9 +212,9 @@ script di questa mattina, `pulizia_dati.R`:
     script su cui stavi lavorando questa mattina, anche se non lo avevi
     salvato.
 
-In entrambi i casi, crea in fondo allo script una nuova sezione chiamata
+In entrambi i casi, crea in fondo allo script **una nuova sezione** chiamata
 "Modulo 2 - Pulizia e preparazione dei dati" con la combinazione di
-tasti **Ctrl + Shift + R** (**Cmd + Shift + R** su Mac): qui scriverai
+tasti **Ctrl + Shift + R** (**Cmd + Shift + R** su Mac). Qui scriverai
 il codice dell'esercitazione del pomeriggio. Ricordati di salvare spesso
 il lavoro (**Ctrl + S**, oppure **Cmd + S** su Mac).
 
@@ -226,7 +226,7 @@ l'esercitazione.**
 ## La catena di pulizia
 
 Tutti i passaggi di pulizia verranno raccolti in **un'unica catena** di
-comandi, collegati dall'operatore "pipe" `%>%`. Puoi leggere `%>%` come
+comandi, collegati dall'operatore *pipe* `%>%`. Puoi leggere `%>%` come
 "e poi": prendi i dati, *e poi* sistema i nomi, *e poi* togli i
 duplicati, e così via. Il simbolo dell'operatore pipe si scrive con la
 scorciatoia **Ctrl+Shift+M** (**Cmd+Shift+M** su Mac). In R esiste anche
@@ -256,7 +256,7 @@ dati <- dati_raw %>%
 ```
 
 L'intera catena è un **unico comando**: ogni volta che aggiungi una
-funzione, riesegui tutta la catena (seleziona dall'inizio alla fine e
+funzione, riesegui tutta la catena (seleziona il testo dall'inizio alla fine e
 premi Ctrl+Invio). Poiché il comando usa `<-`, il risultato non viene
 stampato nella console ma salvato in `dati`: per vederlo clicca su
 `dati` nel pannello **Environment** oppure usa `View(dati)`. Ti
@@ -307,7 +307,7 @@ cat("Che cosa osservi in console?", longmcq(opts))
 
 I nomi contengono spazi (`Age group`), maiuscole irregolari (`REGION`,
 `AGE`) e trattini (`End_Follow-Up`): sono scomodi da scrivere e facili
-da sbagliare.
+da sbagliare. Per questo motivo, il primo passo della pulizia è **standardizzare i nomi**.  
 
 ::: {.callout-warning appearance="default" icon="false"}
 ## Attenzione ai nomi con spazi
@@ -316,7 +316,7 @@ Se il nome di una variabile contiene uno spazio, R non lo riconosce come
 un nome unico. `dati_raw$Age group` dà errore: il nome va racchiuso tra
 **apici inversi** (backtick, `` ` ``), cioè `` dati_raw$`Age group` ``.
 Gli spazi possono anche essere difficili da vedere: la variabile
-`Event  date` ha **due** spazi tra le parole.
+`Event  date` ha **due** spazi tra le parole. Per questa ragione, l'uso di nomi con spazi o caratteri speciali è fortemente sconsigliato.  
 :::
 
 ### Pulizia automatica dei nomi
@@ -325,7 +325,7 @@ La funzione `clean_names()` del pacchetto `{janitor}` sistema i nomi in
 automatico: rende tutti i nomi minuscoli, trasforma spazi e trattini in
 trattini bassi (`_`) e rimuove i caratteri speciali. È molto facile da
 usare e ti permette di risolvere attraverso una singola riga di codice
-diversi problemi.
+diversi problemi di nomenclatura delle variabili.
 
 Inizia la catena di pulizia: parti da `dati_raw`, applica
 `clean_names()` e salva il risultato in `dati`. Poi guarda i nuovi nomi
@@ -378,8 +378,8 @@ cat("Confronta names(dati_raw) e names(dati): cosa è cambiato?", longmcq(opts))
 
 Adesso proviamo invece a cambiare a mano il nome delle variabili, per
 renderli più brevi o più chiari. Lo strumento principale è la funzione
-`rename()` del pacchetto `{dplyr}` (incluso nel `{tidyverse}`). A
-partire dalla tabella sottostante rinomina le variabili:
+`rename()` del pacchetto `{dplyr}` (incluso nel meta-pacchetto
+`{tidyverse}`). A partire dalla tabella sottostante rinomina le variabili:
 
 | Vecchio nome       | Nuovo nome    |
 |--------------------|---------------|
@@ -672,7 +672,8 @@ con il numero di valori diversi di `id_subject` (colonna `n_unique`):
 che cosa noti?
 
 Puoi fare lo stesso confronto anche con due comandi: `nrow()` conta le
-righe, `n_distinct()` conta i valori diversi.
+righe e si applica al dataset, `n_distinct()` conta i valori diversi ma
+si applica a una variabile in questo caso `id_subject`. Prova nell'area di prova:
 
 ```{r}
 #| eval: false
@@ -682,7 +683,7 @@ n_distinct(dati$id_subject)
 
 Ci sono più righe che soggetti: alcune righe sono ripetute. La funzione
 `distinct()`, con le parentesi vuote, rimuove le righe **identiche al
-100%**: tra le righe che hanno lo stesso valore in tutte le variabili,
+100%**: tra le righe che hanno lo stesso valore in tutte le variabili
 tiene solo la prima.
 
 ### Aggiungi alla catena di pulizia
