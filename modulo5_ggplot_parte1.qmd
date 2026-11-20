@@ -20,9 +20,9 @@ title: |
   ![](immagini/logo_dmi.png){width=3in}
 ---
 
-# **Corso introduttivo al software statistico R**
+# **Corso base di R per la gestione e analisi dei dati**
 
-# Modulo 05 Data Visualization con ggplot2 (Parte 1)
+# Modulo 05 - Data Visualization con ggplot2 (Parte 1)
 
 ## Obiettivi del modulo
 
