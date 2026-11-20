@@ -640,7 +640,7 @@ precedente):
 #| echo: false
 opts <- c(
   "14",
-  answer = "12",
+  answer = "13",
   "2"
 )
 
@@ -671,9 +671,9 @@ Confronta il numero di righe (*Number of rows*, in alto nel riepilogo)
 con il numero di valori diversi di `id_subject` (colonna `n_unique`):
 che cosa noti?
 
-Puoi fare lo stesso confronto anche con due comandi: `nrow()` conta le
-righe e si applica al dataset, `n_distinct()` conta i valori diversi ma
-si applica a una variabile in questo caso `id_subject`. Prova nell'area di prova:
+Puoi fare lo stesso confronto anche con due comandi: `nrow()` che conta le
+righe (NB: si applica all'intero dataset), `n_distinct()` che conta i valori diversi
+(NB: si applica a una sola variabile in questo caso `id_subject`). Prova nell'area di prova:
 
 ```{r}
 #| eval: false
@@ -683,7 +683,7 @@ n_distinct(dati$id_subject)
 
 Ci sono più righe che soggetti: alcune righe sono ripetute. La funzione
 `distinct()`, con le parentesi vuote, rimuove le righe **identiche al
-100%**: tra le righe che hanno lo stesso valore in tutte le variabili
+100%** ovvero tra le righe che hanno lo stesso valore in tutte le variabili,
 tiene solo la prima.
 
 ### Aggiungi alla catena di pulizia
@@ -762,11 +762,12 @@ cat("Quante righe duplicate ha rimosso distinct()?", longmcq(opts))
 ::: {.callout-tip appearance="default" icon="false"}
 ## Approfondimento: duplicati in base a una sola variabile
 
-`distinct(id_subject)` considera "duplicate" le righe con lo stesso
-valore di `id_subject`, anche se le altre variabili sono diverse. Ma
-attenzione: per impostazione predefinita **elimina tutte le altre
-variabili**. Per mantenerle si aggiunge `.keep_all = TRUE`. Confronta i
-risultati nell'area di prova:
+`distinct(id_subject)` considera "duplicate" tutte le righe che presentano
+lo stesso valore di `id_subject`, indipendentemente dai valori delle altre
+variabili. Per impostazione predefinita, mantiene solo la variabile `id_subject`,
+di cui elimina i duplicati, ed elimina tutte le altre colonne. Per conservare anche
+le altre variabili, mantenendo però **solo la prima riga per ciascun soggetto**,
+si aggiunge `.keep_all = TRUE`. Confronta i risultati nell'area di prova:
 
 ```{r}
 #| eval: false
@@ -870,8 +871,9 @@ In tutto troverai:
 ### Trasformare i codici in `NA`: `na_if()`
 
 Per modificare una variabile si usa la funzione `mutate()`, con la
-sintassi `mutate(variabile = funzione(variabile))`. `mutate()` serve sia
-a creare nuove variabili sia a modificare quelle esistenti.
+sintassi `mutate(variabile = funzione(variabile))`. `mutate()` 
+è una funzione molto usata e serve sia a creare nuove variabili sia
+a modificare quelle esistenti.
 
 La funzione `na_if(variabile, "valore")` sostituisce il valore indicato
 con `NA`. Il comando per trasformare `"Unknown"` in `NA` nella variabile
@@ -985,7 +987,7 @@ precedente):
 ### Contare i valori mancanti
 
 Riesegui `tabyl()` su `sex` e `hiv_status` nell'area di prova: ora i
-mancanti compaiono come `NA`, e nella colonna `valid_percent` `tabyl()`
+mancanti compaiono come `NA`, e nella colonna `valid_percent` la funzione `tabyl()`
 calcola le percentuali escludendoli.
 
 Come si contano i valori mancanti? Applicata a una variabile, `is.na()`
@@ -1025,15 +1027,17 @@ cat("Cosa restituisce sum(c(TRUE, FALSE, TRUE, TRUE))?", longmcq(opts))
 :::
 ::::
 
-Con `!is.na()` (il punto esclamativo è la negazione) i `TRUE` e i
+Con `!is.na()` (`!` è l'operatore di negazione) i `TRUE` e i
 `FALSE` si scambiano, e `sum()` conta invece i valori **presenti**.
 
-Per contare gli `NA` di tutte le variabili in un colpo solo c'è
+Per contare i `NA` di tutte le variabili in un colpo solo c'è
 `colSums()`. Applicata a tutto il data frame, `is.na(dati)` restituisce
 una tabella di `TRUE` e `FALSE` con le stesse righe e le stesse
 variabili di `dati`. `colSums()` ("somme delle colonne") fa la somma di
 ogni variabile di questa tabella, cioè conta i `TRUE`, variabile per
 variabile: il risultato è il numero di valori mancanti di ciascuna.
+Infine puoi sempre riutilizzare la funzione `skim()` per avere un riepilogo 
+dei valori mancanti in tutte le variabili del dataframe.
 
 Prova nell'area di prova:
 
@@ -1042,6 +1046,7 @@ Prova nell'area di prova:
 sum(is.na(dati$sex))     # valori mancanti
 sum(!is.na(dati$sex))    # valori presenti
 colSums(is.na(dati))     # valori mancanti in ogni variabile
+skim(dati)               # riepilogo dei valori mancanti
 ```
 
 ::: {.callout-tip appearance="default" icon="false"}
