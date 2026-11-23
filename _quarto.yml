@@ -19,6 +19,8 @@ project:
     - licenza.qmd
   # prima di ogni render crea lo zip dei materiali per gli studenti
   pre-render: crea_zip_materiali.R
+  # dopo ogni render toglie le copie di conflitto create da OneDrive
+  post-render: pulisci_copie_conflitto.R
   resources:
     - webex.css
     - webex.js

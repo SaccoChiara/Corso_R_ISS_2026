@@ -20,6 +20,7 @@
 !/webex.css
 !/webex.js
 !/crea_zip_materiali.R
+!/pulisci_copie_conflitto.R
 
 # --- pagine del sito
 !/index.qmd
