@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>quarto-inputa3b022e26917fb9f – Corso base di R</title>
+<title>quarto-inputf7fef88926cd4660 – Corso base di R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -108,6 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
+<link rel="stylesheet" href="sito.css">
 <link rel="stylesheet" href="webex.css">
 </head>
 
@@ -192,6 +193,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
     </ul>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./valutazione.html"> 
+<span class="menu-text">Valutazione</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./licenza.html"> 
+<span class="menu-text">Copyright e licenza</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -236,6 +247,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
+<!--
+  LOGHI IN ALTO SU TUTTE LE PAGINE DEL SITO
+  Viene aggiunto a ogni pagina da _quarto.yml (include-before-body).
+  Lo script sposta i loghi all'inizio del contenuto della pagina,
+  sotto il menu in alto. Lo stile e' in sito.css (.sito-loghi).
+-->
+<div class="sito-loghi" id="sito-loghi">
+  <img src="immagini/logo_iss.png" alt="Logo dell'Istituto Superiore di Sanità">
+  <img src="immagini/logo_dip_malattie_infettive.png" alt="Logo del Dipartimento Malattie Infettive">
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var loghi = document.getElementById("sito-loghi");
+    var main = document.querySelector("main");
+    if (loghi && main) main.insertBefore(loghi, main.firstChild);
+  });
+</script>
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -329,8 +357,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Domanda di esempio: quanto fa 2 + 2?
-<div id="radio_NIITMJWSQD" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_NIITMJWSQD" value=""> <span>2</span></label><label><input type="radio" autocomplete="off" name="radio_NIITMJWSQD" value=""> <span>5</span></label><label><input type="radio" autocomplete="off" name="radio_NIITMJWSQD" value="answer"> <span>4</span></label>
+<div id="radio_SKBDBKSXBV" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_SKBDBKSXBV" value=""> <span>2</span></label><label><input type="radio" autocomplete="off" name="radio_SKBDBKSXBV" value=""> <span>5</span></label><label><input type="radio" autocomplete="off" name="radio_SKBDBKSXBV" value="answer"> <span>4</span></label>
 </div>
 </div>
 </div>
@@ -439,8 +467,8 @@ Domanda di esempio: quanto fa 2 + 2?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Domanda: Una volta creato il progetto, cosa vedi nel riquadro ‘Files’ in basso a destra?
-<div id="radio_WPAIBYMENH" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_WPAIBYMENH" value=""> <span>Un elenco di tutti i pacchetti di R</span></label><label><input type="radio" autocomplete="off" name="radio_WPAIBYMENH" value="answer"> <span>Un file che sembra il progetto che ho creato e anche le sottocartelle del corso</span></label><label><input type="radio" autocomplete="off" name="radio_WPAIBYMENH" value=""> <span>Non si vede niente</span></label><label><input type="radio" autocomplete="off" name="radio_WPAIBYMENH" value=""> <span>Un elenco delle funzioni di R</span></label>
+<div id="radio_RRZCMJBUHD" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_RRZCMJBUHD" value=""> <span>Un elenco di tutti i pacchetti di R</span></label><label><input type="radio" autocomplete="off" name="radio_RRZCMJBUHD" value="answer"> <span>Un file che sembra il progetto che ho creato e anche le sottocartelle del corso</span></label><label><input type="radio" autocomplete="off" name="radio_RRZCMJBUHD" value=""> <span>Non si vede niente</span></label><label><input type="radio" autocomplete="off" name="radio_RRZCMJBUHD" value=""> <span>Un elenco delle funzioni di R</span></label>
 </div>
 </div>
 </div>
@@ -546,8 +574,8 @@ Domanda: Una volta creato il progetto, cosa vedi nel riquadro ‘Files’ in bas
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Domanda: Qual è la media del vettore ‘numeri’?
-<div id="radio_FSWOIEKFOB" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_FSWOIEKFOB" value=""> <span>4231.1</span></label><label><input type="radio" autocomplete="off" name="radio_FSWOIEKFOB" value=""> <span>12.98</span></label><label><input type="radio" autocomplete="off" name="radio_FSWOIEKFOB" value="answer"> <span>1684.167</span></label><label><input type="radio" autocomplete="off" name="radio_FSWOIEKFOB" value=""> <span>9874.32</span></label>
+<div id="radio_GFOQSVEOWF" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_GFOQSVEOWF" value=""> <span>4231.1</span></label><label><input type="radio" autocomplete="off" name="radio_GFOQSVEOWF" value=""> <span>12.98</span></label><label><input type="radio" autocomplete="off" name="radio_GFOQSVEOWF" value="answer"> <span>1684.167</span></label><label><input type="radio" autocomplete="off" name="radio_GFOQSVEOWF" value=""> <span>9874.32</span></label>
 </div>
 </div>
 </div>
@@ -1157,26 +1185,26 @@ Domanda: Qual è la media del vettore ‘numeri’?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Domanda: Quante variabili ci sono nel database?
-<div id="radio_TOXHUVBWSB" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_TOXHUVBWSB" value="answer"> <span>14</span></label><label><input type="radio" autocomplete="off" name="radio_TOXHUVBWSB" value=""> <span>6611</span></label><label><input type="radio" autocomplete="off" name="radio_TOXHUVBWSB" value=""> <span>82</span></label><label><input type="radio" autocomplete="off" name="radio_TOXHUVBWSB" value=""> <span>4</span></label>
+<div id="radio_HLFQARXQPW" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_HLFQARXQPW" value="answer"> <span>14</span></label><label><input type="radio" autocomplete="off" name="radio_HLFQARXQPW" value=""> <span>6611</span></label><label><input type="radio" autocomplete="off" name="radio_HLFQARXQPW" value=""> <span>82</span></label><label><input type="radio" autocomplete="off" name="radio_HLFQARXQPW" value=""> <span>4</span></label>
 </div>
 </div>
 <div class="webex-check">
 Domanda: Quante osservazioni sono considerate ‘missing’ nella variabile ’Age group?
-<div id="radio_NVHKKSVUSK" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_NVHKKSVUSK" value=""> <span>6</span></label><label><input type="radio" autocomplete="off" name="radio_NVHKKSVUSK" value="answer"> <span>0</span></label><label><input type="radio" autocomplete="off" name="radio_NVHKKSVUSK" value=""> <span>137</span></label><label><input type="radio" autocomplete="off" name="radio_NVHKKSVUSK" value=""> <span>876</span></label>
+<div id="radio_OBWBUGKFTQ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_OBWBUGKFTQ" value=""> <span>6</span></label><label><input type="radio" autocomplete="off" name="radio_OBWBUGKFTQ" value="answer"> <span>0</span></label><label><input type="radio" autocomplete="off" name="radio_OBWBUGKFTQ" value=""> <span>137</span></label><label><input type="radio" autocomplete="off" name="radio_OBWBUGKFTQ" value=""> <span>876</span></label>
 </div>
 </div>
 <div class="webex-check">
 Domanda: Quante variabili numeriche ci sono nel database?
-<div id="radio_YBYBTCQLMK" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_YBYBTCQLMK" value=""> <span>28</span></label><label><input type="radio" autocomplete="off" name="radio_YBYBTCQLMK" value="answer"> <span>3</span></label><label><input type="radio" autocomplete="off" name="radio_YBYBTCQLMK" value=""> <span>17</span></label><label><input type="radio" autocomplete="off" name="radio_YBYBTCQLMK" value=""> <span>4</span></label>
+<div id="radio_YGCQZXBYTB" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_YGCQZXBYTB" value=""> <span>28</span></label><label><input type="radio" autocomplete="off" name="radio_YGCQZXBYTB" value="answer"> <span>3</span></label><label><input type="radio" autocomplete="off" name="radio_YGCQZXBYTB" value=""> <span>17</span></label><label><input type="radio" autocomplete="off" name="radio_YGCQZXBYTB" value=""> <span>4</span></label>
 </div>
 </div>
 <div class="webex-check">
 Domanda: Qual è la media della variabile ‘Charlson score’?
-<div id="radio_JTAQAJMZBY" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_JTAQAJMZBY" value=""> <span>52.7</span></label><label><input type="radio" autocomplete="off" name="radio_JTAQAJMZBY" value=""> <span>0.9</span></label><label><input type="radio" autocomplete="off" name="radio_JTAQAJMZBY" value=""> <span>48</span></label><label><input type="radio" autocomplete="off" name="radio_JTAQAJMZBY" value="answer"> <span>0.524</span></label>
+<div id="radio_KKMBEFEPVV" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_KKMBEFEPVV" value=""> <span>52.7</span></label><label><input type="radio" autocomplete="off" name="radio_KKMBEFEPVV" value=""> <span>0.9</span></label><label><input type="radio" autocomplete="off" name="radio_KKMBEFEPVV" value=""> <span>48</span></label><label><input type="radio" autocomplete="off" name="radio_KKMBEFEPVV" value="answer"> <span>0.524</span></label>
 </div>
 </div>
 </div>

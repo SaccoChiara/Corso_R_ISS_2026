@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>quarto-input3a59ccec0f0084b1 – Corso base di R</title>
+<title>quarto-inputaeb8e2f27debcadd – Corso base di R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -112,6 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+<link rel="stylesheet" href="sito.css">
 <link rel="stylesheet" href="webex.css">
 </head>
 
@@ -196,6 +197,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
     </ul>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./valutazione.html"> 
+<span class="menu-text">Valutazione</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./licenza.html"> 
+<span class="menu-text">Copyright e licenza</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -289,6 +300,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
+<!--
+  LOGHI IN ALTO SU TUTTE LE PAGINE DEL SITO
+  Viene aggiunto a ogni pagina da _quarto.yml (include-before-body).
+  Lo script sposta i loghi all'inizio del contenuto della pagina,
+  sotto il menu in alto. Lo stile e' in sito.css (.sito-loghi).
+-->
+<div class="sito-loghi" id="sito-loghi">
+  <img src="immagini/logo_iss.png" alt="Logo dell'Istituto Superiore di Sanità">
+  <img src="immagini/logo_dip_malattie_infettive.png" alt="Logo del Dipartimento Malattie Infettive">
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var loghi = document.getElementById("sito-loghi");
+    var main = document.querySelector("main");
+    if (loghi && main) main.insertBefore(loghi, main.firstChild);
+  });
+</script>
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -411,8 +439,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Domanda di esempio: quanto fa 2 + 2?
-<div id="radio_GMOIIVDPVV" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_GMOIIVDPVV" value=""> <span>2</span></label><label><input type="radio" autocomplete="off" name="radio_GMOIIVDPVV" value=""> <span>5</span></label><label><input type="radio" autocomplete="off" name="radio_GMOIIVDPVV" value="answer"> <span>4</span></label>
+<div id="radio_ZMXYQXRXWP" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_ZMXYQXRXWP" value=""> <span>2</span></label><label><input type="radio" autocomplete="off" name="radio_ZMXYQXRXWP" value=""> <span>5</span></label><label><input type="radio" autocomplete="off" name="radio_ZMXYQXRXWP" value="answer"> <span>4</span></label>
 </div>
 </div>
 </div>
@@ -661,8 +689,8 @@ Domanda di esempio: quanto fa 2 + 2?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Quante persone con HIV ci sono nel dataset?
-<div id="radio_JQMKWMYNEU" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_JQMKWMYNEU" value=""> <span>31.693</span></label><label><input type="radio" autocomplete="off" name="radio_JQMKWMYNEU" value="answer"> <span>16.024</span></label><label><input type="radio" autocomplete="off" name="radio_JQMKWMYNEU" value=""> <span>47.717</span></label><label><input type="radio" autocomplete="off" name="radio_JQMKWMYNEU" value=""> <span>8.012</span></label>
+<div id="radio_RVVZCYCYTY" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_RVVZCYCYTY" value=""> <span>31.693</span></label><label><input type="radio" autocomplete="off" name="radio_RVVZCYCYTY" value="answer"> <span>16.024</span></label><label><input type="radio" autocomplete="off" name="radio_RVVZCYCYTY" value=""> <span>47.717</span></label><label><input type="radio" autocomplete="off" name="radio_RVVZCYCYTY" value=""> <span>8.012</span></label>
 </div>
 </div>
 </div>
@@ -753,8 +781,8 @@ Quante persone con HIV ci sono nel dataset?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Che cosa calcola <code>sum(n)</code> dentro <code>mutate()</code>?
-<div id="radio_TGZVOAZLSF" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_TGZVOAZLSF" value=""> <span>Il numero di variabili della tabella</span></label><label><input type="radio" autocomplete="off" name="radio_TGZVOAZLSF" value=""> <span>Il numero di persone con sesso femminile</span></label><label><input type="radio" autocomplete="off" name="radio_TGZVOAZLSF" value="answer"> <span>Il totale della variabile <code>n</code>, cioè tutte le persone contate</span></label><label><input type="radio" autocomplete="off" name="radio_TGZVOAZLSF" value=""> <span>La media dei conteggi</span></label>
+<div id="radio_BQSNFWGJJH" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_BQSNFWGJJH" value=""> <span>Il numero di variabili della tabella</span></label><label><input type="radio" autocomplete="off" name="radio_BQSNFWGJJH" value=""> <span>Il numero di persone con sesso femminile</span></label><label><input type="radio" autocomplete="off" name="radio_BQSNFWGJJH" value="answer"> <span>Il totale della variabile <code>n</code>, cioè tutte le persone contate</span></label><label><input type="radio" autocomplete="off" name="radio_BQSNFWGJJH" value=""> <span>La media dei conteggi</span></label>
 </div>
 </div>
 </div>
@@ -793,8 +821,8 @@ Che cosa calcola <code>sum(n)</code> dentro <code>mutate()</code>?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Quante righe ha il risultato di <code>count(hiv_status, sex)</code>?
-<div id="radio_IYNHGZOMMR" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_IYNHGZOMMR" value=""> <span>Una per ogni persona</span></label><label><input type="radio" autocomplete="off" name="radio_IYNHGZOMMR" value=""> <span>Una per ogni valore di <code>hiv_status</code></span></label><label><input type="radio" autocomplete="off" name="radio_IYNHGZOMMR" value="answer"> <span>Una per ogni combinazione di <code>hiv_status</code> e <code>sex</code></span></label><label><input type="radio" autocomplete="off" name="radio_IYNHGZOMMR" value=""> <span>Sempre due righe</span></label>
+<div id="radio_QQYBPYOFBK" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_QQYBPYOFBK" value=""> <span>Una per ogni persona</span></label><label><input type="radio" autocomplete="off" name="radio_QQYBPYOFBK" value=""> <span>Una per ogni valore di <code>hiv_status</code></span></label><label><input type="radio" autocomplete="off" name="radio_QQYBPYOFBK" value="answer"> <span>Una per ogni combinazione di <code>hiv_status</code> e <code>sex</code></span></label><label><input type="radio" autocomplete="off" name="radio_QQYBPYOFBK" value=""> <span>Sempre due righe</span></label>
 </div>
 </div>
 </div>
@@ -894,8 +922,8 @@ Quante righe ha il risultato di <code>count(hiv_status, sex)</code>?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Dopo <code>adorn_pct_formatting()</code>, che cosa diventano le percentuali?
-<div id="radio_DJFPSSUUGG" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_DJFPSSUUGG" value=""> <span>Restano numeri, solo arrotondati</span></label><label><input type="radio" autocomplete="off" name="radio_DJFPSSUUGG" value="answer"> <span>Diventano testo (character), con il simbolo %</span></label><label><input type="radio" autocomplete="off" name="radio_DJFPSSUUGG" value=""> <span>Diventano proporzioni tra 0 e 1</span></label><label><input type="radio" autocomplete="off" name="radio_DJFPSSUUGG" value=""> <span>Vengono eliminate</span></label>
+<div id="radio_XFCJTTEPHZ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_XFCJTTEPHZ" value=""> <span>Restano numeri, solo arrotondati</span></label><label><input type="radio" autocomplete="off" name="radio_XFCJTTEPHZ" value="answer"> <span>Diventano testo (character), con il simbolo %</span></label><label><input type="radio" autocomplete="off" name="radio_XFCJTTEPHZ" value=""> <span>Diventano proporzioni tra 0 e 1</span></label><label><input type="radio" autocomplete="off" name="radio_XFCJTTEPHZ" value=""> <span>Vengono eliminate</span></label>
 </div>
 </div>
 </div>
@@ -952,8 +980,8 @@ Dopo <code>adorn_pct_formatting()</code>, che cosa diventano le percentuali?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Perché, se usi <code>adorn_totals()</code> prima di <code>arrange(desc(n))</code>, la riga Total finisce in cima?
-<div id="radio_BCRODZIYOL" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_BCRODZIYOL" value=""> <span>Perché adorn_totals() mette sempre il totale nella prima riga</span></label><label><input type="radio" autocomplete="off" name="radio_BCRODZIYOL" value="answer"> <span>Perché arrange() ordina anche la riga Total, che ha il valore di n più alto</span></label><label><input type="radio" autocomplete="off" name="radio_BCRODZIYOL" value=""> <span>Perché arrange() non funziona sulle tabelle di tabyl()</span></label><label><input type="radio" autocomplete="off" name="radio_BCRODZIYOL" value=""> <span>Perché arrange() ordina in ordine alfabetico</span></label>
+<div id="radio_CTCIOJRTAO" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_CTCIOJRTAO" value=""> <span>Perché adorn_totals() mette sempre il totale nella prima riga</span></label><label><input type="radio" autocomplete="off" name="radio_CTCIOJRTAO" value="answer"> <span>Perché arrange() ordina anche la riga Total, che ha il valore di n più alto</span></label><label><input type="radio" autocomplete="off" name="radio_CTCIOJRTAO" value=""> <span>Perché arrange() non funziona sulle tabelle di tabyl()</span></label><label><input type="radio" autocomplete="off" name="radio_CTCIOJRTAO" value=""> <span>Perché arrange() ordina in ordine alfabetico</span></label>
 </div>
 </div>
 </div>
@@ -1079,8 +1107,8 @@ Perché, se usi <code>adorn_totals()</code> prima di <code>arrange(desc(n))</cod
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Nella tabella con <code>adorn_totals(c("row", "col"))</code>, che cosa indica il valore in basso a destra?
-<div id="radio_AIEPQUVTAQ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_AIEPQUVTAQ" value=""> <span>Il numero di donne con HIV</span></label><label><input type="radio" autocomplete="off" name="radio_AIEPQUVTAQ" value=""> <span>Il totale delle persone con HIV</span></label><label><input type="radio" autocomplete="off" name="radio_AIEPQUVTAQ" value="answer"> <span>Il numero totale di persone nel dataset</span></label><label><input type="radio" autocomplete="off" name="radio_AIEPQUVTAQ" value=""> <span>La somma della colonna <code>Total</code> divisa per due</span></label>
+<div id="radio_UUPCPJKPWR" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_UUPCPJKPWR" value=""> <span>Il numero di donne con HIV</span></label><label><input type="radio" autocomplete="off" name="radio_UUPCPJKPWR" value=""> <span>Il totale delle persone con HIV</span></label><label><input type="radio" autocomplete="off" name="radio_UUPCPJKPWR" value="answer"> <span>Il numero totale di persone nel dataset</span></label><label><input type="radio" autocomplete="off" name="radio_UUPCPJKPWR" value=""> <span>La somma della colonna <code>Total</code> divisa per due</span></label>
 </div>
 </div>
 </div>
@@ -1159,8 +1187,8 @@ Nella tabella con <code>adorn_totals(c("row", "col"))</code>, che cosa indica il
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Vuoi sapere quale percentuale delle persone con HIV è di sesso femminile. Quale tabella usi?
-<div id="radio_SKDRAEXKRB" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_SKDRAEXKRB" value="answer"> <span>La tabella con le percentuali di riga</span></label><label><input type="radio" autocomplete="off" name="radio_SKDRAEXKRB" value=""> <span>La tabella con le percentuali di colonna</span></label><label><input type="radio" autocomplete="off" name="radio_SKDRAEXKRB" value=""> <span>Sono equivalenti</span></label><label><input type="radio" autocomplete="off" name="radio_SKDRAEXKRB" value=""> <span>Nessuna delle due: servono i conteggi</span></label>
+<div id="radio_WCOPXXUBDW" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_WCOPXXUBDW" value="answer"> <span>La tabella con le percentuali di riga</span></label><label><input type="radio" autocomplete="off" name="radio_WCOPXXUBDW" value=""> <span>La tabella con le percentuali di colonna</span></label><label><input type="radio" autocomplete="off" name="radio_WCOPXXUBDW" value=""> <span>Sono equivalenti</span></label><label><input type="radio" autocomplete="off" name="radio_WCOPXXUBDW" value=""> <span>Nessuna delle due: servono i conteggi</span></label>
 </div>
 </div>
 </div>
@@ -1216,8 +1244,8 @@ Vuoi sapere quale percentuale delle persone con HIV è di sesso femminile. Quale
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Che cosa noti confrontando la distribuzione per classe d’età dei due gruppi HIV?
-<div id="radio_DMDNIYBQWZ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_DMDNIYBQWZ" value=""> <span>Le persone con HIV sono molto più anziane</span></label><label><input type="radio" autocomplete="off" name="radio_DMDNIYBQWZ" value=""> <span>Le persone senza HIV sono molto più anziane</span></label><label><input type="radio" autocomplete="off" name="radio_DMDNIYBQWZ" value="answer"> <span>La distribuzione per età è quasi identica nei due gruppi</span></label><label><input type="radio" autocomplete="off" name="radio_DMDNIYBQWZ" value=""> <span>Non si può dire senza calcolare l'età media</span></label>
+<div id="radio_GBGREWCJCN" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_GBGREWCJCN" value=""> <span>Le persone con HIV sono molto più anziane</span></label><label><input type="radio" autocomplete="off" name="radio_GBGREWCJCN" value=""> <span>Le persone senza HIV sono molto più anziane</span></label><label><input type="radio" autocomplete="off" name="radio_GBGREWCJCN" value="answer"> <span>La distribuzione per età è quasi identica nei due gruppi</span></label><label><input type="radio" autocomplete="off" name="radio_GBGREWCJCN" value=""> <span>Non si può dire senza calcolare l'età media</span></label>
 </div>
 </div>
 </div>
@@ -1292,8 +1320,8 @@ Che cosa noti confrontando la distribuzione per classe d’età dei due gruppi H
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Confronta <code>n</code> e <code>n_id</code>: che cosa ti dicono?
-<div id="radio_DEGVAGWEGY" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_DEGVAGWEGY" value=""> <span>Alcune persone compaiono in più righe</span></label><label><input type="radio" autocomplete="off" name="radio_DEGVAGWEGY" value="answer"> <span>Ogni riga è una persona diversa: nessun identificativo si ripete</span></label><label><input type="radio" autocomplete="off" name="radio_DEGVAGWEGY" value=""> <span>Mancano alcuni identificativi</span></label><label><input type="radio" autocomplete="off" name="radio_DEGVAGWEGY" value=""> <span>n_distinct() conta solo i valori che compaiono una volta</span></label>
+<div id="radio_KWGALYCBVQ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_KWGALYCBVQ" value=""> <span>Alcune persone compaiono in più righe</span></label><label><input type="radio" autocomplete="off" name="radio_KWGALYCBVQ" value="answer"> <span>Ogni riga è una persona diversa: nessun identificativo si ripete</span></label><label><input type="radio" autocomplete="off" name="radio_KWGALYCBVQ" value=""> <span>Mancano alcuni identificativi</span></label><label><input type="radio" autocomplete="off" name="radio_KWGALYCBVQ" value=""> <span>n_distinct() conta solo i valori che compaiono una volta</span></label>
 </div>
 </div>
 </div>
@@ -1439,8 +1467,8 @@ Confronta <code>n</code> e <code>n_id</code>: che cosa ti dicono?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Quale gruppo ha il tasso di incidenza grezzo più alto?
-<div id="radio_MEIRVMUYEI" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_MEIRVMUYEI" value="answer"> <span>Le persone con HIV</span></label><label><input type="radio" autocomplete="off" name="radio_MEIRVMUYEI" value=""> <span>Le persone senza HIV</span></label><label><input type="radio" autocomplete="off" name="radio_MEIRVMUYEI" value=""> <span>I due tassi sono uguali</span></label>
+<div id="radio_LCNJFBEVXU" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_LCNJFBEVXU" value="answer"> <span>Le persone con HIV</span></label><label><input type="radio" autocomplete="off" name="radio_LCNJFBEVXU" value=""> <span>Le persone senza HIV</span></label><label><input type="radio" autocomplete="off" name="radio_LCNJFBEVXU" value=""> <span>I due tassi sono uguali</span></label>
 </div>
 </div>
 </div>
@@ -1507,8 +1535,8 @@ Quale gruppo ha il tasso di incidenza grezzo più alto?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Guardando <code>tassi_eta</code>, come cambia il tasso con l’età?
-<div id="radio_EEZADRZVOO" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_EEZADRZVOO" value=""> <span>Cresce in modo graduale con l'età</span></label><label><input type="radio" autocomplete="off" name="radio_EEZADRZVOO" value="answer"> <span>È simile fino ai 59 anni e scende molto dai 60 anni in su</span></label><label><input type="radio" autocomplete="off" name="radio_EEZADRZVOO" value=""> <span>È uguale in tutte le classi d'età</span></label>
+<div id="radio_KHCGQTDZXL" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_KHCGQTDZXL" value=""> <span>Cresce in modo graduale con l'età</span></label><label><input type="radio" autocomplete="off" name="radio_KHCGQTDZXL" value="answer"> <span>È simile fino ai 59 anni e scende molto dai 60 anni in su</span></label><label><input type="radio" autocomplete="off" name="radio_KHCGQTDZXL" value=""> <span>È uguale in tutte le classi d'età</span></label>
 </div>
 </div>
 </div>
@@ -1574,8 +1602,8 @@ Guardando <code>tassi_eta</code>, come cambia il tasso con l’età?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Dopo <code>summarise()</code>, il risultato è ancora raggruppato? Se sì, per quale variabile?
-<div id="radio_DQUYRHLANB" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_DQUYRHLANB" value=""> <span>Non è più raggruppato</span></label><label><input type="radio" autocomplete="off" name="radio_DQUYRHLANB" value="answer"> <span>È ancora raggruppato per <code>hiv_status</code></span></label><label><input type="radio" autocomplete="off" name="radio_DQUYRHLANB" value=""> <span>È ancora raggruppato per <code>age_group</code></span></label><label><input type="radio" autocomplete="off" name="radio_DQUYRHLANB" value=""> <span>È ancora raggruppato per <code>hiv_status</code> e <code>age_group</code></span></label>
+<div id="radio_LOYCNLAUVT" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_LOYCNLAUVT" value=""> <span>Non è più raggruppato</span></label><label><input type="radio" autocomplete="off" name="radio_LOYCNLAUVT" value="answer"> <span>È ancora raggruppato per <code>hiv_status</code></span></label><label><input type="radio" autocomplete="off" name="radio_LOYCNLAUVT" value=""> <span>È ancora raggruppato per <code>age_group</code></span></label><label><input type="radio" autocomplete="off" name="radio_LOYCNLAUVT" value=""> <span>È ancora raggruppato per <code>hiv_status</code> e <code>age_group</code></span></label>
 </div>
 </div>
 </div>
@@ -1592,8 +1620,8 @@ Dopo <code>summarise()</code>, il risultato è ancora raggruppato? Se sì, per q
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Confronta i tassi per stato HIV dentro ciascuna classe d’età con i tassi grezzi calcolati prima. La conclusione è la stessa?
-<div id="radio_FBPANDJHBO" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_FBPANDJHBO" value="answer"> <span>Sì: il tasso è più alto con HIV sia nel complesso sia in ciascuna classe d'età</span></label><label><input type="radio" autocomplete="off" name="radio_FBPANDJHBO" value=""> <span>No: dentro le classi d'età il tasso è più alto senza HIV</span></label><label><input type="radio" autocomplete="off" name="radio_FBPANDJHBO" value=""> <span>No: dentro le classi d'età i tassi sono uguali</span></label><label><input type="radio" autocomplete="off" name="radio_FBPANDJHBO" value=""> <span>Non si può dire</span></label>
+<div id="radio_FOHUUDVQJX" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_FOHUUDVQJX" value="answer"> <span>Sì: il tasso è più alto con HIV sia nel complesso sia in ciascuna classe d'età</span></label><label><input type="radio" autocomplete="off" name="radio_FOHUUDVQJX" value=""> <span>No: dentro le classi d'età il tasso è più alto senza HIV</span></label><label><input type="radio" autocomplete="off" name="radio_FOHUUDVQJX" value=""> <span>No: dentro le classi d'età i tassi sono uguali</span></label><label><input type="radio" autocomplete="off" name="radio_FOHUUDVQJX" value=""> <span>Non si può dire</span></label>
 </div>
 </div>
 </div>
@@ -1618,8 +1646,8 @@ Confronta i tassi per stato HIV dentro ciascuna classe d’età con i tassi grez
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Come si comportano le percentuali del codice qui sopra?
-<div id="radio_CMVQVCUBQW" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_CMVQVCUBQW" value=""> <span>Sommano a 100 sull'intera coorte</span></label><label><input type="radio" autocomplete="off" name="radio_CMVQVCUBQW" value="answer"> <span>Sommano a 100 dentro ciascun gruppo di <code>hiv_status</code></span></label><label><input type="radio" autocomplete="off" name="radio_CMVQVCUBQW" value=""> <span>Sommano a 100 dentro ciascuna classe d'età</span></label><label><input type="radio" autocomplete="off" name="radio_CMVQVCUBQW" value=""> <span>Non sommano a 100 in nessun modo</span></label>
+<div id="radio_UYUMQUDBPU" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_UYUMQUDBPU" value=""> <span>Sommano a 100 sull'intera coorte</span></label><label><input type="radio" autocomplete="off" name="radio_UYUMQUDBPU" value="answer"> <span>Sommano a 100 dentro ciascun gruppo di <code>hiv_status</code></span></label><label><input type="radio" autocomplete="off" name="radio_UYUMQUDBPU" value=""> <span>Sommano a 100 dentro ciascuna classe d'età</span></label><label><input type="radio" autocomplete="off" name="radio_UYUMQUDBPU" value=""> <span>Non sommano a 100 in nessun modo</span></label>
 </div>
 </div>
 </div>
@@ -1728,8 +1756,8 @@ Come si comportano le percentuali del codice qui sopra?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Con <code>na.rm = TRUE</code>, su quali persone è calcolata la mediana dei giorni all’evento?
-<div id="radio_PUQMUVTXSN" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_PUQMUVTXSN" value=""> <span>Su tutte le persone della coorte</span></label><label><input type="radio" autocomplete="off" name="radio_PUQMUVTXSN" value="answer"> <span>Solo sulle persone che hanno avuto l'evento</span></label><label><input type="radio" autocomplete="off" name="radio_PUQMUVTXSN" value=""> <span>Solo sulle persone senza valori mancanti in tutte le variabili</span></label><label><input type="radio" autocomplete="off" name="radio_PUQMUVTXSN" value=""> <span>Sulle persone senza l'evento</span></label>
+<div id="radio_RNWXVBCKYP" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_RNWXVBCKYP" value=""> <span>Su tutte le persone della coorte</span></label><label><input type="radio" autocomplete="off" name="radio_RNWXVBCKYP" value="answer"> <span>Solo sulle persone che hanno avuto l'evento</span></label><label><input type="radio" autocomplete="off" name="radio_RNWXVBCKYP" value=""> <span>Solo sulle persone senza valori mancanti in tutte le variabili</span></label><label><input type="radio" autocomplete="off" name="radio_RNWXVBCKYP" value=""> <span>Sulle persone senza l'evento</span></label>
 </div>
 </div>
 </div>
@@ -1846,8 +1874,8 @@ Con <code>na.rm = TRUE</code>, su quali persone è calcolata la mediana dei gior
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Che cosa restituisce <code>mean(sex == "F")</code>?
-<div id="radio_XEHIPMWXNF" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_XEHIPMWXNF" value=""> <span>Il numero di donne</span></label><label><input type="radio" autocomplete="off" name="radio_XEHIPMWXNF" value="answer"> <span>La proporzione di donne, un valore tra 0 e 1</span></label><label><input type="radio" autocomplete="off" name="radio_XEHIPMWXNF" value=""> <span>Il numero di righe della tabella</span></label><label><input type="radio" autocomplete="off" name="radio_XEHIPMWXNF" value=""> <span>Un errore, perché sex è una variabile di testo</span></label>
+<div id="radio_LKGHLEUSEO" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_LKGHLEUSEO" value=""> <span>Il numero di donne</span></label><label><input type="radio" autocomplete="off" name="radio_LKGHLEUSEO" value="answer"> <span>La proporzione di donne, un valore tra 0 e 1</span></label><label><input type="radio" autocomplete="off" name="radio_LKGHLEUSEO" value=""> <span>Il numero di righe della tabella</span></label><label><input type="radio" autocomplete="off" name="radio_LKGHLEUSEO" value=""> <span>Un errore, perché sex è una variabile di testo</span></label>
 </div>
 </div>
 </div>
@@ -1864,8 +1892,8 @@ Che cosa restituisce <code>mean(sex == "F")</code>?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 <code>n_donne</code> è circa il doppio tra le persone senza HIV, mentre <code>perc_donne</code> è uguale nei due gruppi. Per confrontare la presenza di donne tra persone con e senza HIV, è più adatto il conteggio o la percentuale?
-<div id="radio_CCPVBACGCU" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_CCPVBACGCU" value=""> <span>Il conteggio, perché è un numero intero</span></label><label><input type="radio" autocomplete="off" name="radio_CCPVBACGCU" value="answer"> <span>La percentuale, perché i due gruppi hanno numerosità diverse</span></label><label><input type="radio" autocomplete="off" name="radio_CCPVBACGCU" value=""> <span>Sono equivalenti</span></label><label><input type="radio" autocomplete="off" name="radio_CCPVBACGCU" value=""> <span>Nessuno dei due</span></label>
+<div id="radio_ZPAHMEBKCY" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_ZPAHMEBKCY" value=""> <span>Il conteggio, perché è un numero intero</span></label><label><input type="radio" autocomplete="off" name="radio_ZPAHMEBKCY" value="answer"> <span>La percentuale, perché i due gruppi hanno numerosità diverse</span></label><label><input type="radio" autocomplete="off" name="radio_ZPAHMEBKCY" value=""> <span>Sono equivalenti</span></label><label><input type="radio" autocomplete="off" name="radio_ZPAHMEBKCY" value=""> <span>Nessuno dei due</span></label>
 </div>
 </div>
 </div>
@@ -1935,8 +1963,8 @@ Che cosa restituisce <code>mean(sex == "F")</code>?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Quante righe ha il risultato dopo <code>group_by()</code> e <code>mutate()</code>?
-<div id="radio_TLVVTLWJYF" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_TLVVTLWJYF" value=""> <span>Una riga per gruppo HIV</span></label><label><input type="radio" autocomplete="off" name="radio_TLVVTLWJYF" value="answer"> <span>Le stesse righe del risultato di <code>count()</code></span></label><label><input type="radio" autocomplete="off" name="radio_TLVVTLWJYF" value=""> <span>Una riga per persona</span></label><label><input type="radio" autocomplete="off" name="radio_TLVVTLWJYF" value=""> <span>Una sola riga</span></label>
+<div id="radio_VBACLDULWO" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_VBACLDULWO" value=""> <span>Una riga per gruppo HIV</span></label><label><input type="radio" autocomplete="off" name="radio_VBACLDULWO" value="answer"> <span>Le stesse righe del risultato di <code>count()</code></span></label><label><input type="radio" autocomplete="off" name="radio_VBACLDULWO" value=""> <span>Una riga per persona</span></label><label><input type="radio" autocomplete="off" name="radio_VBACLDULWO" value=""> <span>Una sola riga</span></label>
 </div>
 </div>
 </div>
@@ -1975,8 +2003,8 @@ Quante righe ha il risultato dopo <code>group_by()</code> e <code>mutate()</code
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Quale di questi comandi produce una tabella pensata per essere presentata in un report?
-<div id="radio_ASKCCVTMPQ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_ASKCCVTMPQ" value=""> <span><code>dati_clean %&gt;% count(region)</code></span></label><label><input type="radio" autocomplete="off" name="radio_ASKCCVTMPQ" value="answer"> <span><code>dati_clean %&gt;% tabyl(hiv_status, sex) %&gt;% adorn_percentages("row") %&gt;%</code><br><code>adorn_pct_formatting() %&gt;% adorn_ns()</code></span></label><label><input type="radio" autocomplete="off" name="radio_ASKCCVTMPQ" value=""> <span><code>dati_clean %&gt;% group_by(hiv_status) %&gt;% summarise(n = n(), .groups = "drop")</code></span></label><label><input type="radio" autocomplete="off" name="radio_ASKCCVTMPQ" value=""> <span><code>skim(dati_clean)</code></span></label>
+<div id="radio_EIODHDEQLE" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_EIODHDEQLE" value=""> <span><code>dati_clean %&gt;% count(region)</code></span></label><label><input type="radio" autocomplete="off" name="radio_EIODHDEQLE" value="answer"> <span><code>dati_clean %&gt;% tabyl(hiv_status, sex) %&gt;% adorn_percentages("row") %&gt;%</code><br><code>adorn_pct_formatting() %&gt;% adorn_ns()</code></span></label><label><input type="radio" autocomplete="off" name="radio_EIODHDEQLE" value=""> <span><code>dati_clean %&gt;% group_by(hiv_status) %&gt;% summarise(n = n(), .groups = "drop")</code></span></label><label><input type="radio" autocomplete="off" name="radio_EIODHDEQLE" value=""> <span><code>skim(dati_clean)</code></span></label>
 </div>
 </div>
 </div>
@@ -2058,8 +2086,8 @@ Quale di questi comandi produce una tabella pensata per essere presentata in un 
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Perché salviamo il risultato in <code>sintesi_hiv</code> e non in <code>dati_clean</code>?
-<div id="radio_QYJRNLOJQD" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_QYJRNLOJQD" value=""> <span>Perché summarise() non può modificare un oggetto esistente</span></label><label><input type="radio" autocomplete="off" name="radio_QYJRNLOJQD" value="answer"> <span>Perché sovrascrivendo <code>dati_clean</code> perderemmo i dati individuali</span></label><label><input type="radio" autocomplete="off" name="radio_QYJRNLOJQD" value=""> <span>Perché R non accetta due oggetti con variabili diverse</span></label><label><input type="radio" autocomplete="off" name="radio_QYJRNLOJQD" value=""> <span>Non c'è differenza: si può usare anche dati_clean</span></label>
+<div id="radio_WCEGMBPSRM" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_WCEGMBPSRM" value=""> <span>Perché summarise() non può modificare un oggetto esistente</span></label><label><input type="radio" autocomplete="off" name="radio_WCEGMBPSRM" value="answer"> <span>Perché sovrascrivendo <code>dati_clean</code> perderemmo i dati individuali</span></label><label><input type="radio" autocomplete="off" name="radio_WCEGMBPSRM" value=""> <span>Perché R non accetta due oggetti con variabili diverse</span></label><label><input type="radio" autocomplete="off" name="radio_WCEGMBPSRM" value=""> <span>Non c'è differenza: si può usare anche dati_clean</span></label>
 </div>
 </div>
 </div>
@@ -2111,7 +2139,7 @@ Perché salviamo il risultato in <code>sintesi_hiv</code> e non in <code>dati_cl
 <span id="cb83-15"><a href="#cb83-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb83-16"><a href="#cb83-16" aria-hidden="true" tabindex="-1"></a>tab_sintesi_hiv</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div class="tabwid"><style>.cl-36f5853a{}.cl-36e39474{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-36ea3d60{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-36ea7a1e{width:0.939in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-36ea7a32{width:0.854in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-36ea7a3c{width:0.888in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-36ea7a46{width:1.143in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-36ea7a50{width:0.723in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-36ea7a5a{width:1.292in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-36ea7a64{width:2.17in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-36ea7a65{width:0.71in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-36ea7a6e{width:1.194in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-36ea7a78{width:1.508in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-36ea7a82{width:0.939in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-36ea7a8c{width:0.854in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-36ea7a96{width:0.888in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-36ea7aaa{width:1.143in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-36ea7aab{width:0.723in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-36ea7ab4{width:1.292in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-36ea7abe{width:2.17in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-36ea7ac8{width:0.71in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-36ea7ac9{width:1.194in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-36ea7aca{width:1.508in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-36ea7ad2{width:0.939in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-36ea7adc{width:0.854in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-36ea7af0{width:0.888in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-36ea7af1{width:1.143in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-36ea7afa{width:0.723in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-36ea7b04{width:1.292in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-36ea7b0e{width:2.17in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-36ea7b0f{width:0.71in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-36ea7b18{width:1.194in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-36ea7b22{width:1.508in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-36f5853a"><thead><tr style="overflow-wrap:break-word;"><th class="cl-36ea7a1e"><p class="cl-36ea3d60"><span class="cl-36e39474">Stato HIV</span></p></th><th class="cl-36ea7a32"><p class="cl-36ea3d60"><span class="cl-36e39474">Persone</span></p></th><th class="cl-36ea7a3c"><p class="cl-36ea3d60"><span class="cl-36e39474">% donne</span></p></th><th class="cl-36ea7a46"><p class="cl-36ea3d60"><span class="cl-36e39474">Età mediana</span></p></th><th class="cl-36ea7a50"><p class="cl-36ea3d60"><span class="cl-36e39474">% 60+</span></p></th><th class="cl-36ea7a5a"><p class="cl-36ea3d60"><span class="cl-36e39474">% Charlson 3+</span></p></th><th class="cl-36ea7a64"><p class="cl-36ea3d60"><span class="cl-36e39474">Anticorpi mediani (BAU/mL)</span></p></th><th class="cl-36ea7a65"><p class="cl-36ea3d60"><span class="cl-36e39474">Eventi</span></p></th><th class="cl-36ea7a6e"><p class="cl-36ea3d60"><span class="cl-36e39474">Anni-persona</span></p></th><th class="cl-36ea7a78"><p class="cl-36ea3d60"><span class="cl-36e39474">Tasso per 100 AP</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-36ea7a82"><p class="cl-36ea3d60"><span class="cl-36e39474">0</span></p></td><td class="cl-36ea7a8c"><p class="cl-36ea3d60"><span class="cl-36e39474">31,693</span></p></td><td class="cl-36ea7a96"><p class="cl-36ea3d60"><span class="cl-36e39474">27.4</span></p></td><td class="cl-36ea7aaa"><p class="cl-36ea3d60"><span class="cl-36e39474">53</span></p></td><td class="cl-36ea7aab"><p class="cl-36ea3d60"><span class="cl-36e39474">40.2</span></p></td><td class="cl-36ea7ab4"><p class="cl-36ea3d60"><span class="cl-36e39474">3.4</span></p></td><td class="cl-36ea7abe"><p class="cl-36ea3d60"><span class="cl-36e39474">1,592.70</span></p></td><td class="cl-36ea7ac8"><p class="cl-36ea3d60"><span class="cl-36e39474">5,851</span></p></td><td class="cl-36ea7ac9"><p class="cl-36ea3d60"><span class="cl-36e39474">9,111.3</span></p></td><td class="cl-36ea7aca"><p class="cl-36ea3d60"><span class="cl-36e39474">64.2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-36ea7ad2"><p class="cl-36ea3d60"><span class="cl-36e39474">1</span></p></td><td class="cl-36ea7adc"><p class="cl-36ea3d60"><span class="cl-36e39474">16,024</span></p></td><td class="cl-36ea7af0"><p class="cl-36ea3d60"><span class="cl-36e39474">27.4</span></p></td><td class="cl-36ea7af1"><p class="cl-36ea3d60"><span class="cl-36e39474">53</span></p></td><td class="cl-36ea7afa"><p class="cl-36ea3d60"><span class="cl-36e39474">40.4</span></p></td><td class="cl-36ea7b04"><p class="cl-36ea3d60"><span class="cl-36e39474">3.3</span></p></td><td class="cl-36ea7b0e"><p class="cl-36ea3d60"><span class="cl-36e39474">1,057.05</span></p></td><td class="cl-36ea7b0f"><p class="cl-36ea3d60"><span class="cl-36e39474">4,053</span></p></td><td class="cl-36ea7b18"><p class="cl-36ea3d60"><span class="cl-36e39474">4,506.0</span></p></td><td class="cl-36ea7b22"><p class="cl-36ea3d60"><span class="cl-36e39474">89.9</span></p></td></tr></tbody></table></div>
+<div class="tabwid"><style>.cl-26d2fe54{}.cl-26caa434{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-26cdaada{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-26cdc47a{width:0.939in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26cdc484{width:0.854in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26cdc48e{width:0.888in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26cdc498{width:1.143in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26cdc499{width:0.723in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26cdc4a2{width:1.292in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26cdc4a3{width:2.17in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26cdc4ac{width:0.71in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26cdc4ad{width:1.194in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26cdc4b6{width:1.508in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26cdc4b7{width:0.939in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26cdc4c0{width:0.854in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26cdc4c1{width:0.888in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26cdc4ca{width:1.143in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26cdc4cb{width:0.723in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26cdc4d4{width:1.292in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26cdc4de{width:2.17in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26cdc4df{width:0.71in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26cdc4e0{width:1.194in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26cdc4e8{width:1.508in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26cdc4f2{width:0.939in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26cdc4fc{width:0.854in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26cdc4fd{width:0.888in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26cdc506{width:1.143in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26cdc507{width:0.723in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26cdc510{width:1.292in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26cdc511{width:2.17in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26cdc51a{width:0.71in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26cdc51b{width:1.194in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26cdc524{width:1.508in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-26d2fe54"><thead><tr style="overflow-wrap:break-word;"><th class="cl-26cdc47a"><p class="cl-26cdaada"><span class="cl-26caa434">Stato HIV</span></p></th><th class="cl-26cdc484"><p class="cl-26cdaada"><span class="cl-26caa434">Persone</span></p></th><th class="cl-26cdc48e"><p class="cl-26cdaada"><span class="cl-26caa434">% donne</span></p></th><th class="cl-26cdc498"><p class="cl-26cdaada"><span class="cl-26caa434">Età mediana</span></p></th><th class="cl-26cdc499"><p class="cl-26cdaada"><span class="cl-26caa434">% 60+</span></p></th><th class="cl-26cdc4a2"><p class="cl-26cdaada"><span class="cl-26caa434">% Charlson 3+</span></p></th><th class="cl-26cdc4a3"><p class="cl-26cdaada"><span class="cl-26caa434">Anticorpi mediani (BAU/mL)</span></p></th><th class="cl-26cdc4ac"><p class="cl-26cdaada"><span class="cl-26caa434">Eventi</span></p></th><th class="cl-26cdc4ad"><p class="cl-26cdaada"><span class="cl-26caa434">Anni-persona</span></p></th><th class="cl-26cdc4b6"><p class="cl-26cdaada"><span class="cl-26caa434">Tasso per 100 AP</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-26cdc4b7"><p class="cl-26cdaada"><span class="cl-26caa434">0</span></p></td><td class="cl-26cdc4c0"><p class="cl-26cdaada"><span class="cl-26caa434">31,693</span></p></td><td class="cl-26cdc4c1"><p class="cl-26cdaada"><span class="cl-26caa434">27.4</span></p></td><td class="cl-26cdc4ca"><p class="cl-26cdaada"><span class="cl-26caa434">53</span></p></td><td class="cl-26cdc4cb"><p class="cl-26cdaada"><span class="cl-26caa434">40.2</span></p></td><td class="cl-26cdc4d4"><p class="cl-26cdaada"><span class="cl-26caa434">3.4</span></p></td><td class="cl-26cdc4de"><p class="cl-26cdaada"><span class="cl-26caa434">1,592.70</span></p></td><td class="cl-26cdc4df"><p class="cl-26cdaada"><span class="cl-26caa434">5,851</span></p></td><td class="cl-26cdc4e0"><p class="cl-26cdaada"><span class="cl-26caa434">9,111.3</span></p></td><td class="cl-26cdc4e8"><p class="cl-26cdaada"><span class="cl-26caa434">64.2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-26cdc4f2"><p class="cl-26cdaada"><span class="cl-26caa434">1</span></p></td><td class="cl-26cdc4fc"><p class="cl-26cdaada"><span class="cl-26caa434">16,024</span></p></td><td class="cl-26cdc4fd"><p class="cl-26cdaada"><span class="cl-26caa434">27.4</span></p></td><td class="cl-26cdc506"><p class="cl-26cdaada"><span class="cl-26caa434">53</span></p></td><td class="cl-26cdc507"><p class="cl-26cdaada"><span class="cl-26caa434">40.4</span></p></td><td class="cl-26cdc510"><p class="cl-26cdaada"><span class="cl-26caa434">3.3</span></p></td><td class="cl-26cdc511"><p class="cl-26cdaada"><span class="cl-26caa434">1,057.05</span></p></td><td class="cl-26cdc51a"><p class="cl-26cdaada"><span class="cl-26caa434">4,053</span></p></td><td class="cl-26cdc51b"><p class="cl-26cdaada"><span class="cl-26caa434">4,506.0</span></p></td><td class="cl-26cdc524"><p class="cl-26cdaada"><span class="cl-26caa434">89.9</span></p></td></tr></tbody></table></div>
 </div>
 </div>
 <p><br></p>
@@ -2125,8 +2153,8 @@ Perché salviamo il risultato in <code>sintesi_hiv</code> e non in <code>dati_cl
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Puoi usare <code>tab_sintesi_hiv</code> per altri calcoli, per esempio con <code>mutate()</code>?
-<div id="radio_ESYEBCJCOL" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_ESYEBCJCOL" value=""> <span>Sì: è un data frame come gli altri</span></label><label><input type="radio" autocomplete="off" name="radio_ESYEBCJCOL" value="answer"> <span>No: è una tabella fatta per essere mostrata, i calcoli vanno fatti prima su <code>sintesi_hiv</code></span></label><label><input type="radio" autocomplete="off" name="radio_ESYEBCJCOL" value=""> <span>Sì, ma solo con <code>summarise()</code></span></label><label><input type="radio" autocomplete="off" name="radio_ESYEBCJCOL" value=""> <span>Solo dopo averla esportata in Excel</span></label>
+<div id="radio_QPOQSBXZCK" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_QPOQSBXZCK" value=""> <span>Sì: è un data frame come gli altri</span></label><label><input type="radio" autocomplete="off" name="radio_QPOQSBXZCK" value="answer"> <span>No: è una tabella fatta per essere mostrata, i calcoli vanno fatti prima su <code>sintesi_hiv</code></span></label><label><input type="radio" autocomplete="off" name="radio_QPOQSBXZCK" value=""> <span>Sì, ma solo con <code>summarise()</code></span></label><label><input type="radio" autocomplete="off" name="radio_QPOQSBXZCK" value=""> <span>Solo dopo averla esportata in Excel</span></label>
 </div>
 </div>
 </div>
@@ -2238,8 +2266,8 @@ Puoi usare <code>tab_sintesi_hiv</code> per altri calcoli, per esempio con <code
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Guardando <code>tassi_eta_hiv</code>, in quali classi d’età il tasso è più alto tra le persone con HIV?
-<div id="radio_LLSEVXUWWA" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_LLSEVXUWWA" value=""> <span>Solo nelle classi sotto i 60 anni</span></label><label><input type="radio" autocomplete="off" name="radio_LLSEVXUWWA" value=""> <span>Solo nelle classi dai 60 anni in su</span></label><label><input type="radio" autocomplete="off" name="radio_LLSEVXUWWA" value="answer"> <span>In tutte le classi d'età</span></label><label><input type="radio" autocomplete="off" name="radio_LLSEVXUWWA" value=""> <span>In nessuna classe d'età</span></label>
+<div id="radio_MEQPIIMRQC" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_MEQPIIMRQC" value=""> <span>Solo nelle classi sotto i 60 anni</span></label><label><input type="radio" autocomplete="off" name="radio_MEQPIIMRQC" value=""> <span>Solo nelle classi dai 60 anni in su</span></label><label><input type="radio" autocomplete="off" name="radio_MEQPIIMRQC" value="answer"> <span>In tutte le classi d'età</span></label><label><input type="radio" autocomplete="off" name="radio_MEQPIIMRQC" value=""> <span>In nessuna classe d'età</span></label>
 </div>
 </div>
 </div>

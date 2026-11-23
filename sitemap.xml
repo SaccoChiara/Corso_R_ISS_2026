@@ -2,54 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://SaccoChiara.github.io/Corso_R_ISS_2026/licenza.html</loc>
-    <lastmod>2026-11-16T13:48:41.108Z</lastmod>
+    <lastmod>2026-11-23T11:33:54.008Z</lastmod>
   </url>
   <url>
-    <loc>https://SaccoChiara.github.io/Corso_R_ISS_2026/modulo8_altri_grafici.html</loc>
-    <lastmod>2026-11-16T11:29:02.791Z</lastmod>
-  </url>
-  <url>
-    <loc>https://SaccoChiara.github.io/Corso_R_ISS_2026/modulo6_ggplot_parte2.html</loc>
-    <lastmod>2026-11-13T09:40:04.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://SaccoChiara.github.io/Corso_R_ISS_2026/modulo4_tabelle_e_aggregazione.html</loc>
-    <lastmod>2026-11-15T16:34:30.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://SaccoChiara.github.io/Corso_R_ISS_2026/modulo2_data_cleaning.html</loc>
-    <lastmod>2026-11-13T10:38:38.759Z</lastmod>
-  </url>
-  <url>
-    <loc>https://SaccoChiara.github.io/Corso_R_ISS_2026/dati.html</loc>
-    <lastmod>2026-11-16T13:41:08.805Z</lastmod>
-  </url>
-  <url>
-    <loc>https://SaccoChiara.github.io/Corso_R_ISS_2026/index.html</loc>
-    <lastmod>2026-11-16T13:39:13.835Z</lastmod>
-  </url>
-  <url>
-    <loc>https://SaccoChiara.github.io/Corso_R_ISS_2026/preparazione.html</loc>
-    <lastmod>2026-11-16T13:33:55.143Z</lastmod>
-  </url>
-  <url>
-    <loc>https://SaccoChiara.github.io/Corso_R_ISS_2026/modulo1_intro.html</loc>
-    <lastmod>2026-11-12T11:27:04.273Z</lastmod>
-  </url>
-  <url>
-    <loc>https://SaccoChiara.github.io/Corso_R_ISS_2026/modulo3_data_cleaning_avanzato.html</loc>
-    <lastmod>2026-11-14T14:48:13.918Z</lastmod>
-  </url>
-  <url>
-    <loc>https://SaccoChiara.github.io/Corso_R_ISS_2026/modulo5_ggplot_parte1.html</loc>
-    <lastmod>2026-11-13T14:21:50.000Z</lastmod>
+    <loc>https://SaccoChiara.github.io/Corso_R_ISS_2026/modulo9_quarto.html</loc>
+    <lastmod>2026-11-13T13:11:28.000Z</lastmod>
   </url>
   <url>
     <loc>https://SaccoChiara.github.io/Corso_R_ISS_2026/modulo7_trasformazione_e_integrazione.html</loc>
     <lastmod>2026-11-12T16:00:55.000Z</lastmod>
   </url>
   <url>
-    <loc>https://SaccoChiara.github.io/Corso_R_ISS_2026/modulo9_quarto.html</loc>
-    <lastmod>2026-11-13T13:11:28.000Z</lastmod>
+    <loc>https://SaccoChiara.github.io/Corso_R_ISS_2026/modulo5_ggplot_parte1.html</loc>
+    <lastmod>2026-11-13T14:21:50.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://SaccoChiara.github.io/Corso_R_ISS_2026/modulo3_data_cleaning_avanzato.html</loc>
+    <lastmod>2026-11-14T14:48:13.918Z</lastmod>
+  </url>
+  <url>
+    <loc>https://SaccoChiara.github.io/Corso_R_ISS_2026/modulo1_intro.html</loc>
+    <lastmod>2026-11-12T11:27:04.273Z</lastmod>
+  </url>
+  <url>
+    <loc>https://SaccoChiara.github.io/Corso_R_ISS_2026/preparazione.html</loc>
+    <lastmod>2026-11-23T14:12:06.299Z</lastmod>
+  </url>
+  <url>
+    <loc>https://SaccoChiara.github.io/Corso_R_ISS_2026/index.html</loc>
+    <lastmod>2026-11-23T14:21:03.359Z</lastmod>
+  </url>
+  <url>
+    <loc>https://SaccoChiara.github.io/Corso_R_ISS_2026/dati.html</loc>
+    <lastmod>2026-11-16T13:41:08.805Z</lastmod>
+  </url>
+  <url>
+    <loc>https://SaccoChiara.github.io/Corso_R_ISS_2026/modulo2_data_cleaning.html</loc>
+    <lastmod>2026-11-13T10:38:38.759Z</lastmod>
+  </url>
+  <url>
+    <loc>https://SaccoChiara.github.io/Corso_R_ISS_2026/modulo4_tabelle_e_aggregazione.html</loc>
+    <lastmod>2026-11-15T16:34:30.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://SaccoChiara.github.io/Corso_R_ISS_2026/modulo6_ggplot_parte2.html</loc>
+    <lastmod>2026-11-13T09:40:04.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://SaccoChiara.github.io/Corso_R_ISS_2026/modulo8_altri_grafici.html</loc>
+    <lastmod>2026-11-16T11:29:02.791Z</lastmod>
+  </url>
+  <url>
+    <loc>https://SaccoChiara.github.io/Corso_R_ISS_2026/valutazione.html</loc>
+    <lastmod>2026-11-23T14:21:21.956Z</lastmod>
   </url>
 </urlset>

@@ -2,23 +2,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Corso introduttivo al software statistico R – Corso base di R</title>
+<title>Valutazione del corso – Corso base di R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
+code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: 1.5em;}
-div.column{flex: auto;}
-@media screen {
-div.columns{gap: min(4vw, 1.5em);}
-div.column{overflow-x: auto;}
-}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -36,17 +33,17 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./immagini/logo_dmi.png" rel="icon" type="image/png">
+<link href="./immagini/logo_iss.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-051f687fdf5d20c2c727aaabaf43a983.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-407113646558fb1abf01df177a630d46.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -76,9 +73,10 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
+<link rel="stylesheet" href="sito.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="floating nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -96,7 +94,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
@@ -159,6 +157,16 @@ ul.task-list li input[type="checkbox"] {
   </li>  
     </ul>
   </li>
+  <li class="nav-item">
+    <a class="nav-link active" href="./valutazione.html" aria-current="page"> 
+<span class="menu-text">Valutazione</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./licenza.html"> 
+<span class="menu-text">Copyright e licenza</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -169,15 +177,43 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">In questa pagina</h2>
+   
+  <ul>
+  <li><a href="#questionari-delle-giornate" id="toc-questionari-delle-giornate" class="nav-link active" data-scroll-target="#questionari-delle-giornate">Questionari delle giornate</a></li>
+  <li><a href="#questionario-di-gradimento-finale" id="toc-questionario-di-gradimento-finale" class="nav-link" data-scroll-target="#questionario-di-gradimento-finale">Questionario di gradimento finale</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
+<!--
+  LOGHI IN ALTO SU TUTTE LE PAGINE DEL SITO
+  Viene aggiunto a ogni pagina da _quarto.yml (include-before-body).
+  Lo script sposta i loghi all'inizio del contenuto della pagina,
+  sotto il menu in alto. Lo stile e' in sito.css (.sito-loghi).
+-->
+<div class="sito-loghi" id="sito-loghi">
+  <img src="immagini/logo_iss.png" alt="Logo dell'Istituto Superiore di Sanità">
+  <img src="immagini/logo_dip_malattie_infettive.png" alt="Logo del Dipartimento Malattie Infettive">
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var loghi = document.getElementById("sito-loghi");
+    var main = document.querySelector("main");
+    if (loghi && main) main.insertBefore(loghi, main.firstChild);
+  });
+</script>
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Corso introduttivo al software statistico R</h1>
-<p class="subtitle lead">Istituto Superiore di Sanità · 30 novembre – 4 dicembre 2026</p>
+<h1 class="title">Valutazione del corso</h1>
 </div>
 
 
@@ -194,88 +230,83 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="immagini/logo_dmi.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:3in"></p>
-</figure>
-</div>
-<p>Questo è il sito del corso base di R dell’Istituto Superiore di Sanità. Qui trovi tutte le esercitazioni del corso, una per modulo, con le spiegazioni, i suggerimenti e le soluzioni.</p>
-<p>Durante il corso lavorerai su una coorte simulata di persone vaccinate contro COVID-19, con e senza HIV: partirai dai dati grezzi, li pulirai, costruirai tabelle e grafici e, l’ultimo giorno, un report automatico con Quarto.</p>
-<section id="prima-del-corso" class="level2">
-<h2 class="anchored" data-anchor-id="prima-del-corso">Prima del corso</h2>
-<p>Qualche giorno prima dell’inizio, segui le istruzioni della pagina <a href="./preparazione.html">Prepararsi al corso</a>: installa R, RTools (solo Windows) e RStudio, installa i pacchetti e scarica la cartella dei materiali.</p>
-<p>Nella pagina <a href="./dati.html">I dati del corso</a> trovi la descrizione dei dati usati nelle esercitazioni e il tracciato record delle variabili.</p>
-</section>
-<section id="il-programma" class="level2">
-<h2 class="anchored" data-anchor-id="il-programma">Il programma</h2>
-<p>Ogni giornata ha due moduli, uno la mattina e uno il pomeriggio.</p>
+<!--
+  COME INSERIRE I LINK AI QUESTIONARI
+  Quando un questionario e' pronto, nella tabella qui sotto sostituisci
+  *Disponibile a breve* con il link, scritto cosi':
+
+    [Compila il questionario](https://forms.cloud.microsoft/...){target="_blank"}
+
+  {target="_blank"} apre il questionario in una nuova scheda del browser.
+  Poi rifai Render Website e pubblica il sito.
+-->
+<p>Alla fine di ogni giornata ti chiediamo di compilare un breve questionario anonimo sugli argomenti trattati. Ci vogliono pochi minuti e le tue risposte ci aiutano a migliorare il corso, anche durante la settimana stessa.</p>
+<p>I link ai questionari compariranno in questa pagina giorno per giorno.</p>
+<section id="questionari-delle-giornate" class="level2">
+<h2 class="anchored" data-anchor-id="questionari-delle-giornate">Questionari delle giornate</h2>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 53%">
+<col style="width: 25%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Giorno</th>
-<th>Mattina</th>
-<th>Pomeriggio</th>
+<th>Argomenti</th>
+<th>Questionario</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>Lunedì 30 novembre</td>
-<td><a href="./modulo1_intro.html">Modulo 1 – Importazione ed esplorazione dei dati</a></td>
-<td><a href="./modulo2_data_cleaning.html">Modulo 2 – Pulizia e preparazione dei dati</a></td>
+<td>Modulo 1 – Importazione ed esplorazione dei dati<br>Modulo 2 – Pulizia e preparazione dei dati</td>
+<td><em>Disponibile a breve</em></td>
 </tr>
 <tr class="even">
 <td>Martedì 1 dicembre</td>
-<td><a href="./modulo3_data_cleaning_avanzato.html">Modulo 3 – Pulizia dei dati: approfondimento</a></td>
-<td><a href="./modulo4_tabelle_e_aggregazione.html">Modulo 4 – Tabelle e aggregazione dei dati</a></td>
+<td>Modulo 3 – Pulizia dei dati: approfondimento<br>Modulo 4 – Tabelle e aggregazione dei dati</td>
+<td><em>Disponibile a breve</em></td>
 </tr>
 <tr class="odd">
 <td>Mercoledì 2 dicembre</td>
-<td><a href="./modulo5_ggplot_parte1.html">Modulo 5 – Grafici con ggplot2 (parte 1)</a></td>
-<td><a href="./modulo6_ggplot_parte2.html">Modulo 6 – Grafici con ggplot2 (parte 2)</a></td>
+<td>Modulo 5 – Grafici con ggplot2 (parte 1)<br>Modulo 6 – Grafici con ggplot2 (parte 2)</td>
+<td><em>Disponibile a breve</em></td>
 </tr>
 <tr class="even">
 <td>Giovedì 3 dicembre</td>
-<td><a href="./modulo7_trasformazione_e_integrazione.html">Modulo 7 – Trasformazione e integrazione dei dati</a></td>
-<td><a href="./modulo8_altri_grafici.html">Modulo 8 – Altri grafici</a></td>
+<td>Modulo 7 – Trasformazione e integrazione dei dati<br>Modulo 8 – Altri grafici</td>
+<td><em>Disponibile a breve</em></td>
 </tr>
 <tr class="odd">
 <td>Venerdì 4 dicembre</td>
-<td><a href="./modulo9_quarto.html">Modulo 9 – Report automatici con Quarto</a></td>
-<td></td>
+<td>Modulo 9 – Report automatici con Quarto</td>
+<td><em>Disponibile a breve</em></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="gli-script-del-corso" class="level2">
-<h2 class="anchored" data-anchor-id="gli-script-del-corso">Gli script del corso</h2>
-<p>Durante la settimana scriverai quattro script, che salverai nella cartella <code>script</code> dei materiali:</p>
+<section id="questionario-di-gradimento-finale" class="level2">
+<h2 class="anchored" data-anchor-id="questionario-di-gradimento-finale">Questionario di gradimento finale</h2>
+<p>Venerdì 4 dicembre, alla chiusura del corso, ti chiediamo di compilare anche il questionario di gradimento sull’intero corso.</p>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
 <thead>
 <tr class="header">
-<th>Script</th>
-<th>Moduli</th>
+<th>Questionario</th>
+<th>Link</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>pulizia_dati.R</code></td>
-<td>1, 2 e 3</td>
-</tr>
-<tr class="even">
-<td><code>tabelle_grouping.R</code></td>
-<td>4</td>
-</tr>
-<tr class="odd">
-<td><code>plot.R</code></td>
-<td>5, 6 e 8</td>
-</tr>
-<tr class="even">
-<td><code>join.R</code></td>
-<td>7</td>
+<td>Gradimento del corso</td>
+<td><em>Disponibile a breve</em></td>
 </tr>
 </tbody>
 </table>
-<p>Nella cartella <code>script/backup</code> trovi le versioni corrette dei quattro script, da usare per confrontarle con il tuo lavoro o per ripartire se qualcosa non funziona.</p>
 
 
 </section>
@@ -354,7 +385,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/SaccoChiara\.github\.io\/Corso_R_ISS_2026\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -685,13 +716,19 @@ ul.task-list li input[type="checkbox"] {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Istituto Superiore di Sanità – Corso base di R, 30 novembre – 4 dicembre 2026</p>
+<p>© 2026 Istituto Superiore di Sanità – Corso base di R, 30 novembre – 4 dicembre 2026</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
     <div class="nav-footer-right">
-      &nbsp;
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="./licenza.html">
+<p>Copyright e licenza</p>
+</a>
+  </li>  
+</ul>
     </div>
   </div>
 </footer>

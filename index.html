@@ -157,6 +157,16 @@ ul.task-list li input[type="checkbox"] {
   </li>  
     </ul>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./valutazione.html"> 
+<span class="menu-text">Valutazione</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./licenza.html"> 
+<span class="menu-text">Copyright e licenza</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -185,13 +195,27 @@ ul.task-list li input[type="checkbox"] {
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
-
-
-
-
-<div class="home-loghi">
-<p><img src="immagini/logo_iss.png" class="logo-sx img-fluid" alt="Logo dell'Istituto Superiore di Sanità"> <img src="immagini/logo_dip_malattie_infettive.png" class="logo-dx img-fluid" alt="Logo del Dipartimento Malattie Infettive"></p>
+<!--
+  LOGHI IN ALTO SU TUTTE LE PAGINE DEL SITO
+  Viene aggiunto a ogni pagina da _quarto.yml (include-before-body).
+  Lo script sposta i loghi all'inizio del contenuto della pagina,
+  sotto il menu in alto. Lo stile e' in sito.css (.sito-loghi).
+-->
+<div class="sito-loghi" id="sito-loghi">
+  <img src="immagini/logo_iss.png" alt="Logo dell'Istituto Superiore di Sanità">
+  <img src="immagini/logo_dip_malattie_infettive.png" alt="Logo del Dipartimento Malattie Infettive">
 </div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var loghi = document.getElementById("sito-loghi");
+    var main = document.querySelector("main");
+    if (loghi && main) main.insertBefore(loghi, main.firstChild);
+  });
+</script>
+
+
+
+
 <section id="corso-base-di-r-per-la-gestione-e-analisi-dei-dati" class="level1 unnumbered unlisted home-titolo">
 <h1 class="unnumbered unlisted">Corso base di R per la gestione e analisi dei dati</h1>
 <p>Istituto Superiore di Sanità · Dipartimento Malattie Infettive<br>
@@ -215,6 +239,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="programma-del-corso" class="level2">
 <h2 class="anchored" data-anchor-id="programma-del-corso">Programma del corso</h2>
 <p>Ogni giornata ha due moduli, uno la mattina e uno il pomeriggio. Ogni modulo prevede una breve lezione (30 minuti), una dimostrazione dal vivo in R (15 minuti) e un’esercitazione individuale (90 minuti), seguita da una discussione insieme. Dal secondo giorno, la mattina si apre con la discussione degli argomenti del giorno precedente.</p>
+<p>Il programma completo dell’evento, con gli orari e i docenti, è disponibile in PDF: <a href="documenti/programma_corso_R.pdf" target="_blank">scarica il programma del corso</a>.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 20%">

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>quarto-inputcd6369dc0d021c80 – Corso base di R</title>
+<title>quarto-input587fd27789903ec7 – Corso base di R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -108,6 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
+<link rel="stylesheet" href="sito.css">
 </head>
 
 <body class="floating nav-fixed quarto-light">
@@ -191,6 +192,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
     </ul>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./valutazione.html"> 
+<span class="menu-text">Valutazione</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./licenza.html"> 
+<span class="menu-text">Copyright e licenza</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -214,7 +225,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#scaricare-i-materiali-del-corso" id="toc-scaricare-i-materiali-del-corso" class="nav-link" data-scroll-target="#scaricare-i-materiali-del-corso">Scaricare i materiali del corso</a></li>
   </ul></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Altri Formati</h2><ul><li><a href="istruzioni_preparazione_corso_R.pdf"><i class="bi bi-file-pdf"></i>Typst</a></li></ul></div></nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -222,6 +233,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
+<!--
+  LOGHI IN ALTO SU TUTTE LE PAGINE DEL SITO
+  Viene aggiunto a ogni pagina da _quarto.yml (include-before-body).
+  Lo script sposta i loghi all'inizio del contenuto della pagina,
+  sotto il menu in alto. Lo stile e' in sito.css (.sito-loghi).
+-->
+<div class="sito-loghi" id="sito-loghi">
+  <img src="immagini/logo_iss.png" alt="Logo dell'Istituto Superiore di Sanità">
+  <img src="immagini/logo_dip_malattie_infettive.png" alt="Logo del Dipartimento Malattie Infettive">
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var loghi = document.getElementById("sito-loghi");
+    var main = document.querySelector("main");
+    if (loghi && main) main.insertBefore(loghi, main.firstChild);
+  });
+</script>
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -247,7 +275,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="prepararsi-al-corso" class="level1">
 <h1>Prepararsi al corso</h1>
-<p>Prima dell’inizio del corso è necessario installare i programmi e i pacchetti che useremo e scaricare la cartella con i dati. Ti chiediamo di farlo <strong>qualche giorno prima del corso</strong>, così da avere il tempo di risolvere eventuali problemi.</p>
+<p>Prima dell’inizio del corso è necessario installare i programmi e i pacchetti che useremo. Ti chiediamo di farlo <strong>qualche giorno prima del corso</strong>, così da avere il tempo di risolvere eventuali problemi.</p>
 <section id="installare-r-rtools-e-rstudio" class="level2">
 <h2 class="anchored" data-anchor-id="installare-r-rtools-e-rstudio">Installare R, RTools e RStudio</h2>
 <p>Sul tuo computer devono essere installati R, RTools (solo Windows) e RStudio, preferibilmente in quest’ordine: <strong>R → RTools → RStudio</strong>.</p>
@@ -261,7 +289,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>L’installazione di RStudio e di RTools di solito richiede i diritti di amministratore. Assicurati di fare il GRISSI per le credenziali temporanee</p>
+<p>L’installazione di RStudio e di RTools di solito richiede i diritti di amministratore. Assicurati di fare il GRISS per le credenziali temporanee</p>
 </div>
 </div>
 <section id="r" class="level3">
@@ -274,7 +302,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="rtools-solo-windows" class="level3">
 <h3 class="anchored" data-anchor-id="rtools-solo-windows">RTools (solo Windows)</h3>
-<p>RTools serve per installare alcuni pacchetti a partire dal codice sorgente. Scaricalo da <a href="https://cloud.r-project.org/bin/windows/Rtools/">questa pagina</a> scegliendo la versione che corrisponde alla tua versione di R (per esempio RTools 4.6 per R 4.6.x).</p>
+<p>RTools serve per installare alcuni pacchetti a partire dal codice sorgente. Scaricalo da <a href="https://cloud.r-project.org/bin/windows/Rtools/">questa pagina</a> scegliendo la versione che corrisponde alla tua versione di R (per R 4.6.x l’ultima versione disponibile è RTools 4.5).</p>
 <p>Su macOS non è necessario installare Rtools</p>
 </section>
 <section id="rstudio" class="level3">
