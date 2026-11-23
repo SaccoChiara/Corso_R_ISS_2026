@@ -1090,12 +1090,17 @@ cat("In uno studio di coorte, quale join userai quasi sempre per aggiungere info
 
 <!-- Tempo stimato: 7 minuti -->
 
-`semi_join()` e `anti_join()` si scrivono come gli altri join, ma non
-aggiungono variabili: guardano solo se ogni riga della tabella di
-sinistra trova un partner nella tabella di destra.
+`semi_join()` e `anti_join()` si scrivono come gli altri join, ma hanno una funzione diversa:
+non combinano le colonne delle due tabelle aggiungendo nuove variabili alla tabella di sinistra, 
+ma selezionano le righe della tabella di sinistra in base all'esistenza di una corrispondenza
+nella tabella di destra.  
 
--   `semi_join()` tiene le righe che trovano un partner;
--   `anti_join()` tiene le righe che **non** lo trovano.
+Per questo motivo vengono chiamati *filter joins*: si comportano in modo simile a un 
+`filter()`, perchè restituscono un sottoinsieme delle righe della tabella di sinistra.
+
+
+-   `semi_join()` mantiene le righe della tabella di sinistra che trovano almeno una corrispondenza nella tabella di destra.  
+-   `anti_join()` mantiene le righe della tabella di sinistra che non trovano alcuna corrispondenza nella tabella di destra.  
 
 ```{r}
 #| eval: false
