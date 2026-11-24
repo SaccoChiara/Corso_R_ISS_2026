@@ -715,7 +715,7 @@ opts <- c(
 )
 
 
-cat("Nel Modulo 5, con hiv_status, una legenda continua era un problema. Perché qui invece va bene?", longmcq(opts))
+cat("Nel Modulo 5, con event, una legenda continua era un problema. Perché qui invece va bene?", longmcq(opts))
 
 ```
 :::
