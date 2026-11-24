@@ -1338,7 +1338,7 @@ quindi contare le righe di una regione vuol dire contare i suoi
 vaccinati.
 
 Nell'area di prova, fai un grafico a barre del numero di vaccinati per
-regione con `geom_bar()`, specificando solo `x`. Poi colora tutte le
+regione con `geom_bar()`, specificando solo `x`. Poi riempi tutte le
 barre di `"lightblue"`.
 
 <details>
@@ -1423,12 +1423,13 @@ soluzione (provaci da solo prima!)
 
 ggplot(data = dati_clean, mapping = aes(x = region, fill = fct_rev(chrls_index))) +
   geom_bar()
-
 ```
 
 </br>
 
 </details>
+
+Il titolo della legenda ora è `fct_rev(chrls_index)`. Nell'area di prova, cambialo aggiungendo un livello `labs(fill = "Charlson index")`.
 
 Ora fai variare il riempimento delle barre in base alla classe d'età
 (`age_group`).
@@ -2045,7 +2046,7 @@ facet_wrap(~ VARIABILE)
 
 Con la tastiera italiana la tilde non ha un tasto suo: su Windows tieni
 premuto **Alt** e digita **126** sul tastierino numerico; su Mac usa
-**Option + 5**.
+**Option + 5**. Se il tuo portatile non ha il tastierino numerico, copia la tilde da questo testo.
 
 Nell'area di prova, partendo dall'istogramma di `date_vacc` con barre di
 7 giorni, crea un pannello per regione con `facet_wrap()`.
