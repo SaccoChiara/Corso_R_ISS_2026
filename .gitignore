@@ -21,12 +21,15 @@
 !/webex.js
 !/crea_zip_materiali.R
 !/pulisci_copie_conflitto.R
+!/loghi.html
+!/documenti/
 
 # --- pagine del sito
 !/index.qmd
 !/preparazione.qmd
 !/dati.qmd
 !/licenza.qmd
+!/valutazione.qmd
 !/modulo1_intro.qmd
 !/modulo2_data_cleaning.qmd
 !/modulo3_data_cleaning_avanzato.qmd

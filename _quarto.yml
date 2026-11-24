@@ -16,6 +16,7 @@ project:
     - modulo7_trasformazione_e_integrazione.qmd
     - modulo8_altri_grafici.qmd
     - modulo9_quarto.qmd
+    - valutazione.qmd
     - licenza.qmd
   # prima di ogni render crea lo zip dei materiali per gli studenti
   pre-render: crea_zip_materiali.R
@@ -25,6 +26,8 @@ project:
     - webex.css
     - webex.js
     - materiali_corso_R.zip   # scaricabile da "Prepararsi al corso"
+    - immagini/*.png          # i loghi in alto su ogni pagina (loghi.html)
+    - documenti/*.pdf         # programma del corso, linkato dalla home
 
 lang: it
 
@@ -71,6 +74,11 @@ website:
           - text: "Giorno 5"
           - href: modulo9_quarto.qmd
             text: "Modulo 9 – Report automatici con Quarto"
+      - href: valutazione.qmd
+        text: Valutazione
+    right:
+      - href: licenza.qmd
+        text: Copyright e licenza
   page-footer:
     left: "© 2026 Istituto Superiore di Sanità – Corso base di R, 30 novembre – 4 dicembre 2026"
     right:
@@ -82,6 +90,9 @@ format:
     theme:
       - cosmo
       - iss.scss   # colori del template ISS
+    css: sito.css
+    # i due loghi in alto su tutte le pagine
+    include-before-body: loghi.html
     # indice di ogni pagina nel menu laterale a sinistra
     toc: true
     toc-location: left

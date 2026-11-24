@@ -1646,9 +1646,9 @@ pacman::p_load(
 )
 
 # Importazione dati -------------------------------------------------------
-dati_clean <- import("dati/dati_clean.rds")
-regioni_sf <- read_sf("dati/shapefiles/regioni.shp")   # Modulo 08
-regioni    <- import("dati/regioni.rds")               # Modulo 08
+dati_clean <- import("materiali_corso_R/dati/dati_clean.rds")
+regioni_sf <- read_sf("materiali_corso_R/dati/shapefiles/regioni.shp")
+regioni    <- import("materiali_corso_R/dati/regioni.rds")
 
 # ... sezioni dei Moduli 5 e 6 ...
 

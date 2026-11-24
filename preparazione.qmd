@@ -29,6 +29,10 @@ editor:
 
 ::: {.content-visible when-format="typst"}
 ```{=typst}
+// nel PDF i link sono cliccabili ma, senza questa riga, sembrano testo normale:
+// li coloriamo e sottolineiamo come nel sito
+#show link: it => underline(text(fill: rgb("#006064"), it))
+
 // nel PDF: i due loghi in alto, uno per lato, e sotto il titolo centrato
 #grid(
   columns: (1fr, 1fr),
@@ -93,6 +97,11 @@ Scarica [RStudio Desktop](https://docs.posit.co/ide/user/download.html).
 Apri RStudio, copia il codice qui sotto nella **Console** e premi
 Invio. [L'installazione può richiedere diversi minuti.]{.underline}
 
+```{=typst}
+// nel PDF il codice resta tutto sulla stessa pagina, cosi' si copia in una volta
+#block(breakable: false)[
+```
+
 ```{r}
 #| eval: false
 # Installa {pacman} se non è già presente
@@ -114,6 +123,10 @@ pacman::p_load(
 )
 ```
 
+```{=typst}
+]
+```
+
 Se al termine non compaiono messaggi di errore (in rosso, con la parola
 `Error`), i pacchetti sono installati correttamente. Gli avvisi
 (`Warning`) di solito si possono ignorare.
@@ -133,13 +146,6 @@ Per scaricare le cartelle e i dati del corso, [clicca qui](materiali_corso_R.zip
 file compresso. Estrai la cartella `materiali_corso_R` in un punto
 qualsiasi del tuo computer (per esempio in Documenti): durante il corso
 lavorerai al suo interno.
-:::
-
-::: {.content-visible when-format="typst"}
-La cartella `materiali_corso_R`, con i dati e gli script del corso, la
-scaricherai **in aula, il primo giorno, prima dell'inizio del corso**:
-non serve scaricarla prima. Durante il corso lavorerai al suo interno.
-:::
 
 La cartella contiene tre sottocartelle:
 
@@ -149,3 +155,12 @@ La cartella contiene tre sottocartelle:
 -   `dati`: con i dati usati nelle esercitazioni;
 -   `output`: vuota: durante il corso ci salverai i grafici e le
     tabelle che produrrai.
+:::
+
+::: {.content-visible when-format="typst"}
+La cartella `materiali_corso_R`, con i dati e gli script del corso, la
+scaricherai **in aula, il primo giorno, prima dell'inizio del corso**:
+non serve scaricarla prima. 
+:::
+
+

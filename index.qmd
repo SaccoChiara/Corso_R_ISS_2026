@@ -1,15 +1,7 @@
 ---
 pagetitle: "Corso base di R per la gestione e analisi dei dati"
 toc-title: "In questa pagina"
-format:
-  html:
-    css: sito.css
 ---
-
-::: home-loghi
-![](immagini/logo_iss.png){.logo-sx fig-alt="Logo dell'Istituto Superiore di Sanità"}
-![](immagini/logo_dip_malattie_infettive.png){.logo-dx fig-alt="Logo del Dipartimento Malattie Infettive"}
-:::
 
 ::: home-titolo
 
@@ -55,6 +47,10 @@ modulo prevede una breve lezione (30 minuti), una dimostrazione dal vivo
 in R (15 minuti) e un'esercitazione individuale (90 minuti), seguita da
 una discussione insieme. Dal secondo giorno, la mattina si apre con la
 discussione degli argomenti del giorno precedente.
+
+Il programma completo dell'evento, con gli orari e i docenti, è
+disponibile in PDF: [scarica il programma del
+corso](documenti/programma_corso_R.pdf){target="_blank"}.
 
 | Giorno | Mattina | Pomeriggio |
 |----|----|----|
