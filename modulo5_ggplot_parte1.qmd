@@ -259,7 +259,7 @@ dati_clean <- import("dati/dati_clean.rds")
 
 </details>
 
-I dati su cui stiamo lavorando (`dati_clean`) è la coorte di persone
+Il dataset su cui stiamo lavorando (`dati_clean`) è la coorte di persone
 vaccinate contro COVID-19 che ci accompagna in tutto il corso, con
 persone con HIV (`hiv_status` uguale a 1) e persone senza HIV
 (`hiv_status` uguale a 0). Le persone senza HIV non sono state scelte a
@@ -463,15 +463,6 @@ ggplot(data = dati_clean, mapping = aes(x = hiv, y = anticorpi))
 
 ```
 
-::: {.callout-warning appearance="default" icon="false"}
-## Attenzione a usare `+` da solo
-
-R esegue la prima riga come un comando completo e disegna la tela vuota.
-Poi prova a eseguire `+ geom_point()` da solo e si ferma con l'errore
-*Cannot use `+` with a single argument. Did you accidentally put `+` on
-a new line?*
-:::
-
 </br>
 
 </details>
@@ -498,6 +489,15 @@ cat("Cosa succede se il + è all'inizio della seconda riga?", longmcq(opts))
 ```
 :::
 ::::
+
+::: {.callout-warning appearance="default" icon="false"}
+## Attenzione a usare `+` da solo
+
+R esegue la prima riga come un comando completo e disegna la tela vuota.
+Poi prova a eseguire `+ geom_point()` da solo e si ferma con l'errore
+*Cannot use `+` with a single argument. Did you accidentally put `+` on
+a new line?*
+:::
 
 ### Jitter
 
@@ -598,8 +598,7 @@ Per confrontare una variabile continua tra gruppi, come l'età tra le
 regioni, si usa spesso `geom_boxplot()`, che per ogni gruppo disegna una
 "scatola": la linea centrale è la mediana, i bordi della scatola sono il
 primo e il terzo quartile, le linee che escono dalla scatola (i "baffi")
-arrivano fino ai valori più estremi che non distano più di 1,5 volte
-l'altezza della scatola, e i punti isolati oltre i baffi sono i valori
+arrivano fino ai valori più estremi che distano dal bordo della scatola non più di 1,5 volte la sua altezza, e i punti isolati oltre i baffi sono i valori
 anomali (*outlier*).
 
 Torna ora al grafico dell'età per regione, quello con cui hai aperto la
@@ -736,6 +735,23 @@ ggplot(data = dati_clean, mapping = aes(x = region, y = age, fill = region)) +
 </details>
 
 <!-- DIPENDE DAI DATI: in dati_clean region non ha NA -->
+
+<details>
+
+<summary style="text-decoration: underline; color: darkgreen;">
+
+`r fontawesome::fa("lightbulb", fill = "gold")` Clicca per leggere un
+suggerimento
+
+</summary>
+
+</br>
+
+Controlla se ci sono valori mancanti con `count(dati_clean, region)`.
+
+</br>
+
+</details>
 
 :::: {.callout-note appearance="minimal" icon="false"}
 **Prova a rispondere!**
