@@ -1086,8 +1086,9 @@ In `dati_clean` c'è il livello di anticorpi di ciascuna persona dopo la vaccina
 ggplot(data = dati_clean %>% filter(region == 'A' & hiv == 'Con HIV'), mapping = aes(x = cd4, y = anticorpi)) +
   # scale_y_log10() + -> metti approfodnimento su scala log
   geom_point()
-
 ```
+
+<!-- N.B. questa soluzione, così come le due successive, non mi sembrano coerenti con il testo. Da controllare e modificare!!! -->
 
 </br>
 
@@ -1202,7 +1203,7 @@ Nell'area di prova, sposta `color = hiv` da `ggplot()` a `geom_point()` e osserv
 #| echo: true
 
 ggplot(data = dati_clean %>% filter(region == 'A' & hiv == 'Con HIV'), mapping = aes(x = cd4, y = anticorpi)) +
-  geom_point() +
+  geom_point(mapping = aes(color = hiv)) +
   geom_smooth()
 
 ```
