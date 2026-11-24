@@ -367,7 +367,7 @@ editor: source
 
 Lo YAML è molto pignolo: dopo i due punti ci vuole **uno spazio**
 (`title: "Report"`, non `title:"Report"`), e quando una chiave contiene
-altre chiavi queste vanno **rientrate** di due spazi (lo vedrai tra
+altre chiavi annidate queste vanno **rientrate** di due spazi (lo vedrai tra
 poco). Se il render si ferma con un errore che parla di YAML, controlla
 per prima cosa spazi e due punti.
 :::
@@ -592,8 +592,9 @@ simboli che indicano come formattare il testo.
 
 Due regole da ricordare:
 
+-   Per **andare a capo** inserisci due spazi alla fine della riga;     
 -   per iniziare un **nuovo paragrafo** lascia una riga vuota: andare a
-    capo una sola volta non basta;
+    capo una sola volta non basta;  
 -   prima di un **elenco** (e prima di un titolo) ci vuole una riga
     vuota, altrimenti non viene riconosciuto.
 
@@ -641,7 +642,8 @@ con i pulsanti per grassetto, elenchi, tabelle e immagini: è comodo
 quando avrai preso confidenza con la sintassi.
 
 Per forzare un'interruzione di pagina nel report Word, scrivi su una
-riga da sola `{{</* pagebreak */>}}`.
+riga da sola  
+`{{</* pagebreak */>}}`.
 :::
 
 ### I numeri nel testo: il codice inline
@@ -654,6 +656,11 @@ valore direttamente dentro una frase:
 -   inizia con un apice inverso (backtick), la lettera `r` e uno spazio;
 -   scrivi il codice R;
 -   chiudi con un altro apice inverso.
+
+Per scrivere l'apice inverso:  
+
+-   Windows (tastiera italiana): prova Alt Gr + ' (il tasto vicino a Invio, a seconda della tastiera)
+-   Mac: ⌥ Option + 9 (tastiera italiana).  
 
 Per esempio, scrivi questa frase nel tuo documento e rifai il render:
 
