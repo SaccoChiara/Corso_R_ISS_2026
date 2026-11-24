@@ -392,7 +392,7 @@ Crea quindi un vettore con i numeri: 24, 98, 233, 9823, 3, -76 e salvalo
 nell'Environment con il nome *numeri*. Usa le funzioni adatte per calcolare: 
 numero più alto, numero più basso e somma. Salva poi la media in un oggetto 
 chiamato *media_numeri*. Crea un vettore con le parole: Roma, Torino, Napoli, 
-Milano, Barie usa una funzione che trasformi questi nomi in lettere maiuscole e 
+Milano, Bari e usa una funzione che trasformi questi nomi in lettere maiuscole e 
 salva il vettore nell'Environment col nome *citta_italiane*
 
 <details>
@@ -644,6 +644,20 @@ dati_raw <- import("dati/dataset_esercitazione_raw.csv")
 </br>
 
 </details>
+
+::: {.callout-tip appearance="default" icon="false"}
+## Approfondimento: costruire i percorsi con `here()`
+
+Invece di scrivere il percorso del file a mano, puoi usare la funzione `here()` del pacchetto `{here}`. `here()` trova da sola la cartella principale del progetto (quella con il file `Rproj`) e costruisce il percorso a partire da lì: basta indicare le cartelle e il nome del file, separati da virgole.
+
+```r
+pacman::p_load(here)
+
+dati_raw <- import(here("dati", "dataset_esercitazione_raw.csv"))
+```
+
+Il vantaggio è che il codice funziona sempre, qualunque sia la cartella in cui si trova lo script e su qualsiasi sistema operativo. Quando lo carichi, `here` stampa nella console la cartella che considera la radice del progetto (`here() starts at ...`): è un modo rapido per controllare di aver aperto il progetto giusto.
+:::
 
 ### Esplorare il database
 
