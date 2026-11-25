@@ -22,7 +22,7 @@ title: |
 
 # **Corso introduttivo al software statistico R**
 
-# Modulo 05 Data Visualization con ggplot2 (Parte 1)
+# Modulo 05 - Data Visualization con ggplot2 (Parte 1)
 
 ## Obiettivi del modulo
 
@@ -252,7 +252,7 @@ soluzione (provaci da solo prima!)
 #| eval: false
 
 # Importazione dati -------------------------------------------------------
-dati_clean <- import("materiali_corso_R/dati/dati_clean.rds")
+dati_clean <- import("dati/dati_clean.rds")
 ```
 
 </br>
@@ -2321,7 +2321,7 @@ pacman::p_load(
 
 
 # Importazione dati -------------------------------------------------------
-dati_clean <- import("materiali_corso_R/dati/dati_clean.rds")
+dati_clean <- import("dati/dati_clean.rds")
 
 
 # Modulo 05 - Data Visualization con ggplot2 (Parte 1) =====================

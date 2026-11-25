@@ -178,6 +178,7 @@ l'esercitazione.**
 
 ```{r}
 #| echo: false
+#| include: false
 
 pacman::p_load(
   tidyverse,   # ggplot2, dplyr, forcats, lubridate, ...
@@ -185,7 +186,6 @@ pacman::p_load(
   here         # percorsi relativi al progetto
 )
 
-# dati_clean <- import(here("data", "dati_elaborati", "dati_modulo3.rds"))
 dati_clean <- import("materiali_corso_R/dati/dati_clean.rds")
 ```
 
