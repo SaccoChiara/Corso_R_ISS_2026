@@ -251,7 +251,7 @@ soluzione (provaci da solo prima!)
 #| echo: true
 #| eval: false
 
-# Importazione dati -------------------------------------------------------
+# Importazione dataframe -------------------------------------------------------
 dati_clean <- import("dati/dati_clean.rds")
 ```
 
@@ -259,7 +259,7 @@ dati_clean <- import("dati/dati_clean.rds")
 
 </details>
 
-I dati su cui stiamo lavorando (`dati_clean`) è la coorte di persone
+Il dataframe su cui stiamo lavorando (`dati_clean`) è la coorte di persone
 vaccinate contro COVID-19 che ci accompagna in tutto il corso, con
 persone con HIV (`hiv_status` uguale a 1) e persone senza HIV
 (`hiv_status` uguale a 0). Le persone senza HIV non sono state scelte a
@@ -463,15 +463,6 @@ ggplot(data = dati_clean, mapping = aes(x = hiv, y = anticorpi))
 
 ```
 
-::: {.callout-warning appearance="default" icon="false"}
-## Attenzione a usare `+` da solo
-
-R esegue la prima riga come un comando completo e disegna la tela vuota.
-Poi prova a eseguire `+ geom_point()` da solo e si ferma con l'errore
-*Cannot use `+` with a single argument. Did you accidentally put `+` on
-a new line?*
-:::
-
 </br>
 
 </details>
@@ -498,6 +489,15 @@ cat("Cosa succede se il + è all'inizio della seconda riga?", longmcq(opts))
 ```
 :::
 ::::
+
+::: {.callout-warning appearance="default" icon="false"}
+## Attenzione a usare `+` da solo
+
+R esegue la prima riga come un comando completo e disegna la tela vuota.
+Poi prova a eseguire `+ geom_point()` da solo e si ferma con l'errore
+*Cannot use `+` with a single argument. Did you accidentally put `+` on
+a new line?*
+:::
 
 ### Jitter
 
@@ -615,8 +615,7 @@ Per confrontare una variabile continua tra gruppi, come l'età tra le
 regioni, si usa spesso `geom_boxplot()`, che per ogni gruppo disegna una
 "scatola": la linea centrale è la mediana, i bordi della scatola sono il
 primo e il terzo quartile, le linee che escono dalla scatola (i "baffi")
-arrivano fino ai valori più estremi che non distano più di 1,5 volte
-l'altezza della scatola, e i punti isolati oltre i baffi sono i valori
+arrivano fino ai valori più estremi che non distano più di 1,5 volte l'altezza della scatola, e i punti isolati oltre i baffi sono i valori
 anomali (*outlier*).
 
 Torna ora al grafico dell'età per regione, quello con cui hai aperto la
@@ -1067,11 +1066,11 @@ Nella Console compare un avviso: le 5 persone senza età non possono essere dise
 
 ## Scatter plot
 
-### Età e anticorpi
+### CD4 e anticorpi
 
 Uno scatter plot (grafico a dispersione) mostra la relazione tra **due variabili continue**: ogni riga del data frame è un punto, con una variabile sull'asse x e una sull'asse y. In `dati_clean` ogni riga è una persona, quindi ogni punto sarà una persona.
 
-In `dati_clean` c'è il livello di anticorpi di ciascuna persona dopo la vaccinazione (`anticorpi`). Vogliamo vedere se cambia al cambiare del valore del `cd4`. Nell'area di prova, crea un data frame chiamato `ant_cd4_A` che contiene tutti i casi con `hiv` pari a `Con HIV`, nella `region` `A`. Fai poi uno scatterplot con `geom_point()`, con i valori `cd4` sull'asse x e il livello di anticorpi (`anticorpi`) sull'asse y.
+In `dati_clean` c'è il livello di anticorpi di ciascuna persona dopo la vaccinazione (`anticorpi`). Vogliamo vedere se cambia al cambiare del valore del `cd4`. Nell'area di prova, crea un data frame chiamato `ant_cd4_A` che contiene tutti i casi con `hiv` pari a `Con HIV`, nella `region` `A`. Fai poi uno scatterplot con `geom_point()`, con i valori del CD4 (`cd4`) sull'asse x e il livello di anticorpi (`anticorpi`) sull'asse y.
 
 <details>
 
@@ -1133,7 +1132,7 @@ cat("Che cosa rappresenta ogni punto di questo grafico?", longmcq(opts))
 
 Un grafico può avere più livelli `geom_`, collegati con `+`: `{ggplot2}` li disegna uno sopra l'altro, **nell'ordine in cui li scrivi**. Con tanti punti è difficile vedere una tendenza: il livello `geom_smooth()` aggiunge una curva che segue l'andamento medio dei punti, con una fascia grigia che ne indica l'incertezza.
 
-Nell'area di prova, utilizzando ancora una volta il data frame creato precedentemente (`ant_cd4_A`), colora i punti per stato HIV, con `color = hiv` dentro `aes()`, e aggiungi un livello `geom_smooth()`.
+Nell'area di prova, utilizzando ancora una volta il dataframe creato precedentemente (`ant_cd4_A`), colora i punti per diagnosi COVID-19, utilizzando la variabile costruita precedentemente (`covid`), con `color = covid` dentro `aes()`, e aggiungi un livello `geom_smooth()`.
 
 <details>
 
@@ -1148,7 +1147,7 @@ Nell'area di prova, utilizzando ancora una volta il data frame creato precedente
 ```{r}
 #| echo: true
 
-ggplot(data = ant_cd4_A, mapping = aes(x = cd4, y = anticorpi, color = hiv)) +
+ggplot(data = ant_cd4_A, mapping = aes(x = cd4, y = anticorpi, color = covid)) +
   geom_point() +
   geom_smooth()
 
@@ -1186,7 +1185,7 @@ cat("Che cosa mostrano le curve?", longmcq(opts))
 ::: {.callout-warning appearance="default" icon="false"}
 ## Attenzione alle estetiche
 
-Le curve sono **due**, una per gruppo, anche se non l'hai chiesto a `geom_smooth()`. Il motivo è che le estetiche scritte dentro `ggplot()` valgono per **tutti** i livelli: anche `geom_smooth()` riceve `color = hiv`, e disegna una curva per ogni colore. Se un'estetica serve solo a un livello, va scritta dentro quel livello, con `mapping = aes()`:
+Le curve sono **due**, una per gruppo, anche se non l'hai chiesto a `geom_smooth()`. Il motivo è che le estetiche scritte dentro `ggplot()` valgono per **tutti** i livelli: anche `geom_smooth()` riceve `color = covid`, e disegna una curva per ogni colore. Se un'estetica serve solo a un livello, va scritta dentro quel livello, con `mapping = aes()`:
 
 ```{r}
 #| eval: false
@@ -1195,7 +1194,7 @@ geom_point(mapping = aes(color = VARIABILE))
 ```
 :::
 
-Nell'area di prova, sposta `color = hiv` da `ggplot()` a `geom_point()` e osserva che cosa cambia.
+Nell'area di prova, sposta `color = covid` da `ggplot()` a `geom_point()` e osserva che cosa cambia.
 
 <details>
 
@@ -1211,7 +1210,7 @@ Nell'area di prova, sposta `color = hiv` da `ggplot()` a `geom_point()` e osserv
 #| echo: true
 
 ggplot(data = ant_cd4_A, mapping = aes(x = cd4, y = anticorpi)) +
-  geom_point(aes(color = hiv)) +
+  geom_point(aes(color = covid)) +
   geom_smooth()
 
 ```
@@ -1237,7 +1236,7 @@ opts <- c(
 )
 
 
-cat("Dopo aver spostato color = hiv dentro geom_point(), i punti e la linea hanno lo stesso colore? e perché?", longmcq(opts))
+cat("Dopo aver spostato color = covid dentro geom_point(), i punti e la linea hanno lo stesso colore? e perché?", longmcq(opts))
 
 ```
 :::
@@ -1260,7 +1259,7 @@ Nell'area di prova, inverti l'ordine di `geom_point()` e `geom_smooth()` e osser
 
 ggplot(data = ant_cd4_A, mapping = aes(x = cd4, y = anticorpi)) +
   geom_smooth() +
-  geom_point(aes(color = hiv)) 
+  geom_point(aes(color = covid)) 
 
 ```
 
@@ -1295,7 +1294,7 @@ cat("Che cosa succede se scrivi geom_smooth() prima di geom_point()?", longmcq(o
 
 I punti sono quasi 2.000 e si sovrappongono: dove sono tanti diventano una macchia uniforme, e non si capisce dove sono più fitti. L'argomento `alpha` regola la **trasparenza**, da 0 (del tutto trasparente, cioè invisibile) a 1 (del tutto coprente, il default per i punti). Funziona con quasi tutte le funzioni `geom_`. In `geom_point()` rende trasparenti i punti: dove se ne sovrappongono tanti il colore diventa più intenso. In `geom_smooth()` rende più o meno trasparente la fascia grigia di incertezza, non la curva.
 
-Nell'area di prova, riparti dal grafico con `color = hiv` dentro `ggplot()` e aggiungi `alpha = 0.1` dentro `geom_point()`, provando anche altri valori tra 0 e 1.
+Nell'area di prova, riparti dal grafico con `color = covid` dentro `ggplot()` e aggiungi `alpha = 0.1` dentro `geom_point()`, provando anche altri valori tra 0 e 1.
 
 <details>
 
@@ -1326,7 +1325,7 @@ Nell'area di prova, riparti dal grafico con `color = hiv` dentro `ggplot()` e ag
 ```{r}
 #| echo: true
 
-ggplot(data = ant_cd4_A, mapping = aes(x = cd4, y = anticorpi, color = hiv)) +
+ggplot(data = ant_cd4_A, mapping = aes(x = cd4, y = anticorpi, color = covid)) +
   geom_point(alpha = 0.1) +
   geom_smooth()
 
