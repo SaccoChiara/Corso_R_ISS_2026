@@ -37,7 +37,7 @@ pacman::p_load(
   webexercises
 )
 
-# dataset pulito fornito ai partecipanti (nel corso: dati/dati_clean.rds)
+# dataframe pulito fornito ai partecipanti (nel corso: dati/dati_clean.rds)
 # dati/ accanto al qmd (cartella corso_R_2026) oppure un livello sopra (ModuloN/)
 percorso_dati <- if (file.exists("dati/dati_clean.rds")) "dati/dati_clean.rds" else "../dati/dati_clean.rds"
 dati_clean <- import(percorso_dati)
@@ -62,9 +62,9 @@ dati_clean <- import(percorso_dati)
        tab_sintesi_hiv, tassi_eta_hiv); tutti gli altri comandi si
        scrivono nell'area di prova.
      - I commenti "DIPENDE DAI DATI" segnalano testi o domande da
-       ricontrollare se cambia il dataset. Le risposte delle domande
+       ricontrollare se cambia il dataframe. Le risposte delle domande
        con risposta calcolata si aggiornano da sole.
-     - Dataset: dati_clean (dati/dati_clean.rds),
+     - Dataframe: dati_clean (dati/dati_clean.rds),
        versione del 13/11/2026: 47.717 persone, 18 variabili;
        fu_days, event 0/1 e age_cat già presenti; NA in sex 2,
        age 5, age_cat 5; region e hiv_status senza NA (esclusi nel
@@ -89,9 +89,9 @@ dati_clean <- import(percorso_dati)
     e `summarise()`
 -   Gestire i valori mancanti con `na.rm` e i raggruppamenti con
     `.groups` e `ungroup()`
--   Costruire una tabella riassuntiva per gruppo e salvarla in un nuovo
+-   Costruire un dataframe riassuntivo per gruppo e salvarlo in un nuovo
     oggetto
--   Distinguere le tabelle per esplorare i dati, i dataset aggregati e
+-   Distinguere le tabelle per esplorare i dati, i dataframe aggregati e
     le tabelle da presentare, e presentare una tabella con `{flextable}`
 
 ## Formato dell'esercizio
@@ -278,7 +278,7 @@ noi. Da qui in avanti useremo sempre `dati_clean.rds`: così tutti
 lavoriamo sugli stessi dati puliti.
 
 Nello script crea la sezione "Importazione dati" (**Ctrl+Shift+R**) e
-importa il file `dati_clean.rds` con `import()`, chiamando il dataset
+importa il file `dati_clean.rds` con `import()`, chiamando il dataframe
 `dati_clean`. Il formato RDS conserva le classi delle variabili: le date
 sono già date, e non serve rifare le conversioni.
 
@@ -388,9 +388,9 @@ In ogni esercizio ti indicheremo quando lavorare nell'area di prova.
 
 Ci sono tanti modi per costruire una tabella in R. Il primo che vediamo
 è `count()` del pacchetto `{dplyr}`: conta quante righe ci sono per
-ciascun valore di una variabile e restituisce un piccolo data frame, con
+ciascun valore di una variabile e restituisce un piccolo dataframe, con
 una riga per ogni valore e una colonna `n` con il conteggio. Si scrive
-dopo il dataset, collegata con `%>%`, e tra le parentesi si indica la
+dopo il dataframe, collegata con `%>%`, e tra le parentesi si indica la
 variabile da contare:
 
 ```{r}
@@ -448,7 +448,7 @@ fmt <- function(x) format(x, big.mark = ".", decimal.mark = ",")
 opts <- c(fmt(n_no_hiv), fmt(n_hiv), fmt(nrow(dati_clean)), fmt(round(n_hiv / 2)))
 names(opts) <- c("", "answer", "", "")
 
-cat("Quante persone con HIV ci sono nel dataset?", longmcq(opts))
+cat("Quante persone con HIV ci sono nel dataframe?", longmcq(opts))
 ```
 :::
 ::::
@@ -469,7 +469,7 @@ non c'è: le persone con questi valori mancanti sono state escluse con
 
 ### Ordinare i conteggi
 
-Nella tabella delle regioni le righe sono in ordine alfabetico. Spesso
+Nel conteggio per regione le righe sono in ordine alfabetico. Spesso
 però è più utile vedere per prime le categorie più frequenti: per questo
 `count()` ha l'argomento `sort`. Con `sort = TRUE` le righe vengono
 ordinate dalla più frequente alla meno frequente.
@@ -503,7 +503,7 @@ dati_clean %>%
 ### Dai conteggi alle percentuali
 
 `count()` dà solo i conteggi. Per avere anche le percentuali bisogna
-crearle noi, aggiungendo una nuova variabile alla tabella: come hai
+crearle noi, aggiungendo una nuova variabile al dataframe: come hai
 visto nei moduli precedenti, una nuova variabile si crea con `mutate()`,
 che si scrive dopo `count()`, collegata con `%>%`.
 
@@ -513,9 +513,9 @@ arrotondare usa `round()`: il primo argomento è il numero da
 arrotondare, il secondo il numero di cifre decimali, per esempio
 `round(x, 1)`.
 
-Questa tabella è un risultato che vogliamo tenere: nello script, sopra
+Questo dataframe è un risultato che vogliamo tenere: nello script, sopra
 l'area di prova, crea la sezione "Tabelle di frequenza"
-(**Ctrl+Shift+R**) e salva la tabella in un oggetto chiamato
+(**Ctrl+Shift+R**) e salva il dataframe in un oggetto chiamato
 `tab_sesso`, con l'operatore di assegnazione `<-`. Poi trova `tab_sesso`
 nel pannello **Environment** e stampalo nella console.
 
@@ -533,7 +533,7 @@ suggerimento
 -   Dentro `mutate()` scrivi `perc = ...`: la percentuale di ciascuna
     categoria è il suo conteggio diviso per il totale, per 100, cioè
     `n / sum(n) * 100`. `sum(n)` somma tutti i valori della colonna `n`.
--   Per vedere la tabella salvata, esegui il nome dell'oggetto.
+-   Per vedere il dataframe salvato, esegui il nome dell'oggetto.
 
 </br>
 
@@ -558,7 +558,7 @@ tab_sesso <- dati_clean %>%
   count(sex) %>%
   mutate(perc = round(n / sum(n) * 100, 1))
 
-# Per vedere la tabella, esegui il nome dell'oggetto
+# Per vedere il dataframe, esegui il nome dell'oggetto
 tab_sesso
 
 ```
@@ -575,7 +575,7 @@ tab_sesso
 #| results: asis
 #| echo: false
 opts <- c(
-  "Il numero di variabili della tabella",
+  "Il numero di variabili del dataframe",
   "Il numero di persone con sesso femminile",
   answer = "Il totale della variabile `n`, cioè tutte le persone contate",
   "La media dei conteggi"
@@ -782,7 +782,7 @@ cat("Dopo `adorn_pct_formatting()`, che cosa diventano le percentuali?", longmcq
 ### Ordinare la tabella
 
 Con `count()` hai ordinato i conteggi con l'argomento `sort`. `tabyl()`
-non ha questo argomento: per ordinare le righe di una tabella si usa la
+non ha questo argomento: per ordinare le righe di un dataframe si usa la
 funzione `arrange()` del pacchetto `{dplyr}`, indicando la variabile in
 base a cui ordinare. `arrange(n)` mette le righe dal conteggio più
 piccolo al più grande; per l'ordine inverso, dal più grande al più
@@ -839,7 +839,7 @@ dati_clean %>%
 opts <- c(
   "Perché adorn_totals() mette sempre il totale nella prima riga",
   answer = "Perché arrange() ordina anche la riga Total, che ha il valore di n più alto",
-  "Perché arrange() non funziona sulle tabelle di tabyl()",
+  "Perché arrange() non funziona sui dataframe di tabyl()",
   "Perché arrange() ordina in ordine alfabetico"
 )
 
@@ -986,7 +986,7 @@ dati_clean %>%
 opts <- c(
   "Il numero di donne con HIV",
   "Il totale delle persone con HIV",
-  answer = "Il numero totale di persone nel dataset",
+  answer = "Il numero totale di persone nel dataframe",
   "La somma della colonna `Total` divisa per due"
 )
 
@@ -1172,7 +1172,7 @@ cat("Che cosa noti confrontando la distribuzione per classe d'età dei due grupp
 
 Le tabelle di questo modulo si possono costruire anche con le funzioni
 di R base, senza `{dplyr}` e `{janitor}`. Il risultato però non è un
-data frame, quindi è più scomodo da riusare:
+dataframe, quindi è più scomodo da riusare:
 
 ```{r}
 #| eval: false
@@ -1187,7 +1187,7 @@ prop.table(table(dati_clean$hiv_status, dati_clean$sex), margin = 1) * 100
 ```
 :::
 
-## `summarise()` sull'intero dataset
+## `summarise()` sull'intero dataframe
 
 <!-- Tempo stimato: 7 minuti -->
 
@@ -1195,7 +1195,7 @@ prop.table(table(dati_clean$hiv_status, dati_clean$sex), margin = 1) * 100
 
 Finora hai contato le persone. Se invece vuoi calcolare una statistica
 di sintesi, per esempio la durata media del follow-up, si usa
-`summarise()` del pacchetto `{dplyr}`: riduce l'intero data frame a
+`summarise()` del pacchetto `{dplyr}`: riduce l'intero dataframe a
 **una sola riga**, con una variabile per ogni statistica che chiedi.
 Dentro le parentesi scrivi `nome_nuova_variabile = funzione(variabile)`
 e separi le statistiche con una virgola:
@@ -1635,7 +1635,7 @@ cat("Dopo `summarise()`, il risultato è ancora raggruppato? Se sì, per quale v
 ::::
 
 ```{=html}
-<!-- DIPENDE DAI DATI: con il dataset attuale il tasso è più alto con
+<!-- DIPENDE DAI DATI: con il dataframe attuale il tasso è più alto con
      HIV sia nel complesso sia in ciascuna classe d'età -->
 ```
 
@@ -1758,6 +1758,11 @@ nella console e con la riga `# Groups:` sopra la tabella. Se non lo
 chiudi, i calcoli successivi vengono fatti dentro i gruppi. Prendi
 l'abitudine di chiudere sempre il raggruppamento con `.groups = "drop"`
 oppure con `ungroup()`.
+
+Con `ungroup()` il messaggio nella console compare
+lo stesso: `summarise()` viene eseguita prima e non sa che dopo toglierai i gruppi.
+Il risultato però non è più raggruppato. Con `.groups = "drop"` invece il
+messaggio non compare.
 :::
 
 ## Valori mancanti e `na.rm`
@@ -1980,7 +1985,7 @@ dati_clean %>%
 opts <- c(
   "Il numero di donne",
   answer = "La proporzione di donne, un valore tra 0 e 1",
-  "Il numero di righe della tabella",
+  "Il numero di righe del dataframe",
   "Un errore, perché sex è una variabile di testo"
 )
 
@@ -2114,19 +2119,17 @@ domanda a cui vuoi rispondere, cioè qual è il denominatore che ti serve.
 
 <!-- Tempo stimato: 20 minuti -->
 
-Le tabelle che hai costruito finora servono a tre scopi diversi:
+Le tabelle e i dataframe che hai costruito finora servono a tre scopi diversi:
 
 -   **esplorare** i dati: tabelle veloci con `count()` o `tabyl()`, che
     guardi nella console per capire e controllare i dati. Sono quelle
     che hai scritto nell'area di prova;
--   **creare dataset aggregati**: con `group_by()` e `summarise()`
-    ottieni un nuovo data frame, in formato lungo, che salvi con un nome
+-   **creare dataframe aggregati**: con `group_by()` e `summarise()`
+    ottieni un nuovo dataframe, in formato lungo, che salvi con un nome
     nuovo e usi per altri calcoli o per i grafici dei prossimi moduli;
 -   **presentare** i risultati: tabelle finali da mostrare, in formato
     largo, con totali e percentuali formattate dalle funzioni
     `adorn_*()`, e rese più leggibili con `{flextable}`.
-
-Le ultime due le salvi in un oggetto e le scrivi nello script.
 
 :::: {.callout-note appearance="minimal" icon="false"}
 **Prova a rispondere!**
@@ -2147,7 +2150,7 @@ cat("Quale di questi comandi produce una tabella pensata per essere presentata i
 :::
 ::::
 
-### Un dataset aggregato
+### Un dataframe aggregato
 
 Metti insieme quello che hai imparato. Nello script, sopra l'area di
 prova, crea la sezione "Sintesi per stato HIV" (**Ctrl+Shift+R**) e crea
@@ -2165,7 +2168,7 @@ un nuovo oggetto `sintesi_hiv` con, per ciascun gruppo HIV:
 Arrotonda percentuali e tasso a una cifra decimale alla fine, poi stampa
 `sintesi_hiv` e controlla che `dati_clean` abbia ancora tutte le sue
 righe. Nel pannello **Environment** ora dovresti vedere, uno accanto
-all'altro, il dataset individuale `dati_clean` e il dataset aggregato
+all'altro, il dataframe individuale `dati_clean` e il dataframe aggregato
 `sintesi_hiv`, con il loro numero di righe (*obs.*) e di variabili
 (*variables*).
 
@@ -2258,10 +2261,10 @@ cat("Perché salviamo il risultato in `sintesi_hiv` e non in `dati_clean`?", lon
 ::::
 
 ::: {.callout-warning appearance="default" icon="false"}
-## Attenzione a non sovrascrivere il dataset
+## Attenzione a non sovrascrivere il dataframe
 
 Se scrivi `dati_clean <- dati_clean %>% summarise(...)`, l'operatore di
-assegnazione `<-` sostituisce i dati individuali con la tabella di
+assegnazione `<-` sostituisce i dati individuali con il dataframe di
 sintesi, e le variabili originali spariscono. R non dà nessun errore in
 quel momento: te ne accorgi solo dopo, quando un comando non trova più
 una variabile. Salva sempre le sintesi in un oggetto con un nome nuovo.
@@ -2269,12 +2272,12 @@ una variabile. Salva sempre le sintesi in un oggetto con un nome nuovo.
 
 ### Presentare la sintesi con `{flextable}`
 
-`sintesi_hiv` è un dataset aggregato: perfetto per altri calcoli, ma
+`sintesi_hiv` è un dataframe aggregato: perfetto per altri calcoli, ma
 ancora poco leggibile per chi lo guarda. Per presentarlo si usa il
 pacchetto `{flextable}`, che hai caricato all'inizio del modulo. Le
 funzioni che servono sono tre, collegate con `%>%`:
 
--   `flextable()` trasforma il data frame in una tabella formattata;
+-   `flextable()` trasforma il dataframe in una tabella formattata;
 -   `set_header_labels()` cambia le intestazioni delle colonne: dentro
     le parentesi scrivi `nome_variabile = "intestazione"`, separando le
     variabili con una virgola;
@@ -2331,7 +2334,7 @@ tab_sintesi_hiv
 #| results: asis
 #| echo: false
 opts <- c(
-  "Sì: è un data frame come gli altri",
+  "Sì: è un dataframe come gli altri",
   answer = "No: è una tabella fatta per essere mostrata, i calcoli vanno fatti prima su `sintesi_hiv`",
   "Sì, ma solo con `summarise()`",
   "Solo dopo averla esportata in Excel"
@@ -2365,12 +2368,12 @@ non li usiamo, ma è utile sapere che esistono.
 ### Tassi per classe d'età e stato HIV
 
 ```{=html}
-<!-- Tabella pensata per l'esercitazione del modulo 9 (report con
+<!-- Dataframe pensato per l'esercitazione del modulo 9 (report con
      Quarto): il collega la riprende dal file tassi_eta_hiv.rds. -->
 ```
 
 Nello script, sopra l'area di prova, crea la sezione "Tassi per classe
-d'età e stato HIV" (**Ctrl+Shift+R**) e costruisci un ultimo dataset
+d'età e stato HIV" (**Ctrl+Shift+R**) e costruisci un ultimo dataframe
 aggregato, `tassi_eta_hiv`, con una riga per ogni combinazione di classe
 d'età di 10 anni (`age_cat`) e stato HIV, e per ciascuna:
 
@@ -2382,7 +2385,7 @@ d'età di 10 anni (`age_cat`) e stato HIV, e per ciascuna:
 
 Togli all'inizio, con `filter()` come hai fatto nel Modulo 3, le righe
 con classe d'età mancante: sono pochissime persone. Poi
-salva la tabella nella cartella `output`, sia in formato
+salva il dataframe nella cartella `output`, sia in formato
 RDS (`tassi_eta_hiv.rds`) sia in Excel (`tassi_eta_hiv.xlsx`).
 
 <details>
@@ -2632,17 +2635,17 @@ corretta di `backup_tabelle_grouping.R`.
 In questo modulo hai imparato a:
 
 -   contare le righe per una o più variabili con `count()`, che
-    restituisce un data frame, e calcolare le percentuali con
+    restituisce un dataframe, e calcolare le percentuali con
     `mutate(perc = n / sum(n) * 100)`;
 -   costruire tabelle di frequenza con `tabyl()`, che mostra sempre i
     valori mancanti e aggiunge `valid_percent` (con `show_na = FALSE` si
     escludono);
--   ordinare le righe di una tabella con `arrange()` (e `desc()` per
+-   ordinare le righe di un dataframe con `arrange()` (e `desc()` per
     l'ordine decrescente), o con `sort = TRUE` dentro `count()`;
 -   aggiungere con le funzioni `adorn_*()` totali, percentuali di riga o
     di colonna, formattazione e conteggi tra parentesi: prima si calcola
     e si ordina, poi si "adorna";
--   ridurre un data frame a una riga di sintesi con `summarise()`, e a
+-   ridurre un dataframe a una riga di sintesi con `summarise()`, e a
     una riga per gruppo con `group_by()`;
 -   chiudere il raggruppamento che resta dopo `summarise()` con
     `.groups = "drop"` o `ungroup()`;
@@ -2653,7 +2656,7 @@ In questo modulo hai imparato a:
 -   calcolare dentro i gruppi mantenendo tutte le righe con `group_by()`
     e `mutate()`;
 -   distinguere le tabelle per esplorare (nell'area di prova) dai
-    dataset aggregati e dalle tabelle da presentare (salvati in un
+    dataframe aggregati e dalle tabelle da presentare (salvati in un
     oggetto, nello script);
 -   presentare una tabella con `flextable()`, `set_header_labels()` e
     `autofit()`: serve per mostrare, non per calcolare.
@@ -2673,7 +2676,7 @@ In questo modulo hai imparato a:
 **Autori**
 
 Autori originali: Andrea Cannone (Istituto Superiore di Sanità)\
-Fonte dei dati: dataset didattico del corso, con la struttura di una
+Fonte dei dati: dataframe didattico del corso, con la struttura di una
 coorte di persone vaccinate contro COVID-19 con e senza HIV; esercizi
 ispirati al modulo *Grouping and summarizing data* di Applied Epi
 (<https://appliedepi.org>)\

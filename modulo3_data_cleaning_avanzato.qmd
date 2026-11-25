@@ -281,6 +281,12 @@ In questo modulo la userai spesso: prima di aggiungere un comando alla
 catena di pulizia, provalo qui e guarda il risultato. Solo quando il
 risultato è quello che ti aspetti, sposta il comando nella catena.
 
+**Ogni volta che aggiungi un comando alla catena, riesegui tutta la
+catena** (seleziona dall'inizio, `dati_clean <- dati %>%`, fino
+all'ultima riga, e premi **Ctrl+Invio**). Così `dati_clean` è sempre
+aggiornato e, quando lavori nell'area di prova, parti dai dati con tutte
+le modifiche fatte fino a quel momento.
+
 ### Cosa resta da sistemare
 
 Nel Modulo 2 hai standardizzato i nomi delle variabili, rimosso le righe
@@ -1423,7 +1429,7 @@ togliere le regioni E ed F e confronta il numero di righe:
 dati_clean %>% filter(region %in% c("A", "B", "C", "D")) %>% nrow()
 
 # togliere le regioni E ed F
-dati_clean %>% filter(region %in% c("A", "B", "C", "D") & !is.na(hiv_status)) %>% nrow()
+dati_clean %>% filter(!region %in% c("E", "F")) %>% nrow()
 ```
 
 Il punto esclamativo davanti alla condizione la nega:
@@ -1705,6 +1711,16 @@ range(dati_clean$fu_days)
 # valori mancanti in ogni variabile
 colSums(is.na(dati_clean))
 ```
+
+::: {.callout-tip appearance="default" icon="false"}
+## Approfondimento: la funzione `sapply()`
+
+`sapply()` è una funzione di R base che applica un'altra funzione a ogni
+colonna del data frame. Qui applica `class()` a tutte le variabili di
+`dati_clean` e restituisce la classe di ognuna, così le controlli tutte
+con un solo comando invece di scrivere `class(dati_clean$age)`,
+`class(dati_clean$sex)` e così via.
+:::
 
 :::: {.callout-note appearance="minimal" icon="false"}
 **Prova a rispondere!**

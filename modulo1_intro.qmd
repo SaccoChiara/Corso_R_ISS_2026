@@ -397,7 +397,7 @@ Crea quindi un vettore con i numeri: 24, 98, 233, 9823, 3, -76 e salvalo
 nell'Environment con il nome *numeri*. Usa le funzioni adatte per calcolare: 
 numero più alto, numero più basso e somma. Salva poi la media in un oggetto 
 chiamato *media_numeri*. Crea un vettore con le parole: Roma, Torino, Napoli, 
-Milano, Barie usa una funzione che trasformi questi nomi in lettere maiuscole e 
+Milano, Bari e usa una funzione che trasformi questi nomi in lettere maiuscole e 
 salva il vettore nell'Environment col nome *citta_italiane*
 
 <details>
@@ -502,9 +502,7 @@ coorte di persone vaccinate: caratteristiche demografiche (sesso, età,
 regione), comorbidità (indice di Charlson), stato HIV, data di
 vaccinazione, data di fine follow-up e data dell'evento. Per ogni persona con HIV sono state scelte, di norma, due persone senza HIV con la stessa regione (`REGION`), lo stesso sesso (`Sex`), la stessa classe d’età (`Age group`, 18-59 o 60+) e la vaccinazione nella stessa settimana. Questo procedimento si chiama **appaiamento**: la persona con HIV e i suoi due “controlli” hanno lo stesso valore della variabile group
 
-Puoi aprire il database in Excel e dare uno sguardo se vuoi. Il file
-`db_vacc_hiv_data_dictionary.xlsx` dentro la sottocartella
-`dati` descrive il significato di ogni variabile.
+Puoi aprire il database in Excel e dare uno sguardo se vuoi.
 
 Nei prossimi passi eseguiremo le azioni necessarie per leggere ed
 esplorare questo database.
@@ -629,7 +627,7 @@ vuoi saperne di più sulle funzioni di importazione, leggi il capitolo
 dell'EpiRhandbook.
 
 
-Importa il database `dataset_esercitazione_raw.csv` utilizzando `import()` da `{rio}` e salvalo nell'Environment col nome `dati_raw.`
+Importa il database `dataset_esercitazione_raw.csv` utilizzando `import()` da `{rio}` e salvalo nell'Environment col nome `dati_raw`. Nella funzione `import()` va indicato il percorso del file, cioè anche la cartella in cui si trovano i dati.
 
 <details>
 
@@ -735,7 +733,7 @@ tabyl(dati_raw, Charlson_Index)
 #| results: asis
 #| echo: false
 opts <- c(
-  answer = "14",
+  answer = "16",
   "6611",
   "82",
   "4"
@@ -770,9 +768,9 @@ cat("Domanda: Quante osservazioni sono considerate 'missing' nella variabile 'Ag
 #| echo: false
 opts <- c(
   "28",
-   answer =  "3",
+   answer =  "5",
   "17",
-  "4"
+  "3"
 )
 
 

@@ -22,7 +22,7 @@ title: |
 
 # **Corso base di R per la gestione e analisi dei dati**
 
-# Modulo 06 Data Visualization con ggplot2 (Parte 2)
+# Modulo 06 - Data Visualization con ggplot2 (Parte 2)
 
 ## Obiettivi del modulo
 
@@ -125,7 +125,9 @@ cat("Domanda di esempio: quanto fa 2 + 2?", longmcq(opts))
 :::
 ::::
 
-Lungo il modulo troverai anche due tipi di riquadri colorati. I riquadri **arancioni** segnalano errori frequenti o punti in cui R si comporta in modo inatteso: leggili sempre, perché possono farti risparmiare tempo.
+Lungo il modulo troverai anche due tipi di riquadri colorati. I riquadri
+**arancioni** segnalano errori frequenti o punti in cui R si comporta in
+modo inatteso: leggili sempre, perché possono farti risparmiare tempo.
 
 <!-- ISTRUZIONI: Il box arancione "Attenzione a …" va usato per avvisi importanti: errori comuni, comportamenti di R che possono sorprendere, passaggi da non saltare. Il titolo inizia sempre con "Attenzione a" (es. "Attenzione ai nomi con spazi"). Copia l'intero blocco ::: {.callout-warning ...} ... ::: e modifica solo titolo e testo. -->
 
@@ -176,6 +178,7 @@ l'esercitazione.**
 
 ```{r}
 #| echo: false
+#| include: false
 
 pacman::p_load(
   tidyverse,   # ggplot2, dplyr, forcats, lubridate, ...
@@ -183,7 +186,6 @@ pacman::p_load(
   here         # percorsi relativi al progetto
 )
 
-# dati_clean <- import(here("data", "dati_elaborati", "dati_modulo3.rds"))
 dati_clean <- import("materiali_corso_R/dati/dati_clean.rds")
 ```
 
@@ -679,9 +681,9 @@ Per lavorare con una variabile continua costruiamo un nuovo grafico:
 come si è svolta la campagna vaccinale giorno per giorno, quante persone
 sono state vaccinate e quanti anni avevano in media.
 
-Questo data frame servirà anche per il grafico finale, quindi va **nello
+Questo dataframe servirà anche per il grafico finale, quindi va **nello
 script**: sopra l'area di prova, crea una nuova sezione (**Ctrl +
-Shift + R**) chiamata "Vaccinati per giorno" e lì crea il data frame
+Shift + R**) chiamata "Vaccinati per giorno" e lì crea il dataframe
 `vaccinati_giorno`, con una riga per ogni data di vaccinazione e due
 variabili: il numero di vaccinati (`n_vaccinati`) e la loro età media
 (`eta_media`).
@@ -799,7 +801,7 @@ opts <- c(
 )
 
 
-cat("Nel Modulo 5, con hiv_status, una legenda continua era un problema. Perché qui invece va bene?", longmcq(opts))
+cat("Nel Modulo 5, con event, una legenda continua era un problema. Perché qui invece va bene?", longmcq(opts))
 
 ```
 :::
