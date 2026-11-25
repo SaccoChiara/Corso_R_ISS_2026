@@ -1118,7 +1118,7 @@ righe del dataframe di sinistra in base all'esistenza di una
 corrispondenza nel dataframe di destra.
 
 Per questo motivo vengono chiamati *filter joins*: si comportano in modo
-simile a un `filter()`, perché restituscono un sottoinsieme delle righe
+simile a un `filter()`, perché restituiscono un sottoinsieme delle righe
 del dataframe di sinistra.
 
 -   `semi_join()` mantiene le righe del dataframe di sinistra che
