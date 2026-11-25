@@ -378,7 +378,7 @@ cat("Confronta names(dati_raw) e names(dati): cosa è cambiato?", longmcq(opts))
 
 Adesso proviamo invece a cambiare a mano il nome delle variabili, per
 renderli più brevi o più chiari. Lo strumento principale è la funzione
-`rename()` del pacchetto `{dplyr}` (incluso nel meta-pacchetto
+`rename()` del pacchetto `{dplyr}` (incluso nel pacchetto
 `{tidyverse}`). A partire dalla tabella sottostante rinomina le variabili:
 
 | Vecchio nome       | Nuovo nome    |
@@ -639,8 +639,8 @@ precedente):
 #| results: asis
 #| echo: false
 opts <- c(
-  "14",
-  answer = "13",
+  answer =  "14",
+  "13",
   "2"
 )
 
@@ -1030,7 +1030,7 @@ cat("Cosa restituisce sum(c(TRUE, FALSE, TRUE, TRUE))?", longmcq(opts))
 Con `!is.na()` (`!` è l'operatore di negazione) i `TRUE` e i
 `FALSE` si scambiano, e `sum()` conta invece i valori **presenti**.
 
-Per contare i `NA` di tutte le variabili in un colpo solo c'è
+Per contare i valori `NA` di tutte le variabili in un colpo solo c'è
 `colSums()`. Applicata a tutto il data frame, `is.na(dati)` restituisce
 una tabella di `TRUE` e `FALSE` con le stesse righe e le stesse
 variabili di `dati`. `colSums()` ("somme delle colonne") fa la somma di
