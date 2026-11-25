@@ -485,7 +485,7 @@ arriva ogni riga (1 per il primo, 2 per il secondo):
 
 ```{r}
 #| eval: false
-bind_rows(DATI_1, DATI_2, .id = "NOME_VARIABILE")
+DATI_1 %>% bind_rows(DATI_2, .id = "NOME_VARIABILE")
 ```
 
 Immagina che i dati della coorte ti siano arrivati in due invii
@@ -572,7 +572,7 @@ soluzione (provaci da solo prima!)
 ```{r}
 #| echo: true
 
-dati_uniti <- bind_rows(lotto1, lotto2, .id = "lotto")
+dati_uniti <- lotto1 %>% bind_rows(lotto2, .id = "lotto")
 
 dati_uniti %>%
   count(lotto)
@@ -2127,7 +2127,7 @@ In questo modulo hai imparato a:
 ## Risorse aggiuntive
 
 | Argomento | Risorsa |
-|----|----|
+|---------------------------------------|---------------------------------|
 | Join | Documentazione di `{dplyr}`: <https://dplyr.tidyverse.org/reference/mutate-joins.html> |
 | Pivot | Documentazione di `{tidyr}`: <https://tidyr.tidyverse.org/articles/pivot.html> |
 | Join e dati in formato ordinato | *R for Data Science* (2ª edizione), capitoli "Joins" e "Data tidying": <https://r4ds.hadley.nz/joins> e <https://r4ds.hadley.nz/data-tidy> |
