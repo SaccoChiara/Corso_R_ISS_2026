@@ -77,7 +77,7 @@ dati_clean <- import(percorso_dati)
 
 # **Corso introduttivo al software statistico R**
 
-# Modulo 04 Tabelle e aggregazione dati
+# Modulo 04 - Tabelle e aggregazione dati
 
 ## Obiettivi del modulo
 
