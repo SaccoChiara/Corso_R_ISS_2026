@@ -140,7 +140,7 @@ Ti consigliamo di provare comunque a rispondere e a eseguire il codice da solo p
 
 ## Preparazione
 
-Oggi pomeriggio torni ai grafici: riprendi lo script `plot.R`, su cui hai lavorato ieri nei Moduli 5 e 6. Se hai chiuso il progetto, riaprilo. Poi apri `plot.R` dalla cartella `script` ed eseguilo.
+Oggi pomeriggio torni ai grafici: riprendi lo script `plot.R`, su cui hai lavorato ieri nei Moduli 5 e 6. Se hai chiuso il progetto, riaprilo. Poi apri `plot.R` dalla cartella `script` ed esegui tutto il codice sopra l'area di prova: metti il cursore sulla riga del titolo "Area di prova" e premi Ctrl + Alt + B (Cmd + Option + B su Mac).
 
 Poi, **sopra** la sezione "Area di prova", crea una nuova sezione chiamata "Modulo 08 - Altri grafici" con la combinazione di tasti **Ctrl + Shift + R** (**Cmd + Shift + R** su Mac): qui scriverai il codice dell'esercitazione del pomeriggio. L'area di prova deve restare sempre l'ultima sezione dello script. Ricordati di salvare spesso il lavoro (**Ctrl + S**, oppure **Cmd + S** su Mac).
 
@@ -167,7 +167,7 @@ dati_clean <- import("materiali_corso_R/dati/dati_clean.rds")
 
 ### I nuovi pacchetti: `{sf}` e `{apyramid}`
 
-In questo modulo userai due pacchetti che non hai ancora caricato: `{sf}`, per leggere e disegnare le mappe, e `{apyramid}`, per le piramidi per età e sesso. Vai alla sezione "Caricamento pacchetti" all'inizio di `plot.R` e aggiungi questi due pacchetti all'interno di `pacman::p_load()`, senza creare un nuovo comando. Poi esegui di nuovo `pacman::p_load()` per caricarli.
+In questo modulo userai due pacchetti che non hai ancora caricato: `{sf}`, per leggere e disegnare le mappe, e `{apyramid}`, per le piramidi per età e sesso. Vai alla sezione "Caricamento pacchetti" all'inizio di `plot.R` e aggiungi questi due pacchetti all'interno di `pacman::p_load()`, prima di `{tidyverse}`, senza creare un nuovo comando. Poi esegui di nuovo `pacman::p_load()` per caricarli.
 
 <details>
 
@@ -191,9 +191,9 @@ pacman::p_load(
   epikit,    # classi di età
   gtsummary, # tabelle descrittive
   flextable, # tabelle da presentare
-  tidyverse, # gestione e visualizzazione dei dati
   sf,        # dati spaziali e mappe
-  apyramid   # piramidi per età e sesso
+  apyramid,   # piramidi per età e sesso
+  tidyverse # gestione e visualizzazione dei dati
 )
 
 ```
