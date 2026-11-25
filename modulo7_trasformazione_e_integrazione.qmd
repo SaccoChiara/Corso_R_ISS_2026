@@ -306,21 +306,21 @@ esercitazione.
 Il dataframe `regioni` è l'elenco di tutte le regioni, anche di quelle in
 cui non abbiamo partecipanti, con una riga per regione:
 
-| Variabile        | Descrizione                                      |
-|------------------|--------------------------------------------------|
-| `codice_regione` | codice della regione (da A a F)                  |
-| `area`           | area geografica (Nord, Centro, Sud, Isole)       |
-| `popolazione`    | popolazione residente                            |
+| Variabile        | Tipo      | Descrizione                                 |
+|------------------|-----------|---------------------------------------------|
+| `codice_regione` | testo     | codice della regione (da A a F)             |
+| `area`           | testo     | area geografica (Nord, Centro, Sud, Isole)  |
+| `popolazione`    | numerico  | popolazione residente                       |
 
 Il dataframe `richiami` ha una riga per ogni dose di richiamo del
 vaccino: chi ha ricevuto due richiami compare due volte, chi non ne ha
 ricevuti non compare.
 
-| Variabile    | Descrizione                                         |
-|--------------|-----------------------------------------------------|
-| `id_subject` | identificativo della persona                        |
-| `dose`       | quale richiamo (`richiamo_1`, `richiamo_2`)         |
-| `data_dose`  | data del richiamo                                   |
+| Variabile    | Tipo        | Descrizione                                   |
+|--------------|-------------|-----------------------------------------------|
+| `id_subject` | testo       | identificativo della persona                  |
+| `dose`       | testo       | quale richiamo (`richiamo_1`, `richiamo_2`)   |
+| `data_dose`  | data        | data del richiamo                             |
 
 I due dataframe servono per tutta l'esercitazione, quindi vanno nello
 script. Nella sezione "Importazione dati", sotto l'importazione di
@@ -394,9 +394,16 @@ suggerimento
 
 </br>
 
-Per le dimensioni usa `dim()`. `regioni` è piccola e si può stampare
-scrivendo solo il suo nome; per `richiami` usa `head()`, che mostra le
-prime sei righe.
+Per il numero di righe e di variabili usa `dim()`;  
+`regioni` è piccola e si può stampare scrivendo solo il suo nome; 
+per `richiami` usa `head()`, che mostra le prime sei righe. 
+
+In alternativa esiste il comando `glimpse()`, molto efficace per
+avere una visione di insieme di un dataframe, visualizzando numero 
+di righe e colonne, le variabili e i loro tipi: ha il vantaggio,
+inoltre, di adattarsi alla larghezza della console,
+facendo vedere in una sola riga il nome della variabile, il tipo e
+i primi valori del dataframe.  
 
 </br>
 
@@ -423,6 +430,10 @@ dim(richiami)
 regioni
 
 head(richiami)
+
+glimpse(dati_clean)
+glimpse(regioni)
+glimpse(richiami)
 
 ```
 
@@ -1081,12 +1092,16 @@ cat("In uno studio di coorte, quale join userai quasi sempre per aggiungere info
 
 <!-- Tempo stimato: 7 minuti -->
 
-`semi_join()` e `anti_join()` si scrivono come gli altri join, ma non
-aggiungono variabili: guardano solo se ogni riga del dataframe di
-sinistra trova un partner nel dataframe di destra.
+`semi_join()` e `anti_join()` si scrivono come gli altri join, ma hanno una funzione diversa:
+non combinano le colonne dei due dataframe aggiungendo nuove variabili al dataframe di sinistra, 
+ma selezionano le righe del dataframe di sinistra in base all'esistenza di una corrispondenza
+nel dataframe di destra.  
 
--   `semi_join()` tiene le righe che trovano un partner;
--   `anti_join()` tiene le righe che **non** lo trovano.
+Per questo motivo vengono chiamati *filter joins*: si comportano in modo simile a un 
+`filter()`, perchè restituscono un sottoinsieme delle righe del dataframe di sinistra.
+
+-   `semi_join()` mantiene le righe del dataframe di sinistra che trovano almeno una corrispondenza nel dataframe di destra.  
+-   `anti_join()` mantiene le righe del dataframe di sinistra che non trovano alcuna corrispondenza nel dataframe di destra.  
 
 ```{r}
 #| eval: false
