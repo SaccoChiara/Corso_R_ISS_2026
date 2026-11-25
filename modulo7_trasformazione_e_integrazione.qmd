@@ -36,7 +36,7 @@ pacman::p_load(
   webexercises
 )
 
-# dataframe del giorno precedente e dataframe accessorii (nel corso si
+# dataframe del giorno precedente e dataframe accessori (nel corso si
 # trovano già nell'environment o si importano nel "Punto di partenza")
 # dati/ accanto al qmd (cartella corso_R_2026) oppure un livello sopra (ModuloN/)
 cartella_dati <- if (file.exists("dati/dati_clean.rds")) "dati" else "../dati"
@@ -69,8 +69,8 @@ richiami   <- import(file.path(cartella_dati, "richiami.rds"))
        con risposta calcolata si aggiornano da sole.
      - Dati: dati_clean (dati/dati_clean.rds, 47.717
        persone; region e hiv_status senza NA, esclusi nel Modulo 3) e i due dataframe
-       accessorii SIMULATI dati/regioni.rds e dati/richiami.rds
-       (create da strumenti_claude/simula_tabelle_modulo7.R; dal
+       accessori SIMULATI dati/regioni.rds e dati/richiami.rds
+       (creati da strumenti_claude/simula_tabelle_modulo7.R; dal
        12/11/2026 richiami.rds non ha più le 4 persone escluse nel
        Modulo 3, quindi anti_join() trova solo i 3 id inventati)
        Stesso
@@ -85,7 +85,7 @@ richiami   <- import(file.path(cartella_dati, "richiami.rds"))
 
 ## Obiettivi del modulo
 
--   Accodare due data frame con le stesse variabili con `bind_rows()`
+-   Accodare due dataframe con le stesse variabili con `bind_rows()`
 -   Unire due dataframe attraverso una chiave con i join di `{dplyr}`:
     `left_join()`, `inner_join()`, `right_join()` e `full_join()`
 -   Controllare la chiave prima e dopo un join e riconoscere le righe
@@ -356,7 +356,7 @@ richiami <- import("dati/richiami.rds")
 
 Importando i file potrebbe comparire nella console un avviso (*warning*)
 che parla di `trust`. Non è un errore: è un messaggio del pacchetto
-`{rio}` sulle sue versioni future, e i data frame vengono importati
+`{rio}` sulle sue versioni future, e i dataframe vengono importati
 correttamente. Puoi ignorarlo.
 :::
 
@@ -373,7 +373,7 @@ Come nei moduli precedenti, non tutto quello che scrivi va tenuto:
     di righe, confronti tra join, errori voluti e le loro correzioni) si
     scrivono nell'**area di prova**: guardi il risultato nella console e
     poi li lasci lì;
--   i data frame che sono un **risultato da tenere** si salvano in un
+-   i dataframe che sono un **risultato da tenere** si salvano in un
     oggetto con l'operatore di assegnazione `<-` e si scrivono **nello
     script**, nelle sezioni del Modulo 7.
 
@@ -396,7 +396,7 @@ suggerimento
 </br>
 
 Per il numero di righe e di variabili usa `dim()`;\
-`regioni` è piccola e si può stampare scrivendo solo il suo nome; per
+`regioni` è piccolo e si può stampare scrivendo solo il suo nome; per
 `richiami` usa `head()`, che mostra le prime sei righe.
 
 In alternativa esiste il comando `glimpse()`, molto efficace per avere
@@ -461,11 +461,11 @@ cat("`dati_clean` e `richiami` hanno un numero di righe diverso. Perché?", long
 ::::
 
 ::: {.callout-warning appearance="default" icon="false"}
-## Attenzione ai data frame molto grandi
+## Attenzione ai dataframe molto grandi
 
 `dati_clean` e `richiami` hanno decine di migliaia di righe, e lo stesso
 vale per i risultati dei join che costruirai oggi. Se scrivi solo il
-nome del data frame ed esegui, R prova a stampare tutte le righe nella
+nome del dataframe ed esegui, R prova a stampare tutte le righe nella
 console. Per controllare un risultato usa `nrow()` o `head()`, oppure
 salvalo con l'operatore di assegnazione `<-` e aprilo con `View()`.
 :::
@@ -477,11 +477,11 @@ salvalo con l'operatore di assegnazione `<-` e aprilo con `View()`.
 ### Due invii separati
 
 A volte i dati arrivano a pezzi: per esempio due invii con le stesse
-variabili, uno dopo l'altro. Per accodarli in un unico data frame si usa
-`bind_rows()` del pacchetto `{dplyr}`: tra le parentesi si indicano i
-data frame da accodare, separati da una virgola. L'argomento `.id`,
-facoltativo, aggiunge una variabile con il numero del data frame da cui
-arriva ogni riga (1 per il primo, 2 per il secondo):
+variabili, uno dopo l'altro. Per accodarli in un unico dataframe si usa
+`bind_rows()` del pacchetto `{dplyr}`: come per le altre funzioni del modulo, 
+a sinistra dell'operatore pipe c'è il primo dataframe, e tra le parentesi quello 
+da accodare sotto. L'argomento `.id`, facoltativo, aggiunge una variabile con il 
+numero del dataframe da cui arriva ogni riga (1 per il primo, 2 per il secondo):
 
 ```{r}
 #| eval: false
@@ -532,7 +532,7 @@ dim(lotto2)
 
 ### Accodare i due invii
 
-Sempre nell'area di prova, accoda i due invii in un unico data frame,
+Sempre nell'area di prova, accoda i due invii in un unico dataframe,
 `dati_uniti`, aggiungendo una variabile `lotto` che dica da quale invio
 arriva ogni riga. Poi controlla:
 
@@ -615,7 +615,7 @@ cat(paste0("In `dati_uniti` le età mancanti sono ", format(sum(is.na(dati_uniti
 ## Attenzione: `bind_rows()` accoda per nome, non per posizione
 
 `bind_rows()` abbina le variabili per nome: se una variabile manca in
-uno dei data frame, la crea e la riempie con `NA`, senza fermarsi. È
+uno dei dataframe, la crea e la riempie con `NA`, senza fermarsi. È
 comodo, ma una variabile con un nome scritto in modo diverso (per
 esempio `Age` e `age`) diventerebbe due variabili mezze vuote. Dopo aver
 accodato controlla sempre le variabili e i valori mancanti.
@@ -724,7 +724,7 @@ cat("Che differenze ci sono tra i valori di `region` e quelli di `codice_regione
 ### Come funziona `left_join()`
 
 `left_join()` del pacchetto `{dplyr}` parte da un dataframe, quello di
-**sinistra** (qui `dati_clean`), e le aggiunge le variabili di un second
+**sinistra** (qui `dati_clean`), e le aggiunge le variabili di un secondo
 dataframe, quello di **destra** (qui `regioni`): ogni riga di sinistra
 riceve i valori della riga di destra con la stessa chiave. Le righe di
 sinistra si tengono tutte, anche quelle che non trovano un partner: per
@@ -1118,7 +1118,7 @@ righe del dataframe di sinistra in base all'esistenza di una
 corrispondenza nel dataframe di destra.
 
 Per questo motivo vengono chiamati *filter joins*: si comportano in modo
-simile a un `filter()`, perchè restituscono un sottoinsieme delle righe
+simile a un `filter()`, perché restituscono un sottoinsieme delle righe
 del dataframe di sinistra.
 
 -   `semi_join()` mantiene le righe del dataframe di sinistra che
@@ -1774,7 +1774,7 @@ opts <- c(
   "Perché pivot_longer() ha duplicato alcune persone per errore",
   answer = "Perché chi ha ricevuto un solo richiamo ha ora anche una riga richiamo_2 con la data mancante",
   "Perché richiami_largo contiene anche le persone senza richiami",
-  "Perché pivot_longer() aggiunge sempre una riga per ogni NA del data frame"
+  "Perché pivot_longer() aggiunge sempre una riga per ogni NA del dataframe"
 )
 
 cat(paste0("`richiami_lungo` ha ", format(nrow(richiami_lungo), big.mark = "."),
@@ -1871,7 +1871,7 @@ righe.
 <!-- Tempo stimato: 12 minuti -->
 
 ```{=html}
-<!-- Tabella pensata per l'esercitazione del modulo 9 (report con
+<!-- Dataframe pensato per l'esercitazione del modulo 9 (report con
      Quarto): il collega la riprende dal file richiami_regione_hiv.rds. -->
 ```
 
@@ -2101,7 +2101,7 @@ corretta di `backup_join.R`.
 
 In questo modulo hai imparato a:
 
--   accodare data frame con `bind_rows()`, che abbina le variabili per
+-   accodare dataframe con `bind_rows()`, che abbina le variabili per
     nome: le variabili mancanti diventano `NA` e `.id` aggiunge una
     variabile con l'origine di ogni riga;
 -   unire due dataframe attraverso una **chiave**, scrivendola con
@@ -2141,7 +2141,7 @@ In questo modulo hai imparato a:
 Autori originali: Andrea Cannone (Istituto Superiore di Sanità)\
 Fonte dei dati: dataframe didattico del corso, con la struttura di una
 coorte di persone vaccinate contro COVID-19 con e senza HIV, e due
-dataframe accessorii creati per questa esercitazione; esercizi ispirati
+dataframe accessori creati per questa esercitazione; esercizi ispirati
 ai moduli *Joining data* e *Pivoting data* di Applied Epi
 (<https://appliedepi.org>)\
 Adattato da: –
