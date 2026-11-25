@@ -1640,9 +1640,9 @@ pacman::p_load(
   epikit,    # classi di età
   gtsummary, # tabelle descrittive
   flextable, # tabelle da presentare
-  tidyverse, # gestione e visualizzazione dei dati
   sf,        # dati spaziali e mappe          (Modulo 08)
-  apyramid   # piramidi per età e sesso       (Modulo 08)
+  apyramid,   # piramidi per età e sesso       (Modulo 08)
+  tidyverse  # gestione e visualizzazione dei dati
 )
 
 # Importazione dati -------------------------------------------------------
@@ -1796,7 +1796,7 @@ In questo modulo hai imparato a:
 -   Documentazione di `{lubridate}`: <https://lubridate.tidyverse.org/reference/round_date.html> 
 -   Documentazione di `{tidyr}`: <https://tidyr.tidyverse.org/reference/complete.html> 
 -   Documentazione di `geom_tile()`: <https://ggplot2.tidyverse.org/reference/geom_tile.html> 
--   Documentazione di `geom_sf()`: <https://ggplot2.tidyverse.org/reference/ggsf.html>; 
+-   Documentazione di `geom_sf()`: <https://ggplot2.tidyverse.org/reference/ggsf.html> 
 -   Documentazione di `{sf}`: <https://r-spatial.github.io/sf/> 
 -   Documentazione di `{apyramid}`: <https://cran.r-project.org/package=apyramid> 
 -   Curve epidemiche, heatmap, mappe e piramidi: *The Epidemiologist R Handbook*: <https://epirhandbook.com/> 
