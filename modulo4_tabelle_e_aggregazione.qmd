@@ -37,7 +37,7 @@ pacman::p_load(
   webexercises
 )
 
-# dataset pulito fornito ai partecipanti (nel corso: dati/dati_clean.rds)
+# dataframe pulito fornito ai partecipanti (nel corso: dati/dati_clean.rds)
 # dati/ accanto al qmd (cartella corso_R_2026) oppure un livello sopra (ModuloN/)
 percorso_dati <- if (file.exists("dati/dati_clean.rds")) "dati/dati_clean.rds" else "../dati/dati_clean.rds"
 dati_clean <- import(percorso_dati)
@@ -62,9 +62,9 @@ dati_clean <- import(percorso_dati)
        tab_sintesi_hiv, tassi_eta_hiv); tutti gli altri comandi si
        scrivono nell'area di prova.
      - I commenti "DIPENDE DAI DATI" segnalano testi o domande da
-       ricontrollare se cambia il dataset. Le risposte delle domande
+       ricontrollare se cambia il dataframe. Le risposte delle domande
        con risposta calcolata si aggiornano da sole.
-     - Dataset: dati_clean (dati/dati_clean.rds),
+     - dataframe: dati_clean (dati/dati_clean.rds),
        versione del 13/11/2026: 47.717 persone, 18 variabili;
        fu_days, event 0/1 e age_cat già presenti; NA in sex 2,
        age 5, age_cat 5; region e hiv_status senza NA (esclusi nel
@@ -91,7 +91,7 @@ dati_clean <- import(percorso_dati)
     `.groups` e `ungroup()`
 -   Costruire una tabella riassuntiva per gruppo e salvarla in un nuovo
     oggetto
--   Distinguere le tabelle per esplorare i dati, i dataset aggregati e
+-   Distinguere le tabelle per esplorare i dati, i dataframe aggregati e
     le tabelle da presentare, e presentare una tabella con `{flextable}`
 
 ## Formato dell'esercizio
@@ -202,11 +202,11 @@ cat("Domanda di esempio: quanto fa 2 + 2?", longmcq(opts))
 ::::
 
 Lungo il modulo troverai anche due tipi di riquadri colorati. I riquadri
-**gialli** segnalano errori frequenti o punti in cui R si comporta in
+**arancioni** segnalano errori frequenti o punti in cui R si comporta in
 modo inatteso: leggili sempre, perché possono farti risparmiare tempo.
 
 ```{=html}
-<!-- ISTRUZIONI: Il box giallo "Attenzione a …" va usato per avvisi
+<!-- ISTRUZIONI: Il box arancione "Attenzione a …" va usato per avvisi
      importanti: errori comuni, comportamenti di R che possono
      sorprendere, passaggi da non saltare. Il titolo inizia sempre con
      "Attenzione a" (es. "Attenzione ai nomi con spazi"). Copia
@@ -278,7 +278,7 @@ noi. Da qui in avanti useremo sempre `dati_clean.rds`: così tutti
 lavoriamo sugli stessi dati puliti.
 
 Nello script crea la sezione "Importazione dati" (**Ctrl+Shift+R**) e
-importa il file `dati_clean.rds` con `import()`, chiamando il dataset
+importa il file `dati_clean.rds` con `import()`, chiamando il dataframe
 `dati_clean`. Il formato RDS conserva le classi delle variabili: le date
 sono già date, e non serve rifare le conversioni.
 
@@ -390,7 +390,7 @@ Ci sono tanti modi per costruire una tabella in R. Il primo che vediamo
 è `count()` del pacchetto `{dplyr}`: conta quante righe ci sono per
 ciascun valore di una variabile e restituisce un piccolo data frame, con
 una riga per ogni valore e una colonna `n` con il conteggio. Si scrive
-dopo il dataset, collegata con `%>%`, e tra le parentesi si indica la
+dopo il dataframe, collegata con `%>%`, e tra le parentesi si indica la
 variabile da contare:
 
 ```{r}
@@ -448,7 +448,7 @@ fmt <- function(x) format(x, big.mark = ".", decimal.mark = ",")
 opts <- c(fmt(n_no_hiv), fmt(n_hiv), fmt(nrow(dati_clean)), fmt(round(n_hiv / 2)))
 names(opts) <- c("", "answer", "", "")
 
-cat("Quante persone con HIV ci sono nel dataset?", longmcq(opts))
+cat("Quante persone con HIV ci sono nel dataframe?", longmcq(opts))
 ```
 :::
 ::::
@@ -986,7 +986,7 @@ dati_clean %>%
 opts <- c(
   "Il numero di donne con HIV",
   "Il totale delle persone con HIV",
-  answer = "Il numero totale di persone nel dataset",
+  answer = "Il numero totale di persone nel dataframe",
   "La somma della colonna `Total` divisa per due"
 )
 
@@ -1187,7 +1187,7 @@ prop.table(table(dati_clean$hiv_status, dati_clean$sex), margin = 1) * 100
 ```
 :::
 
-## `summarise()` sull'intero dataset
+## `summarise()` sull'intero dataframe
 
 <!-- Tempo stimato: 7 minuti -->
 
@@ -1635,7 +1635,7 @@ cat("Dopo `summarise()`, il risultato è ancora raggruppato? Se sì, per quale v
 ::::
 
 ```{=html}
-<!-- DIPENDE DAI DATI: con il dataset attuale il tasso è più alto con
+<!-- DIPENDE DAI DATI: con il dataframe attuale il tasso è più alto con
      HIV sia nel complesso sia in ciascuna classe d'età -->
 ```
 
@@ -1758,6 +1758,11 @@ nella console e con la riga `# Groups:` sopra la tabella. Se non lo
 chiudi, i calcoli successivi vengono fatti dentro i gruppi. Prendi
 l'abitudine di chiudere sempre il raggruppamento con `.groups = "drop"`
 oppure con `ungroup()`.
+
+Con `ungroup()` il messaggio nella console compare
+lo stesso: `summarise()` viene eseguita prima e non sa che dopo toglierai i gruppi.
+Il risultato però non è più raggruppato. Con `.groups = "drop"` invece il
+messaggio non compare.
 :::
 
 ## Valori mancanti e `na.rm`
@@ -2119,14 +2124,12 @@ Le tabelle che hai costruito finora servono a tre scopi diversi:
 -   **esplorare** i dati: tabelle veloci con `count()` o `tabyl()`, che
     guardi nella console per capire e controllare i dati. Sono quelle
     che hai scritto nell'area di prova;
--   **creare dataset aggregati**: con `group_by()` e `summarise()`
+-   **creare dataframe aggregati**: con `group_by()` e `summarise()`
     ottieni un nuovo data frame, in formato lungo, che salvi con un nome
     nuovo e usi per altri calcoli o per i grafici dei prossimi moduli;
 -   **presentare** i risultati: tabelle finali da mostrare, in formato
     largo, con totali e percentuali formattate dalle funzioni
     `adorn_*()`, e rese più leggibili con `{flextable}`.
-
-Le ultime due le salvi in un oggetto e le scrivi nello script.
 
 :::: {.callout-note appearance="minimal" icon="false"}
 **Prova a rispondere!**
@@ -2147,7 +2150,7 @@ cat("Quale di questi comandi produce una tabella pensata per essere presentata i
 :::
 ::::
 
-### Un dataset aggregato
+### Un dataframe aggregato
 
 Metti insieme quello che hai imparato. Nello script, sopra l'area di
 prova, crea la sezione "Sintesi per stato HIV" (**Ctrl+Shift+R**) e crea
@@ -2165,7 +2168,7 @@ un nuovo oggetto `sintesi_hiv` con, per ciascun gruppo HIV:
 Arrotonda percentuali e tasso a una cifra decimale alla fine, poi stampa
 `sintesi_hiv` e controlla che `dati_clean` abbia ancora tutte le sue
 righe. Nel pannello **Environment** ora dovresti vedere, uno accanto
-all'altro, il dataset individuale `dati_clean` e il dataset aggregato
+all'altro, il dataframe individuale `dati_clean` e il dataframe aggregato
 `sintesi_hiv`, con il loro numero di righe (*obs.*) e di variabili
 (*variables*).
 
@@ -2258,7 +2261,7 @@ cat("Perché salviamo il risultato in `sintesi_hiv` e non in `dati_clean`?", lon
 ::::
 
 ::: {.callout-warning appearance="default" icon="false"}
-## Attenzione a non sovrascrivere il dataset
+## Attenzione a non sovrascrivere il dataframe
 
 Se scrivi `dati_clean <- dati_clean %>% summarise(...)`, l'operatore di
 assegnazione `<-` sostituisce i dati individuali con la tabella di
@@ -2269,7 +2272,7 @@ una variabile. Salva sempre le sintesi in un oggetto con un nome nuovo.
 
 ### Presentare la sintesi con `{flextable}`
 
-`sintesi_hiv` è un dataset aggregato: perfetto per altri calcoli, ma
+`sintesi_hiv` è un dataframe aggregato: perfetto per altri calcoli, ma
 ancora poco leggibile per chi lo guarda. Per presentarlo si usa il
 pacchetto `{flextable}`, che hai caricato all'inizio del modulo. Le
 funzioni che servono sono tre, collegate con `%>%`:
@@ -2370,7 +2373,7 @@ non li usiamo, ma è utile sapere che esistono.
 ```
 
 Nello script, sopra l'area di prova, crea la sezione "Tassi per classe
-d'età e stato HIV" (**Ctrl+Shift+R**) e costruisci un ultimo dataset
+d'età e stato HIV" (**Ctrl+Shift+R**) e costruisci un ultimo dataframe
 aggregato, `tassi_eta_hiv`, con una riga per ogni combinazione di classe
 d'età di 10 anni (`age_cat`) e stato HIV, e per ciascuna:
 
@@ -2653,7 +2656,7 @@ In questo modulo hai imparato a:
 -   calcolare dentro i gruppi mantenendo tutte le righe con `group_by()`
     e `mutate()`;
 -   distinguere le tabelle per esplorare (nell'area di prova) dai
-    dataset aggregati e dalle tabelle da presentare (salvati in un
+    dataframe aggregati e dalle tabelle da presentare (salvati in un
     oggetto, nello script);
 -   presentare una tabella con `flextable()`, `set_header_labels()` e
     `autofit()`: serve per mostrare, non per calcolare.
@@ -2673,7 +2676,7 @@ In questo modulo hai imparato a:
 **Autori**
 
 Autori originali: Andrea Cannone (Istituto Superiore di Sanità)\
-Fonte dei dati: dataset didattico del corso, con la struttura di una
+Fonte dei dati: dataframe didattico del corso, con la struttura di una
 coorte di persone vaccinate contro COVID-19 con e senza HIV; esercizi
 ispirati al modulo *Grouping and summarizing data* di Applied Epi
 (<https://appliedepi.org>)\

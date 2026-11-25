@@ -81,7 +81,7 @@ richiami   <- import(file.path(cartella_dati, "richiami.rds"))
 
 # **Corso introduttivo al software statistico R**
 
-# Modulo 07 Trasformazione e integrazione dei dati
+# Modulo 07 - Trasformazione e integrazione dei dati
 
 ## Obiettivi del modulo
 

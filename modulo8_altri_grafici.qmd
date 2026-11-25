@@ -150,6 +150,7 @@ Poi, **sopra** la sezione "Area di prova", crea una nuova sezione chiamata "Modu
 
 ```{r}
 #| echo: false
+#| include: false
 
 # chunk nascosto per il rendering del documento
 pacman::p_load(
@@ -158,7 +159,6 @@ pacman::p_load(
   here         # percorsi relativi al progetto
 )
 
-# dati_clean <- import(here("data", "dati_elaborati", "dati_modulo3.rds"))
 dati_clean <- import("materiali_corso_R/dati/dati_clean.rds")
 ```
 
@@ -1646,9 +1646,9 @@ pacman::p_load(
 )
 
 # Importazione dati -------------------------------------------------------
-dati_clean <- import("materiali_corso_R/dati/dati_clean.rds")
-regioni_sf <- read_sf("materiali_corso_R/dati/shapefiles/regioni.shp")
-regioni    <- import("materiali_corso_R/dati/regioni.rds")
+dati_clean <- import("dati/dati_clean.rds")
+regioni_sf <- read_sf("dati/shapefiles/regioni.shp")
+regioni    <- import("dati/regioni.rds")
 
 # ... sezioni dei Moduli 5 e 6 ...
 
