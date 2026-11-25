@@ -26,7 +26,7 @@ title: |
 
 ## Obiettivi del modulo
 
--   Costruire un grafico con `{ggplot2}` a partire da un data frame,
+-   Costruire un grafico con `{ggplot2}` a partire da un dataframe,
     mappando le variabili alle estetiche con `aes()`
 -   Scegliere il livello `geom_` adatto al tipo di variabili e combinare
     più livelli nello stesso grafico
@@ -130,7 +130,7 @@ cat("Domanda di esempio: quanto fa 2 + 2?", longmcq(opts))
 ::::
 
 Lungo il modulo troverai anche due tipi di riquadri colorati. I riquadri
-**gialli** segnalano errori frequenti o punti in cui R si comporta in
+**arancioni** segnalano errori frequenti o punti in cui R si comporta in
 modo inatteso: leggili sempre, perché possono farti risparmiare tempo.
 
 <!-- ISTRUZIONI: Il box giallo "Attenzione a …" va usato per avvisi importanti: errori comuni, comportamenti di R che possono sorprendere, passaggi da non saltare. Il titolo inizia sempre con "Attenzione a" (es. "Attenzione ai nomi con spazi"). Copia l'intero blocco ::: {.callout-warning ...} ... ::: e modifica solo titolo e testo. -->
@@ -288,7 +288,7 @@ Con `{ggplot2}` un grafico si costruisce un pezzo alla volta, come una
 serie di strati sovrapposti. Ogni grafico comincia con la funzione
 `ggplot()`, che ha due argomenti principali:
 
--   `data =`, il data frame da cui prendere i dati;
+-   `data =`, il dataframe da cui prendere i dati;
 -   `mapping = aes()`, dove indichi quale variabile va su ciascun
     elemento del grafico. `aes()` sta per *aesthetics*, "estetiche":
     l'asse x, l'asse y e, come vedremo, anche il colore o il
@@ -1068,9 +1068,9 @@ Nella Console compare un avviso: le 5 persone senza età non possono essere dise
 
 ### CD4 e anticorpi
 
-Uno scatter plot (grafico a dispersione) mostra la relazione tra **due variabili continue**: ogni riga del data frame è un punto, con una variabile sull'asse x e una sull'asse y. In `dati_clean` ogni riga è una persona, quindi ogni punto sarà una persona.
+Uno scatter plot (grafico a dispersione) mostra la relazione tra **due variabili continue**: ogni riga del dataframe è un punto, con una variabile sull'asse x e una sull'asse y. In `dati_clean` ogni riga è una persona, quindi ogni punto sarà una persona.
 
-In `dati_clean` c'è il livello di anticorpi di ciascuna persona dopo la vaccinazione (`anticorpi`). Vogliamo vedere se cambia al cambiare del valore del CD4 (`cd4`). Nell'area di prova, crea un data frame chiamato `ant_cd4_A` che contiene tutti i casi con `hiv` pari a `Con HIV`, nella `region` `A`. Fai poi uno scatterplot con `geom_point()`, con i valori del CD4 (`cd4`) sull'asse x e il livello di anticorpi (`anticorpi`) sull'asse y.
+In `dati_clean` c'è il livello di anticorpi di ciascuna persona dopo la vaccinazione (`anticorpi`). Vogliamo vedere se cambia al cambiare del valore del CD4 (`cd4`). Nell'area di prova, crea un dataframe chiamato `ant_cd4_A` che contiene tutti i casi con `hiv` pari a `Con HIV`, nella `region` `A`. Fai poi uno scatterplot con `geom_point()`, con i valori del CD4 (`cd4`) sull'asse x e il livello di anticorpi (`anticorpi`) sull'asse y.
 
 <details>
 
@@ -1592,9 +1592,9 @@ cat("Quale grafico è più adatto a confrontare il numero di persone con 60 anni
 ## Dati aggregati e `geom_col()`
 
 Spesso i dati da rappresentare sono già aggregati, per esempio in una
-tabella con il numero di vaccinati per regione. Questo data frame
+tabella con il numero di vaccinati per regione. Questo dataframe
 servirà anche dopo, quindi va **nello script**: sopra l'area di prova,
-crea una nuova sezione (**Ctrl + Shift + R**) chiamata "Dati aggregati" e lì crea il data frame `vaccinati_regione` con il numero di vaccinati per regione (variabile `n_vaccinati`), usando `group_by()` e `summarise()`.
+crea una nuova sezione (**Ctrl + Shift + R**) chiamata "Dati aggregati" e lì crea il dataframe `vaccinati_regione` con il numero di vaccinati per regione (variabile `n_vaccinati`), usando `group_by()` e `summarise()`.
 
 <details>
 
@@ -2183,10 +2183,10 @@ cat("Perché i pannelli Senza HIV e Con HIV hanno la stessa forma, con altezze n
 
 ## Salvare il grafico
 
-Un grafico si può salvare in un oggetto, come un data frame, con `<-`:
+Un grafico si può salvare in un oggetto, come un dataframe, con `<-`:
 in questo caso non compare nel pannello Plots, ma puoi vederlo eseguendo
 il nome dell'oggetto. Questo grafico va **nello script**: sopra l'area
-di prova, crea una nuova sezione (**Ctrl + Shift + R**) chiamata "Salvare il grafico". Qui ricrea il data frame `ant_cd4_A` e salva nell'oggetto `scatter_anticorpi` lo scatter plot di CD4 e anticorpi con i colori per stato HIV, `alpha = 0.1` e `geom_smooth()`, aggiungendo le etichette con `labs()`.
+di prova, crea una nuova sezione (**Ctrl + Shift + R**) chiamata "Salvare il grafico". Qui ricrea il dataframe `ant_cd4_A` e salva nell'oggetto `scatter_anticorpi` lo scatter plot di CD4 e anticorpi con i colori per diagnosi COVID-19 (`covid`), `alpha = 0.1` e `geom_smooth()`, aggiungendo le etichette con `labs()`.
 
 <details>
 
@@ -2207,14 +2207,14 @@ soluzione (provaci da solo prima!)
 ant_cd4_A <- dati_clean %>% 
   filter(region == 'A' & hiv == 'Con HIV')
 
-scatter_anticorpi <- ggplot(data = ant_cd4_A, mapping = aes(x = cd4, y = anticorpi, color = hiv)) +
+scatter_anticorpi <- ggplot(data = ant_cd4_A, mapping = aes(x = cd4, y = anticorpi, color = covid)) +
   geom_point(alpha = 0.1) +
   geom_smooth() +
   labs(
     title = "Livello di anticorpi per età",
     x = "CD4",
     y = "Livello di anticorpi",
-    color = "Stato HIV")
+    color = "COVID-19")
 
 scatter_anticorpi
 
@@ -2401,14 +2401,14 @@ ggplot(data = dati_clean, mapping = aes(x = date_vacc)) +
 ant_cd4_A <- dati_clean %>% 
   filter(region == 'A' & hiv == 'Con HIV')
 
-scatter_anticorpi <- ggplot(data = ant_cd4_A, mapping = aes(x = cd4, y = anticorpi, color = hiv)) +
+scatter_anticorpi <- ggplot(data = ant_cd4_A, mapping = aes(x = cd4, y = anticorpi, color = covid)) +
   geom_point(alpha = 0.1) +
   geom_smooth() +
   labs(
     title = "Livello di anticorpi per età",
     x = "CD4",
     y = "Livello di anticorpi",
-    color = "Stato HIV")
+    color = "COVID-19")
 
 scatter_anticorpi
 
