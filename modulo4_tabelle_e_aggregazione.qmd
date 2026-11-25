@@ -89,9 +89,9 @@ dati_clean <- import(percorso_dati)
     e `summarise()`
 -   Gestire i valori mancanti con `na.rm` e i raggruppamenti con
     `.groups` e `ungroup()`
--   Costruire una tabella riassuntiva per gruppo e salvarla in un nuovo
+-   Costruire un dataframe riassuntivo per gruppo e salvarlo in un nuovo
     oggetto
--   Distinguere le tabelle per esplorare i dati, i dataframe aggregati e
+-   Distinguere i dataframe per esplorare i dati, i dataframe aggregati e
     le tabelle da presentare, e presentare una tabella con `{flextable}`
 
 ## Formato dell'esercizio
@@ -469,7 +469,7 @@ non c'è: le persone con questi valori mancanti sono state escluse con
 
 ### Ordinare i conteggi
 
-Nella tabella delle regioni le righe sono in ordine alfabetico. Spesso
+Nel dataframe delle regioni le righe sono in ordine alfabetico. Spesso
 però è più utile vedere per prime le categorie più frequenti: per questo
 `count()` ha l'argomento `sort`. Con `sort = TRUE` le righe vengono
 ordinate dalla più frequente alla meno frequente.
@@ -503,7 +503,7 @@ dati_clean %>%
 ### Dai conteggi alle percentuali
 
 `count()` dà solo i conteggi. Per avere anche le percentuali bisogna
-crearle noi, aggiungendo una nuova variabile alla tabella: come hai
+crearle noi, aggiungendo una nuova variabile al dataframe: come hai
 visto nei moduli precedenti, una nuova variabile si crea con `mutate()`,
 che si scrive dopo `count()`, collegata con `%>%`.
 
@@ -513,9 +513,9 @@ arrotondare usa `round()`: il primo argomento è il numero da
 arrotondare, il secondo il numero di cifre decimali, per esempio
 `round(x, 1)`.
 
-Questa tabella è un risultato che vogliamo tenere: nello script, sopra
+Questo dataframe è un risultato che vogliamo tenere: nello script, sopra
 l'area di prova, crea la sezione "Tabelle di frequenza"
-(**Ctrl+Shift+R**) e salva la tabella in un oggetto chiamato
+(**Ctrl+Shift+R**) e salva il dataframe in un oggetto chiamato
 `tab_sesso`, con l'operatore di assegnazione `<-`. Poi trova `tab_sesso`
 nel pannello **Environment** e stampalo nella console.
 
@@ -533,7 +533,7 @@ suggerimento
 -   Dentro `mutate()` scrivi `perc = ...`: la percentuale di ciascuna
     categoria è il suo conteggio diviso per il totale, per 100, cioè
     `n / sum(n) * 100`. `sum(n)` somma tutti i valori della colonna `n`.
--   Per vedere la tabella salvata, esegui il nome dell'oggetto.
+-   Per vedere il dataframe salvato, esegui il nome dell'oggetto.
 
 </br>
 
@@ -558,7 +558,7 @@ tab_sesso <- dati_clean %>%
   count(sex) %>%
   mutate(perc = round(n / sum(n) * 100, 1))
 
-# Per vedere la tabella, esegui il nome dell'oggetto
+# Per vedere il dataframe, esegui il nome dell'oggetto
 tab_sesso
 
 ```
@@ -575,7 +575,7 @@ tab_sesso
 #| results: asis
 #| echo: false
 opts <- c(
-  "Il numero di variabili della tabella",
+  "Il numero di variabili del dataframe",
   "Il numero di persone con sesso femminile",
   answer = "Il totale della variabile `n`, cioè tutte le persone contate",
   "La media dei conteggi"
@@ -687,7 +687,7 @@ dati_clean %>%
 
 Se la riga dei valori mancanti non ti serve, `tabyl()` ha l'argomento
 `show_na`: con `show_na = FALSE` la riga `NA` non viene mostrata. Ripeti
-nell'area di prova la tabella del sesso **senza** la riga dei valori
+nell'area di prova il dataframe del sesso **senza** la riga dei valori
 mancanti.
 
 <details>
@@ -782,14 +782,14 @@ cat("Dopo `adorn_pct_formatting()`, che cosa diventano le percentuali?", longmcq
 ### Ordinare la tabella
 
 Con `count()` hai ordinato i conteggi con l'argomento `sort`. `tabyl()`
-non ha questo argomento: per ordinare le righe di una tabella si usa la
+non ha questo argomento: per ordinare le righe di un dataframe si usa la
 funzione `arrange()` del pacchetto `{dplyr}`, indicando la variabile in
 base a cui ordinare. `arrange(n)` mette le righe dal conteggio più
 piccolo al più grande; per l'ordine inverso, dal più grande al più
 piccolo, si scrive `arrange(desc(n))`. Nel caso di variabili di classe
 `character`, la funzione `arrange()` esegue un ordinamento alfabetico.
 
-Ora costruisci la tabella delle regioni, ordinata dalla più frequente,
+Ora costruisci il dataframe delle regioni, ordinata dalla più frequente,
 con il totale e le percentuali formattate. Conta però l'ordine dei
 passaggi: prova nell'area di prova a scriverli in due ordini diversi,
 prima `adorn_totals()` e poi `arrange()`, e poi al contrario. Confronta
@@ -839,7 +839,7 @@ dati_clean %>%
 opts <- c(
   "Perché adorn_totals() mette sempre il totale nella prima riga",
   answer = "Perché arrange() ordina anche la riga Total, che ha il valore di n più alto",
-  "Perché arrange() non funziona sulle tabelle di tabyl()",
+  "Perché arrange() non funziona sui dataframe di tabyl()",
   "Perché arrange() ordina in ordine alfabetico"
 )
 
@@ -1006,7 +1006,7 @@ significato.
 
 ### Percentuali di riga
 
-La tabella contiene solo i conteggi. Per trasformarli in percentuali si
+Il dataframe contiene solo i conteggi. Per trasformarli in percentuali si
 usano altre due funzioni `adorn_*()`:
 
 -   `adorn_percentages()` trasforma i conteggi in proporzioni: con
@@ -1016,7 +1016,7 @@ usano altre due funzioni `adorn_*()`:
     parentesi.
 
 Tra le due va `adorn_pct_formatting()`, che conosci già. Nell'area di
-prova, trasforma la tabella di stato HIV per sesso in percentuali di
+prova, trasforma il dataframe di stato HIV per sesso in percentuali di
 riga, formattale con una cifra decimale e aggiungi i conteggi tra
 parentesi.
 

@@ -36,7 +36,7 @@ pacman::p_load(
   webexercises
 )
 
-# dataset del giorno precedente e tabelle accessorie (nel corso si
+# dataframe del giorno precedente e dataframe accessorii (nel corso si
 # trovano già nell'environment o si importano nel "Punto di partenza")
 # dati/ accanto al qmd (cartella corso_R_2026) oppure un livello sopra (ModuloN/)
 cartella_dati <- if (file.exists("dati/dati_clean.rds")) "dati" else "../dati"
@@ -65,11 +65,11 @@ richiami   <- import(file.path(cartella_dati, "richiami.rds"))
        richiami_regione_hiv); tutti gli altri comandi, compresi gli
        errori voluti, si scrivono nell'area di prova.
      - I commenti "DIPENDE DAI DATI" segnalano testi o domande da
-       ricontrollare se cambia il dataset. Le risposte delle domande
+       ricontrollare se cambia il dataframe. Le risposte delle domande
        con risposta calcolata si aggiornano da sole.
      - Dati: dati_clean (dati/dati_clean.rds, 47.717
-       persone; region e hiv_status senza NA, esclusi nel Modulo 3) e le due tabelle
-       accessorie SIMULATE dati/regioni.rds e dati/richiami.rds
+       persone; region e hiv_status senza NA, esclusi nel Modulo 3) e i due dataframe
+       accessorii SIMULATI dati/regioni.rds e dati/richiami.rds
        (create da strumenti_claude/simula_tabelle_modulo7.R; dal
        12/11/2026 richiami.rds non ha più le 4 persone escluse nel
        Modulo 3, quindi anti_join() trova solo i 3 id inventati)
@@ -86,14 +86,14 @@ richiami   <- import(file.path(cartella_dati, "richiami.rds"))
 ## Obiettivi del modulo
 
 -   Accodare due data frame con le stesse variabili con `bind_rows()`
--   Unire due tabelle attraverso una chiave con i join di `{dplyr}`:
+-   Unire due dataframe attraverso una chiave con i join di `{dplyr}`:
     `left_join()`, `inner_join()`, `right_join()` e `full_join()`
 -   Controllare la chiave prima e dopo un join e riconoscere le righe
     senza corrispondenza con `semi_join()` e `anti_join()`
 -   Riconoscere le chiavi duplicate e le righe che si moltiplicano
 -   Cambiare la forma dei dati, da lungo a largo con `pivot_wider()` e
     da largo a lungo con `pivot_longer()`
--   Combinare join, pivot e sintesi per gruppo in una tabella finale da
+-   Combinare join, pivot e sintesi per gruppo in un dataframe finale da
     salvare
 
 ## Formato dell'esercizio
@@ -201,11 +201,11 @@ cat("Domanda di esempio: quanto fa 2 + 2?", longmcq(opts))
 ::::
 
 Lungo il modulo troverai anche due tipi di riquadri colorati. I riquadri
-**gialli** segnalano errori frequenti o punti in cui R si comporta in
+**arancioni** segnalano errori frequenti o punti in cui R si comporta in
 modo inatteso: leggili sempre, perché possono farti risparmiare tempo.
 
 ```{=html}
-<!-- ISTRUZIONI: Il box giallo "Attenzione a …" va usato per avvisi
+<!-- ISTRUZIONI: Il box arancione "Attenzione a …" va usato per avvisi
      importanti: errori comuni, comportamenti di R che possono
      sorprendere, passaggi da non saltare. Il titolo inizia sempre con
      "Attenzione a" (es. "Attenzione ai nomi con spazi"). Copia
@@ -273,7 +273,7 @@ Lavoriamo ancora con `dati_clean`: la coorte di persone vaccinate
 contro COVID-19, con e senza HIV, in cui ogni riga è una persona. Come
 nei Moduli 4 e 5, nello script crea la sezione "Importazione dati"
 (**Ctrl+Shift+R**) e importa con `import()` il file `dati_clean.rds`
-della cartella `dati`, chiamando il dataset `dati_clean`.
+della cartella `dati`, chiamando il dataframe `dati_clean`.
 
 <details>
 
@@ -298,12 +298,12 @@ dati_clean <- import("dati/dati_clean.rds")
 
 </details>
 
-### Le due tabelle nuove
+### I due dataframe nuovi
 
-Oggi unirai `dati_clean` a due tabelle nuove, create per questa
+Oggi unirai `dati_clean` a due dataframe nuovi, creati per questa
 esercitazione.
 
-La tabella `regioni` è l'elenco di tutte le regioni, anche di quelle in
+Il dataframe `regioni` è l'elenco di tutte le regioni, anche di quelle in
 cui non abbiamo partecipanti, con una riga per regione:
 
 | Variabile        | Descrizione                                      |
@@ -312,7 +312,7 @@ cui non abbiamo partecipanti, con una riga per regione:
 | `area`           | area geografica (Nord, Centro, Sud, Isole)       |
 | `popolazione`    | popolazione residente                            |
 
-La tabella `richiami` ha una riga per ogni dose di richiamo del
+Il dataframe `richiami` ha una riga per ogni dose di richiamo del
 vaccino: chi ha ricevuto due richiami compare due volte, chi non ne ha
 ricevuti non compare.
 
@@ -322,7 +322,7 @@ ricevuti non compare.
 | `dose`       | quale richiamo (`richiamo_1`, `richiamo_2`)         |
 | `data_dose`  | data del richiamo                                   |
 
-Le due tabelle servono per tutta l'esercitazione, quindi vanno nello
+I due dataframe servono per tutta l'esercitazione, quindi vanno nello
 script. Nella sezione "Importazione dati", sotto l'importazione di
 `dati_clean`, importa con `import()` i file `regioni.rds` e
 `richiami.rds`, che si trovano anch'essi nella cartella `dati`,
@@ -378,10 +378,10 @@ Come nei moduli precedenti, non tutto quello che scrivi va tenuto:
 
 In ogni esercizio ti indicheremo dove scrivere il codice.
 
-### Uno sguardo alle tabelle
+### Uno sguardo ai dataframe
 
-Nell'area di prova controlla il numero di righe e di variabili delle tre
-tabelle. Poi stampa `regioni` e guarda le prime righe di `richiami`.
+Nell'area di prova controlla il numero di righe e di variabili dei tre dataframe.
+Poi stampa `regioni` e guarda le prime righe di `richiami`.
 
 <details>
 
@@ -619,8 +619,8 @@ accodato controlla sempre le variabili e i valori mancanti.
 
 Vuoi aggiungere a ogni persona di `dati_clean` l'area geografica e la
 popolazione della sua regione, prese da `regioni`. Per unire due
-tabelle serve una **chiave**: una variabile presente in entrambe, che
-dice quale riga di una tabella va con quale riga dell'altra. Qui la
+dataframe serve una **chiave**: una variabile presente in entrambi, che
+dice quale riga di un dataframe va con quale riga dell'altro. Qui la
 chiave è la regione: in `dati_clean` si chiama `region`, in `regioni` si
 chiama `codice_regione`.
 
@@ -665,7 +665,7 @@ soluzione (provaci da solo prima!)
 ```{r}
 #| echo: true
 
-# controllare le regioni presenti in entrambi dataset
+# controllare le regioni presenti in entrambi dataframe
 dati_clean %>%
   distinct(region)
 
@@ -710,9 +710,9 @@ cat("Che differenze ci sono tra i valori di `region` e quelli di `codice_regione
 
 ### Come funziona `left_join()`
 
-`left_join()` del pacchetto `{dplyr}` parte da una tabella, quella di
-**sinistra** (qui `dati_clean`), e le aggiunge le variabili di una
-seconda tabella, quella di **destra** (qui `regioni`): ogni riga di
+`left_join()` del pacchetto `{dplyr}` parte da un dataframe, quello di
+**sinistra** (qui `dati_clean`), e le aggiunge le variabili di un
+second dataframe, quello di **destra** (qui `regioni`): ogni riga di
 sinistra riceve i valori della riga di destra con la stessa chiave. Le
 righe di sinistra si tengono tutte, anche quelle che non trovano un
 partner: per loro le variabili nuove restano `NA`. La chiave si indica
@@ -751,16 +751,16 @@ dati_clean %>%
 </br>
 
 R si ferma con un errore: con `by = "region"` cerca una variabile
-`region` in **entrambe** le tabelle, ma in `regioni` la chiave si
+`region` in **entrambi** i dataframe, ma in `regioni` la chiave si
 chiama `codice_regione`.
 
 </br>
 
 </details>
 
-Quando la chiave ha nomi diversi nelle due tabelle, si scrive con
-`join_by()` e il doppio uguale `==`, prima il nome nella tabella di
-sinistra e poi quello nella tabella di destra:
+Quando la chiave ha nomi diversi nei due dataframe, si scrive con
+`join_by()` e il doppio uguale `==`, prima il nome nel dataframe di
+sinistra e poi quello nel dataframe di destra:
 
 ```{r}
 #| eval: false
@@ -872,12 +872,14 @@ cat("Nel conteggio compaiono solo le regioni A, B, C e D, ognuna con la sua area
 ::: {.callout-warning appearance="default" icon="false"}
 ## Attenzione ai nomi della chiave
 
-Se la chiave ha nomi diversi nelle due tabelle, `by = "region"` non
+Se la chiave ha nomi diversi nei due dataframe, `by = "region"` non
 basta: serve `join_by()` con il doppio uguale `==`. Se invece togli del
-tutto `by`, `{dplyr}` usa le variabili con lo stesso nome nelle due
-tabelle e lo segnala con il messaggio `Joining with by = ...`: funziona,
+tutto `by`, `{dplyr}` usa le variabili con lo stesso nome nei due
+dataframe e lo segnala con il messaggio `Joining with by = ...`: funziona,
 ma è meglio scrivere sempre la chiave, così sai esattamente su che cosa
-stai unendo.
+stai unendo. Se i due dataframe non hanno variabili con lo stesso nome,
+senza `by` comparirà un messaggio di errore e il comando non sarà
+eseguito.
 :::
 
 ::: {.callout-tip appearance="default" icon="false"}
@@ -892,14 +894,14 @@ senza `{dplyr}`:
 # diverso, come in lotto1 e lotto2, rbind() si ferma con un errore
 rbind(lotto1, lotto2)
 
-# unire due tabelle (come left_join()): all.x = TRUE tiene tutte le
-# righe della tabella di sinistra
+# unire due dataframe (come left_join()): all.x = TRUE tiene tutte le
+# righe del dataframe di sinistra
 merge(dati_clean, regioni,
       by.x = "region", by.y = "codice_regione", all.x = TRUE)
 ```
 
 `merge()` però riordina le righe in base alla chiave: per questo nel
-corso usiamo i join di `{dplyr}`, che mantengono l'ordine della tabella
+corso usiamo i join di `{dplyr}`, che mantengono l'ordine del dataframe
 di sinistra.
 :::
 
@@ -912,11 +914,11 @@ di sinistra.
 `left_join()` non è l'unico join. Le funzioni hanno tutte la stessa
 sintassi e cambiano solo nelle righe che tengono:
 
--   `left_join()` tiene tutte le righe della tabella di sinistra;
--   `inner_join()` tiene solo le righe che trovano un partner nell'altra
-    tabella;
--   `right_join()` tiene tutte le righe della tabella di destra;
--   `full_join()` tiene tutte le righe di entrambe le tabelle.
+-   `left_join()` tiene tutte le righe del dataframe di sinistra;
+-   `inner_join()` tiene solo le righe che trovano un partner nell'altro
+    dataframe;
+-   `right_join()` tiene tutte le righe del dataframe di destra;
+-   `full_join()` tiene tutte le righe di entrambi i dataframe.
 
 Nell'area di prova ripeti l'unione di `dati_clean` e `regioni` con
 `inner_join()`, `right_join()` e `full_join()`, e per ciascuno conta le
@@ -1022,7 +1024,7 @@ suggerimento
 
 Dopo il join usa `filter()` con `%in%`, come nel Modulo 3, e poi
 `select()`. Nel risultato la chiave si chiama `region`, cioè con il
-nome che ha nella tabella di sinistra.
+nome che ha nel dataframe di sinistra.
 
 </br>
 
@@ -1080,8 +1082,8 @@ cat("In uno studio di coorte, quale join userai quasi sempre per aggiungere info
 <!-- Tempo stimato: 7 minuti -->
 
 `semi_join()` e `anti_join()` si scrivono come gli altri join, ma non
-aggiungono variabili: guardano solo se ogni riga della tabella di
-sinistra trova un partner nella tabella di destra.
+aggiungono variabili: guardano solo se ogni riga del dataframe di
+sinistra trova un partner nel dataframe di destra.
 
 -   `semi_join()` tiene le righe che trovano un partner;
 -   `anti_join()` tiene le righe che **non** lo trovano.
@@ -1111,7 +1113,7 @@ suggerimento
 
 </br>
 
-La chiave ha lo stesso nome nelle due tabelle: basta
+La chiave ha lo stesso nome nei due dataframe: basta
 `by = "id_subject"`. Per le prime due domande parti da `dati_clean`;
 per la terza parti da `richiami` e usa `anti_join()` verso
 `dati_clean`.
@@ -1348,10 +1350,10 @@ righe si moltiplichino.
 ::: {.callout-warning appearance="default" icon="false"}
 ## Attenzione alle righe che si moltiplicano
 
-Se la chiave è duplicata nella tabella di destra, `left_join()` ripete
+Se la chiave è duplicata nel dataframe di destra, `left_join()` ripete
 la riga di sinistra per ogni partner, **senza avvisare**: contando poi
 le righe conteresti più persone di quelle che hai. Se la chiave è
-duplicata in **entrambe** le tabelle (relazione "molti a molti", per
+duplicata in **entrambi** i dataframe (relazione "molti a molti", per
 esempio unendo per `group` invece che per `id_subject`), `{dplyr}` dà
 un avviso: `Detected an unexpected many-to-many relationship`. Quasi
 sempre vuol dire che hai scelto la chiave sbagliata. In ogni caso, dopo
@@ -1378,11 +1380,11 @@ DATI %>%
               values_from = VARIABILE_VALORI)
 ```
 
-### Una tabella di conteggi
+### Un dataframe di conteggi
 
 Nell'area di prova conta le persone per sesso e indice di Charlson con
-`count()` e salva il risultato in `conteggi`. È una tabella in formato
-lungo: una riga per ogni combinazione. Poi portala in formato largo, con
+`count()` e salva il risultato in `conteggi`. È un dataframe in formato
+lungo: una riga per ogni combinazione. Poi portalo in formato largo, con
 una riga per sesso e una colonna per ogni classe di `chrls_index`.
 
 <details>
@@ -1630,7 +1632,7 @@ cat("Quante righe ha `dati_richiami`?", longmcq(opts))
 opts <- c(
   "Che la data del secondo richiamo è stata persa",
   answer = "Che la persona ha ricevuto un solo richiamo, o nessuno",
-  "Che il secondo richiamo è stato registrato in un'altra tabella",
+  "Che il secondo richiamo è stato registrato in un altro dataframe",
   "Che pivot_wider() non ha funzionato"
 )
 
@@ -1832,7 +1834,7 @@ righe.
 <!-- Tabella pensata per l'esercitazione del modulo 9 (report con
      Quarto): il collega la riprende dal file richiami_regione_hiv.rds. -->
 
-Ora metti insieme quello che hai imparato. Costruisci un'ultima tabella,
+Ora metti insieme quello che hai imparato. Costruisci un ultimo dataframe,
 `richiami_regione_hiv`, con una riga per regione e, per ciascuna:
 
 -   la percentuale di persone con almeno un richiamo tra le persone
@@ -1840,18 +1842,18 @@ Ora metti insieme quello che hai imparato. Costruisci un'ultima tabella,
     decimale;
 -   l'area geografica e la popolazione della regione.
 
-Questa tabella la teniamo. Nello script, sopra l'area di prova, crea la
+Questo dataframe lo teniamo. Nello script, sopra l'area di prova, crea la
 sezione "Copertura dei richiami per regione e stato HIV"
 (**Ctrl+Shift+R**). Parti da `dati_richiami` e costruisci la catena un
 passaggio alla volta, eseguendo il codice dopo ogni aggiunta:
 
 1.  calcola la percentuale per regione e stato HIV con `group_by()` e
     `summarise()`;
-2.  porta la tabella in formato largo con `pivot_wider()`, con una
+2.  porta il dataframe in formato largo con `pivot_wider()`, con una
     colonna per stato HIV;
 3.  aggiungi area e popolazione con un `left_join()` con `regioni`.
 
-Infine salva la tabella nella cartella `output`, sia in
+Infine salva il dataframe nella cartella `output`, sia in
 formato RDS (`richiami_regione_hiv.rds`) sia in Excel
 (`richiami_regione_hiv.xlsx`).
 
@@ -2059,8 +2061,8 @@ In questo modulo hai imparato a:
 -   accodare data frame con `bind_rows()`, che abbina le variabili per
     nome: le variabili mancanti diventano `NA` e `.id` aggiunge una
     variabile con l'origine di ogni riga;
--   unire due tabelle attraverso una **chiave**, scrivendola con
-    `by = "chiave"` o, se ha nomi diversi nelle due tabelle, con
+-   unire due dataframe attraverso una **chiave**, scrivendola con
+    `by = "chiave"` o, se ha nomi diversi nei due dataframe, con
     `by = join_by(chiave_sinistra == chiave_destra)`;
 -   scegliere il join: `left_join()` tiene tutte le righe di sinistra,
     `inner_join()` solo quelle con un partner, `right_join()` tutte
@@ -2076,8 +2078,8 @@ In questo modulo hai imparato a:
     `values_from`, `values_fill`, `names_prefix`) e da largo a lungo con
     `pivot_longer()` (`cols`, `names_to`, `values_to`,
     `values_drop_na`);
--   portare la tabella di destra a una riga per chiave, anche con un
-    pivot, prima di unirla ai dati.
+-   portare il dataframe di destra a una riga per chiave, anche con un
+    pivot, prima di unirlo ai dati.
 
 ## Risorse aggiuntive
 
@@ -2094,9 +2096,9 @@ In questo modulo hai imparato a:
 **Autori**
 
 Autori originali: Andrea Cannone (Istituto Superiore di Sanità)\
-Fonte dei dati: dataset didattico del corso, con la struttura di una
+Fonte dei dati: dataframe didattico del corso, con la struttura di una
 coorte di persone vaccinate contro COVID-19 con e senza HIV, e due
-tabelle accessorie create per questa esercitazione; esercizi ispirati
+dataframe accessorii creati per questa esercitazione; esercizi ispirati
 ai moduli *Joining data* e *Pivoting data* di Applied Epi
 (<https://appliedepi.org>)\
 Adattato da: –
