@@ -1070,7 +1070,7 @@ Nella Console compare un avviso: le 5 persone senza età non possono essere dise
 
 Uno scatter plot (grafico a dispersione) mostra la relazione tra **due variabili continue**: ogni riga del data frame è un punto, con una variabile sull'asse x e una sull'asse y. In `dati_clean` ogni riga è una persona, quindi ogni punto sarà una persona.
 
-In `dati_clean` c'è il livello di anticorpi di ciascuna persona dopo la vaccinazione (`anticorpi`). Vogliamo vedere se cambia al cambiare del valore del `cd4`. Nell'area di prova, crea un data frame chiamato `ant_cd4_A` che contiene tutti i casi con `hiv` pari a `Con HIV`, nella `region` `A`. Fai poi uno scatterplot con `geom_point()`, con i valori del CD4 (`cd4`) sull'asse x e il livello di anticorpi (`anticorpi`) sull'asse y.
+In `dati_clean` c'è il livello di anticorpi di ciascuna persona dopo la vaccinazione (`anticorpi`). Vogliamo vedere se cambia al cambiare del valore del CD4 (`cd4`). Nell'area di prova, crea un data frame chiamato `ant_cd4_A` che contiene tutti i casi con `hiv` pari a `Con HIV`, nella `region` `A`. Fai poi uno scatterplot con `geom_point()`, con i valori del CD4 (`cd4`) sull'asse x e il livello di anticorpi (`anticorpi`) sull'asse y.
 
 <details>
 
@@ -1210,7 +1210,7 @@ Nell'area di prova, sposta `color = covid` da `ggplot()` a `geom_point()` e osse
 #| echo: true
 
 ggplot(data = ant_cd4_A, mapping = aes(x = cd4, y = anticorpi)) +
-  geom_point(aes(color = covid)) +
+  geom_point(mapping = aes(color = covid)) +
   geom_smooth()
 
 ```
@@ -1370,7 +1370,7 @@ quindi contare le righe di una regione vuol dire contare i suoi
 vaccinati.
 
 Nell'area di prova, fai un grafico a barre del numero di vaccinati per
-regione con `geom_bar()`, specificando solo `x`. Poi colora tutte le
+regione con `geom_bar()`, specificando solo `x`. Poi riempi tutte le
 barre di `"lightblue"`.
 
 <details>
@@ -1455,6 +1455,32 @@ soluzione (provaci da solo prima!)
 
 ggplot(data = dati_clean, mapping = aes(x = region, fill = fct_rev(chrls_index))) +
   geom_bar()
+
+```
+
+</br>
+
+</details>
+
+Il titolo della legenda ora è `fct_rev(chrls_index)`. Nell'area di prova, cambialo aggiungendo un livello `labs(fill = "Charlson index")`.
+
+<details>
+
+<summary style="text-decoration: underline; color: red;">
+
+`r fontawesome::fa("check", fill = "red")` Clicca per vedere la
+soluzione (provaci da solo prima!)
+
+</summary>
+
+</br>
+
+```{r}
+#| echo: true
+
+ggplot(data = dati_clean, mapping = aes(x = region, fill = fct_rev(chrls_index))) +
+  geom_bar() +
+  labs(fill = "Charlson index")
 
 ```
 
@@ -2077,7 +2103,7 @@ facet_wrap(~ VARIABILE)
 
 Con la tastiera italiana la tilde non ha un tasto suo: su Windows tieni
 premuto **Alt** e digita **126** sul tastierino numerico; su Mac usa
-**Option + 5**.
+**Option + 5**. Se il tuo portatile non ha il tastierino numerico, copia la tilde da questo testo.
 
 Nell'area di prova, partendo dall'istogramma di `date_vacc` con barre di
 7 giorni, crea un pannello per regione con `facet_wrap()`.
