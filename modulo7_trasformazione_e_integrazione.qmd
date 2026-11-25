@@ -246,7 +246,7 @@ impara davvero a usare R.
 ## Preparazione
 
 Oggi inizierai uno script nuovo, dedicato all'unione dei dati. Apri il
-progetto del corso, crea un nuovo script (*File -> New File -> R
+progetto del corso, crea un nuovo script (*File -\> New File -\> R
 Script*) e salvalo nella cartella `script` con il nome `join`.
 
 Come nei moduli precedenti, inizia lo script con alcuni commenti: nome e
@@ -269,9 +269,9 @@ l'esercitazione.**
 
 ### I dati
 
-Lavoriamo ancora con `dati_clean`: la coorte di persone vaccinate
-contro COVID-19, con e senza HIV, in cui ogni riga è una persona. Come
-nei Moduli 4 e 5, nello script crea la sezione "Importazione dati"
+Lavoriamo ancora con `dati_clean`: la coorte di persone vaccinate contro
+COVID-19, con e senza HIV, in cui ogni riga è una persona. Come nei
+Moduli 4 e 5, nello script crea la sezione "Importazione dati"
 (**Ctrl+Shift+R**) e importa con `import()` il file `dati_clean.rds`
 della cartella `dati`, chiamando il dataframe `dati_clean`.
 
@@ -303,24 +303,24 @@ dati_clean <- import("dati/dati_clean.rds")
 Oggi unirai `dati_clean` a due dataframe nuovi, creati per questa
 esercitazione.
 
-Il dataframe `regioni` è l'elenco di tutte le regioni, anche di quelle in
-cui non abbiamo partecipanti, con una riga per regione:
+Il dataframe `regioni` è l'elenco di tutte le regioni, anche di quelle
+in cui non abbiamo partecipanti, con una riga per regione:
 
-| Variabile        | Tipo      | Descrizione                                 |
-|------------------|-----------|---------------------------------------------|
-| `codice_regione` | testo     | codice della regione (da A a F)             |
-| `area`           | testo     | area geografica (Nord, Centro, Sud, Isole)  |
-| `popolazione`    | numerico  | popolazione residente                       |
+| Variabile        | Tipo     | Descrizione                                |
+|------------------|----------|--------------------------------------------|
+| `codice_regione` | testo    | codice della regione (da A a F)            |
+| `area`           | testo    | area geografica (Nord, Centro, Sud, Isole) |
+| `popolazione`    | numerico | popolazione residente                      |
 
 Il dataframe `richiami` ha una riga per ogni dose di richiamo del
 vaccino: chi ha ricevuto due richiami compare due volte, chi non ne ha
 ricevuti non compare.
 
-| Variabile    | Tipo        | Descrizione                                   |
-|--------------|-------------|-----------------------------------------------|
-| `id_subject` | testo       | identificativo della persona                  |
-| `dose`       | testo       | quale richiamo (`richiamo_1`, `richiamo_2`)   |
-| `data_dose`  | data        | data del richiamo                             |
+| Variabile    | Tipo  | Descrizione                                 |
+|--------------|-------|---------------------------------------------|
+| `id_subject` | testo | identificativo della persona                |
+| `dose`       | testo | quale richiamo (`richiamo_1`, `richiamo_2`) |
+| `data_dose`  | data  | data del richiamo                           |
 
 I due dataframe servono per tutta l'esercitazione, quindi vanno nello
 script. Nella sezione "Importazione dati", sotto l'importazione di
@@ -354,17 +354,18 @@ richiami <- import("dati/richiami.rds")
 ::: {.callout-warning appearance="default" icon="false"}
 ## Attenzione all'avviso su `trust`
 
-Importando i file potrebbe comparire nella console un avviso
-(*warning*) che parla di `trust`. Non è un errore: è un messaggio del
-pacchetto `{rio}` sulle sue versioni future, e i data frame vengono
-importati correttamente. Puoi ignorarlo.
+Importando i file potrebbe comparire nella console un avviso (*warning*)
+che parla di `trust`. Non è un errore: è un messaggio del pacchetto
+`{rio}` sulle sue versioni future, e i data frame vengono importati
+correttamente. Puoi ignorarlo.
 :::
 
 ### L'area di prova
 
 Come nei moduli precedenti, aggiungi in fondo allo script una nuova
-sezione, "Area di prova" (**Ctrl+Shift+R**). Le sezioni che creerai più avanti vanno inserite sopra l'area di prova,
-così che resti sempre l'ultima sezione dello script.
+sezione, "Area di prova" (**Ctrl+Shift+R**). Le sezioni che creerai più
+avanti vanno inserite sopra l'area di prova, così che resti sempre
+l'ultima sezione dello script.
 
 Come nei moduli precedenti, non tutto quello che scrivi va tenuto:
 
@@ -380,8 +381,8 @@ In ogni esercizio ti indicheremo dove scrivere il codice.
 
 ### Uno sguardo ai dataframe
 
-Nell'area di prova controlla il numero di righe e di variabili dei tre dataframe.
-Poi stampa `regioni` e guarda le prime righe di `richiami`.
+Nell'area di prova controlla il numero di righe e di variabili dei tre
+dataframe. Poi stampa `regioni` e guarda le prime righe di `richiami`.
 
 <details>
 
@@ -394,16 +395,15 @@ suggerimento
 
 </br>
 
-Per il numero di righe e di variabili usa `dim()`;  
-`regioni` è piccola e si può stampare scrivendo solo il suo nome; 
-per `richiami` usa `head()`, che mostra le prime sei righe. 
+Per il numero di righe e di variabili usa `dim()`;\
+`regioni` è piccola e si può stampare scrivendo solo il suo nome; per
+`richiami` usa `head()`, che mostra le prime sei righe.
 
-In alternativa esiste il comando `glimpse()`, molto efficace per
-avere una visione di insieme di un dataframe, visualizzando numero 
-di righe e colonne, le variabili e i loro tipi: ha il vantaggio,
-inoltre, di adattarsi alla larghezza della console,
-facendo vedere in una sola riga il nome della variabile, il tipo e
-i primi valori del dataframe.  
+In alternativa esiste il comando `glimpse()`, molto efficace per avere
+una visione di insieme di un dataframe, visualizzando numero di righe e
+colonne, le variabili e i loro tipi: ha il vantaggio, inoltre, di
+adattarsi alla larghezza della console, facendo vedere in una sola riga
+il nome della variabile, il tipo e i primi valori del dataframe.
 
 </br>
 
@@ -463,12 +463,11 @@ cat("`dati_clean` e `richiami` hanno un numero di righe diverso. Perché?", long
 ::: {.callout-warning appearance="default" icon="false"}
 ## Attenzione ai data frame molto grandi
 
-`dati_clean` e `richiami` hanno decine di migliaia di righe, e lo
-stesso vale per i risultati dei join che costruirai oggi. Se scrivi solo
-il nome del data frame ed esegui, R prova a stampare tutte le righe
-nella console. Per controllare un risultato usa `nrow()` o `head()`,
-oppure salvalo con l'operatore di assegnazione `<-` e aprilo con
-`View()`.
+`dati_clean` e `richiami` hanno decine di migliaia di righe, e lo stesso
+vale per i risultati dei join che costruirai oggi. Se scrivi solo il
+nome del data frame ed esegui, R prova a stampare tutte le righe nella
+console. Per controllare un risultato usa `nrow()` o `head()`, oppure
+salvalo con l'operatore di assegnazione `<-` e aprilo con `View()`.
 :::
 
 ## Accodare righe con `bind_rows()`
@@ -552,8 +551,8 @@ suggerimento
 
 </br>
 
-Per contare le righe per invio usa `count()`, come nel Modulo 4. Per
-le età mancanti usa `summarise()` con `sum(is.na(age))`.
+Per contare le righe per invio usa `count()`, come nel Modulo 4. Per le
+età mancanti usa `summarise()` con `sum(is.na(age))`.
 
 </br>
 
@@ -638,7 +637,8 @@ chiama `codice_regione`.
 Prima di un join conviene sempre controllare la chiave. Nell'area di
 prova controlla:
 
--   quali valori ha `region` in `dati_clean` e `codice_regione` in `regioni`;
+-   quali valori ha `region` in `dati_clean` e `codice_regione` in
+    `regioni`;
 -   se in `regioni` ogni codice compare una volta sola;
 -   se le due variabili sono dello stesso tipo.
 
@@ -655,8 +655,8 @@ suggerimento
 
 I valori distinti di una variabile si vedono con `distinct()`. Per i
 duplicati conta i codici con `count()` e tieni con `filter()` solo
-quelli con `n > 1`: se non esce nessuna riga, la chiave è unica. Il
-tipo di una variabile si vede con `class()`.
+quelli con `n > 1`: se non esce nessuna riga, la chiave è unica. Il tipo
+di una variabile si vede con `class()`.
 
 </br>
 
@@ -697,8 +697,10 @@ class(regioni$codice_regione)
 
 </details>
 
+```{=html}
 <!-- DIPENDE DAI DATI: presuppone che region non abbia NA (esclusi nel
      Modulo 3) e che E ed F non compaiano in dati_clean -->
+```
 
 :::: {.callout-note appearance="minimal" icon="false"}
 **Prova a rispondere!**
@@ -722,12 +724,12 @@ cat("Che differenze ci sono tra i valori di `region` e quelli di `codice_regione
 ### Come funziona `left_join()`
 
 `left_join()` del pacchetto `{dplyr}` parte da un dataframe, quello di
-**sinistra** (qui `dati_clean`), e le aggiunge le variabili di un
-second dataframe, quello di **destra** (qui `regioni`): ogni riga di
-sinistra riceve i valori della riga di destra con la stessa chiave. Le
-righe di sinistra si tengono tutte, anche quelle che non trovano un
-partner: per loro le variabili nuove restano `NA`. La chiave si indica
-con l'argomento `by`:
+**sinistra** (qui `dati_clean`), e le aggiunge le variabili di un second
+dataframe, quello di **destra** (qui `regioni`): ogni riga di sinistra
+riceve i valori della riga di destra con la stessa chiave. Le righe di
+sinistra si tengono tutte, anche quelle che non trovano un partner: per
+loro le variabili nuove restano `NA`. La chiave si indica con
+l'argomento `by`:
 
 ```{r}
 #| eval: false
@@ -810,8 +812,8 @@ dati_regioni <- dati_clean %>%
 
 ### Controllare il risultato
 
-Dopo un join si controlla sempre il numero di righe. Nell'area di
-prova confronta il numero di righe di `dati_regioni` con quello di
+Dopo un join si controlla sempre il numero di righe. Nell'area di prova
+confronta il numero di righe di `dati_regioni` con quello di
 `dati_clean`, poi conta le combinazioni di `region` e `area`.
 
 <details>
@@ -858,8 +860,10 @@ dati_regioni %>%
 
 </details>
 
+```{=html}
 <!-- DIPENDE DAI DATI: presuppone che dati_clean abbia solo le regioni
      A, B, C e D, senza NA -->
+```
 
 :::: {.callout-note appearance="minimal" icon="false"}
 **Prova a rispondere!**
@@ -886,35 +890,48 @@ cat("Nel conteggio compaiono solo le regioni A, B, C e D, ognuna con la sua area
 Se la chiave ha nomi diversi nei due dataframe, `by = "region"` non
 basta: serve `join_by()` con il doppio uguale `==`. Se invece togli del
 tutto `by`, `{dplyr}` usa le variabili con lo stesso nome nei due
-dataframe e lo segnala con il messaggio `Joining with by = ...`: funziona,
-ma è meglio scrivere sempre la chiave, così sai esattamente su che cosa
-stai unendo. Se i due dataframe non hanno variabili con lo stesso nome,
-senza `by` comparirà un messaggio di errore e il comando non sarà
-eseguito.
+dataframe e lo segnala con il messaggio `Joining with by = ...`:
+funziona, ma è meglio scrivere sempre la chiave, così sai esattamente su
+che cosa stai unendo. Se i due dataframe non hanno variabili con lo
+stesso nome, senza `by` comparirà un messaggio di errore e il comando
+non sarà eseguito.
 :::
 
-::: {.callout-tip appearance="default" icon="false"}
-## Approfondimento: accodare e unire con R base
+<!-- ::: {.callout-tip appearance="default" icon="false"} -->
 
-Le stesse operazioni si possono fare anche con le funzioni di R base,
-senza `{dplyr}`:
+<!-- ## Approfondimento: accodare e unire con R base -->
 
-```{r}
-#| eval: false
-# accodare righe (come bind_rows()): con un numero di variabili
-# diverso, come in lotto1 e lotto2, rbind() si ferma con un errore
-rbind(lotto1, lotto2)
+<!-- Le stesse operazioni si possono fare anche con le funzioni di R base, -->
 
-# unire due dataframe (come left_join()): all.x = TRUE tiene tutte le
-# righe del dataframe di sinistra
-merge(dati_clean, regioni,
-      by.x = "region", by.y = "codice_regione", all.x = TRUE)
-```
+<!-- senza `{dplyr}`: -->
 
-`merge()` però riordina le righe in base alla chiave: per questo nel
-corso usiamo i join di `{dplyr}`, che mantengono l'ordine del dataframe
-di sinistra.
-:::
+<!-- ```{r} -->
+
+<!-- #| eval: false -->
+
+<!-- # accodare righe (come bind_rows()): con un numero di variabili -->
+
+<!-- # diverso, come in lotto1 e lotto2, rbind() si ferma con un errore -->
+
+<!-- rbind(lotto1, lotto2) -->
+
+<!-- # unire due dataframe (come left_join()): all.x = TRUE tiene tutte le -->
+
+<!-- # righe del dataframe di sinistra -->
+
+<!-- merge(dati_clean, regioni, -->
+
+<!--       by.x = "region", by.y = "codice_regione", all.x = TRUE) -->
+
+<!-- ``` -->
+
+<!-- `merge()` però riordina le righe in base alla chiave: per questo nel -->
+
+<!-- corso usiamo i join di `{dplyr}`, che mantengono l'ordine del dataframe -->
+
+<!-- di sinistra. -->
+
+<!-- ::: -->
 
 ## I quattro join a confronto
 
@@ -986,9 +1003,11 @@ dati_clean %>%
 
 </details>
 
+```{=html}
 <!-- DIPENDE DAI DATI: presuppone che region non abbia NA in dati_clean
      (esclusi nel Modulo 3), quindi left_join() e inner_join() danno lo
      stesso numero di righe -->
+```
 
 :::: {.callout-note appearance="minimal" icon="false"}
 **Prova a rispondere!**
@@ -1034,8 +1053,8 @@ suggerimento
 </br>
 
 Dopo il join usa `filter()` con `%in%`, come nel Modulo 3, e poi
-`select()`. Nel risultato la chiave si chiama `region`, cioè con il
-nome che ha nel dataframe di sinistra.
+`select()`. Nel risultato la chiave si chiama `region`, cioè con il nome
+che ha nel dataframe di sinistra.
 
 </br>
 
@@ -1092,16 +1111,20 @@ cat("In uno studio di coorte, quale join userai quasi sempre per aggiungere info
 
 <!-- Tempo stimato: 7 minuti -->
 
-`semi_join()` e `anti_join()` si scrivono come gli altri join, ma hanno una funzione diversa:
-non combinano le colonne dei due dataframe aggiungendo nuove variabili al dataframe di sinistra, 
-ma selezionano le righe del dataframe di sinistra in base all'esistenza di una corrispondenza
-nel dataframe di destra.  
+`semi_join()` e `anti_join()` si scrivono come gli altri join, ma hanno
+una funzione diversa: non combinano le colonne dei due dataframe
+aggiungendo nuove variabili al dataframe di sinistra, ma selezionano le
+righe del dataframe di sinistra in base all'esistenza di una
+corrispondenza nel dataframe di destra.
 
-Per questo motivo vengono chiamati *filter joins*: si comportano in modo simile a un 
-`filter()`, perchè restituscono un sottoinsieme delle righe del dataframe di sinistra.
+Per questo motivo vengono chiamati *filter joins*: si comportano in modo
+simile a un `filter()`, perchè restituscono un sottoinsieme delle righe
+del dataframe di sinistra.
 
--   `semi_join()` mantiene le righe del dataframe di sinistra che trovano almeno una corrispondenza nel dataframe di destra.  
--   `anti_join()` mantiene le righe del dataframe di sinistra che non trovano alcuna corrispondenza nel dataframe di destra.  
+-   `semi_join()` mantiene le righe del dataframe di sinistra che
+    trovano almeno una corrispondenza nel dataframe di destra.\
+-   `anti_join()` mantiene le righe del dataframe di sinistra che non
+    trovano alcuna corrispondenza nel dataframe di destra.
 
 ```{r}
 #| eval: false
@@ -1129,9 +1152,8 @@ suggerimento
 </br>
 
 La chiave ha lo stesso nome nei due dataframe: basta
-`by = "id_subject"`. Per le prime due domande parti da `dati_clean`;
-per la terza parti da `richiami` e usa `anti_join()` verso
-`dati_clean`.
+`by = "id_subject"`. Per le prime due domande parti da `dati_clean`; per
+la terza parti da `richiami` e usa `anti_join()` verso `dati_clean`.
 
 </br>
 
@@ -1326,9 +1348,9 @@ cat(paste0("Il risultato ha ", format(nrow(left_join(dati_clean, richiami, by = 
 ### Farsi avvisare da `{dplyr}`
 
 L'argomento `relationship = "one-to-one"` chiede a `{dplyr}` di
-controllare che ogni riga trovi al massimo un partner, e di fermarsi
-con un errore se non è così. Nell'area di prova ripeti il join
-aggiungendo questo argomento e leggi il messaggio che compare.
+controllare che ogni riga trovi al massimo un partner, e di fermarsi con
+un errore se non è così. Nell'area di prova ripeti il join aggiungendo
+questo argomento e leggi il messaggio che compare.
 
 <details>
 
@@ -1369,10 +1391,10 @@ Se la chiave è duplicata nel dataframe di destra, `left_join()` ripete
 la riga di sinistra per ogni partner, **senza avvisare**: contando poi
 le righe conteresti più persone di quelle che hai. Se la chiave è
 duplicata in **entrambi** i dataframe (relazione "molti a molti", per
-esempio unendo per `group` invece che per `id_subject`), `{dplyr}` dà
-un avviso: `Detected an unexpected many-to-many relationship`. Quasi
-sempre vuol dire che hai scelto la chiave sbagliata. In ogni caso, dopo
-un join controlla sempre il numero di righe.
+esempio unendo per `group` invece che per `id_subject`), `{dplyr}` dà un
+avviso: `Detected an unexpected many-to-many relationship`. Quasi sempre
+vuol dire che hai scelto la chiave sbagliata. In ogni caso, dopo un join
+controlla sempre il numero di righe.
 :::
 
 ## Da lungo a largo con `pivot_wider()`
@@ -1449,8 +1471,10 @@ conteggi %>%
 
 </details>
 
+```{=html}
 <!-- DIPENDE DAI DATI: presuppone che le 2 persone con sex NA non
      abbiano Charlson 3-4 né 5+ -->
+```
 
 :::: {.callout-note appearance="minimal" icon="false"}
 **Prova a rispondere!**
@@ -1544,8 +1568,8 @@ suggerimento
 </br>
 
 In `richiami` i nomi delle nuove variabili sono in `dose` e i valori in
-`data_dose`. Nel join aggiungi `relationship = "one-to-one"`: se ora
-non compare nessun errore, ogni persona ha al massimo una riga in
+`data_dose`. Nel join aggiungi `relationship = "one-to-one"`: se ora non
+compare nessun errore, ogni persona ha al massimo una riga in
 `richiami_largo`.
 
 </br>
@@ -1582,8 +1606,8 @@ dati_richiami <- dati_clean %>%
 
 Ora controlla il risultato nell'area di prova: conta le righe di
 `richiami_largo` e di `dati_richiami` e guarda le prime righe di
-`dati_richiami`, tenendo solo `id_subject`, `hiv_status`, `richiamo_1`
-e `richiamo_2`.
+`dati_richiami`, tenendo solo `id_subject`, `hiv_status`, `richiamo_1` e
+`richiamo_2`.
 
 <details>
 
@@ -1764,9 +1788,9 @@ cat(paste0("`richiami_lungo` ha ", format(nrow(richiami_lungo), big.mark = "."),
 
 L'argomento `values_drop_na = TRUE` di `pivot_longer()` toglie le righe
 in cui il valore è mancante. Nell'area di prova ripeti il pivot
-aggiungendo questo argomento e salva il risultato in
-`richiami_ritorno`. Poi controlla di nuovo il numero di righe e conta le
-righe per `dose`, sia in `richiami_ritorno` sia in `richiami`.
+aggiungendo questo argomento e salva il risultato in `richiami_ritorno`.
+Poi controlla di nuovo il numero di righe e conta le righe per `dose`,
+sia in `richiami_ritorno` sia in `richiami`.
 
 <details>
 
@@ -1846,19 +1870,22 @@ righe.
 
 <!-- Tempo stimato: 12 minuti -->
 
+```{=html}
 <!-- Tabella pensata per l'esercitazione del modulo 9 (report con
      Quarto): il collega la riprende dal file richiami_regione_hiv.rds. -->
+```
 
-Ora metti insieme quello che hai imparato. Costruisci un ultimo dataframe,
-`richiami_regione_hiv`, con una riga per regione e, per ciascuna:
+Ora metti insieme quello che hai imparato. Costruisci un ultimo
+dataframe, `richiami_regione_hiv`, con una riga per regione e, per
+ciascuna:
 
 -   la percentuale di persone con almeno un richiamo tra le persone
     senza HIV (`hiv_0`) e con HIV (`hiv_1`), arrotondata a una cifra
     decimale;
 -   l'area geografica e la popolazione della regione.
 
-Questo dataframe lo teniamo. Nello script, sopra l'area di prova, crea la
-sezione "Copertura dei richiami per regione e stato HIV"
+Questo dataframe lo teniamo. Nello script, sopra l'area di prova, crea
+la sezione "Copertura dei richiami per regione e stato HIV"
 (**Ctrl+Shift+R**). Parti da `dati_richiami` e costruisci la catena un
 passaggio alla volta, eseguendo il codice dopo ogni aggiunta:
 
@@ -1868,9 +1895,8 @@ passaggio alla volta, eseguendo il codice dopo ogni aggiunta:
     colonna per stato HIV;
 3.  aggiungi area e popolazione con un `left_join()` con `regioni`.
 
-Infine salva il dataframe nella cartella `output`, sia in
-formato RDS (`richiami_regione_hiv.rds`) sia in Excel
-(`richiami_regione_hiv.xlsx`).
+Infine salva il dataframe nella cartella `output`, sia in formato RDS
+(`richiami_regione_hiv.rds`) sia in Excel (`richiami_regione_hiv.xlsx`).
 
 <details>
 
@@ -1955,8 +1981,10 @@ cat("In quale regione la percentuale di persone senza HIV con almeno un richiamo
 :::
 ::::
 
+```{=html}
 <!-- DIPENDE DAI DATI: presuppone che la percentuale sia più alta con
      HIV in tutte le regioni, con una differenza simile (circa 8 punti) -->
+```
 
 :::: {.callout-note appearance="minimal" icon="false"}
 **Prova a rispondere!**
@@ -1984,9 +2012,9 @@ servono solo a fare pratica.
 
 Ecco come dovrebbe essere la parte del tuo script relativa a questa
 esercitazione. Contiene solo i risultati da tenere: i comandi che hai
-scritto nell'area di prova possono essere diversi e non servono per
-le prossime esercitazioni. Lo script completo lo trovi anche nella
-cartella `script/backup`, nel file `backup_join.R`.
+scritto nell'area di prova possono essere diversi e non servono per le
+prossime esercitazioni. Lo script completo lo trovi anche nella cartella
+`script/backup`, nel file `backup_join.R`.
 
 <details>
 
@@ -2099,7 +2127,7 @@ In questo modulo hai imparato a:
 ## Risorse aggiuntive
 
 | Argomento | Risorsa |
-|---------------------------------------|---------------------------------|
+|----|----|
 | Join | Documentazione di `{dplyr}`: <https://dplyr.tidyverse.org/reference/mutate-joins.html> |
 | Pivot | Documentazione di `{tidyr}`: <https://tidyr.tidyverse.org/articles/pivot.html> |
 | Join e dati in formato ordinato | *R for Data Science* (2ª edizione), capitoli "Joins" e "Data tidying": <https://r4ds.hadley.nz/joins> e <https://r4ds.hadley.nz/data-tidy> |
