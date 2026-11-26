@@ -256,7 +256,7 @@ sempre manca un passaggio nel documento.
 opts <- c(
   "Sì, perché il render usa la stessa sessione di R della console",
   answer = "No, il render avviene in una sessione nuova: il codice deve essere nel documento",
-  "Sì, ma solo se il dataset è salvato nel pannello Environment"
+  "Sì, ma solo se il dataframe è salvato nel pannello Environment"
 )
 
 cat("Immagina di aver importato i dati nella console, ma non nel documento Quarto. Il render funziona?", longmcq(opts))
@@ -680,7 +680,7 @@ Nel report, al posto del codice, comparirà la data di oggi. La funzione
 #| echo: false
 opts <- c(
   "Il testo \"r nrow(dati_clean)\" così com'è",
-  answer = "Il numero di righe del dataset dati_clean",
+  answer = "Il numero di righe del dataframe dati_clean",
   "Un chunk con il codice nrow(dati_clean)"
 )
 
@@ -731,7 +731,7 @@ differenza rispetto allo script.
 
 Inserisci i due chunk. Nel primo carica i pacchetti, compresi `{here}`
 e `{sf}`, che ti serviranno per i percorsi e per la mappa. Nel secondo
-importa il dataset `dati_clean.rds` dalla cartella `dati`, chiamandolo
+importa il dataframe `dati_clean.rds` dalla cartella `dati`, chiamandolo
 `dati_clean`. Importa anche, come nel Modulo 8, lo shapefile delle
 regioni con `read_sf()`, chiamandolo `regioni_sf`, e la tabella
 `regioni.rds` con la popolazione, chiamandola `regioni`.

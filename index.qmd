@@ -58,7 +58,7 @@ corso](documenti/programma_corso_R.pdf){target="_blank"}.
 | Martedì 1 dicembre | [Modulo 3 – Pulizia dei dati: approfondimento](modulo3_data_cleaning_avanzato.qmd) | [Modulo 4 – Tabelle e aggregazione dei dati](modulo4_tabelle_e_aggregazione.qmd) |
 | Mercoledì 2 dicembre | [Modulo 5 – Grafici con ggplot2 (parte 1)](modulo5_ggplot_parte1.qmd) | [Modulo 6 – Grafici con ggplot2 (parte 2)](modulo6_ggplot_parte2.qmd) |
 | Giovedì 3 dicembre | [Modulo 7 – Trasformazione e integrazione dei dati](modulo7_trasformazione_e_integrazione.qmd) | [Modulo 8 – Altri grafici](modulo8_altri_grafici.qmd) |
-| Venerdì 4 dicembre | [Modulo 9 – Report automatici con Quarto](modulo9_quarto.qmd) | Verifica dell'apprendimento: un breve report in R a partire da un nuovo dataset |
+| Venerdì 4 dicembre | [Modulo 9 – Report automatici con Quarto](modulo9_quarto.qmd) | Verifica dell'apprendimento: un breve report in R a partire da un nuovo dataframe |
 
 : {tbl-colwidths="[20,40,40]"}
 
