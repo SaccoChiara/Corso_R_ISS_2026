@@ -237,7 +237,7 @@ Una catena di pulizia ha tre componenti:
 
 1.  a sinistra dell'operatore di assegnazione `<-`, il nome del **nuovo
     oggetto** che verrà creato e che conterrà i dati puliti (`dati`);
-2.  a destra di `<-`, il nome del dataset **di partenza**, quello su cui
+2.  a destra di `<-`, il nome del dataframe **di partenza**, quello su cui
     stai lavorando e a cui vuoi applicare le modifiche (`dati_raw`),
     seguito da `%>%`;
 3.  nelle righe successive, le funzioni di pulizia, collegate da `%>%`.
@@ -260,7 +260,7 @@ funzione, riesegui tutta la catena (seleziona il testo dall'inizio alla fine e
 premi Ctrl+Invio). Poiché il comando usa `<-`, il risultato non viene
 stampato nella console ma salvato in `dati`: per vederlo clicca su
 `dati` nel pannello **Environment** oppure usa `View(dati)`. Ti
-consigliamo di guardare il dataset dopo ogni passaggio.
+consigliamo di guardare il dataframe dopo ogni passaggio.
 
 ::: {.callout-warning appearance="default" icon="false"}
 ## Attenzione alle catene lunghe
@@ -492,7 +492,7 @@ Lo scopo principale di `select()` è scegliere le variabili da
 eliminate.
 
 Scrivi il comando sotto nella tua **area di prova** ed eseguilo. Prende
-il dataset `dati` (pulito solo in parte), seleziona tre variabili e
+il dataframe `dati` (pulito solo in parte), seleziona tre variabili e
 stampa il risultato senza salvarlo. Aggiungiamo `head()` per stampare
 solo le prime 6 righe, invece di tutte le righe del dataset.
 
@@ -658,7 +658,7 @@ volte o perché due file sono stati uniti male. Se non le togli, quel
 soggetto viene contato più volte e tutte le analisi successive
 (frequenze, tassi, medie) risultano sbagliate.
 
-Nel nostro dataset ogni riga è un soggetto, identificato da
+Nel nostro dataframe ogni riga è un soggetto, identificato da
 `id_subject`: ogni valore di `id_subject` dovrebbe quindi comparire una
 sola volta. Come capire se è così? Esegui `skim()` nell'area di prova e
 guarda con attenzione la riga di `id_subject`:
@@ -791,7 +791,7 @@ dato mancante, e solo così le funzioni lo gestiscono correttamente (per
 esempio escludendolo dai calcoli). Nei dati, però, i mancanti possono
 essere scritti in molti altri modi:
 
-| Valore nel dataset        | Come appare nel Viewer | `is.na()` |
+| Valore nel dataframe        | Come appare nel Viewer | `is.na()` |
 |---------------------------|------------------------|-----------|
 | `NA`                      | *NA* (in corsivo)      | `TRUE`    |
 | `""` (testo vuoto)        | (vuoto)                | `FALSE`   |
@@ -1649,7 +1649,7 @@ variabile evento.
 ## Verifica finale
 
 Crea la sezione "Verifica" (**Ctrl+Shift+R**), subito dopo la catena di
-pulizia. La catena è completa: controlla il dataset pulito eseguendo
+pulizia. La catena è completa: controlla il dataframe pulito eseguendo
 questi comandi e guardando i risultati.
 
 ```{r}

@@ -2488,7 +2488,7 @@ In questo modulo hai imparato a:
 
 <!-- (Istituzione)\ -->
 
-<!-- Fonte dei dati: [DA COMPLETARE: origine del dataset dati_clean] coorte di -->
+<!-- Fonte dei dati: [DA COMPLETARE: origine del dataframe dati_clean] coorte di -->
 
 <!-- persone vaccinate con e senza HIV; esercizi ispirati al modulo -->
 

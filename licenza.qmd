@@ -77,7 +77,7 @@ Questa licenza si basa su
 
 ## Fonte dei dati e licenza
 
-Il dataset utilizzato nelle esercitazioni è stato predisposto a partire dai dati dello studio di [Mateo-Urdiales et al. (2024), Risk of breakthrough infection and hospitalisation after COVID-19 primary vaccination by HIV status in four Italian regions during 2021](https://pubmed.ncbi.nlm.nih.gov/38862939/), pubblicato su BMC Public Health (2024;24:1569).
+Il dataframe utilizzato nelle esercitazioni è stato predisposto a partire dai dati dello studio di [Mateo-Urdiales et al. (2024), Risk of breakthrough infection and hospitalisation after COVID-19 primary vaccination by HIV status in four Italian regions during 2021](https://pubmed.ncbi.nlm.nih.gov/38862939/), pubblicato su BMC Public Health (2024;24:1569).
 
 I dati sono stati adattati per finalità esclusivamente didattiche.
 Alcune variabili sono state simulate (età, regione, punteggio di

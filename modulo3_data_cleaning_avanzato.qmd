@@ -34,7 +34,7 @@ pacman::p_load(
   webexercises
 )
 
-# dataset grezzo, usato solo negli approfondimenti
+# dataframe grezzo, usato solo negli approfondimenti
 dati_raw <- import("materiali_corso_R/dati/dataset_esercitazione_raw.csv")
 ```
 
@@ -235,7 +235,7 @@ l'esercitazione.**
 
 ### I dati
 
-Ripartiamo da `dati`, il dataset che hai pulito ieri nel Modulo 2 e che
+Ripartiamo da `dati`, il dataframe che hai pulito ieri nel Modulo 2 e che
 hai appena ricreato eseguendo lo script. Controlla nel pannello
 **Environment** che ci sia e, nell'area di prova, controlla con
 `class()` la classe della variabile `date_vacc`.
@@ -315,7 +315,7 @@ Troverai:
     parte dello studio.
 
 In questo modulo sistemerai questi problemi, creerai alcune nuove
-variabili utili per le analisi e salverai il dataset finale.
+variabili utili per le analisi e salverai il dataframe finale.
 
 Costruirai una nuova catena di pulizia che parte da `dati` appena
 importati e crea un nuovo oggetto, `dati_clean`.
@@ -1170,7 +1170,7 @@ precedente):
 
 ### Età e classe di età sono coerenti?
 
-Il dataset contiene sia l'età (`age`) sia la classe di età
+Il dataframe contiene sia l'età (`age`) sia la classe di età
 (`age_group`): le due informazioni dovrebbero coincidere. Per
 verificarlo, ricalcola nell'area di prova la classe a partire dall'età
 con `ifelse()`, in una nuova variabile `age_group_calc`, e confrontala
@@ -1634,7 +1634,7 @@ Quante righe hai tolto in tutto? Confronta `nrow(dati)` e
 Guarda l'ordine delle variabili di `dati_clean` (per esempio con
 `names(dati_clean)`): le nuove variabili sono in fondo, lontane da
 quelle a cui si riferiscono. L'ordine non cambia nulla per R, ma se
-esportiamo il dataset e lo condividiamo con un collega conviene che le
+esportiamo il dataframe e lo condividiamo con un collega conviene che le
 variabili collegate siano vicine, per esempio `age`, `age_group` e
 `age_cat`.
 
@@ -1685,7 +1685,7 @@ precedente):
 ## Verifica finale
 
 Crea la sezione "Verifica" (**Ctrl+Shift+R**), subito dopo la catena di
-pulizia, e controlla il dataset finale:
+pulizia, e controlla il dataframe finale:
 
 ```{r}
 #| eval: false
@@ -1742,7 +1742,7 @@ cat("Quante righe sono state tolte in tutto dalla catena di questo modulo, rispe
 
 ## Salvare i dati puliti
 
-Ora che il dataset è pulito, salviamolo in un file, così potrai
+Ora che il dataframe è pulito, salviamolo in un file, così potrai
 riprenderlo senza rifare la pulizia. Si usa la funzione `export()` del
 pacchetto `{rio}`, la "gemella" di `import()`: il primo argomento è
 l'oggetto da salvare, il secondo è il percorso del file, tra virgolette.
@@ -1867,7 +1867,7 @@ se un certo testo (`pattern`) compare in un valore (`string`), e `FALSE`
 altrimenti. Si usa spesso dentro `filter()`. Attenzione: come `==`,
 distingue le maiuscole dalle minuscole.
 
-Partendo dal dataset grezzo `dati_raw`, trova le righe in cui la regione
+Partendo dal dataframe grezzo `dati_raw`, trova le righe in cui la regione
 contiene la parola `"Region"`: sono proprio i valori che abbiamo dovuto
 ricodificare.
 
