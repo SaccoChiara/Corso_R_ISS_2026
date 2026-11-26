@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>quarto-input19e5a28b8076c59a – Corso base di R</title>
+<title>quarto-inputde22805b2a716d2b – Corso base di R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -218,8 +218,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">In questa pagina</h2>
    
   <ul>
-  <li><a href="#corso-introduttivo-al-software-statistico-r" id="toc-corso-introduttivo-al-software-statistico-r" class="nav-link active" data-scroll-target="#corso-introduttivo-al-software-statistico-r"><strong>Corso introduttivo al software statistico R</strong></a></li>
-  <li><a href="#modulo-07-trasformazione-e-integrazione-dei-dati" id="toc-modulo-07-trasformazione-e-integrazione-dei-dati" class="nav-link" data-scroll-target="#modulo-07-trasformazione-e-integrazione-dei-dati">Modulo 07 Trasformazione e integrazione dei dati</a>
+  <li><a href="#corso-base-di-r-per-la-gestione-e-analisi-dei-dati" id="toc-corso-base-di-r-per-la-gestione-e-analisi-dei-dati" class="nav-link active" data-scroll-target="#corso-base-di-r-per-la-gestione-e-analisi-dei-dati"><strong>Corso base di R per la gestione e analisi dei dati</strong></a></li>
+  <li><a href="#modulo-07---trasformazione-e-integrazione-dei-dati" id="toc-modulo-07---trasformazione-e-integrazione-dei-dati" class="nav-link" data-scroll-target="#modulo-07---trasformazione-e-integrazione-dei-dati">Modulo 07 - Trasformazione e integrazione dei dati</a>
   <ul>
   <li><a href="#obiettivi-del-modulo" id="toc-obiettivi-del-modulo" class="nav-link" data-scroll-target="#obiettivi-del-modulo">Obiettivi del modulo</a></li>
   <li><a href="#formato-dellesercizio" id="toc-formato-dellesercizio" class="nav-link" data-scroll-target="#formato-dellesercizio">Formato dell’esercizio</a></li>
@@ -228,9 +228,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#il-punto-di-partenza" id="toc-il-punto-di-partenza" class="nav-link" data-scroll-target="#il-punto-di-partenza">Il punto di partenza</a>
   <ul class="collapse">
   <li><a href="#i-dati" id="toc-i-dati" class="nav-link" data-scroll-target="#i-dati">I dati</a></li>
-  <li><a href="#le-due-tabelle-nuove" id="toc-le-due-tabelle-nuove" class="nav-link" data-scroll-target="#le-due-tabelle-nuove">Le due tabelle nuove</a></li>
+  <li><a href="#i-due-dataframe-nuovi" id="toc-i-due-dataframe-nuovi" class="nav-link" data-scroll-target="#i-due-dataframe-nuovi">I due dataframe nuovi</a></li>
   <li><a href="#larea-di-prova" id="toc-larea-di-prova" class="nav-link" data-scroll-target="#larea-di-prova">L’area di prova</a></li>
-  <li><a href="#uno-sguardo-alle-tabelle" id="toc-uno-sguardo-alle-tabelle" class="nav-link" data-scroll-target="#uno-sguardo-alle-tabelle">Uno sguardo alle tabelle</a></li>
+  <li><a href="#uno-sguardo-ai-dataframe" id="toc-uno-sguardo-ai-dataframe" class="nav-link" data-scroll-target="#uno-sguardo-ai-dataframe">Uno sguardo ai dataframe</a></li>
   </ul></li>
   <li><a href="#accodare-righe-con-bind_rows" id="toc-accodare-righe-con-bind_rows" class="nav-link" data-scroll-target="#accodare-righe-con-bind_rows">Accodare righe con <code>bind_rows()</code></a>
   <ul class="collapse">
@@ -258,7 +258,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#da-lungo-a-largo-con-pivot_wider" id="toc-da-lungo-a-largo-con-pivot_wider" class="nav-link" data-scroll-target="#da-lungo-a-largo-con-pivot_wider">Da lungo a largo con <code>pivot_wider()</code></a>
   <ul class="collapse">
   <li><a href="#come-funziona-pivot_wider" id="toc-come-funziona-pivot_wider" class="nav-link" data-scroll-target="#come-funziona-pivot_wider">Come funziona <code>pivot_wider()</code></a></li>
-  <li><a href="#una-tabella-di-conteggi" id="toc-una-tabella-di-conteggi" class="nav-link" data-scroll-target="#una-tabella-di-conteggi">Una tabella di conteggi</a></li>
+  <li><a href="#un-dataframe-di-conteggi" id="toc-un-dataframe-di-conteggi" class="nav-link" data-scroll-target="#un-dataframe-di-conteggi">Un dataframe di conteggi</a></li>
   <li><a href="#riempire-le-celle-vuote" id="toc-riempire-le-celle-vuote" class="nav-link" data-scroll-target="#riempire-le-celle-vuote">Riempire le celle vuote</a></li>
   <li><a href="#i-richiami-una-riga-per-persona" id="toc-i-richiami-una-riga-per-persona" class="nav-link" data-scroll-target="#i-richiami-una-riga-per-persona">I richiami: una riga per persona</a></li>
   </ul></li>
@@ -338,32 +338,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
        richiami_regione_hiv); tutti gli altri comandi, compresi gli
        errori voluti, si scrivono nell'area di prova.
      - I commenti "DIPENDE DAI DATI" segnalano testi o domande da
-       ricontrollare se cambia il dataset. Le risposte delle domande
+       ricontrollare se cambia il dataframe. Le risposte delle domande
        con risposta calcolata si aggiornano da sole.
      - Dati: dati_clean (dati/dati_clean.rds, 47.717
-       persone; region e hiv_status senza NA, esclusi nel Modulo 3) e le due tabelle
-       accessorie SIMULATE dati/regioni.rds e dati/richiami.rds
-       (create da strumenti_claude/simula_tabelle_modulo7.R; dal
+       persone; region e hiv_status senza NA, esclusi nel Modulo 3) e i due dataframe
+       accessori SIMULATI dati/regioni.rds e dati/richiami.rds
+       (creati da strumenti_claude/simula_tabelle_modulo7.R; dal
        12/11/2026 richiami.rds non ha più le 4 persone escluse nel
        Modulo 3, quindi anti_join() trova solo i 3 id inventati)
        Stesso
        codice e stessi nomi di slide e demo. Il modulo 7 usa solo
        funzioni spiegate nelle slide del modulo 7 o nei moduli 1-4.
      ============================================================ -->
-<section id="corso-introduttivo-al-software-statistico-r" class="level1">
-<h1><strong>Corso introduttivo al software statistico R</strong></h1>
+<section id="corso-base-di-r-per-la-gestione-e-analisi-dei-dati" class="level1">
+<h1><strong>Corso base di R per la gestione e analisi dei dati</strong></h1>
 </section>
-<section id="modulo-07-trasformazione-e-integrazione-dei-dati" class="level1">
-<h1>Modulo 07 Trasformazione e integrazione dei dati</h1>
+<section id="modulo-07---trasformazione-e-integrazione-dei-dati" class="level1">
+<h1>Modulo 07 - Trasformazione e integrazione dei dati</h1>
 <section id="obiettivi-del-modulo" class="level2">
 <h2 class="anchored" data-anchor-id="obiettivi-del-modulo">Obiettivi del modulo</h2>
 <ul>
-<li>Accodare due data frame con le stesse variabili con <code>bind_rows()</code></li>
-<li>Unire due tabelle attraverso una chiave con i join di <code>{dplyr}</code>: <code>left_join()</code>, <code>inner_join()</code>, <code>right_join()</code> e <code>full_join()</code></li>
+<li>Accodare due dataframe con le stesse variabili con <code>bind_rows()</code></li>
+<li>Unire due dataframe attraverso una chiave con i join di <code>{dplyr}</code>: <code>left_join()</code>, <code>inner_join()</code>, <code>right_join()</code> e <code>full_join()</code></li>
 <li>Controllare la chiave prima e dopo un join e riconoscere le righe senza corrispondenza con <code>semi_join()</code> e <code>anti_join()</code></li>
 <li>Riconoscere le chiavi duplicate e le righe che si moltiplicano</li>
 <li>Cambiare la forma dei dati, da lungo a largo con <code>pivot_wider()</code> e da largo a lungo con <code>pivot_longer()</code></li>
-<li>Combinare join, pivot e sintesi per gruppo in una tabella finale da salvare</li>
+<li>Combinare join, pivot e sintesi per gruppo in un dataframe finale da salvare</li>
 </ul>
 </section>
 <section id="formato-dellesercizio" class="level2">
@@ -423,15 +423,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Domanda di esempio: quanto fa 2 + 2?
-<div id="radio_TRPBWRZDZU" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_TRPBWRZDZU" value=""> <span>2</span></label><label><input type="radio" autocomplete="off" name="radio_TRPBWRZDZU" value=""> <span>5</span></label><label><input type="radio" autocomplete="off" name="radio_TRPBWRZDZU" value="answer"> <span>4</span></label>
+<div id="radio_KAWUBDQXZN" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_KAWUBDQXZN" value=""> <span>2</span></label><label><input type="radio" autocomplete="off" name="radio_KAWUBDQXZN" value=""> <span>5</span></label><label><input type="radio" autocomplete="off" name="radio_KAWUBDQXZN" value="answer"> <span>4</span></label>
 </div>
 </div>
 </div>
 </div>
 </div>
-<p>Lungo il modulo troverai anche due tipi di riquadri colorati. I riquadri <strong>gialli</strong> segnalano errori frequenti o punti in cui R si comporta in modo inatteso: leggili sempre, perché possono farti risparmiare tempo.</p>
-<!-- ISTRUZIONI: Il box giallo "Attenzione a …" va usato per avvisi
+<p>Lungo il modulo troverai anche due tipi di riquadri colorati. I riquadri <strong>arancioni</strong> segnalano errori frequenti o punti in cui R si comporta in modo inatteso: leggili sempre, perché possono farti risparmiare tempo.</p>
+<!-- ISTRUZIONI: Il box arancione "Attenzione a …" va usato per avvisi
      importanti: errori comuni, comportamenti di R che possono
      sorprendere, passaggi da non saltare. Il titolo inizia sempre con
      "Attenzione a" (es. "Attenzione ai nomi con spazi"). Copia
@@ -488,7 +488,7 @@ Domanda di esempio: quanto fa 2 + 2?
 <!-- Tempo stimato: 7 minuti -->
 <section id="i-dati" class="level3">
 <h3 class="anchored" data-anchor-id="i-dati">I dati</h3>
-<p>Lavoriamo ancora con <code>dati_clean</code>: la coorte di persone vaccinate contro COVID-19, con e senza HIV, in cui ogni riga è una persona. Come nei Moduli 4 e 5, nello script crea la sezione “Importazione dati” (<strong>Ctrl+Shift+R</strong>) e importa con <code>import()</code> il file <code>dati_clean.rds</code> della cartella <code>dati</code>, chiamando il dataset <code>dati_clean</code>.</p>
+<p>Lavoriamo ancora con <code>dati_clean</code>: la coorte di persone vaccinate contro COVID-19, con e senza HIV, in cui ogni riga è una persona. Come nei Moduli 4 e 5, nello script crea la sezione “Importazione dati” (<strong>Ctrl+Shift+R</strong>) e importa con <code>import()</code> il file <code>dati_clean.rds</code> della cartella <code>dati</code>, chiamando il dataframe <code>dati_clean</code>.</p>
 <details>
 <summary style="text-decoration: underline; color: red;">
 <p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
@@ -501,56 +501,69 @@ Domanda di esempio: quanto fa 2 + 2?
 <p><br></p>
 </details>
 </section>
-<section id="le-due-tabelle-nuove" class="level3">
-<h3 class="anchored" data-anchor-id="le-due-tabelle-nuove">Le due tabelle nuove</h3>
-<p>Oggi unirai <code>dati_clean</code> a due tabelle nuove, create per questa esercitazione.</p>
-<p>La tabella <code>regioni</code> è l’elenco di tutte le regioni, anche di quelle in cui non abbiamo partecipanti, con una riga per regione:</p>
+<section id="i-due-dataframe-nuovi" class="level3">
+<h3 class="anchored" data-anchor-id="i-due-dataframe-nuovi">I due dataframe nuovi</h3>
+<p>Oggi unirai <code>dati_clean</code> a due dataframe nuovi, creati per questa esercitazione.</p>
+<p>Il dataframe <code>regioni</code> è l’elenco di tutte le regioni, anche di quelle in cui non abbiamo partecipanti, con una riga per regione:</p>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 13%">
+<col style="width: 61%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Variabile</th>
+<th>Tipo</th>
 <th>Descrizione</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><code>codice_regione</code></td>
+<td>testo</td>
 <td>codice della regione (da A a F)</td>
 </tr>
 <tr class="even">
 <td><code>area</code></td>
+<td>testo</td>
 <td>area geografica (Nord, Centro, Sud, Isole)</td>
 </tr>
 <tr class="odd">
 <td><code>popolazione</code></td>
+<td>numerico</td>
 <td>popolazione residente</td>
 </tr>
 </tbody>
 </table>
-<p>La tabella <code>richiami</code> ha una riga per ogni dose di richiamo del vaccino: chi ha ricevuto due richiami compare due volte, chi non ne ha ricevuti non compare.</p>
+<p>Il dataframe <code>richiami</code> ha una riga per ogni dose di richiamo del vaccino: chi ha ricevuto due richiami compare due volte, chi non ne ha ricevuti non compare.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Variabile</th>
+<th>Tipo</th>
 <th>Descrizione</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><code>id_subject</code></td>
+<td>testo</td>
 <td>identificativo della persona</td>
 </tr>
 <tr class="even">
 <td><code>dose</code></td>
+<td>testo</td>
 <td>quale richiamo (<code>richiamo_1</code>, <code>richiamo_2</code>)</td>
 </tr>
 <tr class="odd">
 <td><code>data_dose</code></td>
+<td>data</td>
 <td>data del richiamo</td>
 </tr>
 </tbody>
 </table>
-<p>Le due tabelle servono per tutta l’esercitazione, quindi vanno nello script. Nella sezione “Importazione dati”, sotto l’importazione di <code>dati_clean</code>, importa con <code>import()</code> i file <code>regioni.rds</code> e <code>richiami.rds</code>, che si trovano anch’essi nella cartella <code>dati</code>, chiamandoli <code>regioni</code> e <code>richiami</code>.</p>
+<p>I due dataframe servono per tutta l’esercitazione, quindi vanno nello script. Nella sezione “Importazione dati”, sotto l’importazione di <code>dati_clean</code>, importa con <code>import()</code> i file <code>regioni.rds</code> e <code>richiami.rds</code>, che si trovano anch’essi nella cartella <code>dati</code>, chiamandoli <code>regioni</code> e <code>richiami</code>.</p>
 <details>
 <summary style="text-decoration: underline; color: red;">
 <p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
@@ -572,7 +585,7 @@ Domanda di esempio: quanto fa 2 + 2?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Importando i file potrebbe comparire nella console un avviso (<em>warning</em>) che parla di <code>trust</code>. Non è un errore: è un messaggio del pacchetto <code>{rio}</code> sulle sue versioni future, e i data frame vengono importati correttamente. Puoi ignorarlo.</p>
+<p>Importando i file potrebbe comparire nella console un avviso (<em>warning</em>) che parla di <code>trust</code>. Non è un errore: è un messaggio del pacchetto <code>{rio}</code> sulle sue versioni future, e i dataframe vengono importati correttamente. Puoi ignorarlo.</p>
 </div>
 </div>
 </section>
@@ -582,19 +595,21 @@ Domanda di esempio: quanto fa 2 + 2?
 <p>Come nei moduli precedenti, non tutto quello che scrivi va tenuto:</p>
 <ul>
 <li>i comandi per <strong>esplorare</strong> e per <strong>provare</strong> (controlli sul numero di righe, confronti tra join, errori voluti e le loro correzioni) si scrivono nell’<strong>area di prova</strong>: guardi il risultato nella console e poi li lasci lì;</li>
-<li>i data frame che sono un <strong>risultato da tenere</strong> si salvano in un oggetto con l’operatore di assegnazione <code>&lt;-</code> e si scrivono <strong>nello script</strong>, nelle sezioni del Modulo 7.</li>
+<li>i dataframe che sono un <strong>risultato da tenere</strong> si salvano in un oggetto con l’operatore di assegnazione <code>&lt;-</code> e si scrivono <strong>nello script</strong>, nelle sezioni del Modulo 7.</li>
 </ul>
 <p>In ogni esercizio ti indicheremo dove scrivere il codice.</p>
 </section>
-<section id="uno-sguardo-alle-tabelle" class="level3">
-<h3 class="anchored" data-anchor-id="uno-sguardo-alle-tabelle">Uno sguardo alle tabelle</h3>
-<p>Nell’area di prova controlla il numero di righe e di variabili delle tre tabelle. Poi stampa <code>regioni</code> e guarda le prime righe di <code>richiami</code>.</p>
+<section id="uno-sguardo-ai-dataframe" class="level3">
+<h3 class="anchored" data-anchor-id="uno-sguardo-ai-dataframe">Uno sguardo ai dataframe</h3>
+<p>Nell’area di prova controlla il numero di righe e di variabili dei tre dataframe. Poi stampa <code>regioni</code> e guarda le prime righe di <code>richiami</code>.</p>
 <details>
 <summary style="text-decoration: underline; color: darkgreen;">
 <p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
 </summary>
 <p><br></p>
-<p>Per le dimensioni usa <code>dim()</code>. <code>regioni</code> è piccola e si può stampare scrivendo solo il suo nome; per <code>richiami</code> usa <code>head()</code>, che mostra le prime sei righe.</p>
+<p>Per il numero di righe e di variabili usa <code>dim()</code>;<br>
+<code>regioni</code> è piccolo e si può stampare scrivendo solo il suo nome; per <code>richiami</code> usa <code>head()</code>, che mostra le prime sei righe.</p>
+<p>In alternativa esiste il comando <code>glimpse()</code>, molto efficace per avere una visione di insieme di un dataframe, visualizzando numero di righe e colonne, le variabili e i loro tipi: ha il vantaggio, inoltre, di adattarsi alla larghezza della console, facendo vedere in una sola riga il nome della variabile, il tipo e i primi valori del dataframe.</p>
 <p><br></p>
 </details>
 <details>
@@ -635,6 +650,45 @@ Domanda di esempio: quanto fa 2 + 2?
 5      S0005 richiamo_1 2021-11-18
 6      S0006 richiamo_1 2021-10-23</code></pre>
 </div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dati_clean)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 47,717
+Columns: 18
+$ id_subject  &lt;chr&gt; "S26808", "S5046", "S6795", "S42836", "S8646", "S13773", "…
+$ group       &lt;int&gt; 21265, 41426, 42159, 39812, 1670, 19533, 20058, 28046, 450…
+$ region      &lt;chr&gt; "C", "A", "B", "D", "B", "C", "C", "C", "B", "C", "C", "C"…
+$ sex         &lt;chr&gt; "M", "F", "M", "M", "M", "M", "M", "F", "M", "M", "M", "M"…
+$ age         &lt;dbl&gt; 68, 49, 91, 39, 31, 18, 30, 22, 91, 98, 84, 74, 68, 27, 46…
+$ age_group   &lt;chr&gt; "60+", "18-59", "60+", "18-59", "18-59", "18-59", "18-59",…
+$ age_cat     &lt;fct&gt; 60-69, 40-49, 80+, 30-39, 30-39, 18-29, 30-39, 18-29, 80+,…
+$ chrls_score &lt;int&gt; 3, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 2, 1, 0, 0, 0…
+$ chrls_index &lt;chr&gt; "3-4", "0", "1-2", "0", "0", "0", "0", "0", "0", "0", "1-2…
+$ hiv_status  &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0…
+$ hiv         &lt;fct&gt; Con HIV, Senza HIV, Senza HIV, Senza HIV, Senza HIV, Senza…
+$ date_vacc   &lt;date&gt; 2021-05-09, 2021-05-12, 2021-05-03, 2021-04-28, 2021-06-2…
+$ date_end_fu &lt;date&gt; 2021-09-17, 2021-08-13, 2021-08-27, 2021-08-13, 2021-08-2…
+$ date_event  &lt;date&gt; 2021-09-17, 2021-08-13, NA, 2021-08-13, NA, NA, NA, NA, N…
+$ fu_days     &lt;dbl&gt; 131, 93, 116, 107, 65, 110, 106, 131, 73, 142, 137, 119, 1…
+$ event       &lt;dbl&gt; 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0…
+$ anticorpi   &lt;dbl&gt; 634.0, 468.8, 422.8, 2023.8, 1356.0, 10444.4, 1626.5, 5704…
+$ cd4         &lt;int&gt; 918, NA, NA, NA, NA, NA, 770, 591, NA, NA, NA, 491, NA, NA…</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(regioni)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 6
+Columns: 3
+$ codice_regione &lt;chr&gt; "A", "B", "C", "D", "E", "F"
+$ area           &lt;chr&gt; "Nord", "Nord", "Centro", "Sud", "Sud", "Isole"
+$ popolazione    &lt;dbl&gt; 4900000, 6100000, 10200000, 5600000, 3900000, 1600000</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(richiami)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 46,729
+Columns: 3
+$ id_subject &lt;chr&gt; "S0001", "S0001", "S0003", "S0004", "S0005", "S0006", "S000…
+$ dose       &lt;chr&gt; "richiamo_1", "richiamo_2", "richiamo_1", "richiamo_1", "ri…
+$ data_dose  &lt;date&gt; 2022-01-18, 2022-06-20, 2022-01-01, 2021-10-13, 2021-11-18…</code></pre>
+</div>
 </div>
 <p><br></p>
 </details>
@@ -647,8 +701,8 @@ Domanda di esempio: quanto fa 2 + 2?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 <code>dati_clean</code> e <code>richiami</code> hanno un numero di righe diverso. Perché?
-<div id="radio_SKLHJAZQAU" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_SKLHJAZQAU" value="answer"> <span>Perché alcune persone hanno ricevuto due richiami, altre nessuno</span></label><label><input type="radio" autocomplete="off" name="radio_SKLHJAZQAU" value=""> <span>Perché richiami contiene anche le persone senza HIV</span></label><label><input type="radio" autocomplete="off" name="radio_SKLHJAZQAU" value=""> <span>Perché import() ha letto il file due volte</span></label><label><input type="radio" autocomplete="off" name="radio_SKLHJAZQAU" value=""> <span>Perché in richiami ci sono più variabili</span></label>
+<div id="radio_NRJHJXYEOM" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_NRJHJXYEOM" value="answer"> <span>Perché alcune persone hanno ricevuto due richiami, altre nessuno</span></label><label><input type="radio" autocomplete="off" name="radio_NRJHJXYEOM" value=""> <span>Perché richiami contiene anche le persone senza HIV</span></label><label><input type="radio" autocomplete="off" name="radio_NRJHJXYEOM" value=""> <span>Perché import() ha letto il file due volte</span></label><label><input type="radio" autocomplete="off" name="radio_NRJHJXYEOM" value=""> <span>Perché in richiami ci sono più variabili</span></label>
 </div>
 </div>
 </div>
@@ -660,11 +714,11 @@ Domanda di esempio: quanto fa 2 + 2?
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Avviso</span>Attenzione ai data frame molto grandi
+<span class="screen-reader-only">Avviso</span>Attenzione ai dataframe molto grandi
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><code>dati_clean</code> e <code>richiami</code> hanno decine di migliaia di righe, e lo stesso vale per i risultati dei join che costruirai oggi. Se scrivi solo il nome del data frame ed esegui, R prova a stampare tutte le righe nella console. Per controllare un risultato usa <code>nrow()</code> o <code>head()</code>, oppure salvalo con l’operatore di assegnazione <code>&lt;-</code> e aprilo con <code>View()</code>.</p>
+<p><code>dati_clean</code> e <code>richiami</code> hanno decine di migliaia di righe, e lo stesso vale per i risultati dei join che costruirai oggi. Se scrivi solo il nome del dataframe ed esegui, R prova a stampare tutte le righe nella console. Per controllare un risultato usa <code>nrow()</code> o <code>head()</code>, oppure salvalo con l’operatore di assegnazione <code>&lt;-</code> e aprilo con <code>View()</code>.</p>
 </div>
 </div>
 </section>
@@ -674,18 +728,18 @@ Domanda di esempio: quanto fa 2 + 2?
 <!-- Tempo stimato: 8 minuti -->
 <section id="due-invii-separati" class="level3">
 <h3 class="anchored" data-anchor-id="due-invii-separati">Due invii separati</h3>
-<p>A volte i dati arrivano a pezzi: per esempio due invii con le stesse variabili, uno dopo l’altro. Per accodarli in un unico data frame si usa <code>bind_rows()</code> del pacchetto <code>{dplyr}</code>: tra le parentesi si indicano i data frame da accodare, separati da una virgola. L’argomento <code>.id</code>, facoltativo, aggiunge una variabile con il numero del data frame da cui arriva ogni riga (1 per il primo, 2 per il secondo):</p>
+<p>A volte i dati arrivano a pezzi: per esempio due invii con le stesse variabili, uno dopo l’altro. Per accodarli in un unico dataframe si usa <code>bind_rows()</code> del pacchetto <code>{dplyr}</code>: come per le altre funzioni del modulo, a sinistra dell’operatore pipe c’è il primo dataframe, e tra le parentesi quello da accodare sotto. L’argomento <code>.id</code>, facoltativo, aggiunge una variabile con il numero del dataframe da cui arriva ogni riga (1 per il primo, 2 per il secondo):</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_rows</span>(DATI_1, DATI_2, <span class="at">.id =</span> <span class="st">"NOME_VARIABILE"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>DATI_1 <span class="sc">%&gt;%</span> <span class="fu">bind_rows</span>(DATI_2, <span class="at">.id =</span> <span class="st">"NOME_VARIABILE"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Immagina che i dati della coorte ti siano arrivati in due invii separati: il primo con le persone il cui codice di gruppo (<code>group</code>) arriva fino a 22000, il secondo con gli altri. Nel secondo invio, per un errore, manca la variabile dell’età. Copia questo codice nell’area di prova ed eseguilo per ricreare i due invii; poi controlla con <code>dim()</code> quante righe e quante variabili ha ciascuno.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>lotto1 <span class="ot">&lt;-</span> dati_clean <span class="sc">%&gt;%</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(group <span class="sc">&lt;=</span> <span class="dv">22000</span>)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>lotto2 <span class="ot">&lt;-</span> dati_clean <span class="sc">%&gt;%</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(group <span class="sc">&gt;</span> <span class="dv">22000</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>age)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>lotto1 <span class="ot">&lt;-</span> dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(group <span class="sc">&lt;=</span> <span class="dv">22000</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>lotto2 <span class="ot">&lt;-</span> dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(group <span class="sc">&gt;</span> <span class="dv">22000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>age)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <details>
 <summary style="text-decoration: underline; color: red;">
@@ -693,11 +747,11 @@ Domanda di esempio: quanto fa 2 + 2?
 </summary>
 <p><br></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(lotto1)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(lotto1)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 23316    18</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(lotto2)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(lotto2)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 24401    17</code></pre>
 </div>
@@ -707,7 +761,7 @@ Domanda di esempio: quanto fa 2 + 2?
 </section>
 <section id="accodare-i-due-invii" class="level3">
 <h3 class="anchored" data-anchor-id="accodare-i-due-invii">Accodare i due invii</h3>
-<p>Sempre nell’area di prova, accoda i due invii in un unico data frame, <code>dati_uniti</code>, aggiungendo una variabile <code>lotto</code> che dica da quale invio arriva ogni riga. Poi controlla:</p>
+<p>Sempre nell’area di prova, accoda i due invii in un unico dataframe, <code>dati_uniti</code>, aggiungendo una variabile <code>lotto</code> che dica da quale invio arriva ogni riga. Poi controlla:</p>
 <ul>
 <li>quante righe arrivano da ciascun invio;</li>
 <li>quante righe ha <code>dati_uniti</code> in totale e quante età mancanti ci sono.</li>
@@ -726,19 +780,19 @@ Domanda di esempio: quanto fa 2 + 2?
 </summary>
 <p><br></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>dati_uniti <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(lotto1, lotto2, <span class="at">.id =</span> <span class="st">"lotto"</span>)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>dati_uniti <span class="sc">%&gt;%</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(lotto)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>dati_uniti <span class="ot">&lt;-</span> lotto1 <span class="sc">%&gt;%</span> <span class="fu">bind_rows</span>(lotto2, <span class="at">.id =</span> <span class="st">"lotto"</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>dati_uniti <span class="sc">%&gt;%</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(lotto)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  lotto     n
 1     1 23316
 2     2 24401</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>dati_uniti <span class="sc">%&gt;%</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">n            =</span> <span class="fu">n</span>(),</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_mancanti =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(age)))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>dati_uniti <span class="sc">%&gt;%</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">n            =</span> <span class="fu">n</span>(),</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_mancanti =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(age)))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      n age_mancanti
 1 47717        24404</code></pre>
@@ -756,8 +810,8 @@ Domanda di esempio: quanto fa 2 + 2?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 In <code>dati_uniti</code> le età mancanti sono 24.404, mentre in <code>dati_clean</code> erano solo 5. Che cosa è successo?
-<div id="radio_DLMUGMTECV" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_DLMUGMTECV" value="answer"> <span>bind_rows() ha messo NA nella variabile age per tutte le righe del secondo invio</span></label><label><input type="radio" autocomplete="off" name="radio_DLMUGMTECV" value=""> <span>bind_rows() ha tolto le righe senza età</span></label><label><input type="radio" autocomplete="off" name="radio_DLMUGMTECV" value=""> <span>Le persone del secondo invio sono quasi tutte senza età anche in dati_clean</span></label><label><input type="radio" autocomplete="off" name="radio_DLMUGMTECV" value=""> <span>bind_rows() ha diviso per due il numero di età presenti</span></label>
+<div id="radio_WNFIBCZERT" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_WNFIBCZERT" value="answer"> <span>bind_rows() ha messo NA nella variabile age per tutte le righe del secondo invio</span></label><label><input type="radio" autocomplete="off" name="radio_WNFIBCZERT" value=""> <span>bind_rows() ha tolto le righe senza età</span></label><label><input type="radio" autocomplete="off" name="radio_WNFIBCZERT" value=""> <span>Le persone del secondo invio sono quasi tutte senza età anche in dati_clean</span></label><label><input type="radio" autocomplete="off" name="radio_WNFIBCZERT" value=""> <span>bind_rows() ha diviso per due il numero di età presenti</span></label>
 </div>
 </div>
 </div>
@@ -773,7 +827,7 @@ In <code>dati_uniti</code> le età mancanti sono 24.404, mentre in <code>dati_cl
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><code>bind_rows()</code> abbina le variabili per nome: se una variabile manca in uno dei data frame, la crea e la riempie con <code>NA</code>, senza fermarsi. È comodo, ma una variabile con un nome scritto in modo diverso (per esempio <code>Age</code> e <code>age</code>) diventerebbe due variabili mezze vuote. Dopo aver accodato controlla sempre le variabili e i valori mancanti.</p>
+<p><code>bind_rows()</code> abbina le variabili per nome: se una variabile manca in uno dei dataframe, la crea e la riempie con <code>NA</code>, senza fermarsi. È comodo, ma una variabile con un nome scritto in modo diverso (per esempio <code>Age</code> e <code>age</code>) diventerebbe due variabili mezze vuote. Dopo aver accodato controlla sempre le variabili e i valori mancanti.</p>
 </div>
 </div>
 </section>
@@ -783,7 +837,7 @@ In <code>dati_uniti</code> le età mancanti sono 24.404, mentre in <code>dati_cl
 <!-- Tempo stimato: 13 minuti -->
 <section id="controllare-la-chiave" class="level3">
 <h3 class="anchored" data-anchor-id="controllare-la-chiave">Controllare la chiave</h3>
-<p>Vuoi aggiungere a ogni persona di <code>dati_clean</code> l’area geografica e la popolazione della sua regione, prese da <code>regioni</code>. Per unire due tabelle serve una <strong>chiave</strong>: una variabile presente in entrambe, che dice quale riga di una tabella va con quale riga dell’altra. Qui la chiave è la regione: in <code>dati_clean</code> si chiama <code>region</code>, in <code>regioni</code> si chiama <code>codice_regione</code>.</p>
+<p>Vuoi aggiungere a ogni persona di <code>dati_clean</code> l’area geografica e la popolazione della sua regione, prese da <code>regioni</code>. Per unire due dataframe serve una <strong>chiave</strong>: una variabile presente in entrambi, che dice quale riga di un dataframe va con quale riga dell’altro. Qui la chiave è la regione: in <code>dati_clean</code> si chiama <code>region</code>, in <code>regioni</code> si chiama <code>codice_regione</code>.</p>
 <p>Prima di un join conviene sempre controllare la chiave. Nell’area di prova controlla:</p>
 <ul>
 <li>quali valori ha <code>region</code> in <code>dati_clean</code> e <code>codice_regione</code> in <code>regioni</code>;</li>
@@ -804,9 +858,9 @@ In <code>dati_uniti</code> le età mancanti sono 24.404, mentre in <code>dati_cl
 </summary>
 <p><br></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># controllare le regioni presenti in entrambi dataset</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(region)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># controllare le regioni presenti in entrambi dataframe</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(region)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  region
 1      C
@@ -814,8 +868,8 @@ In <code>dati_uniti</code> le età mancanti sono 24.404, mentre in <code>dati_cl
 3      B
 4      D</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>regioni <span class="sc">%&gt;%</span> </span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(codice_regione)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>regioni <span class="sc">%&gt;%</span> </span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(codice_regione)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  codice_regione
 1              A
@@ -825,19 +879,19 @@ In <code>dati_uniti</code> le età mancanti sono 24.404, mentre in <code>dati_cl
 5              E
 6              F</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># nessuna riga = nessun codice duplicato</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>regioni <span class="sc">%&gt;%</span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(codice_regione) <span class="sc">%&gt;%</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># nessuna riga = nessun codice duplicato</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>regioni <span class="sc">%&gt;%</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(codice_regione) <span class="sc">%&gt;%</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] codice_regione n             
 &lt;0 righe&gt; (o 0-length row.names)</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(dati_clean<span class="sc">$</span>region)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(dati_clean<span class="sc">$</span>region)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "character"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(regioni<span class="sc">$</span>codice_regione)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(regioni<span class="sc">$</span>codice_regione)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "character"</code></pre>
 </div>
@@ -855,8 +909,8 @@ In <code>dati_uniti</code> le età mancanti sono 24.404, mentre in <code>dati_cl
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Che differenze ci sono tra i valori di <code>region</code> e quelli di <code>codice_regione</code>?
-<div id="radio_YFFIKTEUCG" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_YFFIKTEUCG" value=""> <span>Nessuna: le due chiavi hanno esattamente gli stessi valori</span></label><label><input type="radio" autocomplete="off" name="radio_YFFIKTEUCG" value="answer"> <span>In regioni ci sono anche E ed F, che in dati_clean non compaiono</span></label><label><input type="radio" autocomplete="off" name="radio_YFFIKTEUCG" value=""> <span>In dati_clean ci sono regioni che in regioni non esistono</span></label><label><input type="radio" autocomplete="off" name="radio_YFFIKTEUCG" value=""> <span>region è un numero, codice_regione un testo</span></label>
+<div id="radio_HAXTKKLKKM" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_HAXTKKLKKM" value=""> <span>Nessuna: le due chiavi hanno esattamente gli stessi valori</span></label><label><input type="radio" autocomplete="off" name="radio_HAXTKKLKKM" value="answer"> <span>In regioni ci sono anche E ed F, che in dati_clean non compaiono</span></label><label><input type="radio" autocomplete="off" name="radio_HAXTKKLKKM" value=""> <span>In dati_clean ci sono regioni che in regioni non esistono</span></label><label><input type="radio" autocomplete="off" name="radio_HAXTKKLKKM" value=""> <span>region è un numero, codice_regione un testo</span></label>
 </div>
 </div>
 </div>
@@ -865,10 +919,10 @@ Che differenze ci sono tra i valori di <code>region</code> e quelli di <code>cod
 </section>
 <section id="come-funziona-left_join" class="level3">
 <h3 class="anchored" data-anchor-id="come-funziona-left_join">Come funziona <code>left_join()</code></h3>
-<p><code>left_join()</code> del pacchetto <code>{dplyr}</code> parte da una tabella, quella di <strong>sinistra</strong> (qui <code>dati_clean</code>), e le aggiunge le variabili di una seconda tabella, quella di <strong>destra</strong> (qui <code>regioni</code>): ogni riga di sinistra riceve i valori della riga di destra con la stessa chiave. Le righe di sinistra si tengono tutte, anche quelle che non trovano un partner: per loro le variabili nuove restano <code>NA</code>. La chiave si indica con l’argomento <code>by</code>:</p>
+<p><code>left_join()</code> del pacchetto <code>{dplyr}</code> parte da un dataframe, quello di <strong>sinistra</strong> (qui <code>dati_clean</code>), e le aggiunge le variabili di un secondo dataframe, quello di <strong>destra</strong> (qui <code>regioni</code>): ogni riga di sinistra riceve i valori della riga di destra con la stessa chiave. Le righe di sinistra si tengono tutte, anche quelle che non trovano un partner: per loro le variabili nuove restano <code>NA</code>. La chiave si indica con l’argomento <code>by</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>DATI_SINISTRA <span class="sc">%&gt;%</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(DATI_DESTRA, <span class="at">by =</span> <span class="st">"CHIAVE"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>DATI_SINISTRA <span class="sc">%&gt;%</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(DATI_DESTRA, <span class="at">by =</span> <span class="st">"CHIAVE"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Proviamo nell’area di prova: unisci <code>regioni</code> a <code>dati_clean</code> con <code>left_join()</code>, indicando la chiave con <code>by = "region"</code>. Che cosa succede?</p>
 <details>
@@ -877,8 +931,8 @@ Che differenze ci sono tra i valori di <code>region</code> e quelli di <code>cod
 </summary>
 <p><br></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(regioni, <span class="at">by =</span> <span class="st">"region"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(regioni, <span class="at">by =</span> <span class="st">"region"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `left_join()`:
 ! Join columns in `y` must be present in the data.
@@ -886,13 +940,13 @@ Che differenze ci sono tra i valori di <code>region</code> e quelli di <code>cod
 </div>
 </div>
 <p><br></p>
-<p>R si ferma con un errore: con <code>by = "region"</code> cerca una variabile <code>region</code> in <strong>entrambe</strong> le tabelle, ma in <code>regioni</code> la chiave si chiama <code>codice_regione</code>.</p>
+<p>R si ferma con un errore: con <code>by = "region"</code> cerca una variabile <code>region</code> in <strong>entrambi</strong> i dataframe, ma in <code>regioni</code> la chiave si chiama <code>codice_regione</code>.</p>
 <p><br></p>
 </details>
-<p>Quando la chiave ha nomi diversi nelle due tabelle, si scrive con <code>join_by()</code> e il doppio uguale <code>==</code>, prima il nome nella tabella di sinistra e poi quello nella tabella di destra:</p>
+<p>Quando la chiave ha nomi diversi nei due dataframe, si scrive con <code>join_by()</code> e il doppio uguale <code>==</code>, prima il nome nel dataframe di sinistra e poi quello nel dataframe di destra:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>DATI_SINISTRA <span class="sc">%&gt;%</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(DATI_DESTRA, <span class="at">by =</span> <span class="fu">join_by</span>(CHIAVE_SINISTRA <span class="sc">==</span> CHIAVE_DESTRA))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>DATI_SINISTRA <span class="sc">%&gt;%</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(DATI_DESTRA, <span class="at">by =</span> <span class="fu">join_by</span>(CHIAVE_SINISTRA <span class="sc">==</span> CHIAVE_DESTRA))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Il risultato di questo join lo teniamo. Nello script, sopra l’area di prova, crea la sezione “Join con le regioni” (<strong>Ctrl+Shift+R</strong>) e salva il join corretto in un nuovo oggetto, <code>dati_regioni</code>: così <code>dati_clean</code> resta com’è.</p>
 <details>
@@ -901,9 +955,9 @@ Che differenze ci sono tra i valori di <code>region</code> e quelli di <code>cod
 </summary>
 <p><br></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Join con le regioni -----------------------------------------------------</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>dati_regioni <span class="ot">&lt;-</span> dati_clean <span class="sc">%&gt;%</span></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(regioni, <span class="at">by =</span> <span class="fu">join_by</span>(region <span class="sc">==</span> codice_regione))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Join con le regioni -----------------------------------------------------</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>dati_regioni <span class="ot">&lt;-</span> dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(regioni, <span class="at">by =</span> <span class="fu">join_by</span>(region <span class="sc">==</span> codice_regione))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><br></p>
 </details>
@@ -925,16 +979,16 @@ Che differenze ci sono tra i valori di <code>region</code> e quelli di <code>cod
 </summary>
 <p><br></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(dati_clean)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(dati_clean)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 47717</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(dati_regioni)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(dati_regioni)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 47717</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>dati_regioni <span class="sc">%&gt;%</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(region, area)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>dati_regioni <span class="sc">%&gt;%</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(region, area)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  region   area     n
 1      A   Nord  5880
@@ -956,8 +1010,8 @@ Che differenze ci sono tra i valori di <code>region</code> e quelli di <code>cod
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Nel conteggio compaiono solo le regioni A, B, C e D, ognuna con la sua area. Perché non ci sono E ed F?
-<div id="radio_NGJQBMUBCQ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_NGJQBMUBCQ" value=""> <span>Perché left_join() toglie le righe di regioni che non hanno un'area</span></label><label><input type="radio" autocomplete="off" name="radio_NGJQBMUBCQ" value="answer"> <span>Perché left_join() tiene le righe di dati_clean, e nessuna persona di dati_clean è delle regioni E o F</span></label><label><input type="radio" autocomplete="off" name="radio_NGJQBMUBCQ" value=""> <span>Perché in regioni le righe di E ed F sono vuote</span></label><label><input type="radio" autocomplete="off" name="radio_NGJQBMUBCQ" value=""> <span>Perché il join ha fallito per E ed F</span></label>
+<div id="radio_SIINFXMETM" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_SIINFXMETM" value=""> <span>Perché left_join() toglie le righe di regioni che non hanno un'area</span></label><label><input type="radio" autocomplete="off" name="radio_SIINFXMETM" value="answer"> <span>Perché left_join() tiene le righe di dati_clean, e nessuna persona di dati_clean è delle regioni E o F</span></label><label><input type="radio" autocomplete="off" name="radio_SIINFXMETM" value=""> <span>Perché in regioni le righe di E ed F sono vuote</span></label><label><input type="radio" autocomplete="off" name="radio_SIINFXMETM" value=""> <span>Perché il join ha fallito per E ed F</span></label>
 </div>
 </div>
 </div>
@@ -973,33 +1027,27 @@ Nel conteggio compaiono solo le regioni A, B, C e D, ognuna con la sua area. Per
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Se la chiave ha nomi diversi nelle due tabelle, <code>by = "region"</code> non basta: serve <code>join_by()</code> con il doppio uguale <code>==</code>. Se invece togli del tutto <code>by</code>, <code>{dplyr}</code> usa le variabili con lo stesso nome nelle due tabelle e lo segnala con il messaggio <code>Joining with by = ...</code>: funziona, ma è meglio scrivere sempre la chiave, così sai esattamente su che cosa stai unendo.</p>
+<p>Se la chiave ha nomi diversi nei due dataframe, <code>by = "region"</code> non basta: serve <code>join_by()</code> con il doppio uguale <code>==</code>. Se invece togli del tutto <code>by</code>, <code>{dplyr}</code> usa le variabili con lo stesso nome nei due dataframe e lo segnala con il messaggio <code>Joining with by = ...</code>: funziona, ma è meglio scrivere sempre la chiave, così sai esattamente su che cosa stai unendo. Se i due dataframe non hanno variabili con lo stesso nome, senza <code>by</code> comparirà un messaggio di errore e il comando non sarà eseguito.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Consiglio</span>Approfondimento: accodare e unire con R base
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Le stesse operazioni si possono fare anche con le funzioni di R base, senza <code>{dplyr}</code>:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># accodare righe (come bind_rows()): con un numero di variabili</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="co"># diverso, come in lotto1 e lotto2, rbind() si ferma con un errore</span></span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(lotto1, lotto2)</span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="co"># unire due tabelle (come left_join()): all.x = TRUE tiene tutte le</span></span>
-<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="co"># righe della tabella di sinistra</span></span>
-<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="fu">merge</span>(dati_clean, regioni,</span>
-<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">by.x =</span> <span class="st">"region"</span>, <span class="at">by.y =</span> <span class="st">"codice_regione"</span>, <span class="at">all.x =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p><code>merge()</code> però riordina le righe in base alla chiave: per questo nel corso usiamo i join di <code>{dplyr}</code>, che mantengono l’ordine della tabella di sinistra.</p>
-</div>
-</div>
+<!-- ::: {.callout-tip appearance="default" icon="false"} -->
+<!-- ## Approfondimento: accodare e unire con R base -->
+<!-- Le stesse operazioni si possono fare anche con le funzioni di R base, -->
+<!-- senza `{dplyr}`: -->
+<!-- ```{r} -->
+<!-- #| eval: false -->
+<!-- # accodare righe (come bind_rows()): con un numero di variabili -->
+<!-- # diverso, come in lotto1 e lotto2, rbind() si ferma con un errore -->
+<!-- rbind(lotto1, lotto2) -->
+<!-- # unire due dataframe (come left_join()): all.x = TRUE tiene tutte le -->
+<!-- # righe del dataframe di sinistra -->
+<!-- merge(dati_clean, regioni, -->
+<!--       by.x = "region", by.y = "codice_regione", all.x = TRUE) -->
+<!-- ``` -->
+<!-- `merge()` però riordina le righe in base alla chiave: per questo nel -->
+<!-- corso usiamo i join di `{dplyr}`, che mantengono l'ordine del dataframe -->
+<!-- di sinistra. -->
+<!-- ::: -->
 </section>
 </section>
 <section id="i-quattro-join-a-confronto" class="level2">
@@ -1009,10 +1057,10 @@ Nel conteggio compaiono solo le regioni A, B, C e D, ognuna con la sua area. Per
 <h3 class="anchored" data-anchor-id="quante-righe">Quante righe?</h3>
 <p><code>left_join()</code> non è l’unico join. Le funzioni hanno tutte la stessa sintassi e cambiano solo nelle righe che tengono:</p>
 <ul>
-<li><code>left_join()</code> tiene tutte le righe della tabella di sinistra;</li>
-<li><code>inner_join()</code> tiene solo le righe che trovano un partner nell’altra tabella;</li>
-<li><code>right_join()</code> tiene tutte le righe della tabella di destra;</li>
-<li><code>full_join()</code> tiene tutte le righe di entrambe le tabelle.</li>
+<li><code>left_join()</code> tiene tutte le righe del dataframe di sinistra;</li>
+<li><code>inner_join()</code> tiene solo le righe che trovano un partner nell’altro dataframe;</li>
+<li><code>right_join()</code> tiene tutte le righe del dataframe di destra;</li>
+<li><code>full_join()</code> tiene tutte le righe di entrambi i dataframe.</li>
 </ul>
 <p>Nell’area di prova ripeti l’unione di <code>dati_clean</code> e <code>regioni</code> con <code>inner_join()</code>, <code>right_join()</code> e <code>full_join()</code>, e per ciascuno conta le righe del risultato. Prima di eseguire, prova a prevedere il numero: ricorda le regioni E ed F, che sono in <code>regioni</code> ma non in <code>dati_clean</code>.</p>
 <details>
@@ -1029,21 +1077,21 @@ Nel conteggio compaiono solo le regioni A, B, C e D, ognuna con la sua area. Per
 </summary>
 <p><br></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(regioni, <span class="at">by =</span> <span class="fu">join_by</span>(region <span class="sc">==</span> codice_regione)) <span class="sc">%&gt;%</span></span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(regioni, <span class="at">by =</span> <span class="fu">join_by</span>(region <span class="sc">==</span> codice_regione)) <span class="sc">%&gt;%</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 47717</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">right_join</span>(regioni, <span class="at">by =</span> <span class="fu">join_by</span>(region <span class="sc">==</span> codice_regione)) <span class="sc">%&gt;%</span></span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">right_join</span>(regioni, <span class="at">by =</span> <span class="fu">join_by</span>(region <span class="sc">==</span> codice_regione)) <span class="sc">%&gt;%</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 47719</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">full_join</span>(regioni, <span class="at">by =</span> <span class="fu">join_by</span>(region <span class="sc">==</span> codice_regione)) <span class="sc">%&gt;%</span></span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">full_join</span>(regioni, <span class="at">by =</span> <span class="fu">join_by</span>(region <span class="sc">==</span> codice_regione)) <span class="sc">%&gt;%</span></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 47719</code></pre>
 </div>
@@ -1062,8 +1110,8 @@ Nel conteggio compaiono solo le regioni A, B, C e D, ognuna con la sua area. Per
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 <code>inner_join()</code> dà lo stesso numero di righe di <code>left_join()</code>. Perché?
-<div id="radio_XQYLSWCQXF" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_XQYLSWCQXF" value=""> <span>Perché left_join() e inner_join() sono la stessa funzione con due nomi</span></label><label><input type="radio" autocomplete="off" name="radio_XQYLSWCQXF" value="answer"> <span>Perché ogni persona di dati_clean trova la sua regione in regioni: nessuna riga di sinistra resta senza partner</span></label><label><input type="radio" autocomplete="off" name="radio_XQYLSWCQXF" value=""> <span>Perché inner_join() tiene anche le regioni E ed F</span></label><label><input type="radio" autocomplete="off" name="radio_XQYLSWCQXF" value=""> <span>Perché regioni ha una sola riga per ogni regione</span></label>
+<div id="radio_ZHPPVHGJYZ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_ZHPPVHGJYZ" value=""> <span>Perché left_join() e inner_join() sono la stessa funzione con due nomi</span></label><label><input type="radio" autocomplete="off" name="radio_ZHPPVHGJYZ" value="answer"> <span>Perché ogni persona di dati_clean trova la sua regione in regioni: nessuna riga di sinistra resta senza partner</span></label><label><input type="radio" autocomplete="off" name="radio_ZHPPVHGJYZ" value=""> <span>Perché inner_join() tiene anche le regioni E ed F</span></label><label><input type="radio" autocomplete="off" name="radio_ZHPPVHGJYZ" value=""> <span>Perché regioni ha una sola riga per ogni regione</span></label>
 </div>
 </div>
 </div>
@@ -1079,7 +1127,7 @@ Nel conteggio compaiono solo le regioni A, B, C e D, ognuna con la sua area. Per
 <p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
 </summary>
 <p><br></p>
-<p>Dopo il join usa <code>filter()</code> con <code>%in%</code>, come nel Modulo 3, e poi <code>select()</code>. Nel risultato la chiave si chiama <code>region</code>, cioè con il nome che ha nella tabella di sinistra.</p>
+<p>Dopo il join usa <code>filter()</code> con <code>%in%</code>, come nel Modulo 3, e poi <code>select()</code>. Nel risultato la chiave si chiama <code>region</code>, cioè con il nome che ha nel dataframe di sinistra.</p>
 <p><br></p>
 </details>
 <details>
@@ -1088,10 +1136,10 @@ Nel conteggio compaiono solo le regioni A, B, C e D, ognuna con la sua area. Per
 </summary>
 <p><br></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">right_join</span>(regioni, <span class="at">by =</span> <span class="fu">join_by</span>(region <span class="sc">==</span> codice_regione)) <span class="sc">%&gt;%</span></span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(region <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"E"</span>, <span class="st">"F"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id_subject, region, sex, area)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">right_join</span>(regioni, <span class="at">by =</span> <span class="fu">join_by</span>(region <span class="sc">==</span> codice_regione)) <span class="sc">%&gt;%</span></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(region <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"E"</span>, <span class="st">"F"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id_subject, region, sex, area)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  id_subject region  sex  area
 1       &lt;NA&gt;      E &lt;NA&gt;   Sud
@@ -1110,8 +1158,8 @@ Nel conteggio compaiono solo le regioni A, B, C e D, ognuna con la sua area. Per
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 In uno studio di coorte, quale join userai quasi sempre per aggiungere informazioni ai partecipanti?
-<div id="radio_BKIPLNSYSU" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_BKIPLNSYSU" value="answer"> <span>left_join(), perché tiene tutti i partecipanti e non aggiunge righe senza partecipanti</span></label><label><input type="radio" autocomplete="off" name="radio_BKIPLNSYSU" value=""> <span>right_join(), perché tiene tutte le regioni</span></label><label><input type="radio" autocomplete="off" name="radio_BKIPLNSYSU" value=""> <span>full_join(), perché non perde nessuna riga</span></label><label><input type="radio" autocomplete="off" name="radio_BKIPLNSYSU" value=""> <span>inner_join(), perché tiene solo le righe complete</span></label>
+<div id="radio_OQYIMDBRSD" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_OQYIMDBRSD" value="answer"> <span>left_join(), perché tiene tutti i partecipanti e non aggiunge righe senza partecipanti</span></label><label><input type="radio" autocomplete="off" name="radio_OQYIMDBRSD" value=""> <span>right_join(), perché tiene tutte le regioni</span></label><label><input type="radio" autocomplete="off" name="radio_OQYIMDBRSD" value=""> <span>full_join(), perché non perde nessuna riga</span></label><label><input type="radio" autocomplete="off" name="radio_OQYIMDBRSD" value=""> <span>inner_join(), perché tiene solo le righe complete</span></label>
 </div>
 </div>
 </div>
@@ -1122,14 +1170,16 @@ In uno studio di coorte, quale join userai quasi sempre per aggiungere informazi
 <section id="chi-manca-semi_join-e-anti_join" class="level2">
 <h2 class="anchored" data-anchor-id="chi-manca-semi_join-e-anti_join">Chi manca? <code>semi_join()</code> e <code>anti_join()</code></h2>
 <!-- Tempo stimato: 7 minuti -->
-<p><code>semi_join()</code> e <code>anti_join()</code> si scrivono come gli altri join, ma non aggiungono variabili: guardano solo se ogni riga della tabella di sinistra trova un partner nella tabella di destra.</p>
+<p><code>semi_join()</code> e <code>anti_join()</code> si scrivono come gli altri join, ma hanno una funzione diversa: non combinano le colonne dei due dataframe aggiungendo nuove variabili al dataframe di sinistra, ma selezionano le righe del dataframe di sinistra in base all’esistenza di una corrispondenza nel dataframe di destra.</p>
+<p>Per questo motivo vengono chiamati <em>filter joins</em>: si comportano in modo simile a un <code>filter()</code>, perché restituiscono un sottoinsieme delle righe del dataframe di sinistra.</p>
 <ul>
-<li><code>semi_join()</code> tiene le righe che trovano un partner;</li>
-<li><code>anti_join()</code> tiene le righe che <strong>non</strong> lo trovano.</li>
+<li><code>semi_join()</code> mantiene le righe del dataframe di sinistra che trovano almeno una corrispondenza nel dataframe di destra.<br>
+</li>
+<li><code>anti_join()</code> mantiene le righe del dataframe di sinistra che non trovano alcuna corrispondenza nel dataframe di destra.</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>DATI_SINISTRA <span class="sc">%&gt;%</span></span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">semi_join</span>(DATI_DESTRA, <span class="at">by =</span> <span class="st">"CHIAVE"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>DATI_SINISTRA <span class="sc">%&gt;%</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">semi_join</span>(DATI_DESTRA, <span class="at">by =</span> <span class="st">"CHIAVE"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Servono soprattutto per i controlli. Usali nell’area di prova per rispondere a queste domande:</p>
 <ul>
@@ -1142,7 +1192,7 @@ In uno studio di coorte, quale join userai quasi sempre per aggiungere informazi
 <p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
 </summary>
 <p><br></p>
-<p>La chiave ha lo stesso nome nelle due tabelle: basta <code>by = "id_subject"</code>. Per le prime due domande parti da <code>dati_clean</code>; per la terza parti da <code>richiami</code> e usa <code>anti_join()</code> verso <code>dati_clean</code>.</p>
+<p>La chiave ha lo stesso nome nei due dataframe: basta <code>by = "id_subject"</code>. Per le prime due domande parti da <code>dati_clean</code>; per la terza parti da <code>richiami</code> e usa <code>anti_join()</code> verso <code>dati_clean</code>.</p>
 <p><br></p>
 </details>
 <details>
@@ -1151,23 +1201,23 @@ In uno studio di coorte, quale join userai quasi sempre per aggiungere informazi
 </summary>
 <p><br></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># persone con almeno un richiamo</span></span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">semi_join</span>(richiami, <span class="at">by =</span> <span class="st">"id_subject"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># persone con almeno un richiamo</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">semi_join</span>(richiami, <span class="at">by =</span> <span class="st">"id_subject"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 33359</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># persone senza richiami</span></span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anti_join</span>(richiami, <span class="at">by =</span> <span class="st">"id_subject"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># persone senza richiami</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anti_join</span>(richiami, <span class="at">by =</span> <span class="st">"id_subject"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 14358</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># richiami di persone che non esistono in dati_clean</span></span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>richiami <span class="sc">%&gt;%</span></span>
-<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anti_join</span>(dati_clean, <span class="at">by =</span> <span class="st">"id_subject"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># richiami di persone che non esistono in dati_clean</span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>richiami <span class="sc">%&gt;%</span></span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anti_join</span>(dati_clean, <span class="at">by =</span> <span class="st">"id_subject"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  id_subject       dose  data_dose
 1     S50017 richiamo_1 2021-10-04
@@ -1187,8 +1237,8 @@ In uno studio di coorte, quale join userai quasi sempre per aggiungere informazi
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Hai trovato 3 richiami di persone che non esistono. Che cosa succede a queste righe in un <code>left_join()</code> che parte da <code>dati_clean</code>?
-<div id="radio_TSEMCADNMD" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_TSEMCADNMD" value="answer"> <span>Spariscono senza nessun avviso, perché non hanno un partner in dati_clean</span></label><label><input type="radio" autocomplete="off" name="radio_TSEMCADNMD" value=""> <span>Compaiono in fondo al risultato con le variabili di dati_clean vuote</span></label><label><input type="radio" autocomplete="off" name="radio_TSEMCADNMD" value=""> <span>R si ferma con un errore</span></label><label><input type="radio" autocomplete="off" name="radio_TSEMCADNMD" value=""> <span>Vengono abbinate alla persona con l'id più simile</span></label>
+<div id="radio_LSYELRDHVE" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_LSYELRDHVE" value="answer"> <span>Spariscono senza nessun avviso, perché non hanno un partner in dati_clean</span></label><label><input type="radio" autocomplete="off" name="radio_LSYELRDHVE" value=""> <span>Compaiono in fondo al risultato con le variabili di dati_clean vuote</span></label><label><input type="radio" autocomplete="off" name="radio_LSYELRDHVE" value=""> <span>R si ferma con un errore</span></label><label><input type="radio" autocomplete="off" name="radio_LSYELRDHVE" value=""> <span>Vengono abbinate alla persona con l'id più simile</span></label>
 </div>
 </div>
 </div>
@@ -1228,9 +1278,9 @@ Hai trovato 3 richiami di persone che non esistono. Che cosa succede a queste ri
 </summary>
 <p><br></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>richiami <span class="sc">%&gt;%</span></span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(id_subject) <span class="sc">%&gt;%</span></span>
-<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(n, <span class="at">name =</span> <span class="st">"persone"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>richiami <span class="sc">%&gt;%</span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(id_subject) <span class="sc">%&gt;%</span></span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(n, <span class="at">name =</span> <span class="st">"persone"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  n persone
 1 1   19995
@@ -1250,13 +1300,13 @@ Hai trovato 3 richiami di persone che non esistono. Che cosa succede a queste ri
 </summary>
 <p><br></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(dati_clean)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(dati_clean)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 47717</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
-<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(richiami, <span class="at">by =</span> <span class="st">"id_subject"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(richiami, <span class="at">by =</span> <span class="st">"id_subject"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 61084</code></pre>
 </div>
@@ -1273,8 +1323,8 @@ Hai trovato 3 richiami di persone che non esistono. Che cosa succede a queste ri
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Il risultato ha 61.084 righe invece di 47.717. Perché?
-<div id="radio_QBMNWKSZOD" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_QBMNWKSZOD" value="answer"> <span>Le persone con due richiami compaiono due volte, una per ogni richiamo</span></label><label><input type="radio" autocomplete="off" name="radio_QBMNWKSZOD" value=""> <span>left_join() ha aggiunto i 3 richiami di persone inesistenti</span></label><label><input type="radio" autocomplete="off" name="radio_QBMNWKSZOD" value=""> <span>left_join() ha aggiunto le regioni E ed F</span></label><label><input type="radio" autocomplete="off" name="radio_QBMNWKSZOD" value=""> <span>Ci sono persone duplicate in dati_clean</span></label>
+<div id="radio_YBDQELKQCH" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_YBDQELKQCH" value="answer"> <span>Le persone con due richiami compaiono due volte, una per ogni richiamo</span></label><label><input type="radio" autocomplete="off" name="radio_YBDQELKQCH" value=""> <span>left_join() ha aggiunto i 3 richiami di persone inesistenti</span></label><label><input type="radio" autocomplete="off" name="radio_YBDQELKQCH" value=""> <span>left_join() ha aggiunto le regioni E ed F</span></label><label><input type="radio" autocomplete="off" name="radio_YBDQELKQCH" value=""> <span>Ci sono persone duplicate in dati_clean</span></label>
 </div>
 </div>
 </div>
@@ -1290,9 +1340,9 @@ Il risultato ha 61.084 righe invece di 47.717. Perché?
 </summary>
 <p><br></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
-<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(richiami, <span class="at">by =</span> <span class="st">"id_subject"</span>, <span class="at">relationship =</span> <span class="st">"one-to-one"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(richiami, <span class="at">by =</span> <span class="st">"id_subject"</span>, <span class="at">relationship =</span> <span class="st">"one-to-one"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `left_join()`:
 ! Each row in `x` must match at most 1 row in `y`.
@@ -1313,7 +1363,7 @@ Il risultato ha 61.084 righe invece di 47.717. Perché?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Se la chiave è duplicata nella tabella di destra, <code>left_join()</code> ripete la riga di sinistra per ogni partner, <strong>senza avvisare</strong>: contando poi le righe conteresti più persone di quelle che hai. Se la chiave è duplicata in <strong>entrambe</strong> le tabelle (relazione “molti a molti”, per esempio unendo per <code>group</code> invece che per <code>id_subject</code>), <code>{dplyr}</code> dà un avviso: <code>Detected an unexpected many-to-many relationship</code>. Quasi sempre vuol dire che hai scelto la chiave sbagliata. In ogni caso, dopo un join controlla sempre il numero di righe.</p>
+<p>Se la chiave è duplicata nel dataframe di destra, <code>left_join()</code> ripete la riga di sinistra per ogni partner, <strong>senza avvisare</strong>: contando poi le righe conteresti più persone di quelle che hai. Se la chiave è duplicata in <strong>entrambi</strong> i dataframe (relazione “molti a molti”, per esempio unendo per <code>group</code> invece che per <code>id_subject</code>), <code>{dplyr}</code> dà un avviso: <code>Detected an unexpected many-to-many relationship</code>. Quasi sempre vuol dire che hai scelto la chiave sbagliata. In ogni caso, dopo un join controlla sempre il numero di righe.</p>
 </div>
 </div>
 </section>
@@ -1325,14 +1375,14 @@ Il risultato ha 61.084 righe invece di 47.717. Perché?
 <h3 class="anchored" data-anchor-id="come-funziona-pivot_wider">Come funziona <code>pivot_wider()</code></h3>
 <p>Gli stessi dati possono avere due forme. Nel formato <strong>lungo</strong> ogni combinazione ha la sua riga; nel formato <strong>largo</strong> una delle variabili si “allarga” in più colonne. <code>pivot_wider()</code> del pacchetto <code>{tidyr}</code> porta i dati da lungo a largo. Servono due argomenti: <code>names_from</code>, la variabile da cui prendere i nomi delle nuove colonne, e <code>values_from</code>, la variabile da cui prendere i valori delle celle:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>DATI <span class="sc">%&gt;%</span></span>
-<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from  =</span> VARIABILE_NOMI,</span>
-<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> VARIABILE_VALORI)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>DATI <span class="sc">%&gt;%</span></span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from  =</span> VARIABILE_NOMI,</span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> VARIABILE_VALORI)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="una-tabella-di-conteggi" class="level3">
-<h3 class="anchored" data-anchor-id="una-tabella-di-conteggi">Una tabella di conteggi</h3>
-<p>Nell’area di prova conta le persone per sesso e indice di Charlson con <code>count()</code> e salva il risultato in <code>conteggi</code>. È una tabella in formato lungo: una riga per ogni combinazione. Poi portala in formato largo, con una riga per sesso e una colonna per ogni classe di <code>chrls_index</code>.</p>
+<section id="un-dataframe-di-conteggi" class="level3">
+<h3 class="anchored" data-anchor-id="un-dataframe-di-conteggi">Un dataframe di conteggi</h3>
+<p>Nell’area di prova conta le persone per sesso e indice di Charlson con <code>count()</code> e salva il risultato in <code>conteggi</code>. È un dataframe in formato lungo: una riga per ogni combinazione. Poi portalo in formato largo, con una riga per sesso e una colonna per ogni classe di <code>chrls_index</code>.</p>
 <details>
 <summary style="text-decoration: underline; color: darkgreen;">
 <p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
@@ -1347,10 +1397,10 @@ Il risultato ha 61.084 righe invece di 47.717. Perché?
 </summary>
 <p><br></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>conteggi <span class="ot">&lt;-</span> dati_clean <span class="sc">%&gt;%</span></span>
-<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(sex, chrls_index)</span>
-<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>conteggi</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>conteggi <span class="ot">&lt;-</span> dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(sex, chrls_index)</span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a>conteggi</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    sex chrls_index     n
 1     F           0  9339
@@ -1364,9 +1414,9 @@ Il risultato ha 61.084 righe invece di 47.717. Perché?
 9  &lt;NA&gt;           0     1
 10 &lt;NA&gt;         1-2     1</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>conteggi <span class="sc">%&gt;%</span></span>
-<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from  =</span> chrls_index,</span>
-<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> n)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>conteggi <span class="sc">%&gt;%</span></span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from  =</span> chrls_index,</span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> n)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 5
   sex     `0` `1-2` `3-4`  `5+`
@@ -1389,8 +1439,8 @@ Il risultato ha 61.084 righe invece di 47.717. Perché?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Nella riga con <code>sex</code> NA alcune celle sono NA. Che cosa significano?
-<div id="radio_EEKABPAHOL" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_EEKABPAHOL" value=""> <span>Sono dati persi durante il pivot</span></label><label><input type="radio" autocomplete="off" name="radio_EEKABPAHOL" value="answer"> <span>Sono combinazioni che non esistono: nessuna persona con sesso mancante ha quell'indice di Charlson</span></label><label><input type="radio" autocomplete="off" name="radio_EEKABPAHOL" value=""> <span>Sono persone con indice di Charlson mancante</span></label><label><input type="radio" autocomplete="off" name="radio_EEKABPAHOL" value=""> <span>pivot_wider() mette sempre NA nell'ultima riga</span></label>
+<div id="radio_QTHLIQSZUB" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_QTHLIQSZUB" value=""> <span>Sono dati persi durante il pivot</span></label><label><input type="radio" autocomplete="off" name="radio_QTHLIQSZUB" value="answer"> <span>Sono combinazioni che non esistono: nessuna persona con sesso mancante ha quell'indice di Charlson</span></label><label><input type="radio" autocomplete="off" name="radio_QTHLIQSZUB" value=""> <span>Sono persone con indice di Charlson mancante</span></label><label><input type="radio" autocomplete="off" name="radio_QTHLIQSZUB" value=""> <span>pivot_wider() mette sempre NA nell'ultima riga</span></label>
 </div>
 </div>
 </div>
@@ -1406,10 +1456,10 @@ Nella riga con <code>sex</code> NA alcune celle sono NA. Che cosa significano?
 </summary>
 <p><br></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>conteggi <span class="sc">%&gt;%</span></span>
-<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from  =</span> chrls_index,</span>
-<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> n,</span>
-<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_fill =</span> <span class="dv">0</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>conteggi <span class="sc">%&gt;%</span></span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from  =</span> chrls_index,</span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> n,</span>
+<span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_fill =</span> <span class="dv">0</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 5
   sex     `0` `1-2` `3-4`  `5+`
@@ -1418,9 +1468,9 @@ Nella riga con <code>sex</code> NA alcune celle sono NA. Che cosa significano?
 2 M     24083  9201  1230   113
 3 &lt;NA&gt;      1     1     0     0</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lo stesso contenuto, con tabyl() del Modulo 4</span></span>
-<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
-<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(sex, chrls_index)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lo stesso contenuto, con tabyl() del Modulo 4</span></span>
+<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(sex, chrls_index)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  sex     0  1-2  3-4  5+
     F  9339 3479  255  15
@@ -1466,13 +1516,13 @@ Nella riga con <code>sex</code> NA alcune celle sono NA. Che cosa significano?
 </summary>
 <p><br></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Richiami: una riga per persona ------------------------------------------</span></span>
-<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>richiami_largo <span class="ot">&lt;-</span> richiami <span class="sc">%&gt;%</span></span>
-<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from  =</span> dose,</span>
-<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> data_dose)</span>
-<span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-6"><a href="#cb79-6" aria-hidden="true" tabindex="-1"></a>dati_richiami <span class="ot">&lt;-</span> dati_clean <span class="sc">%&gt;%</span></span>
-<span id="cb79-7"><a href="#cb79-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(richiami_largo, <span class="at">by =</span> <span class="st">"id_subject"</span>, <span class="at">relationship =</span> <span class="st">"one-to-one"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Richiami: una riga per persona ------------------------------------------</span></span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a>richiami_largo <span class="ot">&lt;-</span> richiami <span class="sc">%&gt;%</span></span>
+<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from  =</span> dose,</span>
+<span id="cb84-4"><a href="#cb84-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> data_dose)</span>
+<span id="cb84-5"><a href="#cb84-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-6"><a href="#cb84-6" aria-hidden="true" tabindex="-1"></a>dati_richiami <span class="ot">&lt;-</span> dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb84-7"><a href="#cb84-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(richiami_largo, <span class="at">by =</span> <span class="st">"id_subject"</span>, <span class="at">relationship =</span> <span class="st">"one-to-one"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><br></p>
 </details>
@@ -1483,17 +1533,17 @@ Nella riga con <code>sex</code> NA alcune celle sono NA. Che cosa significano?
 </summary>
 <p><br></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(richiami_largo)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(richiami_largo)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 33362</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(dati_richiami)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(dati_richiami)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 47717</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>dati_richiami <span class="sc">%&gt;%</span></span>
-<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id_subject, hiv_status, richiamo_1, richiamo_2) <span class="sc">%&gt;%</span></span>
-<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>dati_richiami <span class="sc">%&gt;%</span></span>
+<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id_subject, hiv_status, richiamo_1, richiamo_2) <span class="sc">%&gt;%</span></span>
+<span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  id_subject hiv_status richiamo_1 richiamo_2
 1     S26808          1       &lt;NA&gt;       &lt;NA&gt;
@@ -1516,8 +1566,8 @@ Nella riga con <code>sex</code> NA alcune celle sono NA. Che cosa significano?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Quante righe ha <code>dati_richiami</code>?
-<div id="radio_KENQOPBKQE" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_KENQOPBKQE" value=""> <span>Meno righe di dati_clean, perché chi non ha richiami viene tolto</span></label><label><input type="radio" autocomplete="off" name="radio_KENQOPBKQE" value=""> <span>Più righe di dati_clean, perché chi ha due richiami compare due volte</span></label><label><input type="radio" autocomplete="off" name="radio_KENQOPBKQE" value="answer"> <span>Lo stesso numero di righe di dati_clean: una per persona</span></label>
+<div id="radio_DRGHZPXGYY" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_DRGHZPXGYY" value=""> <span>Meno righe di dati_clean, perché chi non ha richiami viene tolto</span></label><label><input type="radio" autocomplete="off" name="radio_DRGHZPXGYY" value=""> <span>Più righe di dati_clean, perché chi ha due richiami compare due volte</span></label><label><input type="radio" autocomplete="off" name="radio_DRGHZPXGYY" value="answer"> <span>Lo stesso numero di righe di dati_clean: una per persona</span></label>
 </div>
 </div>
 </div>
@@ -1532,8 +1582,8 @@ Quante righe ha <code>dati_richiami</code>?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 In <code>dati_richiami</code> molte persone hanno NA in <code>richiamo_2</code>. Che cosa significa?
-<div id="radio_NRFHKPXWIJ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_NRFHKPXWIJ" value=""> <span>Che la data del secondo richiamo è stata persa</span></label><label><input type="radio" autocomplete="off" name="radio_NRFHKPXWIJ" value="answer"> <span>Che la persona ha ricevuto un solo richiamo, o nessuno</span></label><label><input type="radio" autocomplete="off" name="radio_NRFHKPXWIJ" value=""> <span>Che il secondo richiamo è stato registrato in un'altra tabella</span></label><label><input type="radio" autocomplete="off" name="radio_NRFHKPXWIJ" value=""> <span>Che pivot_wider() non ha funzionato</span></label>
+<div id="radio_DXFTHRUMTI" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_DXFTHRUMTI" value=""> <span>Che la data del secondo richiamo è stata persa</span></label><label><input type="radio" autocomplete="off" name="radio_DXFTHRUMTI" value="answer"> <span>Che la persona ha ricevuto un solo richiamo, o nessuno</span></label><label><input type="radio" autocomplete="off" name="radio_DXFTHRUMTI" value=""> <span>Che il secondo richiamo è stato registrato in un altro dataframe</span></label><label><input type="radio" autocomplete="off" name="radio_DXFTHRUMTI" value=""> <span>Che pivot_wider() non ha funzionato</span></label>
 </div>
 </div>
 </div>
@@ -1548,10 +1598,10 @@ In <code>dati_richiami</code> molte persone hanno NA in <code>richiamo_2</code>.
 <h3 class="anchored" data-anchor-id="come-funziona-pivot_longer">Come funziona <code>pivot_longer()</code></h3>
 <p><code>pivot_longer()</code> del pacchetto <code>{tidyr}</code> fa il contrario di <code>pivot_wider()</code>: impila più variabili in due sole variabili, una con il nome della variabile di partenza e una con il suo valore. Servono tre argomenti: <code>cols</code>, le variabili da impilare; <code>names_to</code>, il nome della variabile che conterrà i loro nomi; <code>values_to</code>, il nome della variabile che conterrà i valori:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>DATI <span class="sc">%&gt;%</span></span>
-<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols      =</span> VARIABILI_DA_IMPILARE,</span>
-<span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to  =</span> <span class="st">"NOME_PER_I_NOMI"</span>,</span>
-<span id="cb86-4"><a href="#cb86-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"NOME_PER_I_VALORI"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>DATI <span class="sc">%&gt;%</span></span>
+<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols      =</span> VARIABILI_DA_IMPILARE,</span>
+<span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to  =</span> <span class="st">"NOME_PER_I_NOMI"</span>,</span>
+<span id="cb91-4"><a href="#cb91-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"NOME_PER_I_VALORI"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="il-viaggio-di-ritorno" class="level3">
@@ -1571,20 +1621,20 @@ In <code>dati_richiami</code> molte persone hanno NA in <code>richiamo_2</code>.
 </summary>
 <p><br></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>richiami_lungo <span class="ot">&lt;-</span> richiami_largo <span class="sc">%&gt;%</span></span>
-<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols      =</span> <span class="fu">starts_with</span>(<span class="st">"richiamo"</span>),</span>
-<span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to  =</span> <span class="st">"dose"</span>,</span>
-<span id="cb87-4"><a href="#cb87-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"data_dose"</span>)</span>
-<span id="cb87-5"><a href="#cb87-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb87-6"><a href="#cb87-6" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(richiami_lungo)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>richiami_lungo <span class="ot">&lt;-</span> richiami_largo <span class="sc">%&gt;%</span></span>
+<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols      =</span> <span class="fu">starts_with</span>(<span class="st">"richiamo"</span>),</span>
+<span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to  =</span> <span class="st">"dose"</span>,</span>
+<span id="cb92-4"><a href="#cb92-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"data_dose"</span>)</span>
+<span id="cb92-5"><a href="#cb92-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-6"><a href="#cb92-6" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(richiami_lungo)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 66724</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(richiami)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(richiami)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 46729</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(richiami_lungo)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(richiami_lungo)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 3
   id_subject dose       data_dose 
@@ -1596,8 +1646,8 @@ In <code>dati_richiami</code> molte persone hanno NA in <code>richiamo_2</code>.
 5 S0004      richiamo_1 2021-10-13
 6 S0004      richiamo_2 NA        </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>richiami_lungo <span class="sc">%&gt;%</span></span>
-<span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(dose)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>richiami_lungo <span class="sc">%&gt;%</span></span>
+<span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(dose)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
   dose           n
@@ -1618,8 +1668,8 @@ In <code>dati_richiami</code> molte persone hanno NA in <code>richiamo_2</code>.
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 <code>richiami_lungo</code> ha 66.724 righe, <code>richiami</code> solo 46.729. Perché?
-<div id="radio_YJOXRZTTHV" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_YJOXRZTTHV" value=""> <span>Perché pivot_longer() ha duplicato alcune persone per errore</span></label><label><input type="radio" autocomplete="off" name="radio_YJOXRZTTHV" value="answer"> <span>Perché chi ha ricevuto un solo richiamo ha ora anche una riga richiamo_2 con la data mancante</span></label><label><input type="radio" autocomplete="off" name="radio_YJOXRZTTHV" value=""> <span>Perché richiami_largo contiene anche le persone senza richiami</span></label><label><input type="radio" autocomplete="off" name="radio_YJOXRZTTHV" value=""> <span>Perché pivot_longer() aggiunge sempre una riga per ogni NA del data frame</span></label>
+<div id="radio_QMUFJAFUJJ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_QMUFJAFUJJ" value=""> <span>Perché pivot_longer() ha duplicato alcune persone per errore</span></label><label><input type="radio" autocomplete="off" name="radio_QMUFJAFUJJ" value="answer"> <span>Perché chi ha ricevuto un solo richiamo ha ora anche una riga richiamo_2 con la data mancante</span></label><label><input type="radio" autocomplete="off" name="radio_QMUFJAFUJJ" value=""> <span>Perché richiami_largo contiene anche le persone senza richiami</span></label><label><input type="radio" autocomplete="off" name="radio_QMUFJAFUJJ" value=""> <span>Perché pivot_longer() aggiunge sempre una riga per ogni NA del dataframe</span></label>
 </div>
 </div>
 </div>
@@ -1635,22 +1685,22 @@ In <code>dati_richiami</code> molte persone hanno NA in <code>richiamo_2</code>.
 </summary>
 <p><br></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>richiami_ritorno <span class="ot">&lt;-</span> richiami_largo <span class="sc">%&gt;%</span></span>
-<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols           =</span> <span class="fu">starts_with</span>(<span class="st">"richiamo"</span>),</span>
-<span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to       =</span> <span class="st">"dose"</span>,</span>
-<span id="cb95-4"><a href="#cb95-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to      =</span> <span class="st">"data_dose"</span>,</span>
-<span id="cb95-5"><a href="#cb95-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_drop_na =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb95-6"><a href="#cb95-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb95-7"><a href="#cb95-7" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(richiami_ritorno)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>richiami_ritorno <span class="ot">&lt;-</span> richiami_largo <span class="sc">%&gt;%</span></span>
+<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols           =</span> <span class="fu">starts_with</span>(<span class="st">"richiamo"</span>),</span>
+<span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to       =</span> <span class="st">"dose"</span>,</span>
+<span id="cb100-4"><a href="#cb100-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to      =</span> <span class="st">"data_dose"</span>,</span>
+<span id="cb100-5"><a href="#cb100-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_drop_na =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb100-6"><a href="#cb100-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-7"><a href="#cb100-7" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(richiami_ritorno)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 46729</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(richiami)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(richiami)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 46729</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>richiami_ritorno <span class="sc">%&gt;%</span></span>
-<span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(dose)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a>richiami_ritorno <span class="sc">%&gt;%</span></span>
+<span id="cb104-2"><a href="#cb104-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(dose)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
   dose           n
@@ -1658,8 +1708,8 @@ In <code>dati_richiami</code> molte persone hanno NA in <code>richiamo_2</code>.
 1 richiamo_1 33362
 2 richiamo_2 13367</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a>richiami <span class="sc">%&gt;%</span></span>
-<span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(dose)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a>richiami <span class="sc">%&gt;%</span></span>
+<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(dose)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        dose     n
 1 richiamo_1 33362
@@ -1692,8 +1742,8 @@ In <code>dati_richiami</code> molte persone hanno NA in <code>richiamo_2</code>.
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Vuoi contare quante dosi di ciascun richiamo sono state somministrate. Quale formato è più comodo?
-<div id="radio_NORXQSCHEF" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_NORXQSCHEF" value=""> <span>Il formato largo, con una riga per persona</span></label><label><input type="radio" autocomplete="off" name="radio_NORXQSCHEF" value="answer"> <span>Il formato lungo, con una riga per dose: basta contare le righe per dose</span></label><label><input type="radio" autocomplete="off" name="radio_NORXQSCHEF" value=""> <span>È indifferente</span></label>
+<div id="radio_BECXOZKHZV" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_BECXOZKHZV" value=""> <span>Il formato largo, con una riga per persona</span></label><label><input type="radio" autocomplete="off" name="radio_BECXOZKHZV" value="answer"> <span>Il formato lungo, con una riga per dose: basta contare le righe per dose</span></label><label><input type="radio" autocomplete="off" name="radio_BECXOZKHZV" value=""> <span>È indifferente</span></label>
 </div>
 </div>
 </div>
@@ -1705,20 +1755,20 @@ Vuoi contare quante dosi di ciascun richiamo sono state somministrate. Quale for
 <section id="copertura-dei-richiami-per-regione-e-stato-hiv" class="level2">
 <h2 class="anchored" data-anchor-id="copertura-dei-richiami-per-regione-e-stato-hiv">Copertura dei richiami per regione e stato HIV</h2>
 <!-- Tempo stimato: 12 minuti -->
-<!-- Tabella pensata per l'esercitazione del modulo 9 (report con
+<!-- Dataframe pensato per l'esercitazione del modulo 9 (report con
      Quarto): il collega la riprende dal file richiami_regione_hiv.rds. -->
-<p>Ora metti insieme quello che hai imparato. Costruisci un’ultima tabella, <code>richiami_regione_hiv</code>, con una riga per regione e, per ciascuna:</p>
+<p>Ora metti insieme quello che hai imparato. Costruisci un ultimo dataframe, <code>richiami_regione_hiv</code>, con una riga per regione e, per ciascuna:</p>
 <ul>
 <li>la percentuale di persone con almeno un richiamo tra le persone senza HIV (<code>hiv_0</code>) e con HIV (<code>hiv_1</code>), arrotondata a una cifra decimale;</li>
 <li>l’area geografica e la popolazione della regione.</li>
 </ul>
-<p>Questa tabella la teniamo. Nello script, sopra l’area di prova, crea la sezione “Copertura dei richiami per regione e stato HIV” (<strong>Ctrl+Shift+R</strong>). Parti da <code>dati_richiami</code> e costruisci la catena un passaggio alla volta, eseguendo il codice dopo ogni aggiunta:</p>
+<p>Questo dataframe lo teniamo. Nello script, sopra l’area di prova, crea la sezione “Copertura dei richiami per regione e stato HIV” (<strong>Ctrl+Shift+R</strong>). Parti da <code>dati_richiami</code> e costruisci la catena un passaggio alla volta, eseguendo il codice dopo ogni aggiunta:</p>
 <ol type="1">
 <li>calcola la percentuale per regione e stato HIV con <code>group_by()</code> e <code>summarise()</code>;</li>
-<li>porta la tabella in formato largo con <code>pivot_wider()</code>, con una colonna per stato HIV;</li>
+<li>porta il dataframe in formato largo con <code>pivot_wider()</code>, con una colonna per stato HIV;</li>
 <li>aggiungi area e popolazione con un <code>left_join()</code> con <code>regioni</code>.</li>
 </ol>
-<p>Infine salva la tabella nella cartella <code>output</code>, sia in formato RDS (<code>richiami_regione_hiv.rds</code>) sia in Excel (<code>richiami_regione_hiv.xlsx</code>).</p>
+<p>Infine salva il dataframe nella cartella <code>output</code>, sia in formato RDS (<code>richiami_regione_hiv.rds</code>) sia in Excel (<code>richiami_regione_hiv.xlsx</code>).</p>
 <details>
 <summary style="text-decoration: underline; color: darkgreen;">
 <p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
@@ -1737,17 +1787,17 @@ Vuoi contare quante dosi di ciascun richiamo sono state somministrate. Quale for
 </summary>
 <p><br></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Copertura dei richiami per regione e stato HIV --------------------------</span></span>
-<span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a>richiami_regione_hiv <span class="ot">&lt;-</span> dati_richiami <span class="sc">%&gt;%</span></span>
-<span id="cb103-3"><a href="#cb103-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(region, hiv_status) <span class="sc">%&gt;%</span></span>
-<span id="cb103-4"><a href="#cb103-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">perc_richiamo =</span> <span class="fu">round</span>(<span class="fu">mean</span>(<span class="sc">!</span><span class="fu">is.na</span>(richiamo_1)) <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">1</span>),</span>
-<span id="cb103-5"><a href="#cb103-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb103-6"><a href="#cb103-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from   =</span> hiv_status,</span>
-<span id="cb103-7"><a href="#cb103-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_prefix =</span> <span class="st">"hiv_"</span>,</span>
-<span id="cb103-8"><a href="#cb103-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from  =</span> perc_richiamo) <span class="sc">%&gt;%</span></span>
-<span id="cb103-9"><a href="#cb103-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(regioni, <span class="at">by =</span> <span class="fu">join_by</span>(region <span class="sc">==</span> codice_regione))</span>
-<span id="cb103-10"><a href="#cb103-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-11"><a href="#cb103-11" aria-hidden="true" tabindex="-1"></a>richiami_regione_hiv</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Copertura dei richiami per regione e stato HIV --------------------------</span></span>
+<span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a>richiami_regione_hiv <span class="ot">&lt;-</span> dati_richiami <span class="sc">%&gt;%</span></span>
+<span id="cb108-3"><a href="#cb108-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(region, hiv_status) <span class="sc">%&gt;%</span></span>
+<span id="cb108-4"><a href="#cb108-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">perc_richiamo =</span> <span class="fu">round</span>(<span class="fu">mean</span>(<span class="sc">!</span><span class="fu">is.na</span>(richiamo_1)) <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">1</span>),</span>
+<span id="cb108-5"><a href="#cb108-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb108-6"><a href="#cb108-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from   =</span> hiv_status,</span>
+<span id="cb108-7"><a href="#cb108-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_prefix =</span> <span class="st">"hiv_"</span>,</span>
+<span id="cb108-8"><a href="#cb108-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from  =</span> perc_richiamo) <span class="sc">%&gt;%</span></span>
+<span id="cb108-9"><a href="#cb108-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(regioni, <span class="at">by =</span> <span class="fu">join_by</span>(region <span class="sc">==</span> codice_regione))</span>
+<span id="cb108-10"><a href="#cb108-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb108-11"><a href="#cb108-11" aria-hidden="true" tabindex="-1"></a>richiami_regione_hiv</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 5
   region hiv_0 hiv_1 area   popolazione
@@ -1759,8 +1809,8 @@ Vuoi contare quante dosi di ciascun richiamo sono state somministrate. Quale for
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb105"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(richiami_regione_hiv, <span class="st">"output/richiami_regione_hiv.rds"</span>)</span>
-<span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(richiami_regione_hiv, <span class="st">"output/richiami_regione_hiv.xlsx"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(richiami_regione_hiv, <span class="st">"output/richiami_regione_hiv.rds"</span>)</span>
+<span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(richiami_regione_hiv, <span class="st">"output/richiami_regione_hiv.xlsx"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><br></p>
 </details>
@@ -1774,8 +1824,8 @@ Vuoi contare quante dosi di ciascun richiamo sono state somministrate. Quale for
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 In quale regione la percentuale di persone senza HIV con almeno un richiamo è più bassa?
-<div id="radio_EUQEUCFHPS" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_EUQEUCFHPS" value=""> <span>A</span></label><label><input type="radio" autocomplete="off" name="radio_EUQEUCFHPS" value=""> <span>B</span></label><label><input type="radio" autocomplete="off" name="radio_EUQEUCFHPS" value=""> <span>C</span></label><label><input type="radio" autocomplete="off" name="radio_EUQEUCFHPS" value="answer"> <span>D</span></label>
+<div id="radio_IVFHBSAUTT" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_IVFHBSAUTT" value=""> <span>A</span></label><label><input type="radio" autocomplete="off" name="radio_IVFHBSAUTT" value=""> <span>B</span></label><label><input type="radio" autocomplete="off" name="radio_IVFHBSAUTT" value=""> <span>C</span></label><label><input type="radio" autocomplete="off" name="radio_IVFHBSAUTT" value="answer"> <span>D</span></label>
 </div>
 </div>
 </div>
@@ -1792,8 +1842,8 @@ In quale regione la percentuale di persone senza HIV con almeno un richiamo è p
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Confronta <code>hiv_0</code> e <code>hiv_1</code> nelle quattro regioni. Che cosa noti?
-<div id="radio_WTBDNKSFMM" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_WTBDNKSFMM" value=""> <span>Solo in alcune regioni la percentuale è più alta con HIV</span></label><label><input type="radio" autocomplete="off" name="radio_WTBDNKSFMM" value="answer"> <span>In tutte le regioni la percentuale è più alta con HIV, con una differenza simile</span></label><label><input type="radio" autocomplete="off" name="radio_WTBDNKSFMM" value=""> <span>In tutte le regioni la percentuale è più alta senza HIV</span></label><label><input type="radio" autocomplete="off" name="radio_WTBDNKSFMM" value=""> <span>La differenza cambia molto da una regione all'altra</span></label>
+<div id="radio_EOODKRJSJO" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_EOODKRJSJO" value=""> <span>Solo in alcune regioni la percentuale è più alta con HIV</span></label><label><input type="radio" autocomplete="off" name="radio_EOODKRJSJO" value="answer"> <span>In tutte le regioni la percentuale è più alta con HIV, con una differenza simile</span></label><label><input type="radio" autocomplete="off" name="radio_EOODKRJSJO" value=""> <span>In tutte le regioni la percentuale è più alta senza HIV</span></label><label><input type="radio" autocomplete="off" name="radio_EOODKRJSJO" value=""> <span>La differenza cambia molto da una regione all'altra</span></label>
 </div>
 </div>
 </div>
@@ -1810,62 +1860,62 @@ Confronta <code>hiv_0</code> e <code>hiv_1</code> nelle quattro regioni. Che cos
 </summary>
 <p><br></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Corso introduttivo a R</span></span>
-<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a><span class="do">### Obiettivo: trasformazione e integrazione dei dati (Modulo 7)</span></span>
-<span id="cb106-3"><a href="#cb106-3" aria-hidden="true" tabindex="-1"></a><span class="do">### Autore: Marco Rossi</span></span>
-<span id="cb106-4"><a href="#cb106-4" aria-hidden="true" tabindex="-1"></a><span class="do">### Data di creazione: 3 dicembre 2026</span></span>
-<span id="cb106-5"><a href="#cb106-5" aria-hidden="true" tabindex="-1"></a><span class="do">### Contatto: marco.rossi@iss.it</span></span>
-<span id="cb106-6"><a href="#cb106-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb106-7"><a href="#cb106-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb106-8"><a href="#cb106-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Caricamento pacchetti ---------------------------------------------------</span></span>
-<span id="cb106-9"><a href="#cb106-9" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(</span>
-<span id="cb106-10"><a href="#cb106-10" aria-hidden="true" tabindex="-1"></a>  rio,       <span class="co"># importazione ed esportazione dei dati</span></span>
-<span id="cb106-11"><a href="#cb106-11" aria-hidden="true" tabindex="-1"></a>  skimr,     <span class="co"># panoramica dei dati</span></span>
-<span id="cb106-12"><a href="#cb106-12" aria-hidden="true" tabindex="-1"></a>  janitor,   <span class="co"># pulizia dei dati e tabelle</span></span>
-<span id="cb106-13"><a href="#cb106-13" aria-hidden="true" tabindex="-1"></a>  lubridate, <span class="co"># lavorare con le date</span></span>
-<span id="cb106-14"><a href="#cb106-14" aria-hidden="true" tabindex="-1"></a>  epikit,    <span class="co"># classi di età</span></span>
-<span id="cb106-15"><a href="#cb106-15" aria-hidden="true" tabindex="-1"></a>  gtsummary, <span class="co"># tabelle descrittive</span></span>
-<span id="cb106-16"><a href="#cb106-16" aria-hidden="true" tabindex="-1"></a>  flextable, <span class="co"># tabelle da presentare</span></span>
-<span id="cb106-17"><a href="#cb106-17" aria-hidden="true" tabindex="-1"></a>  tidyverse  <span class="co"># gestione e visualizzazione dei dati</span></span>
-<span id="cb106-18"><a href="#cb106-18" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb106-19"><a href="#cb106-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb106-20"><a href="#cb106-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb106-21"><a href="#cb106-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Importazione dati -------------------------------------------------------</span></span>
-<span id="cb106-22"><a href="#cb106-22" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"dati/dati_clean.rds"</span>)</span>
-<span id="cb106-23"><a href="#cb106-23" aria-hidden="true" tabindex="-1"></a>regioni    <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"dati/regioni.rds"</span>)</span>
-<span id="cb106-24"><a href="#cb106-24" aria-hidden="true" tabindex="-1"></a>richiami   <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"dati/richiami.rds"</span>)</span>
-<span id="cb106-25"><a href="#cb106-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb106-26"><a href="#cb106-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb106-27"><a href="#cb106-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Join con le regioni -----------------------------------------------------</span></span>
-<span id="cb106-28"><a href="#cb106-28" aria-hidden="true" tabindex="-1"></a>dati_regioni <span class="ot">&lt;-</span> dati_clean <span class="sc">%&gt;%</span></span>
-<span id="cb106-29"><a href="#cb106-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(regioni, <span class="at">by =</span> <span class="fu">join_by</span>(region <span class="sc">==</span> codice_regione))</span>
-<span id="cb106-30"><a href="#cb106-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb106-31"><a href="#cb106-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb106-32"><a href="#cb106-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Richiami: una riga per persona ------------------------------------------</span></span>
-<span id="cb106-33"><a href="#cb106-33" aria-hidden="true" tabindex="-1"></a>richiami_largo <span class="ot">&lt;-</span> richiami <span class="sc">%&gt;%</span></span>
-<span id="cb106-34"><a href="#cb106-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from  =</span> dose,</span>
-<span id="cb106-35"><a href="#cb106-35" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> data_dose)</span>
-<span id="cb106-36"><a href="#cb106-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb106-37"><a href="#cb106-37" aria-hidden="true" tabindex="-1"></a>dati_richiami <span class="ot">&lt;-</span> dati_clean <span class="sc">%&gt;%</span></span>
-<span id="cb106-38"><a href="#cb106-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(richiami_largo, <span class="at">by =</span> <span class="st">"id_subject"</span>, <span class="at">relationship =</span> <span class="st">"one-to-one"</span>)</span>
-<span id="cb106-39"><a href="#cb106-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb106-40"><a href="#cb106-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb106-41"><a href="#cb106-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Copertura dei richiami per regione e stato HIV --------------------------</span></span>
-<span id="cb106-42"><a href="#cb106-42" aria-hidden="true" tabindex="-1"></a>richiami_regione_hiv <span class="ot">&lt;-</span> dati_richiami <span class="sc">%&gt;%</span></span>
-<span id="cb106-43"><a href="#cb106-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(region, hiv_status) <span class="sc">%&gt;%</span></span>
-<span id="cb106-44"><a href="#cb106-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">perc_richiamo =</span> <span class="fu">round</span>(<span class="fu">mean</span>(<span class="sc">!</span><span class="fu">is.na</span>(richiamo_1)) <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">1</span>),</span>
-<span id="cb106-45"><a href="#cb106-45" aria-hidden="true" tabindex="-1"></a>            <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb106-46"><a href="#cb106-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from   =</span> hiv_status,</span>
-<span id="cb106-47"><a href="#cb106-47" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_prefix =</span> <span class="st">"hiv_"</span>,</span>
-<span id="cb106-48"><a href="#cb106-48" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from  =</span> perc_richiamo) <span class="sc">%&gt;%</span></span>
-<span id="cb106-49"><a href="#cb106-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(regioni, <span class="at">by =</span> <span class="fu">join_by</span>(region <span class="sc">==</span> codice_regione))</span>
-<span id="cb106-50"><a href="#cb106-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb106-51"><a href="#cb106-51" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(richiami_regione_hiv, <span class="st">"output/richiami_regione_hiv.rds"</span>)</span>
-<span id="cb106-52"><a href="#cb106-52" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(richiami_regione_hiv, <span class="st">"output/richiami_regione_hiv.xlsx"</span>)</span>
-<span id="cb106-53"><a href="#cb106-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb106-54"><a href="#cb106-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb106-55"><a href="#cb106-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Area di prova -----------------------------------------------------------</span></span>
-<span id="cb106-56"><a href="#cb106-56" aria-hidden="true" tabindex="-1"></a><span class="co"># (il contenuto può variare)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Corso introduttivo a R</span></span>
+<span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a><span class="do">### Obiettivo: trasformazione e integrazione dei dati (Modulo 7)</span></span>
+<span id="cb111-3"><a href="#cb111-3" aria-hidden="true" tabindex="-1"></a><span class="do">### Autore: Marco Rossi</span></span>
+<span id="cb111-4"><a href="#cb111-4" aria-hidden="true" tabindex="-1"></a><span class="do">### Data di creazione: 3 dicembre 2026</span></span>
+<span id="cb111-5"><a href="#cb111-5" aria-hidden="true" tabindex="-1"></a><span class="do">### Contatto: marco.rossi@iss.it</span></span>
+<span id="cb111-6"><a href="#cb111-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-7"><a href="#cb111-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-8"><a href="#cb111-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Caricamento pacchetti ---------------------------------------------------</span></span>
+<span id="cb111-9"><a href="#cb111-9" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(</span>
+<span id="cb111-10"><a href="#cb111-10" aria-hidden="true" tabindex="-1"></a>  rio,       <span class="co"># importazione ed esportazione dei dati</span></span>
+<span id="cb111-11"><a href="#cb111-11" aria-hidden="true" tabindex="-1"></a>  skimr,     <span class="co"># panoramica dei dati</span></span>
+<span id="cb111-12"><a href="#cb111-12" aria-hidden="true" tabindex="-1"></a>  janitor,   <span class="co"># pulizia dei dati e tabelle</span></span>
+<span id="cb111-13"><a href="#cb111-13" aria-hidden="true" tabindex="-1"></a>  lubridate, <span class="co"># lavorare con le date</span></span>
+<span id="cb111-14"><a href="#cb111-14" aria-hidden="true" tabindex="-1"></a>  epikit,    <span class="co"># classi di età</span></span>
+<span id="cb111-15"><a href="#cb111-15" aria-hidden="true" tabindex="-1"></a>  gtsummary, <span class="co"># tabelle descrittive</span></span>
+<span id="cb111-16"><a href="#cb111-16" aria-hidden="true" tabindex="-1"></a>  flextable, <span class="co"># tabelle da presentare</span></span>
+<span id="cb111-17"><a href="#cb111-17" aria-hidden="true" tabindex="-1"></a>  tidyverse  <span class="co"># gestione e visualizzazione dei dati</span></span>
+<span id="cb111-18"><a href="#cb111-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb111-19"><a href="#cb111-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-20"><a href="#cb111-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-21"><a href="#cb111-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Importazione dati -------------------------------------------------------</span></span>
+<span id="cb111-22"><a href="#cb111-22" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"dati/dati_clean.rds"</span>)</span>
+<span id="cb111-23"><a href="#cb111-23" aria-hidden="true" tabindex="-1"></a>regioni    <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"dati/regioni.rds"</span>)</span>
+<span id="cb111-24"><a href="#cb111-24" aria-hidden="true" tabindex="-1"></a>richiami   <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"dati/richiami.rds"</span>)</span>
+<span id="cb111-25"><a href="#cb111-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-26"><a href="#cb111-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-27"><a href="#cb111-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Join con le regioni -----------------------------------------------------</span></span>
+<span id="cb111-28"><a href="#cb111-28" aria-hidden="true" tabindex="-1"></a>dati_regioni <span class="ot">&lt;-</span> dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb111-29"><a href="#cb111-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(regioni, <span class="at">by =</span> <span class="fu">join_by</span>(region <span class="sc">==</span> codice_regione))</span>
+<span id="cb111-30"><a href="#cb111-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-31"><a href="#cb111-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-32"><a href="#cb111-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Richiami: una riga per persona ------------------------------------------</span></span>
+<span id="cb111-33"><a href="#cb111-33" aria-hidden="true" tabindex="-1"></a>richiami_largo <span class="ot">&lt;-</span> richiami <span class="sc">%&gt;%</span></span>
+<span id="cb111-34"><a href="#cb111-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from  =</span> dose,</span>
+<span id="cb111-35"><a href="#cb111-35" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> data_dose)</span>
+<span id="cb111-36"><a href="#cb111-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-37"><a href="#cb111-37" aria-hidden="true" tabindex="-1"></a>dati_richiami <span class="ot">&lt;-</span> dati_clean <span class="sc">%&gt;%</span></span>
+<span id="cb111-38"><a href="#cb111-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(richiami_largo, <span class="at">by =</span> <span class="st">"id_subject"</span>, <span class="at">relationship =</span> <span class="st">"one-to-one"</span>)</span>
+<span id="cb111-39"><a href="#cb111-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-40"><a href="#cb111-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-41"><a href="#cb111-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Copertura dei richiami per regione e stato HIV --------------------------</span></span>
+<span id="cb111-42"><a href="#cb111-42" aria-hidden="true" tabindex="-1"></a>richiami_regione_hiv <span class="ot">&lt;-</span> dati_richiami <span class="sc">%&gt;%</span></span>
+<span id="cb111-43"><a href="#cb111-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(region, hiv_status) <span class="sc">%&gt;%</span></span>
+<span id="cb111-44"><a href="#cb111-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">perc_richiamo =</span> <span class="fu">round</span>(<span class="fu">mean</span>(<span class="sc">!</span><span class="fu">is.na</span>(richiamo_1)) <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">1</span>),</span>
+<span id="cb111-45"><a href="#cb111-45" aria-hidden="true" tabindex="-1"></a>            <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb111-46"><a href="#cb111-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from   =</span> hiv_status,</span>
+<span id="cb111-47"><a href="#cb111-47" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_prefix =</span> <span class="st">"hiv_"</span>,</span>
+<span id="cb111-48"><a href="#cb111-48" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from  =</span> perc_richiamo) <span class="sc">%&gt;%</span></span>
+<span id="cb111-49"><a href="#cb111-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(regioni, <span class="at">by =</span> <span class="fu">join_by</span>(region <span class="sc">==</span> codice_regione))</span>
+<span id="cb111-50"><a href="#cb111-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-51"><a href="#cb111-51" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(richiami_regione_hiv, <span class="st">"output/richiami_regione_hiv.rds"</span>)</span>
+<span id="cb111-52"><a href="#cb111-52" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(richiami_regione_hiv, <span class="st">"output/richiami_regione_hiv.xlsx"</span>)</span>
+<span id="cb111-53"><a href="#cb111-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-54"><a href="#cb111-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-55"><a href="#cb111-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Area di prova -----------------------------------------------------------</span></span>
+<span id="cb111-56"><a href="#cb111-56" aria-hidden="true" tabindex="-1"></a><span class="co"># (il contenuto può variare)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><br></p>
 </details>
@@ -1875,14 +1925,14 @@ Confronta <code>hiv_0</code> e <code>hiv_1</code> nelle quattro regioni. Che cos
 <h2 class="anchored" data-anchor-id="riepilogo">Riepilogo</h2>
 <p>In questo modulo hai imparato a:</p>
 <ul>
-<li>accodare data frame con <code>bind_rows()</code>, che abbina le variabili per nome: le variabili mancanti diventano <code>NA</code> e <code>.id</code> aggiunge una variabile con l’origine di ogni riga;</li>
-<li>unire due tabelle attraverso una <strong>chiave</strong>, scrivendola con <code>by = "chiave"</code> o, se ha nomi diversi nelle due tabelle, con <code>by = join_by(chiave_sinistra == chiave_destra)</code>;</li>
+<li>accodare dataframe con <code>bind_rows()</code>, che abbina le variabili per nome: le variabili mancanti diventano <code>NA</code> e <code>.id</code> aggiunge una variabile con l’origine di ogni riga;</li>
+<li>unire due dataframe attraverso una <strong>chiave</strong>, scrivendola con <code>by = "chiave"</code> o, se ha nomi diversi nei due dataframe, con <code>by = join_by(chiave_sinistra == chiave_destra)</code>;</li>
 <li>scegliere il join: <code>left_join()</code> tiene tutte le righe di sinistra, <code>inner_join()</code> solo quelle con un partner, <code>right_join()</code> tutte quelle di destra, <code>full_join()</code> tutte quelle di entrambe;</li>
 <li>controllare con <code>semi_join()</code> e <code>anti_join()</code> quali righe trovano un partner e quali no;</li>
 <li>riconoscere le chiavi duplicate, che fanno moltiplicare le righe senza avvisare, e farsi avvisare da <code>{dplyr}</code> con <code>relationship = "one-to-one"</code>;</li>
 <li>controllare la chiave prima del join e il numero di righe dopo: se cambia, chiediti perché;</li>
 <li>portare i dati da lungo a largo con <code>pivot_wider()</code> (<code>names_from</code>, <code>values_from</code>, <code>values_fill</code>, <code>names_prefix</code>) e da largo a lungo con <code>pivot_longer()</code> (<code>cols</code>, <code>names_to</code>, <code>values_to</code>, <code>values_drop_na</code>);</li>
-<li>portare la tabella di destra a una riga per chiave, anche con un pivot, prima di unirla ai dati.</li>
+<li>portare il dataframe di destra a una riga per chiave, anche con un pivot, prima di unirlo ai dati.</li>
 </ul>
 </section>
 <section id="risorse-aggiuntive" class="level2">
@@ -1918,9 +1968,9 @@ Confronta <code>hiv_0</code> e <code>hiv_1</code> nelle quattro regioni. Che cos
 **Autori**
 
 Autori originali: Andrea Cannone (Istituto Superiore di Sanità)\
-Fonte dei dati: dataset didattico del corso, con la struttura di una
+Fonte dei dati: dataframe didattico del corso, con la struttura di una
 coorte di persone vaccinate contro COVID-19 con e senza HIV, e due
-tabelle accessorie create per questa esercitazione; esercizi ispirati
+dataframe accessori creati per questa esercitazione; esercizi ispirati
 ai moduli *Joining data* e *Pivoting data* di Applied Epi
 (<https://appliedepi.org>)\
 Adattato da: –

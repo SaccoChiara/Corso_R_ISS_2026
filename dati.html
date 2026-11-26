@@ -296,7 +296,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><code>dataset_esercitazione_raw</code> contiene <strong>errori voluti</strong>: valori scritti in modi diversi, codici al posto dei valori mancanti, date in formati diversi, righe duplicate. Trovarli e correggerli è proprio il lavoro dei Moduli 2 e 3. Nel tracciato qui sotto trovi i valori <strong>previsti</strong>, non quelli che troverai davvero nel file.</p>
+<p><code>dataset_esercitazione_raw</code> contiene <strong>errori intenzionali</strong>: valori scritti in modi diversi, codici utilizzati al posto dei valori mancanti, date in formati differenti e righe duplicate. Trovarli e correggerli è proprio il lavoro dei Moduli 2 e 3. Nel tracciato riportato qui sotto trovi i valori <strong>corretti attesi</strong>, non necessariamente quelli che troverai davvero nel file.</p>
 </div>
 </div>
 </section>
@@ -354,7 +354,7 @@ ul.task-list li input[type="checkbox"] {
 <tr class="odd">
 <td><code>AGE</code></td>
 <td><code>age</code></td>
-<td>numero</td>
+<td>numero intero</td>
 <td>età alla vaccinazione, in anni</td>
 <td>18–100</td>
 </tr>
@@ -382,7 +382,7 @@ ul.task-list li input[type="checkbox"] {
 <tr class="odd">
 <td><code>HIV Status</code></td>
 <td><code>hiv_status</code></td>
-<td>numero</td>
+<td>numero intero</td>
 <td>stato HIV</td>
 <td><code>0</code> = senza HIV, <code>1</code> = con HIV</td>
 </tr>
@@ -401,7 +401,7 @@ ul.task-list li input[type="checkbox"] {
 <td>2021, dopo la vaccinazione</td>
 </tr>
 <tr class="even">
-<td><code>Event  date</code></td>
+<td><code>Event date</code></td>
 <td><code>date_event</code></td>
 <td>data</td>
 <td>data di diagnosi di COVID-19; <strong>vuota se la persona non ha avuto la diagnosi</strong></td>
@@ -410,7 +410,7 @@ ul.task-list li input[type="checkbox"] {
 <tr class="odd">
 <td><code>Anticorpi</code></td>
 <td><code>anticorpi</code></td>
-<td>numero</td>
+<td>numero decimale</td>
 <td>livello di anticorpi anti-SARS-CoV-2 dopo la vaccinazione, in BAU/mL; sotto il limite di rilevazione (4,8 BAU/mL) vale 2,4</td>
 <td>maggiore di 0</td>
 </tr>
@@ -468,7 +468,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="odd">
 <td><code>popolazione</code></td>
-<td>numero</td>
+<td>numero intero</td>
 <td>popolazione residente</td>
 </tr>
 </tbody>

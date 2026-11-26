@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>quarto-inputb7a11ab6174befa0 – Corso base di R</title>
+<title>quarto-input86f1bf402883da7e – Corso base di R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -218,8 +218,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">In questa pagina</h2>
    
   <ul>
-  <li><a href="#corso-introduttivo-al-software-statistico-r" id="toc-corso-introduttivo-al-software-statistico-r" class="nav-link active" data-scroll-target="#corso-introduttivo-al-software-statistico-r"><strong>Corso introduttivo al software statistico R</strong></a></li>
-  <li><a href="#modulo-03-pulizia-dei-dati-approfondimento" id="toc-modulo-03-pulizia-dei-dati-approfondimento" class="nav-link" data-scroll-target="#modulo-03-pulizia-dei-dati-approfondimento">Modulo 03 Pulizia dei dati: approfondimento</a>
+  <li><a href="#corso-base-di-r-per-la-gestione-e-analisi-dei-dati" id="toc-corso-base-di-r-per-la-gestione-e-analisi-dei-dati" class="nav-link active" data-scroll-target="#corso-base-di-r-per-la-gestione-e-analisi-dei-dati"><strong>Corso base di R per la gestione e analisi dei dati</strong></a></li>
+  <li><a href="#modulo-03---pulizia-dei-dati-approfondimento" id="toc-modulo-03---pulizia-dei-dati-approfondimento" class="nav-link" data-scroll-target="#modulo-03---pulizia-dei-dati-approfondimento">Modulo 03 - Pulizia dei dati: approfondimento</a>
   <ul>
   <li><a href="#obiettivi-del-modulo" id="toc-obiettivi-del-modulo" class="nav-link" data-scroll-target="#obiettivi-del-modulo">Obiettivi del modulo</a></li>
   <li><a href="#formato-dellesercizio" id="toc-formato-dellesercizio" class="nav-link" data-scroll-target="#formato-dellesercizio">Formato dell’esercizio</a></li>
@@ -339,11 +339,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="corso-introduttivo-al-software-statistico-r" class="level1">
-<h1><strong>Corso introduttivo al software statistico R</strong></h1>
+<section id="corso-base-di-r-per-la-gestione-e-analisi-dei-dati" class="level1">
+<h1><strong>Corso base di R per la gestione e analisi dei dati</strong></h1>
 </section>
-<section id="modulo-03-pulizia-dei-dati-approfondimento" class="level1">
-<h1>Modulo 03 Pulizia dei dati: approfondimento</h1>
+<section id="modulo-03---pulizia-dei-dati-approfondimento" class="level1">
+<h1>Modulo 03 - Pulizia dei dati: approfondimento</h1>
 <section id="obiettivi-del-modulo" class="level2">
 <h2 class="anchored" data-anchor-id="obiettivi-del-modulo">Obiettivi del modulo</h2>
 <ul>
@@ -412,15 +412,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Domanda di esempio: quanto fa 2 + 2?
-<div id="radio_ZCXDIRQHNU" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_ZCXDIRQHNU" value=""> <span>2</span></label><label><input type="radio" autocomplete="off" name="radio_ZCXDIRQHNU" value=""> <span>5</span></label><label><input type="radio" autocomplete="off" name="radio_ZCXDIRQHNU" value="answer"> <span>4</span></label>
+<div id="radio_MHLVQHKVGP" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_MHLVQHKVGP" value=""> <span>2</span></label><label><input type="radio" autocomplete="off" name="radio_MHLVQHKVGP" value=""> <span>5</span></label><label><input type="radio" autocomplete="off" name="radio_MHLVQHKVGP" value="answer"> <span>4</span></label>
 </div>
 </div>
 </div>
 </div>
 </div>
-<p>Lungo il modulo troverai anche due tipi di riquadri colorati. I riquadri <strong>gialli</strong> segnalano errori frequenti o punti in cui R si comporta in modo inatteso: leggili sempre, perché possono farti risparmiare tempo.</p>
-<!-- ISTRUZIONI: Il box giallo "Attenzione a …" va usato per avvisi
+<p>Lungo il modulo troverai anche due tipi di riquadri colorati. I riquadri <strong>arancioni</strong> segnalano errori frequenti o punti in cui R si comporta in modo inatteso: leggili sempre, perché possono farti risparmiare tempo.</p>
+<!-- ISTRUZIONI: Il box arancione "Attenzione a …" va usato per avvisi
      importanti: errori comuni, comportamenti di R che possono
      sorprendere, passaggi da non saltare. Il titolo inizia sempre con
      "Attenzione a" (es. "Attenzione ai nomi con spazi"). Copia
@@ -476,7 +476,7 @@ Domanda di esempio: quanto fa 2 + 2?
 <h2 class="anchored" data-anchor-id="il-punto-di-partenza">Il punto di partenza</h2>
 <section id="i-dati" class="level3">
 <h3 class="anchored" data-anchor-id="i-dati">I dati</h3>
-<p>Ripartiamo da <code>dati</code>, il dataset che hai pulito ieri nel Modulo 2 e che hai appena ricreato eseguendo lo script. Controlla nel pannello <strong>Environment</strong> che ci sia e, nell’area di prova, controlla con <code>class()</code> la classe della variabile <code>date_vacc</code>.</p>
+<p>Ripartiamo da <code>dati</code>, il dataframe che hai pulito ieri nel Modulo 2 e che hai appena ricreato eseguendo lo script. Controlla nel pannello <strong>Environment</strong> che ci sia e, nell’area di prova, controlla con <code>class()</code> la classe della variabile <code>date_vacc</code>.</p>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -486,8 +486,8 @@ Domanda di esempio: quanto fa 2 + 2?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Qual è la classe di date_vacc?
-<div id="radio_DWRFYALQWU" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_DWRFYALQWU" value=""> <span>character, perché le date vanno sempre riconvertite</span></label><label><input type="radio" autocomplete="off" name="radio_DWRFYALQWU" value="answer"> <span>Date, perché nel Modulo 2 l'hai convertita con le funzioni di {lubridate}</span></label><label><input type="radio" autocomplete="off" name="radio_DWRFYALQWU" value=""> <span>numeric</span></label>
+<div id="radio_EPCDGVUGGM" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_EPCDGVUGGM" value=""> <span>character, perché le date vanno sempre riconvertite</span></label><label><input type="radio" autocomplete="off" name="radio_EPCDGVUGGM" value="answer"> <span>Date, perché nel Modulo 2 l'hai convertita con le funzioni di {lubridate}</span></label><label><input type="radio" autocomplete="off" name="radio_EPCDGVUGGM" value=""> <span>numeric</span></label>
 </div>
 </div>
 </div>
@@ -498,6 +498,7 @@ Qual è la classe di date_vacc?
 <h3 class="anchored" data-anchor-id="larea-di-prova">L’area di prova</h3>
 <p>Userai di nuovo l’area di prova che hai creato nel Modulo 2, in fondo allo script. Le sezioni che creerai più avanti vanno inserite sopra l’area di prova, così che resti sempre l’ultima sezione dello script.</p>
 <p>In questo modulo la userai spesso: prima di aggiungere un comando alla catena di pulizia, provalo qui e guarda il risultato. Solo quando il risultato è quello che ti aspetti, sposta il comando nella catena.</p>
+<p><strong>Ogni volta che aggiungi un comando alla catena, riesegui tutta la catena</strong> (seleziona dall’inizio, <code>dati_clean &lt;- dati %&gt;%</code>, fino all’ultima riga, e premi <strong>Ctrl+Invio</strong>). Così <code>dati_clean</code> è sempre aggiornato e, quando lavori nell’area di prova, parti dai dati con tutte le modifiche fatte fino a quel momento.</p>
 </section>
 <section id="cosa-resta-da-sistemare" class="level3">
 <h3 class="anchored" data-anchor-id="cosa-resta-da-sistemare">Cosa resta da sistemare</h3>
@@ -519,7 +520,7 @@ Qual è la classe di date_vacc?
 </ul></li>
 <li>le regioni E ed F, che dovranno essere eliminate perché non fanno parte dello studio.</li>
 </ul>
-<p>In questo modulo sistemerai questi problemi, creerai alcune nuove variabili utili per le analisi e salverai il dataset finale.</p>
+<p>In questo modulo sistemerai questi problemi, creerai alcune nuove variabili utili per le analisi e salverai il dataframe finale.</p>
 <p>Costruirai una nuova catena di pulizia che parte da <code>dati</code> appena importati e crea un nuovo oggetto, <code>dati_clean</code>.</p>
 </section>
 </section>
@@ -649,8 +650,8 @@ Qual è la classe di date_vacc?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Cosa restituisce “F” == “f”?
-<div id="radio_BDBXEYKHIM" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_BDBXEYKHIM" value=""> <span>TRUE</span></label><label><input type="radio" autocomplete="off" name="radio_BDBXEYKHIM" value="answer"> <span>FALSE</span></label><label><input type="radio" autocomplete="off" name="radio_BDBXEYKHIM" value=""> <span>Un errore</span></label>
+<div id="radio_YGGRTEMWCM" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_YGGRTEMWCM" value=""> <span>TRUE</span></label><label><input type="radio" autocomplete="off" name="radio_YGGRTEMWCM" value="answer"> <span>FALSE</span></label><label><input type="radio" autocomplete="off" name="radio_YGGRTEMWCM" value=""> <span>Un errore</span></label>
 </div>
 </div>
 </div>
@@ -702,8 +703,8 @@ Cosa restituisce “F” == “f”?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Con dati_clean %&gt;% tabyl(event), quale percentuale di soggetti ha avuto l’evento?
-<div id="radio_CCIOJNYZFT" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_CCIOJNYZFT" value=""> <span>Circa il 79%</span></label><label><input type="radio" autocomplete="off" name="radio_CCIOJNYZFT" value="answer"> <span>Circa il 21%</span></label><label><input type="radio" autocomplete="off" name="radio_CCIOJNYZFT" value=""> <span>Circa il 50%</span></label>
+<div id="radio_XOSBXTQBEY" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_XOSBXTQBEY" value=""> <span>Circa il 79%</span></label><label><input type="radio" autocomplete="off" name="radio_XOSBXTQBEY" value="answer"> <span>Circa il 21%</span></label><label><input type="radio" autocomplete="off" name="radio_XOSBXTQBEY" value=""> <span>Circa il 50%</span></label>
 </div>
 </div>
 </div>
@@ -757,8 +758,8 @@ Con dati_clean %&gt;% tabyl(event), quale percentuale di soggetti ha avuto l’e
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 In case_when(), cosa succede a una riga che non soddisfa nessuna condizione, se manca l’ultima regola TRUE ~ …?
-<div id="radio_CJOXUCTUVS" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_CJOXUCTUVS" value=""> <span>Mantiene il valore originale</span></label><label><input type="radio" autocomplete="off" name="radio_CJOXUCTUVS" value="answer"> <span>Riceve NA</span></label><label><input type="radio" autocomplete="off" name="radio_CJOXUCTUVS" value=""> <span>Il comando dà errore</span></label>
+<div id="radio_VDUCKPVVWS" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_VDUCKPVVWS" value=""> <span>Mantiene il valore originale</span></label><label><input type="radio" autocomplete="off" name="radio_VDUCKPVVWS" value="answer"> <span>Riceve NA</span></label><label><input type="radio" autocomplete="off" name="radio_VDUCKPVVWS" value=""> <span>Il comando dà errore</span></label>
 </div>
 </div>
 </div>
@@ -927,8 +928,8 @@ In case_when(), cosa succede a una riga che non soddisfa nessuna condizione, se 
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Se hiv_status contenesse anche il valore 2, cosa diventerebbe in hiv?
-<div id="radio_BBYQPNHOPG" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_BBYQPNHOPG" value=""> <span>Diventa “Senza HIV”, la prima etichetta</span></label><label><input type="radio" autocomplete="off" name="radio_BBYQPNHOPG" value=""> <span>Resta 2</span></label><label><input type="radio" autocomplete="off" name="radio_BBYQPNHOPG" value="answer"> <span>Diventa NA</span></label>
+<div id="radio_ADRYXPDPML" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_ADRYXPDPML" value=""> <span>Diventa “Senza HIV”, la prima etichetta</span></label><label><input type="radio" autocomplete="off" name="radio_ADRYXPDPML" value=""> <span>Resta 2</span></label><label><input type="radio" autocomplete="off" name="radio_ADRYXPDPML" value="answer"> <span>Diventa NA</span></label>
 </div>
 </div>
 </div>
@@ -1134,8 +1135,8 @@ Se hiv_status contenesse anche il valore 2, cosa diventerebbe in hiv?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Quanti soggetti hanno una data di evento fuori dal periodo di follow-up (prima della vaccinazione o dopo la fine)?
-<div id="radio_SSLGGVPQXR" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_SSLGGVPQXR" value=""> <span>Nessuno</span></label><label><input type="radio" autocomplete="off" name="radio_SSLGGVPQXR" value="answer"> <span>2</span></label><label><input type="radio" autocomplete="off" name="radio_SSLGGVPQXR" value=""> <span>17</span></label>
+<div id="radio_KKRPGXVWBV" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_KKRPGXVWBV" value=""> <span>Nessuno</span></label><label><input type="radio" autocomplete="off" name="radio_KKRPGXVWBV" value="answer"> <span>2</span></label><label><input type="radio" autocomplete="off" name="radio_KKRPGXVWBV" value=""> <span>17</span></label>
 </div>
 </div>
 </div>
@@ -1169,8 +1170,8 @@ Quanti soggetti hanno una data di evento fuori dal periodo di follow-up (prima d
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Nella tabella compaiono molti NA (più di 1.300). Perché?
-<div id="radio_PWGGBFSPWZ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_PWGGBFSPWZ" value=""> <span>Perché l'età di quei soggetti è mancante</span></label><label><input type="radio" autocomplete="off" name="radio_PWGGBFSPWZ" value="answer"> <span>Perché i soggetti di 18 e 19 anni sono sotto il limite inferiore (20)</span></label><label><input type="radio" autocomplete="off" name="radio_PWGGBFSPWZ" value=""> <span>Perché i soggetti con più di 80 anni non rientrano in nessuna classe</span></label>
+<div id="radio_BCFLFDACZD" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_BCFLFDACZD" value=""> <span>Perché l'età di quei soggetti è mancante</span></label><label><input type="radio" autocomplete="off" name="radio_BCFLFDACZD" value="answer"> <span>Perché i soggetti di 18 e 19 anni sono sotto il limite inferiore (20)</span></label><label><input type="radio" autocomplete="off" name="radio_BCFLFDACZD" value=""> <span>Perché i soggetti con più di 80 anni non rientrano in nessuna classe</span></label>
 </div>
 </div>
 </div>
@@ -1222,7 +1223,7 @@ Nella tabella compaiono molti NA (più di 1.300). Perché?
 </section>
 <section id="età-e-classe-di-età-sono-coerenti" class="level3">
 <h3 class="anchored" data-anchor-id="età-e-classe-di-età-sono-coerenti">Età e classe di età sono coerenti?</h3>
-<p>Il dataset contiene sia l’età (<code>age</code>) sia la classe di età (<code>age_group</code>): le due informazioni dovrebbero coincidere. Per verificarlo, ricalcola nell’area di prova la classe a partire dall’età con <code>ifelse()</code>, in una nuova variabile <code>age_group_calc</code>, e confrontala con <code>age_group</code> in una tabella incrociata:</p>
+<p>Il dataframe contiene sia l’età (<code>age</code>) sia la classe di età (<code>age_group</code>): le due informazioni dovrebbero coincidere. Per verificarlo, ricalcola nell’area di prova la classe a partire dall’età con <code>ifelse()</code>, in una nuova variabile <code>age_group_calc</code>, e confrontala con <code>age_group</code> in una tabella incrociata:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_group_calc =</span> <span class="fu">ifelse</span>(age <span class="sc">&gt;=</span> <span class="dv">60</span>, <span class="st">"60+"</span>, <span class="st">"18-59"</span>)) <span class="sc">%&gt;%</span></span>
@@ -1244,8 +1245,8 @@ Nella tabella compaiono molti NA (più di 1.300). Perché?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Cosa possiamo fare con i 5 soggetti che hanno la classe di età ma non l’età?
-<div id="radio_MNQOJVWMIS" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_MNQOJVWMIS" value=""> <span>Vanno eliminati, perché manca l'età</span></label><label><input type="radio" autocomplete="off" name="radio_MNQOJVWMIS" value="answer"> <span>Possiamo tenere la loro classe di età, perché è l'unica informazione disponibile</span></label><label><input type="radio" autocomplete="off" name="radio_MNQOJVWMIS" value=""> <span>Bisogna assegnare loro la classe “18-59”, che è la più frequente</span></label>
+<div id="radio_VGBEGYFOBR" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_VGBEGYFOBR" value=""> <span>Vanno eliminati, perché manca l'età</span></label><label><input type="radio" autocomplete="off" name="radio_VGBEGYFOBR" value="answer"> <span>Possiamo tenere la loro classe di età, perché è l'unica informazione disponibile</span></label><label><input type="radio" autocomplete="off" name="radio_VGBEGYFOBR" value=""> <span>Bisogna assegnare loro la classe “18-59”, che è la più frequente</span></label>
 </div>
 </div>
 </div>
@@ -1273,8 +1274,8 @@ Cosa possiamo fare con i 5 soggetti che hanno la classe di età ma non l’età?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Cosa restituisce coalesce(NA, “60+”, “18-59”)?
-<div id="radio_HAVQWJGNZE" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_HAVQWJGNZE" value=""> <span>NA</span></label><label><input type="radio" autocomplete="off" name="radio_HAVQWJGNZE" value=""> <span>“18-59”</span></label><label><input type="radio" autocomplete="off" name="radio_HAVQWJGNZE" value="answer"> <span>“60+”</span></label>
+<div id="radio_ZLUGDPRFXN" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_ZLUGDPRFXN" value=""> <span>NA</span></label><label><input type="radio" autocomplete="off" name="radio_ZLUGDPRFXN" value=""> <span>“18-59”</span></label><label><input type="radio" autocomplete="off" name="radio_ZLUGDPRFXN" value="answer"> <span>“60+”</span></label>
 </div>
 </div>
 </div>
@@ -1369,8 +1370,8 @@ Cosa restituisce coalesce(NA, “60+”, “18-59”)?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 range(dati_clean$fu_days) mostra un valore minimo negativo (-2). Cosa significa?
-<div id="radio_LZGLVWGMXX" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_LZGLVWGMXX" value=""> <span>Che il soggetto ha avuto l'evento il giorno della vaccinazione</span></label><label><input type="radio" autocomplete="off" name="radio_LZGLVWGMXX" value="answer"> <span>Che la data di fine follow-up è precedente alla data di vaccinazione: è un errore nei dati</span></label><label><input type="radio" autocomplete="off" name="radio_LZGLVWGMXX" value=""> <span>Che il soggetto è uscito dal follow-up prima di essere arruolato, ed è normale</span></label>
+<div id="radio_KWACTMKMUY" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_KWACTMKMUY" value=""> <span>Che il soggetto ha avuto l'evento il giorno della vaccinazione</span></label><label><input type="radio" autocomplete="off" name="radio_KWACTMKMUY" value="answer"> <span>Che la data di fine follow-up è precedente alla data di vaccinazione: è un errore nei dati</span></label><label><input type="radio" autocomplete="off" name="radio_KWACTMKMUY" value=""> <span>Che il soggetto è uscito dal follow-up prima di essere arruolato, ed è normale</span></label>
 </div>
 </div>
 </div>
@@ -1396,7 +1397,7 @@ range(dati_clean$fu_days) mostra un valore minimo negativo (-2). Cosa significa?
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span> <span class="fu">filter</span>(region <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>)) <span class="sc">%&gt;%</span> <span class="fu">nrow</span>()</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co"># togliere le regioni E ed F</span></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span> <span class="fu">filter</span>(region <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(hiv_status)) <span class="sc">%&gt;%</span> <span class="fu">nrow</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span>region <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"E"</span>, <span class="st">"F"</span>)) <span class="sc">%&gt;%</span> <span class="fu">nrow</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Il punto esclamativo davanti alla condizione la nega: <code>!region %in% c("E", "F")</code> vuol dire “la regione <strong>non</strong> è E né F”.</p>
 <div class="callout callout-style-simple callout-note no-icon">
@@ -1408,8 +1409,8 @@ range(dati_clean$fu_days) mostra un valore minimo negativo (-2). Cosa significa?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 I due comandi danno un numero di righe diverso (di una riga). Perché?
-<div id="radio_UCZBARKMCP" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_UCZBARKMCP" value=""> <span>Perché uno dei due comandi contiene un errore</span></label><label><input type="radio" autocomplete="off" name="radio_UCZBARKMCP" value="answer"> <span>Perché il primo comando toglie anche la riga con la regione mancante (NA)</span></label><label><input type="radio" autocomplete="off" name="radio_UCZBARKMCP" value=""> <span>Perché il secondo comando toglie anche la regione D</span></label>
+<div id="radio_UJBJZFXUVH" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_UJBJZFXUVH" value=""> <span>Perché uno dei due comandi contiene un errore</span></label><label><input type="radio" autocomplete="off" name="radio_UJBJZFXUVH" value="answer"> <span>Perché il primo comando toglie anche la riga con la regione mancante (NA)</span></label><label><input type="radio" autocomplete="off" name="radio_UJBJZFXUVH" value=""> <span>Perché il secondo comando toglie anche la regione D</span></label>
 </div>
 </div>
 </div>
@@ -1475,8 +1476,8 @@ I due comandi danno un numero di righe diverso (di una riga). Perché?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Una persona della regione B con stato HIV mancante viene tenuta da questo filtro?
-<div id="radio_RISLYBSMOY" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_RISLYBSMOY" value=""> <span>Sì, perché la regione è tra quelle dello studio</span></label><label><input type="radio" autocomplete="off" name="radio_RISLYBSMOY" value="answer"> <span>No, perché la seconda condizione è falsa</span></label><label><input type="radio" autocomplete="off" name="radio_RISLYBSMOY" value=""> <span>Dipende dall'ordine delle due condizioni</span></label>
+<div id="radio_IAYDDRNOOT" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_IAYDDRNOOT" value=""> <span>Sì, perché la regione è tra quelle dello studio</span></label><label><input type="radio" autocomplete="off" name="radio_IAYDDRNOOT" value="answer"> <span>No, perché la seconda condizione è falsa</span></label><label><input type="radio" autocomplete="off" name="radio_IAYDDRNOOT" value=""> <span>Dipende dall'ordine delle due condizioni</span></label>
 </div>
 </div>
 </div>
@@ -1524,7 +1525,7 @@ Una persona della regione B con stato HIV mancante viene tenuta da questo filtro
 </section>
 <section id="riordinare-le-variabili" class="level2">
 <h2 class="anchored" data-anchor-id="riordinare-le-variabili">Riordinare le variabili</h2>
-<p>Guarda l’ordine delle variabili di <code>dati_clean</code> (per esempio con <code>names(dati_clean)</code>): le nuove variabili sono in fondo, lontane da quelle a cui si riferiscono. L’ordine non cambia nulla per R, ma se esportiamo il dataset e lo condividiamo con un collega conviene che le variabili collegate siano vicine, per esempio <code>age</code>, <code>age_group</code> e <code>age_cat</code>.</p>
+<p>Guarda l’ordine delle variabili di <code>dati_clean</code> (per esempio con <code>names(dati_clean)</code>): le nuove variabili sono in fondo, lontane da quelle a cui si riferiscono. L’ordine non cambia nulla per R, ma se esportiamo il dataframe e lo condividiamo con un collega conviene che le variabili collegate siano vicine, per esempio <code>age</code>, <code>age_group</code> e <code>age_cat</code>.</p>
 <p>Come hai visto nel Modulo 2, <code>select()</code> serve anche a riordinare le variabili: le variabili vengono messe nell’ordine in cui le scrivi. Puoi usare anche gli aiutanti come <code>starts_with()</code> ed <code>everything()</code>.</p>
 <section id="aggiungi-alla-catena-di-pulizia-6" class="level3">
 <h3 class="anchored" data-anchor-id="aggiungi-alla-catena-di-pulizia-6">Aggiungi alla catena di pulizia</h3>
@@ -1548,7 +1549,7 @@ Una persona della regione B con stato HIV mancante viene tenuta da questo filtro
 </section>
 <section id="verifica-finale" class="level2">
 <h2 class="anchored" data-anchor-id="verifica-finale">Verifica finale</h2>
-<p>Crea la sezione “Verifica” (<strong>Ctrl+Shift+R</strong>), subito dopo la catena di pulizia, e controlla il dataset finale:</p>
+<p>Crea la sezione “Verifica” (<strong>Ctrl+Shift+R</strong>), subito dopo la catena di pulizia, e controlla il dataframe finale:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verifica ----------------------------------------------------------------</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1572,6 +1573,19 @@ Una persona della regione B con stato HIV mancante viene tenuta da questo filtro
 <span id="cb39-20"><a href="#cb39-20" aria-hidden="true" tabindex="-1"></a><span class="co"># valori mancanti in ogni variabile</span></span>
 <span id="cb39-21"><a href="#cb39-21" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(dati_clean))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Consiglio</span>Approfondimento: la funzione <code>sapply()</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>sapply()</code> è una funzione di R base che applica un’altra funzione a ogni colonna del data frame. Qui applica <code>class()</code> a tutte le variabili di <code>dati_clean</code> e restituisce la classe di ognuna, così le controlli tutte con un solo comando invece di scrivere <code>class(dati_clean$age)</code>, <code>class(dati_clean$sex)</code> e così via.</p>
+</div>
+</div>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -1581,8 +1595,8 @@ Una persona della regione B con stato HIV mancante viene tenuta da questo filtro
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Quante righe sono state tolte in tutto dalla catena di questo modulo, rispetto a dati?
-<div id="radio_TMSKKBNHVG" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_TMSKKBNHVG" value=""> <span>5</span></label><label><input type="radio" autocomplete="off" name="radio_TMSKKBNHVG" value=""> <span>16</span></label><label><input type="radio" autocomplete="off" name="radio_TMSKKBNHVG" value="answer"> <span>21</span></label>
+<div id="radio_WPSPUBKWWR" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_WPSPUBKWWR" value=""> <span>5</span></label><label><input type="radio" autocomplete="off" name="radio_WPSPUBKWWR" value=""> <span>16</span></label><label><input type="radio" autocomplete="off" name="radio_WPSPUBKWWR" value="answer"> <span>21</span></label>
 </div>
 </div>
 </div>
@@ -1591,7 +1605,7 @@ Quante righe sono state tolte in tutto dalla catena di questo modulo, rispetto a
 </section>
 <section id="salvare-i-dati-puliti" class="level2">
 <h2 class="anchored" data-anchor-id="salvare-i-dati-puliti">Salvare i dati puliti</h2>
-<p>Ora che il dataset è pulito, salviamolo in un file, così potrai riprenderlo senza rifare la pulizia. Si usa la funzione <code>export()</code> del pacchetto <code>{rio}</code>, la “gemella” di <code>import()</code>: il primo argomento è l’oggetto da salvare, il secondo è il percorso del file, tra virgolette. Il formato del file dipende <strong>solo dall’estensione</strong> che scrivi nel nome del file.</p>
+<p>Ora che il dataframe è pulito, salviamolo in un file, così potrai riprenderlo senza rifare la pulizia. Si usa la funzione <code>export()</code> del pacchetto <code>{rio}</code>, la “gemella” di <code>import()</code>: il primo argomento è l’oggetto da salvare, il secondo è il percorso del file, tra virgolette. Il formato del file dipende <strong>solo dall’estensione</strong> che scrivi nel nome del file.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(OGGETTO, <span class="st">"CARTELLA/NOME_FILE.estensione"</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1620,8 +1634,8 @@ Quante righe sono state tolte in tutto dalla catena di questo modulo, rispetto a
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Con export(), che cosa decide il formato del file salvato?
-<div id="radio_CFOVBNUXIN" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_CFOVBNUXIN" value=""> <span>Un argomento di export() che indica il formato</span></label><label><input type="radio" autocomplete="off" name="radio_CFOVBNUXIN" value="answer"> <span>L'estensione scritta nel nome del file</span></label><label><input type="radio" autocomplete="off" name="radio_CFOVBNUXIN" value=""> <span>Il nome dell'oggetto che si esporta</span></label>
+<div id="radio_WGEHHKOTEJ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_WGEHHKOTEJ" value=""> <span>Un argomento di export() che indica il formato</span></label><label><input type="radio" autocomplete="off" name="radio_WGEHHKOTEJ" value="answer"> <span>L'estensione scritta nel nome del file</span></label><label><input type="radio" autocomplete="off" name="radio_WGEHHKOTEJ" value=""> <span>Il nome dell'oggetto che si esporta</span></label>
 </div>
 </div>
 </div>
@@ -1660,7 +1674,7 @@ Con export(), che cosa decide il formato del file salvato?
 <section id="cercare-un-testo-str_detect" class="level3">
 <h3 class="anchored" data-anchor-id="cercare-un-testo-str_detect">Cercare un testo: <code>str_detect()</code></h3>
 <p>La funzione <code>str_detect()</code> del pacchetto <code>{stringr}</code> restituisce <code>TRUE</code> se un certo testo (<code>pattern</code>) compare in un valore (<code>string</code>), e <code>FALSE</code> altrimenti. Si usa spesso dentro <code>filter()</code>. Attenzione: come <code>==</code>, distingue le maiuscole dalle minuscole.</p>
-<p>Partendo dal dataset grezzo <code>dati_raw</code>, trova le righe in cui la regione contiene la parola <code>"Region"</code>: sono proprio i valori che abbiamo dovuto ricodificare.</p>
+<p>Partendo dal dataframe grezzo <code>dati_raw</code>, trova le righe in cui la regione contiene la parola <code>"Region"</code>: sono proprio i valori che abbiamo dovuto ricodificare.</p>
 <details>
 <summary style="text-decoration: underline; color: red;">
 <p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>

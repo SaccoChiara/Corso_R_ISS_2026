@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>quarto-input9d58c9b47a62e4c7 – Corso base di R</title>
+<title>quarto-input53f0a9b709343b8a – Corso base di R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -218,8 +218,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">In questa pagina</h2>
    
   <ul>
-  <li><a href="#corso-introduttivo-al-software-statistico-r" id="toc-corso-introduttivo-al-software-statistico-r" class="nav-link active" data-scroll-target="#corso-introduttivo-al-software-statistico-r"><strong>Corso introduttivo al software statistico R</strong></a></li>
-  <li><a href="#modulo-08-altri-grafici-heatmap-mappe-curve-epidemiche-e-piramidi" id="toc-modulo-08-altri-grafici-heatmap-mappe-curve-epidemiche-e-piramidi" class="nav-link" data-scroll-target="#modulo-08-altri-grafici-heatmap-mappe-curve-epidemiche-e-piramidi">Modulo 08 Altri grafici: heatmap, mappe, curve epidemiche e piramidi</a>
+  <li><a href="#corso-base-di-r-per-la-gestione-e-analisi-dei-dati" id="toc-corso-base-di-r-per-la-gestione-e-analisi-dei-dati" class="nav-link active" data-scroll-target="#corso-base-di-r-per-la-gestione-e-analisi-dei-dati"><strong>Corso base di R per la gestione e analisi dei dati</strong></a></li>
+  <li><a href="#modulo-08---altri-grafici-heatmap-mappe-curve-epidemiche-e-piramidi" id="toc-modulo-08---altri-grafici-heatmap-mappe-curve-epidemiche-e-piramidi" class="nav-link" data-scroll-target="#modulo-08---altri-grafici-heatmap-mappe-curve-epidemiche-e-piramidi">Modulo 08 - Altri grafici: heatmap, mappe, curve epidemiche e piramidi</a>
   <ul>
   <li><a href="#obiettivi-del-modulo" id="toc-obiettivi-del-modulo" class="nav-link" data-scroll-target="#obiettivi-del-modulo">Obiettivi del modulo</a></li>
   <li><a href="#formato-dellesercizio" id="toc-formato-dellesercizio" class="nav-link" data-scroll-target="#formato-dellesercizio">Formato dell’esercizio</a></li>
@@ -307,17 +307,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="corso-introduttivo-al-software-statistico-r" class="level1">
-<h1><strong>Corso introduttivo al software statistico R</strong></h1>
+<section id="corso-base-di-r-per-la-gestione-e-analisi-dei-dati" class="level1">
+<h1><strong>Corso base di R per la gestione e analisi dei dati</strong></h1>
 </section>
-<section id="modulo-08-altri-grafici-heatmap-mappe-curve-epidemiche-e-piramidi" class="level1">
-<h1>Modulo 08 Altri grafici: heatmap, mappe, curve epidemiche e piramidi</h1>
+<section id="modulo-08---altri-grafici-heatmap-mappe-curve-epidemiche-e-piramidi" class="level1">
+<h1>Modulo 08 - Altri grafici: heatmap, mappe, curve epidemiche e piramidi</h1>
 <section id="obiettivi-del-modulo" class="level2">
 <h2 class="anchored" data-anchor-id="obiettivi-del-modulo">Obiettivi del modulo</h2>
 <ul>
 <li>Costruire un’epicurva con settimane da lunedì a domenica, passando da <code>binwidth =</code> a <code>breaks =</code> con un vettore di date creato con <code>floor_date()</code>, <code>ceiling_date()</code> e <code>seq.Date()</code></li>
 <li>Costruire curve per settimana o per mese e mostrare i numeri di settimana ISO sull’asse</li>
-<li>Aggiungere a una tabella di conteggi le combinazioni mancanti con <code>complete()</code></li>
+<li>Aggiungere a un dataframe di conteggi le combinazioni mancanti con <code>complete()</code></li>
 <li>Costruire heatmap con <code>geom_tile()</code> a partire da dati aggregati, anche con le etichette dei valori</li>
 <li>Leggere uno shapefile con <code>{sf}</code>, unirlo ai dati con <code>left_join()</code> e disegnare mappe coropletiche di tassi e proporzioni con <code>geom_sf()</code></li>
 <li>Costruire piramidi per età e sesso con <code>{apyramid}</code></li>
@@ -368,15 +368,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Domanda di esempio: quanto fa 2 + 2?
-<div id="radio_MKJDXWLVRY" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_MKJDXWLVRY" value=""> <span>2</span></label><label><input type="radio" autocomplete="off" name="radio_MKJDXWLVRY" value=""> <span>5</span></label><label><input type="radio" autocomplete="off" name="radio_MKJDXWLVRY" value="answer"> <span>4</span></label>
+<div id="radio_KQDONOOUVI" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_KQDONOOUVI" value=""> <span>2</span></label><label><input type="radio" autocomplete="off" name="radio_KQDONOOUVI" value=""> <span>5</span></label><label><input type="radio" autocomplete="off" name="radio_KQDONOOUVI" value="answer"> <span>4</span></label>
 </div>
 </div>
 </div>
 </div>
 </div>
-<p>Lungo il modulo troverai anche due tipi di riquadri colorati. I riquadri <strong>gialli</strong> segnalano errori frequenti o punti in cui R si comporta in modo inatteso: leggili sempre, perché possono farti risparmiare tempo.</p>
-<!-- ISTRUZIONI: Il box giallo "Attenzione a …" va usato per avvisi importanti: errori comuni, comportamenti di R che possono sorprendere, passaggi da non saltare. Il titolo inizia sempre con "Attenzione a" (es. "Attenzione ai nomi con spazi"). Copia l'intero blocco ::: {.callout-warning ...} ... ::: e modifica solo titolo e testo. -->
+<p>Lungo il modulo troverai anche due tipi di riquadri colorati. I riquadri <strong>arancioni</strong> segnalano errori frequenti o punti in cui R si comporta in modo inatteso: leggili sempre, perché possono farti risparmiare tempo.</p>
+<!-- ISTRUZIONI: Il box arancione "Attenzione a …" va usato per avvisi importanti: errori comuni, comportamenti di R che possono sorprendere, passaggi da non saltare. Il titolo inizia sempre con "Attenzione a" (es. "Attenzione ai nomi con spazi"). Copia l'intero blocco ::: {.callout-warning ...} ... ::: e modifica solo titolo e testo. -->
 <div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -409,7 +409,7 @@ Domanda di esempio: quanto fa 2 + 2?
 </section>
 <section id="preparazione" class="level2">
 <h2 class="anchored" data-anchor-id="preparazione">Preparazione</h2>
-<p>Oggi pomeriggio torni ai grafici: riprendi lo script <code>plot.R</code>, su cui hai lavorato ieri nei Moduli 5 e 6. Se hai chiuso il progetto, riaprilo. Poi apri <code>plot.R</code> dalla cartella <code>script</code> ed eseguilo.</p>
+<p>Oggi pomeriggio torni ai grafici: riprendi lo script <code>plot.R</code>, su cui hai lavorato ieri nei Moduli 5 e 6. Se hai chiuso il progetto, riaprilo. Poi apri <code>plot.R</code> dalla cartella <code>script</code> ed esegui tutto il codice sopra l’area di prova: metti il cursore sulla riga del titolo “Area di prova” e premi Ctrl + Alt + B (Cmd + Option + B su Mac).</p>
 <p>Poi, <strong>sopra</strong> la sezione “Area di prova”, crea una nuova sezione chiamata “Modulo 08 - Altri grafici” con la combinazione di tasti <strong>Ctrl + Shift + R</strong> (<strong>Cmd + Shift + R</strong> su Mac): qui scriverai il codice dell’esercitazione del pomeriggio. L’area di prova deve restare sempre l’ultima sezione dello script. Ricordati di salvare spesso il lavoro (<strong>Ctrl + S</strong>, oppure <strong>Cmd + S</strong> su Mac).</p>
 </section>
 <section id="iniziamo" class="level2">
@@ -420,7 +420,7 @@ Domanda di esempio: quanto fa 2 + 2?
 <h2 class="anchored" data-anchor-id="il-punto-di-partenza">Il punto di partenza</h2>
 <section id="i-nuovi-pacchetti-sf-e-apyramid" class="level3">
 <h3 class="anchored" data-anchor-id="i-nuovi-pacchetti-sf-e-apyramid">I nuovi pacchetti: <code>{sf}</code> e <code>{apyramid}</code></h3>
-<p>In questo modulo userai due pacchetti che non hai ancora caricato: <code>{sf}</code>, per leggere e disegnare le mappe, e <code>{apyramid}</code>, per le piramidi per età e sesso. Vai alla sezione “Caricamento pacchetti” all’inizio di <code>plot.R</code> e aggiungi questi due pacchetti all’interno di <code>pacman::p_load()</code>, senza creare un nuovo comando. Poi esegui di nuovo <code>pacman::p_load()</code> per caricarli.</p>
+<p>In questo modulo userai due pacchetti che non hai ancora caricato: <code>{sf}</code>, per leggere e disegnare le mappe, e <code>{apyramid}</code>, per le piramidi per età e sesso. Vai alla sezione “Caricamento pacchetti” all’inizio di <code>plot.R</code> e aggiungi questi due pacchetti all’interno di <code>pacman::p_load()</code>, prima di <code>{tidyverse}</code>, senza creare un nuovo comando. Poi esegui di nuovo <code>pacman::p_load()</code> per caricarli.</p>
 <details>
 <summary style="text-decoration: underline; color: red;">
 <p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
@@ -436,9 +436,9 @@ Domanda di esempio: quanto fa 2 + 2?
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  epikit,    <span class="co"># classi di età</span></span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  gtsummary, <span class="co"># tabelle descrittive</span></span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  flextable, <span class="co"># tabelle da presentare</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  tidyverse, <span class="co"># gestione e visualizzazione dei dati</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  sf,        <span class="co"># dati spaziali e mappe</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  apyramid   <span class="co"># piramidi per età e sesso</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  sf,        <span class="co"># dati spaziali e mappe</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  apyramid,   <span class="co"># piramidi per età e sesso</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  tidyverse <span class="co"># gestione e visualizzazione dei dati</span></span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><br></p>
@@ -449,9 +449,9 @@ Domanda di esempio: quanto fa 2 + 2?
 <p>Per le mappe, che vedrai più avanti, userai due file nuovi, che vanno importati all’inizio dello script:</p>
 <ul>
 <li>lo <strong>shapefile</strong> delle regioni, <code>dati/shapefiles/regioni.shp</code>, con i confini di ciascuna regione. Uno shapefile non è un solo file: <code>regioni.shp</code> è accompagnato da altri file con lo stesso nome e un’estensione diversa (<code>.shx</code>, <code>.dbf</code>, <code>.prj</code>), che devono stare nella stessa cartella. Tu leggi solo il <code>.shp</code>, con la funzione <code>read_sf()</code> del pacchetto <code>{sf}</code>, e R trova gli altri;</li>
-<li>la tabella <code>regioni</code> del Modulo 7, <code>dati/regioni.rds</code>, con la popolazione di ciascuna regione, che si importa con <code>import()</code> come <code>dati_clean</code>.</li>
+<li>il dataframe <code>regioni</code> del Modulo 7, <code>dati/regioni.rds</code>, con la popolazione di ciascuna regione, che si importa con <code>import()</code> come <code>dati_clean</code>.</li>
 </ul>
-<p>Vai alla sezione “Importazione dati” all’inizio di <code>plot.R</code> e, sotto l’importazione di <code>dati_clean</code>, importa lo shapefile in un oggetto <code>regioni_sf</code> e la tabella in un oggetto <code>regioni</code>. Esegui le nuove righe.</p>
+<p>Vai alla sezione “Importazione dati” all’inizio di <code>plot.R</code> e, sotto l’importazione di <code>dati_clean</code>, importa lo shapefile in un oggetto <code>regioni_sf</code> e il dataframe in un oggetto <code>regioni</code>. Esegui le nuove righe.</p>
 <details>
 <summary style="text-decoration: underline; color: red;">
 <p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
@@ -472,7 +472,7 @@ Domanda di esempio: quanto fa 2 + 2?
 <p>Come nei moduli precedenti:</p>
 <ul>
 <li>i comandi per <strong>esplorare</strong> e per <strong>provare</strong> (controlli, grafici intermedi, errori voluti e le loro correzioni) si scrivono nell’<strong>area di prova</strong>;</li>
-<li>gli oggetti che servono anche dopo (vettori di date, data frame aggregati, la mappa) e le <strong>versioni finali dei grafici</strong> si scrivono <strong>nello script</strong>, nelle sezioni del Modulo 08.</li>
+<li>gli oggetti che servono anche dopo (vettori di date, dataframe aggregati, la mappa) e le <strong>versioni finali dei grafici</strong> si scrivono <strong>nello script</strong>, nelle sezioni del Modulo 08.</li>
 </ul>
 <p>In ogni esercizio ti indicheremo dove scrivere il codice.</p>
 </section>
@@ -512,8 +512,8 @@ Domanda di esempio: quanto fa 2 + 2?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Con geom_histogram() senza argomenti, quanto dura il periodo coperto da ogni barra?
-<div id="radio_DEHEKXELBD" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_DEHEKXELBD" value=""> <span>Un giorno</span></label><label><input type="radio" autocomplete="off" name="radio_DEHEKXELBD" value=""> <span>Una settimana</span></label><label><input type="radio" autocomplete="off" name="radio_DEHEKXELBD" value="answer"> <span>Circa 5 giorni: il periodo totale diviso in 30 intervalli uguali</span></label><label><input type="radio" autocomplete="off" name="radio_DEHEKXELBD" value=""> <span>Un mese</span></label>
+<div id="radio_TKAGVZWIEF" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_TKAGVZWIEF" value=""> <span>Un giorno</span></label><label><input type="radio" autocomplete="off" name="radio_TKAGVZWIEF" value=""> <span>Una settimana</span></label><label><input type="radio" autocomplete="off" name="radio_TKAGVZWIEF" value="answer"> <span>Circa 5 giorni: il periodo totale diviso in 30 intervalli uguali</span></label><label><input type="radio" autocomplete="off" name="radio_TKAGVZWIEF" value=""> <span>Un mese</span></label>
 </div>
 </div>
 </div>
@@ -590,8 +590,8 @@ Con geom_histogram() senza argomenti, quanto dura il periodo coperto da ogni bar
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Che cosa restituisce floor_date() con unit = ‘week’ e week_start = 1?
-<div id="radio_VHOOEUHWWT" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_VHOOEUHWWT" value=""> <span>Il primo giorno del mese che contiene la data</span></label><label><input type="radio" autocomplete="off" name="radio_VHOOEUHWWT" value="answer"> <span>Il lunedì della settimana che contiene la data</span></label><label><input type="radio" autocomplete="off" name="radio_VHOOEUHWWT" value=""> <span>La domenica della settimana che contiene la data</span></label><label><input type="radio" autocomplete="off" name="radio_VHOOEUHWWT" value=""> <span>Il lunedì della settimana successiva alla data</span></label>
+<div id="radio_DVHSDHNTZM" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_DVHSDHNTZM" value=""> <span>Il primo giorno del mese che contiene la data</span></label><label><input type="radio" autocomplete="off" name="radio_DVHSDHNTZM" value="answer"> <span>Il lunedì della settimana che contiene la data</span></label><label><input type="radio" autocomplete="off" name="radio_DVHSDHNTZM" value=""> <span>La domenica della settimana che contiene la data</span></label><label><input type="radio" autocomplete="off" name="radio_DVHSDHNTZM" value=""> <span>Il lunedì della settimana successiva alla data</span></label>
 </div>
 </div>
 </div>
@@ -658,8 +658,8 @@ Che cosa restituisce floor_date() con unit = ‘week’ e week_start = 1?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 A cosa serve closed = ‘left’?
-<div id="radio_WATOORMNZI" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_WATOORMNZI" value=""> <span>Esclude dal grafico le vaccinazioni fatte di lunedì</span></label><label><input type="radio" autocomplete="off" name="radio_WATOORMNZI" value=""> <span>Fa iniziare le settimane di domenica invece che di lunedì</span></label><label><input type="radio" autocomplete="off" name="radio_WATOORMNZI" value=""> <span>Ordina le barre da sinistra a destra in ordine di data</span></label><label><input type="radio" autocomplete="off" name="radio_WATOORMNZI" value="answer"> <span>Conta le vaccinazioni del lunedì nella settimana che inizia quel giorno</span></label>
+<div id="radio_YLGFWLTTWO" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_YLGFWLTTWO" value=""> <span>Esclude dal grafico le vaccinazioni fatte di lunedì</span></label><label><input type="radio" autocomplete="off" name="radio_YLGFWLTTWO" value=""> <span>Fa iniziare le settimane di domenica invece che di lunedì</span></label><label><input type="radio" autocomplete="off" name="radio_YLGFWLTTWO" value=""> <span>Ordina le barre da sinistra a destra in ordine di data</span></label><label><input type="radio" autocomplete="off" name="radio_YLGFWLTTWO" value="answer"> <span>Conta le vaccinazioni del lunedì nella settimana che inizia quel giorno</span></label>
 </div>
 </div>
 </div>
@@ -720,7 +720,7 @@ A cosa serve closed = ‘left’?
 </section>
 <section id="luso-di-complete" class="level3">
 <h3 class="anchored" data-anchor-id="luso-di-complete">L’uso di <code>complete()</code></h3>
-<p>Quando conti con <code>count()</code>, le combinazioni che non compaiono nei dati non hanno una riga: una settimana senza vaccinati, semplicemente, non c’è. In una tabella può andare bene, in un grafico no, perché quella settimana sparisce invece di comparire con zero. <code>complete()</code> del pacchetto <code>{tidyr}</code> aggiunge le righe mancanti. Fa per un data frame in formato lungo quello che <code>values_fill</code> faceva per <code>pivot_wider()</code> nel Modulo 7:</p>
+<p>Quando conti con <code>count()</code>, le combinazioni che non compaiono nei dati non hanno una riga: una settimana senza vaccinati, semplicemente, non c’è. In una tabella può andare bene, in un grafico no, perché quella settimana sparisce invece di comparire con zero. <code>complete()</code> del pacchetto <code>{tidyr}</code> aggiunge le righe mancanti. Fa per un dataframe in formato lungo quello che <code>values_fill</code> faceva per <code>pivot_wider()</code> nel Modulo 7:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>DATI <span class="sc">%&gt;%</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">complete</span>(VARIABILE_1, VARIABILE_2, <span class="at">fill =</span> <span class="fu">list</span>(<span class="at">n =</span> <span class="dv">0</span>))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
@@ -730,7 +730,7 @@ A cosa serve closed = ‘left’?
 <li>al posto del nome di una variabile puoi scrivere <code>variabile = VALORI</code>, per indicare tu tutti i valori che deve avere;</li>
 <li><code>fill =</code> dice con che cosa riempire le altre variabili nelle righe aggiunte: senza, sarebbero <code>NA</code>.</li>
 </ul>
-<p>Nello script, nella sezione “Epicurva”, crea un data frame <code>vacc_settimana</code> con il numero di vaccinati per settimana (variabile <code>settimana</code>, il lunedì di ogni settimana). Con <code>complete()</code> aggiungi le settimane senza vaccinati, con <code>n = 0</code>, dalla prima all’ultima settimana. Poi, nell’area di prova, fai un grafico a barre con <code>geom_col()</code>.</p>
+<p>Nello script, nella sezione “Epicurva”, crea un dataframe <code>vacc_settimana</code> con il numero di vaccinati per settimana (variabile <code>settimana</code>, il lunedì di ogni settimana). Con <code>complete()</code> aggiungi le settimane senza vaccinati, con <code>n = 0</code>, dalla prima all’ultima settimana. Poi, nell’area di prova, fai un grafico a barre con <code>geom_col()</code>.</p>
 <details>
 <summary style="text-decoration: underline; color: darkgreen;">
 <p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
@@ -819,8 +819,8 @@ A cosa serve closed = ‘left’?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Con il formato %G-W%V, come compare la settimana della prima vaccinazione (sabato 6 febbraio 2021)?
-<div id="radio_RMOSCDLVVZ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_RMOSCDLVVZ" value=""> <span>2021-W06, perché il 6 febbraio cade nella sesta settimana dell'anno</span></label><label><input type="radio" autocomplete="off" name="radio_RMOSCDLVVZ" value="answer"> <span>2021-W05, la settimana ISO che inizia lunedì 1 febbraio</span></label><label><input type="radio" autocomplete="off" name="radio_RMOSCDLVVZ" value=""> <span>2021-W02, perché è il secondo mese dell'anno</span></label><label><input type="radio" autocomplete="off" name="radio_RMOSCDLVVZ" value=""> <span>2021-W01, perché è la prima settimana con vaccinazioni</span></label>
+<div id="radio_SRXIVJRBRN" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_SRXIVJRBRN" value=""> <span>2021-W06, perché il 6 febbraio cade nella sesta settimana dell'anno</span></label><label><input type="radio" autocomplete="off" name="radio_SRXIVJRBRN" value="answer"> <span>2021-W05, la settimana ISO che inizia lunedì 1 febbraio</span></label><label><input type="radio" autocomplete="off" name="radio_SRXIVJRBRN" value=""> <span>2021-W02, perché è il secondo mese dell'anno</span></label><label><input type="radio" autocomplete="off" name="radio_SRXIVJRBRN" value=""> <span>2021-W01, perché è la prima settimana con vaccinazioni</span></label>
 </div>
 </div>
 </div>
@@ -845,7 +845,7 @@ Con il formato %G-W%V, come compare la settimana della prima vaccinazione (sabat
 <h2 class="anchored" data-anchor-id="heatmap-dei-conteggi">Heatmap dei conteggi</h2>
 <p>Una heatmap è una griglia di celle colorate: ogni cella è una combinazione di due variabili, e il colore ne rappresenta il valore. In <code>{ggplot2}</code> si costruisce con <code>geom_tile()</code>, che vuole un dato già aggregato, con una riga per cella: le estetiche sono <code>x</code>, <code>y</code> e <code>fill</code>.</p>
 <p>Per contare i vaccinati per settimana serve prima una variabile che indichi la settimana di ciascuna vaccinazione. Come nell’epicurva, la crei con <code>floor_date()</code> dentro <code>mutate()</code>: con <code>unit = "week"</code> e <code>week_start = 1</code> ogni data viene riportata al <strong>lunedì</strong> della sua settimana, quindi tutte le vaccinazioni fatte tra un lunedì e la domenica successiva hanno lo stesso valore. A quel punto basta contare con <code>count()</code> le combinazioni di regione e settimana.</p>
-<p>Nell’area di prova, crea un data frame <code>vacc_regione_settimana</code> con il numero di vaccinati per regione e settimana. Sempre nell’area di prova fai una heatmap con <code>geom_tile()</code>, con la settimana sull’asse x, la regione sull’asse y e il riempimento per <code>n</code>.</p>
+<p>Nell’area di prova, crea un dataframe <code>vacc_regione_settimana</code> con il numero di vaccinati per regione e settimana. Sempre nell’area di prova fai una heatmap con <code>geom_tile()</code>, con la settimana sull’asse x, la regione sull’asse y e il riempimento per <code>n</code>.</p>
 <details>
 <summary style="text-decoration: underline; color: red;">
 <p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
@@ -878,8 +878,8 @@ Con il formato %G-W%V, come compare la settimana della prima vaccinazione (sabat
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Che cosa sono i buchi grigi nella heatmap?
-<div id="radio_CDQFTWKZJP" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_CDQFTWKZJP" value=""> <span>Settimane in cui il valore di n è NA</span></label><label><input type="radio" autocomplete="off" name="radio_CDQFTWKZJP" value=""> <span>Settimane escluse da geom_tile() perché con pochi vaccinati</span></label><label><input type="radio" autocomplete="off" name="radio_CDQFTWKZJP" value="answer"> <span>Combinazioni regione-settimana senza vaccinati, che non hanno una riga</span></label><label><input type="radio" autocomplete="off" name="radio_CDQFTWKZJP" value=""> <span>Settimane fuori dall'intervallo di date dell'asse x</span></label>
+<div id="radio_GKONPKIIEH" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_GKONPKIIEH" value=""> <span>Settimane in cui il valore di n è NA</span></label><label><input type="radio" autocomplete="off" name="radio_GKONPKIIEH" value=""> <span>Settimane escluse da geom_tile() perché con pochi vaccinati</span></label><label><input type="radio" autocomplete="off" name="radio_GKONPKIIEH" value="answer"> <span>Combinazioni regione-settimana senza vaccinati, che non hanno una riga</span></label><label><input type="radio" autocomplete="off" name="radio_GKONPKIIEH" value=""> <span>Settimane fuori dall'intervallo di date dell'asse x</span></label>
 </div>
 </div>
 </div>
@@ -918,7 +918,7 @@ Che cosa sono i buchi grigi nella heatmap?
 <section id="heatmap-di-proporzioni-nel-tempo" class="level2">
 <h2 class="anchored" data-anchor-id="heatmap-di-proporzioni-nel-tempo">Heatmap di proporzioni nel tempo</h2>
 <p>Ora vogliamo vedere, settimana per settimana, come si distribuiscono i vaccinati tra le classi d’età, separatamente per stato HIV.</p>
-<p>Nell’area di prova, crea un data frame <code>eta_settimana</code> con, per ogni combinazione di <code>hiv</code>, settimana e <code>age_cat</code>, il numero di vaccinati e la loro quota sul totale di quella settimana (nello stesso gruppo <code>hiv</code>), escludendo le persone con <code>age_cat</code> mancante. Poi fai una heatmap con la settimana sull’asse x, la classe d’età sull’asse y, il riempimento per la quota e un pannello per <code>hiv</code>, uno sotto l’altro.</p>
+<p>Nell’area di prova, crea un dataframe <code>eta_settimana</code> con, per ogni combinazione di <code>hiv</code>, settimana e <code>age_cat</code>, il numero di vaccinati e la loro quota sul totale di quella settimana (nello stesso gruppo <code>hiv</code>), escludendo le persone con <code>age_cat</code> mancante. Poi fai una heatmap con la settimana sull’asse x, la classe d’età sull’asse y, il riempimento per la quota e un pannello per <code>hiv</code>, uno sotto l’altro.</p>
 <p>Per i colori usa <code>scale_fill_distiller()</code>: è la versione per variabili continue di <code>scale_fill_brewer()</code> del Modulo 6, e usa le stesse palette. Con <code>direction = 1</code> i colori più scuri vanno ai valori più alti.</p>
 <details>
 <summary style="text-decoration: underline; color: darkgreen;">
@@ -971,8 +971,8 @@ Che cosa sono i buchi grigi nella heatmap?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Che cosa mostra la heatmap?
-<div id="radio_JRTRVKXJWE" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_JRTRVKXJWE" value=""> <span>Nei controlli le classi d'età si succedono dalla più anziana alla più giovane; nelle persone con HIV no</span></label><label><input type="radio" autocomplete="off" name="radio_JRTRVKXJWE" value=""> <span>Nelle persone con HIV gli 80+ prevalgono a febbraio, nei controlli a luglio</span></label><label><input type="radio" autocomplete="off" name="radio_JRTRVKXJWE" value="answer"> <span>In entrambi i gruppi gli 80+ pesano di più tra marzo e maggio, con andamento simile</span></label><label><input type="radio" autocomplete="off" name="radio_JRTRVKXJWE" value=""> <span>In nessuno dei due gruppi la quota delle classi d'età cambia nel corso delle settimane</span></label>
+<div id="radio_IBHEWVDKGM" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_IBHEWVDKGM" value=""> <span>Nei controlli le classi d'età si succedono dalla più anziana alla più giovane; nelle persone con HIV no</span></label><label><input type="radio" autocomplete="off" name="radio_IBHEWVDKGM" value=""> <span>Nelle persone con HIV gli 80+ prevalgono a febbraio, nei controlli a luglio</span></label><label><input type="radio" autocomplete="off" name="radio_IBHEWVDKGM" value="answer"> <span>In entrambi i gruppi gli 80+ pesano di più tra marzo e maggio, con andamento simile</span></label><label><input type="radio" autocomplete="off" name="radio_IBHEWVDKGM" value=""> <span>In nessuno dei due gruppi la quota delle classi d'età cambia nel corso delle settimane</span></label>
 </div>
 </div>
 </div>
@@ -996,7 +996,7 @@ Che cosa mostra la heatmap?
 <h2 class="anchored" data-anchor-id="heatmap-con-le-etichette">Heatmap con le etichette</h2>
 <p>Crea una nuova sezione con <strong>Ctrl+Shift+R</strong> che si chiamerà “Heatmap”, sopra l’area di prova.</p>
 <p>Quando le celle sono poche, conviene scrivere il valore su ciascuna. <code>geom_text()</code> aggiunge un testo in ogni posizione <code>x</code>, <code>y</code>, preso dall’estetica <code>label</code>. Per scrivere una proporzione come percentuale, <code>scales::percent()</code> trasforma direttamente i numeri in testo (<code>label_percent()</code> si usa invece dentro le scale); con <code>accuracy = 1</code> arrotonda all’unità.</p>
-<p>Nella sezione “Heatmap” dello script crea un data frame <code>charlson_eta</code> con, per classe d’età e <code>hiv</code>, il numero di persone (<code>n</code>) e la quota con Charlson index 3 o più (<code>quota_ch3</code>), escludendo le persone con <code>age_cat</code> mancante. Nell’area di prova fai una heatmap con <code>hiv</code> sull’asse x, la classe d’età sull’asse y e il riempimento per <code>quota_ch3</code>, e aggiungi su ogni cella la percentuale con <code>geom_text()</code>.</p>
+<p>Nella sezione “Heatmap” dello script crea un dataframe <code>charlson_eta</code> con, per classe d’età e <code>hiv</code>, il numero di persone (<code>n</code>) e la quota con Charlson index 3 o più (<code>quota_ch3</code>), escludendo le persone con <code>age_cat</code> mancante. Nell’area di prova fai una heatmap con <code>hiv</code> sull’asse x, la classe d’età sull’asse y e il riempimento per <code>quota_ch3</code>, e aggiungi su ogni cella la percentuale con <code>geom_text()</code>.</p>
 <details>
 <summary style="text-decoration: underline; color: darkgreen;">
 <p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
@@ -1084,8 +1084,8 @@ Che cosa mostra la heatmap?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Come varia la quota di persone con Charlson 3+?
-<div id="radio_GAQVYZNPCM" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_GAQVYZNPCM" value=""> <span>Cresce in modo regolare con l'età ed è sempre più alta nelle persone con HIV</span></label><label><input type="radio" autocomplete="off" name="radio_GAQVYZNPCM" value="answer"> <span>È intorno all'1-2% sotto i 60 anni e al 5-7% dai 60 in su, simile nei due gruppi</span></label><label><input type="radio" autocomplete="off" name="radio_GAQVYZNPCM" value=""> <span>È più alta nelle classi giovani, perché le persone con HIV sono più giovani</span></label><label><input type="radio" autocomplete="off" name="radio_GAQVYZNPCM" value=""> <span>È intorno al 30% in tutte le classi d'età e in entrambi i gruppi</span></label>
+<div id="radio_NEYGRXFAQP" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_NEYGRXFAQP" value=""> <span>Cresce in modo regolare con l'età ed è sempre più alta nelle persone con HIV</span></label><label><input type="radio" autocomplete="off" name="radio_NEYGRXFAQP" value="answer"> <span>È intorno all'1-2% sotto i 60 anni e al 5-7% dai 60 in su, simile nei due gruppi</span></label><label><input type="radio" autocomplete="off" name="radio_NEYGRXFAQP" value=""> <span>È più alta nelle classi giovani, perché le persone con HIV sono più giovani</span></label><label><input type="radio" autocomplete="off" name="radio_NEYGRXFAQP" value=""> <span>È intorno al 30% in tutte le classi d'età e in entrambi i gruppi</span></label>
 </div>
 </div>
 </div>
@@ -1095,8 +1095,8 @@ Come varia la quota di persone con Charlson 3+?
 <section id="leggere-una-mappa-con-sf" class="level2">
 <h2 class="anchored" data-anchor-id="leggere-una-mappa-con-sf">Leggere una mappa con <code>{sf}</code></h2>
 <p>Crea una nuova sezione con <strong>Ctrl+Shift+R</strong> che si chiamerà “Mappe”, sopra l’area di prova.</p>
-<p>All’inizio del modulo hai importato lo shapefile con <code>read_sf()</code>: il risultato, <code>regioni_sf</code>, è un oggetto <code>sf</code>, cioè un data frame come quelli che conosci, con una riga per area e una variabile speciale, <code>geometry</code>, che contiene i confini. Per disegnarlo si usa <code>geom_sf()</code>, che non ha bisogno di <code>x</code> e <code>y</code>: le coordinate sono in <code>geometry</code>.</p>
-<p>Lo shapefile contiene solo i confini e il codice di ciascuna regione. Per calcolare i tassi ti serve anche la popolazione, che si trova nella tabella <code>regioni</code>, importata anch’essa all’inizio.</p>
+<p>All’inizio del modulo hai importato lo shapefile con <code>read_sf()</code>: il risultato, <code>regioni_sf</code>, è un oggetto <code>sf</code>, cioè un dataframe come quelli che conosci, con una riga per area e una variabile speciale, <code>geometry</code>, che contiene i confini. Per disegnarlo si usa <code>geom_sf()</code>, che non ha bisogno di <code>x</code> e <code>y</code>: le coordinate sono in <code>geometry</code>.</p>
+<p>Lo shapefile contiene solo i confini e il codice di ciascuna regione. Per calcolare i tassi ti serve anche la popolazione, che si trova nel dataframe <code>regioni</code>, importata anch’essa all’inizio.</p>
 <p>Nell’area di prova stampa i due oggetti in console e poi disegna <code>regioni_sf</code> con <code>geom_sf()</code> e <code>theme_void()</code>.</p>
 <div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1110,7 +1110,7 @@ Come varia la quota di persone con Charlson 3+?
 <div class="callout-body-container callout-body">
 <p><code>regioni</code> e <code>regioni_sf</code> descrivono le stesse regioni, ma sono diversi:</p>
 <ul>
-<li><code>regioni</code> è una tabella con una riga per ciascuna regione da A a F, con <code>codice_regione</code>, <code>area</code> e <code>popolazione</code>;</li>
+<li><code>regioni</code> è un dataframe con una riga per ciascuna regione da A a F, con <code>codice_regione</code>, <code>area</code> e <code>popolazione</code>;</li>
 <li><code>regioni_sf</code> è un oggetto <code>sf</code> con una riga per ciascuna regione da A a D, quelle della mappa, con <code>region</code> e <code>geometry</code>.</li>
 </ul>
 <p>Il codice della regione si chiama <code>codice_regione</code> in <code>regioni</code> e <code>region</code> in <code>regioni_sf</code> e in <code>dati_clean</code>: quando unirai <code>regioni</code> ai conteggi dovrai indicare la chiave con <code>join_by()</code>, come nel Modulo 7.</p>
@@ -1222,8 +1222,8 @@ Come varia la quota di persone con Charlson 3+?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Che cosa contiene l’oggetto regioni_sf?
-<div id="radio_BXDHTDALST" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_BXDHTDALST" value=""> <span>Una riga per persona vaccinata, con la regione di residenza</span></label><label><input type="radio" autocomplete="off" name="radio_BXDHTDALST" value=""> <span>Una riga per regione, con la popolazione e i confini nella variabile geometry</span></label><label><input type="radio" autocomplete="off" name="radio_BXDHTDALST" value="answer"> <span>Una riga per regione, con il codice della regione e i confini nella variabile geometry</span></label><label><input type="radio" autocomplete="off" name="radio_BXDHTDALST" value=""> <span>Una riga per ogni punto del confine delle regioni</span></label><label><input type="radio" autocomplete="off" name="radio_BXDHTDALST" value=""> <span>Un'immagine della mappa, senza variabili</span></label>
+<div id="radio_HVLKMSURJT" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_HVLKMSURJT" value=""> <span>Una riga per persona vaccinata, con la regione di residenza</span></label><label><input type="radio" autocomplete="off" name="radio_HVLKMSURJT" value=""> <span>Una riga per regione, con la popolazione e i confini nella variabile geometry</span></label><label><input type="radio" autocomplete="off" name="radio_HVLKMSURJT" value="answer"> <span>Una riga per regione, con il codice della regione e i confini nella variabile geometry</span></label><label><input type="radio" autocomplete="off" name="radio_HVLKMSURJT" value=""> <span>Una riga per ogni punto del confine delle regioni</span></label><label><input type="radio" autocomplete="off" name="radio_HVLKMSURJT" value=""> <span>Un'immagine della mappa, senza variabili</span></label>
 </div>
 </div>
 </div>
@@ -1237,7 +1237,7 @@ Che cosa contiene l’oggetto regioni_sf?
 <li>il primo aggiunge la <strong>popolazione</strong>, da <code>regioni</code>, e permette di calcolare il tasso;</li>
 <li>il secondo aggiunge la <strong>geometria</strong>, da <code>regioni_sf</code>, e permette di disegnare la mappa.</li>
 </ol>
-<p>Sopra all’area di prova, nella sezione “Mappe”, crea un data frame <code>vacc_regione</code> con il numero di vaccinati per regione (variabile <code>n_vaccinati</code>). Uniscigli <code>regioni</code> con <code>left_join()</code> e calcola il tasso di vaccinati ogni 100.000 abitanti, salvando il risultato in <code>tassi_regione</code>. Nell’area di prova stampa <code>tassi_regione</code>.</p>
+<p>Sopra all’area di prova, nella sezione “Mappe”, crea un dataframe <code>vacc_regione</code> con il numero di vaccinati per regione (variabile <code>n_vaccinati</code>). Uniscigli <code>regioni</code> con <code>left_join()</code> e calcola il tasso di vaccinati ogni 100.000 abitanti, salvando il risultato in <code>tassi_regione</code>. Nell’area di prova stampa <code>tassi_regione</code>.</p>
 <details>
 <summary style="text-decoration: underline; color: darkgreen;">
 <p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
@@ -1330,7 +1330,7 @@ Che cosa contiene l’oggetto regioni_sf?
 <p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
 </summary>
 <p><br></p>
-<p>Parti da <code>regioni_sf</code> e unisci i tassi: qui la chiave ha lo stesso nome nelle due tabelle, quindi basta <code>by = "region"</code>.</p>
+<p>Parti da <code>regioni_sf</code> e unisci i tassi: qui la chiave ha lo stesso nome nei due dataframe, quindi basta <code>by = "region"</code>.</p>
 <p><br></p>
 </details>
 <details>
@@ -1368,7 +1368,7 @@ Che cosa contiene l’oggetto regioni_sf?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Nel join con la geometria l’oggetto <code>sf</code> deve stare a <strong>sinistra</strong>. Il risultato prende la classe della tabella di sinistra: <code>regioni_sf %&gt;% left_join(tassi_regione)</code> resta un oggetto <code>sf</code>, mentre <code>tassi_regione %&gt;% left_join(regioni_sf)</code> è un data frame normale, in cui <code>geometry</code> è una variabile qualsiasi, e <code>geom_sf()</code> non lo disegna come ti aspetti.</p>
+<p>Nel join con la geometria l’oggetto <code>sf</code> deve stare a <strong>sinistra</strong>. Il risultato prende la classe del dataframe di sinistra: <code>regioni_sf %&gt;% left_join(tassi_regione)</code> resta un oggetto <code>sf</code>, mentre <code>tassi_regione %&gt;% left_join(regioni_sf)</code> è un dataframe normale, in cui <code>geometry</code> è una variabile qualsiasi, e <code>geom_sf()</code> non lo disegna come ti aspetti.</p>
 </div>
 </div>
 <p>Ora, nella sezione “Mappe” dello script, rifinisci la mappa: usa <code>scale_fill_distiller()</code> con la palette <code>"YlOrRd"</code> e <code>direction = 1</code>, aggiungi il nome della regione con <code>geom_sf_text()</code>, che funziona come <code>geom_text()</code> ma prende la posizione da <code>geometry</code>, un titolo e il titolo della legenda.</p>
@@ -1404,8 +1404,8 @@ Che cosa contiene l’oggetto regioni_sf?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 La regione A ha il minor numero di vaccinati. Ha anche il tasso più basso?
-<div id="radio_YKMLTPSCKZ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_YKMLTPSCKZ" value=""> <span>Sì, perché ha meno vaccinati di tutte le altre regioni</span></label><label><input type="radio" autocomplete="off" name="radio_YKMLTPSCKZ" value=""> <span>Sì, perché ha la popolazione più piccola</span></label><label><input type="radio" autocomplete="off" name="radio_YKMLTPSCKZ" value=""> <span>No, il tasso più basso è quello della regione C</span></label><label><input type="radio" autocomplete="off" name="radio_YKMLTPSCKZ" value="answer"> <span>No, il tasso più basso è quello della regione B, che ha più vaccinati ma una popolazione più grande</span></label>
+<div id="radio_RAZXEUDRVO" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_RAZXEUDRVO" value=""> <span>Sì, perché ha meno vaccinati di tutte le altre regioni</span></label><label><input type="radio" autocomplete="off" name="radio_RAZXEUDRVO" value=""> <span>Sì, perché ha la popolazione più piccola</span></label><label><input type="radio" autocomplete="off" name="radio_RAZXEUDRVO" value=""> <span>No, il tasso più basso è quello della regione C</span></label><label><input type="radio" autocomplete="off" name="radio_RAZXEUDRVO" value="answer"> <span>No, il tasso più basso è quello della regione B, che ha più vaccinati ma una popolazione più grande</span></label>
 </div>
 </div>
 </div>
@@ -1469,8 +1469,8 @@ La regione A ha il minor numero di vaccinati. Ha anche il tasso più basso?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Perché il pannello Con HIV ha colori più chiari?
-<div id="radio_UDJDQBYACD" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_UDJDQBYACD" value=""> <span>Perché le persone con HIV si vaccinano meno dei controlli</span></label><label><input type="radio" autocomplete="off" name="radio_UDJDQBYACD" value="answer"> <span>Perché i due pannelli hanno la stessa scala e le persone con HIV sono la metà dei controlli</span></label><label><input type="radio" autocomplete="off" name="radio_UDJDQBYACD" value=""> <span>Perché facet_wrap() usa colori diversi in ogni pannello</span></label><label><input type="radio" autocomplete="off" name="radio_UDJDQBYACD" value=""> <span>Perché nel pannello Con HIV mancano alcune regioni</span></label>
+<div id="radio_CMUYYPLMPD" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_CMUYYPLMPD" value=""> <span>Perché le persone con HIV si vaccinano meno dei controlli</span></label><label><input type="radio" autocomplete="off" name="radio_CMUYYPLMPD" value="answer"> <span>Perché i due pannelli hanno la stessa scala e le persone con HIV sono la metà dei controlli</span></label><label><input type="radio" autocomplete="off" name="radio_CMUYYPLMPD" value=""> <span>Perché facet_wrap() usa colori diversi in ogni pannello</span></label><label><input type="radio" autocomplete="off" name="radio_CMUYYPLMPD" value=""> <span>Perché nel pannello Con HIV mancano alcune regioni</span></label>
 </div>
 </div>
 </div>
@@ -1485,7 +1485,7 @@ Perché il pannello Con HIV ha colori più chiari?
 <p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
 </summary>
 <p><br></p>
-<p>Prima crea un data frame <code>proporzione_hiv</code> che, partendo da <code>dati_clean</code>, contiene la proporzione di persone con HIV per ciascuna regione, utilizzando <code>group_by()</code> e <code>summarise()</code>. Unisci poi questo data frame a <code>regioni_sf</code>, salvando il risultato in <code>mappa_prop_hiv</code>, e infine crea il grafico.</p>
+<p>Prima crea un dataframe <code>proporzione_hiv</code> che, partendo da <code>dati_clean</code>, contiene la proporzione di persone con HIV per ciascuna regione, utilizzando <code>group_by()</code> e <code>summarise()</code>. Unisci poi questo dataframe a <code>regioni_sf</code>, salvando il risultato in <code>mappa_prop_hiv</code>, e infine crea il grafico.</p>
 <p><br></p>
 </details>
 <details>
@@ -1527,8 +1527,8 @@ Perché il pannello Con HIV ha colori più chiari?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Perché la quota è intorno al 33% in tutte le regioni?
-<div id="radio_XHJGEWENEJ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_XHJGEWENEJ" value=""> <span>Perché le persone con HIV sono distribuite in modo uniforme sul territorio</span></label><label><input type="radio" autocomplete="off" name="radio_XHJGEWENEJ" value=""> <span>Perché scale_fill_distiller() arrotonda i valori</span></label><label><input type="radio" autocomplete="off" name="radio_XHJGEWENEJ" value=""> <span>Perché le regioni hanno la stessa popolazione</span></label><label><input type="radio" autocomplete="off" name="radio_XHJGEWENEJ" value="answer"> <span>Perché ogni persona con HIV è appaiata a 2 controlli della stessa regione</span></label>
+<div id="radio_PWKYWDONPL" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_PWKYWDONPL" value=""> <span>Perché le persone con HIV sono distribuite in modo uniforme sul territorio</span></label><label><input type="radio" autocomplete="off" name="radio_PWKYWDONPL" value=""> <span>Perché scale_fill_distiller() arrotonda i valori</span></label><label><input type="radio" autocomplete="off" name="radio_PWKYWDONPL" value=""> <span>Perché le regioni hanno la stessa popolazione</span></label><label><input type="radio" autocomplete="off" name="radio_PWKYWDONPL" value="answer"> <span>Perché ogni persona con HIV è appaiata a 2 controlli della stessa regione</span></label>
 </div>
 </div>
 </div>
@@ -1618,8 +1618,8 @@ Perché la quota è intorno al 33% in tutte le regioni?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Che differenza vedi tra le due piramidi?
-<div id="radio_QLIANCZFDC" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_QLIANCZFDC" value=""> <span>Le persone con HIV sono più spesso maschi e più giovani dei controlli</span></label><label><input type="radio" autocomplete="off" name="radio_QLIANCZFDC" value=""> <span>Le persone con HIV sono più spesso femmine e più anziane dei controlli</span></label><label><input type="radio" autocomplete="off" name="radio_QLIANCZFDC" value="answer"> <span>Sono quasi uguali, perché i controlli sono appaiati per sesso e classe d'età</span></label><label><input type="radio" autocomplete="off" name="radio_QLIANCZFDC" value=""> <span>Sono diverse, perché le persone con HIV sono la metà dei controlli</span></label>
+<div id="radio_EGEMHUOSNW" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_EGEMHUOSNW" value=""> <span>Le persone con HIV sono più spesso maschi e più giovani dei controlli</span></label><label><input type="radio" autocomplete="off" name="radio_EGEMHUOSNW" value=""> <span>Le persone con HIV sono più spesso femmine e più anziane dei controlli</span></label><label><input type="radio" autocomplete="off" name="radio_EGEMHUOSNW" value="answer"> <span>Sono quasi uguali, perché i controlli sono appaiati per sesso e classe d'età</span></label><label><input type="radio" autocomplete="off" name="radio_EGEMHUOSNW" value=""> <span>Sono diverse, perché le persone con HIV sono la metà dei controlli</span></label>
 </div>
 </div>
 </div>
@@ -1663,7 +1663,7 @@ Che differenza vedi tra le due piramidi?
 </section>
 <section id="dati-già-aggregati" class="level3">
 <h3 class="anchored" data-anchor-id="dati-già-aggregati">Dati già aggregati</h3>
-<p>Nella sezione “Piramidi” crea un data frame <code>piramide_agg</code> con il numero di persone per classe d’età e sesso, escludendo le poche persone con età o sesso mancanti (7 in tutto). Nell’area di prova, fai la piramide da questi conteggi, usando l’argomento <code>count =</code> di <code>age_pyramid()</code>.</p>
+<p>Nella sezione “Piramidi” crea un dataframe <code>piramide_agg</code> con il numero di persone per classe d’età e sesso, escludendo le poche persone con età o sesso mancanti (7 in tutto). Nell’area di prova, fai la piramide da questi conteggi, usando l’argomento <code>count =</code> di <code>age_pyramid()</code>.</p>
 <details>
 <summary style="text-decoration: underline; color: red;">
 <p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
@@ -1743,15 +1743,15 @@ Che differenza vedi tra le due piramidi?
 <span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>  epikit,    <span class="co"># classi di età</span></span>
 <span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>  gtsummary, <span class="co"># tabelle descrittive</span></span>
 <span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>  flextable, <span class="co"># tabelle da presentare</span></span>
-<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>  tidyverse, <span class="co"># gestione e visualizzazione dei dati</span></span>
-<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>  sf,        <span class="co"># dati spaziali e mappe          (Modulo 08)</span></span>
-<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>  apyramid   <span class="co"># piramidi per età e sesso       (Modulo 08)</span></span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>  sf,        <span class="co"># dati spaziali e mappe          (Modulo 08)</span></span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>  apyramid,   <span class="co"># piramidi per età e sesso       (Modulo 08)</span></span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>  tidyverse <span class="co"># gestione e visualizzazione dei dati</span></span>
 <span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Importazione dati -------------------------------------------------------</span></span>
-<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"materiali_corso_R/dati/dati_clean.rds"</span>)</span>
-<span id="cb43-19"><a href="#cb43-19" aria-hidden="true" tabindex="-1"></a>regioni_sf <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">"materiali_corso_R/dati/shapefiles/regioni.shp"</span>)</span>
-<span id="cb43-20"><a href="#cb43-20" aria-hidden="true" tabindex="-1"></a>regioni    <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"materiali_corso_R/dati/regioni.rds"</span>)</span>
+<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"dati/dati_clean.rds"</span>)</span>
+<span id="cb43-19"><a href="#cb43-19" aria-hidden="true" tabindex="-1"></a>regioni_sf <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">"dati/shapefiles/regioni.shp"</span>)</span>
+<span id="cb43-20"><a href="#cb43-20" aria-hidden="true" tabindex="-1"></a>regioni    <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"dati/regioni.rds"</span>)</span>
 <span id="cb43-21"><a href="#cb43-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-22"><a href="#cb43-22" aria-hidden="true" tabindex="-1"></a><span class="co"># ... sezioni dei Moduli 5 e 6 ...</span></span>
 <span id="cb43-23"><a href="#cb43-23" aria-hidden="true" tabindex="-1"></a></span>
@@ -1884,10 +1884,10 @@ Che differenza vedi tra le due piramidi?
 <li>riportare le date al lunedì della settimana o al primo giorno del mese con <code>floor_date()</code> e <code>ceiling_date()</code> (<code>unit =</code>, <code>week_start = 1</code>) e creare sequenze di date con <code>seq.Date()</code>;</li>
 <li>costruire curve con intervalli definiti, passando le date a <code>breaks =</code> di <code>geom_histogram()</code> con <code>closed = "left"</code>;</li>
 <li>scrivere le date come settimane ISO con <code>scales::label_date("%G-W%V")</code>, e indicare con <code>width =</code> la larghezza delle barre di <code>geom_col()</code> su un asse di date, in giorni;</li>
-<li>aggiungere a una tabella di conteggi le combinazioni mancanti con <code>complete()</code> e <code>fill = list(n = 0)</code>, prima del grafico;</li>
+<li>aggiungere a un dataframe di conteggi le combinazioni mancanti con <code>complete()</code> e <code>fill = list(n = 0)</code>, prima del grafico;</li>
 <li>disegnare heatmap da dati aggregati con <code>geom_tile()</code>, colorarle con <code>scale_fill_gradient()</code> o <code>scale_fill_distiller()</code> e scrivere i valori sulle celle con <code>geom_text()</code>;</li>
-<li>leggere uno shapefile con <code>read_sf()</code> in un oggetto <code>sf</code>, un data frame con la variabile <code>geometry</code>, e disegnarlo con <code>geom_sf()</code>, <code>geom_sf_text()</code> e <code>theme_void()</code>;</li>
-<li>calcolare i tassi con due join: prima la popolazione, da una tabella in cui la chiave ha un nome diverso (<code>join_by()</code>), poi la geometria, partendo dall’oggetto <code>sf</code>; e usare i tassi per confrontare aree di popolazione diversa;</li>
+<li>leggere uno shapefile con <code>read_sf()</code> in un oggetto <code>sf</code>, un dataframe con la variabile <code>geometry</code>, e disegnarlo con <code>geom_sf()</code>, <code>geom_sf_text()</code> e <code>theme_void()</code>;</li>
+<li>calcolare i tassi con due join: prima la popolazione, da un dataframe in cui la chiave ha un nome diverso (<code>join_by()</code>), poi la geometria, partendo dall’oggetto <code>sf</code>; e usare i tassi per confrontare aree di popolazione diversa;</li>
 <li>costruire piramidi per età e sesso con <code>age_pyramid()</code> da dati individuali o aggregati (<code>count =</code>), controllando l’ordine con un <code>factor</code>, e personalizzarle con <code>{ggplot2}</code>.</li>
 </ul>
 </section>
@@ -1897,7 +1897,7 @@ Che differenza vedi tra le due piramidi?
 <li>Documentazione di <code>{lubridate}</code>: <a href="https://lubridate.tidyverse.org/reference/round_date.html" class="uri">https://lubridate.tidyverse.org/reference/round_date.html</a></li>
 <li>Documentazione di <code>{tidyr}</code>: <a href="https://tidyr.tidyverse.org/reference/complete.html" class="uri">https://tidyr.tidyverse.org/reference/complete.html</a></li>
 <li>Documentazione di <code>geom_tile()</code>: <a href="https://ggplot2.tidyverse.org/reference/geom_tile.html" class="uri">https://ggplot2.tidyverse.org/reference/geom_tile.html</a></li>
-<li>Documentazione di <code>geom_sf()</code>: <a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="uri">https://ggplot2.tidyverse.org/reference/ggsf.html</a>;</li>
+<li>Documentazione di <code>geom_sf()</code>: <a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="uri">https://ggplot2.tidyverse.org/reference/ggsf.html</a></li>
 <li>Documentazione di <code>{sf}</code>: <a href="https://r-spatial.github.io/sf/" class="uri">https://r-spatial.github.io/sf/</a></li>
 <li>Documentazione di <code>{apyramid}</code>: <a href="https://cran.r-project.org/package=apyramid" class="uri">https://cran.r-project.org/package=apyramid</a></li>
 <li>Curve epidemiche, heatmap, mappe e piramidi: <em>The Epidemiologist R Handbook</em>: <a href="https://epirhandbook.com/" class="uri">https://epirhandbook.com/</a></li>
@@ -1905,7 +1905,7 @@ Che differenza vedi tra le due piramidi?
 <!-- **Autori** -->
 <!-- Autori originali: Nome Cognome (Istituzione), Nome Cognome -->
 <!-- (Istituzione)\ -->
-<!-- Fonte dei dati: [DA COMPLETARE: origine del dataset dati_clean] coorte di -->
+<!-- Fonte dei dati: [DA COMPLETARE: origine del dataframe dati_clean] coorte di -->
 <!-- persone vaccinate con e senza HIV; confini delle regioni e popolazioni -->
 <!-- fittizi; esercizi ispirati al modulo *Heat plots, epicurves, pyramids* -->
 <!-- di Applied Epi (<https://appliedepi.org>)\ -->

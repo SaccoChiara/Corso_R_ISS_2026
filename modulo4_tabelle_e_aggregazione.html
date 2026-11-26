@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>quarto-input5d28646951a6bfa3 – Corso base di R</title>
+<title>quarto-input2785e8a89c608599 – Corso base di R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -222,8 +222,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">In questa pagina</h2>
    
   <ul>
-  <li><a href="#corso-introduttivo-al-software-statistico-r" id="toc-corso-introduttivo-al-software-statistico-r" class="nav-link active" data-scroll-target="#corso-introduttivo-al-software-statistico-r"><strong>Corso introduttivo al software statistico R</strong></a></li>
-  <li><a href="#modulo-04-tabelle-e-aggregazione-dati" id="toc-modulo-04-tabelle-e-aggregazione-dati" class="nav-link" data-scroll-target="#modulo-04-tabelle-e-aggregazione-dati">Modulo 04 Tabelle e aggregazione dati</a>
+  <li><a href="#corso-base-di-r-per-la-gestione-e-analisi-dei-dati" id="toc-corso-base-di-r-per-la-gestione-e-analisi-dei-dati" class="nav-link active" data-scroll-target="#corso-base-di-r-per-la-gestione-e-analisi-dei-dati"><strong>Corso base di R per la gestione e analisi dei dati</strong></a></li>
+  <li><a href="#modulo-04---tabelle-e-aggregazione-dati" id="toc-modulo-04---tabelle-e-aggregazione-dati" class="nav-link" data-scroll-target="#modulo-04---tabelle-e-aggregazione-dati">Modulo 04 - Tabelle e aggregazione dati</a>
   <ul>
   <li><a href="#obiettivi-del-modulo" id="toc-obiettivi-del-modulo" class="nav-link" data-scroll-target="#obiettivi-del-modulo">Obiettivi del modulo</a></li>
   <li><a href="#formato-dellesercizio" id="toc-formato-dellesercizio" class="nav-link" data-scroll-target="#formato-dellesercizio">Formato dell’esercizio</a></li>
@@ -256,7 +256,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#percentuali-di-colonna" id="toc-percentuali-di-colonna" class="nav-link" data-scroll-target="#percentuali-di-colonna">Percentuali di colonna</a></li>
   <li><a href="#stato-hiv-e-classe-detà" id="toc-stato-hiv-e-classe-detà" class="nav-link" data-scroll-target="#stato-hiv-e-classe-detà">Stato HIV e classe d’età</a></li>
   </ul></li>
-  <li><a href="#summarise-sullintero-dataset" id="toc-summarise-sullintero-dataset" class="nav-link" data-scroll-target="#summarise-sullintero-dataset"><code>summarise()</code> sull’intero dataset</a>
+  <li><a href="#summarise-sullintero-dataframe" id="toc-summarise-sullintero-dataframe" class="nav-link" data-scroll-target="#summarise-sullintero-dataframe"><code>summarise()</code> sull’intero dataframe</a>
   <ul class="collapse">
   <li><a href="#come-funziona-summarise" id="toc-come-funziona-summarise" class="nav-link" data-scroll-target="#come-funziona-summarise">Come funziona <code>summarise()</code></a></li>
   <li><a href="#contare-le-persone" id="toc-contare-le-persone" class="nav-link" data-scroll-target="#contare-le-persone">Contare le persone</a></li>
@@ -283,7 +283,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#group_by-con-mutate" id="toc-group_by-con-mutate" class="nav-link" data-scroll-target="#group_by-con-mutate"><code>group_by()</code> con <code>mutate()</code></a></li>
   <li><a href="#esplorare-aggregare-presentare" id="toc-esplorare-aggregare-presentare" class="nav-link" data-scroll-target="#esplorare-aggregare-presentare">Esplorare, aggregare, presentare</a>
   <ul class="collapse">
-  <li><a href="#un-dataset-aggregato" id="toc-un-dataset-aggregato" class="nav-link" data-scroll-target="#un-dataset-aggregato">Un dataset aggregato</a></li>
+  <li><a href="#un-dataframe-aggregato" id="toc-un-dataframe-aggregato" class="nav-link" data-scroll-target="#un-dataframe-aggregato">Un dataframe aggregato</a></li>
   <li><a href="#presentare-la-sintesi-con-flextable" id="toc-presentare-la-sintesi-con-flextable" class="nav-link" data-scroll-target="#presentare-la-sintesi-con-flextable">Presentare la sintesi con <code>{flextable}</code></a></li>
   <li><a href="#tassi-per-classe-detà-e-stato-hiv" id="toc-tassi-per-classe-detà-e-stato-hiv" class="nav-link" data-scroll-target="#tassi-per-classe-detà-e-stato-hiv">Tassi per classe d’età e stato HIV</a></li>
   </ul></li>
@@ -355,9 +355,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
        tab_sintesi_hiv, tassi_eta_hiv); tutti gli altri comandi si
        scrivono nell'area di prova.
      - I commenti "DIPENDE DAI DATI" segnalano testi o domande da
-       ricontrollare se cambia il dataset. Le risposte delle domande
+       ricontrollare se cambia il dataframe. Le risposte delle domande
        con risposta calcolata si aggiornano da sole.
-     - Dataset: dati_clean (dati/dati_clean.rds),
+     - Dataframe: dati_clean (dati/dati_clean.rds),
        versione del 13/11/2026: 47.717 persone, 18 variabili;
        fu_days, event 0/1 e age_cat già presenti; NA in sex 2,
        age 5, age_cat 5; region e hiv_status senza NA (esclusi nel
@@ -366,11 +366,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
        solo per le persone con HIV, NA per tutte le 31.693 senza
        HIV. cd4 non è usata negli esercizi.
      ============================================================ -->
-<section id="corso-introduttivo-al-software-statistico-r" class="level1">
-<h1><strong>Corso introduttivo al software statistico R</strong></h1>
+<section id="corso-base-di-r-per-la-gestione-e-analisi-dei-dati" class="level1">
+<h1><strong>Corso base di R per la gestione e analisi dei dati</strong></h1>
 </section>
-<section id="modulo-04-tabelle-e-aggregazione-dati" class="level1">
-<h1>Modulo 04 Tabelle e aggregazione dati</h1>
+<section id="modulo-04---tabelle-e-aggregazione-dati" class="level1">
+<h1>Modulo 04 - Tabelle e aggregazione dati</h1>
 <section id="obiettivi-del-modulo" class="level2">
 <h2 class="anchored" data-anchor-id="obiettivi-del-modulo">Obiettivi del modulo</h2>
 <ul>
@@ -378,8 +378,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Costruire tabelle a una e a due entrate con totali e percentuali di riga o di colonna, usando le funzioni <code>adorn_*()</code></li>
 <li>Calcolare statistiche di sintesi, anche per gruppo, con <code>group_by()</code> e <code>summarise()</code></li>
 <li>Gestire i valori mancanti con <code>na.rm</code> e i raggruppamenti con <code>.groups</code> e <code>ungroup()</code></li>
-<li>Costruire una tabella riassuntiva per gruppo e salvarla in un nuovo oggetto</li>
-<li>Distinguere le tabelle per esplorare i dati, i dataset aggregati e le tabelle da presentare, e presentare una tabella con <code>{flextable}</code></li>
+<li>Costruire un dataframe riassuntivo per gruppo e salvarlo in un nuovo oggetto</li>
+<li>Distinguere le tabelle per esplorare i dati, i dataframe aggregati e le tabelle da presentare, e presentare una tabella con <code>{flextable}</code></li>
 </ul>
 </section>
 <section id="formato-dellesercizio" class="level2">
@@ -439,15 +439,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Domanda di esempio: quanto fa 2 + 2?
-<div id="radio_HZGTKIKLCE" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_HZGTKIKLCE" value=""> <span>2</span></label><label><input type="radio" autocomplete="off" name="radio_HZGTKIKLCE" value=""> <span>5</span></label><label><input type="radio" autocomplete="off" name="radio_HZGTKIKLCE" value="answer"> <span>4</span></label>
+<div id="radio_HNIXPDDAPU" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_HNIXPDDAPU" value=""> <span>2</span></label><label><input type="radio" autocomplete="off" name="radio_HNIXPDDAPU" value=""> <span>5</span></label><label><input type="radio" autocomplete="off" name="radio_HNIXPDDAPU" value="answer"> <span>4</span></label>
 </div>
 </div>
 </div>
 </div>
 </div>
-<p>Lungo il modulo troverai anche due tipi di riquadri colorati. I riquadri <strong>gialli</strong> segnalano errori frequenti o punti in cui R si comporta in modo inatteso: leggili sempre, perché possono farti risparmiare tempo.</p>
-<!-- ISTRUZIONI: Il box giallo "Attenzione a …" va usato per avvisi
+<p>Lungo il modulo troverai anche due tipi di riquadri colorati. I riquadri <strong>arancioni</strong> segnalano errori frequenti o punti in cui R si comporta in modo inatteso: leggili sempre, perché possono farti risparmiare tempo.</p>
+<!-- ISTRUZIONI: Il box arancione "Attenzione a …" va usato per avvisi
      importanti: errori comuni, comportamenti di R che possono
      sorprendere, passaggi da non saltare. Il titolo inizia sempre con
      "Attenzione a" (es. "Attenzione ai nomi con spazi"). Copia
@@ -505,7 +505,7 @@ Domanda di esempio: quanto fa 2 + 2?
 <section id="i-dati" class="level3">
 <h3 class="anchored" data-anchor-id="i-dati">I dati</h3>
 <p>In questo modulo usiamo i dati puliti nel Modulo 3. Nella cartella <code>dati</code> ci sono due versioni: il file che hai salvato tu (<code>dati_clean_</code> seguito dal tuo nome) e <code>dati_clean.rds</code>, preparato da noi. Da qui in avanti useremo sempre <code>dati_clean.rds</code>: così tutti lavoriamo sugli stessi dati puliti.</p>
-<p>Nello script crea la sezione “Importazione dati” (<strong>Ctrl+Shift+R</strong>) e importa il file <code>dati_clean.rds</code> con <code>import()</code>, chiamando il dataset <code>dati_clean</code>. Il formato RDS conserva le classi delle variabili: le date sono già date, e non serve rifare le conversioni.</p>
+<p>Nello script crea la sezione “Importazione dati” (<strong>Ctrl+Shift+R</strong>) e importa il file <code>dati_clean.rds</code> con <code>import()</code>, chiamando il dataframe <code>dati_clean</code>. Il formato RDS conserva le classi delle variabili: le date sono già date, e non serve rifare le conversioni.</p>
 <details>
 <summary style="text-decoration: underline; color: red;">
 <p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
@@ -640,7 +640,7 @@ Domanda di esempio: quanto fa 2 + 2?
 <!-- Tempo stimato: 10 minuti -->
 <section id="conteggi-semplici" class="level3">
 <h3 class="anchored" data-anchor-id="conteggi-semplici">Conteggi semplici</h3>
-<p>Ci sono tanti modi per costruire una tabella in R. Il primo che vediamo è <code>count()</code> del pacchetto <code>{dplyr}</code>: conta quante righe ci sono per ciascun valore di una variabile e restituisce un piccolo data frame, con una riga per ogni valore e una colonna <code>n</code> con il conteggio. Si scrive dopo il dataset, collegata con <code>%&gt;%</code>, e tra le parentesi si indica la variabile da contare:</p>
+<p>Ci sono tanti modi per costruire una tabella in R. Il primo che vediamo è <code>count()</code> del pacchetto <code>{dplyr}</code>: conta quante righe ci sono per ciascun valore di una variabile e restituisce un piccolo dataframe, con una riga per ogni valore e una colonna <code>n</code> con il conteggio. Si scrive dopo il dataframe, collegata con <code>%&gt;%</code>, e tra le parentesi si indica la variabile da contare:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(VARIABILE)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
@@ -688,9 +688,9 @@ Domanda di esempio: quanto fa 2 + 2?
 <div class="callout-body-container">
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
-Quante persone con HIV ci sono nel dataset?
-<div id="radio_ICERYHPPSB" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_ICERYHPPSB" value=""> <span>31.693</span></label><label><input type="radio" autocomplete="off" name="radio_ICERYHPPSB" value="answer"> <span>16.024</span></label><label><input type="radio" autocomplete="off" name="radio_ICERYHPPSB" value=""> <span>47.717</span></label><label><input type="radio" autocomplete="off" name="radio_ICERYHPPSB" value=""> <span>8.012</span></label>
+Quante persone con HIV ci sono nel dataframe?
+<div id="radio_EGJNOEPIJL" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_EGJNOEPIJL" value=""> <span>31.693</span></label><label><input type="radio" autocomplete="off" name="radio_EGJNOEPIJL" value="answer"> <span>16.024</span></label><label><input type="radio" autocomplete="off" name="radio_EGJNOEPIJL" value=""> <span>47.717</span></label><label><input type="radio" autocomplete="off" name="radio_EGJNOEPIJL" value=""> <span>8.012</span></label>
 </div>
 </div>
 </div>
@@ -713,7 +713,7 @@ Quante persone con HIV ci sono nel dataset?
 </section>
 <section id="ordinare-i-conteggi" class="level3">
 <h3 class="anchored" data-anchor-id="ordinare-i-conteggi">Ordinare i conteggi</h3>
-<p>Nella tabella delle regioni le righe sono in ordine alfabetico. Spesso però è più utile vedere per prime le categorie più frequenti: per questo <code>count()</code> ha l’argomento <code>sort</code>. Con <code>sort = TRUE</code> le righe vengono ordinate dalla più frequente alla meno frequente.</p>
+<p>Nel conteggio per regione le righe sono in ordine alfabetico. Spesso però è più utile vedere per prime le categorie più frequenti: per questo <code>count()</code> ha l’argomento <code>sort</code>. Con <code>sort = TRUE</code> le righe vengono ordinate dalla più frequente alla meno frequente.</p>
 <p>Nell’area di prova, ripeti il conteggio per regione ordinando il risultato dalla regione più frequente alla meno frequente.</p>
 <details>
 <summary style="text-decoration: underline; color: red;">
@@ -736,9 +736,9 @@ Quante persone con HIV ci sono nel dataset?
 </section>
 <section id="dai-conteggi-alle-percentuali" class="level3">
 <h3 class="anchored" data-anchor-id="dai-conteggi-alle-percentuali">Dai conteggi alle percentuali</h3>
-<p><code>count()</code> dà solo i conteggi. Per avere anche le percentuali bisogna crearle noi, aggiungendo una nuova variabile alla tabella: come hai visto nei moduli precedenti, una nuova variabile si crea con <code>mutate()</code>, che si scrive dopo <code>count()</code>, collegata con <code>%&gt;%</code>.</p>
+<p><code>count()</code> dà solo i conteggi. Per avere anche le percentuali bisogna crearle noi, aggiungendo una nuova variabile al dataframe: come hai visto nei moduli precedenti, una nuova variabile si crea con <code>mutate()</code>, che si scrive dopo <code>count()</code>, collegata con <code>%&gt;%</code>.</p>
 <p>Partendo dal conteggio per sesso, aggiungi una variabile <code>perc</code> con la percentuale di ciascuna categoria, arrotondata a una cifra decimale. Per arrotondare usa <code>round()</code>: il primo argomento è il numero da arrotondare, il secondo il numero di cifre decimali, per esempio <code>round(x, 1)</code>.</p>
-<p>Questa tabella è un risultato che vogliamo tenere: nello script, sopra l’area di prova, crea la sezione “Tabelle di frequenza” (<strong>Ctrl+Shift+R</strong>) e salva la tabella in un oggetto chiamato <code>tab_sesso</code>, con l’operatore di assegnazione <code>&lt;-</code>. Poi trova <code>tab_sesso</code> nel pannello <strong>Environment</strong> e stampalo nella console.</p>
+<p>Questo dataframe è un risultato che vogliamo tenere: nello script, sopra l’area di prova, crea la sezione “Tabelle di frequenza” (<strong>Ctrl+Shift+R</strong>) e salva il dataframe in un oggetto chiamato <code>tab_sesso</code>, con l’operatore di assegnazione <code>&lt;-</code>. Poi trova <code>tab_sesso</code> nel pannello <strong>Environment</strong> e stampalo nella console.</p>
 <details>
 <summary style="text-decoration: underline; color: darkgreen;">
 <p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
@@ -746,7 +746,7 @@ Quante persone con HIV ci sono nel dataset?
 <p><br></p>
 <ul>
 <li>Dentro <code>mutate()</code> scrivi <code>perc = ...</code>: la percentuale di ciascuna categoria è il suo conteggio diviso per il totale, per 100, cioè <code>n / sum(n) * 100</code>. <code>sum(n)</code> somma tutti i valori della colonna <code>n</code>.</li>
-<li>Per vedere la tabella salvata, esegui il nome dell’oggetto.</li>
+<li>Per vedere il dataframe salvato, esegui il nome dell’oggetto.</li>
 </ul>
 <p><br></p>
 </details>
@@ -761,7 +761,7 @@ Quante persone con HIV ci sono nel dataset?
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(sex) <span class="sc">%&gt;%</span></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">perc =</span> <span class="fu">round</span>(n <span class="sc">/</span> <span class="fu">sum</span>(n) <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">1</span>))</span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Per vedere la tabella, esegui il nome dell'oggetto</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Per vedere il dataframe, esegui il nome dell'oggetto</span></span>
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>tab_sesso</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   sex     n perc
@@ -781,8 +781,8 @@ Quante persone con HIV ci sono nel dataset?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Che cosa calcola <code>sum(n)</code> dentro <code>mutate()</code>?
-<div id="radio_ZAATVWHBJU" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_ZAATVWHBJU" value=""> <span>Il numero di variabili della tabella</span></label><label><input type="radio" autocomplete="off" name="radio_ZAATVWHBJU" value=""> <span>Il numero di persone con sesso femminile</span></label><label><input type="radio" autocomplete="off" name="radio_ZAATVWHBJU" value="answer"> <span>Il totale della variabile <code>n</code>, cioè tutte le persone contate</span></label><label><input type="radio" autocomplete="off" name="radio_ZAATVWHBJU" value=""> <span>La media dei conteggi</span></label>
+<div id="radio_SYVTTNWVSJ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_SYVTTNWVSJ" value=""> <span>Il numero di variabili del dataframe</span></label><label><input type="radio" autocomplete="off" name="radio_SYVTTNWVSJ" value=""> <span>Il numero di persone con sesso femminile</span></label><label><input type="radio" autocomplete="off" name="radio_SYVTTNWVSJ" value="answer"> <span>Il totale della variabile <code>n</code>, cioè tutte le persone contate</span></label><label><input type="radio" autocomplete="off" name="radio_SYVTTNWVSJ" value=""> <span>La media dei conteggi</span></label>
 </div>
 </div>
 </div>
@@ -821,8 +821,8 @@ Che cosa calcola <code>sum(n)</code> dentro <code>mutate()</code>?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Quante righe ha il risultato di <code>count(hiv_status, sex)</code>?
-<div id="radio_ZTUXNBJZBZ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_ZTUXNBJZBZ" value=""> <span>Una per ogni persona</span></label><label><input type="radio" autocomplete="off" name="radio_ZTUXNBJZBZ" value=""> <span>Una per ogni valore di <code>hiv_status</code></span></label><label><input type="radio" autocomplete="off" name="radio_ZTUXNBJZBZ" value="answer"> <span>Una per ogni combinazione di <code>hiv_status</code> e <code>sex</code></span></label><label><input type="radio" autocomplete="off" name="radio_ZTUXNBJZBZ" value=""> <span>Sempre due righe</span></label>
+<div id="radio_WXUMJGHLBB" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_WXUMJGHLBB" value=""> <span>Una per ogni persona</span></label><label><input type="radio" autocomplete="off" name="radio_WXUMJGHLBB" value=""> <span>Una per ogni valore di <code>hiv_status</code></span></label><label><input type="radio" autocomplete="off" name="radio_WXUMJGHLBB" value="answer"> <span>Una per ogni combinazione di <code>hiv_status</code> e <code>sex</code></span></label><label><input type="radio" autocomplete="off" name="radio_WXUMJGHLBB" value=""> <span>Sempre due righe</span></label>
 </div>
 </div>
 </div>
@@ -922,8 +922,8 @@ Quante righe ha il risultato di <code>count(hiv_status, sex)</code>?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Dopo <code>adorn_pct_formatting()</code>, che cosa diventano le percentuali?
-<div id="radio_ZCZIUNYUDH" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_ZCZIUNYUDH" value=""> <span>Restano numeri, solo arrotondati</span></label><label><input type="radio" autocomplete="off" name="radio_ZCZIUNYUDH" value="answer"> <span>Diventano testo (character), con il simbolo %</span></label><label><input type="radio" autocomplete="off" name="radio_ZCZIUNYUDH" value=""> <span>Diventano proporzioni tra 0 e 1</span></label><label><input type="radio" autocomplete="off" name="radio_ZCZIUNYUDH" value=""> <span>Vengono eliminate</span></label>
+<div id="radio_LHGTQWEMHI" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_LHGTQWEMHI" value=""> <span>Restano numeri, solo arrotondati</span></label><label><input type="radio" autocomplete="off" name="radio_LHGTQWEMHI" value="answer"> <span>Diventano testo (character), con il simbolo %</span></label><label><input type="radio" autocomplete="off" name="radio_LHGTQWEMHI" value=""> <span>Diventano proporzioni tra 0 e 1</span></label><label><input type="radio" autocomplete="off" name="radio_LHGTQWEMHI" value=""> <span>Vengono eliminate</span></label>
 </div>
 </div>
 </div>
@@ -932,7 +932,7 @@ Dopo <code>adorn_pct_formatting()</code>, che cosa diventano le percentuali?
 </section>
 <section id="ordinare-la-tabella" class="level3">
 <h3 class="anchored" data-anchor-id="ordinare-la-tabella">Ordinare la tabella</h3>
-<p>Con <code>count()</code> hai ordinato i conteggi con l’argomento <code>sort</code>. <code>tabyl()</code> non ha questo argomento: per ordinare le righe di una tabella si usa la funzione <code>arrange()</code> del pacchetto <code>{dplyr}</code>, indicando la variabile in base a cui ordinare. <code>arrange(n)</code> mette le righe dal conteggio più piccolo al più grande; per l’ordine inverso, dal più grande al più piccolo, si scrive <code>arrange(desc(n))</code>. Nel caso di variabili di classe <code>character</code>, la funzione <code>arrange()</code> esegue un ordinamento alfabetico.</p>
+<p>Con <code>count()</code> hai ordinato i conteggi con l’argomento <code>sort</code>. <code>tabyl()</code> non ha questo argomento: per ordinare le righe di un dataframe si usa la funzione <code>arrange()</code> del pacchetto <code>{dplyr}</code>, indicando la variabile in base a cui ordinare. <code>arrange(n)</code> mette le righe dal conteggio più piccolo al più grande; per l’ordine inverso, dal più grande al più piccolo, si scrive <code>arrange(desc(n))</code>. Nel caso di variabili di classe <code>character</code>, la funzione <code>arrange()</code> esegue un ordinamento alfabetico.</p>
 <p>Ora costruisci la tabella delle regioni, ordinata dalla più frequente, con il totale e le percentuali formattate. Conta però l’ordine dei passaggi: prova nell’area di prova a scriverli in due ordini diversi, prima <code>adorn_totals()</code> e poi <code>arrange()</code>, e poi al contrario. Confronta i due risultati.</p>
 <details>
 <summary style="text-decoration: underline; color: red;">
@@ -980,8 +980,8 @@ Dopo <code>adorn_pct_formatting()</code>, che cosa diventano le percentuali?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Perché, se usi <code>adorn_totals()</code> prima di <code>arrange(desc(n))</code>, la riga Total finisce in cima?
-<div id="radio_GKFNHGBWCC" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_GKFNHGBWCC" value=""> <span>Perché adorn_totals() mette sempre il totale nella prima riga</span></label><label><input type="radio" autocomplete="off" name="radio_GKFNHGBWCC" value="answer"> <span>Perché arrange() ordina anche la riga Total, che ha il valore di n più alto</span></label><label><input type="radio" autocomplete="off" name="radio_GKFNHGBWCC" value=""> <span>Perché arrange() non funziona sulle tabelle di tabyl()</span></label><label><input type="radio" autocomplete="off" name="radio_GKFNHGBWCC" value=""> <span>Perché arrange() ordina in ordine alfabetico</span></label>
+<div id="radio_QJFIVSONMQ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_QJFIVSONMQ" value=""> <span>Perché adorn_totals() mette sempre il totale nella prima riga</span></label><label><input type="radio" autocomplete="off" name="radio_QJFIVSONMQ" value="answer"> <span>Perché arrange() ordina anche la riga Total, che ha il valore di n più alto</span></label><label><input type="radio" autocomplete="off" name="radio_QJFIVSONMQ" value=""> <span>Perché arrange() non funziona sui dataframe di tabyl()</span></label><label><input type="radio" autocomplete="off" name="radio_QJFIVSONMQ" value=""> <span>Perché arrange() ordina in ordine alfabetico</span></label>
 </div>
 </div>
 </div>
@@ -1107,8 +1107,8 @@ Perché, se usi <code>adorn_totals()</code> prima di <code>arrange(desc(n))</cod
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Nella tabella con <code>adorn_totals(c("row", "col"))</code>, che cosa indica il valore in basso a destra?
-<div id="radio_XDKGAZYCYC" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_XDKGAZYCYC" value=""> <span>Il numero di donne con HIV</span></label><label><input type="radio" autocomplete="off" name="radio_XDKGAZYCYC" value=""> <span>Il totale delle persone con HIV</span></label><label><input type="radio" autocomplete="off" name="radio_XDKGAZYCYC" value="answer"> <span>Il numero totale di persone nel dataset</span></label><label><input type="radio" autocomplete="off" name="radio_XDKGAZYCYC" value=""> <span>La somma della colonna <code>Total</code> divisa per due</span></label>
+<div id="radio_EWJJQKGHCY" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_EWJJQKGHCY" value=""> <span>Il numero di donne con HIV</span></label><label><input type="radio" autocomplete="off" name="radio_EWJJQKGHCY" value=""> <span>Il totale delle persone con HIV</span></label><label><input type="radio" autocomplete="off" name="radio_EWJJQKGHCY" value="answer"> <span>Il numero totale di persone nel dataframe</span></label><label><input type="radio" autocomplete="off" name="radio_EWJJQKGHCY" value=""> <span>La somma della colonna <code>Total</code> divisa per due</span></label>
 </div>
 </div>
 </div>
@@ -1187,8 +1187,8 @@ Nella tabella con <code>adorn_totals(c("row", "col"))</code>, che cosa indica il
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Vuoi sapere quale percentuale delle persone con HIV è di sesso femminile. Quale tabella usi?
-<div id="radio_EHJVXGYJNX" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_EHJVXGYJNX" value="answer"> <span>La tabella con le percentuali di riga</span></label><label><input type="radio" autocomplete="off" name="radio_EHJVXGYJNX" value=""> <span>La tabella con le percentuali di colonna</span></label><label><input type="radio" autocomplete="off" name="radio_EHJVXGYJNX" value=""> <span>Sono equivalenti</span></label><label><input type="radio" autocomplete="off" name="radio_EHJVXGYJNX" value=""> <span>Nessuna delle due: servono i conteggi</span></label>
+<div id="radio_EAFHUESLRV" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_EAFHUESLRV" value="answer"> <span>La tabella con le percentuali di riga</span></label><label><input type="radio" autocomplete="off" name="radio_EAFHUESLRV" value=""> <span>La tabella con le percentuali di colonna</span></label><label><input type="radio" autocomplete="off" name="radio_EAFHUESLRV" value=""> <span>Sono equivalenti</span></label><label><input type="radio" autocomplete="off" name="radio_EAFHUESLRV" value=""> <span>Nessuna delle due: servono i conteggi</span></label>
 </div>
 </div>
 </div>
@@ -1244,8 +1244,8 @@ Vuoi sapere quale percentuale delle persone con HIV è di sesso femminile. Quale
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Che cosa noti confrontando la distribuzione per classe d’età dei due gruppi HIV?
-<div id="radio_AXQJTUWTDO" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_AXQJTUWTDO" value=""> <span>Le persone con HIV sono molto più anziane</span></label><label><input type="radio" autocomplete="off" name="radio_AXQJTUWTDO" value=""> <span>Le persone senza HIV sono molto più anziane</span></label><label><input type="radio" autocomplete="off" name="radio_AXQJTUWTDO" value="answer"> <span>La distribuzione per età è quasi identica nei due gruppi</span></label><label><input type="radio" autocomplete="off" name="radio_AXQJTUWTDO" value=""> <span>Non si può dire senza calcolare l'età media</span></label>
+<div id="radio_LVGJSFZDYJ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_LVGJSFZDYJ" value=""> <span>Le persone con HIV sono molto più anziane</span></label><label><input type="radio" autocomplete="off" name="radio_LVGJSFZDYJ" value=""> <span>Le persone senza HIV sono molto più anziane</span></label><label><input type="radio" autocomplete="off" name="radio_LVGJSFZDYJ" value="answer"> <span>La distribuzione per età è quasi identica nei due gruppi</span></label><label><input type="radio" autocomplete="off" name="radio_LVGJSFZDYJ" value=""> <span>Non si può dire senza calcolare l'età media</span></label>
 </div>
 </div>
 </div>
@@ -1261,7 +1261,7 @@ Che cosa noti confrontando la distribuzione per classe d’età dei due gruppi H
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Le tabelle di questo modulo si possono costruire anche con le funzioni di R base, senza <code>{dplyr}</code> e <code>{janitor}</code>. Il risultato però non è un data frame, quindi è più scomodo da riusare:</p>
+<p>Le tabelle di questo modulo si possono costruire anche con le funzioni di R base, senza <code>{dplyr}</code> e <code>{janitor}</code>. Il risultato però non è un dataframe, quindi è più scomodo da riusare:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># conteggi (come count() o tabyl())</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(dati_clean<span class="sc">$</span>hiv_status)</span>
@@ -1276,12 +1276,12 @@ Che cosa noti confrontando la distribuzione per classe d’età dei due gruppi H
 </div>
 </section>
 </section>
-<section id="summarise-sullintero-dataset" class="level2">
-<h2 class="anchored" data-anchor-id="summarise-sullintero-dataset"><code>summarise()</code> sull’intero dataset</h2>
+<section id="summarise-sullintero-dataframe" class="level2">
+<h2 class="anchored" data-anchor-id="summarise-sullintero-dataframe"><code>summarise()</code> sull’intero dataframe</h2>
 <!-- Tempo stimato: 7 minuti -->
 <section id="come-funziona-summarise" class="level3">
 <h3 class="anchored" data-anchor-id="come-funziona-summarise">Come funziona <code>summarise()</code></h3>
-<p>Finora hai contato le persone. Se invece vuoi calcolare una statistica di sintesi, per esempio la durata media del follow-up, si usa <code>summarise()</code> del pacchetto <code>{dplyr}</code>: riduce l’intero data frame a <strong>una sola riga</strong>, con una variabile per ogni statistica che chiedi. Dentro le parentesi scrivi <code>nome_nuova_variabile = funzione(variabile)</code> e separi le statistiche con una virgola:</p>
+<p>Finora hai contato le persone. Se invece vuoi calcolare una statistica di sintesi, per esempio la durata media del follow-up, si usa <code>summarise()</code> del pacchetto <code>{dplyr}</code>: riduce l’intero dataframe a <strong>una sola riga</strong>, con una variabile per ogni statistica che chiedi. Dentro le parentesi scrivi <code>nome_nuova_variabile = funzione(variabile)</code> e separi le statistiche con una virgola:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="sc">%&gt;%</span></span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
@@ -1320,8 +1320,8 @@ Che cosa noti confrontando la distribuzione per classe d’età dei due gruppi H
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Confronta <code>n</code> e <code>n_id</code>: che cosa ti dicono?
-<div id="radio_RNGFALXHIM" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_RNGFALXHIM" value=""> <span>Alcune persone compaiono in più righe</span></label><label><input type="radio" autocomplete="off" name="radio_RNGFALXHIM" value="answer"> <span>Ogni riga è una persona diversa: nessun identificativo si ripete</span></label><label><input type="radio" autocomplete="off" name="radio_RNGFALXHIM" value=""> <span>Mancano alcuni identificativi</span></label><label><input type="radio" autocomplete="off" name="radio_RNGFALXHIM" value=""> <span>n_distinct() conta solo i valori che compaiono una volta</span></label>
+<div id="radio_EDIVSNOOJQ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_EDIVSNOOJQ" value=""> <span>Alcune persone compaiono in più righe</span></label><label><input type="radio" autocomplete="off" name="radio_EDIVSNOOJQ" value="answer"> <span>Ogni riga è una persona diversa: nessun identificativo si ripete</span></label><label><input type="radio" autocomplete="off" name="radio_EDIVSNOOJQ" value=""> <span>Mancano alcuni identificativi</span></label><label><input type="radio" autocomplete="off" name="radio_EDIVSNOOJQ" value=""> <span>n_distinct() conta solo i valori che compaiono una volta</span></label>
 </div>
 </div>
 </div>
@@ -1467,8 +1467,8 @@ Confronta <code>n</code> e <code>n_id</code>: che cosa ti dicono?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Quale gruppo ha il tasso di incidenza grezzo più alto?
-<div id="radio_NVELNHPVHH" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_NVELNHPVHH" value="answer"> <span>Le persone con HIV</span></label><label><input type="radio" autocomplete="off" name="radio_NVELNHPVHH" value=""> <span>Le persone senza HIV</span></label><label><input type="radio" autocomplete="off" name="radio_NVELNHPVHH" value=""> <span>I due tassi sono uguali</span></label>
+<div id="radio_RYBUSIRRHK" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_RYBUSIRRHK" value="answer"> <span>Le persone con HIV</span></label><label><input type="radio" autocomplete="off" name="radio_RYBUSIRRHK" value=""> <span>Le persone senza HIV</span></label><label><input type="radio" autocomplete="off" name="radio_RYBUSIRRHK" value=""> <span>I due tassi sono uguali</span></label>
 </div>
 </div>
 </div>
@@ -1535,8 +1535,8 @@ Quale gruppo ha il tasso di incidenza grezzo più alto?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Guardando <code>tassi_eta</code>, come cambia il tasso con l’età?
-<div id="radio_GSNLDGTIGX" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_GSNLDGTIGX" value=""> <span>Cresce in modo graduale con l'età</span></label><label><input type="radio" autocomplete="off" name="radio_GSNLDGTIGX" value="answer"> <span>È simile fino ai 59 anni e scende molto dai 60 anni in su</span></label><label><input type="radio" autocomplete="off" name="radio_GSNLDGTIGX" value=""> <span>È uguale in tutte le classi d'età</span></label>
+<div id="radio_TNAWVWLGYT" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_TNAWVWLGYT" value=""> <span>Cresce in modo graduale con l'età</span></label><label><input type="radio" autocomplete="off" name="radio_TNAWVWLGYT" value="answer"> <span>È simile fino ai 59 anni e scende molto dai 60 anni in su</span></label><label><input type="radio" autocomplete="off" name="radio_TNAWVWLGYT" value=""> <span>È uguale in tutte le classi d'età</span></label>
 </div>
 </div>
 </div>
@@ -1602,14 +1602,14 @@ Guardando <code>tassi_eta</code>, come cambia il tasso con l’età?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Dopo <code>summarise()</code>, il risultato è ancora raggruppato? Se sì, per quale variabile?
-<div id="radio_ZUJNJAGIVA" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_ZUJNJAGIVA" value=""> <span>Non è più raggruppato</span></label><label><input type="radio" autocomplete="off" name="radio_ZUJNJAGIVA" value="answer"> <span>È ancora raggruppato per <code>hiv_status</code></span></label><label><input type="radio" autocomplete="off" name="radio_ZUJNJAGIVA" value=""> <span>È ancora raggruppato per <code>age_group</code></span></label><label><input type="radio" autocomplete="off" name="radio_ZUJNJAGIVA" value=""> <span>È ancora raggruppato per <code>hiv_status</code> e <code>age_group</code></span></label>
+<div id="radio_DOXECDRBKX" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_DOXECDRBKX" value=""> <span>Non è più raggruppato</span></label><label><input type="radio" autocomplete="off" name="radio_DOXECDRBKX" value="answer"> <span>È ancora raggruppato per <code>hiv_status</code></span></label><label><input type="radio" autocomplete="off" name="radio_DOXECDRBKX" value=""> <span>È ancora raggruppato per <code>age_group</code></span></label><label><input type="radio" autocomplete="off" name="radio_DOXECDRBKX" value=""> <span>È ancora raggruppato per <code>hiv_status</code> e <code>age_group</code></span></label>
 </div>
 </div>
 </div>
 </div>
 </div>
-<!-- DIPENDE DAI DATI: con il dataset attuale il tasso è più alto con
+<!-- DIPENDE DAI DATI: con il dataframe attuale il tasso è più alto con
      HIV sia nel complesso sia in ciascuna classe d'età -->
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
@@ -1620,8 +1620,8 @@ Dopo <code>summarise()</code>, il risultato è ancora raggruppato? Se sì, per q
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Confronta i tassi per stato HIV dentro ciascuna classe d’età con i tassi grezzi calcolati prima. La conclusione è la stessa?
-<div id="radio_GNIFTIDTLE" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_GNIFTIDTLE" value="answer"> <span>Sì: il tasso è più alto con HIV sia nel complesso sia in ciascuna classe d'età</span></label><label><input type="radio" autocomplete="off" name="radio_GNIFTIDTLE" value=""> <span>No: dentro le classi d'età il tasso è più alto senza HIV</span></label><label><input type="radio" autocomplete="off" name="radio_GNIFTIDTLE" value=""> <span>No: dentro le classi d'età i tassi sono uguali</span></label><label><input type="radio" autocomplete="off" name="radio_GNIFTIDTLE" value=""> <span>Non si può dire</span></label>
+<div id="radio_KXSQNHOAKW" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_KXSQNHOAKW" value="answer"> <span>Sì: il tasso è più alto con HIV sia nel complesso sia in ciascuna classe d'età</span></label><label><input type="radio" autocomplete="off" name="radio_KXSQNHOAKW" value=""> <span>No: dentro le classi d'età il tasso è più alto senza HIV</span></label><label><input type="radio" autocomplete="off" name="radio_KXSQNHOAKW" value=""> <span>No: dentro le classi d'età i tassi sono uguali</span></label><label><input type="radio" autocomplete="off" name="radio_KXSQNHOAKW" value=""> <span>Non si può dire</span></label>
 </div>
 </div>
 </div>
@@ -1646,8 +1646,8 @@ Confronta i tassi per stato HIV dentro ciascuna classe d’età con i tassi grez
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Come si comportano le percentuali del codice qui sopra?
-<div id="radio_EFZNENNCYM" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_EFZNENNCYM" value=""> <span>Sommano a 100 sull'intera coorte</span></label><label><input type="radio" autocomplete="off" name="radio_EFZNENNCYM" value="answer"> <span>Sommano a 100 dentro ciascun gruppo di <code>hiv_status</code></span></label><label><input type="radio" autocomplete="off" name="radio_EFZNENNCYM" value=""> <span>Sommano a 100 dentro ciascuna classe d'età</span></label><label><input type="radio" autocomplete="off" name="radio_EFZNENNCYM" value=""> <span>Non sommano a 100 in nessun modo</span></label>
+<div id="radio_IYUZQAQSYC" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_IYUZQAQSYC" value=""> <span>Sommano a 100 sull'intera coorte</span></label><label><input type="radio" autocomplete="off" name="radio_IYUZQAQSYC" value="answer"> <span>Sommano a 100 dentro ciascun gruppo di <code>hiv_status</code></span></label><label><input type="radio" autocomplete="off" name="radio_IYUZQAQSYC" value=""> <span>Sommano a 100 dentro ciascuna classe d'età</span></label><label><input type="radio" autocomplete="off" name="radio_IYUZQAQSYC" value=""> <span>Non sommano a 100 in nessun modo</span></label>
 </div>
 </div>
 </div>
@@ -1698,6 +1698,7 @@ Come si comportano le percentuali del codice qui sopra?
 </div>
 <div class="callout-body-container callout-body">
 <p>Con più variabili in <code>group_by()</code>, il risultato di <code>summarise()</code> resta raggruppato per tutte tranne l’ultima. R lo segnala con un messaggio nella console e con la riga <code># Groups:</code> sopra la tabella. Se non lo chiudi, i calcoli successivi vengono fatti dentro i gruppi. Prendi l’abitudine di chiudere sempre il raggruppamento con <code>.groups = "drop"</code> oppure con <code>ungroup()</code>.</p>
+<p>Con <code>ungroup()</code> il messaggio nella console compare lo stesso: <code>summarise()</code> viene eseguita prima e non sa che dopo toglierai i gruppi. Il risultato però non è più raggruppato. Con <code>.groups = "drop"</code> invece il messaggio non compare.</p>
 </div>
 </div>
 </section>
@@ -1756,8 +1757,8 @@ Come si comportano le percentuali del codice qui sopra?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Con <code>na.rm = TRUE</code>, su quali persone è calcolata la mediana dei giorni all’evento?
-<div id="radio_UGQVMXIRYF" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_UGQVMXIRYF" value=""> <span>Su tutte le persone della coorte</span></label><label><input type="radio" autocomplete="off" name="radio_UGQVMXIRYF" value="answer"> <span>Solo sulle persone che hanno avuto l'evento</span></label><label><input type="radio" autocomplete="off" name="radio_UGQVMXIRYF" value=""> <span>Solo sulle persone senza valori mancanti in tutte le variabili</span></label><label><input type="radio" autocomplete="off" name="radio_UGQVMXIRYF" value=""> <span>Sulle persone senza l'evento</span></label>
+<div id="radio_WKHWNBVGUA" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_WKHWNBVGUA" value=""> <span>Su tutte le persone della coorte</span></label><label><input type="radio" autocomplete="off" name="radio_WKHWNBVGUA" value="answer"> <span>Solo sulle persone che hanno avuto l'evento</span></label><label><input type="radio" autocomplete="off" name="radio_WKHWNBVGUA" value=""> <span>Solo sulle persone senza valori mancanti in tutte le variabili</span></label><label><input type="radio" autocomplete="off" name="radio_WKHWNBVGUA" value=""> <span>Sulle persone senza l'evento</span></label>
 </div>
 </div>
 </div>
@@ -1874,8 +1875,8 @@ Con <code>na.rm = TRUE</code>, su quali persone è calcolata la mediana dei gior
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Che cosa restituisce <code>mean(sex == "F")</code>?
-<div id="radio_CMDZOMVNGF" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_CMDZOMVNGF" value=""> <span>Il numero di donne</span></label><label><input type="radio" autocomplete="off" name="radio_CMDZOMVNGF" value="answer"> <span>La proporzione di donne, un valore tra 0 e 1</span></label><label><input type="radio" autocomplete="off" name="radio_CMDZOMVNGF" value=""> <span>Il numero di righe della tabella</span></label><label><input type="radio" autocomplete="off" name="radio_CMDZOMVNGF" value=""> <span>Un errore, perché sex è una variabile di testo</span></label>
+<div id="radio_MZFXPJQNHR" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_MZFXPJQNHR" value=""> <span>Il numero di donne</span></label><label><input type="radio" autocomplete="off" name="radio_MZFXPJQNHR" value="answer"> <span>La proporzione di donne, un valore tra 0 e 1</span></label><label><input type="radio" autocomplete="off" name="radio_MZFXPJQNHR" value=""> <span>Il numero di righe del dataframe</span></label><label><input type="radio" autocomplete="off" name="radio_MZFXPJQNHR" value=""> <span>Un errore, perché sex è una variabile di testo</span></label>
 </div>
 </div>
 </div>
@@ -1892,8 +1893,8 @@ Che cosa restituisce <code>mean(sex == "F")</code>?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 <code>n_donne</code> è circa il doppio tra le persone senza HIV, mentre <code>perc_donne</code> è uguale nei due gruppi. Per confrontare la presenza di donne tra persone con e senza HIV, è più adatto il conteggio o la percentuale?
-<div id="radio_UDYORWBZFE" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_UDYORWBZFE" value=""> <span>Il conteggio, perché è un numero intero</span></label><label><input type="radio" autocomplete="off" name="radio_UDYORWBZFE" value="answer"> <span>La percentuale, perché i due gruppi hanno numerosità diverse</span></label><label><input type="radio" autocomplete="off" name="radio_UDYORWBZFE" value=""> <span>Sono equivalenti</span></label><label><input type="radio" autocomplete="off" name="radio_UDYORWBZFE" value=""> <span>Nessuno dei due</span></label>
+<div id="radio_XHQSGESEBM" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_XHQSGESEBM" value=""> <span>Il conteggio, perché è un numero intero</span></label><label><input type="radio" autocomplete="off" name="radio_XHQSGESEBM" value="answer"> <span>La percentuale, perché i due gruppi hanno numerosità diverse</span></label><label><input type="radio" autocomplete="off" name="radio_XHQSGESEBM" value=""> <span>Sono equivalenti</span></label><label><input type="radio" autocomplete="off" name="radio_XHQSGESEBM" value=""> <span>Nessuno dei due</span></label>
 </div>
 </div>
 </div>
@@ -1963,8 +1964,8 @@ Che cosa restituisce <code>mean(sex == "F")</code>?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Quante righe ha il risultato dopo <code>group_by()</code> e <code>mutate()</code>?
-<div id="radio_PKCXWCQGSU" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_PKCXWCQGSU" value=""> <span>Una riga per gruppo HIV</span></label><label><input type="radio" autocomplete="off" name="radio_PKCXWCQGSU" value="answer"> <span>Le stesse righe del risultato di <code>count()</code></span></label><label><input type="radio" autocomplete="off" name="radio_PKCXWCQGSU" value=""> <span>Una riga per persona</span></label><label><input type="radio" autocomplete="off" name="radio_PKCXWCQGSU" value=""> <span>Una sola riga</span></label>
+<div id="radio_OBDBVBFPMJ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_OBDBVBFPMJ" value=""> <span>Una riga per gruppo HIV</span></label><label><input type="radio" autocomplete="off" name="radio_OBDBVBFPMJ" value="answer"> <span>Le stesse righe del risultato di <code>count()</code></span></label><label><input type="radio" autocomplete="off" name="radio_OBDBVBFPMJ" value=""> <span>Una riga per persona</span></label><label><input type="radio" autocomplete="off" name="radio_OBDBVBFPMJ" value=""> <span>Una sola riga</span></label>
 </div>
 </div>
 </div>
@@ -1987,13 +1988,12 @@ Quante righe ha il risultato dopo <code>group_by()</code> e <code>mutate()</code
 <section id="esplorare-aggregare-presentare" class="level2">
 <h2 class="anchored" data-anchor-id="esplorare-aggregare-presentare">Esplorare, aggregare, presentare</h2>
 <!-- Tempo stimato: 20 minuti -->
-<p>Le tabelle che hai costruito finora servono a tre scopi diversi:</p>
+<p>Le tabelle e i dataframe che hai costruito finora servono a tre scopi diversi:</p>
 <ul>
 <li><strong>esplorare</strong> i dati: tabelle veloci con <code>count()</code> o <code>tabyl()</code>, che guardi nella console per capire e controllare i dati. Sono quelle che hai scritto nell’area di prova;</li>
-<li><strong>creare dataset aggregati</strong>: con <code>group_by()</code> e <code>summarise()</code> ottieni un nuovo data frame, in formato lungo, che salvi con un nome nuovo e usi per altri calcoli o per i grafici dei prossimi moduli;</li>
+<li><strong>creare dataframe aggregati</strong>: con <code>group_by()</code> e <code>summarise()</code> ottieni un nuovo dataframe, in formato lungo, che salvi con un nome nuovo e usi per altri calcoli o per i grafici dei prossimi moduli;</li>
 <li><strong>presentare</strong> i risultati: tabelle finali da mostrare, in formato largo, con totali e percentuali formattate dalle funzioni <code>adorn_*()</code>, e rese più leggibili con <code>{flextable}</code>.</li>
 </ul>
-<p>Le ultime due le salvi in un oggetto e le scrivi nello script.</p>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -2003,15 +2003,15 @@ Quante righe ha il risultato dopo <code>group_by()</code> e <code>mutate()</code
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Quale di questi comandi produce una tabella pensata per essere presentata in un report?
-<div id="radio_PUXNJUXUGV" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_PUXNJUXUGV" value=""> <span><code>dati_clean %&gt;% count(region)</code></span></label><label><input type="radio" autocomplete="off" name="radio_PUXNJUXUGV" value="answer"> <span><code>dati_clean %&gt;% tabyl(hiv_status, sex) %&gt;% adorn_percentages("row") %&gt;%</code><br><code>adorn_pct_formatting() %&gt;% adorn_ns()</code></span></label><label><input type="radio" autocomplete="off" name="radio_PUXNJUXUGV" value=""> <span><code>dati_clean %&gt;% group_by(hiv_status) %&gt;% summarise(n = n(), .groups = "drop")</code></span></label><label><input type="radio" autocomplete="off" name="radio_PUXNJUXUGV" value=""> <span><code>skim(dati_clean)</code></span></label>
+<div id="radio_PSTXTDFJZB" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_PSTXTDFJZB" value=""> <span><code>dati_clean %&gt;% count(region)</code></span></label><label><input type="radio" autocomplete="off" name="radio_PSTXTDFJZB" value="answer"> <span><code>dati_clean %&gt;% tabyl(hiv_status, sex) %&gt;% adorn_percentages("row") %&gt;%</code><br><code>adorn_pct_formatting() %&gt;% adorn_ns()</code></span></label><label><input type="radio" autocomplete="off" name="radio_PSTXTDFJZB" value=""> <span><code>dati_clean %&gt;% group_by(hiv_status) %&gt;% summarise(n = n(), .groups = "drop")</code></span></label><label><input type="radio" autocomplete="off" name="radio_PSTXTDFJZB" value=""> <span><code>skim(dati_clean)</code></span></label>
 </div>
 </div>
 </div>
 </div>
 </div>
-<section id="un-dataset-aggregato" class="level3">
-<h3 class="anchored" data-anchor-id="un-dataset-aggregato">Un dataset aggregato</h3>
+<section id="un-dataframe-aggregato" class="level3">
+<h3 class="anchored" data-anchor-id="un-dataframe-aggregato">Un dataframe aggregato</h3>
 <p>Metti insieme quello che hai imparato. Nello script, sopra l’area di prova, crea la sezione “Sintesi per stato HIV” (<strong>Ctrl+Shift+R</strong>) e crea un nuovo oggetto <code>sintesi_hiv</code> con, per ciascun gruppo HIV:</p>
 <ul>
 <li>il numero di persone;</li>
@@ -2022,7 +2022,7 @@ Quale di questi comandi produce una tabella pensata per essere presentata in un 
 <li>la mediana degli anticorpi anti-SARS-CoV-2 (<code>anticorpi</code>, in BAU/mL);</li>
 <li>il numero di eventi, gli anni-persona e il tasso per 100 anni-persona.</li>
 </ul>
-<p>Arrotonda percentuali e tasso a una cifra decimale alla fine, poi stampa <code>sintesi_hiv</code> e controlla che <code>dati_clean</code> abbia ancora tutte le sue righe. Nel pannello <strong>Environment</strong> ora dovresti vedere, uno accanto all’altro, il dataset individuale <code>dati_clean</code> e il dataset aggregato <code>sintesi_hiv</code>, con il loro numero di righe (<em>obs.</em>) e di variabili (<em>variables</em>).</p>
+<p>Arrotonda percentuali e tasso a una cifra decimale alla fine, poi stampa <code>sintesi_hiv</code> e controlla che <code>dati_clean</code> abbia ancora tutte le sue righe. Nel pannello <strong>Environment</strong> ora dovresti vedere, uno accanto all’altro, il dataframe individuale <code>dati_clean</code> e il dataframe aggregato <code>sintesi_hiv</code>, con il loro numero di righe (<em>obs.</em>) e di variabili (<em>variables</em>).</p>
 <details>
 <summary style="text-decoration: underline; color: darkgreen;">
 <p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
@@ -2086,8 +2086,8 @@ Quale di questi comandi produce una tabella pensata per essere presentata in un 
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Perché salviamo il risultato in <code>sintesi_hiv</code> e non in <code>dati_clean</code>?
-<div id="radio_TETVQBNPYS" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_TETVQBNPYS" value=""> <span>Perché summarise() non può modificare un oggetto esistente</span></label><label><input type="radio" autocomplete="off" name="radio_TETVQBNPYS" value="answer"> <span>Perché sovrascrivendo <code>dati_clean</code> perderemmo i dati individuali</span></label><label><input type="radio" autocomplete="off" name="radio_TETVQBNPYS" value=""> <span>Perché R non accetta due oggetti con variabili diverse</span></label><label><input type="radio" autocomplete="off" name="radio_TETVQBNPYS" value=""> <span>Non c'è differenza: si può usare anche dati_clean</span></label>
+<div id="radio_BLTXMWJFKC" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_BLTXMWJFKC" value=""> <span>Perché summarise() non può modificare un oggetto esistente</span></label><label><input type="radio" autocomplete="off" name="radio_BLTXMWJFKC" value="answer"> <span>Perché sovrascrivendo <code>dati_clean</code> perderemmo i dati individuali</span></label><label><input type="radio" autocomplete="off" name="radio_BLTXMWJFKC" value=""> <span>Perché R non accetta due oggetti con variabili diverse</span></label><label><input type="radio" autocomplete="off" name="radio_BLTXMWJFKC" value=""> <span>Non c'è differenza: si può usare anche dati_clean</span></label>
 </div>
 </div>
 </div>
@@ -2099,19 +2099,19 @@ Perché salviamo il risultato in <code>sintesi_hiv</code> e non in <code>dati_cl
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Avviso</span>Attenzione a non sovrascrivere il dataset
+<span class="screen-reader-only">Avviso</span>Attenzione a non sovrascrivere il dataframe
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Se scrivi <code>dati_clean &lt;- dati_clean %&gt;% summarise(...)</code>, l’operatore di assegnazione <code>&lt;-</code> sostituisce i dati individuali con la tabella di sintesi, e le variabili originali spariscono. R non dà nessun errore in quel momento: te ne accorgi solo dopo, quando un comando non trova più una variabile. Salva sempre le sintesi in un oggetto con un nome nuovo.</p>
+<p>Se scrivi <code>dati_clean &lt;- dati_clean %&gt;% summarise(...)</code>, l’operatore di assegnazione <code>&lt;-</code> sostituisce i dati individuali con il dataframe di sintesi, e le variabili originali spariscono. R non dà nessun errore in quel momento: te ne accorgi solo dopo, quando un comando non trova più una variabile. Salva sempre le sintesi in un oggetto con un nome nuovo.</p>
 </div>
 </div>
 </section>
 <section id="presentare-la-sintesi-con-flextable" class="level3">
 <h3 class="anchored" data-anchor-id="presentare-la-sintesi-con-flextable">Presentare la sintesi con <code>{flextable}</code></h3>
-<p><code>sintesi_hiv</code> è un dataset aggregato: perfetto per altri calcoli, ma ancora poco leggibile per chi lo guarda. Per presentarlo si usa il pacchetto <code>{flextable}</code>, che hai caricato all’inizio del modulo. Le funzioni che servono sono tre, collegate con <code>%&gt;%</code>:</p>
+<p><code>sintesi_hiv</code> è un dataframe aggregato: perfetto per altri calcoli, ma ancora poco leggibile per chi lo guarda. Per presentarlo si usa il pacchetto <code>{flextable}</code>, che hai caricato all’inizio del modulo. Le funzioni che servono sono tre, collegate con <code>%&gt;%</code>:</p>
 <ul>
-<li><code>flextable()</code> trasforma il data frame in una tabella formattata;</li>
+<li><code>flextable()</code> trasforma il dataframe in una tabella formattata;</li>
 <li><code>set_header_labels()</code> cambia le intestazioni delle colonne: dentro le parentesi scrivi <code>nome_variabile = "intestazione"</code>, separando le variabili con una virgola;</li>
 <li><code>autofit()</code> adatta la larghezza delle colonne al contenuto.</li>
 </ul>
@@ -2139,7 +2139,7 @@ Perché salviamo il risultato in <code>sintesi_hiv</code> e non in <code>dati_cl
 <span id="cb83-15"><a href="#cb83-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb83-16"><a href="#cb83-16" aria-hidden="true" tabindex="-1"></a>tab_sintesi_hiv</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div class="tabwid"><style>.cl-a24a054e{}.cl-a23abbe8{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-a2408744{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-a240bfde{width:0.939in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a240bff2{width:0.854in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a240bffc{width:0.888in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a240c006{width:1.143in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a240c010{width:0.723in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a240c011{width:1.292in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a240c01a{width:2.17in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a240c024{width:0.71in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a240c02e{width:1.194in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a240c038{width:1.508in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a240c039{width:0.939in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a240c042{width:0.854in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a240c04c{width:0.888in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a240c056{width:1.143in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a240c060{width:0.723in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a240c061{width:1.292in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a240c06a{width:2.17in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a240c074{width:0.71in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a240c07e{width:1.194in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a240c088{width:1.508in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a240c089{width:0.939in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a240c092{width:0.854in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a240c09c{width:0.888in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a240c0a6{width:1.143in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a240c0a7{width:0.723in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a240c146{width:1.292in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a240c150{width:2.17in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a240c15a{width:0.71in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a240c164{width:1.194in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a240c165{width:1.508in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-a24a054e"><thead><tr style="overflow-wrap:break-word;"><th class="cl-a240bfde"><p class="cl-a2408744"><span class="cl-a23abbe8">Stato HIV</span></p></th><th class="cl-a240bff2"><p class="cl-a2408744"><span class="cl-a23abbe8">Persone</span></p></th><th class="cl-a240bffc"><p class="cl-a2408744"><span class="cl-a23abbe8">% donne</span></p></th><th class="cl-a240c006"><p class="cl-a2408744"><span class="cl-a23abbe8">Età mediana</span></p></th><th class="cl-a240c010"><p class="cl-a2408744"><span class="cl-a23abbe8">% 60+</span></p></th><th class="cl-a240c011"><p class="cl-a2408744"><span class="cl-a23abbe8">% Charlson 3+</span></p></th><th class="cl-a240c01a"><p class="cl-a2408744"><span class="cl-a23abbe8">Anticorpi mediani (BAU/mL)</span></p></th><th class="cl-a240c024"><p class="cl-a2408744"><span class="cl-a23abbe8">Eventi</span></p></th><th class="cl-a240c02e"><p class="cl-a2408744"><span class="cl-a23abbe8">Anni-persona</span></p></th><th class="cl-a240c038"><p class="cl-a2408744"><span class="cl-a23abbe8">Tasso per 100 AP</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-a240c039"><p class="cl-a2408744"><span class="cl-a23abbe8">0</span></p></td><td class="cl-a240c042"><p class="cl-a2408744"><span class="cl-a23abbe8">31,693</span></p></td><td class="cl-a240c04c"><p class="cl-a2408744"><span class="cl-a23abbe8">27.4</span></p></td><td class="cl-a240c056"><p class="cl-a2408744"><span class="cl-a23abbe8">53</span></p></td><td class="cl-a240c060"><p class="cl-a2408744"><span class="cl-a23abbe8">40.2</span></p></td><td class="cl-a240c061"><p class="cl-a2408744"><span class="cl-a23abbe8">3.4</span></p></td><td class="cl-a240c06a"><p class="cl-a2408744"><span class="cl-a23abbe8">1,592.70</span></p></td><td class="cl-a240c074"><p class="cl-a2408744"><span class="cl-a23abbe8">5,851</span></p></td><td class="cl-a240c07e"><p class="cl-a2408744"><span class="cl-a23abbe8">9,111.3</span></p></td><td class="cl-a240c088"><p class="cl-a2408744"><span class="cl-a23abbe8">64.2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a240c089"><p class="cl-a2408744"><span class="cl-a23abbe8">1</span></p></td><td class="cl-a240c092"><p class="cl-a2408744"><span class="cl-a23abbe8">16,024</span></p></td><td class="cl-a240c09c"><p class="cl-a2408744"><span class="cl-a23abbe8">27.4</span></p></td><td class="cl-a240c0a6"><p class="cl-a2408744"><span class="cl-a23abbe8">53</span></p></td><td class="cl-a240c0a7"><p class="cl-a2408744"><span class="cl-a23abbe8">40.4</span></p></td><td class="cl-a240c146"><p class="cl-a2408744"><span class="cl-a23abbe8">3.3</span></p></td><td class="cl-a240c150"><p class="cl-a2408744"><span class="cl-a23abbe8">1,057.05</span></p></td><td class="cl-a240c15a"><p class="cl-a2408744"><span class="cl-a23abbe8">4,053</span></p></td><td class="cl-a240c164"><p class="cl-a2408744"><span class="cl-a23abbe8">4,506.0</span></p></td><td class="cl-a240c165"><p class="cl-a2408744"><span class="cl-a23abbe8">89.9</span></p></td></tr></tbody></table></div>
+<div class="tabwid"><style>.cl-dd49624c{}.cl-dd408762{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-dd441ab2{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-dd4436dc{width:0.939in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dd4436e6{width:0.854in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dd4436f0{width:0.888in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dd4436fa{width:1.143in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dd4436fb{width:0.723in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dd443704{width:1.292in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dd44370e{width:2.17in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dd44370f{width:0.71in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dd443718{width:1.194in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dd443719{width:1.508in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dd443722{width:0.939in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dd44372c{width:0.854in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dd44372d{width:0.888in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dd443736{width:1.143in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dd443740{width:0.723in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dd443741{width:1.292in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dd44374a{width:2.17in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dd44374b{width:0.71in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dd443754{width:1.194in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dd44375e{width:1.508in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dd44375f{width:0.939in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dd443760{width:0.854in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dd443768{width:0.888in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dd443772{width:1.143in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dd44377c{width:0.723in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dd44377d{width:1.292in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dd443786{width:2.17in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dd443787{width:0.71in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dd443788{width:1.194in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dd443790{width:1.508in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-dd49624c"><thead><tr style="overflow-wrap:break-word;"><th class="cl-dd4436dc"><p class="cl-dd441ab2"><span class="cl-dd408762">Stato HIV</span></p></th><th class="cl-dd4436e6"><p class="cl-dd441ab2"><span class="cl-dd408762">Persone</span></p></th><th class="cl-dd4436f0"><p class="cl-dd441ab2"><span class="cl-dd408762">% donne</span></p></th><th class="cl-dd4436fa"><p class="cl-dd441ab2"><span class="cl-dd408762">Età mediana</span></p></th><th class="cl-dd4436fb"><p class="cl-dd441ab2"><span class="cl-dd408762">% 60+</span></p></th><th class="cl-dd443704"><p class="cl-dd441ab2"><span class="cl-dd408762">% Charlson 3+</span></p></th><th class="cl-dd44370e"><p class="cl-dd441ab2"><span class="cl-dd408762">Anticorpi mediani (BAU/mL)</span></p></th><th class="cl-dd44370f"><p class="cl-dd441ab2"><span class="cl-dd408762">Eventi</span></p></th><th class="cl-dd443718"><p class="cl-dd441ab2"><span class="cl-dd408762">Anni-persona</span></p></th><th class="cl-dd443719"><p class="cl-dd441ab2"><span class="cl-dd408762">Tasso per 100 AP</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-dd443722"><p class="cl-dd441ab2"><span class="cl-dd408762">0</span></p></td><td class="cl-dd44372c"><p class="cl-dd441ab2"><span class="cl-dd408762">31,693</span></p></td><td class="cl-dd44372d"><p class="cl-dd441ab2"><span class="cl-dd408762">27.4</span></p></td><td class="cl-dd443736"><p class="cl-dd441ab2"><span class="cl-dd408762">53</span></p></td><td class="cl-dd443740"><p class="cl-dd441ab2"><span class="cl-dd408762">40.2</span></p></td><td class="cl-dd443741"><p class="cl-dd441ab2"><span class="cl-dd408762">3.4</span></p></td><td class="cl-dd44374a"><p class="cl-dd441ab2"><span class="cl-dd408762">1,592.70</span></p></td><td class="cl-dd44374b"><p class="cl-dd441ab2"><span class="cl-dd408762">5,851</span></p></td><td class="cl-dd443754"><p class="cl-dd441ab2"><span class="cl-dd408762">9,111.3</span></p></td><td class="cl-dd44375e"><p class="cl-dd441ab2"><span class="cl-dd408762">64.2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-dd44375f"><p class="cl-dd441ab2"><span class="cl-dd408762">1</span></p></td><td class="cl-dd443760"><p class="cl-dd441ab2"><span class="cl-dd408762">16,024</span></p></td><td class="cl-dd443768"><p class="cl-dd441ab2"><span class="cl-dd408762">27.4</span></p></td><td class="cl-dd443772"><p class="cl-dd441ab2"><span class="cl-dd408762">53</span></p></td><td class="cl-dd44377c"><p class="cl-dd441ab2"><span class="cl-dd408762">40.4</span></p></td><td class="cl-dd44377d"><p class="cl-dd441ab2"><span class="cl-dd408762">3.3</span></p></td><td class="cl-dd443786"><p class="cl-dd441ab2"><span class="cl-dd408762">1,057.05</span></p></td><td class="cl-dd443787"><p class="cl-dd441ab2"><span class="cl-dd408762">4,053</span></p></td><td class="cl-dd443788"><p class="cl-dd441ab2"><span class="cl-dd408762">4,506.0</span></p></td><td class="cl-dd443790"><p class="cl-dd441ab2"><span class="cl-dd408762">89.9</span></p></td></tr></tbody></table></div>
 </div>
 </div>
 <p><br></p>
@@ -2153,8 +2153,8 @@ Perché salviamo il risultato in <code>sintesi_hiv</code> e non in <code>dati_cl
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Puoi usare <code>tab_sintesi_hiv</code> per altri calcoli, per esempio con <code>mutate()</code>?
-<div id="radio_RMYTXVHPER" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_RMYTXVHPER" value=""> <span>Sì: è un data frame come gli altri</span></label><label><input type="radio" autocomplete="off" name="radio_RMYTXVHPER" value="answer"> <span>No: è una tabella fatta per essere mostrata, i calcoli vanno fatti prima su <code>sintesi_hiv</code></span></label><label><input type="radio" autocomplete="off" name="radio_RMYTXVHPER" value=""> <span>Sì, ma solo con <code>summarise()</code></span></label><label><input type="radio" autocomplete="off" name="radio_RMYTXVHPER" value=""> <span>Solo dopo averla esportata in Excel</span></label>
+<div id="radio_KMWCRBQMMZ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_KMWCRBQMMZ" value=""> <span>Sì: è un dataframe come gli altri</span></label><label><input type="radio" autocomplete="off" name="radio_KMWCRBQMMZ" value="answer"> <span>No: è una tabella fatta per essere mostrata, i calcoli vanno fatti prima su <code>sintesi_hiv</code></span></label><label><input type="radio" autocomplete="off" name="radio_KMWCRBQMMZ" value=""> <span>Sì, ma solo con <code>summarise()</code></span></label><label><input type="radio" autocomplete="off" name="radio_KMWCRBQMMZ" value=""> <span>Solo dopo averla esportata in Excel</span></label>
 </div>
 </div>
 </div>
@@ -2189,16 +2189,16 @@ Puoi usare <code>tab_sintesi_hiv</code> per altri calcoli, per esempio con <code
 </section>
 <section id="tassi-per-classe-detà-e-stato-hiv" class="level3">
 <h3 class="anchored" data-anchor-id="tassi-per-classe-detà-e-stato-hiv">Tassi per classe d’età e stato HIV</h3>
-<!-- Tabella pensata per l'esercitazione del modulo 9 (report con
+<!-- Dataframe pensato per l'esercitazione del modulo 9 (report con
      Quarto): il collega la riprende dal file tassi_eta_hiv.rds. -->
-<p>Nello script, sopra l’area di prova, crea la sezione “Tassi per classe d’età e stato HIV” (<strong>Ctrl+Shift+R</strong>) e costruisci un ultimo dataset aggregato, <code>tassi_eta_hiv</code>, con una riga per ogni combinazione di classe d’età di 10 anni (<code>age_cat</code>) e stato HIV, e per ciascuna:</p>
+<p>Nello script, sopra l’area di prova, crea la sezione “Tassi per classe d’età e stato HIV” (<strong>Ctrl+Shift+R</strong>) e costruisci un ultimo dataframe aggregato, <code>tassi_eta_hiv</code>, con una riga per ogni combinazione di classe d’età di 10 anni (<code>age_cat</code>) e stato HIV, e per ciascuna:</p>
 <ul>
 <li>il numero di persone (<code>n</code>);</li>
 <li>il numero di eventi (<code>eventi</code>);</li>
 <li>gli anni-persona (<code>anni_persona</code>), arrotondati a una cifra decimale;</li>
 <li>il tasso per 100 anni-persona (<code>tasso_100</code>), arrotondato a una cifra decimale.</li>
 </ul>
-<p>Togli all’inizio, con <code>filter()</code> come hai fatto nel Modulo 3, le righe con classe d’età mancante: sono pochissime persone. Poi salva la tabella nella cartella <code>output</code>, sia in formato RDS (<code>tassi_eta_hiv.rds</code>) sia in Excel (<code>tassi_eta_hiv.xlsx</code>).</p>
+<p>Togli all’inizio, con <code>filter()</code> come hai fatto nel Modulo 3, le righe con classe d’età mancante: sono pochissime persone. Poi salva il dataframe nella cartella <code>output</code>, sia in formato RDS (<code>tassi_eta_hiv.rds</code>) sia in Excel (<code>tassi_eta_hiv.xlsx</code>).</p>
 <details>
 <summary style="text-decoration: underline; color: darkgreen;">
 <p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
@@ -2266,8 +2266,8 @@ Puoi usare <code>tab_sintesi_hiv</code> per altri calcoli, per esempio con <code
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Guardando <code>tassi_eta_hiv</code>, in quali classi d’età il tasso è più alto tra le persone con HIV?
-<div id="radio_DIAVAKMJTS" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_DIAVAKMJTS" value=""> <span>Solo nelle classi sotto i 60 anni</span></label><label><input type="radio" autocomplete="off" name="radio_DIAVAKMJTS" value=""> <span>Solo nelle classi dai 60 anni in su</span></label><label><input type="radio" autocomplete="off" name="radio_DIAVAKMJTS" value="answer"> <span>In tutte le classi d'età</span></label><label><input type="radio" autocomplete="off" name="radio_DIAVAKMJTS" value=""> <span>In nessuna classe d'età</span></label>
+<div id="radio_PRPCUTVSXG" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_PRPCUTVSXG" value=""> <span>Solo nelle classi sotto i 60 anni</span></label><label><input type="radio" autocomplete="off" name="radio_PRPCUTVSXG" value=""> <span>Solo nelle classi dai 60 anni in su</span></label><label><input type="radio" autocomplete="off" name="radio_PRPCUTVSXG" value="answer"> <span>In tutte le classi d'età</span></label><label><input type="radio" autocomplete="off" name="radio_PRPCUTVSXG" value=""> <span>In nessuna classe d'età</span></label>
 </div>
 </div>
 </div>
@@ -2411,16 +2411,16 @@ Guardando <code>tassi_eta_hiv</code>, in quali classi d’età il tasso è più 
 <h2 class="anchored" data-anchor-id="riepilogo">Riepilogo</h2>
 <p>In questo modulo hai imparato a:</p>
 <ul>
-<li>contare le righe per una o più variabili con <code>count()</code>, che restituisce un data frame, e calcolare le percentuali con <code>mutate(perc = n / sum(n) * 100)</code>;</li>
+<li>contare le righe per una o più variabili con <code>count()</code>, che restituisce un dataframe, e calcolare le percentuali con <code>mutate(perc = n / sum(n) * 100)</code>;</li>
 <li>costruire tabelle di frequenza con <code>tabyl()</code>, che mostra sempre i valori mancanti e aggiunge <code>valid_percent</code> (con <code>show_na = FALSE</code> si escludono);</li>
-<li>ordinare le righe di una tabella con <code>arrange()</code> (e <code>desc()</code> per l’ordine decrescente), o con <code>sort = TRUE</code> dentro <code>count()</code>;</li>
+<li>ordinare le righe di un dataframe con <code>arrange()</code> (e <code>desc()</code> per l’ordine decrescente), o con <code>sort = TRUE</code> dentro <code>count()</code>;</li>
 <li>aggiungere con le funzioni <code>adorn_*()</code> totali, percentuali di riga o di colonna, formattazione e conteggi tra parentesi: prima si calcola e si ordina, poi si “adorna”;</li>
-<li>ridurre un data frame a una riga di sintesi con <code>summarise()</code>, e a una riga per gruppo con <code>group_by()</code>;</li>
+<li>ridurre un dataframe a una riga di sintesi con <code>summarise()</code>, e a una riga per gruppo con <code>group_by()</code>;</li>
 <li>chiudere il raggruppamento che resta dopo <code>summarise()</code> con <code>.groups = "drop"</code> o <code>ungroup()</code>;</li>
 <li>escludere i valori mancanti con <code>na.rm = TRUE</code>, dopo essersi chiesti che cosa significano;</li>
 <li>contare le righe che soddisfano una condizione con <code>sum(condizione)</code> e calcolarne la proporzione con <code>mean(condizione)</code>;</li>
 <li>calcolare dentro i gruppi mantenendo tutte le righe con <code>group_by()</code> e <code>mutate()</code>;</li>
-<li>distinguere le tabelle per esplorare (nell’area di prova) dai dataset aggregati e dalle tabelle da presentare (salvati in un oggetto, nello script);</li>
+<li>distinguere le tabelle per esplorare (nell’area di prova) dai dataframe aggregati e dalle tabelle da presentare (salvati in un oggetto, nello script);</li>
 <li>presentare una tabella con <code>flextable()</code>, <code>set_header_labels()</code> e <code>autofit()</code>: serve per mostrare, non per calcolare.</li>
 </ul>
 </section>
@@ -2457,7 +2457,7 @@ Guardando <code>tassi_eta_hiv</code>, in quali classi d’età il tasso è più 
 **Autori**
 
 Autori originali: Andrea Cannone (Istituto Superiore di Sanità)\
-Fonte dei dati: dataset didattico del corso, con la struttura di una
+Fonte dei dati: dataframe didattico del corso, con la struttura di una
 coorte di persone vaccinate contro COVID-19 con e senza HIV; esercizi
 ispirati al modulo *Grouping and summarizing data* di Applied Epi
 (<https://appliedepi.org>)\

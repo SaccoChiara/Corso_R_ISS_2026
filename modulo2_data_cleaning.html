@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>quarto-inputbbf420e4a3da76bb – Corso base di R</title>
+<title>quarto-input2c3582d5266f4ceb – Corso base di R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -218,8 +218,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">In questa pagina</h2>
    
   <ul>
-  <li><a href="#corso-introduttivo-al-software-statistico-r" id="toc-corso-introduttivo-al-software-statistico-r" class="nav-link active" data-scroll-target="#corso-introduttivo-al-software-statistico-r"><strong>Corso introduttivo al software statistico R</strong></a></li>
-  <li><a href="#modulo-02-pulizia-e-preparazione-dei-dati" id="toc-modulo-02-pulizia-e-preparazione-dei-dati" class="nav-link" data-scroll-target="#modulo-02-pulizia-e-preparazione-dei-dati">Modulo 02 Pulizia e preparazione dei dati</a>
+  <li><a href="#corso-base-di-r-per-la-gestione-e-analisi-dei-dati" id="toc-corso-base-di-r-per-la-gestione-e-analisi-dei-dati" class="nav-link active" data-scroll-target="#corso-base-di-r-per-la-gestione-e-analisi-dei-dati"><strong>Corso base di R per la gestione e analisi dei dati</strong></a></li>
+  <li><a href="#modulo-02---pulizia-e-preparazione-dei-dati" id="toc-modulo-02---pulizia-e-preparazione-dei-dati" class="nav-link" data-scroll-target="#modulo-02---pulizia-e-preparazione-dei-dati">Modulo 02 - Pulizia e preparazione dei dati</a>
   <ul>
   <li><a href="#obiettivi-del-modulo" id="toc-obiettivi-del-modulo" class="nav-link" data-scroll-target="#obiettivi-del-modulo">Obiettivi del modulo</a></li>
   <li><a href="#formato-dellesercizio" id="toc-formato-dellesercizio" class="nav-link" data-scroll-target="#formato-dellesercizio">Formato dell’esercizio</a></li>
@@ -318,16 +318,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="corso-introduttivo-al-software-statistico-r" class="level1">
-<h1><strong>Corso introduttivo al software statistico R</strong></h1>
+<section id="corso-base-di-r-per-la-gestione-e-analisi-dei-dati" class="level1">
+<h1><strong>Corso base di R per la gestione e analisi dei dati</strong></h1>
 </section>
-<section id="modulo-02-pulizia-e-preparazione-dei-dati" class="level1">
-<h1>Modulo 02 Pulizia e preparazione dei dati</h1>
+<section id="modulo-02---pulizia-e-preparazione-dei-dati" class="level1">
+<h1>Modulo 02 - Pulizia e preparazione dei dati</h1>
 <section id="obiettivi-del-modulo" class="level2">
 <h2 class="anchored" data-anchor-id="obiettivi-del-modulo">Obiettivi del modulo</h2>
 <ul>
 <li>Individuare i problemi di qualità dei dati</li>
-<li>Costruire una catena di pulizia con l’operatore pipe <code>%&gt;%</code> per standardizzare i nomi delle variabili, selezionare le variabili utili e rimuovere le righe duplicate</li>
+<li>Costruire una catena di pulizia con l’operatore <em>pipe</em> <code>%&gt;%</code> per standardizzare i nomi delle variabili, selezionare le variabili utili e rimuovere le righe duplicate</li>
 <li>Gestire i valori mancanti e convertire le variabili nella classe corretta</li>
 <li>Convertire le stringhe di testo in date</li>
 </ul>
@@ -389,15 +389,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Domanda di esempio: quanto fa 2 + 2?
-<div id="radio_VVZWFLFVEH" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_VVZWFLFVEH" value=""> <span>2</span></label><label><input type="radio" autocomplete="off" name="radio_VVZWFLFVEH" value=""> <span>5</span></label><label><input type="radio" autocomplete="off" name="radio_VVZWFLFVEH" value="answer"> <span>4</span></label>
+<div id="radio_MEJFHSQBST" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_MEJFHSQBST" value=""> <span>2</span></label><label><input type="radio" autocomplete="off" name="radio_MEJFHSQBST" value=""> <span>5</span></label><label><input type="radio" autocomplete="off" name="radio_MEJFHSQBST" value="answer"> <span>4</span></label>
 </div>
 </div>
 </div>
 </div>
 </div>
-<p>Lungo il modulo troverai anche due tipi di riquadri colorati. I riquadri <strong>gialli</strong> segnalano errori frequenti o punti in cui R si comporta in modo inatteso: leggili sempre, perché possono farti risparmiare tempo.</p>
-<!-- ISTRUZIONI: Il box giallo "Attenzione a …" va usato per avvisi
+<p>Lungo il modulo troverai anche due tipi di riquadri colorati. I riquadri <strong>arancione</strong> segnalano errori frequenti o punti in cui R si comporta in modo inatteso: leggili sempre, perché possono farti risparmiare tempo.</p>
+<!-- ISTRUZIONI: Il box arancione "Attenzione a …" va usato per avvisi
      importanti: errori comuni, comportamenti di R che possono
      sorprendere, passaggi da non saltare. Il titolo inizia sempre con
      "Attenzione a" (es. "Attenzione ai nomi con spazi"). Copia
@@ -446,7 +446,7 @@ Domanda di esempio: quanto fa 2 + 2?
 <li>se il progetto R è ancora aperto, vai in fondo allo script;</li>
 <li>se invece l’hai chiuso, riapri il progetto: RStudio riapre anche lo script su cui stavi lavorando questa mattina, anche se non lo avevi salvato.</li>
 </ul>
-<p>In entrambi i casi, crea in fondo allo script una nuova sezione chiamata “Modulo 2 - Pulizia e preparazione dei dati” con la combinazione di tasti <strong>Ctrl + Shift + R</strong> (<strong>Cmd + Shift + R</strong> su Mac): qui scriverai il codice dell’esercitazione del pomeriggio. Ricordati di salvare spesso il lavoro (<strong>Ctrl + S</strong>, oppure <strong>Cmd + S</strong> su Mac).</p>
+<p>In entrambi i casi, crea in fondo allo script <strong>una nuova sezione</strong> chiamata “Modulo 2 - Pulizia e preparazione dei dati” con la combinazione di tasti <strong>Ctrl + Shift + R</strong> (<strong>Cmd + Shift + R</strong> su Mac). Qui scriverai il codice dell’esercitazione del pomeriggio. Ricordati di salvare spesso il lavoro (<strong>Ctrl + S</strong>, oppure <strong>Cmd + S</strong> su Mac).</p>
 </section>
 <section id="iniziamo" class="level2">
 <h2 class="anchored" data-anchor-id="iniziamo">Iniziamo!</h2>
@@ -454,11 +454,11 @@ Domanda di esempio: quanto fa 2 + 2?
 </section>
 <section id="la-catena-di-pulizia" class="level2">
 <h2 class="anchored" data-anchor-id="la-catena-di-pulizia">La catena di pulizia</h2>
-<p>Tutti i passaggi di pulizia verranno raccolti in <strong>un’unica catena</strong> di comandi, collegati dall’operatore “pipe” <code>%&gt;%</code>. Puoi leggere <code>%&gt;%</code> come “e poi”: prendi i dati, <em>e poi</em> sistema i nomi, <em>e poi</em> togli i duplicati, e così via. Il simbolo dell’operatore pipe si scrive con la scorciatoia <strong>Ctrl+Shift+M</strong> (<strong>Cmd+Shift+M</strong> su Mac). In R esiste anche un operatore pipe “nativo”, <code>|&gt;</code>, che funziona in modo molto simile: in questo corso useremo <code>%&gt;%</code>.</p>
+<p>Tutti i passaggi di pulizia verranno raccolti in <strong>un’unica catena</strong> di comandi, collegati dall’operatore <em>pipe</em> <code>%&gt;%</code>. Puoi leggere <code>%&gt;%</code> come “e poi”: prendi i dati, <em>e poi</em> sistema i nomi, <em>e poi</em> togli i duplicati, e così via. Il simbolo dell’operatore pipe si scrive con la scorciatoia <strong>Ctrl+Shift+M</strong> (<strong>Cmd+Shift+M</strong> su Mac). In R esiste anche un operatore pipe “nativo”, <code>|&gt;</code>, che funziona in modo molto simile: in questo corso useremo <code>%&gt;%</code>.</p>
 <p>Una catena di pulizia ha tre componenti:</p>
 <ol type="1">
 <li>a sinistra dell’operatore di assegnazione <code>&lt;-</code>, il nome del <strong>nuovo oggetto</strong> che verrà creato e che conterrà i dati puliti (<code>dati</code>);</li>
-<li>a destra di <code>&lt;-</code>, il nome del dataset <strong>di partenza</strong>, quello su cui stai lavorando e a cui vuoi applicare le modifiche (<code>dati_raw</code>), seguito da <code>%&gt;%</code>;</li>
+<li>a destra di <code>&lt;-</code>, il nome del dataframe <strong>di partenza</strong>, quello su cui stai lavorando e a cui vuoi applicare le modifiche (<code>dati_raw</code>), seguito da <code>%&gt;%</code>;</li>
 <li>nelle righe successive, le funzioni di pulizia, collegate da <code>%&gt;%</code>.</li>
 </ol>
 <p>Nell’esempio sotto <code>prima_funzione()</code>, <code>seconda_funzione()</code> e <code>terza_funzione()</code> <strong>non sono funzioni vere</strong>: sono solo segnaposto per mostrare la struttura. Al loro posto metterai, una alla volta, le funzioni che vedrai nelle prossime sezioni.</p>
@@ -468,7 +468,7 @@ Domanda di esempio: quanto fa 2 + 2?
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">seconda_funzione</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">terza_funzione</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>L’intera catena è un <strong>unico comando</strong>: ogni volta che aggiungi una funzione, riesegui tutta la catena (seleziona dall’inizio alla fine e premi Ctrl+Invio). Poiché il comando usa <code>&lt;-</code>, il risultato non viene stampato nella console ma salvato in <code>dati</code>: per vederlo clicca su <code>dati</code> nel pannello <strong>Environment</strong> oppure usa <code>View(dati)</code>. Ti consigliamo di guardare il dataset dopo ogni passaggio.</p>
+<p>L’intera catena è un <strong>unico comando</strong>: ogni volta che aggiungi una funzione, riesegui tutta la catena (seleziona il testo dall’inizio alla fine e premi Ctrl+Invio). Poiché il comando usa <code>&lt;-</code>, il risultato non viene stampato nella console ma salvato in <code>dati</code>: per vederlo clicca su <code>dati</code> nel pannello <strong>Environment</strong> oppure usa <code>View(dati)</code>. Ti consigliamo di guardare il dataframe dopo ogni passaggio.</p>
 <div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -499,14 +499,15 @@ Domanda di esempio: quanto fa 2 + 2?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Che cosa osservi in console?
-<div id="radio_USEMWAUFJQ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_USEMWAUFJQ" value=""> <span>Il nome del dataset</span></label><label><input type="radio" autocomplete="off" name="radio_USEMWAUFJQ" value="answer"> <span>I nomi delle variabili del dataset</span></label><label><input type="radio" autocomplete="off" name="radio_USEMWAUFJQ" value=""> <span>Il nome del progetto R</span></label>
+<div id="radio_LJBRPFKLFX" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_LJBRPFKLFX" value=""> <span>Il nome del dataset</span></label><label><input type="radio" autocomplete="off" name="radio_LJBRPFKLFX" value="answer"> <span>I nomi delle variabili del dataset</span></label><label><input type="radio" autocomplete="off" name="radio_LJBRPFKLFX" value=""> <span>Il nome del progetto R</span></label>
 </div>
 </div>
 </div>
 </div>
 </div>
-<p>I nomi contengono spazi (<code>Age group</code>), maiuscole irregolari (<code>REGION</code>, <code>AGE</code>) e trattini (<code>End_Follow-Up</code>): sono scomodi da scrivere e facili da sbagliare.</p>
+<p>I nomi contengono spazi (<code>Age group</code>), maiuscole irregolari (<code>REGION</code>, <code>AGE</code>) e trattini (<code>End_Follow-Up</code>): sono scomodi da scrivere e facili da sbagliare. Per questo motivo, il primo passo della pulizia è <strong>standardizzare i nomi</strong>.</p>
+<p>Per indicare a R una singola variabile di un dataframe si usa l’operatore <code>$</code>: prima il nome del dataframe, poi <code>$</code>, poi il nome della variabile. Per esempio, <code>dati_raw$REGION</code> è la variabile <code>REGION</code> del dataframe <code>dati_raw</code>. Prova a eseguirlo nella console: R stampa tutti i valori di quella variabile.</p>
 <div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -517,12 +518,12 @@ Che cosa osservi in console?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Se il nome di una variabile contiene uno spazio, R non lo riconosce come un nome unico. <code>dati_raw$Age group</code> dà errore: il nome va racchiuso tra <strong>apici inversi</strong> (backtick, <code>`</code>), cioè <code>dati_raw$`Age group`</code>. Gli spazi possono anche essere difficili da vedere: la variabile <code>Event  date</code> ha <strong>due</strong> spazi tra le parole.</p>
+<p>Se il nome di una variabile contiene uno spazio, R non lo riconosce come un nome unico. <code>dati_raw$Age group</code> dà errore: il nome va racchiuso tra <strong>apici inversi</strong> (backtick, <code>`</code>), cioè <code>dati_raw$`Age group`</code>. Gli spazi possono anche essere difficili da vedere: la variabile <code>Event  date</code> ha <strong>due</strong> spazi tra le parole. Per questa ragione, l’uso di nomi con spazi o caratteri speciali è fortemente sconsigliato.</p>
 </div>
 </div>
 <section id="pulizia-automatica-dei-nomi" class="level3">
 <h3 class="anchored" data-anchor-id="pulizia-automatica-dei-nomi">Pulizia automatica dei nomi</h3>
-<p>La funzione <code>clean_names()</code> del pacchetto <code>{janitor}</code> sistema i nomi in automatico: rende tutti i nomi minuscoli, trasforma spazi e trattini in trattini bassi (<code>_</code>) e rimuove i caratteri speciali. È molto facile da usare e ti permette di risolvere attraverso una singola riga di codice diversi problemi.</p>
+<p>La funzione <code>clean_names()</code> del pacchetto <code>{janitor}</code> sistema i nomi in automatico: rende tutti i nomi minuscoli, trasforma spazi e trattini in trattini bassi (<code>_</code>) e rimuove i caratteri speciali. È molto facile da usare e ti permette di risolvere attraverso una singola riga di codice diversi problemi di nomenclatura delle variabili.</p>
 <p>Inizia la catena di pulizia: parti da <code>dati_raw</code>, applica <code>clean_names()</code> e salva il risultato in <code>dati</code>. Poi guarda i nuovi nomi con <code>names(dati)</code>.</p>
 <details>
 <summary style="text-decoration: underline; color: red;">
@@ -546,8 +547,8 @@ Che cosa osservi in console?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Confronta names(dati_raw) e names(dati): cosa è cambiato?
-<div id="radio_HYEFTZXQDY" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_HYEFTZXQDY" value=""> <span>Le variabili sono state rinominate in italiano</span></label><label><input type="radio" autocomplete="off" name="radio_HYEFTZXQDY" value="answer"> <span>I nomi sono tutti minuscoli e spazi e trattini sono diventati trattini bassi (_)</span></label><label><input type="radio" autocomplete="off" name="radio_HYEFTZXQDY" value=""> <span>Le variabili con nomi non validi sono state eliminate</span></label>
+<div id="radio_YNNTKPWMOR" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_YNNTKPWMOR" value=""> <span>Le variabili sono state rinominate in italiano</span></label><label><input type="radio" autocomplete="off" name="radio_YNNTKPWMOR" value="answer"> <span>I nomi sono tutti minuscoli e spazi e trattini sono diventati trattini bassi (_)</span></label><label><input type="radio" autocomplete="off" name="radio_YNNTKPWMOR" value=""> <span>Le variabili con nomi non validi sono state eliminate</span></label>
 </div>
 </div>
 </div>
@@ -556,7 +557,7 @@ Confronta names(dati_raw) e names(dati): cosa è cambiato?
 </section>
 <section id="pulizia-manuale-dei-nomi" class="level3">
 <h3 class="anchored" data-anchor-id="pulizia-manuale-dei-nomi">Pulizia manuale dei nomi</h3>
-<p>Adesso proviamo invece a cambiare a mano il nome delle variabili, per renderli più brevi o più chiari. Lo strumento principale è la funzione <code>rename()</code> del pacchetto <code>{dplyr}</code> (incluso nel <code>{tidyverse}</code>). A partire dalla tabella sottostante rinomina le variabili:</p>
+<p>Adesso proviamo invece a cambiare a mano il nome delle variabili, per renderli più brevi o più chiari. Lo strumento principale è la funzione <code>rename()</code> del pacchetto <code>{dplyr}</code> (incluso nel pacchetto <code>{tidyverse}</code>). A partire dalla tabella sottostante rinomina le variabili:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -653,12 +654,13 @@ Confronta names(dati_raw) e names(dati): cosa è cambiato?
 <section id="selezionare-le-variabili-da-tenere" class="level3">
 <h3 class="anchored" data-anchor-id="selezionare-le-variabili-da-tenere">Selezionare le variabili da tenere</h3>
 <p>Lo scopo principale di <code>select()</code> è scegliere le variabili da <strong>tenere</strong>: tutte quelle non indicate tra le parentesi vengono eliminate.</p>
-<p>Scrivi il comando sotto nella tua <strong>area di prova</strong> ed eseguilo. Prende il dataset <code>dati</code> (pulito solo in parte), seleziona tre variabili e stampa il risultato senza salvarlo. Aggiungiamo <code>head()</code> per stampare solo le prime 6 righe, invece di tutte le righe del dataset.</p>
+<p>Scrivi il comando sotto nella tua <strong>area di prova</strong> ed eseguilo. Prende il dataframe <code>dati</code> (pulito solo in parte), seleziona tre variabili e stampa il risultato senza salvarlo. Aggiungiamo <code>head()</code> per stampare solo le prime 6 righe, invece di tutte le righe del dataset.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dati <span class="sc">%&gt;%</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id_subject, sex, age) <span class="sc">%&gt;%</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<p>Nota che dentro <code>select()</code> le variabili sono scritte <strong>senza <code>$</code></strong>: non serve, perché il dataframe <code>dati</code> arriva alla funzione attraverso la pipe <code>%&gt;%</code>, e R sa già dove cercare <code>id_subject</code>, <code>sex</code> e <code>age</code>. Questo vale per tutte le funzioni della catena. L’operatore <code>$</code> serve invece nei comandi <strong>indipendenti</strong> dalla catena, come <code>class(dati$age)</code>, in cui devi dire tu a R in quale dataframe si trova la variabile.</p>
 <p>Se invece volessimo stampare le ultime 6 righe del dataset, potremmo aggiungere <code>tail()</code>:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dati <span class="sc">%&gt;%</span></span>
@@ -741,8 +743,8 @@ Confronta names(dati_raw) e names(dati): cosa è cambiato?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Riesegui la catena e controlla il pannello Environment (oppure usa ncol(dati) nell’area di prova): quante variabili ha ora dati?
-<div id="radio_BDQXDKBXBF" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_BDQXDKBXBF" value=""> <span>14</span></label><label><input type="radio" autocomplete="off" name="radio_BDQXDKBXBF" value="answer"> <span>12</span></label><label><input type="radio" autocomplete="off" name="radio_BDQXDKBXBF" value=""> <span>2</span></label>
+<div id="radio_UQFLAQUGYV" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_UQFLAQUGYV" value="answer"> <span>14</span></label><label><input type="radio" autocomplete="off" name="radio_UQFLAQUGYV" value=""> <span>13</span></label><label><input type="radio" autocomplete="off" name="radio_UQFLAQUGYV" value=""> <span>2</span></label>
 </div>
 </div>
 </div>
@@ -753,17 +755,17 @@ Riesegui la catena e controlla il pannello Environment (oppure usa ncol(dati) ne
 <section id="rimuovere-le-righe-duplicate" class="level2">
 <h2 class="anchored" data-anchor-id="rimuovere-le-righe-duplicate">Rimuovere le righe duplicate</h2>
 <p>Un problema frequente nei dati sono le <strong>righe duplicate</strong>: lo stesso record compare due o più volte, per esempio perché è stato inserito due volte o perché due file sono stati uniti male. Se non le togli, quel soggetto viene contato più volte e tutte le analisi successive (frequenze, tassi, medie) risultano sbagliate.</p>
-<p>Nel nostro dataset ogni riga è un soggetto, identificato da <code>id_subject</code>: ogni valore di <code>id_subject</code> dovrebbe quindi comparire una sola volta. Come capire se è così? Esegui <code>skim()</code> nell’area di prova e guarda con attenzione la riga di <code>id_subject</code>:</p>
+<p>Nel nostro dataframe ogni riga è un soggetto, identificato da <code>id_subject</code>: ogni valore di <code>id_subject</code> dovrebbe quindi comparire una sola volta. Come capire se è così? Esegui <code>skim()</code> nell’area di prova e guarda con attenzione la riga di <code>id_subject</code>:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">skim</span>(dati)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Confronta il numero di righe (<em>Number of rows</em>, in alto nel riepilogo) con il numero di valori diversi di <code>id_subject</code> (colonna <code>n_unique</code>): che cosa noti?</p>
-<p>Puoi fare lo stesso confronto anche con due comandi: <code>nrow()</code> conta le righe, <code>n_distinct()</code> conta i valori diversi.</p>
+<p>Puoi fare lo stesso confronto anche con due comandi: <code>nrow()</code> che conta le righe (NB: si applica all’intero dataset), <code>n_distinct()</code> che conta i valori diversi (NB: si applica a una sola variabile in questo caso <code>id_subject</code>). Prova nell’area di prova:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(dati)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">n_distinct</span>(dati<span class="sc">$</span>id_subject)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Ci sono più righe che soggetti: alcune righe sono ripetute. La funzione <code>distinct()</code>, con le parentesi vuote, rimuove le righe <strong>identiche al 100%</strong>: tra le righe che hanno lo stesso valore in tutte le variabili, tiene solo la prima.</p>
+<p>Ci sono più righe che soggetti: alcune righe sono ripetute. La funzione <code>distinct()</code>, con le parentesi vuote, rimuove le righe <strong>identiche al 100%</strong> ovvero tra le righe che hanno lo stesso valore in tutte le variabili, tiene solo la prima.</p>
 <section id="aggiungi-alla-catena-di-pulizia-2" class="level3">
 <h3 class="anchored" data-anchor-id="aggiungi-alla-catena-di-pulizia-2">Aggiungi alla catena di pulizia</h3>
 <p>Aggiungi <code>distinct()</code> alla catena ed eseguila.</p>
@@ -800,8 +802,8 @@ Riesegui la catena e controlla il pannello Environment (oppure usa ncol(dati) ne
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Quante righe duplicate ha rimosso distinct()?
-<div id="radio_QDASLUDQHF" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_QDASLUDQHF" value=""> <span>Nessuna: ogni soggetto compariva una sola volta</span></label><label><input type="radio" autocomplete="off" name="radio_QDASLUDQHF" value="answer"> <span>5</span></label><label><input type="radio" autocomplete="off" name="radio_QDASLUDQHF" value=""> <span>12</span></label>
+<div id="radio_UHHHAJDRKZ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_UHHHAJDRKZ" value=""> <span>Nessuna: ogni soggetto compariva una sola volta</span></label><label><input type="radio" autocomplete="off" name="radio_UHHHAJDRKZ" value="answer"> <span>5</span></label><label><input type="radio" autocomplete="off" name="radio_UHHHAJDRKZ" value=""> <span>12</span></label>
 </div>
 </div>
 </div>
@@ -817,7 +819,7 @@ Quante righe duplicate ha rimosso distinct()?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><code>distinct(id_subject)</code> considera “duplicate” le righe con lo stesso valore di <code>id_subject</code>, anche se le altre variabili sono diverse. Ma attenzione: per impostazione predefinita <strong>elimina tutte le altre variabili</strong>. Per mantenerle si aggiunge <code>.keep_all = TRUE</code>. Confronta i risultati nell’area di prova:</p>
+<p><code>distinct(id_subject)</code> considera “duplicate” tutte le righe che presentano lo stesso valore di <code>id_subject</code>, indipendentemente dai valori delle altre variabili. Per impostazione predefinita, mantiene solo la variabile <code>id_subject</code>, di cui elimina i duplicati, ed elimina tutte le altre colonne. Per conservare anche le altre variabili, mantenendo però <strong>solo la prima riga per ciascun soggetto</strong>, si aggiunge <code>.keep_all = TRUE</code>. Confronta i risultati nell’area di prova:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>dati <span class="sc">%&gt;%</span> <span class="fu">distinct</span>(id_subject) <span class="sc">%&gt;%</span> <span class="fu">names</span>()</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -836,7 +838,7 @@ Quante righe duplicate ha rimosso distinct()?
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th>Valore nel dataset</th>
+<th>Valore nel dataframe</th>
 <th>Come appare nel Viewer</th>
 <th><code>is.na()</code></th>
 </tr>
@@ -882,8 +884,8 @@ Quante righe duplicate ha rimosso distinct()?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Cosa restituisce is.na(““), cioè is.na() applicata a un testo vuoto?
-<div id="radio_GQEXCNNJYR" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_GQEXCNNJYR" value=""> <span>TRUE: il testo vuoto è un valore mancante</span></label><label><input type="radio" autocomplete="off" name="radio_GQEXCNNJYR" value="answer"> <span>FALSE: per R il testo vuoto è un valore come un altro</span></label>
+<div id="radio_GMPUGFNPMQ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_GMPUGFNPMQ" value=""> <span>TRUE: il testo vuoto è un valore mancante</span></label><label><input type="radio" autocomplete="off" name="radio_GMPUGFNPMQ" value="answer"> <span>FALSE: per R il testo vuoto è un valore come un altro</span></label>
 </div>
 </div>
 </div>
@@ -908,8 +910,8 @@ Cosa restituisce is.na(““), cioè is.na() applicata a un testo vuoto?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Guardando gli ultimi valori di tabyl(age), come sono codificati i valori mancanti dell’età?
-<div id="radio_TUZYLSERYR" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_TUZYLSERYR" value=""> <span>Come NA</span></label><label><input type="radio" autocomplete="off" name="radio_TUZYLSERYR" value=""> <span>Con il codice 999999</span></label><label><input type="radio" autocomplete="off" name="radio_TUZYLSERYR" value="answer"> <span>Con i testi “Unknown” e “N/D”</span></label>
+<div id="radio_IUSLUUUIUG" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_IUSLUUUIUG" value=""> <span>Come NA</span></label><label><input type="radio" autocomplete="off" name="radio_IUSLUUUIUG" value=""> <span>Con il codice 999999</span></label><label><input type="radio" autocomplete="off" name="radio_IUSLUUUIUG" value="answer"> <span>Con i testi “Unknown” e “N/D”</span></label>
 </div>
 </div>
 </div>
@@ -925,7 +927,7 @@ Guardando gli ultimi valori di tabyl(age), come sono codificati i valori mancant
 </section>
 <section id="trasformare-i-codici-in-na-na_if" class="level3">
 <h3 class="anchored" data-anchor-id="trasformare-i-codici-in-na-na_if">Trasformare i codici in <code>NA</code>: <code>na_if()</code></h3>
-<p>Per modificare una variabile si usa la funzione <code>mutate()</code>, con la sintassi <code>mutate(variabile = funzione(variabile))</code>. <code>mutate()</code> serve sia a creare nuove variabili sia a modificare quelle esistenti.</p>
+<p>Per modificare una variabile si usa la funzione <code>mutate()</code>, con la sintassi <code>mutate(variabile = funzione(variabile))</code>. <code>mutate()</code> è una funzione molto usata e serve sia a creare nuove variabili sia a modificare quelle esistenti.</p>
 <p>La funzione <code>na_if(variabile, "valore")</code> sostituisce il valore indicato con <code>NA</code>. Il comando per trasformare <code>"Unknown"</code> in <code>NA</code> nella variabile <code>sex</code> è quindi:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">sex =</span> <span class="fu">na_if</span>(sex, <span class="st">"Unknown"</span>))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
@@ -998,7 +1000,7 @@ Guardando gli ultimi valori di tabyl(age), come sono codificati i valori mancant
 </section>
 <section id="contare-i-valori-mancanti" class="level3">
 <h3 class="anchored" data-anchor-id="contare-i-valori-mancanti">Contare i valori mancanti</h3>
-<p>Riesegui <code>tabyl()</code> su <code>sex</code> e <code>hiv_status</code> nell’area di prova: ora i mancanti compaiono come <code>NA</code>, e nella colonna <code>valid_percent</code> <code>tabyl()</code> calcola le percentuali escludendoli.</p>
+<p>Riesegui <code>tabyl()</code> su <code>sex</code> e <code>hiv_status</code> nell’area di prova: ora i mancanti compaiono come <code>NA</code>, e nella colonna <code>valid_percent</code> la funzione <code>tabyl()</code> calcola le percentuali escludendoli.</p>
 <p>Come si contano i valori mancanti? Applicata a una variabile, <code>is.na()</code> restituisce un valore <strong>logico</strong> per ogni elemento: <code>TRUE</code> se il valore è mancante, <code>FALSE</code> se è presente.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(<span class="fu">c</span>(<span class="st">"M"</span>, <span class="cn">NA</span>, <span class="st">"F"</span>, <span class="cn">NA</span>))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1022,20 +1024,21 @@ Guardando gli ultimi valori di tabyl(age), come sono codificati i valori mancant
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Cosa restituisce sum(c(TRUE, FALSE, TRUE, TRUE))?
-<div id="radio_WZMVXRWDCN" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_WZMVXRWDCN" value=""> <span>TRUE</span></label><label><input type="radio" autocomplete="off" name="radio_WZMVXRWDCN" value=""> <span>4</span></label><label><input type="radio" autocomplete="off" name="radio_WZMVXRWDCN" value="answer"> <span>3</span></label><label><input type="radio" autocomplete="off" name="radio_WZMVXRWDCN" value=""> <span>Un errore: non si possono sommare valori logici</span></label>
+<div id="radio_UBZFCHMMVR" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_UBZFCHMMVR" value=""> <span>TRUE</span></label><label><input type="radio" autocomplete="off" name="radio_UBZFCHMMVR" value=""> <span>4</span></label><label><input type="radio" autocomplete="off" name="radio_UBZFCHMMVR" value="answer"> <span>3</span></label><label><input type="radio" autocomplete="off" name="radio_UBZFCHMMVR" value=""> <span>Un errore: non si possono sommare valori logici</span></label>
 </div>
 </div>
 </div>
 </div>
 </div>
-<p>Con <code>!is.na()</code> (il punto esclamativo è la negazione) i <code>TRUE</code> e i <code>FALSE</code> si scambiano, e <code>sum()</code> conta invece i valori <strong>presenti</strong>.</p>
-<p>Per contare gli <code>NA</code> di tutte le variabili in un colpo solo c’è <code>colSums()</code>. Applicata a tutto il data frame, <code>is.na(dati)</code> restituisce una tabella di <code>TRUE</code> e <code>FALSE</code> con le stesse righe e le stesse variabili di <code>dati</code>. <code>colSums()</code> (“somme delle colonne”) fa la somma di ogni variabile di questa tabella, cioè conta i <code>TRUE</code>, variabile per variabile: il risultato è il numero di valori mancanti di ciascuna.</p>
+<p>Con <code>!is.na()</code> (<code>!</code> è l’operatore di negazione) i <code>TRUE</code> e i <code>FALSE</code> si scambiano, e <code>sum()</code> conta invece i valori <strong>presenti</strong>.</p>
+<p>Per contare i valori <code>NA</code> di tutte le variabili in un colpo solo c’è <code>colSums()</code>. Applicata a tutto il data frame, <code>is.na(dati)</code> restituisce una tabella di <code>TRUE</code> e <code>FALSE</code> con le stesse righe e le stesse variabili di <code>dati</code>. <code>colSums()</code> (“somme delle colonne”) fa la somma di ogni variabile di questa tabella, cioè conta i <code>TRUE</code>, variabile per variabile: il risultato è il numero di valori mancanti di ciascuna. Infine puoi sempre riutilizzare la funzione <code>skim()</code> per avere un riepilogo dei valori mancanti in tutte le variabili del dataframe.</p>
 <p>Prova nell’area di prova:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(dati<span class="sc">$</span>sex))     <span class="co"># valori mancanti</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(dati<span class="sc">$</span>sex))    <span class="co"># valori presenti</span></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(dati))     <span class="co"># valori mancanti in ogni variabile</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(dati))     <span class="co"># valori mancanti in ogni variabile</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="fu">skim</span>(dati)               <span class="co"># riepilogo dei valori mancanti</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1056,26 +1059,27 @@ Cosa restituisce sum(c(TRUE, FALSE, TRUE, TRUE))?
 <h2 class="anchored" data-anchor-id="convertire-le-variabili-nella-classe-corretta">Convertire le variabili nella classe corretta</h2>
 <section id="le-classi-delle-variabili" class="level3">
 <h3 class="anchored" data-anchor-id="le-classi-delle-variabili">Le classi delle variabili</h3>
-<p>Ogni variabile ha una <strong>classe</strong>, che dice a R come interpretarne i valori. Le più comuni sono:</p>
+<p>Ogni variabile ha una <strong>classe</strong>, che definisce il tipo di dato che contiene e indica a R come interpretarne i valori. Le più comuni sono:</p>
 <ul>
 <li>“numeric” (numeri, anche con decimali)</li>
 <li>“integer” (solo numeri interi)</li>
 <li>“character” (testo)</li>
+<li>“factor” (categorie, con un ordine definito)</li>
 <li>“logical” (<code>TRUE</code>/<code>FALSE</code>)</li>
 <li>“Date” (date)</li>
+<li>“POSIXct” (data e ora)</li>
 </ul>
 <p>La classe di una variabile si controlla con <code>class()</code>. Prova nell’area di prova:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(dati<span class="sc">$</span>age)</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(dati<span class="sc">$</span>group)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p><code>class(dati$age)</code> è un comando <strong>indipendente</strong> dalla catena: per questo serve l’operatore <code>$</code> per dire a R in quale data frame si trova la variabile. Dentro la catena <code>$</code> non serve, perché il data frame passa da una funzione all’altra con l’operatore pipe.</p>
 <p>Anche se ora <code>age</code> contiene solo numeri e <code>NA</code>, la variabile è ancora di classe <code>character</code>: all’importazione è bastato che contenesse <code>"Unknown"</code> e <code>"N/D"</code> perché R la leggesse come testo. E finché è testo, non si possono fare calcoli (media, età minima e massima, classi di età). <code>group</code>, invece, è di classe “integer”, perché contiene solo numeri interi: una variabile “integer” non può contenere decimali, e se un calcolo dovesse produrne conviene la classe “numeric”.</p>
 <p>Anche <code>hiv_status</code> dovrebbe essere numerica (<code>0</code> o <code>1</code>), ma per ora la lasciamo di classe <code>character</code>: contiene ancora il valore <code>"Yes"</code>, che va prima ricodificato. Lo faremo nel Modulo 3.</p>
 </section>
 <section id="cambiare-classe" class="level3">
 <h3 class="anchored" data-anchor-id="cambiare-classe">Cambiare classe</h3>
-<p>Per cambiare classe ci sono le funzioni <code>as.numeric()</code>, <code>as.character()</code>, <code>as.integer()</code>, ecc.: basta mettere il nome della variabile tra le parentesi.</p>
+<p>Per cambiare classe ci sono le funzioni <code>as.numeric()</code>, <code>as.character()</code>, <code>as.integer()</code>, <code>as.factor()</code>, <code>as.Date()</code> e altre ancora. Basta mettere il nome della variabile tra le parentesi.</p>
 <div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1108,8 +1112,8 @@ Cosa restituisce sum(c(TRUE, FALSE, TRUE, TRUE))?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Cosa restituisce as.numeric(“N/D”)?
-<div id="radio_NOJCUJINVY" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_NOJCUJINVY" value=""> <span>Un errore, e il comando non viene eseguito</span></label><label><input type="radio" autocomplete="off" name="radio_NOJCUJINVY" value="answer"> <span>Un NA, con un warning</span></label><label><input type="radio" autocomplete="off" name="radio_NOJCUJINVY" value=""> <span>Il numero 0</span></label>
+<div id="radio_JNXIPAWPXS" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_JNXIPAWPXS" value=""> <span>Un errore, e il comando non viene eseguito</span></label><label><input type="radio" autocomplete="off" name="radio_JNXIPAWPXS" value="answer"> <span>Un NA, con un warning</span></label><label><input type="radio" autocomplete="off" name="radio_JNXIPAWPXS" value=""> <span>Il numero 0</span></label>
 </div>
 </div>
 </div>
@@ -1184,8 +1188,8 @@ Cosa restituisce as.numeric(“N/D”)?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Quale funzione useresti per convertire “20/06/2021” (20 giugno 2021)?
-<div id="radio_OTMYOBCKSD" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_OTMYOBCKSD" value=""> <span>ymd()</span></label><label><input type="radio" autocomplete="off" name="radio_OTMYOBCKSD" value=""> <span>mdy()</span></label><label><input type="radio" autocomplete="off" name="radio_OTMYOBCKSD" value="answer"> <span>dmy()</span></label>
+<div id="radio_WMHGLGTWAM" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_WMHGLGTWAM" value=""> <span>ymd()</span></label><label><input type="radio" autocomplete="off" name="radio_WMHGLGTWAM" value=""> <span>mdy()</span></label><label><input type="radio" autocomplete="off" name="radio_WMHGLGTWAM" value="answer"> <span>dmy()</span></label>
 </div>
 </div>
 </div>
@@ -1211,8 +1215,8 @@ Quale funzione useresti per convertire “20/06/2021” (20 giugno 2021)?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 ymd(dati$date_event) restituisce il warning “All formats failed to parse”. Perché?
-<div id="radio_CQBIZYTMAM" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_CQBIZYTMAM" value=""> <span>Perché date_event contiene molti NA</span></label><label><input type="radio" autocomplete="off" name="radio_CQBIZYTMAM" value="answer"> <span>Perché le date sono scritte come giorno/mese/anno e non come anno-mese-giorno</span></label><label><input type="radio" autocomplete="off" name="radio_CQBIZYTMAM" value=""> <span>Perché date_event non è di classe character</span></label>
+<div id="radio_BOHCCVZJBF" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_BOHCCVZJBF" value=""> <span>Perché date_event contiene molti NA</span></label><label><input type="radio" autocomplete="off" name="radio_BOHCCVZJBF" value="answer"> <span>Perché le date sono scritte come giorno/mese/anno e non come anno-mese-giorno</span></label><label><input type="radio" autocomplete="off" name="radio_BOHCCVZJBF" value=""> <span>Perché date_event non è di classe character</span></label>
 </div>
 </div>
 </div>
@@ -1223,7 +1227,18 @@ ymd(dati$date_event) restituisce il warning “All formats failed to parse”. P
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>prova <span class="ot">&lt;-</span> <span class="fu">dmy</span>(dati<span class="sc">$</span>date_event)</span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(prova, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p><code>range()</code> restituisce il valore più piccolo e quello più grande, qui la data più vecchia e quella più recente: è il modo più rapido per controllare che le date siano plausibili. L’argomento <code>na.rm = TRUE</code> (“NA remove”, togli gli <code>NA</code>) dice a R di ignorare i valori mancanti. Senza, basta un solo <code>NA</code> perché il risultato sia <code>NA</code>: R non può sapere quale sia il valore minimo se uno dei valori è sconosciuto.</p>
+<p><code>range()</code> restituisce il valore più piccolo e quello più grande di una variabile: in questo caso, rispettivamente, la data più vecchia e quella più recente. È quindi un modo rapido per verificare che l’intervallo temporale dei dati sia plausibile.</p>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avviso</span>Attenzione all’argomento: na.rm = TRUE
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>L’argomento <code>na.rm = TRUE</code> (<code>NA</code> remove) indica a R di escludere i valori mancanti (<code>NA</code>) dal calcolo. Questo è importante perché, per impostazione predefinita, R considera i valori mancanti nel calcolo: se anche un solo valore è <code>NA</code>, non può determinare con certezza il minimo e il massimo e restituisce <code>NA</code> come risultato. Con <code>na.rm = TRUE</code>, invece, il calcolo viene effettuato utilizzando soltanto i valori disponibili.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="cn">NA</span>, <span class="dv">7</span>))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1234,7 +1249,9 @@ ymd(dati$date_event) restituisce il warning “All formats failed to parse”. P
 <pre><code>[1] 3 7</code></pre>
 </div>
 </div>
-<p>Lo stesso argomento si usa con le altre funzioni che riassumono molti valori in uno, come <code>sum()</code>, <code>mean()</code>, <code>min()</code> e <code>max()</code>. Lo ritroverai nella verifica finale, dove controlli le età e le date con <code>range()</code>.</p>
+<p>Lo stesso argomento <code>na.rm = TRUE</code> si usa con le altre funzioni che riassumono molti valori in uno, come <code>sum()</code>, <code>mean()</code>, <code>min()</code> e <code>max()</code>. Lo ritroverai nella verifica finale, dove controllerai le età e le date con <code>range()</code>.</p>
+</div>
+</div>
 <p>Le date ora cadono tutte nel 2021, ma compare il warning “1 failed to parse”: un valore <strong>non</strong> è stato convertito. Per capire quale, guarda gli ultimi valori della tabella di <code>date_event</code>:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>dati <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(date_event) <span class="sc">%&gt;%</span> <span class="fu">tail</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1248,8 +1265,8 @@ ymd(dati$date_event) restituisce il warning “All formats failed to parse”. P
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Perché dmy(dati$date_event) restituisce il warning “1 failed to parse”?
-<div id="radio_ETICUVIIUG" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_ETICUVIIUG" value=""> <span>Perché una data è scritta in un formato diverso dalle altre</span></label><label><input type="radio" autocomplete="off" name="radio_ETICUVIIUG" value=""> <span>Perché le celle vuote non si possono convertire in date</span></label><label><input type="radio" autocomplete="off" name="radio_ETICUVIIUG" value="answer"> <span>Perché date_event contiene il testo “Unknown”, che non è una data</span></label>
+<div id="radio_RUAVGMBMBD" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_RUAVGMBMBD" value=""> <span>Perché una data è scritta in un formato diverso dalle altre</span></label><label><input type="radio" autocomplete="off" name="radio_RUAVGMBMBD" value=""> <span>Perché le celle vuote non si possono convertire in date</span></label><label><input type="radio" autocomplete="off" name="radio_RUAVGMBMBD" value="answer"> <span>Perché date_event contiene il testo “Unknown”, che non è una data</span></label>
 </div>
 </div>
 </div>
@@ -1278,8 +1295,8 @@ Perché dmy(dati$date_event) restituisce il warning “1 failed to parse”?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Qual è la funzione corretta per convertire date_end_fu?
-<div id="radio_MVTNBNOJQL" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_MVTNBNOJQL" value=""> <span>ymd()</span></label><label><input type="radio" autocomplete="off" name="radio_MVTNBNOJQL" value=""> <span>mdy()</span></label><label><input type="radio" autocomplete="off" name="radio_MVTNBNOJQL" value="answer"> <span>dmy()</span></label>
+<div id="radio_TWHHYTLKZC" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_TWHHYTLKZC" value=""> <span>ymd()</span></label><label><input type="radio" autocomplete="off" name="radio_TWHHYTLKZC" value=""> <span>mdy()</span></label><label><input type="radio" autocomplete="off" name="radio_TWHHYTLKZC" value="answer"> <span>dmy()</span></label>
 </div>
 </div>
 </div>
@@ -1304,9 +1321,10 @@ Qual è la funzione corretta per convertire date_end_fu?
 <span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(date_vacc, prova) <span class="sc">%&gt;%</span></span>
 <span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">View</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Nel Viewer clicca sull’intestazione della colonna <code>prova</code> per ordinarla: i valori non convertiti (<code>NA</code>) finiscono in fondo, e accanto vedi come erano scritti in <code>date_vacc</code>. Il comando non usa <code>&lt;-</code>, quindi non modifica <code>dati</code>.</p>
+<p>Nel Viewer clicca sull’intestazione della colonna <code>prova</code> per ordinarla: i valori non convertiti (<code>NA</code>) finiscono in fondo, e accanto vedi come erano scritti in <code>date_vacc</code>. Il comando non usa l’operatore di assegnazione <code>&lt;-</code>, quindi non modifica <code>dati</code>.</p>
 <p>Nella stessa variabile ci sono <strong>formati diversi</strong>: oltre alle date scritte come anno-mese-giorno, ci sono date scritte come giorno/mese/anno (<code>"14/05/2021"</code>) e con il mese in lettere (<code>"18 apr 2021"</code>). Nessuna delle tre funzioni <code>ymd()</code>, <code>dmy()</code> e <code>mdy()</code> le converte tutte.</p>
-<p>Quando in una variabile ci sono più formati si usa <code>parse_date_time()</code>, indicando nell’argomento <code>orders</code> tutti i formati presenti. Qui gli ordini sono due: anno-mese-giorno (<code>"Ymd"</code>) e giorno-mese-anno (<code>"dmY"</code>). La <code>Y</code> maiuscola indica l’anno a 4 cifre. Poiché <code>parse_date_time()</code> restituisce data <strong>e ora</strong> (classe “POSIXct”), va racchiusa in <code>as.Date()</code>:</p>
+<p>Quando in una variabile ci sono più formati si usa <code>parse_date_time()</code>, indicando nell’argomento <code>orders</code> tutti i formati presenti. Qui gli ordini sono due: anno-mese-giorno (<code>"Ymd"</code>) e giorno-mese-anno (<code>"dmY"</code>). La <code>Y</code> maiuscola indica l’anno a 4 cifre. Poiché <code>parse_date_time()</code> restituisce data <strong>e ora</strong> (classe “POSIXct”), va racchiusa in <code>as.Date()</code> per ottenere solo la data (classe “Date”).<br>
+Prova nell’area di prova:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>prova <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="fu">parse_date_time</span>(dati<span class="sc">$</span>date_vacc, <span class="at">orders =</span> <span class="fu">c</span>(<span class="st">"Ymd"</span>, <span class="st">"dmY"</span>)))</span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(prova, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1322,7 +1340,8 @@ Qual è la funzione corretta per convertire date_end_fu?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>1. Prima guarda come sono scritte</strong> (<code>head()</code>, <code>tabyl()</code>): R importa le date dei file CSV come testo (<code>character</code>).</p>
+<p><strong>0. Prima controlla la classe della variabile</strong> (<code>class()</code>, <code>skim()</code>): Nei file CSV le date sono memorizzate come testo. Durante l’importazione con <code>import</code>, R tenta di riconoscerle automaticamente, ma non sempre ci riesce. È quindi importante verificare la classe delle variabili temporali dopo l’importazione e, se necessario, convertirle esplicitamente in Date come descritto di seguito.</p>
+<p><strong>1. Guarda come sono scritte</strong> (<code>head()</code>, <code>tabyl()</code>): guarda i primi valori della variabile o la sua distribuzione di frequenza per cercare di capire l’<strong>ordine</strong> di giorno (d), mese (m) e anno (y) nel dato grezzo o se ci sono più ordinamenti nella stessa variabile. Se ci sono più ordinamenti, annotali tutti.</p>
 <p><strong>2. Un solo formato nella variabile → una funzione di <code>{lubridate}</code></strong>, scelta in base all’<strong>ordine</strong> di giorno (d), mese (m) e anno (y) <strong>nel dato grezzo</strong>. Per esempio, per il 20 giugno 2021:</p>
 <table class="caption-top table">
 <colgroup>
@@ -1357,11 +1376,11 @@ Qual è la funzione corretta per convertire date_end_fu?
 </table>
 <p>I separatori (<code>-</code>, <code>/</code>, spazio o nessuno) e i mesi scritti in lettere vengono riconosciuti in automatico.</p>
 <p>Se giorno e mese sono entrambi minori o uguali a 12 (per esempio <code>"06/02/2021"</code>), dal valore da solo non si capisce quale dei due viene prima: guarda gli altri valori della variabile (se compare <code>"27/08/2021"</code>, il primo numero è il giorno) oppure la documentazione dei dati, e nel dubbio chiedi a chi li ha prodotti.</p>
-<p><strong>3. Più formati nella stessa variabile → <code>parse_date_time()</code></strong>, con l’elenco dei formati presenti nell’argomento <code>orders</code>. Poiché restituisce data <strong>e ora</strong> (classe “POSIXct”), va racchiusa in <code>as.Date()</code>:</p>
+<p><strong>3. Più formati nella stessa variabile → <code>parse_date_time()</code></strong>, con l’elenco dei formati presenti nell’argomento <code>orders</code>. Poiché restituisce data <strong>e ora</strong> (classe “POSIXct”), va racchiusa in <code>as.Date()</code> per ottenere solo la data (classe “Date”). :</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="fu">parse_date_time</span>(date_vacc, <span class="at">orders =</span> <span class="fu">c</span>(<span class="st">"Ymd"</span>, <span class="st">"dmY"</span>)))</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>4. Attenzione all’anno a due cifre</strong>: <code>ymd("08/06/21")</code> <strong>non dà errore</strong>, ma restituisce <code>2008-06-21</code>! Se in una variabile con più formati ci sono anche anni a due cifre, in <code>orders</code> si aggiunge <code>"dmy"</code> (con la <code>y</code> minuscola) <strong>dopo</strong> i formati con l’anno a 4 cifre, per esempio <code>orders = c("Ymd", "dmY", "dmy")</code>.</p>
 <p><strong>5. Controlla sempre il risultato</strong>: <code>range()</code> delle date. Una data del 2008 o del 2031 in una coorte del 2021 è un campanello d’allarme.</p>
-<p><strong>6. L’alternativa di <code>{base}</code>: <code>as.Date()</code> con i codici di formato.</strong> Il formato si descrive con codici che iniziano con <code>%</code>. Gli stessi codici servono anche a <code>format()</code> per <strong>scrivere</strong> una data nel formato che vuoi, per esempio in un report.</p>
+<p><strong>6. L’alternativa della libreria base di R <code>{base}</code>:</strong> si può usare anche la funzione di R base <code>as.Date()</code> con i codici di formato. Il formato si descrive con codici che iniziano con <code>%</code>. Gli stessi codici servono anche a <code>format()</code> per <strong>scrivere</strong> una data nel formato che vuoi, per esempio in un report.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1476,7 +1495,7 @@ Qual è la funzione corretta per convertire date_end_fu?
 <ul>
 <li><code>date_event</code> con <code>dmy()</code>;</li>
 <li><code>date_end_fu</code> con <code>dmy()</code>;</li>
-<li><code>date_vacc</code> con <code>parse_date_time()</code> e <code>as.Date()</code>, usando <code>orders = c("Ymd", "dmY")</code>.</li>
+<li><code>date_vacc</code> con <code>parse_date_time()</code> innestato in <code>as.Date()</code>, usando <code>orders = c("Ymd", "dmY")</code>.</li>
 </ul>
 <p>Poi controlla nell’area di prova che le date cadano tutte nel 2021:</p>
 <div class="cell">
@@ -1518,7 +1537,7 @@ Qual è la funzione corretta per convertire date_end_fu?
 </section>
 <section id="verifica-finale" class="level2">
 <h2 class="anchored" data-anchor-id="verifica-finale">Verifica finale</h2>
-<p>Crea la sezione “Verifica” (<strong>Ctrl+Shift+R</strong>), subito dopo la catena di pulizia. La catena è completa: controlla il dataset pulito eseguendo questi comandi e guardando i risultati.</p>
+<p>Crea la sezione “Verifica” (<strong>Ctrl+Shift+R</strong>), subito dopo la catena di pulizia. La catena è completa: controlla il dataframe pulito eseguendo questi comandi e guardando i risultati.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verifica ----------------------------------------------------------------</span></span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1567,8 +1586,8 @@ Qual è la funzione corretta per convertire date_end_fu?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 colSums(is.na(dati)) mostra moltissimi NA in date_event. Cosa significano?
-<div id="radio_RAJDNDBICV" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_RAJDNDBICV" value=""> <span>Che il dato è andato perso e va recuperato</span></label><label><input type="radio" autocomplete="off" name="radio_RAJDNDBICV" value="answer"> <span>Che il soggetto non ha avuto la diagnosi di COVID-19 durante il follow-up</span></label><label><input type="radio" autocomplete="off" name="radio_RAJDNDBICV" value=""> <span>Che il soggetto non è stato vaccinato</span></label>
+<div id="radio_UFKVXQQAKA" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_UFKVXQQAKA" value=""> <span>Che il dato è andato perso e va recuperato</span></label><label><input type="radio" autocomplete="off" name="radio_UFKVXQQAKA" value="answer"> <span>Che il soggetto non ha avuto la diagnosi di COVID-19 durante il follow-up</span></label><label><input type="radio" autocomplete="off" name="radio_UFKVXQQAKA" value=""> <span>Che il soggetto non è stato vaccinato</span></label>
 </div>
 </div>
 </div>
@@ -1651,17 +1670,7 @@ colSums(is.na(dati)) mostra moltissimi NA in date_event. Cosa significano?
 </section>
 <section id="riepilogo" class="level2">
 <h2 class="anchored" data-anchor-id="riepilogo">Riepilogo</h2>
-<p>In questo modulo hai imparato a:</p>
-<ul>
-<li>esplorare i dati con <code>dim()</code>, <code>names()</code>, <code>skim()</code>, <code>tabyl()</code> e <code>class()</code> per individuarne i problemi;</li>
-<li>costruire una catena di pulizia con l’operatore pipe <code>%&gt;%</code>;</li>
-<li>standardizzare i nomi delle variabili con <code>clean_names()</code> e <code>rename()</code> (NUOVO = VECCHIO);</li>
-<li>selezionare ed eliminare variabili con <code>select()</code> e rimuovere le righe duplicate con <code>distinct()</code>;</li>
-<li>trasformare in <code>NA</code> i codici di valore mancante e le celle vuote con <code>na_if()</code> (con la scorciatoia <code>across()</code> per più variabili insieme) e contare i mancanti con <code>is.na()</code>;</li>
-<li>convertire le variabili nella classe corretta con <code>as.numeric()</code>;</li>
-<li>convertire le stringhe in date con <code>{lubridate}</code> (<code>ymd()</code>, <code>dmy()</code>, <code>mdy()</code>, <code>parse_date_time()</code>);</li>
-<li>controllare sempre il risultato (<code>tabyl()</code>, <code>range()</code>, <code>colSums(is.na())</code>).</li>
-</ul>
+<p>In questo modulo hai imparato a: <!-- dim() non visto --> - esplorare i dati con <code>dim()</code>, <code>names()</code>, <code>skim()</code>, <code>tabyl()</code> e <code>class()</code> per individuarne i problemi; - costruire una catena di pulizia con l’operatore pipe <code>%&gt;%</code>; - standardizzare i nomi delle variabili con <code>clean_names()</code> e <code>rename()</code> (NUOVO = VECCHIO); - selezionare ed eliminare variabili con <code>select()</code> e rimuovere le righe duplicate con <code>distinct()</code>; - trasformare in <code>NA</code> i codici di valore mancante e le celle vuote con <code>na_if()</code> (con la scorciatoia <code>across()</code> per più variabili insieme) e contare i mancanti con <code>is.na()</code>; - convertire le variabili nella classe corretta con <code>as.numeric()</code>, <code>as.character()</code>, <code>as.integer()</code>; - convertire le stringhe in date con <code>{lubridate}</code> (<code>ymd()</code>, <code>dmy()</code>, <code>mdy()</code>, <code>parse_date_time()</code>, <code>as.Date()</code>); - controllare sempre il risultato (<code>tabyl()</code>, <code>range()</code>, <code>colSums(is.na())</code>).</p>
 </section>
 <section id="risorse-aggiuntive" class="level2">
 <h2 class="anchored" data-anchor-id="risorse-aggiuntive">Risorse aggiuntive</h2>
