@@ -37,11 +37,11 @@ Tutti i file si trovano nella cartella `dati` dei materiali del corso.
 ::: callout-warning
 ## Attenzione a…
 
-`dataset_esercitazione_raw` contiene **errori voluti**: valori scritti
-in modi diversi, codici al posto dei valori mancanti, date in formati
-diversi, righe duplicate. Trovarli e correggerli è proprio il lavoro
-dei Moduli 2 e 3. Nel tracciato qui sotto trovi i valori **previsti**,
-non quelli che troverai davvero nel file.
+`dataset_esercitazione_raw` contiene **errori intenzionali**: valori scritti
+in modi diversi, codici utilizzati al posto dei valori mancanti, date in formati
+differenti e righe duplicate. Trovarli e correggerli è proprio il lavoro
+dei Moduli 2 e 3. Nel tracciato riportato qui sotto trovi i valori **corretti attesi**,
+non necessariamente quelli che troverai davvero nel file.
 :::
 
 ## I dati della coorte
@@ -59,15 +59,15 @@ trovi il nome che la variabile ha in `dati_clean`.
 | `Group` | `group` | numero intero | gruppo di appaiamento: la persona con HIV e i suoi controlli hanno lo stesso valore | numero |
 | `REGION` | `region` | testo | regione di residenza | `A`, `B`, `C`, `D` (`E` e `F` vanno escluse) |
 | `Sex` | `sex` | testo | sesso | `F`, `M` |
-| `AGE` | `age` | numero | età alla vaccinazione, in anni | 18–100 |
+| `AGE` | `age` | numero intero | età alla vaccinazione, in anni | 18–100 |
 | `Age group` | `age_group` | testo | classe d'età usata per l'appaiamento | `18-59`, `60+` |
 | `Charlson score` | `chrls_score` | numero intero | punteggio di comorbidità di Charlson | 0–7 |
 | `Charlson_Index` | `chrls_index` | testo | classe del punteggio di Charlson | `0`, `1-2`, `3-4`, `5+` |
-| `HIV Status` | `hiv_status` | numero | stato HIV | `0` = senza HIV, `1` = con HIV |
+| `HIV Status` | `hiv_status` | numero intero | stato HIV | `0` = senza HIV, `1` = con HIV |
 | `Vaccination Date` | `date_vacc` | data | data della vaccinazione | febbraio–luglio 2021 |
 | `End_Follow-Up` | `date_end_fu` | data | data di fine follow-up | 2021, dopo la vaccinazione |
-| `Event  date` | `date_event` | data | data di diagnosi di COVID-19; **vuota se la persona non ha avuto la diagnosi** | tra vaccinazione e fine follow-up |
-| `Anticorpi` | `anticorpi` | numero | livello di anticorpi anti-SARS-CoV-2 dopo la vaccinazione, in BAU/mL; sotto il limite di rilevazione (4,8 BAU/mL) vale 2,4 | maggiore di 0 |
+| `Event date` | `date_event` | data | data di diagnosi di COVID-19; **vuota se la persona non ha avuto la diagnosi** | tra vaccinazione e fine follow-up |
+| `Anticorpi` | `anticorpi` | numero decimale | livello di anticorpi anti-SARS-CoV-2 dopo la vaccinazione, in BAU/mL; sotto il limite di rilevazione (4,8 BAU/mL) vale 2,4 | maggiore di 0 |
 | `CD4` | `cd4` | numero intero | conta dei linfociti CD4, in cellule/mm³; **solo per le persone con HIV**, vuota per le altre | maggiore di 0 |
 | `Row number original` | — | numero intero | variabile di servizio, numero di riga originale | si elimina nel Modulo 2 |
 | `Internal Note` | — | testo | variabile di servizio, note interne | si elimina nel Modulo 2 |
@@ -83,7 +83,7 @@ non ci sono persone della coorte.
 |----|----|----|
 | `codice_regione` | testo | codice della regione (da `A` a `F`), corrisponde a `region` dei dati della coorte |
 | `area` | testo | area geografica: `Nord`, `Centro`, `Sud`, `Isole` |
-| `popolazione` | numero | popolazione residente |
+| `popolazione` | numero intero | popolazione residente |
 
 : {tbl-colwidths="[25,15,60]"}
 

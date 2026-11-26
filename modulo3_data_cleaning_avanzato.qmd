@@ -38,9 +38,9 @@ pacman::p_load(
 dati_raw <- import("materiali_corso_R/dati/dataset_esercitazione_raw.csv")
 ```
 
-# **Corso introduttivo al software statistico R**
+# **Corso base di R per la gestione e analisi dei dati**
 
-# Modulo 03 Pulizia dei dati: approfondimento
+# Modulo 03 - Pulizia dei dati: approfondimento
 
 ## Obiettivi del modulo
 
@@ -162,11 +162,11 @@ cat("Domanda di esempio: quanto fa 2 + 2?", longmcq(opts))
 ::::
 
 Lungo il modulo troverai anche due tipi di riquadri colorati. I riquadri
-**gialli** segnalano errori frequenti o punti in cui R si comporta in
+**arancioni** segnalano errori frequenti o punti in cui R si comporta in
 modo inatteso: leggili sempre, perché possono farti risparmiare tempo.
 
 ```{=html}
-<!-- ISTRUZIONI: Il box giallo "Attenzione a …" va usato per avvisi
+<!-- ISTRUZIONI: Il box arancione "Attenzione a …" va usato per avvisi
      importanti: errori comuni, comportamenti di R che possono
      sorprendere, passaggi da non saltare. Il titolo inizia sempre con
      "Attenzione a" (es. "Attenzione ai nomi con spazi"). Copia
@@ -280,6 +280,12 @@ l'area di prova, così che resti sempre l'ultima sezione dello script.
 In questo modulo la userai spesso: prima di aggiungere un comando alla
 catena di pulizia, provalo qui e guarda il risultato. Solo quando il
 risultato è quello che ti aspetti, sposta il comando nella catena.
+
+**Ogni volta che aggiungi un comando alla catena, riesegui tutta la
+catena** (seleziona dall'inizio, `dati_clean <- dati %>%`, fino
+all'ultima riga, e premi **Ctrl+Invio**). Così `dati_clean` è sempre
+aggiornato e, quando lavori nell'area di prova, parti dai dati con tutte
+le modifiche fatte fino a quel momento.
 
 ### Cosa resta da sistemare
 
@@ -1705,6 +1711,16 @@ range(dati_clean$fu_days)
 # valori mancanti in ogni variabile
 colSums(is.na(dati_clean))
 ```
+
+::: {.callout-tip appearance="default" icon="false"}
+## Approfondimento: la funzione `sapply()`
+
+`sapply()` è una funzione di R base che applica un'altra funzione a ogni
+colonna del data frame. Qui applica `class()` a tutte le variabili di
+`dati_clean` e restituisce la classe di ognuna, così le controlli tutte
+con un solo comando invece di scrivere `class(dati_clean$age)`,
+`class(dati_clean$sex)` e così via.
+:::
 
 :::: {.callout-note appearance="minimal" icon="false"}
 **Prova a rispondere!**
