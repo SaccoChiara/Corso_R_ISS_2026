@@ -20,7 +20,7 @@ title: |
   ![](immagini/logo_dmi.png){width=3in}
 ---
 
-# **Corso base di R per la gestione e analisi dei dati**
+# **Corso introduttivo al software statistico R**
 
 # Modulo 05 - Data Visualization con ggplot2 (Parte 1)
 
@@ -133,7 +133,7 @@ Lungo il modulo troverai anche due tipi di riquadri colorati. I riquadri
 **arancioni** segnalano errori frequenti o punti in cui R si comporta in
 modo inatteso: leggili sempre, perché possono farti risparmiare tempo.
 
-<!-- ISTRUZIONI: Il box arancione "Attenzione a …" va usato per avvisi importanti: errori comuni, comportamenti di R che possono sorprendere, passaggi da non saltare. Il titolo inizia sempre con "Attenzione a" (es. "Attenzione ai nomi con spazi"). Copia l'intero blocco ::: {.callout-warning ...} ... ::: e modifica solo titolo e testo. -->
+<!-- ISTRUZIONI: Il box giallo "Attenzione a …" va usato per avvisi importanti: errori comuni, comportamenti di R che possono sorprendere, passaggi da non saltare. Il titolo inizia sempre con "Attenzione a" (es. "Attenzione ai nomi con spazi"). Copia l'intero blocco ::: {.callout-warning ...} ... ::: e modifica solo titolo e testo. -->
 
 ::: {.callout-warning appearance="default" icon="false"}
 ## Attenzione a …
@@ -234,7 +234,7 @@ dati_clean <- import("materiali_corso_R/dati/dati_clean.rds")
 Come nel Modulo 4, usiamo i dati puliti preparati da noi. Nello script
 crea la sezione "Importazione dati" (**Ctrl+Shift+R**) e importa con
 `import()` il file `dati_clean.rds` della cartella `dati`, chiamando il
-dataset `dati_clean`.
+dataframe `dati_clean`.
 
 <details>
 
@@ -2471,7 +2471,7 @@ In questo modulo hai imparato a:
 
 <!-- (Istituzione)\ -->
 
-<!-- Fonte dei dati: [DA COMPLETARE: origine del dataframe dati_clean] coorte di -->
+<!-- Fonte dei dati: [DA COMPLETARE: origine del dataset dati_clean] coorte di -->
 
 <!-- persone vaccinate con e senza HIV; esercizi ispirati al modulo -->
 

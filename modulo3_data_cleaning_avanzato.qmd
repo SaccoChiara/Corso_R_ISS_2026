@@ -212,7 +212,7 @@ Moduli 1 e 2. Per ricreare gli oggetti di ieri, esegui tutto il codice
 che sta sopra l'area di prova: metti il cursore sulla riga del titolo
 "Area di prova" e premi **Ctrl + Alt + B** (**Cmd + Option + B** su
 Mac). R carica i pacchetti, importa i dati grezzi e ricrea `dati`, il
-dataset pulito nel Modulo 2.
+dataframe pulito nel Modulo 2.
 
 Se lo script dà errori che non riesci a risolvere, nella cartella
 `script/backup` trovi la versione corretta di `backup_pulizia_dati.R`: contiene anche
@@ -1691,7 +1691,7 @@ pulizia, e controlla il dataframe finale:
 #| eval: false
 # Verifica ----------------------------------------------------------------
 
-# righe tolte e struttura del dataset
+# righe tolte e struttura del dataframe
 nrow(dati) - nrow(dati_clean)
 names(dati_clean)
 sapply(dati_clean, class)
@@ -1817,7 +1817,7 @@ cat("Con export(), che cosa decide il formato del file salvato?", longmcq(opts))
 
 ## Approfondimenti
 
-Se hai finito in anticipo, prova questi esercizi partendo dal dataset
+Se hai finito in anticipo, prova questi esercizi partendo dal dataframe
 `dati_clean`.
 
 ### Focus sugli ultraottantenni con HIV

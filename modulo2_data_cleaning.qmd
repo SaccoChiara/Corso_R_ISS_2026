@@ -267,7 +267,7 @@ consigliamo di guardare il dataframe dopo ogni passaggio.
 
 Rieseguire ogni volta tutta la catena va bene quando, come nel nostro
 caso, i dati sono "leggeri" e i comandi richiedono pochi secondi. Con
-dataset molto grandi o operazioni lente, rilanciare tutto a ogni
+dataframe molto grandi o operazioni lente, rilanciare tutto a ogni
 modifica può diventare poco efficiente: in quei casi conviene salvare
 dei risultati intermedi e lavorare a blocchi.
 :::
@@ -294,8 +294,8 @@ names(dati_raw)
 pacman::p_load(webexercises)
 
 opts <- c(
-  "Il nome del dataset",
-  answer = "I nomi delle variabili del dataset",
+  "Il nome del dataframe",
+  answer = "I nomi delle variabili del dataframe",
   "Il nome del progetto R"
 )
 
@@ -479,7 +479,7 @@ necessario.
 ## Selezionare ed eliminare le variabili
 
 La funzione `select()` del pacchetto `{dplyr}` serve a scegliere le
-variabili di un dataset. È molto versatile e si usa spesso per:
+variabili di un dataframe. È molto versatile e si usa spesso per:
 
 -   tenere alcune variabili
 -   eliminare alcune variabili
@@ -494,7 +494,7 @@ eliminate.
 Scrivi il comando sotto nella tua **area di prova** ed eseguilo. Prende
 il dataframe `dati` (pulito solo in parte), seleziona tre variabili e
 stampa il risultato senza salvarlo. Aggiungiamo `head()` per stampare
-solo le prime 6 righe, invece di tutte le righe del dataset.
+solo le prime 6 righe, invece di tutte le righe del dataframe.
 
 ```{r}
 #| eval: false
@@ -503,7 +503,7 @@ dati %>%
   head()
 ```
 
-Se invece volessimo stampare le ultime 6 righe del dataset, potremmo
+Se invece volessimo stampare le ultime 6 righe del dataframe, potremmo
 aggiungere `tail()`:
 
 ```{r}
@@ -673,7 +673,7 @@ con il numero di valori diversi di `id_subject` (colonna `n_unique`):
 che cosa noti?
 
 Puoi fare lo stesso confronto anche con due comandi: `nrow()` che conta le
-righe (NB: si applica all'intero dataset), `n_distinct()` che conta i valori diversi
+righe (NB: si applica all'intero dataframe), `n_distinct()` che conta i valori diversi
 (NB: si applica a una sola variabile in questo caso `id_subject`). Prova nell'area di prova:
 
 ```{r}
@@ -827,7 +827,7 @@ cat("Cosa restituisce is.na(\"\"), cioè is.na() applicata a un testo vuoto?", l
 ### I valori mancanti nei nostri dati
 
 Prima di correggerli, dobbiamo scoprire come sono scritti i valori
-mancanti nel nostro dataset. La funzione `tabyl()` del pacchetto
+mancanti nel nostro dataframe. La funzione `tabyl()` del pacchetto
 `{janitor}` conta le righe per ciascun valore di una variabile: così
 saltano all'occhio i valori "strani". Eseguila nell'area di prova su
 alcune variabili:
