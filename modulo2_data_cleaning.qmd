@@ -508,9 +508,7 @@ dati %>%
   head()
 ```
 
-<<<<<<< HEAD
-Se invece volessimo stampare le ultime 6 righe del dataframe, potremmo
-=======
+
 Nota che dentro `select()` le variabili sono scritte **senza `$`**:
 non serve, perché il dataframe `dati` arriva alla funzione attraverso
 la pipe `%>%`, e R sa già dove cercare `id_subject`, `sex` e `age`.
@@ -519,8 +517,7 @@ invece nei comandi **indipendenti** dalla catena, come
 `class(dati$age)`, in cui devi dire tu a R in quale dataframe si trova
 la variabile.
 
-Se invece volessimo stampare le ultime 6 righe del dataset, potremmo
->>>>>>> 30122caa43432d4dac6027901f2d43353fa1b454
+Se invece volessimo stampare le ultime 6 righe del dataframe, potremmo
 aggiungere `tail()`:
 
 ```{r}
