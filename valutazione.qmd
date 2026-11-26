@@ -1,0 +1,48 @@
+---
+title: "Valutazione del corso"
+toc-title: "In questa pagina"
+editor:
+  markdown:
+    wrap: 72
+---
+
+<!--
+  COME INSERIRE I LINK AI QUESTIONARI
+  Quando un questionario e' pronto, nella tabella qui sotto sostituisci
+  *Disponibile a breve* con il link, scritto cosi':
+
+    [Compila il questionario](https://forms.cloud.microsoft/...){target="_blank"}
+
+  {target="_blank"} apre il questionario in una nuova scheda del browser.
+  Poi rifai Render Website e pubblica il sito.
+-->
+
+Alla fine di ogni giornata ti chiediamo di compilare un breve
+questionario anonimo sugli argomenti trattati. Ci vogliono pochi minuti
+e le tue risposte ci aiutano a migliorare il corso, anche durante la
+settimana stessa.
+
+I link ai questionari compariranno in questa pagina giorno per giorno.
+
+## Questionari delle giornate
+
+| Giorno | Argomenti | Questionario |
+|----|----|----|
+| Lunedì 30 novembre | Modulo 1 – Importazione ed esplorazione dei dati<br>Modulo 2 – Pulizia e preparazione dei dati | *Disponibile a breve* |
+| Martedì 1 dicembre | Modulo 3 – Pulizia dei dati: approfondimento<br>Modulo 4 – Tabelle e aggregazione dei dati | *Disponibile a breve* |
+| Mercoledì 2 dicembre | Modulo 5 – Grafici con ggplot2 (parte 1)<br>Modulo 6 – Grafici con ggplot2 (parte 2) | *Disponibile a breve* |
+| Giovedì 3 dicembre | Modulo 7 – Trasformazione e integrazione dei dati<br>Modulo 8 – Altri grafici | *Disponibile a breve* |
+| Venerdì 4 dicembre | Modulo 9 – Report automatici con Quarto | *Disponibile a breve* |
+
+: {tbl-colwidths="[22,53,25]"}
+
+## Questionario di gradimento finale
+
+Venerdì 4 dicembre, alla chiusura del corso, ti chiediamo di compilare
+anche il questionario di gradimento sull'intero corso.
+
+| Questionario | Link |
+|----|----|
+| Gradimento del corso | *Disponibile a breve* |
+
+: {tbl-colwidths="[50,50]"}

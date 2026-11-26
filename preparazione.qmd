@@ -1,24 +1,57 @@
 ---
-title: |
-  ![](immagini/logo_dmi.png){width=3in}
 lang: it
 format:
   html:
+    # nel sito il titolo e' il logo
+    title: |
+      ![](immagini/logo_dmi.png){width=3in}
     toc: true
     toc-depth: 2
+  # versione PDF da mandare prima del corso, senza il link ai materiali:
+  # quarto render preparazione.qmd --to typst
+  typst:
+    papersize: a4
+    margin:
+      x: 2cm
+      y: 2cm
+    fontsize: 11pt
+    toc: false
+    output-file: istruzioni_preparazione_corso_R.pdf
 editor:
   markdown:
     wrap: 72
 ---
 
-# **Corso introduttivo al software statistico R**
+# **Corso base di R per la gestione e analisi dei dati**
 
 # Prepararsi al corso
+:::
+
+::: {.content-visible when-format="typst"}
+```{=typst}
+// nel PDF i link sono cliccabili ma, senza questa riga, sembrano testo normale:
+// li coloriamo e sottolineiamo come nel sito
+#show link: it => underline(text(fill: rgb("#006064"), it))
+
+// nel PDF: i due loghi in alto, uno per lato, e sotto il titolo centrato
+#grid(
+  columns: (1fr, 1fr),
+  align(left + horizon, image("immagini/logo_iss.png", height: 2.2cm)),
+  align(right + horizon, image("immagini/logo_dip_malattie_infettive.png", height: 1.5cm)),
+)
+#v(0.8cm)
+#align(center)[
+  #text(size: 17pt, weight: "bold")[Corso base di R per la gestione e analisi dei dati]
+  #v(0.2cm)
+  #text(size: 14pt)[Prepararsi al corso]
+]
+#v(0.6cm)
+```
+:::
 
 Prima dell'inizio del corso è necessario installare i programmi e i
-pacchetti che useremo e scaricare la cartella con i dati. Ti chiediamo
-di farlo **qualche giorno prima del corso**, così da avere il tempo di
-risolvere eventuali problemi.
+pacchetti che useremo. Ti chiediamo di farlo **qualche giorno prima del
+corso**, così da avere il tempo di risolvere eventuali problemi.
 
 ## Installare R, RTools e RStudio
 
@@ -29,7 +62,7 @@ RStudio, preferibilmente in quest'ordine: **R → RTools → RStudio**.
 ## Attenzione ai permessi di amministratore
 
 L'installazione di RStudio e di RTools di solito richiede i diritti di
-amministratore. Assicurati di fare il GRISSI per le credenziali temporanee
+amministratore. Assicurati di fare il GRISS per le credenziali temporanee
 :::
 
 ### R
@@ -38,7 +71,7 @@ Scarica R da [CRAN](https://cran.r-project.org/), nella sezione
 "Download and Install R", scegliendo la versione per il tuo sistema
 operativo (Windows, macOS o Linux).
 
--   L'ultima versione disponibile è la 4.6.1 (24 giugno 2026). **Non è
+-   L'ultima versione disponibile è la 4.6.2 (29 ottobre 2026). **Non è
     obbligatorio avere l'ultima versione**, ma è consigliabile non
     restare troppo indietro.
 -   Sullo stesso computer possono essere installate più versioni di R.
@@ -50,19 +83,24 @@ operativo (Windows, macOS o Linux).
 RTools serve per installare alcuni pacchetti a partire dal codice
 sorgente. Scaricalo da [questa
 pagina](https://cloud.r-project.org/bin/windows/Rtools/) scegliendo la
-versione che corrisponde alla tua versione di R (per esempio RTools 4.6
-per R 4.6.x).
+versione che corrisponde alla tua versione di R (per R 4.6.x l'ultima versione 
+disponibile è RTools 4.5).
 
-Su macOS non è necessario installare Rtools
+Su macOS e Linux non è necessario installare RTools
 
 ### RStudio
 
-Scarica [RStudio Desktop](https://posit.co/download/rstudio-desktop/).
+Scarica [RStudio Desktop](https://docs.posit.co/ide/user/download.html).
 
 ## Installare i pacchetti
 
 Apri RStudio, copia il codice qui sotto nella **Console** e premi
 Invio. [L'installazione può richiedere diversi minuti.]{.underline}
+
+```{=typst}
+// nel PDF il codice resta tutto sulla stessa pagina, cosi' si copia in una volta
+#block(breakable: false)[
+```
 
 ```{r}
 #| eval: false
@@ -85,6 +123,10 @@ pacman::p_load(
 )
 ```
 
+```{=typst}
+]
+```
+
 Se al termine non compaiono messaggi di errore (in rosso, con la parola
 `Error`), i pacchetti sono installati correttamente. Gli avvisi
 (`Warning`) di solito si possono ignorare.
@@ -99,6 +141,7 @@ Se un pacchetto non si installa e R chiede *"Do you want to install from sources
 
 ## Scaricare i materiali del corso
 
+::: {.content-visible when-format="html"}
 Per scaricare le cartelle e i dati del corso, [clicca qui](materiali_corso_R.zip) e salva il
 file compresso. Estrai la cartella `materiali_corso_R` in un punto
 qualsiasi del tuo computer (per esempio in Documenti): durante il corso
@@ -109,6 +152,15 @@ La cartella contiene tre sottocartelle:
 -   `script`: durante il corso ci salverai gli script che scriverai.
     Contiene la sottocartella `backup`, con le versioni corrette degli
     script del corso;
--   `dati`, con i dati usati nelle esercitazioni;
--   `output`, vuota: durante il corso ci salverai i grafici e le
+-   `dati`: con i dati usati nelle esercitazioni;
+-   `output`: vuota: durante il corso ci salverai i grafici e le
     tabelle che produrrai.
+:::
+
+::: {.content-visible when-format="typst"}
+La cartella `materiali_corso_R`, con i dati e gli script del corso, la
+scaricherai **in aula, il primo giorno, prima dell'inizio del corso**:
+non serve scaricarla prima. 
+:::
+
+

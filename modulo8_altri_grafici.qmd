@@ -20,15 +20,15 @@ title: |
   ![](immagini/logo_dmi.png){width=3in}
 ---
 
-# **Corso introduttivo al software statistico R**
+# **Corso base di R per la gestione e analisi dei dati**
 
-# Modulo 08 Altri grafici: heatmap, mappe, curve epidemiche e piramidi
+# Modulo 08 - Altri grafici: heatmap, mappe, curve epidemiche e piramidi
 
 ## Obiettivi del modulo
 
 -   Costruire un'epicurva con settimane da lunedì a domenica, passando da `binwidth =` a `breaks =` con un vettore di date creato con `floor_date()`, `ceiling_date()` e `seq.Date()`
 -   Costruire curve per settimana o per mese e mostrare i numeri di settimana ISO sull'asse
--   Aggiungere a una tabella di conteggi le combinazioni mancanti con `complete()`
+-   Aggiungere a un dataframe di conteggi le combinazioni mancanti con `complete()`
 -   Costruire heatmap con `geom_tile()` a partire da dati aggregati, anche con le etichette dei valori
 -   Leggere uno shapefile con `{sf}`, unirlo ai dati con `left_join()` e disegnare mappe coropletiche di tassi e proporzioni con `geom_sf()`
 -   Costruire piramidi per età e sesso con `{apyramid}`
@@ -116,9 +116,9 @@ cat("Domanda di esempio: quanto fa 2 + 2?", longmcq(opts))
 :::
 :::
 
-Lungo il modulo troverai anche due tipi di riquadri colorati. I riquadri **gialli** segnalano errori frequenti o punti in cui R si comporta in modo inatteso: leggili sempre, perché possono farti risparmiare tempo.
+Lungo il modulo troverai anche due tipi di riquadri colorati. I riquadri **arancioni** segnalano errori frequenti o punti in cui R si comporta in modo inatteso: leggili sempre, perché possono farti risparmiare tempo.
 
-<!-- ISTRUZIONI: Il box giallo "Attenzione a …" va usato per avvisi importanti: errori comuni, comportamenti di R che possono sorprendere, passaggi da non saltare. Il titolo inizia sempre con "Attenzione a" (es. "Attenzione ai nomi con spazi"). Copia l'intero blocco ::: {.callout-warning ...} ... ::: e modifica solo titolo e testo. -->
+<!-- ISTRUZIONI: Il box arancione "Attenzione a …" va usato per avvisi importanti: errori comuni, comportamenti di R che possono sorprendere, passaggi da non saltare. Il titolo inizia sempre con "Attenzione a" (es. "Attenzione ai nomi con spazi"). Copia l'intero blocco ::: {.callout-warning ...} ... ::: e modifica solo titolo e testo. -->
 
 ::: {.callout-warning appearance="default" icon="false"}
 ## Attenzione a …
@@ -150,6 +150,7 @@ Poi, **sopra** la sezione "Area di prova", crea una nuova sezione chiamata "Modu
 
 ```{r}
 #| echo: false
+#| include: false
 
 # chunk nascosto per il rendering del documento
 pacman::p_load(
@@ -158,7 +159,6 @@ pacman::p_load(
   here         # percorsi relativi al progetto
 )
 
-# dati_clean <- import(here("data", "dati_elaborati", "dati_modulo3.rds"))
 dati_clean <- import("materiali_corso_R/dati/dati_clean.rds")
 ```
 
@@ -207,9 +207,9 @@ pacman::p_load(
 Per le mappe, che vedrai più avanti, userai due file nuovi, che vanno importati all'inizio dello script:
 
 -   lo **shapefile** delle regioni, `dati/shapefiles/regioni.shp`, con i confini di ciascuna regione. Uno shapefile non è un solo file: `regioni.shp` è accompagnato da altri file con lo stesso nome e un'estensione diversa (`.shx`, `.dbf`, `.prj`), che devono stare nella stessa cartella. Tu leggi solo il `.shp`, con la funzione `read_sf()` del pacchetto `{sf}`, e R trova gli altri;
--   la tabella `regioni` del Modulo 7, `dati/regioni.rds`, con la popolazione di ciascuna regione, che si importa con `import()` come `dati_clean`.
+-   il dataframe `regioni` del Modulo 7, `dati/regioni.rds`, con la popolazione di ciascuna regione, che si importa con `import()` come `dati_clean`.
 
-Vai alla sezione "Importazione dati" all'inizio di `plot.R` e, sotto l'importazione di `dati_clean`, importa lo shapefile in un oggetto `regioni_sf` e la tabella in un oggetto `regioni`. Esegui le nuove righe.
+Vai alla sezione "Importazione dati" all'inizio di `plot.R` e, sotto l'importazione di `dati_clean`, importa lo shapefile in un oggetto `regioni_sf` e il dataframe in un oggetto `regioni`. Esegui le nuove righe.
 
 ```{r}
 #| include: false
@@ -250,7 +250,7 @@ Anche oggi userai l'"Area di prova" in fondo allo script `plot.R`, la stessa dei
 Come nei moduli precedenti:
 
 -   i comandi per **esplorare** e per **provare** (controlli, grafici intermedi, errori voluti e le loro correzioni) si scrivono nell'**area di prova**;
--   gli oggetti che servono anche dopo (vettori di date, data frame aggregati, la mappa) e le **versioni finali dei grafici** si scrivono **nello script**, nelle sezioni del Modulo 08.
+-   gli oggetti che servono anche dopo (vettori di date, dataframe aggregati, la mappa) e le **versioni finali dei grafici** si scrivono **nello script**, nelle sezioni del Modulo 08.
 
 In ogni esercizio ti indicheremo dove scrivere il codice.
 
@@ -552,7 +552,7 @@ ggplot(data = dati_clean, mapping = aes(x = date_vacc, fill = hiv)) +
 
 ### L'uso di `complete()`
 
-Quando conti con `count()`, le combinazioni che non compaiono nei dati non hanno una riga: una settimana senza vaccinati, semplicemente, non c'è. In una tabella può andare bene, in un grafico no, perché quella settimana sparisce invece di comparire con zero. `complete()` del pacchetto `{tidyr}` aggiunge le righe mancanti. Fa per un data frame in formato lungo quello che `values_fill` faceva per `pivot_wider()` nel Modulo 7:
+Quando conti con `count()`, le combinazioni che non compaiono nei dati non hanno una riga: una settimana senza vaccinati, semplicemente, non c'è. In una tabella può andare bene, in un grafico no, perché quella settimana sparisce invece di comparire con zero. `complete()` del pacchetto `{tidyr}` aggiunge le righe mancanti. Fa per un dataframe in formato lungo quello che `values_fill` faceva per `pivot_wider()` nel Modulo 7:
 
 ```{r}
 #| echo: true
@@ -566,7 +566,7 @@ DATI %>%
 -   al posto del nome di una variabile puoi scrivere `variabile = VALORI`, per indicare tu tutti i valori che deve avere;
 -   `fill =` dice con che cosa riempire le altre variabili nelle righe aggiunte: senza, sarebbero `NA`.
 
-Nello script, nella sezione "Epicurva", crea un data frame `vacc_settimana` con il numero di vaccinati per settimana (variabile `settimana`, il lunedì di ogni settimana). Con `complete()` aggiungi le settimane senza vaccinati, con `n = 0`, dalla prima all'ultima settimana. Poi, nell'area di prova, fai un grafico a barre con `geom_col()`.
+Nello script, nella sezione "Epicurva", crea un dataframe `vacc_settimana` con il numero di vaccinati per settimana (variabile `settimana`, il lunedì di ogni settimana). Con `complete()` aggiungi le settimane senza vaccinati, con `n = 0`, dalla prima all'ultima settimana. Poi, nell'area di prova, fai un grafico a barre con `geom_col()`.
 
 <details>
 
@@ -700,7 +700,7 @@ Una heatmap è una griglia di celle colorate: ogni cella è una combinazione di 
 
 Per contare i vaccinati per settimana serve prima una variabile che indichi la settimana di ciascuna vaccinazione. Come nell'epicurva, la crei con `floor_date()` dentro `mutate()`: con `unit = "week"` e `week_start = 1` ogni data viene riportata al **lunedì** della sua settimana, quindi tutte le vaccinazioni fatte tra un lunedì e la domenica successiva hanno lo stesso valore. A quel punto basta contare con `count()` le combinazioni di regione e settimana.
 
-Nell'area di prova, crea un data frame `vacc_regione_settimana` con il numero di vaccinati per regione e settimana. Sempre nell'area di prova fai una heatmap con `geom_tile()`, con la settimana sull'asse x, la regione sull'asse y e il riempimento per `n`.
+Nell'area di prova, crea un dataframe `vacc_regione_settimana` con il numero di vaccinati per regione e settimana. Sempre nell'area di prova fai una heatmap con `geom_tile()`, con la settimana sull'asse x, la regione sull'asse y e il riempimento per `n`.
 
 <details>
 
@@ -790,7 +790,7 @@ ggplot(data = vacc_regione_settimana, mapping = aes(x = settimana, y = region, f
 
 Ora vogliamo vedere, settimana per settimana, come si distribuiscono i vaccinati tra le classi d'età, separatamente per stato HIV.
 
-Nell'area di prova, crea un data frame `eta_settimana` con, per ogni combinazione di `hiv`, settimana e `age_cat`, il numero di vaccinati e la loro quota sul totale di quella settimana (nello stesso gruppo `hiv`), escludendo le persone con `age_cat` mancante. Poi fai una heatmap con la settimana sull'asse x, la classe d'età sull'asse y, il riempimento per la quota e un pannello per `hiv`, uno sotto l'altro.
+Nell'area di prova, crea un dataframe `eta_settimana` con, per ogni combinazione di `hiv`, settimana e `age_cat`, il numero di vaccinati e la loro quota sul totale di quella settimana (nello stesso gruppo `hiv`), escludendo le persone con `age_cat` mancante. Poi fai una heatmap con la settimana sull'asse x, la classe d'età sull'asse y, il riempimento per la quota e un pannello per `hiv`, uno sotto l'altro.
 
 Per i colori usa `scale_fill_distiller()`: è la versione per variabili continue di `scale_fill_brewer()` del Modulo 6, e usa le stesse palette. Con `direction = 1` i colori più scuri vanno ai valori più alti.
 
@@ -883,7 +883,7 @@ Crea una nuova sezione con **Ctrl+Shift+R** che si chiamerà "Heatmap", sopra l'
 
 Quando le celle sono poche, conviene scrivere il valore su ciascuna. `geom_text()` aggiunge un testo in ogni posizione `x`, `y`, preso dall'estetica `label`. Per scrivere una proporzione come percentuale, `scales::percent()` trasforma direttamente i numeri in testo (`label_percent()` si usa invece dentro le scale); con `accuracy = 1` arrotonda all'unità.
 
-Nella sezione "Heatmap" dello script crea un data frame `charlson_eta` con, per classe d'età e `hiv`, il numero di persone (`n`) e la quota con Charlson index 3 o più (`quota_ch3`), escludendo le persone con `age_cat` mancante. Nell'area di prova fai una heatmap con `hiv` sull'asse x, la classe d'età sull'asse y e il riempimento per `quota_ch3`, e aggiungi su ogni cella la percentuale con `geom_text()`.
+Nella sezione "Heatmap" dello script crea un dataframe `charlson_eta` con, per classe d'età e `hiv`, il numero di persone (`n`) e la quota con Charlson index 3 o più (`quota_ch3`), escludendo le persone con `age_cat` mancante. Nell'area di prova fai una heatmap con `hiv` sull'asse x, la classe d'età sull'asse y e il riempimento per `quota_ch3`, e aggiungi su ogni cella la percentuale con `geom_text()`.
 
 <details>
 
@@ -1000,9 +1000,9 @@ cat("Come varia la quota di persone con Charlson 3+?", longmcq(opts))
 
 Crea una nuova sezione con **Ctrl+Shift+R** che si chiamerà "Mappe", sopra l'area di prova.
 
-All'inizio del modulo hai importato lo shapefile con `read_sf()`: il risultato, `regioni_sf`, è un oggetto `sf`, cioè un data frame come quelli che conosci, con una riga per area e una variabile speciale, `geometry`, che contiene i confini. Per disegnarlo si usa `geom_sf()`, che non ha bisogno di `x` e `y`: le coordinate sono in `geometry`.
+All'inizio del modulo hai importato lo shapefile con `read_sf()`: il risultato, `regioni_sf`, è un oggetto `sf`, cioè un dataframe come quelli che conosci, con una riga per area e una variabile speciale, `geometry`, che contiene i confini. Per disegnarlo si usa `geom_sf()`, che non ha bisogno di `x` e `y`: le coordinate sono in `geometry`.
 
-Lo shapefile contiene solo i confini e il codice di ciascuna regione. Per calcolare i tassi ti serve anche la popolazione, che si trova nella tabella `regioni`, importata anch'essa all'inizio.
+Lo shapefile contiene solo i confini e il codice di ciascuna regione. Per calcolare i tassi ti serve anche la popolazione, che si trova nel dataframe `regioni`, importata anch'essa all'inizio.
 
 Nell'area di prova stampa i due oggetti in console e poi disegna `regioni_sf` con `geom_sf()` e `theme_void()`.
 
@@ -1011,7 +1011,7 @@ Nell'area di prova stampa i due oggetti in console e poi disegna `regioni_sf` co
 
 `regioni` e `regioni_sf` descrivono le stesse regioni, ma sono diversi:
 
--   `regioni` è una tabella con una riga per ciascuna regione da A a F, con `codice_regione`, `area` e `popolazione`;
+-   `regioni` è un dataframe con una riga per ciascuna regione da A a F, con `codice_regione`, `area` e `popolazione`;
 -   `regioni_sf` è un oggetto `sf` con una riga per ciascuna regione da A a D, quelle della mappa, con `region` e `geometry`.
 
 Il codice della regione si chiama `codice_regione` in `regioni` e `region` in `regioni_sf` e in `dati_clean`: quando unirai `regioni` ai conteggi dovrai indicare la chiave con `join_by()`, come nel Modulo 7.
@@ -1075,7 +1075,7 @@ Per la mappa dei tassi servono due join, uno per ciascuna informazione che manca
 1.  il primo aggiunge la **popolazione**, da `regioni`, e permette di calcolare il tasso;
 2.  il secondo aggiunge la **geometria**, da `regioni_sf`, e permette di disegnare la mappa.
 
-Sopra all'area di prova, nella sezione "Mappe", crea un data frame `vacc_regione` con il numero di vaccinati per regione (variabile `n_vaccinati`). Uniscigli `regioni` con `left_join()` e calcola il tasso di vaccinati ogni 100.000 abitanti, salvando il risultato in `tassi_regione`. Nell'area di prova stampa `tassi_regione`.
+Sopra all'area di prova, nella sezione "Mappe", crea un dataframe `vacc_regione` con il numero di vaccinati per regione (variabile `n_vaccinati`). Uniscigli `regioni` con `left_join()` e calcola il tasso di vaccinati ogni 100.000 abitanti, salvando il risultato in `tassi_regione`. Nell'area di prova stampa `tassi_regione`.
 
 <details>
 
@@ -1143,7 +1143,7 @@ Ora, nello script, fai il secondo join: unisci `tassi_regione` a `regioni_sf`, s
 
 </br>
 
-Parti da `regioni_sf` e unisci i tassi: qui la chiave ha lo stesso nome nelle due tabelle, quindi basta `by = "region"`.
+Parti da `regioni_sf` e unisci i tassi: qui la chiave ha lo stesso nome nei due dataframe, quindi basta `by = "region"`.
 
 </br>
 
@@ -1181,7 +1181,7 @@ ggplot(data = mappa_vacc) +
 ::: {.callout-warning appearance="default" icon="false"}
 ## Attenzione all'ordine del join
 
-Nel join con la geometria l'oggetto `sf` deve stare a **sinistra**. Il risultato prende la classe della tabella di sinistra: `regioni_sf %>% left_join(tassi_regione)` resta un oggetto `sf`, mentre `tassi_regione %>% left_join(regioni_sf)` è un data frame normale, in cui `geometry` è una variabile qualsiasi, e `geom_sf()` non lo disegna come ti aspetti.
+Nel join con la geometria l'oggetto `sf` deve stare a **sinistra**. Il risultato prende la classe del dataframe di sinistra: `regioni_sf %>% left_join(tassi_regione)` resta un oggetto `sf`, mentre `tassi_regione %>% left_join(regioni_sf)` è un dataframe normale, in cui `geometry` è una variabile qualsiasi, e `geom_sf()` non lo disegna come ti aspetti.
 :::
 
 Ora, nella sezione "Mappe" dello script, rifinisci la mappa: usa `scale_fill_distiller()` con la palette `"YlOrRd"` e `direction = 1`, aggiungi il nome della regione con `geom_sf_text()`, che funziona come `geom_text()` ma prende la posizione da `geometry`, un titolo e il titolo della legenda.
@@ -1334,7 +1334,7 @@ Nella sezione "Mappe" sopra l'area di prova, fai una mappa della proporzione di 
 
 </br>
 
-Prima crea un data frame `proporzione_hiv` che, partendo da `dati_clean`, contiene la proporzione di persone con HIV per ciascuna regione, utilizzando `group_by()` e `summarise()`. Unisci poi questo data frame a `regioni_sf`, salvando il risultato in `mappa_prop_hiv`, e infine crea il grafico.
+Prima crea un dataframe `proporzione_hiv` che, partendo da `dati_clean`, contiene la proporzione di persone con HIV per ciascuna regione, utilizzando `group_by()` e `summarise()`. Unisci poi questo dataframe a `regioni_sf`, salvando il risultato in `mappa_prop_hiv`, e infine crea il grafico.
 
 </br>
 
@@ -1535,7 +1535,7 @@ age_pyramid(data = filter(dati_clean, hiv == "Senza HIV"),
 
 ### Dati già aggregati
 
-Nella sezione "Piramidi" crea un data frame `piramide_agg` con il numero di persone per classe d'età e sesso, escludendo le poche persone con età o sesso mancanti (7 in tutto). Nell'area di prova, fai la piramide da questi conteggi, usando l'argomento `count =` di `age_pyramid()`.
+Nella sezione "Piramidi" crea un dataframe `piramide_agg` con il numero di persone per classe d'età e sesso, escludendo le poche persone con età o sesso mancanti (7 in tutto). Nell'area di prova, fai la piramide da questi conteggi, usando l'argomento `count =` di `age_pyramid()`.
 
 <details>
 
@@ -1647,8 +1647,8 @@ pacman::p_load(
 
 # Importazione dati -------------------------------------------------------
 dati_clean <- import("dati/dati_clean.rds")
-regioni_sf <- read_sf("dati/shapefiles/regioni.shp")   # Modulo 08
-regioni    <- import("dati/regioni.rds")               # Modulo 08
+regioni_sf <- read_sf("dati/shapefiles/regioni.shp")
+regioni    <- import("dati/regioni.rds")
 
 # ... sezioni dei Moduli 5 e 6 ...
 
@@ -1785,10 +1785,10 @@ In questo modulo hai imparato a:
 -   riportare le date al lunedì della settimana o al primo giorno del mese con `floor_date()` e `ceiling_date()` (`unit =`, `week_start = 1`) e creare sequenze di date con `seq.Date()`;
 -   costruire curve con intervalli definiti, passando le date a `breaks =` di `geom_histogram()` con `closed = "left"`;
 -   scrivere le date come settimane ISO con `scales::label_date("%G-W%V")`, e indicare con `width =` la larghezza delle barre di `geom_col()` su un asse di date, in giorni;
--   aggiungere a una tabella di conteggi le combinazioni mancanti con `complete()` e `fill = list(n = 0)`, prima del grafico;
+-   aggiungere a un dataframe di conteggi le combinazioni mancanti con `complete()` e `fill = list(n = 0)`, prima del grafico;
 -   disegnare heatmap da dati aggregati con `geom_tile()`, colorarle con `scale_fill_gradient()` o `scale_fill_distiller()` e scrivere i valori sulle celle con `geom_text()`;
--   leggere uno shapefile con `read_sf()` in un oggetto `sf`, un data frame con la variabile `geometry`, e disegnarlo con `geom_sf()`, `geom_sf_text()` e `theme_void()`;
--   calcolare i tassi con due join: prima la popolazione, da una tabella in cui la chiave ha un nome diverso (`join_by()`), poi la geometria, partendo dall'oggetto `sf`; e usare i tassi per confrontare aree di popolazione diversa;
+-   leggere uno shapefile con `read_sf()` in un oggetto `sf`, un dataframe con la variabile `geometry`, e disegnarlo con `geom_sf()`, `geom_sf_text()` e `theme_void()`;
+-   calcolare i tassi con due join: prima la popolazione, da un dataframe in cui la chiave ha un nome diverso (`join_by()`), poi la geometria, partendo dall'oggetto `sf`; e usare i tassi per confrontare aree di popolazione diversa;
 -   costruire piramidi per età e sesso con `age_pyramid()` da dati individuali o aggregati (`count =`), controllando l'ordine con un `factor`, e personalizzarle con `{ggplot2}`.
 
 ## Risorse aggiuntive

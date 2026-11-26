@@ -26,7 +26,7 @@ title: |
 
 ## Obiettivi del modulo
 
--   Costruire un grafico con `{ggplot2}` a partire da un data frame,
+-   Costruire un grafico con `{ggplot2}` a partire da un dataframe,
     mappando le variabili alle estetiche con `aes()`
 -   Scegliere il livello `geom_` adatto al tipo di variabili e combinare
     più livelli nello stesso grafico
@@ -130,10 +130,10 @@ cat("Domanda di esempio: quanto fa 2 + 2?", longmcq(opts))
 ::::
 
 Lungo il modulo troverai anche due tipi di riquadri colorati. I riquadri
-**gialli** segnalano errori frequenti o punti in cui R si comporta in
+**arancioni** segnalano errori frequenti o punti in cui R si comporta in
 modo inatteso: leggili sempre, perché possono farti risparmiare tempo.
 
-<!-- ISTRUZIONI: Il box giallo "Attenzione a …" va usato per avvisi importanti: errori comuni, comportamenti di R che possono sorprendere, passaggi da non saltare. Il titolo inizia sempre con "Attenzione a" (es. "Attenzione ai nomi con spazi"). Copia l'intero blocco ::: {.callout-warning ...} ... ::: e modifica solo titolo e testo. -->
+<!-- ISTRUZIONI: Il box arancione "Attenzione a …" va usato per avvisi importanti: errori comuni, comportamenti di R che possono sorprendere, passaggi da non saltare. Il titolo inizia sempre con "Attenzione a" (es. "Attenzione ai nomi con spazi"). Copia l'intero blocco ::: {.callout-warning ...} ... ::: e modifica solo titolo e testo. -->
 
 ::: {.callout-warning appearance="default" icon="false"}
 ## Attenzione a …
@@ -188,7 +188,7 @@ pacman::p_load(
   webexercises
 )
 
-dati_clean <- import("dati/dati_clean.rds")
+dati_clean <- import("materiali_corso_R/dati/dati_clean.rds")
 ```
 
 ```{=html}
@@ -251,7 +251,7 @@ soluzione (provaci da solo prima!)
 #| echo: true
 #| eval: false
 
-# Importazione dati -------------------------------------------------------
+# Importazione dataframe -------------------------------------------------------
 dati_clean <- import("dati/dati_clean.rds")
 ```
 
@@ -259,7 +259,7 @@ dati_clean <- import("dati/dati_clean.rds")
 
 </details>
 
-Il dataset su cui stiamo lavorando (`dati_clean`) è la coorte di persone
+Il dataframe su cui stiamo lavorando (`dati_clean`) è la coorte di persone
 vaccinate contro COVID-19 che ci accompagna in tutto il corso, con
 persone con HIV (`hiv_status` uguale a 1) e persone senza HIV
 (`hiv_status` uguale a 0). Le persone senza HIV non sono state scelte a
@@ -288,7 +288,7 @@ Con `{ggplot2}` un grafico si costruisce un pezzo alla volta, come una
 serie di strati sovrapposti. Ogni grafico comincia con la funzione
 `ggplot()`, che ha due argomenti principali:
 
--   `data =`, il data frame da cui prendere i dati;
+-   `data =`, il dataframe da cui prendere i dati;
 -   `mapping = aes()`, dove indichi quale variabile va su ciascun
     elemento del grafico. `aes()` sta per *aesthetics*, "estetiche":
     l'asse x, l'asse y e, come vedremo, anche il colore o il
@@ -544,7 +544,7 @@ anche decidere di quanto spostare i punti in orizzontale, con
 l'argomento `width`.
 
 Ora, nell'area di prova, dentro `geom_jitter()`, prova uno alla volta questi argomenti:
-`width = 0.2`, `color = "darkred"`, `size = 3`, `shape = 4`.
+`width = 0.2`, `color = "darkred"`, `size = 3`, `shape = 4`. Infine, uniscili nello stesso grafico separandoli con una virgola.
 
 <details>
 
@@ -560,6 +560,23 @@ soluzione (provaci da solo prima!)
 ```{r}
 #| echo: true
 
+# width
+ggplot(data = dati_clean, mapping = aes(x = hiv, y = anticorpi)) +
+  geom_jitter(width = 0.2)
+
+# color
+ggplot(data = dati_clean, mapping = aes(x = hiv, y = anticorpi)) +
+  geom_jitter(color = "darkred")
+
+# size
+ggplot(data = dati_clean, mapping = aes(x = hiv, y = anticorpi)) +
+  geom_jitter(size = 3)
+
+# shape
+ggplot(data = dati_clean, mapping = aes(x = hiv, y = anticorpi)) +
+  geom_jitter(shape = 4)
+
+# width, color, size, shape
 ggplot(data = dati_clean, mapping = aes(x = hiv, y = anticorpi)) +
   geom_jitter(width = 0.2, color = "darkred", size = 3, shape = 4)
 
@@ -1062,13 +1079,15 @@ ggplot(
 
 </details>
 
+Nella Console compare un avviso: le 5 persone senza età non possono essere disegnate. Il grafico viene prodotto lo stesso; ne riparleremo con gli istogrammi.
+
 ## Scatter plot
 
-### Età e anticorpi
+### CD4 e anticorpi
 
-Uno scatter plot (grafico a dispersione) mostra la relazione tra **due variabili continue**: ogni riga del data frame è un punto, con una variabile sull'asse x e una sull'asse y. In `dati_clean` ogni riga è una persona, quindi ogni punto sarà una persona.
+Uno scatter plot (grafico a dispersione) mostra la relazione tra **due variabili continue**: ogni riga del dataframe è un punto, con una variabile sull'asse x e una sull'asse y. In `dati_clean` ogni riga è una persona, quindi ogni punto sarà una persona.
 
-In `dati_clean` c'è il livello di anticorpi di ciascuna persona dopo la vaccinazione (`anticorpi`). Vogliamo vedere se cambia con l'età. Nell'area di prova, fai uno scatter plot di `dati_clean` con `geom_point()`, con l'età (`age`) sull'asse x e il livello di anticorpi (`anticorpi`) sull'asse y.
+In `dati_clean` c'è il livello di anticorpi di ciascuna persona dopo la vaccinazione (`anticorpi`). Vogliamo vedere se cambia al cambiare del valore del CD4 (`cd4`). Nell'area di prova, crea un dataframe chiamato `ant_cd4_A` che contiene tutti i casi con `hiv` pari a `Con HIV`, nella `region` `A`. Fai poi uno scatterplot con `geom_point()`, con i valori del CD4 (`cd4`) sull'asse x e il livello di anticorpi (`anticorpi`) sull'asse y.
 
 <details>
 
@@ -1082,9 +1101,11 @@ In `dati_clean` c'è il livello di anticorpi di ciascuna persona dopo la vaccina
 
 ```{r}
 #| echo: true
-#Chiedi prima di fare filter per dati region == 'A' & hiv == 'Con HIV'
-ggplot(data = dati_clean %>% filter(region == 'A' & hiv == 'Con HIV'), mapping = aes(x = cd4, y = anticorpi)) +
-  # scale_y_log10() + -> metti approfodnimento su scala log
+
+ant_cd4_A <- dati_clean %>% 
+  filter(region == 'A' & hiv == 'Con HIV')
+
+ggplot(data = ant_cd4_A, mapping = aes(x = cd4, y = anticorpi)) +
   geom_point()
 ```
 
@@ -1093,10 +1114,6 @@ ggplot(data = dati_clean %>% filter(region == 'A' & hiv == 'Con HIV'), mapping =
 </br>
 
 </details>
-
-<!-- DIPENDE DAI DATI: age mancante per 5 persone (warning "Removed 5 rows") -->
-
-Nella Console compare un avviso: le 5 persone senza età non possono essere disegnate. Il grafico viene prodotto lo stesso; ne riparleremo con gli istogrammi.
 
 :::: {.callout-note appearance="minimal" icon="false"}
 **Prova a rispondere!**
@@ -1108,8 +1125,8 @@ Nella Console compare un avviso: le 5 persone senza età non possono essere dise
 pacman::p_load(webexercises)
 
 opts <- c(
-  answer = "Una persona vaccinata",
-  "Un giorno della campagna vaccinale",
+  answer = "Una persona con hiv",
+  "Un valore anticorpale",
   "Una classe d'età",
   "Una regione"
 )
@@ -1121,11 +1138,19 @@ cat("Che cosa rappresenta ogni punto di questo grafico?", longmcq(opts))
 :::
 ::::
 
+::: {.callout-tip appearance="default" icon="false"}
+## Approfondimento: scala log
+
+**A volte** può essere utile utilizzare una scala logaritmica a base 10 per l'asse y. Per fare ciò, è sufficiente aggiungere un nuovo layer al nostro ggplot: `scale_y_log10()`. In questo modo, in automatico la scala dell'asse y passerà a una scala logaritmica e i dati rappresentati saranno più facili da interpretare.
+
+:::
+
+
 ### Sovrapporre più geom
 
 Un grafico può avere più livelli `geom_`, collegati con `+`: `{ggplot2}` li disegna uno sopra l'altro, **nell'ordine in cui li scrivi**. Con tanti punti è difficile vedere una tendenza: il livello `geom_smooth()` aggiunge una curva che segue l'andamento medio dei punti, con una fascia grigia che ne indica l'incertezza.
 
-Nell'area di prova, colora i punti per stato HIV, con `color = hiv` dentro `aes()`, e aggiungi un livello `geom_smooth()`.
+Nell'area di prova, utilizzando ancora una volta il dataframe creato precedentemente (`ant_cd4_A`), colora i punti per diagnosi COVID-19, utilizzando la variabile costruita precedentemente (`covid`), con `color = covid` dentro `aes()`, e aggiungi un livello `geom_smooth()`.
 
 <details>
 
@@ -1140,7 +1165,7 @@ Nell'area di prova, colora i punti per stato HIV, con `color = hiv` dentro `aes(
 ```{r}
 #| echo: true
 
-ggplot(data = dati_clean %>% filter(region == 'A' & hiv == 'Con HIV'), mapping = aes(x = cd4, y = anticorpi, color = hiv)) +
+ggplot(data = ant_cd4_A, mapping = aes(x = cd4, y = anticorpi, color = covid)) +
   geom_point() +
   geom_smooth()
 
@@ -1150,7 +1175,7 @@ ggplot(data = dati_clean %>% filter(region == 'A' & hiv == 'Con HIV'), mapping =
 
 </details>
 
-Nella Console, oltre all'avviso sulle età mancanti, compare un messaggio che dice quale metodo è stato usato per calcolare la curva: è solo un'informazione, non un errore.
+Nella Console, compare un messaggio che dice quale metodo è stato usato per calcolare la curva: è solo un'informazione, non un errore.
 
 :::: {.callout-note appearance="minimal" icon="false"}
 **Prova a rispondere!**
@@ -1162,10 +1187,10 @@ Nella Console, oltre all'avviso sulle età mancanti, compare un messaggio che di
 pacman::p_load(webexercises)
 
 opts <- c(
-  "Il livello di anticorpi aumenta con l'età, in entrambi i gruppi",
-  answer = "Il livello di anticorpi diminuisce con l'età, ed è più basso nelle persone con HIV",
-  "Il livello di anticorpi non cambia con l'età",
-  "Il livello di anticorpi diminuisce con l'età solo nelle persone con HIV"
+  "Il livello di anticorpi aumenta con l'età",
+  answer = "Il livello di anticorpi aumenta con il CD4",
+  "Il livello di anticorpi non cambia al cambiare del CD4",
+  "Il livello di anticorpi diminuisce con il CD4"
 )
 
 
@@ -1178,7 +1203,7 @@ cat("Che cosa mostrano le curve?", longmcq(opts))
 ::: {.callout-warning appearance="default" icon="false"}
 ## Attenzione alle estetiche
 
-Le curve sono **due**, una per gruppo, anche se non l'hai chiesto a `geom_smooth()`. Il motivo è che le estetiche scritte dentro `ggplot()` valgono per **tutti** i livelli: anche `geom_smooth()` riceve `color = hiv`, e disegna una curva per ogni colore. Se un'estetica serve solo a un livello, va scritta dentro quel livello, con `mapping = aes()`:
+Le curve sono **due**, una per gruppo, anche se non l'hai chiesto a `geom_smooth()`. Il motivo è che le estetiche scritte dentro `ggplot()` valgono per **tutti** i livelli: anche `geom_smooth()` riceve `color = covid`, e disegna una curva per ogni colore. Se un'estetica serve solo a un livello, va scritta dentro quel livello, con `mapping = aes()`:
 
 ```{r}
 #| eval: false
@@ -1187,7 +1212,7 @@ geom_point(mapping = aes(color = VARIABILE))
 ```
 :::
 
-Nell'area di prova, sposta `color = hiv` da `ggplot()` a `geom_point()` e osserva che cosa cambia.
+Nell'area di prova, sposta `color = covid` da `ggplot()` a `geom_point()` e osserva che cosa cambia.
 
 <details>
 
@@ -1202,8 +1227,8 @@ Nell'area di prova, sposta `color = hiv` da `ggplot()` a `geom_point()` e osserv
 ```{r}
 #| echo: true
 
-ggplot(data = dati_clean %>% filter(region == 'A' & hiv == 'Con HIV'), mapping = aes(x = cd4, y = anticorpi)) +
-  geom_point(mapping = aes(color = hiv)) +
+ggplot(data = ant_cd4_A, mapping = aes(x = cd4, y = anticorpi)) +
+  geom_point(mapping = aes(color = covid)) +
   geom_smooth()
 
 ```
@@ -1222,18 +1247,43 @@ ggplot(data = dati_clean %>% filter(region == 'A' & hiv == 'Con HIV'), mapping =
 pacman::p_load(webexercises)
 
 opts <- c(
-  "Due, perché i punti hanno ancora due colori",
-  answer = "Una, perché geom_smooth() non riceve più il colore e calcola la tendenza su tutte le persone insieme",
-  "Nessuna, perché geom_smooth() ha bisogno di un colore",
-  "Una, perché geom_smooth() usa solo le persone con HIV"
+  "Si, perché è sufficiente specificare il colore una volta",
+  answer = "No, perché ho specificato il color solo dentro a geom_poin() e non in geom_smooth()",
+  "Si, perché hanno i colori di default poiché non ho specificato il color in ggplot()",
+  "No, perché geom_smooth() è sempre di colore blu"
 )
 
 
-cat("Dopo aver spostato color = hiv dentro geom_point(), quante curve vedi, e perché?", longmcq(opts))
+cat("Dopo aver spostato color = covid dentro geom_point(), i punti e la linea hanno lo stesso colore? e perché?", longmcq(opts))
 
 ```
 :::
 ::::
+
+Nell'area di prova, inverti l'ordine di `geom_point()` e `geom_smooth()` e osserva che cosa cambia.
+
+<details>
+
+<summary style="text-decoration: underline; color: red;">
+
+`r fontawesome::fa("check", fill = "red")` Clicca per vedere la soluzione (provaci da solo prima!)
+
+</summary>
+
+</br>
+
+```{r}
+#| echo: true
+
+ggplot(data = ant_cd4_A, mapping = aes(x = cd4, y = anticorpi)) +
+  geom_smooth() +
+  geom_point(aes(color = covid)) 
+
+```
+
+</br>
+
+</details>
 
 :::: {.callout-note appearance="minimal" icon="false"}
 **Prova a rispondere!**
@@ -1260,9 +1310,9 @@ cat("Che cosa succede se scrivi geom_smooth() prima di geom_point()?", longmcq(o
 
 ### Trasparenza: `alpha`
 
-I punti sono quasi 48.000 e si sovrappongono: dove sono tanti diventano una macchia uniforme, e non si capisce dove sono più fitti. L'argomento `alpha` regola la **trasparenza**, da 0 (del tutto trasparente, cioè invisibile) a 1 (del tutto coprente, il default per i punti). Funziona con quasi tutte le funzioni `geom_`. In `geom_point()` rende trasparenti i punti: dove se ne sovrappongono tanti il colore diventa più intenso. In `geom_smooth()` rende più o meno trasparente la fascia grigia di incertezza, non la curva.
+I punti sono quasi 2.000 e si sovrappongono: dove sono tanti diventano una macchia uniforme, e non si capisce dove sono più fitti. L'argomento `alpha` regola la **trasparenza**, da 0 (del tutto trasparente, cioè invisibile) a 1 (del tutto coprente, il default per i punti). Funziona con quasi tutte le funzioni `geom_`. In `geom_point()` rende trasparenti i punti: dove se ne sovrappongono tanti il colore diventa più intenso. In `geom_smooth()` rende più o meno trasparente la fascia grigia di incertezza, non la curva.
 
-Nell'area di prova, riparti dal grafico con `color = hiv` dentro `ggplot()` (due curve) e aggiungi `alpha = 0.1` dentro `geom_point()`, provando anche altri valori tra 0 e 1.
+Nell'area di prova, riparti dal grafico con `color = covid` dentro `ggplot()` e aggiungi `alpha = 0.1` dentro `geom_point()`, provando anche altri valori tra 0 e 1.
 
 <details>
 
@@ -1293,7 +1343,7 @@ Nell'area di prova, riparti dal grafico con `color = hiv` dentro `ggplot()` (due
 ```{r}
 #| echo: true
 
-ggplot(data = dati_clean, mapping = aes(x = age, y = anticorpi, color = hiv)) +
+ggplot(data = ant_cd4_A, mapping = aes(x = cd4, y = anticorpi, color = covid)) +
   geom_point(alpha = 0.1) +
   geom_smooth()
 
@@ -1431,6 +1481,30 @@ ggplot(data = dati_clean, mapping = aes(x = region, fill = fct_rev(chrls_index))
 
 Il titolo della legenda ora è `fct_rev(chrls_index)`. Nell'area di prova, cambialo aggiungendo un livello `labs(fill = "Charlson index")`.
 
+<details>
+
+<summary style="text-decoration: underline; color: red;">
+
+`r fontawesome::fa("check", fill = "red")` Clicca per vedere la
+soluzione (provaci da solo prima!)
+
+</summary>
+
+</br>
+
+```{r}
+#| echo: true
+
+ggplot(data = dati_clean, mapping = aes(x = region, fill = fct_rev(chrls_index))) +
+  geom_bar() +
+  labs(fill = "Charlson index")
+
+```
+
+</br>
+
+</details>
+
 Ora fai variare il riempimento delle barre in base alla classe d'età
 (`age_group`).
 
@@ -1535,9 +1609,9 @@ cat("Quale grafico è più adatto a confrontare il numero di persone con 60 anni
 ## Dati aggregati e `geom_col()`
 
 Spesso i dati da rappresentare sono già aggregati, per esempio in una
-tabella con il numero di vaccinati per regione. Questo data frame
+tabella con il numero di vaccinati per regione. Questo dataframe
 servirà anche dopo, quindi va **nello script**: sopra l'area di prova,
-crea una nuova sezione (**Ctrl + Shift + R**) chiamata "Dati aggregati" e lì crea il data frame `vaccinati_regione` con il numero di vaccinati per regione (variabile `n_vaccinati`), usando `group_by()` e `summarise()`.
+crea una nuova sezione (**Ctrl + Shift + R**) chiamata "Dati aggregati" e lì crea il dataframe `vaccinati_regione` con il numero di vaccinati per regione (variabile `n_vaccinati`), usando `group_by()` e `summarise()`.
 
 <details>
 
@@ -1910,7 +1984,7 @@ scale_x_date(
 ```
 
 Sopra l'area di prova crea una nuova sezione (**Ctrl + Shift + R**) chiamata "Istogramma" e rifai l'istogramma di `date_vacc` con barre di 7
-giorni (`binwidth = 7`) ed etichette dell'asse x in italiano, una per
+giorni (`binwidth = 7`), di colore `"darkgreen"` ed etichette dell'asse x in italiano, una per
 mese, nel formato "gen 2021".
 
 <details>
@@ -2126,10 +2200,10 @@ cat("Perché i pannelli Senza HIV e Con HIV hanno la stessa forma, con altezze n
 
 ## Salvare il grafico
 
-Un grafico si può salvare in un oggetto, come un data frame, con `<-`:
+Un grafico si può salvare in un oggetto, come un dataframe, con `<-`:
 in questo caso non compare nel pannello Plots, ma puoi vederlo eseguendo
 il nome dell'oggetto. Questo grafico va **nello script**: sopra l'area
-di prova, crea una nuova sezione (**Ctrl + Shift + R**) chiamata "Salvare il grafico" e lì salva nell'oggetto `scatter_anticorpi` lo scatter plot di età e anticorpi con i colori per stato HIV, `alpha = 0.1` e `geom_smooth()`, aggiungendo le etichette con `labs()`.
+di prova, crea una nuova sezione (**Ctrl + Shift + R**) chiamata "Salvare il grafico". Qui ricrea il dataframe `ant_cd4_A` e salva nell'oggetto `scatter_anticorpi` lo scatter plot di CD4 e anticorpi con i colori per diagnosi COVID-19 (`covid`), `alpha = 0.1` e `geom_smooth()`, aggiungendo le etichette con `labs()`.
 
 <details>
 
@@ -2147,14 +2221,17 @@ soluzione (provaci da solo prima!)
 #| eval: false
 
 # Salvare il grafico -------------------------------------------------------
-scatter_anticorpi <- ggplot(data = dati_clean, mapping = aes(x = age, y = anticorpi, color = hiv)) +
+ant_cd4_A <- dati_clean %>% 
+  filter(region == 'A' & hiv == 'Con HIV')
+
+scatter_anticorpi <- ggplot(data = ant_cd4_A, mapping = aes(x = cd4, y = anticorpi, color = covid)) +
   geom_point(alpha = 0.1) +
   geom_smooth() +
   labs(
     title = "Livello di anticorpi per età",
-    x = "Età (anni)",
+    x = "CD4",
     y = "Livello di anticorpi",
-    color = "Stato HIV")
+    color = "COVID-19")
 
 scatter_anticorpi
 
@@ -2338,14 +2415,17 @@ ggplot(data = dati_clean, mapping = aes(x = date_vacc)) +
   facet_wrap(~ hiv)
 
 # Salvare il grafico -------------------------------------------------------
-scatter_anticorpi <- ggplot(data = dati_clean, mapping = aes(x = age, y = anticorpi, color = hiv)) +
+ant_cd4_A <- dati_clean %>% 
+  filter(region == 'A' & hiv == 'Con HIV')
+
+scatter_anticorpi <- ggplot(data = ant_cd4_A, mapping = aes(x = cd4, y = anticorpi, color = covid)) +
   geom_point(alpha = 0.1) +
   geom_smooth() +
   labs(
     title = "Livello di anticorpi per età",
-    x = "Età (anni)",
+    x = "CD4",
     y = "Livello di anticorpi",
-    color = "Stato HIV")
+    color = "COVID-19")
 
 scatter_anticorpi
 
@@ -2364,27 +2444,36 @@ ggsave(
 
 ## Riepilogo
 
--   Un grafico `{ggplot2}` si costruisce per strati (*layers*) collegati
-    con `+`: dati (`ggplot()`), estetiche (`aes()`) e geom (`geom_*()`).
-    Il `+` va alla fine della riga, non all'inizio della successiva
--   Estetiche **dinamiche** (una variabile) dentro `aes()`; estetiche
-    **statiche** (un valore fisso) dentro il geom
--   Una variabile numerica usata come categoria dà una scala continua:
-    per le categorie serve un fattore, come `hiv` creata nel Modulo 3 e
-    `covid` creata in questo modulo da `event`
--   `geom_bar()` conta le righe; `geom_col()` usa valori già aggregati
--   `geom_jitter()` e `geom_boxplot()` confrontano una variabile
-    continua tra gruppi; `geom_point()` mostra la relazione tra due
-    variabili e `geom_smooth()` ne aggiunge la tendenza;
-    `geom_histogram()` mostra la distribuzione di una variabile
--   Più livelli `geom_` si sovrappongono nell'ordine in cui sono
-    scritti. Le estetiche dentro `ggplot()` valgono per tutti i livelli,
-    quelle dentro un geom (`mapping = aes()`) solo per quel livello
--   `alpha` regola la trasparenza, da 0 (invisibile) a 1 (coprente):
-    serve quando molti punti si sovrappongono
--   `labs()` per le etichette, `facet_wrap()` per i pannelli,
-    `scale_x_date()` con `scales::label_date(locale = "it")` per le date
-    in italiano, `ggsave()` per salvare
+In questo modulo hai imparato a:
+
+-   costruire un grafico `{ggplot2}` per strati (*layers*) collegati con
+    `+`: dati (`ggplot()`), estetiche (`aes()`) e geom (`geom_*()`),
+    mettendo il `+` alla fine della riga e non all'inizio della
+    successiva;
+-   distinguere le estetiche dinamiche (una variabile), da scrivere
+    dentro `aes()`, da quelle statiche (un valore fisso), da scrivere
+    dentro il geom;
+-   usare un fattore per rappresentare le categorie, perché una
+    variabile numerica dà una scala continua (come `hiv`, creata nel
+    Modulo 3, e `covid`, creata in questo modulo da `event`);
+-   contare le righe con `geom_bar()` e rappresentare valori già
+    aggregati con `geom_col()`;
+-   confrontare una variabile continua tra gruppi con `geom_jitter()` e
+    `geom_boxplot()`;
+-   mostrare la relazione tra due variabili con `geom_point()` e
+    aggiungerne la tendenza con `geom_smooth()`;
+-   mostrare la distribuzione di una variabile con `geom_histogram()`;
+-   sovrapporre più livelli `geom_`, che vengono disegnati nell'ordine
+    in cui sono scritti, ricordando che le estetiche dentro `ggplot()`
+    valgono per tutti i livelli e quelle dentro un geom
+    (`mapping = aes()`) solo per quel livello;
+-   regolare la trasparenza con `alpha`, da 0 (invisibile) a 1
+    (coprente), quando molti punti si sovrappongono;
+-   aggiungere le etichette con `labs()` e creare pannelli con
+    `facet_wrap()`;
+-   mostrare le date in italiano con `scale_x_date()` e
+    `scales::label_date(locale = "it")`;
+-   salvare il grafico con `ggsave()`.
     
 ## Risorse aggiuntive
 
