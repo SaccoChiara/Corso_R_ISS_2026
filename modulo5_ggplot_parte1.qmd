@@ -2301,129 +2301,129 @@ cat("Se non specifichi l'argomento units, in quale unità sono espressi width e 
 :::
 ::::
 
-## Lo script completo
+<!-- ## Lo script completo -->
 
-Ecco come dovrebbe essere il tuo script per questa esercitazione:
-contiene solo gli oggetti da conservare, mentre le prove restano
-nell'area di prova. Confrontalo con il tuo: i commenti e alcuni dettagli
-possono essere diversi, ma i comandi devono fare le stesse cose. Lo
-script completo dei Moduli 5, 6 e 8 lo trovi anche nella cartella
-`script/backup`, nel file `backup_plot.R`.
+<!-- Ecco come dovrebbe essere il tuo script per questa esercitazione: -->
+<!-- contiene solo gli oggetti da conservare, mentre le prove restano -->
+<!-- nell'area di prova. Confrontalo con il tuo: i commenti e alcuni dettagli -->
+<!-- possono essere diversi, ma i comandi devono fare le stesse cose. Lo -->
+<!-- script completo dei Moduli 5, 6 e 8 lo trovi anche nella cartella -->
+<!-- `script/backup`, nel file `backup_plot.R`. -->
 
-<details>
+<!-- <details> -->
 
-<summary style="text-decoration: underline; color: blue;">
+<!-- <summary style="text-decoration: underline; color: blue;"> -->
 
-`r fontawesome::fa("check", fill = "blue")` Clicca per vedere lo script
-completo
+<!-- `r fontawesome::fa("check", fill = "blue")` Clicca per vedere lo script -->
+<!-- completo -->
 
-</summary>
+<!-- </summary> -->
 
-</br>
+<!-- </br> -->
 
-```{r}
-#| echo: true
-#| eval: false
+<!-- ```{r} -->
+<!-- #| echo: true -->
+<!-- #| eval: false -->
 
-### Corso introduttivo a R
-### Obiettivo: grafici con ggplot2 (Moduli 5, 6 e 8)
-### Autore: Marco Rossi
-### Data di creazione: 2 dicembre 2026
-### Contatto: marco.rossi@iss.it
-
-
-# Caricamento pacchetti ---------------------------------------------------
-pacman::p_load(
-  rio,       # importazione ed esportazione dei dati
-  skimr,     # panoramica dei dati
-  janitor,   # pulizia dei dati e tabelle
-  lubridate, # lavorare con le date
-  epikit,    # classi di età
-  gtsummary, # tabelle descrittive
-  flextable, # tabelle da presentare
-  tidyverse  # gestione e visualizzazione dei dati
-)
+<!-- ### Corso introduttivo a R -->
+<!-- ### Obiettivo: grafici con ggplot2 (Moduli 5, 6 e 8) -->
+<!-- ### Autore: Marco Rossi -->
+<!-- ### Data di creazione: 2 dicembre 2026 -->
+<!-- ### Contatto: marco.rossi@iss.it -->
 
 
-# Importazione dati -------------------------------------------------------
-dati_clean <- import("dati/dati_clean.rds")
+<!-- # Caricamento pacchetti --------------------------------------------------- -->
+<!-- pacman::p_load( -->
+<!--   rio,       # importazione ed esportazione dei dati -->
+<!--   skimr,     # panoramica dei dati -->
+<!--   janitor,   # pulizia dei dati e tabelle -->
+<!--   lubridate, # lavorare con le date -->
+<!--   epikit,    # classi di età -->
+<!--   gtsummary, # tabelle descrittive -->
+<!--   flextable, # tabelle da presentare -->
+<!--   tidyverse  # gestione e visualizzazione dei dati -->
+<!-- ) -->
 
 
-# Modulo 05 - Data Visualization con ggplot2 (Parte 1) =====================
+<!-- # Importazione dati ------------------------------------------------------- -->
+<!-- dati_clean <- import("dati/dati_clean.rds") -->
 
-# Diagnosi di COVID-19 -----------------------------------------------------
-dati_clean <- dati_clean %>%
-  mutate(covid = factor(event,
-                        levels = c(0, 1),
-                        labels = c("Senza diagnosi", "Con diagnosi")))
 
-# Età per regione ----------------------------------------------------------
-ggplot(
-  data = dati_clean,                        # coorte di vaccinati
-  mapping = aes(
-    x = region,                             # regione sull'asse x
-    y = age,                                # età sull'asse y
-    fill = region)) +                       # riempimento per regione
-  geom_boxplot() +                          # un boxplot per regione
-  labs(
-    title = "Età alla vaccinazione per regione",
-    subtitle = "Persone con e senza HIV",
-    x = "Regione",
-    y = "Età (anni)",
-    caption = "Grafico modulo 5",
-    fill = "Regione")
+<!-- # Modulo 05 - Data Visualization con ggplot2 (Parte 1) ===================== -->
 
-# Vaccinati per regione e classe d'età -------------------------------------
-ggplot(data = dati_clean, mapping = aes(x = region, fill = age_group)) +
-  geom_bar(position = "dodge")
+<!-- # Diagnosi di COVID-19 ----------------------------------------------------- -->
+<!-- dati_clean <- dati_clean %>% -->
+<!--   mutate(covid = factor(event, -->
+<!--                         levels = c(0, 1), -->
+<!--                         labels = c("Senza diagnosi", "Con diagnosi"))) -->
 
-# Dati aggregati -----------------------------------------------------------
-vaccinati_regione <- dati_clean %>%
-  group_by(region) %>%
-  summarise(n_vaccinati = n(), .groups = "drop")
+<!-- # Età per regione ---------------------------------------------------------- -->
+<!-- ggplot( -->
+<!--   data = dati_clean,                        # coorte di vaccinati -->
+<!--   mapping = aes( -->
+<!--     x = region,                             # regione sull'asse x -->
+<!--     y = age,                                # età sull'asse y -->
+<!--     fill = region)) +                       # riempimento per regione -->
+<!--   geom_boxplot() +                          # un boxplot per regione -->
+<!--   labs( -->
+<!--     title = "Età alla vaccinazione per regione", -->
+<!--     subtitle = "Persone con e senza HIV", -->
+<!--     x = "Regione", -->
+<!--     y = "Età (anni)", -->
+<!--     caption = "Grafico modulo 5", -->
+<!--     fill = "Regione") -->
 
-ggplot(data = vaccinati_regione, mapping = aes(x = region, y = n_vaccinati)) +
-  geom_col()
+<!-- # Vaccinati per regione e classe d'età ------------------------------------- -->
+<!-- ggplot(data = dati_clean, mapping = aes(x = region, fill = age_group)) + -->
+<!--   geom_bar(position = "dodge") -->
 
-# Istogramma ---------------------------------------------------------------
-ggplot(data = dati_clean, mapping = aes(x = date_vacc)) +
-  geom_histogram(binwidth = 7, fill = "darkgreen") +
-  scale_x_date(
-    date_breaks = "1 month",
-    labels = scales::label_date("%b %Y", locale = "it"))
+<!-- # Dati aggregati ----------------------------------------------------------- -->
+<!-- vaccinati_regione <- dati_clean %>% -->
+<!--   group_by(region) %>% -->
+<!--   summarise(n_vaccinati = n(), .groups = "drop") -->
 
-# Riquadri facet -----------------------------------------------------------
-ggplot(data = dati_clean, mapping = aes(x = date_vacc)) +
-  geom_histogram(binwidth = 7) +
-  facet_wrap(~ hiv)
+<!-- ggplot(data = vaccinati_regione, mapping = aes(x = region, y = n_vaccinati)) + -->
+<!--   geom_col() -->
 
-# Salvare il grafico -------------------------------------------------------
-ant_cd4_A <- dati_clean %>% 
-  filter(region == 'A' & hiv == 'Con HIV')
+<!-- # Istogramma --------------------------------------------------------------- -->
+<!-- ggplot(data = dati_clean, mapping = aes(x = date_vacc)) + -->
+<!--   geom_histogram(binwidth = 7, fill = "darkgreen") + -->
+<!--   scale_x_date( -->
+<!--     date_breaks = "1 month", -->
+<!--     labels = scales::label_date("%b %Y", locale = "it")) -->
 
-scatter_anticorpi <- ggplot(data = ant_cd4_A, mapping = aes(x = cd4, y = anticorpi, color = covid)) +
-  geom_point(alpha = 0.1) +
-  geom_smooth() +
-  labs(
-    title = "Livello di anticorpi per età",
-    x = "CD4",
-    y = "Livello di anticorpi",
-    color = "COVID-19")
+<!-- # Riquadri facet ----------------------------------------------------------- -->
+<!-- ggplot(data = dati_clean, mapping = aes(x = date_vacc)) + -->
+<!--   geom_histogram(binwidth = 7) + -->
+<!--   facet_wrap(~ hiv) -->
 
-scatter_anticorpi
+<!-- # Salvare il grafico ------------------------------------------------------- -->
+<!-- ant_cd4_A <- dati_clean %>%  -->
+<!--   filter(region == 'A' & hiv == 'Con HIV') -->
 
-ggsave(
-  plot = scatter_anticorpi,
-  filename = "output/scatter_anticorpi.png",
-  width = 10,
-  height = 6,
-  dpi = 300)
+<!-- scatter_anticorpi <- ggplot(data = ant_cd4_A, mapping = aes(x = cd4, y = anticorpi, color = covid)) + -->
+<!--   geom_point(alpha = 0.1) + -->
+<!--   geom_smooth() + -->
+<!--   labs( -->
+<!--     title = "Livello di anticorpi per età", -->
+<!--     x = "CD4", -->
+<!--     y = "Livello di anticorpi", -->
+<!--     color = "COVID-19") -->
 
-```
+<!-- scatter_anticorpi -->
 
-</br>
+<!-- ggsave( -->
+<!--   plot = scatter_anticorpi, -->
+<!--   filename = "output/scatter_anticorpi.png", -->
+<!--   width = 10, -->
+<!--   height = 6, -->
+<!--   dpi = 300) -->
 
-</details>
+<!-- ``` -->
+
+<!-- </br> -->
+
+<!-- </details> -->
 
 ## Riepilogo
 

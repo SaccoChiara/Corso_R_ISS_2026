@@ -1610,172 +1610,172 @@ age_pyramid(data = dati_clean, age_group = "age_cat", split_by = "sex",
 
 </details>
 
-## Lo script completo
+<!-- ## Lo script completo -->
 
-Ecco come dovrebbe essere il tuo script per questa esercitazione, con le soluzioni di tutti gli esercizi divise per sezione. Confrontalo con il tuo: i commenti e alcuni dettagli possono essere diversi, ma i comandi devono fare le stesse cose. Lo script completo dei Moduli 5, 6 e 8 lo trovi anche nella cartella `script/backup`, nel file `backup_plot.R`.
+<!-- Ecco come dovrebbe essere il tuo script per questa esercitazione, con le soluzioni di tutti gli esercizi divise per sezione. Confrontalo con il tuo: i commenti e alcuni dettagli possono essere diversi, ma i comandi devono fare le stesse cose. Lo script completo dei Moduli 5, 6 e 8 lo trovi anche nella cartella `script/backup`, nel file `backup_plot.R`. -->
 
-<details>
+<!-- <details> -->
 
-<summary style="text-decoration: underline; color: blue;">
+<!-- <summary style="text-decoration: underline; color: blue;"> -->
 
-`r fontawesome::fa("check", fill = "blue")` Clicca per vedere lo script
-completo
+<!-- `r fontawesome::fa("check", fill = "blue")` Clicca per vedere lo script -->
+<!-- completo -->
 
-</summary>
+<!-- </summary> -->
 
-</br>
+<!-- </br> -->
 
-```{r}
-#| echo: true
-#| eval: false
+<!-- ```{r} -->
+<!-- #| echo: true -->
+<!-- #| eval: false -->
 
-# All'inizio di plot.R: sezioni già presenti, con le aggiunte del Modulo 08
+<!-- # All'inizio di plot.R: sezioni già presenti, con le aggiunte del Modulo 08 -->
 
-# Caricamento pacchetti ---------------------------------------------------
-pacman::p_load(
-  rio,       # importazione ed esportazione dei dati
-  skimr,     # panoramica dei dati
-  janitor,   # pulizia dei dati e tabelle
-  lubridate, # lavorare con le date
-  epikit,    # classi di età
-  gtsummary, # tabelle descrittive
-  flextable, # tabelle da presentare
-  sf,        # dati spaziali e mappe          (Modulo 08)
-  apyramid,   # piramidi per età e sesso       (Modulo 08)
-  tidyverse # gestione e visualizzazione dei dati
-)
+<!-- # Caricamento pacchetti --------------------------------------------------- -->
+<!-- pacman::p_load( -->
+<!--   rio,       # importazione ed esportazione dei dati -->
+<!--   skimr,     # panoramica dei dati -->
+<!--   janitor,   # pulizia dei dati e tabelle -->
+<!--   lubridate, # lavorare con le date -->
+<!--   epikit,    # classi di età -->
+<!--   gtsummary, # tabelle descrittive -->
+<!--   flextable, # tabelle da presentare -->
+<!--   sf,        # dati spaziali e mappe          (Modulo 08) -->
+<!--   apyramid,   # piramidi per età e sesso       (Modulo 08) -->
+<!--   tidyverse # gestione e visualizzazione dei dati -->
+<!-- ) -->
 
-# Importazione dati -------------------------------------------------------
-dati_clean <- import("dati/dati_clean.rds")
-regioni_sf <- read_sf("dati/shapefiles/regioni.shp")
-regioni    <- import("dati/regioni.rds")
+<!-- # Importazione dati ------------------------------------------------------- -->
+<!-- dati_clean <- import("dati/dati_clean.rds") -->
+<!-- regioni_sf <- read_sf("dati/shapefiles/regioni.shp") -->
+<!-- regioni    <- import("dati/regioni.rds") -->
 
-# ... sezioni dei Moduli 5 e 6 ...
-
-
-# Modulo 08 - Altri grafici ================================================
-
-# Epicurva ----------------------------------------------------------------
-# tutti i lunedì, dalla settimana della prima vaccinazione a quella dopo l'ultima
-settimane <- seq.Date(
-  from = floor_date(min(dati_clean$date_vacc), unit = "week", week_start = 1),
-  to   = ceiling_date(max(dati_clean$date_vacc), unit = "week", week_start = 1),
-  by   = "week")
-
-# curva settimanale: settimane da lunedì a domenica
-ggplot(data = dati_clean, mapping = aes(x = date_vacc)) +
-  geom_histogram(breaks = settimane, closed = "left") +
-  scale_x_date(
-    date_breaks = "1 month",
-    labels = scales::label_date("%b\n%Y", locale = "it")) +
-  labs(x = "Settimana di vaccinazione", y = "Vaccinati")
-
-# vaccinati per settimana, comprese le settimane senza vaccinati
-vacc_settimana <- dati_clean %>%
-  mutate(settimana = floor_date(date_vacc, unit = "week", week_start = 1)) %>%
-  count(settimana) %>%
-  complete(settimana = seq.Date(from = min(settimana), to = max(settimana), by = "week"),
-           fill = list(n = 0))
-
-# curva settimanale con i numeri di settimana ISO
-ggplot(data = vacc_settimana, mapping = aes(x = settimana, y = n)) +
-  geom_col(width = 5) +
-  scale_x_date(
-    breaks = seq.Date(from = min(settimane), to = max(settimane), by = "4 weeks"),
-    labels = scales::label_date("%G-W%V")) +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) +
-  labs(x = "Settimana di vaccinazione", y = "Vaccinati")
+<!-- # ... sezioni dei Moduli 5 e 6 ... -->
 
 
-# Heatmap -----------------------------------------------------------------
-# quota con Charlson 3+ per classe d'età e stato HIV
-charlson_eta <- dati_clean %>%
-  filter(!is.na(age_cat)) %>%
-  group_by(age_cat, hiv) %>%
-  summarise(
-    n = n(),
-    quota_ch3 = mean(chrls_index %in% c("3-4", "5+")),
-    .groups = "drop")
+<!-- # Modulo 08 - Altri grafici ================================================ -->
 
-ggplot(data = charlson_eta, mapping = aes(x = hiv, y = age_cat, fill = quota_ch3)) +
-  geom_tile() +
-  geom_text(mapping = aes(label = paste0(scales::percent(quota_ch3, accuracy = 1),
-                                         "\n(n = ", n, ")"))) +
-  scale_fill_distiller(palette = "YlOrRd", direction = 1,
-                       labels = scales::label_percent()) +
-  labs(x = NULL, y = "Classe d'età", fill = "Charlson 3+")
+<!-- # Epicurva ---------------------------------------------------------------- -->
+<!-- # tutti i lunedì, dalla settimana della prima vaccinazione a quella dopo l'ultima -->
+<!-- settimane <- seq.Date( -->
+<!--   from = floor_date(min(dati_clean$date_vacc), unit = "week", week_start = 1), -->
+<!--   to   = ceiling_date(max(dati_clean$date_vacc), unit = "week", week_start = 1), -->
+<!--   by   = "week") -->
 
+<!-- # curva settimanale: settimane da lunedì a domenica -->
+<!-- ggplot(data = dati_clean, mapping = aes(x = date_vacc)) + -->
+<!--   geom_histogram(breaks = settimane, closed = "left") + -->
+<!--   scale_x_date( -->
+<!--     date_breaks = "1 month", -->
+<!--     labels = scales::label_date("%b\n%Y", locale = "it")) + -->
+<!--   labs(x = "Settimana di vaccinazione", y = "Vaccinati") -->
 
-# Mappe -------------------------------------------------------------------
-# tasso di vaccinati per regione
-vacc_regione <- dati_clean %>%
-  count(region, name = "n_vaccinati")
+<!-- # vaccinati per settimana, comprese le settimane senza vaccinati -->
+<!-- vacc_settimana <- dati_clean %>% -->
+<!--   mutate(settimana = floor_date(date_vacc, unit = "week", week_start = 1)) %>% -->
+<!--   count(settimana) %>% -->
+<!--   complete(settimana = seq.Date(from = min(settimana), to = max(settimana), by = "week"), -->
+<!--            fill = list(n = 0)) -->
 
-# primo join: la popolazione
-tassi_regione <- vacc_regione %>%
-  left_join(regioni, by = join_by(region == codice_regione)) %>%
-  mutate(tasso = n_vaccinati / popolazione * 100000)
-
-# secondo join: la geometria
-mappa_vacc <- regioni_sf %>%
-  left_join(tassi_regione, by = "region")
-
-ggplot(data = mappa_vacc) +
-  geom_sf(mapping = aes(fill = tasso)) +
-  geom_sf_text(mapping = aes(label = region)) +
-  scale_fill_distiller(palette = "YlOrRd", direction = 1) +
-  theme_void() +
-  labs(title = "Vaccinati della coorte per regione",
-       fill = "Vaccinati per\n100.000 abitanti")
-
-# proporzione di persone con HIV per regione
-proporzione_hiv <- dati_clean %>%
-  group_by(region) %>%
-  summarise(proporzione_hiv = mean(hiv == "Con HIV"), .groups = "drop")
-
-mappa_prop_hiv <- regioni_sf %>%
-  left_join(proporzione_hiv, by = "region")
-
-ggplot(data = mappa_prop_hiv) +
-  geom_sf(mapping = aes(fill = proporzione_hiv)) +
-  geom_sf_text(mapping = aes(label = scales::percent(proporzione_hiv, accuracy = 1))) +
-  scale_fill_distiller(palette = "YlOrRd", direction = 1,
-                       labels = scales::label_percent()) +
-  theme_void() +
-  labs(fill = "Proporzione\ncon HIV")
+<!-- # curva settimanale con i numeri di settimana ISO -->
+<!-- ggplot(data = vacc_settimana, mapping = aes(x = settimana, y = n)) + -->
+<!--   geom_col(width = 5) + -->
+<!--   scale_x_date( -->
+<!--     breaks = seq.Date(from = min(settimane), to = max(settimane), by = "4 weeks"), -->
+<!--     labels = scales::label_date("%G-W%V")) + -->
+<!--   theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) + -->
+<!--   labs(x = "Settimana di vaccinazione", y = "Vaccinati") -->
 
 
-# Piramidi ----------------------------------------------------------------
-# sesso come factor: i maschi sempre a sinistra
-dati_clean <- dati_clean %>%
-  mutate(sex = factor(sex, levels = c("M", "F")))
+<!-- # Heatmap ----------------------------------------------------------------- -->
+<!-- # quota con Charlson 3+ per classe d'età e stato HIV -->
+<!-- charlson_eta <- dati_clean %>% -->
+<!--   filter(!is.na(age_cat)) %>% -->
+<!--   group_by(age_cat, hiv) %>% -->
+<!--   summarise( -->
+<!--     n = n(), -->
+<!--     quota_ch3 = mean(chrls_index %in% c("3-4", "5+")), -->
+<!--     .groups = "drop") -->
 
-age_pyramid(data = filter(dati_clean, hiv == "Con HIV"),
-            age_group = "age_cat", split_by = "sex",
-            proportional = TRUE)
-
-age_pyramid(data = filter(dati_clean, hiv == "Senza HIV"),
-            age_group = "age_cat", split_by = "sex",
-            proportional = TRUE)
-
-# conteggi per classe d'età e sesso, per la piramide da dati aggregati
-piramide_agg <- dati_clean %>%
-  filter(!is.na(age_cat), !is.na(sex)) %>%
-  count(age_cat, sex)
-
-# piramide personalizzata con ggplot2
-age_pyramid(data = dati_clean, age_group = "age_cat", split_by = "sex",
-            proportional = TRUE) +
-  theme_minimal() +
-  scale_fill_manual(values = c("F" = "#2a9d8f", "M" = "#e76f51")) +
-  labs(x = "Classe d'età", y = "Proporzione", fill = "Sesso")
+<!-- ggplot(data = charlson_eta, mapping = aes(x = hiv, y = age_cat, fill = quota_ch3)) + -->
+<!--   geom_tile() + -->
+<!--   geom_text(mapping = aes(label = paste0(scales::percent(quota_ch3, accuracy = 1), -->
+<!--                                          "\n(n = ", n, ")"))) + -->
+<!--   scale_fill_distiller(palette = "YlOrRd", direction = 1, -->
+<!--                        labels = scales::label_percent()) + -->
+<!--   labs(x = NULL, y = "Classe d'età", fill = "Charlson 3+") -->
 
 
-```
+<!-- # Mappe ------------------------------------------------------------------- -->
+<!-- # tasso di vaccinati per regione -->
+<!-- vacc_regione <- dati_clean %>% -->
+<!--   count(region, name = "n_vaccinati") -->
 
-</br>
+<!-- # primo join: la popolazione -->
+<!-- tassi_regione <- vacc_regione %>% -->
+<!--   left_join(regioni, by = join_by(region == codice_regione)) %>% -->
+<!--   mutate(tasso = n_vaccinati / popolazione * 100000) -->
 
-</details>
+<!-- # secondo join: la geometria -->
+<!-- mappa_vacc <- regioni_sf %>% -->
+<!--   left_join(tassi_regione, by = "region") -->
+
+<!-- ggplot(data = mappa_vacc) + -->
+<!--   geom_sf(mapping = aes(fill = tasso)) + -->
+<!--   geom_sf_text(mapping = aes(label = region)) + -->
+<!--   scale_fill_distiller(palette = "YlOrRd", direction = 1) + -->
+<!--   theme_void() + -->
+<!--   labs(title = "Vaccinati della coorte per regione", -->
+<!--        fill = "Vaccinati per\n100.000 abitanti") -->
+
+<!-- # proporzione di persone con HIV per regione -->
+<!-- proporzione_hiv <- dati_clean %>% -->
+<!--   group_by(region) %>% -->
+<!--   summarise(proporzione_hiv = mean(hiv == "Con HIV"), .groups = "drop") -->
+
+<!-- mappa_prop_hiv <- regioni_sf %>% -->
+<!--   left_join(proporzione_hiv, by = "region") -->
+
+<!-- ggplot(data = mappa_prop_hiv) + -->
+<!--   geom_sf(mapping = aes(fill = proporzione_hiv)) + -->
+<!--   geom_sf_text(mapping = aes(label = scales::percent(proporzione_hiv, accuracy = 1))) + -->
+<!--   scale_fill_distiller(palette = "YlOrRd", direction = 1, -->
+<!--                        labels = scales::label_percent()) + -->
+<!--   theme_void() + -->
+<!--   labs(fill = "Proporzione\ncon HIV") -->
+
+
+<!-- # Piramidi ---------------------------------------------------------------- -->
+<!-- # sesso come factor: i maschi sempre a sinistra -->
+<!-- dati_clean <- dati_clean %>% -->
+<!--   mutate(sex = factor(sex, levels = c("M", "F"))) -->
+
+<!-- age_pyramid(data = filter(dati_clean, hiv == "Con HIV"), -->
+<!--             age_group = "age_cat", split_by = "sex", -->
+<!--             proportional = TRUE) -->
+
+<!-- age_pyramid(data = filter(dati_clean, hiv == "Senza HIV"), -->
+<!--             age_group = "age_cat", split_by = "sex", -->
+<!--             proportional = TRUE) -->
+
+<!-- # conteggi per classe d'età e sesso, per la piramide da dati aggregati -->
+<!-- piramide_agg <- dati_clean %>% -->
+<!--   filter(!is.na(age_cat), !is.na(sex)) %>% -->
+<!--   count(age_cat, sex) -->
+
+<!-- # piramide personalizzata con ggplot2 -->
+<!-- age_pyramid(data = dati_clean, age_group = "age_cat", split_by = "sex", -->
+<!--             proportional = TRUE) + -->
+<!--   theme_minimal() + -->
+<!--   scale_fill_manual(values = c("F" = "#2a9d8f", "M" = "#e76f51")) + -->
+<!--   labs(x = "Classe d'età", y = "Proporzione", fill = "Sesso") -->
+
+
+<!-- ``` -->
+
+<!-- </br> -->
+
+<!-- </details> -->
 
 ## Riepilogo
 

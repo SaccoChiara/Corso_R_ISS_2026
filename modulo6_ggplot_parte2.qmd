@@ -1519,97 +1519,97 @@ modifiche. Per questo conviene controllare sempre il risultato.
 La regola è: **prima il tema completo, poi `theme()`** per le modifiche.
 :::
 
-## Lo script completo
+<!-- ## Lo script completo -->
 
-Ecco come dovrebbe essere il tuo script per questa esercitazione, con le
-soluzioni di tutti gli esercizi divise per sezione. Confrontalo con il
-tuo: i commenti e alcuni dettagli possono essere diversi, ma i comandi
-devono fare le stesse cose. Lo script completo dei Moduli 5, 6 e 8 lo
-trovi anche nella cartella `script/backup`, nel file `backup_plot.R`.
+<!-- Ecco come dovrebbe essere il tuo script per questa esercitazione, con le -->
+<!-- soluzioni di tutti gli esercizi divise per sezione. Confrontalo con il -->
+<!-- tuo: i commenti e alcuni dettagli possono essere diversi, ma i comandi -->
+<!-- devono fare le stesse cose. Lo script completo dei Moduli 5, 6 e 8 lo -->
+<!-- trovi anche nella cartella `script/backup`, nel file `backup_plot.R`. -->
 
-<details>
+<!-- <details> -->
 
-<summary style="text-decoration: underline; color: blue;">
+<!-- <summary style="text-decoration: underline; color: blue;"> -->
 
-`r fontawesome::fa("check", fill = "blue")` Clicca per vedere lo script
-completo
+<!-- `r fontawesome::fa("check", fill = "blue")` Clicca per vedere lo script -->
+<!-- completo -->
 
-</summary>
+<!-- </summary> -->
 
-</br>
+<!-- </br> -->
 
-```{r}
-#| echo: true
-#| eval: false
+<!-- ```{r} -->
+<!-- #| echo: true -->
+<!-- #| eval: false -->
 
-# Modulo 06 - Data Visualization con ggplot2 (Parte 2) =====================
+<!-- # Modulo 06 - Data Visualization con ggplot2 (Parte 2) ===================== -->
 
-# Colori scelti a mano -----------------------------------------------------
-ggplot(data = dati_clean, mapping = aes(x = region, fill = hiv, color = hiv)) +
-  geom_bar(alpha = 0.5) +
-  geom_point(stat = "count", position = "stack", size = 3) +
-  scale_fill_manual(
-    name = "Stato HIV",                             # titolo della legenda
-    values = c(                                     # colori
-      "Senza HIV" = "#2a9d8f",
-      "Con HIV"   = "#e76f51"),
-    breaks = c("Con HIV", "Senza HIV"),             # livelli e ordine in legenda
-    labels = c(                                     # testo in legenda
-      "Con HIV"   = "Persone con HIV",
-      "Senza HIV" = "Controlli"),
-    aesthetics = c("fill", "color"))                # estetiche coinvolte
+<!-- # Colori scelti a mano ----------------------------------------------------- -->
+<!-- ggplot(data = dati_clean, mapping = aes(x = region, fill = hiv, color = hiv)) + -->
+<!--   geom_bar(alpha = 0.5) + -->
+<!--   geom_point(stat = "count", position = "stack", size = 3) + -->
+<!--   scale_fill_manual( -->
+<!--     name = "Stato HIV",                             # titolo della legenda -->
+<!--     values = c(                                     # colori -->
+<!--       "Senza HIV" = "#2a9d8f", -->
+<!--       "Con HIV"   = "#e76f51"), -->
+<!--     breaks = c("Con HIV", "Senza HIV"),             # livelli e ordine in legenda -->
+<!--     labels = c(                                     # testo in legenda -->
+<!--       "Con HIV"   = "Persone con HIV", -->
+<!--       "Senza HIV" = "Controlli"), -->
+<!--     aesthetics = c("fill", "color"))                # estetiche coinvolte -->
 
-# Palette predefinite ------------------------------------------------------
-ggplot(data = dati_clean, mapping = aes(x = region, fill = chrls_index)) +
-  geom_bar() +
-  scale_fill_viridis_d()
+<!-- # Palette predefinite ------------------------------------------------------ -->
+<!-- ggplot(data = dati_clean, mapping = aes(x = region, fill = chrls_index)) + -->
+<!--   geom_bar() + -->
+<!--   scale_fill_viridis_d() -->
 
-# Vaccinati per giorno -----------------------------------------------------
-vaccinati_giorno <- dati_clean %>%
-  group_by(date_vacc) %>%
-  summarise(n_vaccinati = n(),
-            eta_media = mean(age, na.rm = TRUE),
-            .groups = "drop")
+<!-- # Vaccinati per giorno ----------------------------------------------------- -->
+<!-- vaccinati_giorno <- dati_clean %>% -->
+<!--   group_by(date_vacc) %>% -->
+<!--   summarise(n_vaccinati = n(), -->
+<!--             eta_media = mean(age, na.rm = TRUE), -->
+<!--             .groups = "drop") -->
 
-ggplot(data = vaccinati_giorno, mapping = aes(x = date_vacc, y = n_vaccinati, color = eta_media)) +
-  geom_point() +
-  scale_color_gradient(
-    low = "lightyellow",
-    high = "darkred") +
-  scale_x_date(
-    date_breaks = "1 month",
-    labels = scales::label_date("%b\n%Y", locale = "it")) +
-  labs(
-    title = "Vaccinati per giorno nel corso della campagna vaccinale",
-    x = "Data di vaccinazione",
-    y = "Numero di vaccinati",
-    color = "Età media (anni)")
+<!-- ggplot(data = vaccinati_giorno, mapping = aes(x = date_vacc, y = n_vaccinati, color = eta_media)) + -->
+<!--   geom_point() + -->
+<!--   scale_color_gradient( -->
+<!--     low = "lightyellow", -->
+<!--     high = "darkred") + -->
+<!--   scale_x_date( -->
+<!--     date_breaks = "1 month", -->
+<!--     labels = scales::label_date("%b\n%Y", locale = "it")) + -->
+<!--   labs( -->
+<!--     title = "Vaccinati per giorno nel corso della campagna vaccinale", -->
+<!--     x = "Data di vaccinazione", -->
+<!--     y = "Numero di vaccinati", -->
+<!--     color = "Età media (anni)") -->
 
-# Percentuali --------------------------------------------------------------
-ggplot(data = dati_clean, mapping = aes(x = region, fill = age_group)) +
-  geom_bar(position = "fill") +
-  scale_y_continuous(labels = scales::label_percent()) +
-  labs(
-    caption =
-      paste0("n = ", nrow(dati_clean), " vaccinati", "\n",
-             sum(dati_clean$hiv == "Con HIV"), " persone con HIV", "\n",
-             "Grafico prodotto il ", Sys.Date()))
+<!-- # Percentuali -------------------------------------------------------------- -->
+<!-- ggplot(data = dati_clean, mapping = aes(x = region, fill = age_group)) + -->
+<!--   geom_bar(position = "fill") + -->
+<!--   scale_y_continuous(labels = scales::label_percent()) + -->
+<!--   labs( -->
+<!--     caption = -->
+<!--       paste0("n = ", nrow(dati_clean), " vaccinati", "\n", -->
+<!--              sum(dati_clean$hiv == "Con HIV"), " persone con HIV", "\n", -->
+<!--              "Grafico prodotto il ", Sys.Date())) -->
 
-# Modificare il tema -------------------------------------------------------
-ggplot(data = dati_clean, mapping = aes(x = region, fill = age_group)) +
-  geom_bar(position = "fill") +
-  scale_y_continuous(labels = scales::label_percent()) +
-  theme_minimal() +
-  theme(
-    legend.position = "bottom",                     # legenda in basso
-    axis.title = element_text(face = "bold"),       # nomi assi in grassetto
-    panel.grid.minor = element_blank())             # niente griglia secondaria
+<!-- # Modificare il tema ------------------------------------------------------- -->
+<!-- ggplot(data = dati_clean, mapping = aes(x = region, fill = age_group)) + -->
+<!--   geom_bar(position = "fill") + -->
+<!--   scale_y_continuous(labels = scales::label_percent()) + -->
+<!--   theme_minimal() + -->
+<!--   theme( -->
+<!--     legend.position = "bottom",                     # legenda in basso -->
+<!--     axis.title = element_text(face = "bold"),       # nomi assi in grassetto -->
+<!--     panel.grid.minor = element_blank())             # niente griglia secondaria -->
 
-```
+<!-- ``` -->
 
-</br>
+<!-- </br> -->
 
-</details>
+<!-- </details> -->
 
 ## Riepilogo
 
