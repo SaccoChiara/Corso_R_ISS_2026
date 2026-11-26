@@ -83,8 +83,8 @@ operativo (Windows, macOS o Linux).
 RTools serve per installare alcuni pacchetti a partire dal codice
 sorgente. Scaricalo da [questa
 pagina](https://cloud.r-project.org/bin/windows/Rtools/) scegliendo la
-versione che corrisponde alla tua versione di R.  
-> **Attenzione:** per R 4.6.x è necessario utilizzare RTools 4.5 (versione 4.5), non RTools 4.6.  
+versione che corrisponde alla tua versione di R (per R 4.6.x l'ultima versione 
+disponibile è RTools 4.5).
 
 Su macOS e Linux non è necessario installare RTools
 
