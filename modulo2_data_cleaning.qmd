@@ -307,12 +307,17 @@ cat("Che cosa osservi in console?", longmcq(opts))
 
 I nomi contengono spazi (`Age group`), maiuscole irregolari (`REGION`,
 `AGE`) e trattini (`End_Follow-Up`): sono scomodi da scrivere e facili
-da sbagliare. Per questo motivo, il primo passo della pulizia è **standardizzare i nomi**.  
+da sbagliare. Per questo motivo, il primo passo della pulizia è **standardizzare i nomi**.
+
+Per indicare a R una singola variabile di un dataframe si usa
+l'operatore `$`: prima il nome del dataframe, poi `$`, poi il nome
+della variabile. Per esempio, `dati_raw$REGION` è la variabile `REGION`
+del dataframe `dati_raw`. Prova a eseguirlo nella console: R stampa
+tutti i valori di quella variabile.
 
 ::: {.callout-warning appearance="default" icon="false"}
 ## Attenzione ai nomi con spazi
-<!-- di seguito viene usato per la prima volta $ ma non viene spiegato, forse aggiungere una riga come 
-fatto alla riga 1078? -->
+
 Se il nome di una variabile contiene uno spazio, R non lo riconosce come
 un nome unico. `dati_raw$Age group` dà errore: il nome va racchiuso tra
 **apici inversi** (backtick, `` ` ``), cioè `` dati_raw$`Age group` ``.
@@ -503,7 +508,19 @@ dati %>%
   head()
 ```
 
+<<<<<<< HEAD
 Se invece volessimo stampare le ultime 6 righe del dataframe, potremmo
+=======
+Nota che dentro `select()` le variabili sono scritte **senza `$`**:
+non serve, perché il dataframe `dati` arriva alla funzione attraverso
+la pipe `%>%`, e R sa già dove cercare `id_subject`, `sex` e `age`.
+Questo vale per tutte le funzioni della catena. L'operatore `$` serve
+invece nei comandi **indipendenti** dalla catena, come
+`class(dati$age)`, in cui devi dire tu a R in quale dataframe si trova
+la variabile.
+
+Se invece volessimo stampare le ultime 6 righe del dataset, potremmo
+>>>>>>> 30122caa43432d4dac6027901f2d43353fa1b454
 aggiungere `tail()`:
 
 ```{r}
@@ -1084,10 +1101,7 @@ class(dati$age)
 class(dati$group)
 ```
 
-`class(dati$age)` è un comando **indipendente** dalla catena: per questo
-serve l'operatore `$` per dire a R in quale data frame si trova la
-variabile. Dentro la catena `$` non serve, perché il data frame passa da
-una funzione all'altra con l'operatore pipe.
+
 
 Anche se ora `age` contiene solo numeri e `NA`, la variabile è ancora di
 classe `character`: all'importazione è bastato che contenesse
