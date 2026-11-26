@@ -22,8 +22,7 @@ editor:
     wrap: 72
 ---
 
-::: {.content-visible when-format="html"}
-# **Corso introduttivo al software statistico R**
+# **Corso base di R per la gestione e analisi dei dati**
 
 # Prepararsi al corso
 :::
@@ -72,7 +71,7 @@ Scarica R da [CRAN](https://cran.r-project.org/), nella sezione
 "Download and Install R", scegliendo la versione per il tuo sistema
 operativo (Windows, macOS o Linux).
 
--   L'ultima versione disponibile è la 4.6.1 (24 giugno 2026). **Non è
+-   L'ultima versione disponibile è la 4.6.2 (29 ottobre 2026). **Non è
     obbligatorio avere l'ultima versione**, ma è consigliabile non
     restare troppo indietro.
 -   Sullo stesso computer possono essere installate più versioni di R.
@@ -87,11 +86,11 @@ pagina](https://cloud.r-project.org/bin/windows/Rtools/) scegliendo la
 versione che corrisponde alla tua versione di R (per R 4.6.x l'ultima versione 
 disponibile è RTools 4.5).
 
-Su macOS non è necessario installare Rtools
+Su macOS e Linux non è necessario installare RTools
 
 ### RStudio
 
-Scarica [RStudio Desktop](https://posit.co/download/rstudio-desktop/).
+Scarica [RStudio Desktop](https://docs.posit.co/ide/user/download.html).
 
 ## Installare i pacchetti
 
@@ -153,8 +152,8 @@ La cartella contiene tre sottocartelle:
 -   `script`: durante il corso ci salverai gli script che scriverai.
     Contiene la sottocartella `backup`, con le versioni corrette degli
     script del corso;
--   `dati`, con i dati usati nelle esercitazioni;
--   `output`, vuota: durante il corso ci salverai i grafici e le
+-   `dati`: con i dati usati nelle esercitazioni;
+-   `output`: vuota: durante il corso ci salverai i grafici e le
     tabelle che produrrai.
 :::
 

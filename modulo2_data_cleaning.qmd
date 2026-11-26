@@ -38,14 +38,14 @@ dati_raw <- import("dati/dataset_esercitazione_raw.csv")
 
 ```
 
-# **Corso introduttivo al software statistico R**
+# **Corso base di R per la gestione e analisi dei dati**
 
-# Modulo 02 Pulizia e preparazione dei dati
+# Modulo 02 - Pulizia e preparazione dei dati
 
 ## Obiettivi del modulo
 
 -   Individuare i problemi di qualità dei dati
--   Costruire una catena di pulizia con l'operatore pipe `%>%` per
+-   Costruire una catena di pulizia con l'operatore *pipe* `%>%` per
     standardizzare i nomi delle variabili, selezionare le variabili
     utili e rimuovere le righe duplicate
 -   Gestire i valori mancanti e convertire le variabili nella classe
@@ -160,11 +160,11 @@ cat("Domanda di esempio: quanto fa 2 + 2?", longmcq(opts))
 ::::
 
 Lungo il modulo troverai anche due tipi di riquadri colorati. I riquadri
-**gialli** segnalano errori frequenti o punti in cui R si comporta in
+**arancione** segnalano errori frequenti o punti in cui R si comporta in
 modo inatteso: leggili sempre, perché possono farti risparmiare tempo.
 
 ```{=html}
-<!-- ISTRUZIONI: Il box giallo "Attenzione a …" va usato per avvisi
+<!-- ISTRUZIONI: Il box arancione "Attenzione a …" va usato per avvisi
      importanti: errori comuni, comportamenti di R che possono
      sorprendere, passaggi da non saltare. Il titolo inizia sempre con
      "Attenzione a" (es. "Attenzione ai nomi con spazi"). Copia
@@ -212,9 +212,9 @@ script di questa mattina, `pulizia_dati.R`:
     script su cui stavi lavorando questa mattina, anche se non lo avevi
     salvato.
 
-In entrambi i casi, crea in fondo allo script una nuova sezione chiamata
+In entrambi i casi, crea in fondo allo script **una nuova sezione** chiamata
 "Modulo 2 - Pulizia e preparazione dei dati" con la combinazione di
-tasti **Ctrl + Shift + R** (**Cmd + Shift + R** su Mac): qui scriverai
+tasti **Ctrl + Shift + R** (**Cmd + Shift + R** su Mac). Qui scriverai
 il codice dell'esercitazione del pomeriggio. Ricordati di salvare spesso
 il lavoro (**Ctrl + S**, oppure **Cmd + S** su Mac).
 
@@ -226,7 +226,7 @@ l'esercitazione.**
 ## La catena di pulizia
 
 Tutti i passaggi di pulizia verranno raccolti in **un'unica catena** di
-comandi, collegati dall'operatore "pipe" `%>%`. Puoi leggere `%>%` come
+comandi, collegati dall'operatore *pipe* `%>%`. Puoi leggere `%>%` come
 "e poi": prendi i dati, *e poi* sistema i nomi, *e poi* togli i
 duplicati, e così via. Il simbolo dell'operatore pipe si scrive con la
 scorciatoia **Ctrl+Shift+M** (**Cmd+Shift+M** su Mac). In R esiste anche
@@ -256,7 +256,7 @@ dati <- dati_raw %>%
 ```
 
 L'intera catena è un **unico comando**: ogni volta che aggiungi una
-funzione, riesegui tutta la catena (seleziona dall'inizio alla fine e
+funzione, riesegui tutta la catena (seleziona il testo dall'inizio alla fine e
 premi Ctrl+Invio). Poiché il comando usa `<-`, il risultato non viene
 stampato nella console ma salvato in `dati`: per vederlo clicca su
 `dati` nel pannello **Environment** oppure usa `View(dati)`. Ti
@@ -307,7 +307,7 @@ cat("Che cosa osservi in console?", longmcq(opts))
 
 I nomi contengono spazi (`Age group`), maiuscole irregolari (`REGION`,
 `AGE`) e trattini (`End_Follow-Up`): sono scomodi da scrivere e facili
-da sbagliare.
+da sbagliare. Per questo motivo, il primo passo della pulizia è **standardizzare i nomi**.  
 
 ::: {.callout-warning appearance="default" icon="false"}
 ## Attenzione ai nomi con spazi
@@ -316,7 +316,7 @@ Se il nome di una variabile contiene uno spazio, R non lo riconosce come
 un nome unico. `dati_raw$Age group` dà errore: il nome va racchiuso tra
 **apici inversi** (backtick, `` ` ``), cioè `` dati_raw$`Age group` ``.
 Gli spazi possono anche essere difficili da vedere: la variabile
-`Event  date` ha **due** spazi tra le parole.
+`Event  date` ha **due** spazi tra le parole. Per questa ragione, l'uso di nomi con spazi o caratteri speciali è fortemente sconsigliato.  
 :::
 
 ### Pulizia automatica dei nomi
@@ -325,7 +325,7 @@ La funzione `clean_names()` del pacchetto `{janitor}` sistema i nomi in
 automatico: rende tutti i nomi minuscoli, trasforma spazi e trattini in
 trattini bassi (`_`) e rimuove i caratteri speciali. È molto facile da
 usare e ti permette di risolvere attraverso una singola riga di codice
-diversi problemi.
+diversi problemi di nomenclatura delle variabili.
 
 Inizia la catena di pulizia: parti da `dati_raw`, applica
 `clean_names()` e salva il risultato in `dati`. Poi guarda i nuovi nomi
@@ -378,8 +378,8 @@ cat("Confronta names(dati_raw) e names(dati): cosa è cambiato?", longmcq(opts))
 
 Adesso proviamo invece a cambiare a mano il nome delle variabili, per
 renderli più brevi o più chiari. Lo strumento principale è la funzione
-`rename()` del pacchetto `{dplyr}` (incluso nel `{tidyverse}`). A
-partire dalla tabella sottostante rinomina le variabili:
+`rename()` del pacchetto `{dplyr}` (incluso nel pacchetto
+`{tidyverse}`). A partire dalla tabella sottostante rinomina le variabili:
 
 | Vecchio nome       | Nuovo nome    |
 |--------------------|---------------|
@@ -639,8 +639,8 @@ precedente):
 #| results: asis
 #| echo: false
 opts <- c(
-  "14",
-  answer = "12",
+  answer =  "14",
+  "13",
   "2"
 )
 
@@ -671,8 +671,9 @@ Confronta il numero di righe (*Number of rows*, in alto nel riepilogo)
 con il numero di valori diversi di `id_subject` (colonna `n_unique`):
 che cosa noti?
 
-Puoi fare lo stesso confronto anche con due comandi: `nrow()` conta le
-righe, `n_distinct()` conta i valori diversi.
+Puoi fare lo stesso confronto anche con due comandi: `nrow()` che conta le
+righe (NB: si applica all'intero dataset), `n_distinct()` che conta i valori diversi
+(NB: si applica a una sola variabile in questo caso `id_subject`). Prova nell'area di prova:
 
 ```{r}
 #| eval: false
@@ -682,7 +683,7 @@ n_distinct(dati$id_subject)
 
 Ci sono più righe che soggetti: alcune righe sono ripetute. La funzione
 `distinct()`, con le parentesi vuote, rimuove le righe **identiche al
-100%**: tra le righe che hanno lo stesso valore in tutte le variabili,
+100%** ovvero tra le righe che hanno lo stesso valore in tutte le variabili,
 tiene solo la prima.
 
 ### Aggiungi alla catena di pulizia
@@ -761,11 +762,12 @@ cat("Quante righe duplicate ha rimosso distinct()?", longmcq(opts))
 ::: {.callout-tip appearance="default" icon="false"}
 ## Approfondimento: duplicati in base a una sola variabile
 
-`distinct(id_subject)` considera "duplicate" le righe con lo stesso
-valore di `id_subject`, anche se le altre variabili sono diverse. Ma
-attenzione: per impostazione predefinita **elimina tutte le altre
-variabili**. Per mantenerle si aggiunge `.keep_all = TRUE`. Confronta i
-risultati nell'area di prova:
+`distinct(id_subject)` considera "duplicate" tutte le righe che presentano
+lo stesso valore di `id_subject`, indipendentemente dai valori delle altre
+variabili. Per impostazione predefinita, mantiene solo la variabile `id_subject`,
+di cui elimina i duplicati, ed elimina tutte le altre colonne. Per conservare anche
+le altre variabili, mantenendo però **solo la prima riga per ciascun soggetto**,
+si aggiunge `.keep_all = TRUE`. Confronta i risultati nell'area di prova:
 
 ```{r}
 #| eval: false
@@ -869,8 +871,9 @@ In tutto troverai:
 ### Trasformare i codici in `NA`: `na_if()`
 
 Per modificare una variabile si usa la funzione `mutate()`, con la
-sintassi `mutate(variabile = funzione(variabile))`. `mutate()` serve sia
-a creare nuove variabili sia a modificare quelle esistenti.
+sintassi `mutate(variabile = funzione(variabile))`. `mutate()` 
+è una funzione molto usata e serve sia a creare nuove variabili sia
+a modificare quelle esistenti.
 
 La funzione `na_if(variabile, "valore")` sostituisce il valore indicato
 con `NA`. Il comando per trasformare `"Unknown"` in `NA` nella variabile
@@ -984,7 +987,7 @@ precedente):
 ### Contare i valori mancanti
 
 Riesegui `tabyl()` su `sex` e `hiv_status` nell'area di prova: ora i
-mancanti compaiono come `NA`, e nella colonna `valid_percent` `tabyl()`
+mancanti compaiono come `NA`, e nella colonna `valid_percent` la funzione `tabyl()`
 calcola le percentuali escludendoli.
 
 Come si contano i valori mancanti? Applicata a una variabile, `is.na()`
@@ -1024,15 +1027,17 @@ cat("Cosa restituisce sum(c(TRUE, FALSE, TRUE, TRUE))?", longmcq(opts))
 :::
 ::::
 
-Con `!is.na()` (il punto esclamativo è la negazione) i `TRUE` e i
+Con `!is.na()` (`!` è l'operatore di negazione) i `TRUE` e i
 `FALSE` si scambiano, e `sum()` conta invece i valori **presenti**.
 
-Per contare gli `NA` di tutte le variabili in un colpo solo c'è
+Per contare i valori `NA` di tutte le variabili in un colpo solo c'è
 `colSums()`. Applicata a tutto il data frame, `is.na(dati)` restituisce
 una tabella di `TRUE` e `FALSE` con le stesse righe e le stesse
 variabili di `dati`. `colSums()` ("somme delle colonne") fa la somma di
 ogni variabile di questa tabella, cioè conta i `TRUE`, variabile per
 variabile: il risultato è il numero di valori mancanti di ciascuna.
+Infine puoi sempre riutilizzare la funzione `skim()` per avere un riepilogo 
+dei valori mancanti in tutte le variabili del dataframe.
 
 Prova nell'area di prova:
 
@@ -1041,6 +1046,7 @@ Prova nell'area di prova:
 sum(is.na(dati$sex))     # valori mancanti
 sum(!is.na(dati$sex))    # valori presenti
 colSums(is.na(dati))     # valori mancanti in ogni variabile
+skim(dati)               # riepilogo dei valori mancanti
 ```
 
 ::: {.callout-tip appearance="default" icon="false"}
@@ -1057,14 +1063,16 @@ mancanti.
 
 ### Le classi delle variabili
 
-Ogni variabile ha una **classe**, che dice a R come interpretarne i
-valori. Le più comuni sono:
+Ogni variabile ha una **classe**, che definisce il tipo di dato che contiene
+e indica a R come interpretarne i valori. Le più comuni sono:
 
 -   "numeric" (numeri, anche con decimali)
 -   "integer" (solo numeri interi)
 -   "character" (testo)
+-   "factor" (categorie, con un ordine definito)
 -   "logical" (`TRUE`/`FALSE`)
 -   "Date" (date)
+-   "POSIXct" (data e ora)
 
 La classe di una variabile si controlla con `class()`. Prova nell'area
 di prova:
@@ -1095,8 +1103,8 @@ va prima ricodificato. Lo faremo nel Modulo 3.
 ### Cambiare classe
 
 Per cambiare classe ci sono le funzioni `as.numeric()`,
-`as.character()`, `as.integer()`, ecc.: basta mettere il nome della
-variabile tra le parentesi.
+`as.character()`, `as.integer()`, `as.factor()`, `as.Date()` e altre ancora. 
+Basta mettere il nome della variabile tra le parentesi.
 
 ::: {.callout-warning appearance="default" icon="false"}
 ## Attenzione ai warning e agli errori
@@ -1294,12 +1302,12 @@ prova <- dmy(dati$date_event)
 range(prova, na.rm = TRUE)
 ```
 
-`range()` restituisce il valore più piccolo e quello più grande, qui la
-data più vecchia e quella più recente: è il modo più rapido per
-controllare che le date siano plausibili. L'argomento `na.rm = TRUE`
-("NA remove", togli gli `NA`) dice a R di ignorare i valori mancanti.
-Senza, basta un solo `NA` perché il risultato sia `NA`: R non può sapere
-quale sia il valore minimo se uno dei valori è sconosciuto.
+`range()` restituisce il valore più piccolo e quello più grande di una variabile: in questo caso, rispettivamente, la data più vecchia e quella più recente. È quindi un modo rapido per verificare che l'intervallo temporale dei dati sia plausibile.
+
+::: {.callout-warning appearance="default" icon="false"}
+## Attenzione all'argomento: na.rm = TRUE
+
+L'argomento `na.rm = TRUE` (`NA` remove) indica a R di escludere i valori mancanti (`NA`) dal calcolo. Questo è importante perché, per impostazione predefinita, R considera i valori mancanti nel calcolo: se anche un solo valore è `NA`, non può determinare con certezza il minimo e il massimo e restituisce `NA` come risultato. Con `na.rm = TRUE`, invece, il calcolo viene effettuato utilizzando soltanto i valori disponibili. 
 
 ```{r}
 #| echo: true
@@ -1307,9 +1315,10 @@ range(c(3, NA, 7))
 range(c(3, NA, 7), na.rm = TRUE)
 ```
 
-Lo stesso argomento si usa con le altre funzioni che riassumono molti
-valori in uno, come `sum()`, `mean()`, `min()` e `max()`. Lo ritroverai
-nella verifica finale, dove controlli le età e le date con `range()`.
+Lo stesso argomento `na.rm = TRUE` si usa con le altre funzioni che riassumono 
+molti valori in uno, come `sum()`, `mean()`, `min()` e `max()`. Lo ritroverai
+nella verifica finale, dove controllerai le età e le date con `range()`.
+:::
 
 Le date ora cadono tutte nel 2021, ma compare il warning "1 failed to
 parse": un valore **non** è stato convertito. Per capire quale, guarda
@@ -1422,8 +1431,8 @@ dati %>%
 
 Nel Viewer clicca sull'intestazione della colonna `prova` per ordinarla:
 i valori non convertiti (`NA`) finiscono in fondo, e accanto vedi come
-erano scritti in `date_vacc`. Il comando non usa `<-`, quindi non
-modifica `dati`.
+erano scritti in `date_vacc`. Il comando non usa l'operatore di assegnazione `<-`,
+quindi non modifica `dati`.
 
 Nella stessa variabile ci sono **formati diversi**: oltre alle date
 scritte come anno-mese-giorno, ci sono date scritte come
@@ -1436,7 +1445,8 @@ indicando nell'argomento `orders` tutti i formati presenti. Qui gli
 ordini sono due: anno-mese-giorno (`"Ymd"`) e giorno-mese-anno
 (`"dmY"`). La `Y` maiuscola indica l'anno a 4 cifre. Poiché
 `parse_date_time()` restituisce data **e ora** (classe "POSIXct"), va
-racchiusa in `as.Date()`:
+racchiusa in `as.Date()` per ottenere solo la data (classe "Date").  
+Prova nell'area di prova:
 
 ```{r}
 #| eval: false
@@ -1449,8 +1459,10 @@ Il riquadro riassume come gestire le date.
 ::: {.callout-tip appearance="default" icon="false"}
 ## Approfondimento: gestire le date in R
 
-**1. Prima guarda come sono scritte** (`head()`, `tabyl()`): R importa
-le date dei file CSV come testo (`character`).
+**0. Prima controlla la classe della variabile** (`class()`, `skim()`): Nei file CSV 
+le date sono memorizzate come testo. Durante l'importazione con `import`, R tenta di riconoscerle automaticamente, ma non sempre ci riesce. È quindi importante verificare la classe delle variabili temporali dopo l'importazione e, se necessario, convertirle esplicitamente in Date come descritto di seguito.
+
+**1. Guarda come sono scritte** (`head()`, `tabyl()`): guarda i primi valori della variabile o la sua distribuzione di frequenza per cercare di capire l'**ordine** di giorno (d), mese (m) e anno (y) nel dato grezzo o se ci sono più ordinamenti nella stessa variabile. Se ci sono più ordinamenti, annotali tutti. 
 
 **2. Un solo formato nella variabile → una funzione di `{lubridate}`**,
 scelta in base all'**ordine** di giorno (d), mese (m) e anno (y) **nel
@@ -1474,7 +1486,7 @@ dei dati, e nel dubbio chiedi a chi li ha prodotti.
 **3. Più formati nella stessa variabile → `parse_date_time()`**, con
 l'elenco dei formati presenti nell'argomento `orders`. Poiché
 restituisce data **e ora** (classe "POSIXct"), va racchiusa in
-`as.Date()`:
+`as.Date()` per ottenere solo la data (classe "Date"). :
 
 ``` r
 as.Date(parse_date_time(date_vacc, orders = c("Ymd", "dmY")))
@@ -1489,7 +1501,8 @@ esempio `orders = c("Ymd", "dmY", "dmy")`.
 **5. Controlla sempre il risultato**: `range()` delle date. Una data del
 2008 o del 2031 in una coorte del 2021 è un campanello d'allarme.
 
-**6. L'alternativa di `{base}`: `as.Date()` con i codici di formato.**
+**6. L'alternativa della libreria base di R `{base}`:** si può usare anche 
+la funzione di R base `as.Date()` con i codici di formato.
 Il formato si descrive con codici che iniziano con `%`. Gli stessi
 codici servono anche a `format()` per **scrivere** una data nel formato
 che vuoi, per esempio in un report.
@@ -1575,7 +1588,7 @@ Aggiungi alla catena un `mutate()` che converta:
 
 -   `date_event` con `dmy()`;
 -   `date_end_fu` con `dmy()`;
--   `date_vacc` con `parse_date_time()` e `as.Date()`, usando
+-   `date_vacc` con `parse_date_time()` innestato in `as.Date()`, usando
     `orders = c("Ymd", "dmY")`.
 
 Poi controlla nell'area di prova che le date cadano tutte nel 2021:
@@ -1808,9 +1821,9 @@ In questo modulo hai imparato a:
 -   trasformare in `NA` i codici di valore mancante e le celle vuote con
     `na_if()` (con la scorciatoia `across()` per più variabili insieme)
     e contare i mancanti con `is.na()`;
--   convertire le variabili nella classe corretta con `as.numeric()`;
+-   convertire le variabili numeriche nella classe corretta con `as.numeric()`;
 -   convertire le stringhe in date con `{lubridate}` (`ymd()`, `dmy()`,
-    `mdy()`, `parse_date_time()`);
+    `mdy()`, `parse_date_time()`, `as.Date()`);
 -   controllare sempre il risultato (`tabyl()`, `range()`,
     `colSums(is.na())`).
 
