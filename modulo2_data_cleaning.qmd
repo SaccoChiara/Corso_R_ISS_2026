@@ -1725,102 +1725,102 @@ cat("colSums(is.na(dati)) mostra moltissimi NA in date_event. Cosa significano?"
 :::
 ::::
 
-## Lo script completo
+<!-- ## Lo script completo -->
 
-Ecco come dovrebbe essere la parte del tuo script relativa a questa
-esercitazione. Confrontala con la tua: i commenti e i comandi di
-esplorazione possono essere diversi, ma la catena di pulizia deve fare
-le stesse cose, nello stesso ordine. È anche il codice da copiare e
-incollare all'inizio delle prossime esercitazioni, per partire tutti
-dallo stesso punto.
+<!-- Ecco come dovrebbe essere la parte del tuo script relativa a questa -->
+<!-- esercitazione. Confrontala con la tua: i commenti e i comandi di -->
+<!-- esplorazione possono essere diversi, ma la catena di pulizia deve fare -->
+<!-- le stesse cose, nello stesso ordine. È anche il codice da copiare e -->
+<!-- incollare all'inizio delle prossime esercitazioni, per partire tutti -->
+<!-- dallo stesso punto. -->
 
-<details>
+<!-- <details> -->
 
-<summary style="text-decoration: underline; color: blue;">
+<!-- <summary style="text-decoration: underline; color: blue;"> -->
 
-`r fontawesome::fa("check", fill = "blue")` Clicca per vedere lo script
-completo
+<!-- `r fontawesome::fa("check", fill = "blue")` Clicca per vedere lo script -->
+<!-- completo -->
 
-</summary>
+<!-- </summary> -->
 
-</br>
+<!-- </br> -->
 
-```{r}
-#| echo: true
-#| eval: false
+<!-- ```{r} -->
+<!-- #| echo: true -->
+<!-- #| eval: false -->
 
-# Modulo 2 - Pulizia e preparazione dei dati ==============================
+<!-- # Modulo 2 - Pulizia e preparazione dei dati ============================== -->
 
-# Pulizia dei dati --------------------------------------------------------
-dati <- dati_raw %>%
-  # pulizia automatica dei nomi delle variabili
-  clean_names() %>%
-  # pulizia manuale dei nomi delle variabili (NUOVO = VECCHIO)
-  rename(
-    id_subject  = subject_id,
-    chrls_index = charlson_index,
-    chrls_score = charlson_score,
-    date_vacc   = vaccination_date,
-    date_end_fu = end_follow_up,
-    date_event  = event_date) %>%
-  # eliminazione delle variabili non necessarie
-  select(-row_number_original, -internal_note) %>%
-  # rimozione delle righe duplicate
-  distinct() %>%
-  mutate(
-    # codici di valore mancante -> NA
-    sex        = na_if(sex, "Unknown"),
-    age        = na_if(age, "Unknown"),
-    age        = na_if(age, "N/D"),
-    age_group  = na_if(age_group, "Unknown"),
-    age_group  = na_if(age_group, "999999"),
-    hiv_status = na_if(hiv_status, "9"),
-    hiv_status = na_if(hiv_status, "99999"),
-    # celle vuote "" -> NA
-    region     = na_if(region, ""),
-    age_group  = na_if(age_group, ""),
-    hiv_status = na_if(hiv_status, ""),
-    date_event = na_if(date_event, "")
-  ) %>%
-  # conversione dell'età in numero
-  mutate(age = as.numeric(age)) %>%
-  # conversione delle date in classe Date
-  mutate(
-    date_event  = dmy(date_event),
-    date_end_fu = dmy(date_end_fu),
-    date_vacc   = as.Date(parse_date_time(date_vacc, orders = c("Ymd", "dmY")))
-  )
-
-
-# Verifica ----------------------------------------------------------------
-nrow(dati_raw) - nrow(dati)
-str(dati)
-dati %>% tabyl(region)
-dati %>% tabyl(sex)
-dati %>% tabyl(age_group)
-dati %>% tabyl(hiv_status)
-range(dati$age, na.rm = TRUE)
-range(dati$date_vacc, na.rm = TRUE)
-range(dati$date_end_fu, na.rm = TRUE)
-range(dati$date_event, na.rm = TRUE)
-colSums(is.na(dati))
-dati %>% tabyl(chrls_index, chrls_score)
+<!-- # Pulizia dei dati -------------------------------------------------------- -->
+<!-- dati <- dati_raw %>% -->
+<!--   # pulizia automatica dei nomi delle variabili -->
+<!--   clean_names() %>% -->
+<!--   # pulizia manuale dei nomi delle variabili (NUOVO = VECCHIO) -->
+<!--   rename( -->
+<!--     id_subject  = subject_id, -->
+<!--     chrls_index = charlson_index, -->
+<!--     chrls_score = charlson_score, -->
+<!--     date_vacc   = vaccination_date, -->
+<!--     date_end_fu = end_follow_up, -->
+<!--     date_event  = event_date) %>% -->
+<!--   # eliminazione delle variabili non necessarie -->
+<!--   select(-row_number_original, -internal_note) %>% -->
+<!--   # rimozione delle righe duplicate -->
+<!--   distinct() %>% -->
+<!--   mutate( -->
+<!--     # codici di valore mancante -> NA -->
+<!--     sex        = na_if(sex, "Unknown"), -->
+<!--     age        = na_if(age, "Unknown"), -->
+<!--     age        = na_if(age, "N/D"), -->
+<!--     age_group  = na_if(age_group, "Unknown"), -->
+<!--     age_group  = na_if(age_group, "999999"), -->
+<!--     hiv_status = na_if(hiv_status, "9"), -->
+<!--     hiv_status = na_if(hiv_status, "99999"), -->
+<!--     # celle vuote "" -> NA -->
+<!--     region     = na_if(region, ""), -->
+<!--     age_group  = na_if(age_group, ""), -->
+<!--     hiv_status = na_if(hiv_status, ""), -->
+<!--     date_event = na_if(date_event, "") -->
+<!--   ) %>% -->
+<!--   # conversione dell'età in numero -->
+<!--   mutate(age = as.numeric(age)) %>% -->
+<!--   # conversione delle date in classe Date -->
+<!--   mutate( -->
+<!--     date_event  = dmy(date_event), -->
+<!--     date_end_fu = dmy(date_end_fu), -->
+<!--     date_vacc   = as.Date(parse_date_time(date_vacc, orders = c("Ymd", "dmY"))) -->
+<!--   ) -->
 
 
-# Area di prova -----------------------------------------------------------
-# (il contenuto può variare)
-```
+<!-- # Verifica ---------------------------------------------------------------- -->
+<!-- nrow(dati_raw) - nrow(dati) -->
+<!-- str(dati) -->
+<!-- dati %>% tabyl(region) -->
+<!-- dati %>% tabyl(sex) -->
+<!-- dati %>% tabyl(age_group) -->
+<!-- dati %>% tabyl(hiv_status) -->
+<!-- range(dati$age, na.rm = TRUE) -->
+<!-- range(dati$date_vacc, na.rm = TRUE) -->
+<!-- range(dati$date_end_fu, na.rm = TRUE) -->
+<!-- range(dati$date_event, na.rm = TRUE) -->
+<!-- colSums(is.na(dati)) -->
+<!-- dati %>% tabyl(chrls_index, chrls_score) -->
 
-</br>
 
-</details>
+<!-- # Area di prova ----------------------------------------------------------- -->
+<!-- # (il contenuto può variare) -->
+<!-- ``` -->
 
-Salva lo script e avvisa il docente che hai finito. Domani mattina, nel
-Modulo 3, continuerai a lavorare su questo stesso script,
-`pulizia_dati.R`. Se non hai completato l'esercizio, nella cartella
-`script/backup` trovi la versione corretta dello script,
-`backup_pulizia_dati.R`: contiene anche le soluzioni del Modulo 3,
-quindi per ora copia nel tuo script solo la parte dei Moduli 1 e 2.
+<!-- </br> -->
+
+<!-- </details> -->
+
+<!-- Salva lo script e avvisa il docente che hai finito. Domani mattina, nel -->
+<!-- Modulo 3, continuerai a lavorare su questo stesso script, -->
+<!-- `pulizia_dati.R`. Se non hai completato l'esercizio, nella cartella -->
+<!-- `script/backup` trovi la versione corretta dello script, -->
+<!-- `backup_pulizia_dati.R`: contiene anche le soluzioni del Modulo 3, -->
+<!-- quindi per ora copia nel tuo script solo la parte dei Moduli 1 e 2. -->
 
 ## Riepilogo
 

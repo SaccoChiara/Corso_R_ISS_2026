@@ -799,59 +799,59 @@ cat("Domanda: Qual è la media della variabile 'Charlson score'?", longmcq(opts)
 :::::::::
 <!-- non è stato spiegato il comando Run per lanciare il codice, può essere utile? -->
 
-## Lo script completo
+<!-- ## Lo script completo -->
 
-Ecco come dovrebbe essere la parte del tuo script relativa a questa
-esercitazione. Confrontala con la tua: i commenti e alcuni comandi possono essere diversi, ma le funzioni utilizzate devono fare le stesse cose, nello stesso ordine. È anche il codice da copiare e
-incollare all'inizio delle prossime esercitazioni, per partire tutti
-dallo stesso punto.
+<!-- Ecco come dovrebbe essere la parte del tuo script relativa a questa -->
+<!-- esercitazione. Confrontala con la tua: i commenti e alcuni comandi possono essere diversi, ma le funzioni utilizzate devono fare le stesse cose, nello stesso ordine. È anche il codice da copiare e -->
+<!-- incollare all'inizio delle prossime esercitazioni, per partire tutti -->
+<!-- dallo stesso punto. -->
 
-<details>
+<!-- <details> -->
 
-<summary style="text-decoration: underline; color: blue;">
+<!-- <summary style="text-decoration: underline; color: blue;"> -->
 
-`r fontawesome::fa("check", fill = "blue")` Clicca per vedere lo script
-completo
+<!-- `r fontawesome::fa("check", fill = "blue")` Clicca per vedere lo script -->
+<!-- completo -->
 
-</summary>
+<!-- </summary> -->
 
-</br>
+<!-- </br> -->
 
-```{r}
-#| echo: true
-#| eval: false
-### Corso introduttivo a R
-### Obiettivo: Imparare la sintassi base di R
-### Autore: Marco Rossi
-### Data di creazione: 10 dicembre 2026
-### Data di ultimo aggiornamento: 11 dicembre 2026
-### Contatto: marco.rossi@iss.it
-
-
-# Caricamento pacchetti ---------------------------------------------------
-pacman::p_load(
-  rio, # importazione dati
-  skimr, # ottieni panoramica dei dati
-  janitor, # pulizia dati e tabelle
-  lubridate, # lavorare con le date
-  epikit, # per creare categorie di età
-  gtsummary, # statistiche riassuntive, test e regressioni
-  tidyverse # gestione e visualizzazione dati
-)
+<!-- ```{r} -->
+<!-- #| echo: true -->
+<!-- #| eval: false -->
+<!-- ### Corso introduttivo a R -->
+<!-- ### Obiettivo: Imparare la sintassi base di R -->
+<!-- ### Autore: Marco Rossi -->
+<!-- ### Data di creazione: 10 dicembre 2026 -->
+<!-- ### Data di ultimo aggiornamento: 11 dicembre 2026 -->
+<!-- ### Contatto: marco.rossi@iss.it -->
 
 
-# Importazione dati -------------------------------------------------------
-dati_raw <- import("dati/dataset_esercitazione_raw.csv")
+<!-- # Caricamento pacchetti --------------------------------------------------- -->
+<!-- pacman::p_load( -->
+<!--   rio, # importazione dati -->
+<!--   skimr, # ottieni panoramica dei dati -->
+<!--   janitor, # pulizia dati e tabelle -->
+<!--   lubridate, # lavorare con le date -->
+<!--   epikit, # per creare categorie di età -->
+<!--   gtsummary, # statistiche riassuntive, test e regressioni -->
+<!--   tidyverse # gestione e visualizzazione dati -->
+<!-- ) -->
 
-# Esplorazione ------------------------------------------------------------
-skim(dati_raw)
-```
 
-</br>
+<!-- # Importazione dati ------------------------------------------------------- -->
+<!-- dati_raw <- import("dati/dataset_esercitazione_raw.csv") -->
 
-</details>
+<!-- # Esplorazione ------------------------------------------------------------ -->
+<!-- skim(dati_raw) -->
+<!-- ``` -->
 
-Salva lo script.
+<!-- </br> -->
+
+<!-- </details> -->
+
+<!-- Salva lo script. -->
 
 ## Riepilogo
 
