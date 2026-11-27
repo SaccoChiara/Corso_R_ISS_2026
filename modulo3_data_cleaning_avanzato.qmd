@@ -34,13 +34,13 @@ pacman::p_load(
   webexercises
 )
 
-# dataset grezzo, usato solo negli approfondimenti
+# dataframe grezzo, usato solo negli approfondimenti
 dati_raw <- import("materiali_corso_R/dati/dataset_esercitazione_raw.csv")
 ```
 
-# **Corso introduttivo al software statistico R**
+# **Corso base di R per la gestione e analisi dei dati**
 
-# Modulo 03 Pulizia dei dati: approfondimento
+# Modulo 03 - Pulizia dei dati: approfondimento
 
 ## Obiettivi del modulo
 
@@ -162,11 +162,11 @@ cat("Domanda di esempio: quanto fa 2 + 2?", longmcq(opts))
 ::::
 
 Lungo il modulo troverai anche due tipi di riquadri colorati. I riquadri
-**gialli** segnalano errori frequenti o punti in cui R si comporta in
+**arancioni** segnalano errori frequenti o punti in cui R si comporta in
 modo inatteso: leggili sempre, perché possono farti risparmiare tempo.
 
 ```{=html}
-<!-- ISTRUZIONI: Il box giallo "Attenzione a …" va usato per avvisi
+<!-- ISTRUZIONI: Il box arancione "Attenzione a …" va usato per avvisi
      importanti: errori comuni, comportamenti di R che possono
      sorprendere, passaggi da non saltare. Il titolo inizia sempre con
      "Attenzione a" (es. "Attenzione ai nomi con spazi"). Copia
@@ -212,7 +212,7 @@ Moduli 1 e 2. Per ricreare gli oggetti di ieri, esegui tutto il codice
 che sta sopra l'area di prova: metti il cursore sulla riga del titolo
 "Area di prova" e premi **Ctrl + Alt + B** (**Cmd + Option + B** su
 Mac). R carica i pacchetti, importa i dati grezzi e ricrea `dati`, il
-dataset pulito nel Modulo 2.
+dataframe pulito nel Modulo 2.
 
 Se lo script dà errori che non riesci a risolvere, nella cartella
 `script/backup` trovi la versione corretta di `backup_pulizia_dati.R`: contiene anche
@@ -235,7 +235,7 @@ l'esercitazione.**
 
 ### I dati
 
-Ripartiamo da `dati`, il dataset che hai pulito ieri nel Modulo 2 e che
+Ripartiamo da `dati`, il dataframe che hai pulito ieri nel Modulo 2 e che
 hai appena ricreato eseguendo lo script. Controlla nel pannello
 **Environment** che ci sia e, nell'area di prova, controlla con
 `class()` la classe della variabile `date_vacc`.
@@ -315,7 +315,7 @@ Troverai:
     parte dello studio.
 
 In questo modulo sistemerai questi problemi, creerai alcune nuove
-variabili utili per le analisi e salverai il dataset finale.
+variabili utili per le analisi e salverai il dataframe finale.
 
 Costruirai una nuova catena di pulizia che parte da `dati` appena
 importati e crea un nuovo oggetto, `dati_clean`.
@@ -1170,7 +1170,7 @@ precedente):
 
 ### Età e classe di età sono coerenti?
 
-Il dataset contiene sia l'età (`age`) sia la classe di età
+Il dataframe contiene sia l'età (`age`) sia la classe di età
 (`age_group`): le due informazioni dovrebbero coincidere. Per
 verificarlo, ricalcola nell'area di prova la classe a partire dall'età
 con `ifelse()`, in una nuova variabile `age_group_calc`, e confrontala
@@ -1634,7 +1634,7 @@ Quante righe hai tolto in tutto? Confronta `nrow(dati)` e
 Guarda l'ordine delle variabili di `dati_clean` (per esempio con
 `names(dati_clean)`): le nuove variabili sono in fondo, lontane da
 quelle a cui si riferiscono. L'ordine non cambia nulla per R, ma se
-esportiamo il dataset e lo condividiamo con un collega conviene che le
+esportiamo il dataframe e lo condividiamo con un collega conviene che le
 variabili collegate siano vicine, per esempio `age`, `age_group` e
 `age_cat`.
 
@@ -1685,13 +1685,13 @@ precedente):
 ## Verifica finale
 
 Crea la sezione "Verifica" (**Ctrl+Shift+R**), subito dopo la catena di
-pulizia, e controlla il dataset finale:
+pulizia, e controlla il dataframe finale:
 
 ```{r}
 #| eval: false
 # Verifica ----------------------------------------------------------------
 
-# righe tolte e struttura del dataset
+# righe tolte e struttura del dataframe
 nrow(dati) - nrow(dati_clean)
 names(dati_clean)
 sapply(dati_clean, class)
@@ -1742,7 +1742,7 @@ cat("Quante righe sono state tolte in tutto dalla catena di questo modulo, rispe
 
 ## Salvare i dati puliti
 
-Ora che il dataset è pulito, salviamolo in un file, così potrai
+Ora che il dataframe è pulito, salviamolo in un file, così potrai
 riprenderlo senza rifare la pulizia. Si usa la funzione `export()` del
 pacchetto `{rio}`, la "gemella" di `import()`: il primo argomento è
 l'oggetto da salvare, il secondo è il percorso del file, tra virgolette.
@@ -1817,7 +1817,7 @@ cat("Con export(), che cosa decide il formato del file salvato?", longmcq(opts))
 
 ## Approfondimenti
 
-Se hai finito in anticipo, prova questi esercizi partendo dal dataset
+Se hai finito in anticipo, prova questi esercizi partendo dal dataframe
 `dati_clean`.
 
 ### Focus sugli ultraottantenni con HIV
@@ -1867,7 +1867,7 @@ se un certo testo (`pattern`) compare in un valore (`string`), e `FALSE`
 altrimenti. Si usa spesso dentro `filter()`. Attenzione: come `==`,
 distingue le maiuscole dalle minuscole.
 
-Partendo dal dataset grezzo `dati_raw`, trova le righe in cui la regione
+Partendo dal dataframe grezzo `dati_raw`, trova le righe in cui la regione
 contiene la parola `"Region"`: sono proprio i valori che abbiamo dovuto
 ricodificare.
 
@@ -1895,117 +1895,117 @@ dati_raw %>%
 
 </details>
 
-## Lo script completo
+<!-- ## Lo script completo -->
 
-Ecco come dovrebbe essere la parte del tuo script relativa a questa
-esercitazione. Confrontala con la tua: i commenti e i comandi di prova
-possono essere diversi, ma la catena di pulizia deve fare le stesse
-cose, nello stesso ordine. Lo script completo dei Moduli 1, 2 e 3 lo
-trovi anche nella cartella `script/backup`, nel file `backup_pulizia_dati.R`.
+<!-- Ecco come dovrebbe essere la parte del tuo script relativa a questa -->
+<!-- esercitazione. Confrontala con la tua: i commenti e i comandi di prova -->
+<!-- possono essere diversi, ma la catena di pulizia deve fare le stesse -->
+<!-- cose, nello stesso ordine. Lo script completo dei Moduli 1, 2 e 3 lo -->
+<!-- trovi anche nella cartella `script/backup`, nel file `backup_pulizia_dati.R`. -->
 
-<details>
+<!-- <details> -->
 
-<summary style="text-decoration: underline; color: blue;">
+<!-- <summary style="text-decoration: underline; color: blue;"> -->
 
-`r fontawesome::fa("check", fill = "blue")` Clicca per vedere lo script
-completo
+<!-- `r fontawesome::fa("check", fill = "blue")` Clicca per vedere lo script -->
+<!-- completo -->
 
-</summary>
+<!-- </summary> -->
 
-</br>
+<!-- </br> -->
 
-```{r}
-#| echo: true
-#| eval: false
+<!-- ```{r} -->
+<!-- #| echo: true -->
+<!-- #| eval: false -->
 
-# Modulo 3 - Pulizia dei dati: approfondimento =============================
+<!-- # Modulo 3 - Pulizia dei dati: approfondimento ============================= -->
 
-# Pulizia dei dati --------------------------------------------------------
-dati_clean <- dati %>%
-  # variabile evento: 1 se c'è una data di evento, 0 altrimenti
-  mutate(event = ifelse(is.na(date_event), 0, 1)) %>%
-  mutate(
-    # ricodifica del sesso
-    sex = case_when(
-      sex == "m"                          ~ "M",
-      sex %in% c("f", "Female", "FEMALE") ~ "F",
-      TRUE                                ~ sex),
-    # ricodifica della regione
-    region = case_when(
-      region %in% c("a", "Region A") ~ "A",
-      region == "Region D"           ~ "D",
-      region == "f"                  ~ "F",
-      TRUE                           ~ region),
-    # ricodifica dello stato HIV in numero (0 = assenza, 1 = presenza)
-    hiv_status = case_when(
-      hiv_status %in% c("1", "Yes") ~ 1,
-      hiv_status == "0"             ~ 0),
-    # stato HIV con le etichette, per tabelle e grafici
-    hiv = factor(hiv_status,
-                 levels = c(0, 1),
-                 labels = c("Senza HIV", "Con HIV")),
-    # classe di età: tolti gli spazi ("60 +" diventa "60+")
-    age_group = str_remove_all(age_group, " ")
-  ) %>%
-  # controllo della coerenza della data dell'evento
-  mutate(event_check = case_when(
-    is.na(date_event)        ~ "nessun evento",
-    date_event < date_vacc   ~ "evento prima della vaccinazione",
-    date_event > date_end_fu ~ "evento dopo la fine del follow-up",
-    TRUE                     ~ "evento durante il follow-up")) %>%
-  mutate(
-    # classi di età di 10 anni
-    age_cat = age_categories(age, breakers = c(18, 30, 40, 50, 60, 70, 80)),
-    # classe di età ricalcolata dall'età
-    age_group_calc = ifelse(age >= 60, "60+", "18-59"),
-    # priorità alla classe calcolata dall'età, altrimenti quella originale
-    age_group = coalesce(age_group_calc, age_group)
-  ) %>%
-  # durata del follow-up in giorni
-  mutate(fu_days = as.numeric(date_end_fu - date_vacc)) %>%
-  # solo regioni dello studio (esclude E, F e regione mancante) e stato HIV noto
-  filter(region %in% c("A", "B", "C", "D") & !is.na(hiv_status)) %>%
-  # esclusione dei follow-up di durata negativa
-  filter(fu_days >= 0) %>%
-  # esclusione degli eventi fuori dal periodo di follow-up
-  filter(event_check %in% c("nessun evento", "evento durante il follow-up")) %>%
-  # riordino delle variabili (event_check e age_group_calc vengono eliminate)
-  select(id_subject, group, region, sex, age, age_group, age_cat,
-         chrls_score, chrls_index, hiv_status, hiv, starts_with("date_"),
-         fu_days, event, anticorpi, cd4)
-
-
-# Verifica ----------------------------------------------------------------
-nrow(dati) - nrow(dati_clean)
-names(dati_clean)
-str(dati_clean)
-dati_clean %>% tabyl(region)
-dati_clean %>% tabyl(sex)
-dati_clean %>% tabyl(age_group)
-dati_clean %>% tabyl(age_cat)
-dati_clean %>% tabyl(hiv_status)
-dati_clean %>% tabyl(hiv)
-dati_clean %>% tabyl(event)
-range(dati_clean$fu_days)
-colSums(is.na(dati_clean))
+<!-- # Pulizia dei dati -------------------------------------------------------- -->
+<!-- dati_clean <- dati %>% -->
+<!--   # variabile evento: 1 se c'è una data di evento, 0 altrimenti -->
+<!--   mutate(event = ifelse(is.na(date_event), 0, 1)) %>% -->
+<!--   mutate( -->
+<!--     # ricodifica del sesso -->
+<!--     sex = case_when( -->
+<!--       sex == "m"                          ~ "M", -->
+<!--       sex %in% c("f", "Female", "FEMALE") ~ "F", -->
+<!--       TRUE                                ~ sex), -->
+<!--     # ricodifica della regione -->
+<!--     region = case_when( -->
+<!--       region %in% c("a", "Region A") ~ "A", -->
+<!--       region == "Region D"           ~ "D", -->
+<!--       region == "f"                  ~ "F", -->
+<!--       TRUE                           ~ region), -->
+<!--     # ricodifica dello stato HIV in numero (0 = assenza, 1 = presenza) -->
+<!--     hiv_status = case_when( -->
+<!--       hiv_status %in% c("1", "Yes") ~ 1, -->
+<!--       hiv_status == "0"             ~ 0), -->
+<!--     # stato HIV con le etichette, per tabelle e grafici -->
+<!--     hiv = factor(hiv_status, -->
+<!--                  levels = c(0, 1), -->
+<!--                  labels = c("Senza HIV", "Con HIV")), -->
+<!--     # classe di età: tolti gli spazi ("60 +" diventa "60+") -->
+<!--     age_group = str_remove_all(age_group, " ") -->
+<!--   ) %>% -->
+<!--   # controllo della coerenza della data dell'evento -->
+<!--   mutate(event_check = case_when( -->
+<!--     is.na(date_event)        ~ "nessun evento", -->
+<!--     date_event < date_vacc   ~ "evento prima della vaccinazione", -->
+<!--     date_event > date_end_fu ~ "evento dopo la fine del follow-up", -->
+<!--     TRUE                     ~ "evento durante il follow-up")) %>% -->
+<!--   mutate( -->
+<!--     # classi di età di 10 anni -->
+<!--     age_cat = age_categories(age, breakers = c(18, 30, 40, 50, 60, 70, 80)), -->
+<!--     # classe di età ricalcolata dall'età -->
+<!--     age_group_calc = ifelse(age >= 60, "60+", "18-59"), -->
+<!--     # priorità alla classe calcolata dall'età, altrimenti quella originale -->
+<!--     age_group = coalesce(age_group_calc, age_group) -->
+<!--   ) %>% -->
+<!--   # durata del follow-up in giorni -->
+<!--   mutate(fu_days = as.numeric(date_end_fu - date_vacc)) %>% -->
+<!--   # solo regioni dello studio (esclude E, F e regione mancante) e stato HIV noto -->
+<!--   filter(region %in% c("A", "B", "C", "D") & !is.na(hiv_status)) %>% -->
+<!--   # esclusione dei follow-up di durata negativa -->
+<!--   filter(fu_days >= 0) %>% -->
+<!--   # esclusione degli eventi fuori dal periodo di follow-up -->
+<!--   filter(event_check %in% c("nessun evento", "evento durante il follow-up")) %>% -->
+<!--   # riordino delle variabili (event_check e age_group_calc vengono eliminate) -->
+<!--   select(id_subject, group, region, sex, age, age_group, age_cat, -->
+<!--          chrls_score, chrls_index, hiv_status, hiv, starts_with("date_"), -->
+<!--          fu_days, event, anticorpi, cd4) -->
 
 
-# Salvataggio dei dati puliti ---------------------------------------------
-export(dati_clean, "dati/dati_clean_NOME.rds")
+<!-- # Verifica ---------------------------------------------------------------- -->
+<!-- nrow(dati) - nrow(dati_clean) -->
+<!-- names(dati_clean) -->
+<!-- str(dati_clean) -->
+<!-- dati_clean %>% tabyl(region) -->
+<!-- dati_clean %>% tabyl(sex) -->
+<!-- dati_clean %>% tabyl(age_group) -->
+<!-- dati_clean %>% tabyl(age_cat) -->
+<!-- dati_clean %>% tabyl(hiv_status) -->
+<!-- dati_clean %>% tabyl(hiv) -->
+<!-- dati_clean %>% tabyl(event) -->
+<!-- range(dati_clean$fu_days) -->
+<!-- colSums(is.na(dati_clean)) -->
 
 
-# Area di prova -----------------------------------------------------------
-# (il contenuto può variare)
-```
+<!-- # Salvataggio dei dati puliti --------------------------------------------- -->
+<!-- export(dati_clean, "dati/dati_clean_NOME.rds") -->
 
-</br>
 
-</details>
+<!-- # Area di prova ----------------------------------------------------------- -->
+<!-- # (il contenuto può variare) -->
+<!-- ``` -->
 
-Salva lo script e avvisa il docente che hai finito. Lo script
-`pulizia_dati.R` è completo: nel pomeriggio, nel Modulo 4, inizierai uno
-script nuovo. Se non hai completato l'esercizio, nella cartella `script/backup`
-trovi la versione corretta di `backup_pulizia_dati.R`.
+<!-- </br> -->
+
+<!-- </details> -->
+
+<!-- Salva lo script e avvisa il docente che hai finito. Lo script -->
+<!-- `pulizia_dati.R` è completo: nel pomeriggio, nel Modulo 4, inizierai uno -->
+<!-- script nuovo. Se non hai completato l'esercizio, nella cartella `script/backup` -->
+<!-- trovi la versione corretta di `backup_pulizia_dati.R`. -->
 
 ## Riepilogo
 
