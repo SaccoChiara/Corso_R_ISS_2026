@@ -2126,8 +2126,6 @@ Le tabelle che hai costruito finora servono a tre scopi diversi:
     largo, con totali e percentuali formattate dalle funzioni
     `adorn_*()`, e rese più leggibili con `{flextable}`.
 
-Le ultime due le salvi in un oggetto e le scrivi nello script.
-
 :::: {.callout-note appearance="minimal" icon="false"}
 **Prova a rispondere!**
 

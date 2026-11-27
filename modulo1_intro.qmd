@@ -286,7 +286,7 @@ Dovresti vedere che RStudio si chiude e si riapre. Se tutto è andato a
 buon fine, nell'angolo in alto a destra dovresti vedere adesso il nome
 del progetto (come nell'immagine sotto).
 
-![](immagini/m1_project.png)
+![](immagini/m1_project03.png)
 
 Se non riesci, puoi trovare più dettagli su ogni passo in questa sezione
 dell'EpiRhandbook su [R
