@@ -1471,12 +1471,12 @@ Il riquadro riassume come gestire le date.
 ::: {.callout-tip appearance="default" icon="false"}
 ## Approfondimento: gestire le date in R
 
-**0. Prima controlla la classe della variabile** (`class()`, `skim()`): Nei file CSV 
+**1. Prima controlla la classe della variabile** (`class()`, `skim()`): Nei file CSV 
 le date sono memorizzate come testo. Durante l'importazione con `import`, R tenta di riconoscerle automaticamente, ma non sempre ci riesce. È quindi importante verificare la classe delle variabili temporali dopo l'importazione e, se necessario, convertirle esplicitamente in Date come descritto di seguito.
 
-**1. Guarda come sono scritte** (`head()`, `tabyl()`): guarda i primi valori della variabile o la sua distribuzione di frequenza per cercare di capire l'**ordine** di giorno (d), mese (m) e anno (y) nel dato grezzo o se ci sono più ordinamenti nella stessa variabile. Se ci sono più ordinamenti, annotali tutti. 
+**2. Guarda come sono scritte** (`head()`, `tabyl()`): guarda i primi valori della variabile o la sua distribuzione di frequenza per cercare di capire l'**ordine** di giorno (d), mese (m) e anno (y) nel dato grezzo o se ci sono più ordinamenti nella stessa variabile. Se ci sono più ordinamenti, annotali tutti. 
 
-**2. Un solo formato nella variabile → una funzione di `{lubridate}`**,
+**3. Un solo formato nella variabile → una funzione di `{lubridate}`**,
 scelta in base all'**ordine** di giorno (d), mese (m) e anno (y) **nel
 dato grezzo**. Per esempio, per il 20 giugno 2021:
 
@@ -1495,7 +1495,7 @@ prima: guarda gli altri valori della variabile (se compare
 `"27/08/2021"`, il primo numero è il giorno) oppure la documentazione
 dei dati, e nel dubbio chiedi a chi li ha prodotti.
 
-**3. Più formati nella stessa variabile → `parse_date_time()`**, con
+**4. Più formati nella stessa variabile → `parse_date_time()`**, con
 l'elenco dei formati presenti nell'argomento `orders`. Poiché
 restituisce data **e ora** (classe "POSIXct"), va racchiusa in
 `as.Date()` per ottenere solo la data (classe "Date"). :
@@ -1504,16 +1504,16 @@ restituisce data **e ora** (classe "POSIXct"), va racchiusa in
 as.Date(parse_date_time(date_vacc, orders = c("Ymd", "dmY")))
 ```
 
-**4. Attenzione all'anno a due cifre**: `ymd("08/06/21")` **non dà
+**5. Attenzione all'anno a due cifre**: `ymd("08/06/21")` **non dà
 errore**, ma restituisce `2008-06-21`! Se in una variabile con più
 formati ci sono anche anni a due cifre, in `orders` si aggiunge `"dmy"`
 (con la `y` minuscola) **dopo** i formati con l'anno a 4 cifre, per
 esempio `orders = c("Ymd", "dmY", "dmy")`.
 
-**5. Controlla sempre il risultato**: `range()` delle date. Una data del
+**6. Controlla sempre il risultato**: `range()` delle date. Una data del
 2008 o del 2031 in una coorte del 2021 è un campanello d'allarme.
 
-**6. L'alternativa della libreria base di R `{base}`:** si può usare anche 
+**7. L'alternativa della libreria base di R `{base}`:** si può usare anche 
 la funzione di R base `as.Date()` con i codici di formato.
 Il formato si descrive con codici che iniziano con `%`. Gli stessi
 codici servono anche a `format()` per **scrivere** una data nel formato

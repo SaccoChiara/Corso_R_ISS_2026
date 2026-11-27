@@ -25,7 +25,6 @@ editor:
 # **Corso base di R per la gestione e analisi dei dati**
 
 # Prepararsi al corso
-:::
 
 ::: {.content-visible when-format="typst"}
 ```{=typst}
