@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>quarto-input1ad7c679f0d0f00e – Corso base di R</title>
+<title>quarto-input69e20af3f6e262c9 – Corso base di R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -218,7 +218,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">In questa pagina</h2>
    
   <ul>
-  <li><a href="#corso-base-di-r-per-la-gestione-e-analisi-dei-dati" id="toc-corso-base-di-r-per-la-gestione-e-analisi-dei-dati" class="nav-link active" data-scroll-target="#corso-base-di-r-per-la-gestione-e-analisi-dei-dati"><strong>Corso base di R per la gestione e analisi dei dati</strong></a></li>
+  <li><a href="#corso-introduttivo-al-software-statistico-r" id="toc-corso-introduttivo-al-software-statistico-r" class="nav-link active" data-scroll-target="#corso-introduttivo-al-software-statistico-r"><strong>Corso introduttivo al software statistico R</strong></a></li>
   <li><a href="#modulo-05---data-visualization-con-ggplot2-parte-1" id="toc-modulo-05---data-visualization-con-ggplot2-parte-1" class="nav-link" data-scroll-target="#modulo-05---data-visualization-con-ggplot2-parte-1">Modulo 05 - Data Visualization con ggplot2 (Parte 1)</a>
   <ul>
   <li><a href="#obiettivi-del-modulo" id="toc-obiettivi-del-modulo" class="nav-link" data-scroll-target="#obiettivi-del-modulo">Obiettivi del modulo</a></li>
@@ -267,7 +267,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#facet" id="toc-facet" class="nav-link" data-scroll-target="#facet">Facet</a></li>
   <li><a href="#salvare-il-grafico" id="toc-salvare-il-grafico" class="nav-link" data-scroll-target="#salvare-il-grafico">Salvare il grafico</a></li>
-  <li><a href="#lo-script-completo" id="toc-lo-script-completo" class="nav-link" data-scroll-target="#lo-script-completo">Lo script completo</a></li>
   <li><a href="#riepilogo" id="toc-riepilogo" class="nav-link" data-scroll-target="#riepilogo">Riepilogo</a></li>
   <li><a href="#risorse-aggiuntive" id="toc-risorse-aggiuntive" class="nav-link" data-scroll-target="#risorse-aggiuntive">Risorse aggiuntive</a></li>
   </ul></li>
@@ -317,8 +316,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="corso-base-di-r-per-la-gestione-e-analisi-dei-dati" class="level1">
-<h1><strong>Corso base di R per la gestione e analisi dei dati</strong></h1>
+<section id="corso-introduttivo-al-software-statistico-r" class="level1">
+<h1><strong>Corso introduttivo al software statistico R</strong></h1>
 </section>
 <section id="modulo-05---data-visualization-con-ggplot2-parte-1" class="level1">
 <h1>Modulo 05 - Data Visualization con ggplot2 (Parte 1)</h1>
@@ -377,15 +376,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Domanda di esempio: quanto fa 2 + 2?
-<div id="radio_NENZEFKJAG" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_NENZEFKJAG" value=""> <span>2</span></label><label><input type="radio" autocomplete="off" name="radio_NENZEFKJAG" value=""> <span>5</span></label><label><input type="radio" autocomplete="off" name="radio_NENZEFKJAG" value="answer"> <span>4</span></label>
+<div id="radio_UGCQPCRAQB" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_UGCQPCRAQB" value=""> <span>2</span></label><label><input type="radio" autocomplete="off" name="radio_UGCQPCRAQB" value=""> <span>5</span></label><label><input type="radio" autocomplete="off" name="radio_UGCQPCRAQB" value="answer"> <span>4</span></label>
 </div>
 </div>
 </div>
 </div>
 </div>
 <p>Lungo il modulo troverai anche due tipi di riquadri colorati. I riquadri <strong>arancioni</strong> segnalano errori frequenti o punti in cui R si comporta in modo inatteso: leggili sempre, perché possono farti risparmiare tempo.</p>
-<!-- ISTRUZIONI: Il box arancione "Attenzione a …" va usato per avvisi importanti: errori comuni, comportamenti di R che possono sorprendere, passaggi da non saltare. Il titolo inizia sempre con "Attenzione a" (es. "Attenzione ai nomi con spazi"). Copia l'intero blocco ::: {.callout-warning ...} ... ::: e modifica solo titolo e testo. -->
+<!-- ISTRUZIONI: Il box giallo "Attenzione a …" va usato per avvisi importanti: errori comuni, comportamenti di R che possono sorprendere, passaggi da non saltare. Il titolo inizia sempre con "Attenzione a" (es. "Attenzione ai nomi con spazi"). Copia l'intero blocco ::: {.callout-warning ...} ... ::: e modifica solo titolo e testo. -->
 <div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -463,7 +462,7 @@ Domanda di esempio: quanto fa 2 + 2?
 <h2 class="anchored" data-anchor-id="il-punto-di-partenza">Il punto di partenza</h2>
 <section id="i-dati" class="level3">
 <h3 class="anchored" data-anchor-id="i-dati">I dati</h3>
-<p>Come nel Modulo 4, usiamo i dati puliti preparati da noi. Nello script crea la sezione “Importazione dati” (<strong>Ctrl+Shift+R</strong>) e importa con <code>import()</code> il file <code>dati_clean.rds</code> della cartella <code>dati</code>, chiamando il dataset <code>dati_clean</code>.</p>
+<p>Come nel Modulo 4, usiamo i dati puliti preparati da noi. Nello script crea la sezione “Importazione dati” (<strong>Ctrl+Shift+R</strong>) e importa con <code>import()</code> il file <code>dati_clean.rds</code> della cartella <code>dati</code>, chiamando il dataframe <code>dati_clean</code>.</p>
 <details>
 <summary style="text-decoration: underline; color: red;">
 <p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere la soluzione (provaci da solo prima!)</p>
@@ -531,8 +530,8 @@ Domanda di esempio: quanto fa 2 + 2?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Cosa vedi nel pannello Plots?
-<div id="radio_CRKVKQEMCL" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_CRKVKQEMCL" value=""> <span>Un grafico a punti con un punto per persona</span></label><label><input type="radio" autocomplete="off" name="radio_CRKVKQEMCL" value=""> <span>Un messaggio di errore, perché manca un geom</span></label><label><input type="radio" autocomplete="off" name="radio_CRKVKQEMCL" value=""> <span>Una tela grigia senza assi</span></label><label><input type="radio" autocomplete="off" name="radio_CRKVKQEMCL" value="answer"> <span>Gli assi con le loro scale, ma nessun dato</span></label>
+<div id="radio_FKYVVLWQML" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_FKYVVLWQML" value=""> <span>Un grafico a punti con un punto per persona</span></label><label><input type="radio" autocomplete="off" name="radio_FKYVVLWQML" value=""> <span>Un messaggio di errore, perché manca un geom</span></label><label><input type="radio" autocomplete="off" name="radio_FKYVVLWQML" value=""> <span>Una tela grigia senza assi</span></label><label><input type="radio" autocomplete="off" name="radio_FKYVVLWQML" value="answer"> <span>Gli assi con le loro scale, ma nessun dato</span></label>
 </div>
 </div>
 </div>
@@ -576,8 +575,8 @@ Cosa vedi nel pannello Plots?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Perché da questo grafico è difficile capire quante persone ci sono in ciascun gruppo?
-<div id="radio_PGCUBEMBWR" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_PGCUBEMBWR" value=""> <span>Perché ggplot mostra solo un campione delle righe</span></label><label><input type="radio" autocomplete="off" name="radio_PGCUBEMBWR" value="answer"> <span>Perché i punti di ciascun gruppo sono tutti sulla stessa linea verticale e si sovrappongono</span></label><label><input type="radio" autocomplete="off" name="radio_PGCUBEMBWR" value=""> <span>Perché mancano le etichette degli assi</span></label><label><input type="radio" autocomplete="off" name="radio_PGCUBEMBWR" value=""> <span>Perché i livelli di anticorpi sono stati arrotondati da ggplot</span></label>
+<div id="radio_NLNCCPFNIK" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_NLNCCPFNIK" value=""> <span>Perché ggplot mostra solo un campione delle righe</span></label><label><input type="radio" autocomplete="off" name="radio_NLNCCPFNIK" value="answer"> <span>Perché i punti di ciascun gruppo sono tutti sulla stessa linea verticale e si sovrappongono</span></label><label><input type="radio" autocomplete="off" name="radio_NLNCCPFNIK" value=""> <span>Perché mancano le etichette degli assi</span></label><label><input type="radio" autocomplete="off" name="radio_NLNCCPFNIK" value=""> <span>Perché i livelli di anticorpi sono stati arrotondati da ggplot</span></label>
 </div>
 </div>
 </div>
@@ -608,8 +607,8 @@ Perché da questo grafico è difficile capire quante persone ci sono in ciascun 
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Cosa succede se il + è all’inizio della seconda riga?
-<div id="radio_NKNWCPAZOO" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_NKNWCPAZOO" value=""> <span>R aggiunge comunque i punti, perché il + collega le due righe</span></label><label><input type="radio" autocomplete="off" name="radio_NKNWCPAZOO" value=""> <span>R ignora la seconda riga senza dare messaggi</span></label><label><input type="radio" autocomplete="off" name="radio_NKNWCPAZOO" value="answer"> <span>R disegna solo la tela vuota e poi dà un errore sulla seconda riga</span></label><label><input type="radio" autocomplete="off" name="radio_NKNWCPAZOO" value=""> <span>R dà un errore sulla prima riga e non disegna nulla</span></label>
+<div id="radio_SUBJGPCGBE" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_SUBJGPCGBE" value=""> <span>R aggiunge comunque i punti, perché il + collega le due righe</span></label><label><input type="radio" autocomplete="off" name="radio_SUBJGPCGBE" value=""> <span>R ignora la seconda riga senza dare messaggi</span></label><label><input type="radio" autocomplete="off" name="radio_SUBJGPCGBE" value="answer"> <span>R disegna solo la tela vuota e poi dà un errore sulla seconda riga</span></label><label><input type="radio" autocomplete="off" name="radio_SUBJGPCGBE" value=""> <span>R dà un errore sulla prima riga e non disegna nulla</span></label>
 </div>
 </div>
 </div>
@@ -721,8 +720,8 @@ Cosa succede se il + è all’inizio della seconda riga?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Perché color = ‘darkred’ si scrive dentro geom_jitter() e non dentro aes()?
-<div id="radio_JTOZVHKYVU" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_JTOZVHKYVU" value=""> <span>Perché aes() accetta solo x e y</span></label><label><input type="radio" autocomplete="off" name="radio_JTOZVHKYVU" value="answer"> <span>Perché è un valore fisso, uguale per tutti i punti</span></label><label><input type="radio" autocomplete="off" name="radio_JTOZVHKYVU" value=""> <span>Perché i colori devono sempre essere scritti nel geom</span></label><label><input type="radio" autocomplete="off" name="radio_JTOZVHKYVU" value=""> <span>È indifferente: il risultato è lo stesso</span></label>
+<div id="radio_HTCDRGZERK" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_HTCDRGZERK" value=""> <span>Perché aes() accetta solo x e y</span></label><label><input type="radio" autocomplete="off" name="radio_HTCDRGZERK" value="answer"> <span>Perché è un valore fisso, uguale per tutti i punti</span></label><label><input type="radio" autocomplete="off" name="radio_HTCDRGZERK" value=""> <span>Perché i colori devono sempre essere scritti nel geom</span></label><label><input type="radio" autocomplete="off" name="radio_HTCDRGZERK" value=""> <span>È indifferente: il risultato è lo stesso</span></label>
 </div>
 </div>
 </div>
@@ -761,8 +760,8 @@ Perché color = ‘darkred’ si scrive dentro geom_jitter() e non dentro aes()?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Che cosa rappresenta la linea al centro di ogni scatola?
-<div id="radio_JLPAZWATPL" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_JLPAZWATPL" value=""> <span>La media dell'età nella regione</span></label><label><input type="radio" autocomplete="off" name="radio_JLPAZWATPL" value="answer"> <span>La mediana dell'età nella regione</span></label><label><input type="radio" autocomplete="off" name="radio_JLPAZWATPL" value=""> <span>L'età più frequente nella regione</span></label><label><input type="radio" autocomplete="off" name="radio_JLPAZWATPL" value=""> <span>Il punto medio tra l'età minima e quella massima</span></label>
+<div id="radio_DHCJMEDGPL" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_DHCJMEDGPL" value=""> <span>La media dell'età nella regione</span></label><label><input type="radio" autocomplete="off" name="radio_DHCJMEDGPL" value="answer"> <span>La mediana dell'età nella regione</span></label><label><input type="radio" autocomplete="off" name="radio_DHCJMEDGPL" value=""> <span>L'età più frequente nella regione</span></label><label><input type="radio" autocomplete="off" name="radio_DHCJMEDGPL" value=""> <span>Il punto medio tra l'età minima e quella massima</span></label>
 </div>
 </div>
 </div>
@@ -830,8 +829,8 @@ Che cosa rappresenta la linea al centro di ogni scatola?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Nel grafico compaiono solo le regioni A, B, C e D, senza una categoria NA. Perché?
-<div id="radio_CGELHLCHKU" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_CGELHLCHKU" value=""> <span>Perché ggplot elimina sempre le righe con valori mancanti</span></label><label><input type="radio" autocomplete="off" name="radio_CGELHLCHKU" value=""> <span>Perché geom_boxplot() non accetta valori mancanti</span></label><label><input type="radio" autocomplete="off" name="radio_CGELHLCHKU" value="answer"> <span>Perché in dati_clean tutte le persone hanno la regione indicata</span></label><label><input type="radio" autocomplete="off" name="radio_CGELHLCHKU" value=""> <span>Perché fill = region nasconde la categoria NA</span></label>
+<div id="radio_IRPVCLFATO" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_IRPVCLFATO" value=""> <span>Perché ggplot elimina sempre le righe con valori mancanti</span></label><label><input type="radio" autocomplete="off" name="radio_IRPVCLFATO" value=""> <span>Perché geom_boxplot() non accetta valori mancanti</span></label><label><input type="radio" autocomplete="off" name="radio_IRPVCLFATO" value="answer"> <span>Perché in dati_clean tutte le persone hanno la regione indicata</span></label><label><input type="radio" autocomplete="off" name="radio_IRPVCLFATO" value=""> <span>Perché fill = region nasconde la categoria NA</span></label>
 </div>
 </div>
 </div>
@@ -903,8 +902,8 @@ Nel grafico compaiono solo le regioni A, B, C e D, senza una categoria NA. Perch
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Anche i bordi dei boxplot sono diventati colorati. In un boxplot, quale estetica controlla il bordo?
-<div id="radio_FEZNSVBUSC" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_FEZNSVBUSC" value="answer"> <span>color</span></label><label><input type="radio" autocomplete="off" name="radio_FEZNSVBUSC" value=""> <span>fill</span></label><label><input type="radio" autocomplete="off" name="radio_FEZNSVBUSC" value=""> <span>alpha</span></label><label><input type="radio" autocomplete="off" name="radio_FEZNSVBUSC" value=""> <span>shape</span></label>
+<div id="radio_YRNTGRLMEB" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_YRNTGRLMEB" value="answer"> <span>color</span></label><label><input type="radio" autocomplete="off" name="radio_YRNTGRLMEB" value=""> <span>fill</span></label><label><input type="radio" autocomplete="off" name="radio_YRNTGRLMEB" value=""> <span>alpha</span></label><label><input type="radio" autocomplete="off" name="radio_YRNTGRLMEB" value=""> <span>shape</span></label>
 </div>
 </div>
 </div>
@@ -942,8 +941,8 @@ Anche i bordi dei boxplot sono diventati colorati. In un boxplot, quale estetica
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Perché la legenda mostra una scala continua, con valori come 0.25 e 0.75?
-<div id="radio_WJNTSTAMGU" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_WJNTSTAMGU" value=""> <span>Perché color accetta solo scale continue</span></label><label><input type="radio" autocomplete="off" name="radio_WJNTSTAMGU" value=""> <span>Perché alcuni valori di event sono mancanti</span></label><label><input type="radio" autocomplete="off" name="radio_WJNTSTAMGU" value=""> <span>Perché geom_jitter() modifica i valori di event</span></label><label><input type="radio" autocomplete="off" name="radio_WJNTSTAMGU" value="answer"> <span>Perché event è una variabile numerica</span></label>
+<div id="radio_PZXEWVRGFO" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_PZXEWVRGFO" value=""> <span>Perché color accetta solo scale continue</span></label><label><input type="radio" autocomplete="off" name="radio_PZXEWVRGFO" value=""> <span>Perché alcuni valori di event sono mancanti</span></label><label><input type="radio" autocomplete="off" name="radio_PZXEWVRGFO" value=""> <span>Perché geom_jitter() modifica i valori di event</span></label><label><input type="radio" autocomplete="off" name="radio_PZXEWVRGFO" value="answer"> <span>Perché event è una variabile numerica</span></label>
 </div>
 </div>
 </div>
@@ -1072,8 +1071,8 @@ Perché la legenda mostra una scala continua, con valori come 0.25 e 0.75?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Che cosa rappresenta ogni punto di questo grafico?
-<div id="radio_QANIJCABGJ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_QANIJCABGJ" value="answer"> <span>Una persona con hiv</span></label><label><input type="radio" autocomplete="off" name="radio_QANIJCABGJ" value=""> <span>Un valore anticorpale</span></label><label><input type="radio" autocomplete="off" name="radio_QANIJCABGJ" value=""> <span>Una classe d'età</span></label><label><input type="radio" autocomplete="off" name="radio_QANIJCABGJ" value=""> <span>Una regione</span></label>
+<div id="radio_MCQULADPII" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_MCQULADPII" value="answer"> <span>Una persona con hiv</span></label><label><input type="radio" autocomplete="off" name="radio_MCQULADPII" value=""> <span>Un valore anticorpale</span></label><label><input type="radio" autocomplete="off" name="radio_MCQULADPII" value=""> <span>Una classe d'età</span></label><label><input type="radio" autocomplete="off" name="radio_MCQULADPII" value=""> <span>Una regione</span></label>
 </div>
 </div>
 </div>
@@ -1126,8 +1125,8 @@ Che cosa rappresenta ogni punto di questo grafico?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Che cosa mostrano le curve?
-<div id="radio_NBNQTAZACQ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_NBNQTAZACQ" value=""> <span>Il livello di anticorpi aumenta con l'età</span></label><label><input type="radio" autocomplete="off" name="radio_NBNQTAZACQ" value="answer"> <span>Il livello di anticorpi aumenta con il CD4</span></label><label><input type="radio" autocomplete="off" name="radio_NBNQTAZACQ" value=""> <span>Il livello di anticorpi non cambia al cambiare del CD4</span></label><label><input type="radio" autocomplete="off" name="radio_NBNQTAZACQ" value=""> <span>Il livello di anticorpi diminuisce con il CD4</span></label>
+<div id="radio_RYBHPRXUYS" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_RYBHPRXUYS" value=""> <span>Il livello di anticorpi aumenta con l'età</span></label><label><input type="radio" autocomplete="off" name="radio_RYBHPRXUYS" value="answer"> <span>Il livello di anticorpi aumenta con il CD4</span></label><label><input type="radio" autocomplete="off" name="radio_RYBHPRXUYS" value=""> <span>Il livello di anticorpi non cambia al cambiare del CD4</span></label><label><input type="radio" autocomplete="off" name="radio_RYBHPRXUYS" value=""> <span>Il livello di anticorpi diminuisce con il CD4</span></label>
 </div>
 </div>
 </div>
@@ -1178,8 +1177,8 @@ Che cosa mostrano le curve?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Dopo aver spostato color = covid dentro geom_point(), i punti e la linea hanno lo stesso colore? e perché?
-<div id="radio_APLBBXHKOD" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_APLBBXHKOD" value=""> <span>Si, perché è sufficiente specificare il colore una volta</span></label><label><input type="radio" autocomplete="off" name="radio_APLBBXHKOD" value="answer"> <span>No, perché ho specificato il color solo dentro a geom_poin() e non in geom_smooth()</span></label><label><input type="radio" autocomplete="off" name="radio_APLBBXHKOD" value=""> <span>Si, perché hanno i colori di default poiché non ho specificato il color in ggplot()</span></label><label><input type="radio" autocomplete="off" name="radio_APLBBXHKOD" value=""> <span>No, perché geom_smooth() è sempre di colore blu</span></label>
+<div id="radio_OWKAFMEHZW" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_OWKAFMEHZW" value=""> <span>Si, perché è sufficiente specificare il colore una volta</span></label><label><input type="radio" autocomplete="off" name="radio_OWKAFMEHZW" value="answer"> <span>No, perché ho specificato il color solo dentro a geom_poin() e non in geom_smooth()</span></label><label><input type="radio" autocomplete="off" name="radio_OWKAFMEHZW" value=""> <span>Si, perché hanno i colori di default poiché non ho specificato il color in ggplot()</span></label><label><input type="radio" autocomplete="off" name="radio_OWKAFMEHZW" value=""> <span>No, perché geom_smooth() è sempre di colore blu</span></label>
 </div>
 </div>
 </div>
@@ -1214,8 +1213,8 @@ Dopo aver spostato color = covid dentro geom_point(), i punti e la linea hanno l
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Che cosa succede se scrivi geom_smooth() prima di geom_point()?
-<div id="radio_JAQQKSCTCT" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_JAQQKSCTCT" value=""> <span>Il grafico dà errore, perché geom_point() deve essere sempre il primo livello</span></label><label><input type="radio" autocomplete="off" name="radio_JAQQKSCTCT" value=""> <span>Il grafico è identico, perché l'ordine dei livelli non conta</span></label><label><input type="radio" autocomplete="off" name="radio_JAQQKSCTCT" value="answer"> <span>I punti vengono disegnati sopra la curva e possono coprirla</span></label><label><input type="radio" autocomplete="off" name="radio_JAQQKSCTCT" value=""> <span>La curva viene calcolata senza i punti</span></label>
+<div id="radio_FYMSVIHKEL" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_FYMSVIHKEL" value=""> <span>Il grafico dà errore, perché geom_point() deve essere sempre il primo livello</span></label><label><input type="radio" autocomplete="off" name="radio_FYMSVIHKEL" value=""> <span>Il grafico è identico, perché l'ordine dei livelli non conta</span></label><label><input type="radio" autocomplete="off" name="radio_FYMSVIHKEL" value="answer"> <span>I punti vengono disegnati sopra la curva e possono coprirla</span></label><label><input type="radio" autocomplete="off" name="radio_FYMSVIHKEL" value=""> <span>La curva viene calcolata senza i punti</span></label>
 </div>
 </div>
 </div>
@@ -1262,8 +1261,8 @@ Che cosa succede se scrivi geom_smooth() prima di geom_point()?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Dove va scritto alpha = 0.1 per rendere semitrasparenti tutti i punti?
-<div id="radio_JQFCCJRKUZ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_JQFCCJRKUZ" value=""> <span>Dentro aes() in ggplot()</span></label><label><input type="radio" autocomplete="off" name="radio_JQFCCJRKUZ" value=""> <span>Dentro aes() in geom_point()</span></label><label><input type="radio" autocomplete="off" name="radio_JQFCCJRKUZ" value="answer"> <span>Dentro geom_point(), fuori da aes()</span></label><label><input type="radio" autocomplete="off" name="radio_JQFCCJRKUZ" value=""> <span>Dentro geom_smooth()</span></label>
+<div id="radio_YYOWITLDIB" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_YYOWITLDIB" value=""> <span>Dentro aes() in ggplot()</span></label><label><input type="radio" autocomplete="off" name="radio_YYOWITLDIB" value=""> <span>Dentro aes() in geom_point()</span></label><label><input type="radio" autocomplete="off" name="radio_YYOWITLDIB" value="answer"> <span>Dentro geom_point(), fuori da aes()</span></label><label><input type="radio" autocomplete="off" name="radio_YYOWITLDIB" value=""> <span>Dentro geom_smooth()</span></label>
 </div>
 </div>
 </div>
@@ -1427,8 +1426,8 @@ Dove va scritto alpha = 0.1 per rendere semitrasparenti tutti i punti?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Quale grafico è più adatto a confrontare il numero di persone con 60 anni o più tra le regioni?
-<div id="radio_FZJTUPDRZX" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_FZJTUPDRZX" value=""> <span>Le barre impilate</span></label><label><input type="radio" autocomplete="off" name="radio_FZJTUPDRZX" value="answer"> <span>Le barre affiancate</span></label><label><input type="radio" autocomplete="off" name="radio_FZJTUPDRZX" value=""> <span>Sono equivalenti</span></label><label><input type="radio" autocomplete="off" name="radio_FZJTUPDRZX" value=""> <span>Nessuno dei due: serve un boxplot</span></label>
+<div id="radio_SEWATOACFR" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_SEWATOACFR" value=""> <span>Le barre impilate</span></label><label><input type="radio" autocomplete="off" name="radio_SEWATOACFR" value="answer"> <span>Le barre affiancate</span></label><label><input type="radio" autocomplete="off" name="radio_SEWATOACFR" value=""> <span>Sono equivalenti</span></label><label><input type="radio" autocomplete="off" name="radio_SEWATOACFR" value=""> <span>Nessuno dei due: serve un boxplot</span></label>
 </div>
 </div>
 </div>
@@ -1480,8 +1479,8 @@ Quale grafico è più adatto a confrontare il numero di persone con 60 anni o pi
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Perché geom_bar() su vaccinati_regione produce barre tutte alte 1?
-<div id="radio_UNJJCXOFTX" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_UNJJCXOFTX" value=""> <span>Perché n_vaccinati non è numerica</span></label><label><input type="radio" autocomplete="off" name="radio_UNJJCXOFTX" value=""> <span>Perché geom_bar() mostra proporzioni e non conteggi</span></label><label><input type="radio" autocomplete="off" name="radio_UNJJCXOFTX" value="answer"> <span>Perché conta le righe, e c'è una sola riga per regione</span></label><label><input type="radio" autocomplete="off" name="radio_UNJJCXOFTX" value=""> <span>Perché manca l'argomento fill</span></label>
+<div id="radio_QFZDIYIUXR" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_QFZDIYIUXR" value=""> <span>Perché n_vaccinati non è numerica</span></label><label><input type="radio" autocomplete="off" name="radio_QFZDIYIUXR" value=""> <span>Perché geom_bar() mostra proporzioni e non conteggi</span></label><label><input type="radio" autocomplete="off" name="radio_QFZDIYIUXR" value="answer"> <span>Perché conta le righe, e c'è una sola riga per regione</span></label><label><input type="radio" autocomplete="off" name="radio_QFZDIYIUXR" value=""> <span>Perché manca l'argomento fill</span></label>
 </div>
 </div>
 </div>
@@ -1549,8 +1548,8 @@ Perché geom_bar() su vaccinati_regione produce barre tutte alte 1?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Con vaccinati_regione puoi colorare le barre per age_group?
-<div id="radio_HENOXEFHXJ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_HENOXEFHXJ" value=""> <span>Sì, aggiungendo fill = age_group dentro aes() di ggplot()</span></label><label><input type="radio" autocomplete="off" name="radio_HENOXEFHXJ" value="answer"> <span>No, perché aggregando per regione l'informazione sull'età è andata persa</span></label><label><input type="radio" autocomplete="off" name="radio_HENOXEFHXJ" value=""> <span>Sì, ma solo usando position = 'dodge' dentro geom_col()</span></label><label><input type="radio" autocomplete="off" name="radio_HENOXEFHXJ" value=""> <span>No, perché geom_col() non accetta l'estetica fill in nessun caso</span></label>
+<div id="radio_YCFIVZBOLQ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_YCFIVZBOLQ" value=""> <span>Sì, aggiungendo fill = age_group dentro aes() di ggplot()</span></label><label><input type="radio" autocomplete="off" name="radio_YCFIVZBOLQ" value="answer"> <span>No, perché aggregando per regione l'informazione sull'età è andata persa</span></label><label><input type="radio" autocomplete="off" name="radio_YCFIVZBOLQ" value=""> <span>Sì, ma solo usando position = 'dodge' dentro geom_col()</span></label><label><input type="radio" autocomplete="off" name="radio_YCFIVZBOLQ" value=""> <span>No, perché geom_col() non accetta l'estetica fill in nessun caso</span></label>
 </div>
 </div>
 </div>
@@ -1610,8 +1609,8 @@ Con vaccinati_regione puoi colorare le barre per age_group?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Il messaggio che compare dopo l’istogramma di date_event è:
-<div id="radio_VMYDIZUMHE" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_VMYDIZUMHE" value=""> <span>Un errore: il grafico non è stato prodotto</span></label><label><input type="radio" autocomplete="off" name="radio_VMYDIZUMHE" value="answer"> <span>Un warning: il grafico è stato prodotto, ma sono state escluse le righe senza evento</span></label><label><input type="radio" autocomplete="off" name="radio_VMYDIZUMHE" value=""> <span>Un warning: il grafico è vuoto perché le date non sono valide</span></label><label><input type="radio" autocomplete="off" name="radio_VMYDIZUMHE" value=""> <span>Un messaggio informativo senza conseguenze sui dati</span></label>
+<div id="radio_KZQTLCLPYP" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_KZQTLCLPYP" value=""> <span>Un errore: il grafico non è stato prodotto</span></label><label><input type="radio" autocomplete="off" name="radio_KZQTLCLPYP" value="answer"> <span>Un warning: il grafico è stato prodotto, ma sono state escluse le righe senza evento</span></label><label><input type="radio" autocomplete="off" name="radio_KZQTLCLPYP" value=""> <span>Un warning: il grafico è vuoto perché le date non sono valide</span></label><label><input type="radio" autocomplete="off" name="radio_KZQTLCLPYP" value=""> <span>Un messaggio informativo senza conseguenze sui dati</span></label>
 </div>
 </div>
 </div>
@@ -1708,8 +1707,8 @@ Il messaggio che compare dopo l’istogramma di date_event è:
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Con binwidth = 5 cosa rappresenta ogni barra?
-<div id="radio_YXIHVBXMUO" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_YXIHVBXMUO" value=""> <span>5 persone</span></label><label><input type="radio" autocomplete="off" name="radio_YXIHVBXMUO" value=""> <span>Il 5% dei vaccinati</span></label><label><input type="radio" autocomplete="off" name="radio_YXIHVBXMUO" value=""> <span>Una delle 5 barre dell'istogramma</span></label><label><input type="radio" autocomplete="off" name="radio_YXIHVBXMUO" value="answer"> <span>Un intervallo di 5 anni di età</span></label>
+<div id="radio_RLYLDADYYI" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_RLYLDADYYI" value=""> <span>5 persone</span></label><label><input type="radio" autocomplete="off" name="radio_RLYLDADYYI" value=""> <span>Il 5% dei vaccinati</span></label><label><input type="radio" autocomplete="off" name="radio_RLYLDADYYI" value=""> <span>Una delle 5 barre dell'istogramma</span></label><label><input type="radio" autocomplete="off" name="radio_RLYLDADYYI" value="answer"> <span>Un intervallo di 5 anni di età</span></label>
 </div>
 </div>
 </div>
@@ -1825,8 +1824,8 @@ Con binwidth = 5 cosa rappresenta ogni barra?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Quale formato produce etichette come ‘gennaio 2021’?
-<div id="radio_ADPZZICDWY" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_ADPZZICDWY" value="answer"> <span>%B %Y</span></label><label><input type="radio" autocomplete="off" name="radio_ADPZZICDWY" value=""> <span>%b %Y</span></label><label><input type="radio" autocomplete="off" name="radio_ADPZZICDWY" value=""> <span>%d %b</span></label><label><input type="radio" autocomplete="off" name="radio_ADPZZICDWY" value=""> <span>%m %Y</span></label>
+<div id="radio_QMGSKFWEAE" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_QMGSKFWEAE" value="answer"> <span>%B %Y</span></label><label><input type="radio" autocomplete="off" name="radio_QMGSKFWEAE" value=""> <span>%b %Y</span></label><label><input type="radio" autocomplete="off" name="radio_QMGSKFWEAE" value=""> <span>%d %b</span></label><label><input type="radio" autocomplete="off" name="radio_QMGSKFWEAE" value=""> <span>%m %Y</span></label>
 </div>
 </div>
 </div>
@@ -1891,8 +1890,8 @@ Quale formato produce etichette come ‘gennaio 2021’?
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Perché i pannelli Senza HIV e Con HIV hanno la stessa forma, con altezze nei controlli circa doppie?
-<div id="radio_BVGMPJEKOW" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_BVGMPJEKOW" value="answer"> <span>Perché ogni persona con HIV è appaiata, di norma, a 2 controlli vaccinati nella stessa settimana</span></label><label><input type="radio" autocomplete="off" name="radio_BVGMPJEKOW" value=""> <span>Per caso: con un altro campione la forma dei due pannelli sarebbe diversa</span></label><label><input type="radio" autocomplete="off" name="radio_BVGMPJEKOW" value=""> <span>Perché facet_wrap() usa la stessa scala dell'asse y in tutti i pannelli</span></label><label><input type="radio" autocomplete="off" name="radio_BVGMPJEKOW" value=""> <span>Perché le persone con HIV sono state vaccinate più tardi dei controlli</span></label>
+<div id="radio_TPLBHTOJRX" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_TPLBHTOJRX" value="answer"> <span>Perché ogni persona con HIV è appaiata, di norma, a 2 controlli vaccinati nella stessa settimana</span></label><label><input type="radio" autocomplete="off" name="radio_TPLBHTOJRX" value=""> <span>Per caso: con un altro campione la forma dei due pannelli sarebbe diversa</span></label><label><input type="radio" autocomplete="off" name="radio_TPLBHTOJRX" value=""> <span>Perché facet_wrap() usa la stessa scala dell'asse y in tutti i pannelli</span></label><label><input type="radio" autocomplete="off" name="radio_TPLBHTOJRX" value=""> <span>Perché le persone con HIV sono state vaccinate più tardi dei controlli</span></label>
 </div>
 </div>
 </div>
@@ -1973,119 +1972,108 @@ Perché i pannelli Senza HIV e Con HIV hanno la stessa forma, con altezze nei co
 <p><strong>Prova a rispondere!</strong></p>
 <div class="webex-check">
 Se non specifichi l’argomento units, in quale unità sono espressi width e height?
-<div id="radio_JTYEDBCLVZ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_JTYEDBCLVZ" value=""> <span>Centimetri</span></label><label><input type="radio" autocomplete="off" name="radio_JTYEDBCLVZ" value=""> <span>Pixel</span></label><label><input type="radio" autocomplete="off" name="radio_JTYEDBCLVZ" value=""> <span>Millimetri</span></label><label><input type="radio" autocomplete="off" name="radio_JTYEDBCLVZ" value="answer"> <span>Pollici</span></label>
+<div id="radio_EXNCVLXMZD" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_EXNCVLXMZD" value=""> <span>Centimetri</span></label><label><input type="radio" autocomplete="off" name="radio_EXNCVLXMZD" value=""> <span>Pixel</span></label><label><input type="radio" autocomplete="off" name="radio_EXNCVLXMZD" value=""> <span>Millimetri</span></label><label><input type="radio" autocomplete="off" name="radio_EXNCVLXMZD" value="answer"> <span>Pollici</span></label>
 </div>
 </div>
 </div>
 </div>
 </div>
-</section>
-<section id="lo-script-completo" class="level2">
-<h2 class="anchored" data-anchor-id="lo-script-completo">Lo script completo</h2>
-<p>Ecco come dovrebbe essere il tuo script per questa esercitazione: contiene solo gli oggetti da conservare, mentre le prove restano nell’area di prova. Confrontalo con il tuo: i commenti e alcuni dettagli possono essere diversi, ma i comandi devono fare le stesse cose. Lo script completo dei Moduli 5, 6 e 8 lo trovi anche nella cartella <code>script/backup</code>, nel file <code>backup_plot.R</code>.</p>
-<details>
-<summary style="text-decoration: underline; color: blue;">
-<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:blue;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Clicca per vedere lo script completo</p>
-</summary>
-<p><br></p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Corso introduttivo a R</span></span>
-<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="do">### Obiettivo: grafici con ggplot2 (Moduli 5, 6 e 8)</span></span>
-<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="do">### Autore: Marco Rossi</span></span>
-<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="do">### Data di creazione: 2 dicembre 2026</span></span>
-<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a><span class="do">### Contatto: marco.rossi@iss.it</span></span>
-<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Caricamento pacchetti ---------------------------------------------------</span></span>
-<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(</span>
-<span id="cb59-10"><a href="#cb59-10" aria-hidden="true" tabindex="-1"></a>  rio,       <span class="co"># importazione ed esportazione dei dati</span></span>
-<span id="cb59-11"><a href="#cb59-11" aria-hidden="true" tabindex="-1"></a>  skimr,     <span class="co"># panoramica dei dati</span></span>
-<span id="cb59-12"><a href="#cb59-12" aria-hidden="true" tabindex="-1"></a>  janitor,   <span class="co"># pulizia dei dati e tabelle</span></span>
-<span id="cb59-13"><a href="#cb59-13" aria-hidden="true" tabindex="-1"></a>  lubridate, <span class="co"># lavorare con le date</span></span>
-<span id="cb59-14"><a href="#cb59-14" aria-hidden="true" tabindex="-1"></a>  epikit,    <span class="co"># classi di età</span></span>
-<span id="cb59-15"><a href="#cb59-15" aria-hidden="true" tabindex="-1"></a>  gtsummary, <span class="co"># tabelle descrittive</span></span>
-<span id="cb59-16"><a href="#cb59-16" aria-hidden="true" tabindex="-1"></a>  flextable, <span class="co"># tabelle da presentare</span></span>
-<span id="cb59-17"><a href="#cb59-17" aria-hidden="true" tabindex="-1"></a>  tidyverse  <span class="co"># gestione e visualizzazione dei dati</span></span>
-<span id="cb59-18"><a href="#cb59-18" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb59-19"><a href="#cb59-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-20"><a href="#cb59-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-21"><a href="#cb59-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Importazione dati -------------------------------------------------------</span></span>
-<span id="cb59-22"><a href="#cb59-22" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"dati/dati_clean.rds"</span>)</span>
-<span id="cb59-23"><a href="#cb59-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-24"><a href="#cb59-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-25"><a href="#cb59-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Modulo 05 - Data Visualization con ggplot2 (Parte 1) =====================</span></span>
-<span id="cb59-26"><a href="#cb59-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-27"><a href="#cb59-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnosi di COVID-19 -----------------------------------------------------</span></span>
-<span id="cb59-28"><a href="#cb59-28" aria-hidden="true" tabindex="-1"></a>dati_clean <span class="ot">&lt;-</span> dati_clean <span class="sc">%&gt;%</span></span>
-<span id="cb59-29"><a href="#cb59-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">covid =</span> <span class="fu">factor</span>(event,</span>
-<span id="cb59-30"><a href="#cb59-30" aria-hidden="true" tabindex="-1"></a>                        <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
-<span id="cb59-31"><a href="#cb59-31" aria-hidden="true" tabindex="-1"></a>                        <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Senza diagnosi"</span>, <span class="st">"Con diagnosi"</span>)))</span>
-<span id="cb59-32"><a href="#cb59-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-33"><a href="#cb59-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Età per regione ----------------------------------------------------------</span></span>
-<span id="cb59-34"><a href="#cb59-34" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
-<span id="cb59-35"><a href="#cb59-35" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> dati_clean,                        <span class="co"># coorte di vaccinati</span></span>
-<span id="cb59-36"><a href="#cb59-36" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
-<span id="cb59-37"><a href="#cb59-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> region,                             <span class="co"># regione sull'asse x</span></span>
-<span id="cb59-38"><a href="#cb59-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> age,                                <span class="co"># età sull'asse y</span></span>
-<span id="cb59-39"><a href="#cb59-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> region)) <span class="sc">+</span>                       <span class="co"># riempimento per regione</span></span>
-<span id="cb59-40"><a href="#cb59-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span>                          <span class="co"># un boxplot per regione</span></span>
-<span id="cb59-41"><a href="#cb59-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb59-42"><a href="#cb59-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Età alla vaccinazione per regione"</span>,</span>
-<span id="cb59-43"><a href="#cb59-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Persone con e senza HIV"</span>,</span>
-<span id="cb59-44"><a href="#cb59-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Regione"</span>,</span>
-<span id="cb59-45"><a href="#cb59-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Età (anni)"</span>,</span>
-<span id="cb59-46"><a href="#cb59-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Grafico modulo 5"</span>,</span>
-<span id="cb59-47"><a href="#cb59-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Regione"</span>)</span>
-<span id="cb59-48"><a href="#cb59-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-49"><a href="#cb59-49" aria-hidden="true" tabindex="-1"></a><span class="co"># Vaccinati per regione e classe d'età -------------------------------------</span></span>
-<span id="cb59-50"><a href="#cb59-50" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> dati_clean, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">fill =</span> age_group)) <span class="sc">+</span></span>
-<span id="cb59-51"><a href="#cb59-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>)</span>
-<span id="cb59-52"><a href="#cb59-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-53"><a href="#cb59-53" aria-hidden="true" tabindex="-1"></a><span class="co"># Dati aggregati -----------------------------------------------------------</span></span>
-<span id="cb59-54"><a href="#cb59-54" aria-hidden="true" tabindex="-1"></a>vaccinati_regione <span class="ot">&lt;-</span> dati_clean <span class="sc">%&gt;%</span></span>
-<span id="cb59-55"><a href="#cb59-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(region) <span class="sc">%&gt;%</span></span>
-<span id="cb59-56"><a href="#cb59-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n_vaccinati =</span> <span class="fu">n</span>(), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
-<span id="cb59-57"><a href="#cb59-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-58"><a href="#cb59-58" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> vaccinati_regione, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">y =</span> n_vaccinati)) <span class="sc">+</span></span>
-<span id="cb59-59"><a href="#cb59-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span>
-<span id="cb59-60"><a href="#cb59-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-61"><a href="#cb59-61" aria-hidden="true" tabindex="-1"></a><span class="co"># Istogramma ---------------------------------------------------------------</span></span>
-<span id="cb59-62"><a href="#cb59-62" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> dati_clean, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date_vacc)) <span class="sc">+</span></span>
-<span id="cb59-63"><a href="#cb59-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">7</span>, <span class="at">fill =</span> <span class="st">"darkgreen"</span>) <span class="sc">+</span></span>
-<span id="cb59-64"><a href="#cb59-64" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_date</span>(</span>
-<span id="cb59-65"><a href="#cb59-65" aria-hidden="true" tabindex="-1"></a>    <span class="at">date_breaks =</span> <span class="st">"1 month"</span>,</span>
-<span id="cb59-66"><a href="#cb59-66" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_date</span>(<span class="st">"%b %Y"</span>, <span class="at">locale =</span> <span class="st">"it"</span>))</span>
-<span id="cb59-67"><a href="#cb59-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-68"><a href="#cb59-68" aria-hidden="true" tabindex="-1"></a><span class="co"># Riquadri facet -----------------------------------------------------------</span></span>
-<span id="cb59-69"><a href="#cb59-69" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> dati_clean, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date_vacc)) <span class="sc">+</span></span>
-<span id="cb59-70"><a href="#cb59-70" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">7</span>) <span class="sc">+</span></span>
-<span id="cb59-71"><a href="#cb59-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> hiv)</span>
-<span id="cb59-72"><a href="#cb59-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-73"><a href="#cb59-73" aria-hidden="true" tabindex="-1"></a><span class="co"># Salvare il grafico -------------------------------------------------------</span></span>
-<span id="cb59-74"><a href="#cb59-74" aria-hidden="true" tabindex="-1"></a>ant_cd4_A <span class="ot">&lt;-</span> dati_clean <span class="sc">%&gt;%</span> </span>
-<span id="cb59-75"><a href="#cb59-75" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(region <span class="sc">==</span> <span class="st">'A'</span> <span class="sc">&amp;</span> hiv <span class="sc">==</span> <span class="st">'Con HIV'</span>)</span>
-<span id="cb59-76"><a href="#cb59-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-77"><a href="#cb59-77" aria-hidden="true" tabindex="-1"></a>scatter_anticorpi <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> ant_cd4_A, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> cd4, <span class="at">y =</span> anticorpi, <span class="at">color =</span> covid)) <span class="sc">+</span></span>
-<span id="cb59-78"><a href="#cb59-78" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb59-79"><a href="#cb59-79" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>() <span class="sc">+</span></span>
-<span id="cb59-80"><a href="#cb59-80" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb59-81"><a href="#cb59-81" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Livello di anticorpi per età"</span>,</span>
-<span id="cb59-82"><a href="#cb59-82" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"CD4"</span>,</span>
-<span id="cb59-83"><a href="#cb59-83" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Livello di anticorpi"</span>,</span>
-<span id="cb59-84"><a href="#cb59-84" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"COVID-19"</span>)</span>
-<span id="cb59-85"><a href="#cb59-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-86"><a href="#cb59-86" aria-hidden="true" tabindex="-1"></a>scatter_anticorpi</span>
-<span id="cb59-87"><a href="#cb59-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-88"><a href="#cb59-88" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(</span>
-<span id="cb59-89"><a href="#cb59-89" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot =</span> scatter_anticorpi,</span>
-<span id="cb59-90"><a href="#cb59-90" aria-hidden="true" tabindex="-1"></a>  <span class="at">filename =</span> <span class="st">"output/scatter_anticorpi.png"</span>,</span>
-<span id="cb59-91"><a href="#cb59-91" aria-hidden="true" tabindex="-1"></a>  <span class="at">width =</span> <span class="dv">10</span>,</span>
-<span id="cb59-92"><a href="#cb59-92" aria-hidden="true" tabindex="-1"></a>  <span class="at">height =</span> <span class="dv">6</span>,</span>
-<span id="cb59-93"><a href="#cb59-93" aria-hidden="true" tabindex="-1"></a>  <span class="at">dpi =</span> <span class="dv">300</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p><br></p>
-</details>
+<!-- ## Lo script completo -->
+<!-- Ecco come dovrebbe essere il tuo script per questa esercitazione: -->
+<!-- contiene solo gli oggetti da conservare, mentre le prove restano -->
+<!-- nell'area di prova. Confrontalo con il tuo: i commenti e alcuni dettagli -->
+<!-- possono essere diversi, ma i comandi devono fare le stesse cose. Lo -->
+<!-- script completo dei Moduli 5, 6 e 8 lo trovi anche nella cartella -->
+<!-- `script/backup`, nel file `backup_plot.R`. -->
+<!-- <details> -->
+<!-- <summary style="text-decoration: underline; color: blue;"> -->
+<!-- `<svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:blue;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>`{=html} Clicca per vedere lo script -->
+<!-- completo -->
+<!-- </summary> -->
+<!-- </br> -->
+<!-- ```{r} -->
+<!-- #| echo: true -->
+<!-- #| eval: false -->
+<!-- ### Corso introduttivo a R -->
+<!-- ### Obiettivo: grafici con ggplot2 (Moduli 5, 6 e 8) -->
+<!-- ### Autore: Marco Rossi -->
+<!-- ### Data di creazione: 2 dicembre 2026 -->
+<!-- ### Contatto: marco.rossi@iss.it -->
+<!-- # Caricamento pacchetti --------------------------------------------------- -->
+<!-- pacman::p_load( -->
+<!--   rio,       # importazione ed esportazione dei dati -->
+<!--   skimr,     # panoramica dei dati -->
+<!--   janitor,   # pulizia dei dati e tabelle -->
+<!--   lubridate, # lavorare con le date -->
+<!--   epikit,    # classi di età -->
+<!--   gtsummary, # tabelle descrittive -->
+<!--   flextable, # tabelle da presentare -->
+<!--   tidyverse  # gestione e visualizzazione dei dati -->
+<!-- ) -->
+<!-- # Importazione dati ------------------------------------------------------- -->
+<!-- dati_clean <- import("dati/dati_clean.rds") -->
+<!-- # Modulo 05 - Data Visualization con ggplot2 (Parte 1) ===================== -->
+<!-- # Diagnosi di COVID-19 ----------------------------------------------------- -->
+<!-- dati_clean <- dati_clean %>% -->
+<!--   mutate(covid = factor(event, -->
+<!--                         levels = c(0, 1), -->
+<!--                         labels = c("Senza diagnosi", "Con diagnosi"))) -->
+<!-- # Età per regione ---------------------------------------------------------- -->
+<!-- ggplot( -->
+<!--   data = dati_clean,                        # coorte di vaccinati -->
+<!--   mapping = aes( -->
+<!--     x = region,                             # regione sull'asse x -->
+<!--     y = age,                                # età sull'asse y -->
+<!--     fill = region)) +                       # riempimento per regione -->
+<!--   geom_boxplot() +                          # un boxplot per regione -->
+<!--   labs( -->
+<!--     title = "Età alla vaccinazione per regione", -->
+<!--     subtitle = "Persone con e senza HIV", -->
+<!--     x = "Regione", -->
+<!--     y = "Età (anni)", -->
+<!--     caption = "Grafico modulo 5", -->
+<!--     fill = "Regione") -->
+<!-- # Vaccinati per regione e classe d'età ------------------------------------- -->
+<!-- ggplot(data = dati_clean, mapping = aes(x = region, fill = age_group)) + -->
+<!--   geom_bar(position = "dodge") -->
+<!-- # Dati aggregati ----------------------------------------------------------- -->
+<!-- vaccinati_regione <- dati_clean %>% -->
+<!--   group_by(region) %>% -->
+<!--   summarise(n_vaccinati = n(), .groups = "drop") -->
+<!-- ggplot(data = vaccinati_regione, mapping = aes(x = region, y = n_vaccinati)) + -->
+<!--   geom_col() -->
+<!-- # Istogramma --------------------------------------------------------------- -->
+<!-- ggplot(data = dati_clean, mapping = aes(x = date_vacc)) + -->
+<!--   geom_histogram(binwidth = 7, fill = "darkgreen") + -->
+<!--   scale_x_date( -->
+<!--     date_breaks = "1 month", -->
+<!--     labels = scales::label_date("%b %Y", locale = "it")) -->
+<!-- # Riquadri facet ----------------------------------------------------------- -->
+<!-- ggplot(data = dati_clean, mapping = aes(x = date_vacc)) + -->
+<!--   geom_histogram(binwidth = 7) + -->
+<!--   facet_wrap(~ hiv) -->
+<!-- # Salvare il grafico ------------------------------------------------------- -->
+<!-- ant_cd4_A <- dati_clean %>%  -->
+<!--   filter(region == 'A' & hiv == 'Con HIV') -->
+<!-- scatter_anticorpi <- ggplot(data = ant_cd4_A, mapping = aes(x = cd4, y = anticorpi, color = covid)) + -->
+<!--   geom_point(alpha = 0.1) + -->
+<!--   geom_smooth() + -->
+<!--   labs( -->
+<!--     title = "Livello di anticorpi per età", -->
+<!--     x = "CD4", -->
+<!--     y = "Livello di anticorpi", -->
+<!--     color = "COVID-19") -->
+<!-- scatter_anticorpi -->
+<!-- ggsave( -->
+<!--   plot = scatter_anticorpi, -->
+<!--   filename = "output/scatter_anticorpi.png", -->
+<!--   width = 10, -->
+<!--   height = 6, -->
+<!--   dpi = 300) -->
+<!-- ``` -->
+<!-- </br> -->
+<!-- </details> -->
 </section>
 <section id="riepilogo" class="level2">
 <h2 class="anchored" data-anchor-id="riepilogo">Riepilogo</h2>
@@ -2114,7 +2102,7 @@ Se non specifichi l’argomento units, in quale unità sono espressi width e hei
 <!-- **Autori** -->
 <!-- Autori originali: Nome Cognome (Istituzione), Nome Cognome -->
 <!-- (Istituzione)\ -->
-<!-- Fonte dei dati: [DA COMPLETARE: origine del dataframe dati_clean] coorte di -->
+<!-- Fonte dei dati: [DA COMPLETARE: origine del dataset dati_clean] coorte di -->
 <!-- persone vaccinate con e senza HIV; esercizi ispirati al modulo -->
 <!-- *ggplot basics* di Applied Epi (<https://appliedepi.org>)\ -->
 <!-- Adattato da: Nome Cognome (Istituzione), Nome Cognome (Istituzione) -->
