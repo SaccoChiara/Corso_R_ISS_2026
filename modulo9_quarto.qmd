@@ -1216,12 +1216,13 @@ cat("Il mese prossimo arrivano i dati aggiornati, con lo stesso formato. Cosa de
 <!-- ``` -->
 
 <!-- # Introduzione -->
+<!-- NB: knitr esegue il codice inline anche dentro i commenti HTML, quindi qui sotto la r del codice inline e scritta maiuscola (R). Rimetterla minuscola se si decommenta. -->
 
 <!-- Questo report descrive una coorte di persone vaccinate nel 2021, -->
 <!-- seguite per la diagnosi di COVID-19. La coorte comprende -->
-<!-- `r nrow(dati_clean)` soggetti: `r sum(dati_clean$hiv == "Con HIV")` -->
-<!-- persone con HIV e `r sum(dati_clean$hiv == "Senza HIV")` senza HIV. -->
-<!-- Durante il follow-up, `r sum(dati_clean$event)` soggetti hanno avuto -->
+<!-- `R nrow(dati_clean)` soggetti: `R sum(dati_clean$hiv == "Con HIV")` -->
+<!-- persone con HIV e `R sum(dati_clean$hiv == "Senza HIV")` senza HIV. -->
+<!-- Durante il follow-up, `R sum(dati_clean$event)` soggetti hanno avuto -->
 <!-- la diagnosi di COVID-19. -->
 
 <!-- # Descrizione della coorte -->
