@@ -604,7 +604,7 @@ opts <- c(
   "bind_rows() ha diviso per due il numero di età presenti"
 )
 
-cat(paste0("In `dati_uniti` le età mancanti sono ", format(sum(is.na(dati_uniti$age)), big.mark = "."),
+cat(paste0("In `dati_uniti` le età mancanti sono ", format(sum(is.na(dati_uniti$age)), big.mark = ","),
            ", mentre in `dati_clean` erano solo ", sum(is.na(dati_clean$age)), ". Che cosa è successo?"),
     longmcq(opts))
 ```
@@ -1286,9 +1286,9 @@ volte <- richiami %>% count(id_subject) %>% count(n, name = "persone")
 ```
 
 Questo risultato indica che
-`r format(volte$persone[volte$n == 1], big.mark = ".")` persone hanno
+`r format(volte$persone[volte$n == 1], big.mark = ",")` persone hanno
 ricevuto un solo richiamo e
-`r format(volte$persone[volte$n == 2], big.mark = ".")` ne hanno
+`r format(volte$persone[volte$n == 2], big.mark = ",")` ne hanno
 ricevuti due.
 
 ### Il join con la chiave duplicata
@@ -1339,8 +1339,8 @@ opts <- c(
   "Ci sono persone duplicate in dati_clean"
 )
 
-cat(paste0("Il risultato ha ", format(nrow(left_join(dati_clean, richiami, by = "id_subject")), big.mark = "."),
-           " righe invece di ", format(nrow(dati_clean), big.mark = "."), ". Perché?"), longmcq(opts))
+cat(paste0("Il risultato ha ", format(nrow(left_join(dati_clean, richiami, by = "id_subject")), big.mark = ","),
+           " righe invece di ", format(nrow(dati_clean), big.mark = ","), ". Perché?"), longmcq(opts))
 ```
 :::
 ::::
@@ -1777,8 +1777,8 @@ opts <- c(
   "Perché pivot_longer() aggiunge sempre una riga per ogni NA del dataframe"
 )
 
-cat(paste0("`richiami_lungo` ha ", format(nrow(richiami_lungo), big.mark = "."),
-           " righe, `richiami` solo ", format(nrow(richiami), big.mark = "."), ". Perché?"),
+cat(paste0("`richiami_lungo` ha ", format(nrow(richiami_lungo), big.mark = ","),
+           " righe, `richiami` solo ", format(nrow(richiami), big.mark = ","), ". Perché?"),
     longmcq(opts))
 ```
 :::
